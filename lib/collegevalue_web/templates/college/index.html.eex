@@ -1,0 +1,42 @@
+<h1>Listing Colleges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Opeid</th>
+      <th>Unitid</th>
+      <th>Control</th>
+      <th>Url</th>
+      <th>Accreditation</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for college <- @colleges do %>
+    <tr>
+      <td><%= college.name %></td>
+      <td><%= college.city %></td>
+      <td><%= college.state %></td>
+      <td><%= college.zip %></td>
+      <td><%= college.opeid %></td>
+      <td><%= college.unitid %></td>
+      <td><%= college.control %></td>
+      <td><%= college.url %></td>
+      <td><%= college.accreditation %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.college_path(@conn, :show, college) %></span>
+        <span><%= link "Edit", to: Routes.college_path(@conn, :edit, college) %></span>
+        <span><%= link "Delete", to: Routes.college_path(@conn, :delete, college), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New College", to: Routes.college_path(@conn, :new) %></span>

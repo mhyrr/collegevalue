@@ -1,0 +1,5 @@
+<h1>Edit College</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.college_path(@conn, :update, @college)) %>
+
+<span><%= link "Back", to: Routes.college_path(@conn, :index) %></span>
