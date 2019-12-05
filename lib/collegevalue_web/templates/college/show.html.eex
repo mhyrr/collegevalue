@@ -1,0 +1,53 @@
+<h1>Show College</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @college.name %>
+  </li>
+
+  <li>
+    <strong>City:</strong>
+    <%= @college.city %>
+  </li>
+
+  <li>
+    <strong>State:</strong>
+    <%= @college.state %>
+  </li>
+
+  <li>
+    <strong>Zip:</strong>
+    <%= @college.zip %>
+  </li>
+
+  <li>
+    <strong>Opeid:</strong>
+    <%= @college.opeid %>
+  </li>
+
+  <li>
+    <strong>Unitid:</strong>
+    <%= @college.unitid %>
+  </li>
+
+  <li>
+    <strong>Control:</strong>
+    <%= @college.control %>
+  </li>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @college.url %>
+  </li>
+
+  <li>
+    <strong>Accreditation:</strong>
+    <%= @college.accreditation %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.college_path(@conn, :edit, @college) %></span>
+<span><%= link "Back", to: Routes.college_path(@conn, :index) %></span>
