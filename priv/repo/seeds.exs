@@ -11,38 +11,36 @@
 # and so on) as they will fail if something goes wrong.
 
 alias Collegevalue.Colleges
-alias Collegevalue.Colleges.College
 
 # Build primary colleges
 
-ccount = 0
-dcount = 0
-derr = 0
 
-File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
+# ccount = File.stream!("data/All100.csv")
+ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
-  Colleges.create_college(%{
-    opeid: record["OPEID6"],
-    unitid: record["\uFEFFUNITID"],
-    name: record["INSTNM"],
-    control: "unknown",
-    city: record["CITY"],
-    state: record["STABBR"],
-    zip: record["ZIP"],
-    url: record["INSTURL"],
-    accreditation: record["ACCREDAGENCY"]
-  })
-  ccount = ccount + 1
-end)
+    Colleges.create_college(%{
+      opeid: record["OPEID6"],
+      unitid: record["\uFEFFUNITID"],
+      name: record["INSTNM"],
+      control: "unknown",
+      city: record["CITY"],
+      state: record["STABBR"],
+      zip: record["ZIP"],
+      url: record["INSTURL"],
+      accreditation: record["ACCREDAGENCY"]
+    })
+  end)
+|> Enum.reduce(0, fn _x, acc -> 1+acc end)
 
 # Map out any other colleges in field data
 
-File.stream!("data/Most-Recent-Field-Data-Elements.csv")
+# adtl = File.stream!("data/Field100.csv")
+adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 
-  case Colleges.get_college_by_opeid(record["OPEID6"]) do
+  college = case Colleges.get_college_by_opeid(record["OPEID6"]) do
     nil ->
       case Colleges.create_college(%{
           opeid: record["OPEID6"],
@@ -55,17 +53,17 @@ File.stream!("data/Most-Recent-Field-Data-Elements.csv")
           url: "url",
           accreditation: "acc",
         } ) do
-        {:ok, _res} ->
-          ccount = ccount + 1
+        {:ok, res} ->
+          {:ok, res}
         {:error, err} ->
-          IO.inspect(err)
+          {:error, err}
       end
-    _college ->
-      nil
+    college ->
+      college
   end
 
-  IO.inspect(record)
-  IO.inspect(Collegevalue.Colleges.get_college_by_opeid(record["OPEID6"]))
+
+#   IO.inspect(Collegevalue.Colleges.get_college_by_opeid(record["OPEID6"]))
 
   count = if (record["COUNT"] == "PrivacySuppressed"), do: -1, else: record["COUNT"]
   debt_mean =  if (record["DEBTMEAN"] == "PrivacySuppressed"), do: -1, else: record["DEBTMEAN"]
@@ -75,7 +73,24 @@ File.stream!("data/Most-Recent-Field-Data-Elements.csv")
   earnings_count = if (record["EARNINGSCOUNT"] == "PrivacySuppressed"), do: -1, else: record["EARNINGSCOUNT"]
   titleiv_count = if (record["TITLEIVCOUNT"] == "PrivacySuppressed"), do: -1, else: record["TITLEIVCOUNT"]
 
-  case Collegevalue.Colleges.create_discipline(%{
+
+  id = case college do
+    nil ->
+      -1
+    {:error, _res} ->
+      case Collegevalue.Colleges.get_college_by_name(record["INSTNM"]) do
+        nil ->
+          -1
+        c ->
+          c.id
+      end
+    {:ok, res} ->
+      res.id
+    college ->
+      college.id
+  end
+
+  disc = case Collegevalue.Colleges.create_discipline(%{
     cipcode: record["CIPCODE"],
     credential_desc: record["CIPDESC"],
     credential_level: record["CREDLEV"],
@@ -87,15 +102,37 @@ File.stream!("data/Most-Recent-Field-Data-Elements.csv")
     earnings_count: earnings_count,
     titleiv_count: titleiv_count,
     name: record["CIPDESC"],
-    college_id: Collegevalue.Colleges.get_college_by_opeid(String.trim_leading(record["OPEID6"], "0")).id
+    college_id: id
   }) do
-    {:ok, _res} ->
-      dcount = dcount + 1
+    {:ok, res} ->
+      {:ok, res}
     {:error, err} ->
-      IO.inspect(err)
-      derr = derr + 1
+      {:error, err}
   end
+
+  [college, disc]
+end)
+|> Enum.reduce(%{cnt: 0, err: 0, existed: 0, disc: 0, derr: 0}, fn res, acc ->
+
+  case List.first(res) do
+    {:ok, _c} ->
+      %{acc | :cnt => acc[:cnt] + 1}
+    {:error, _err} ->
+      %{acc | :err => acc[:err] + 1}
+    college ->
+      %{acc | :cnt => acc[:cnt] + 1}
+    nil ->
+      %{acc | :existed => acc[:existed] + 1}
+  end
+
+  case List.last(res) do
+    {:ok, _d} ->
+      %{acc | :disc => acc[:disc] + 1}
+    {:error, _err} ->
+      %{acc | :derr => acc[:derr] + 1}
+  end
+
 end)
 
-IO.puts( "College count: " <> ccount)
-IO.puts "Discipline count: " <> dcount <> ", Errs: " <> derr
+IO.puts "College count: #{ccount}, added #{adtl[:cnt]}, failed #{adtl[:err]}, existed #{adtl[:existed]}"
+IO.puts "Discipline count: #{adtl[:disc]}, Errs: #{adtl[:derr]}"

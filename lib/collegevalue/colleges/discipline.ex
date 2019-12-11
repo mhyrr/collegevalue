@@ -2,6 +2,8 @@ defmodule Collegevalue.Colleges.Discipline do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Collegevalue.Colleges.College
+
   schema "disciplines" do
     field :cipcode, :integer
     field :credential_desc, :string
@@ -14,7 +16,8 @@ defmodule Collegevalue.Colleges.Discipline do
     field :earnings_count, :integer
     field :name, :string
     field :titleiv_count, :integer
-    field :college_id, :id
+
+    belongs_to :college, College
 
     timestamps()
   end
@@ -22,7 +25,8 @@ defmodule Collegevalue.Colleges.Discipline do
   @doc false
   def changeset(discipline, attrs) do
     discipline
-    |> cast(attrs, [:cipcode, :name, :credential_level, :credential_desc, :debt_count, :debt_mean, :debt_median, :debt_payment, :titleiv_count, :earnings_count, :earnings])
+    |> cast(attrs, [:cipcode, :name, :credential_level, :credential_desc, :debt_count, :debt_mean, :debt_median, :debt_payment, :titleiv_count, :earnings_count, :earnings, :college_id])
     |> validate_required([:cipcode, :name, :credential_level, :credential_desc, :debt_count, :debt_mean, :debt_median, :debt_payment, :titleiv_count, :earnings_count, :earnings])
+    |> foreign_key_constraint(:college_id)
   end
 end

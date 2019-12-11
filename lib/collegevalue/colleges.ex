@@ -156,7 +156,6 @@ defmodule Collegevalue.Colleges do
 
   """
   def create_discipline(attrs \\ %{}) do
-    IO.puts("here")
     %Discipline{}
     |> Discipline.changeset(attrs)
     |> Repo.insert()

@@ -2,6 +2,8 @@ defmodule Collegevalue.Colleges.College do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Collegevalue.Colleges.Discipline
+
   schema "colleges" do
     field :accreditation, :string
     field :city, :string
@@ -12,6 +14,8 @@ defmodule Collegevalue.Colleges.College do
     field :unitid, :integer
     field :url, :string
     field :zip, :string
+
+    has_many(:disciplines, Discipline)
 
     timestamps()
   end
