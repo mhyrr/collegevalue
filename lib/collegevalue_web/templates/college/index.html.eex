@@ -1,5 +1,13 @@
 <h1>Listing Colleges</h1>
 
+Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%> 
+
+<%= if @colleges.has_previous do %>
+  <%= link "Previous 100", to: Routes.college_path(@conn, :index, page: @colleges.page - 1)%>
+<%= end %>
+<%= if @colleges.has_next do %>
+  <%= link "Next 100", to: Routes.college_path(@conn, :index, page: @colleges.page + 1)%>
+<%= end %>
 <table>
   <thead>
     <tr>
@@ -17,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for college <- @colleges do %>
+<%= for college <- @colleges.results do %>
     <tr>
       <td><%= college.name %></td>
       <td><%= college.city %></td>
@@ -26,17 +34,20 @@
       <td><%= college.opeid %></td>
       <td><%= college.unitid %></td>
       <td><%= college.control %></td>
-      <td><%= college.url %></td>
+      <td><a href="https://<%= college.url %>"><%= college.name%></a></td>
       <td><%= college.accreditation %></td>
 
       <td>
         <span><%= link "Show", to: Routes.college_path(@conn, :show, college) %></span>
-        <span><%= link "Edit", to: Routes.college_path(@conn, :edit, college) %></span>
-        <span><%= link "Delete", to: Routes.college_path(@conn, :delete, college), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New College", to: Routes.college_path(@conn, :new) %></span>
+<%= if @colleges.has_previous do %>
+  <%= link "Previous 100", to: Routes.college_path(@conn, :index, page: @colleges.page - 1)%>
+<%= end %>
+<%= if @colleges.has_next do %>
+  <%= link "Next 100", to: Routes.college_path(@conn, :index, page: @colleges.page + 1)%>
+<%= end %>

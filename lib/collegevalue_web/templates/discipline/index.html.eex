@@ -1,0 +1,37 @@
+<h1>Listing Fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Level</th>
+      <th>Debt Mean</th>
+      <th>Debt Median</th>
+      <th>Debt Payment</th>
+      <th>Earnings</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for discipline <- @disciplines do %>
+    <tr>
+      <td><%= discipline.name %></td>
+      <td><%= discipline.credential_desc %></td>
+      <td><%= discipline.credential_level %></td>
+      <td><%= discipline.debt_mean %></td>
+      <td><%= discipline.debt_median %></td>
+      <td><%= discipline.debt_payment %></td>
+      <td><%= discipline.earnings %></td>
+      
+
+      <td>
+        <span><%= link "Show", to: Routes.discipline_path(@conn, :show, discipline) %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<span><%= link "New Field", to: Routes.discipline_path(@conn, :new) %></span>
+
