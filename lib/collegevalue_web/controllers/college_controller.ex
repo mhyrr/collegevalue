@@ -4,11 +4,16 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges
   alias Collegevalue.Colleges.College
 
-  def index(conn, _params) do
-    colleges = Colleges.list_colleges()
+  def index(conn, params) do
+
+    page = params["page"] || 1
+    # per_page = params["per_page"] || 100
+
+    colleges = Colleges.list_colleges(:paged, page)
     render(conn, "index.html", colleges: colleges)
   end
 
+  @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Colleges.change_college(%College{})
     render(conn, "new.html", changeset: changeset)
@@ -28,7 +33,8 @@ defmodule CollegevalueWeb.CollegeController do
 
   def show(conn, %{"id" => id}) do
     college = Colleges.get_college!(id)
-    render(conn, "show.html", college: college)
+    disciplines = Colleges.get_disciplines_for_college(college.id)
+    render(conn, "show.html", college: college, disciplines: disciplines)
   end
 
   def edit(conn, %{"id" => id}) do

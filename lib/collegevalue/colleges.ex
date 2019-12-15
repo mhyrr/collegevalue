@@ -5,8 +5,8 @@ defmodule Collegevalue.Colleges do
 
   import Ecto.Query, warn: false
   alias Collegevalue.Repo
-
   alias Collegevalue.Colleges.College
+  alias Collegevalue.Pagination
 
   @doc """
   Returns the list of colleges.
@@ -19,6 +19,16 @@ defmodule Collegevalue.Colleges do
   """
   def list_colleges do
     Repo.all(College)
+  end
+
+
+
+  def list_colleges(a, page \\ 1, per_page \\ 100)
+
+  def list_colleges(:paged, page, per_page) do
+    College
+    |> order_by(asc: :name)
+    |> Pagination.page(page, per_page: per_page)
   end
 
   @doc """
@@ -142,6 +152,18 @@ defmodule Collegevalue.Colleges do
 
   """
   def get_discipline!(id), do: Repo.get!(Discipline, id)
+
+  def get_disciplines_for_college(id) do
+
+    q = from d in Discipline,
+      where: d.college_id == ^id,
+      select: d
+
+    Repo.all(q)
+
+  end
+
+
 
   @doc """
   Creates a discipline.

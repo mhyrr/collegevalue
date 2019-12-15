@@ -17,6 +17,10 @@ defmodule CollegevalueWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/colleges", CollegeController, except: [:edit, :delete]
+
+    resources "/fields", DisciplineController, except: [:edit, :delete]
   end
 
   # Other scopes may use custom stacks.

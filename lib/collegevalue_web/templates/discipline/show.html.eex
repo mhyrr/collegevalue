@@ -1,0 +1,9 @@
+<tr>
+  <td><%= @discipline.name%></td>
+  <td><%= @discipline.credential_desc%></td>
+  <td><%= @discipline.credential_level%></td>
+  <td><%= @discipline.debt_mean%></td>
+  <td><%= @discipline.debt_median%></td>
+  <td><%= @discipline.debt_payment%></td>
+  <td><%= @discipline.earnings%></td>
+</tr>
