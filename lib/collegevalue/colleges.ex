@@ -4,9 +4,10 @@ defmodule Collegevalue.Colleges do
   """
 
   import Ecto.Query, warn: false
-  alias Collegevalue.Repo
+  alias Ecto.Adapters.SQL
+  alias Collegevalue.{Repo, Pagination}
   alias Collegevalue.Colleges.College
-  alias Collegevalue.Pagination
+
 
   @doc """
   Returns the list of colleges.
@@ -136,6 +137,33 @@ defmodule Collegevalue.Colleges do
   def list_disciplines do
     Repo.all(Discipline)
   end
+
+  def list_disciplines(a)
+
+  def list_disciplines(:distinct) do
+    Discipline
+    |> distinct([d], d.name)
+    |> Repo.all
+  end
+
+  def list_disciplines(:ranked) do
+
+
+    # This needs to be another schema/view
+
+    # Dump this into an ets table later
+    case SQL.query(Repo, "select name, avg(case when debt_mean > 0 then debt_mean end) as debt_avg, min(case when debt_mean > 0 then debt_mean end) as debt_min, max(case when debt_mean > 0 then debt_mean end) as debt_max, avg(case when earnings > 0 then earnings end) as earn_avg, min(case when earnings > 0 then earnings end) as earn_min, max(case when earnings > 0 then earnings end) as earn_max, array_agg( distinct credential_level)  from disciplines where credential_level = 3 group by name order by earn_avg DESC") do
+      {:ok, result} ->
+        disc = %{name: :string, debt_avg: :decimal, debt_min: :integer, debt_max: :integer, earn_avg: :decimal, earn_min: :integer, earn_max: :integer, array_agg: {:array, :integer}}
+        Enum.map(result.rows, &Collegevalue.Repo.load(disc, {result.columns, &1}))
+      {:error, err} ->
+        err
+    end
+
+    # Another select d.debt_mean, d.earnings, c.name, d.credential_level  from disciplines d, colleges c where d.college_id = c.id and d.name = 'Business/Commerce, General.' order by earnings DESC;
+
+  end
+
 
   @doc """
   Gets a single discipline.
