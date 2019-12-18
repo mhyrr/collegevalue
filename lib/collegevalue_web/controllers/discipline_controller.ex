@@ -6,15 +6,18 @@ defmodule CollegevalueWeb.DisciplineController do
   alias Collegevalue.Colleges.Discipline
 
   def index(conn, _params) do
-    disciplines = Colleges.list_disciplines()
+    disciplines = Colleges.list_disciplines(:ranked)
+    IO.inspect(disciplines)
     render(conn, "index.html", disciplines: disciplines)
   end
 
+  @spec new(Plug.Conn.t(), any) :: Plug.Conn.t()
   def new(conn, _params) do
     changeset = Colleges.change_discipline(%Discipline{})
     render(conn, "new.html", changeset: changeset)
   end
 
+  @spec create(Plug.Conn.t(), map) :: Plug.Conn.t()
   def create(conn, %{"discipline" => discipline_params}) do
     case Colleges.create_discipline(discipline_params) do
       {:ok, discipline} ->

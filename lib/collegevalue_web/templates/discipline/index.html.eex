@@ -4,12 +4,14 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
-      <th>Level</th>
-      <th>Debt Mean</th>
-      <th>Debt Median</th>
-      <th>Debt Payment</th>
-      <th>Earnings</th>
+      <%# <th>Description</th> %>
+      <th>Levels</th>
+      <th>Debt Average</th>
+      <th>Debt Min</th>
+      <th>Debt Max</th>
+      <th>Earnings Average</th>
+      <th>Earnings Min</th>
+      <th>Earnings Max</th>
 
       <th></th>
     </tr>
@@ -18,16 +20,17 @@
 <%= for discipline <- @disciplines do %>
     <tr>
       <td><%= discipline.name %></td>
-      <td><%= discipline.credential_desc %></td>
-      <td><%= discipline.credential_level %></td>
-      <td><%= discipline.debt_mean %></td>
-      <td><%= discipline.debt_median %></td>
-      <td><%= discipline.debt_payment %></td>
-      <td><%= discipline.earnings %></td>
+      <td><%= for l <- discipline.array_agg, do: l %></td>
+      <td><%= discipline.debt_avg %></td>
+      <td><%= discipline.debt_min %></td>
+      <td><%= discipline.debt_max %></td>
+      <td><%= discipline.earn_avg %></td>
+      <td><%= discipline.earn_min %></td>
+      <td><%= discipline.earn_max %></td>
       
 
       <td>
-        <span><%= link "Show", to: Routes.discipline_path(@conn, :show, discipline) %></span>
+        <%# <span><%= link "Show", to: Routes.discipline_path(@conn, :show, discipline) %></span> %>
       </td>
     </tr>
 <% end %>
