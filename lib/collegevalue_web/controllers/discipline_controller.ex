@@ -6,7 +6,7 @@ defmodule CollegevalueWeb.DisciplineController do
   alias Collegevalue.Colleges.Discipline
 
   def index(conn, _params) do
-    disciplines = Colleges.list_disciplines(:ranked)
+    disciplines = Colleges.list_disciplines(:distinct)
     IO.inspect(disciplines)
     render(conn, "index.html", disciplines: disciplines)
   end

@@ -1,0 +1,33 @@
+<h1>Listing Fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th><%= link "Debt Average", to: Routes.field_path(@conn, :index, sort: :debt_avg)%></th>
+      <th>Debt Min</th>
+      <th>Debt Max</th>
+      <th>Earnings Average</th>
+      <th>Earnings Min</th>
+      <th>Earnings Max</th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for field <- @fields do %>
+    <tr>
+
+      <td><%= field.name %></td>
+      <td><%= cash(field.debt_avg) %></td>
+      <td><%= cash(field.debt_min) %></td>
+      <td><%= cash(field.debt_max) %></td>
+      <td><%= cash(field.earn_avg) %></td>
+      <td><%= cash(field.earn_min) %></td>
+      <td><%= cash(field.earn_max) %></td>
+      
+
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Field", to: Routes.field_path(@conn, :new) %></span>
