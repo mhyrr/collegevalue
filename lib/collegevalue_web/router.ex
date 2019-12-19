@@ -20,7 +20,7 @@ defmodule CollegevalueWeb.Router do
 
     resources "/colleges", CollegeController, except: [:edit, :delete]
 
-    resources "/fields", DisciplineController, except: [:edit, :delete]
+    resources "/fields", FieldController, except: [:edit, :delete]
   end
 
   # Other scopes may use custom stacks.
