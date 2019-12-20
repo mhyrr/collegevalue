@@ -252,9 +252,7 @@ defmodule Collegevalue.Colleges do
 
   end
 
-  def list_fields(col, order \\ "asc")
-
-  def list_fields(col, order) when is_bitstring(col) and is_bitstring(order) do
+  def list_fields(col, order) when is_binary(col) and is_binary(order) do
 
     sort = String.to_atom(col)
     sort_order = String.to_existing_atom(order)

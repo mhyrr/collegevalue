@@ -6,10 +6,8 @@ defmodule CollegevalueWeb.FieldController do
 
   def index(conn, params) do
 
-    IO.inspect(params)
-
     sort = params["sort"] || "name"
-    sort_dir = params["sort_dir"]
+    sort_dir = params["sort_dir"] || "asc"
 
     fields = Colleges.list_fields(sort, sort_dir)
     # IO.inspect(fields)

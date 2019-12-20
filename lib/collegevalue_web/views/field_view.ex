@@ -2,7 +2,12 @@ defmodule CollegevalueWeb.FieldView do
   use CollegevalueWeb, :view
 
   def cash(dollars) do
-    Number.Currency.number_to_currency(dollars)
+    case dollars do
+      0 ->
+        nil
+      _ ->
+        Number.Currency.number_to_currency(dollars)
+    end
   end
 
   def sort_dir(params) do
