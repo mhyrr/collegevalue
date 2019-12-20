@@ -4,7 +4,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th><%= link "Debt Average", to: Routes.field_path(@conn, :index, sort: :debt_avg)%></th>
+      <th>Num Colleges</th>
+      <th><%= link "Debt Average", to: Routes.field_path(@conn, :index, sort: :debt_avg, sort_dir: sort_dir(@conn.params))%></th>
       <th>Debt Min</th>
       <th>Debt Max</th>
       <th>Earnings Average</th>
@@ -17,6 +18,7 @@
     <tr>
 
       <td><%= field.name %></td>
+      <td><%= field.count %></td>
       <td><%= cash(field.debt_avg) %></td>
       <td><%= cash(field.debt_min) %></td>
       <td><%= cash(field.debt_max) %></td>

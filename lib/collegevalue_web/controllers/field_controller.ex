@@ -9,8 +9,9 @@ defmodule CollegevalueWeb.FieldController do
     IO.inspect(params)
 
     sort = params["sort"] || "name"
+    sort_dir = params["sort_dir"]
 
-    fields = Colleges.list_fields(sort)
+    fields = Colleges.list_fields(sort, sort_dir)
     # IO.inspect(fields)
     render(conn, "index.html", fields: fields)
   end
