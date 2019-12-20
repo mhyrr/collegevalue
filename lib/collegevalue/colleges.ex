@@ -252,12 +252,15 @@ defmodule Collegevalue.Colleges do
 
   end
 
-  def list_fields(col) when is_bitstring(col) do
+  def list_fields(col, order \\ "asc")
+
+  def list_fields(col, order) when is_bitstring(col) and is_bitstring(order) do
 
     sort = String.to_atom(col)
-    IO.inspect(sort)
+    sort_order = String.to_existing_atom(order)
+
     Field
-    |> order_by(asc: ^sort )
+    |> order_by({^sort_order, ^sort} )
     |> Repo.all()
 
   end
