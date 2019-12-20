@@ -1,6 +1,8 @@
 defmodule CollegevalueWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :collegevalue
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", CollegevalueWeb.UserSocket,
     websocket: true,
     longpoll: false

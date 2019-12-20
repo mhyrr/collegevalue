@@ -12,6 +12,9 @@ config :collegevalue,
 
 # Configures the endpoint
 config :collegevalue, CollegevalueWeb.Endpoint,
+  live_view: [
+    signing_salt: "OKdPxB8pAsnmcv4Pu40o3Uez1NTQrqyV"
+  ],
   url: [host: "localhost"],
   secret_key_base: "U/fjAaxCRdWoMibpAndLqRS7zarHVZZIeac8LTf3nswE/BVhjVaeLRMhw2y/X/Ud",
   render_errors: [view: CollegevalueWeb.ErrorView, accepts: ~w(html json)],

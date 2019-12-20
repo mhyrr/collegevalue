@@ -1,0 +1,32 @@
+<h1>Listing Fields</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "name", sort_dir: "asc"}) %></th>
+      <th><%= live_link "Num Colleges", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "count"}) %></th>
+      <th><%= live_link "Debt Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "debt_avg"}) %></th>
+      <th><%= live_link "Debt Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "debt_min"}) %></th>
+      <th><%= live_link "Debt Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "debt_max"}) %></th>
+      <th><%= live_link "Earnings Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "earn_avg"}) %></th>
+      <th><%= live_link "Earnings Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "earn_min"}) %></th>
+      <th><%= live_link "Earnings Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "earn_max"}) %></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for field <- @fields do %>
+    <tr>
+
+      <td><%= field.name %></td>
+      <td><%= field.count %></td>
+      <td><%= cash(field.debt_avg) %></td>
+      <td><%= cash(field.debt_min) %></td>
+      <td><%= cash(field.debt_max) %></td>
+      <td><%= cash(field.earn_avg) %></td>
+      <td><%= cash(field.earn_min) %></td>
+      <td><%= cash(field.earn_max) %></td>
+      
+    </tr>
+<% end %>
+  </tbody>
+</table>
