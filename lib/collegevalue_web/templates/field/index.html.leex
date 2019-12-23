@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "name", sort_dir: "asc"}) %></th>
+      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "name"}) %></th>
       <th><%= live_link "Num Colleges", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "count"}) %></th>
       <th><%= live_link "Debt Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "debt_avg"}) %></th>
       <th><%= live_link "Debt Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive, %{sort_by: "debt_min"}) %></th>
