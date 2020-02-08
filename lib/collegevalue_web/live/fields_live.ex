@@ -1,8 +1,8 @@
 defmodule CollegevalueWeb.FieldsLive do
   use Phoenix.LiveView
 
-  alias Collegevalue.Colleges
-  alias Collegevalue.Colleges.Field
+  alias Collegevalue.Fields
+  alias Collegevalue.Fields.Field
 
   def render(assigns) do
     Phoenix.View.render(CollegevalueWeb.FieldView, "index.html", assigns)
@@ -11,7 +11,7 @@ defmodule CollegevalueWeb.FieldsLive do
   def mount(_, socket) do
 
     sort_order = "asc"
-    fields = Colleges.list_fields()
+    fields = Fields.list_fields()
     {:ok, assign(socket, fields: fields, order: sort_order)}
 
   end

@@ -2,7 +2,6 @@ defmodule CollegevalueWeb.DisciplineController do
   use CollegevalueWeb, :controller
 
   alias Collegevalue.Colleges
-  alias Collegevalue.Colleges.College
   alias Collegevalue.Colleges.Discipline
 
   def index(conn, _params) do

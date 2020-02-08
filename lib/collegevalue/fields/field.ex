@@ -1,4 +1,4 @@
-defmodule Collegevalue.Colleges.Field do
+defmodule Collegevalue.Fields.Field do
   use Ecto.Schema
 
   @primary_key false
