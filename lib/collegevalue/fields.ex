@@ -29,6 +29,8 @@ defmodule Collegevalue.Fields do
 
   end
 
+  def get_field!(name), do: Repo.get_by(Field, name: name)
+
 
 end
 

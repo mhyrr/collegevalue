@@ -3,6 +3,8 @@ defmodule Collegevalue.Fields.Field do
 
   @primary_key false
   schema "fields" do
+
+    @derive {Phoenix.Param, key: :name}
     field :name, :string
     field :count, :integer
     field :debt_avg, :decimal

@@ -17,7 +17,7 @@
 <%= for field <- @fields do %>
     <tr>
 
-      <td><%= field.name %></td>
+      <td><%= link "#{field.name}", to: Routes.field_path(@socket, :show, field) %></td>
       <td><%= field.count %></td>
       <td><%= cash(field.debt_avg) %></td>
       <td><%= cash(field.debt_min) %></td>

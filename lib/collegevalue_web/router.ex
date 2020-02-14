@@ -23,6 +23,8 @@ defmodule CollegevalueWeb.Router do
 
     live "/fields", FieldsLive
 
+    get "/fields/:name", FieldController, :show
+
   end
 
   # Other scopes may use custom stacks.

@@ -1,8 +1,12 @@
 <h1>Show Field</h1>
 
 <ul>
-
+    <li><%= @field.name %></li>
+    <li><%= @field.count %></li>
+    <li><%= cash(@field.debt_avg) %></li>
 </ul>
 
-<span><%= link "Edit", to: Routes.field_path(@conn, :edit, @field) %></span>
-<span><%= link "Back", to: Routes.field_path(@conn, :index) %></span>
+<%# Now render a fierw for a list of disciplines pulled for this field! %>
+
+<%# <span><%= link "Edit", to: Routes.field_path(@conn, :edit, @field)</span> %> 
+<%# <span><%= link "Back", to: Routes.field_path(@conn, :index)</span> %>
