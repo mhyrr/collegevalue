@@ -14,8 +14,10 @@ defmodule CollegevalueWeb.FieldController do
   # end
 
 
-  def show(conn, %{"id" => id}) do
-    field = Fields.get_field!(id)
+  @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
+  def show(conn, %{"name" => name}) do
+    IO.inspect(name)
+    field = Fields.get_field!(name)
     render(conn, "show.html", field: field)
   end
 
