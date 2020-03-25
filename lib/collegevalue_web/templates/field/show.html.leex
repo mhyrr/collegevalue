@@ -1,0 +1,44 @@
+<h1>Show Field</h1>
+
+<ul>
+    <li><%= @field.name %></li>
+    <li>Number of Colleges: <%= @field.count %></li>
+    <li>Average Debt on Graduation: <%= cash(@field.debt_avg) %></li>
+    <li>Expected Earnings 1 Year After: <%= cash(@field.earn_avg) %></li>
+    <li><%= @toggle_cred %></li>
+    <button phx-click="toggle_credentials"><%= @cred_label %></button>
+</ul>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>College</th>
+      <th>Credential</th>
+      <th>Debt Mean</th>
+      <th>Debt Median</th>
+      <th>Expected Earnings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for major <- @majors do %>
+      <%= if @toggle_cred || major.credential_level == 3 do %>
+        <tr>
+        <td><a href="https://<%= major.url %>"><%= major.college_name%></a></td>
+        <td><%= degree(major.credential_level) %></td>
+        <td><%= cash(major.debt_mean) %></td>
+        <td><%= cash(major.debt_median) %></td>
+        <td><%= cash(major.earnings) %></td>
+        
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<%# Now render a fierw for a list of disciplines pulled for this field! %>
+
+<%# <span><%= link "Edit", to: Routes.field_path(@conn, :edit, @field)</span> %> 
+<%# <span><%= link "Back", to: Routes.field_path(@conn, :index)</span> %>

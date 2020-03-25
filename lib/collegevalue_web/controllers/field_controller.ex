@@ -1,7 +1,7 @@
 defmodule CollegevalueWeb.FieldController do
   use CollegevalueWeb, :controller
 
-  alias Collegevalue.Fields
+  alias Collegevalue.{Fields, Colleges}
 
   # def index(conn, params) do
 
@@ -18,7 +18,10 @@ defmodule CollegevalueWeb.FieldController do
   def show(conn, %{"name" => name}) do
     IO.inspect(name)
     field = Fields.get_field!(name)
-    render(conn, "show.html", field: field)
+
+    majors = Colleges.get_by_field(field.name)
+    IO.inspect(majors)
+    render(conn, "show.html", field: field, majors: majors)
   end
 
   def edit(conn, %{"id" => id}) do

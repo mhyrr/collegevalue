@@ -1,4 +1,4 @@
-defmodule CollegevalueWeb.FieldsLive do
+defmodule CollegevalueWeb.FieldsLive.Index do
   use Phoenix.LiveView
 
   alias Collegevalue.Fields
@@ -9,11 +9,9 @@ defmodule CollegevalueWeb.FieldsLive do
   end
 
   def mount(_, socket) do
-
     sort_order = "asc"
     fields = Fields.list_fields()
     {:ok, assign(socket, fields: fields, order: sort_order)}
-
   end
 
   @spec handle_params(any, any, any) :: {:noreply, any}
