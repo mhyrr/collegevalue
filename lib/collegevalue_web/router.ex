@@ -21,9 +21,10 @@ defmodule CollegevalueWeb.Router do
 
     resources "/colleges", CollegeController, except: [:edit, :delete]
 
-    live "/fields", FieldsLive
+    live "/fields", FieldsLive.Index
+    live "/fields/:name", FieldsLive.Show
 
-    get "/fields/:name", FieldController, :show
+    # get "/fields/:name", FieldController, :show
 
   end
 
