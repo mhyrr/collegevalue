@@ -1,0 +1,24 @@
+<h1>Listing Ranks</h1>
+
+<table>
+  <thead>
+    <tr>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for rank <- @ranks do %>
+    <tr>
+
+      <td>
+        <span><%= link "Show", to: Routes.rank_path(@conn, :show, rank) %></span>
+        <span><%= link "Edit", to: Routes.rank_path(@conn, :edit, rank) %></span>
+        <span><%= link "Delete", to: Routes.rank_path(@conn, :delete, rank), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Rank", to: Routes.rank_path(@conn, :new) %></span>

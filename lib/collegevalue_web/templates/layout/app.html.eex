@@ -14,7 +14,7 @@
           <ul>
             <li><%= link "Colleges", to: "/colleges" %></li>
             <li><%= link "Fields", to: "/fields" %></li>
-            <li><%= link "Top 100s", to: "/top100" %></li>
+            <li><%= link "Top Rankings", to: "/top" %></li>
             <li>Search</li>
           </ul>
         </nav>
