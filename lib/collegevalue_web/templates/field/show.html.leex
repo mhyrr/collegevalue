@@ -5,7 +5,7 @@
     <li>Number of Colleges: <%= @field.count %></li>
     <li>Average Debt on Graduation: <%= cash(@field.debt_avg) %></li>
     <li>Expected Earnings 1 Year After: <%= cash(@field.earn_avg) %></li>
-    <li><%= @toggle_cred %></li>
+    
     <button phx-click="toggle_credentials"><%= @cred_label %></button>
 </ul>
 
@@ -13,11 +13,11 @@
 <table>
   <thead>
     <tr>
-      <th>College</th>
-      <th>Credential</th>
-      <th>Debt Mean</th>
-      <th>Debt Median</th>
-      <th>Expected Earnings</th>
+      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name"}) %></th>
+      <th><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential"}) %></th>
+      <th><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean"}) %></th>
+      <th><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median"}) %></th>
+      <th><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings"}) %></th>
     </tr>
   </thead>
   <tbody>
