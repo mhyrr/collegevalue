@@ -1,6 +1,7 @@
 defmodule CollegevalueWeb.FieldView do
   use CollegevalueWeb, :view
 
+  alias CollegevalueWeb.FieldsLive
   alias Collegevalue.Credential
 
   def show_credentials() do

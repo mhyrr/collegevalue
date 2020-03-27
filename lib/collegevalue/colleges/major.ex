@@ -1,6 +1,5 @@
 defmodule Collegevalue.Colleges.Major do
 use Ecto.Schema
-import Ecto.Changeset
 
   schema "majors" do
     field :credential_desc, :string

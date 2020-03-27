@@ -13,11 +13,11 @@
 <table>
   <thead>
     <tr>
-      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name"}) %></th>
-      <th><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential"}) %></th>
-      <th><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean"}) %></th>
-      <th><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median"}) %></th>
-      <th><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings"}) %></th>
+      <th><%= live_patch "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name"}) %></th>
+      <th><%= live_patch "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential"}) %></th>
+      <th><%= live_patch "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean"}) %></th>
+      <th><%= live_patch "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median"}) %></th>
+      <th><%= live_patch "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings"}) %></th>
     </tr>
   </thead>
   <tbody>

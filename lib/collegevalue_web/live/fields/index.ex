@@ -8,25 +8,28 @@ defmodule CollegevalueWeb.FieldsLive.Index do
     Phoenix.View.render(CollegevalueWeb.FieldView, "index.html", assigns)
   end
 
-  def mount(_, socket) do
+  def mount(_, _session, socket) do
+    IO.inspect("mounting..")
     sort_order = "asc"
     fields = Fields.list_fields()
     {:ok, assign(socket, fields: fields, order: sort_order)}
   end
 
   @spec handle_params(any, any, any) :: {:noreply, any}
-  def handle_params(%{"sort_by" => sort_by}, _uri, socket) do
+  def handle_params(%{"sort_by" => sort_by}, _url, socket) do
 
+    IO.inspect(socket.assigns.order)
     sort_order = case socket.assigns.order do
       "desc" ->
         "asc"
       "asc" ->
         "desc"
       _ ->
-        "asc"
+        "desc"
     end
 
-    IO.inspect(socket)
+    IO.inspect(sort_by)
+    IO.inspect(sort_order)
 
     case sort_by do
       sort_by when sort_by in ~w(name count debt_avg debt_min debt_max earn_max earn_avg earn_min) ->

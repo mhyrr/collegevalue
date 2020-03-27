@@ -1,14 +1,15 @@
 defmodule CollegevalueWeb.FieldsLive.Show do
   use Phoenix.LiveView
 
+  alias CollegevalueWeb.FieldView
   alias Collegevalue.{Fields, Colleges}
 
   def render(assigns) do
-    Phoenix.View.render(CollegevalueWeb.FieldView, "show.html", assigns)
+    FieldView.render("show.html", assigns)
   end
 
-  @spec mount(any, any) :: {:ok, any}
-  def mount(_, socket) do
+  def mount(_, _session, socket) do
+    IO.inspect("mount..")
     sort_order = "asc"
     cred_label = "Show All Degrees"
     toggle_cred = false;
@@ -19,6 +20,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   def handle_params(%{"name" => name, "sort_by" => sort_by}, _url, socket) do
     field = Fields.get_field!(URI.decode(name))
 
+    IO.inspect("sorting..")
     sort_order = case socket.assigns.order do
       "desc" ->
         "asc"
@@ -47,8 +49,8 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   end
 
 
-  def handle_event("toggle_credentials", _value, socket) do
-
+  def handle_event("toggle_credentials", _, socket) do
+    IO.inspect("toggle")
     toggle_cred = !socket.assigns.toggle_cred
     cred_label = if (toggle_cred == true), do: "Bachelor's Only", else: "Show All Degrees"
 
