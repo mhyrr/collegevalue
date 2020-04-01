@@ -29,6 +29,18 @@ defmodule Collegevalue.Fields do
 
   end
 
+  def match_fields_by_name(name) do
+
+    like = "%#{name}%"
+
+    query = from f in Field,
+      where: ilike(f.name, ^like),
+      select: f.name,
+      limit: 10
+    Repo.all(query)
+
+  end
+
   def get_field!(name), do: Repo.get_by(Field, name: name)
 
 
