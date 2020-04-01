@@ -15,7 +15,7 @@
             <li><%= link "Colleges", to: "/colleges" %></li>
             <li><%= link "Fields", to: "/fields" %></li>
             <li><%= link "Top Rankings", to: "/top" %></li>
-            <li>Search</li>
+            <li><%= live_render @conn, CollegevalueWeb.SearchLive %></li>
           </ul>
         </nav>
         

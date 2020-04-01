@@ -12,6 +12,7 @@ import Ecto.Changeset
     field :earnings_count, :integer
     field :name, :string
     field :college_name, :string
+    field :college_id, :integer
     field :url, :string
   end
 

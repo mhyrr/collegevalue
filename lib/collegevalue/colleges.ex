@@ -31,6 +31,18 @@ defmodule Collegevalue.Colleges do
     |> Pagination.page(page, per_page: per_page)
   end
 
+  def match_colleges_by_name(name) do
+
+    like = "%#{name}%"
+
+    query = from c in College,
+      where: ilike(c.name, ^like),
+      select: c.name,
+      limit: 10
+    Repo.all(query)
+
+  end
+
   def get_by_field(field) do
 
     query = from c in College,
@@ -47,6 +59,7 @@ defmodule Collegevalue.Colleges do
         earnings_count: d.earnings_count,
         name: d.name,
         college_name: c.name,
+        college_id: c.id,
         url: c.url
 
       }
@@ -80,6 +93,7 @@ defmodule Collegevalue.Colleges do
   def get_college_by_opeid!(id), do: Repo.get_by!(College, opeid: id)
 
   def get_college_by_opeid(id), do: Repo.get_by(College, opeid: id)
+
 
   @doc """
   Creates a college.
