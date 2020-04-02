@@ -4,7 +4,6 @@ defmodule CollegevalueWeb.FieldView do
   alias Collegevalue.Credential
 
   def show_credentials() do
-
     "Bachelor's Only"
   end
 
@@ -24,9 +23,9 @@ defmodule CollegevalueWeb.FieldView do
   end
 
   @spec sort_dir(map) :: <<_::24, _::_*8>>
-  def sort_dir(params) do
-
-    case Map.get(params, "sort_dir") do
+  def sort_dir(order) do
+    IO.inspect(order)
+    case order do
       "desc" ->
         "asc"
       "asc" ->

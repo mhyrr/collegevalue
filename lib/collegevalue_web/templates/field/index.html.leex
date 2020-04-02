@@ -3,14 +3,14 @@
 <table>
   <thead>
     <tr>
-      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "name"}) %></th>
-      <th><%= live_link "Num Colleges", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "count"}) %></th>
-      <th><%= live_link "Debt Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_avg"}) %></th>
-      <th><%= live_link "Debt Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_min"}) %></th>
-      <th><%= live_link "Debt Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_max"}) %></th>
-      <th><%= live_link "Earnings Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_avg"}) %></th>
-      <th><%= live_link "Earnings Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_min"}) %></th>
-      <th><%= live_link "Earnings Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_max"}) %></th>
+      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "name", order: @order || "desc"}) %></th>
+      <th><%= live_link "Num Colleges", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "count", order: @order || "desc"}) %></th>
+      <th><%= live_link "Debt Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_avg", order: @order || "desc"}) %></th>
+      <th><%= live_link "Debt Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_min", order: @order || "desc"}) %></th>
+      <th><%= live_link "Debt Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_max", order: @order || "desc"}) %></th>
+      <th><%= live_link "Earnings Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_avg", order: @order || "desc"}) %></th>
+      <th><%= live_link "Earnings Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_min", order: @order || "desc"}) %></th>
+      <th><%= live_link "Earnings Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_max", order: @order || "desc"}) %></th>
     </tr>
   </thead>
   <tbody>

@@ -3,17 +3,33 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   alias Collegevalue.{Fields, Colleges}
 
+  @cred_all_label "Show All Degrees"
+  @cred_bach_only "Bachelor's Only"
+
   def render(assigns) do
     Phoenix.View.render(CollegevalueWeb.FieldView, "show.html", assigns)
   end
 
-  @spec mount(any, any) :: {:ok, any}
-  def mount(_, socket) do
-    sort_order = "asc"
-    cred_label = "Show All Degrees"
-    toggle_cred = false;
-    {:ok, assign(socket, cred_label: cred_label, toggle_cred: toggle_cred, order: sort_order)}
+  @spec mount(any, any, any) :: {:ok, any}
+  def mount(%{"order" => order, "show_all" => toggle_cred}, _, socket) do
+    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: toggle_cred, order: order)}
   end
+
+  @spec mount(any, any, any) :: {:ok, any}
+  def mount(%{"order" => order}, _, socket) do
+    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: false, order: order)}
+  end
+
+  @spec mount(any, any, any) :: {:ok, any}
+  def mount(%{"show_all" => toggle_cred}, _, socket) do
+    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: toggle_cred, order: "desc")}
+  end
+
+  @spec mount(any, any, any) :: {:ok, any}
+  def mount(_, _, socket) do
+    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: false, order: "desc")}
+  end
+
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_params(%{"name" => name, "sort_by" => sort_by}, _url, socket) do

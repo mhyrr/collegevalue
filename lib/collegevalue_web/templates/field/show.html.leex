@@ -13,11 +13,11 @@
 <table>
   <thead>
     <tr>
-      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name"}) %></th>
-      <th><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential"}) %></th>
-      <th><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean"}) %></th>
-      <th><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median"}) %></th>
-      <th><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings"}) %></th>
+      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name", order: @order || "desc"}) %></th>
+      <th><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential", order: @order || "desc"}) %></th>
+      <th><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean", order: @order || "desc"}) %></th>
+      <th><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median", order: @order || "desc"}) %></th>
+      <th><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings", order: @order || "desc"}) %></th>
     </tr>
   </thead>
   <tbody>
