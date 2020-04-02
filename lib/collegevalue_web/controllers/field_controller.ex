@@ -3,17 +3,6 @@ defmodule CollegevalueWeb.FieldController do
 
   alias Collegevalue.{Fields, Colleges}
 
-  # def index(conn, params) do
-
-  #   sort = params["sort"] || "name"
-  #   sort_dir = params["sort_dir"] || "asc"
-
-  #   fields = Fields.list_fields(sort, sort_dir)
-  #   # IO.inspect(fields)
-  #   render(conn, "index.html", fields: fields)
-  # end
-
-
   @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
   def show(conn, %{"name" => name}) do
     IO.inspect(name)

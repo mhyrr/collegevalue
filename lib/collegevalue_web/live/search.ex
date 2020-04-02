@@ -21,7 +21,7 @@ defmodule CollegevalueWeb.SearchLive do
     """
   end
 
-  def mount(_session, socket) do
+  def mount(_, _session, socket) do
     {:ok, assign(socket, query: nil, result: nil, loading: false, matches: [])}
   end
 
