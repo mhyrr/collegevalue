@@ -14,11 +14,9 @@ Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%>
       <th>Name</th>
       <th>City</th>
       <th>State</th>
-      <th>Zip</th>
       <th>Opeid</th>
       <th>Unitid</th>
       <th>Control</th>
-      <th>Url</th>
       <th>Accreditation</th>
 
       <th></th>
@@ -27,19 +25,14 @@ Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%>
   <tbody>
 <%= for college <- @colleges.results do %>
     <tr>
-      <td><%= college.name %></td>
-      <td><%= college.city %></td>
-      <td><%= college.state %></td>
-      <td><%= college.zip %></td>
+      <td><%= link college.name, to: Routes.college_path(@conn, :show, college) %></td>
+      <td><%= defaults(college.city) %></td>
+      <td><%= defaults(college.state) %></td>
       <td><%= college.opeid %></td>
       <td><%= college.unitid %></td>
       <td><%= college.control %></td>
-      <td><a href="https://<%= college.url %>"><%= college.name%></a></td>
       <td><%= college.accreditation %></td>
 
-      <td>
-        <span><%= link "Show", to: Routes.college_path(@conn, :show, college) %></span>
-      </td>
     </tr>
 <% end %>
   </tbody>
