@@ -9,17 +9,17 @@
 
   <li>
     <strong>City:</strong>
-    <%= @college.city %>
+    <%= defaults(@college.city) %>
   </li>
 
   <li>
     <strong>State:</strong>
-    <%= @college.state %>
+    <%= defaults(@college.state) %>
   </li>
 
   <li>
     <strong>Zip:</strong>
-    <%= @college.zip %>
+    <%= defaults(@college.zip) %>
   </li>
 
   <li>
