@@ -24,7 +24,6 @@ defmodule CollegevalueWeb.FieldView do
 
   @spec sort_dir(map) :: <<_::24, _::_*8>>
   def sort_dir(order) do
-    IO.inspect(order)
     case order do
       "desc" ->
         "asc"
@@ -33,7 +32,6 @@ defmodule CollegevalueWeb.FieldView do
       _ ->
         "asc"
     end
-
   end
 
 end
