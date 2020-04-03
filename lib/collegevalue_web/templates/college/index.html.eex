@@ -25,7 +25,7 @@ Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%>
   <tbody>
 <%= for college <- @colleges.results do %>
     <tr>
-      <td><%= link college.name, to: Routes.college_path(@conn, :show, college) %></td>
+      <td><%= link college.name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, college.name)%></td>
       <td><%= defaults(college.city) %></td>
       <td><%= defaults(college.state) %></td>
       <td><%= college.opeid %></td>
