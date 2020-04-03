@@ -19,7 +19,8 @@ defmodule CollegevalueWeb.Router do
 
     get "/", PageController, :index
 
-    resources "/colleges", CollegeController, except: [:edit, :delete]
+    get "/colleges", CollegeController, :index
+    live "colleges/:name", CollegesLive.Show
 
     live "/fields", FieldsLive.Index
     live "/fields/:name", FieldsLive.Show

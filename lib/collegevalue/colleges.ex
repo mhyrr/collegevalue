@@ -43,12 +43,38 @@ defmodule Collegevalue.Colleges do
 
   end
 
-  def get_by_field(field) do
+  def get_majors_by_field(field) do
 
     query = from c in College,
       join: d in Discipline,
       on: c.id == d.college_id,
       where: d.name == ^field,
+      select: %Major{
+        credential_desc: d.credential_desc,
+        credential_level: d.credential_level,
+        debt_count: d.debt_count,
+        debt_mean: d.debt_mean,
+        debt_median: d.debt_median,
+        earnings: d.earnings,
+        earnings_count: d.earnings_count,
+        name: d.name,
+        college_name: c.name,
+        college_id: c.id,
+        url: c.url
+
+      }
+
+    Repo.all(query)
+
+  end
+
+
+  def get_majors_by_college(college) do
+
+    query = from c in College,
+      join: d in Discipline,
+      on: c.id == d.college_id,
+      where: c.name == ^college,
       select: %Major{
         credential_desc: d.credential_desc,
         credential_level: d.credential_level,

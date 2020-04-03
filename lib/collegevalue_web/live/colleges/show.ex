@@ -1,4 +1,4 @@
-defmodule CollegevalueWeb.FieldsLive.Show do
+defmodule CollegevalueWeb.CollegesLive.Show do
   use Phoenix.LiveView
 
   alias Collegevalue.{Fields, Colleges}
@@ -7,7 +7,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   @cred_bach_only "Bachelor's Only"
 
   def render(assigns) do
-    Phoenix.View.render(CollegevalueWeb.FieldView, "show.html", assigns)
+    Phoenix.View.render(CollegevalueWeb.CollegeView, "show.html", assigns)
   end
 
   @spec mount(any, any, any) :: {:ok, any}
@@ -33,7 +33,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_params(%{"name" => name, "sort_by" => sort_by}, _url, socket) do
-    field = Fields.get_field!(URI.decode(name))
+    college = Colleges.get_college_by_name!(URI.decode(name))
 
     sort_order = case socket.assigns.order do
       "desc" ->
@@ -46,20 +46,21 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
     majors = case sort_by do
       sort_by when sort_by in ~w(name credential debt_mean debt_median earnings) ->
-        Colleges.get_majors_by_field(field.name) |> sort_majors(sort_by) |> handle_direction(sort_order)
+        Colleges.get_majors_by_college(college.name) |> sort_majors(sort_by) |> handle_direction(sort_order)
       _ ->
-        Colleges.get_majors_by_field(field.name)
+        Colleges.get_majors_by_college(college.name)
     end
 
-    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order)}
+    {:noreply, socket |> assign(college: college) |> assign(majors: majors) |> assign(order: sort_order)}
   end
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_params(%{"name" => name}, _url, socket) do
-    field = Fields.get_field!(URI.decode(name))
-    majors = Colleges.get_majors_by_field(field.name)
+    IO.inspect(name)
+    college = Colleges.get_college_by_name!(URI.decode(name))
+    majors = Colleges.get_majors_by_college(college.name)
 
-    {:noreply, socket |> assign(field: field) |> assign(majors: majors)}
+    {:noreply, socket |> assign(college: college) |> assign(majors: majors)}
   end
 
 
@@ -89,7 +90,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   def sort_majors(majors, "name") do
     majors
-    |> Enum.sort_by(fn major  -> major.college_name end)
+    |> Enum.sort_by(fn major  -> major.name end)
   end
 
 
