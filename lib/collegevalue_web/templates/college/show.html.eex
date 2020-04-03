@@ -44,7 +44,7 @@
 
   <li>
     <strong>Accreditation:</strong>
-    <%= @college.accreditation %>
+    <%= defaults(@college.accreditation) %>
   </li>
 
 </ul>

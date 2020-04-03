@@ -28,6 +28,8 @@ defmodule CollegevalueWeb.CollegeView do
         nil
       "zip" ->
         nil
+      "acc" ->
+        "None"
       _ ->
         geo
     end
