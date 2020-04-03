@@ -4,6 +4,7 @@ defmodule CollegevalueWeb.SearchLive do
   alias Collegevalue.Colleges
   alias Collegevalue.Fields
   alias CollegevalueWeb.FieldsLive
+  alias CollegevalueWeb.CollegesLive
   alias CollegevalueWeb.Router.Helpers, as: Routes
 
   def render(assigns) do
@@ -42,7 +43,7 @@ defmodule CollegevalueWeb.SearchLive do
 
     case Colleges.get_college_by_name(query) do
       college when is_map(college) ->
-        {:stop, socket |> redirect(to: Routes.college_path(socket, :show, college.id )) }
+        {:stop, socket |> redirect(to: Routes.live_path(socket, CollegesLive.Show, query )) }
       nil ->
         {:stop, socket |> redirect(to: Routes.live_path(socket, FieldsLive.Show, query )) }
 
