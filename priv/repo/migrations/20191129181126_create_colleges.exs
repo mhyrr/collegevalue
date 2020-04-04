@@ -12,12 +12,39 @@ defmodule Collegevalue.Repo.Migrations.CreateColleges do
       add :control, :string
       add :url, :string
       add :accreditation, :string
+      add :admissions_rate, :float
+      add :sat_avg, :float
+      add :yearly_cost, :integer
+      add :tuition_out, :integer
+      add :tuition_in, :integer
+      add :debt_median, :integer
+      add :graduated_debt_median, :integer
+      add :withdrawn_debt_median, :integer
+      add :netprice_1, :integer
+      add :netprice_2, :integer
+      add :netprice_3, :integer
+      add :netprice_4, :integer
+      add :netprice_5, :integer
+      add :fouryear_100_completion, :float
+      add :fouryear_150_completion, :float
+      add :l4y_100_completion, :float
+      add :l4y_150_completion, :float
+      add :earnings_mean_after10, :integer
+      add :earnings_mean_after9, :integer
+      add :earnings_mean_after8, :integer
+      add :earnings_mean_after7, :integer
+      add :earnings_mean_after6, :integer
+      add :earnings_median_after10, :integer
+      add :earnings_median_after9, :integer
+      add :earnings_median_after8, :integer
+      add :earnings_median_after7, :integer
+      add :earnings_median_after6, :integer
+
 
       timestamps()
     end
 
     create unique_index(:colleges, [:name])
-    create unique_index(:colleges, [:opeid])
     create unique_index(:colleges, [:unitid])
   end
 end

@@ -30,9 +30,6 @@ defmodule CollegevalueWeb.FieldsLive.Index do
         "asc"
     end
 
-    # IO.inspect(socket.assigns.order)
-    IO.inspect(sort_by)
-
     case sort_by do
       sort_by when sort_by in ~w(name count debt_avg debt_min debt_max earn_max earn_avg earn_min) ->
         {:noreply, assign(socket, order: sort_order, fields: sort_fields(socket.assigns.fields, sort_by) |> handle_direction(sort_order) )}
