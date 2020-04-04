@@ -4,6 +4,7 @@ defmodule Collegevalue.Rankings do
   """
 
   import Ecto.Query, warn: false
+  import Atom
   alias Collegevalue.Repo
   alias Collegevalue.Colleges.{College, Discipline}
 
@@ -27,6 +28,8 @@ defmodule Collegevalue.Rankings do
         diff: fragment("d1.earnings - d1.debt_mean as diff"),
         college_name: c.name,
         college_id: c.id,
+        admissions: c.admissions_rate,
+        sat_avg: c.sat_avg,
         url: c.url
       },
       order_by: [{^direction, fragment("diff")}],
@@ -38,6 +41,42 @@ defmodule Collegevalue.Rankings do
   end
 
 
+  def get_colleges_by_costs(cost_field \\ :debt_median, payoff_field \\ :earnings_median_after10, sort \\ :top, limit \\ 100) do
 
+    direction = if sort == :top, do: :desc, else: :asc
+
+    base = from c in College,
+      select: %Rank{
+        field_name: "None",
+        credential_level: "Unknown",
+        cost: field(c, ^cost_field),
+        cost_field: ^Atom.to_string(cost_field),
+        payoff: field(c, ^payoff_field),
+        payoff_field: ^Atom.to_string(payoff_field),
+        diff: fragment("? - ? as diff", field(c, ^payoff_field), field(c, ^cost_field)),
+        college_name: c.name,
+        college_id: c.id,
+        admissions: c.admissions_rate,
+        sat_avg: c.sat_avg,
+        url: c.url
+      },
+      order_by: [{^direction, fragment("diff")}],
+      limit: ^limit
+
+    query =
+      base
+      |> filter_results(:debt_median)
+      |> filter_results(:earnings_median_after10)
+
+    IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
+
+    Repo.all(query)
+  end
+
+  defp filter_results(query, key) do
+
+    from(q in query, where: field(q, ^key) != -1 and field(q, ^key) != -2 and not field(q, ^key) |> is_nil)
+
+  end
 
 end

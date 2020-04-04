@@ -108,6 +108,11 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
     earnings_median_after7 = Helpers.check_incomplete(record["MD_EARN_WNE_P7"])
     earnings_median_after6 = Helpers.check_incomplete(record["MD_EARN_WNE_P6"])
 
+    high_degree = Helpers.check_incomplete(record["HIGHDEG"])
+    institution_level = Helpers.check_incomplete(record["ICLEVEL"])
+    predominant_degree = Helpers.check_incomplete(record["PREDDEG"])
+    inst_degree = Helpers.check_incomplete(record["SCH_DEG"])
+
     case Colleges.create_college(%{
       opeid: record["OPEID6"],
       unitid: record["\uFEFFUNITID"],
@@ -118,6 +123,10 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
       zip: record["ZIP"],
       url: record["INSTURL"],
       accreditation: record["ACCREDAGENCY"],
+      institution_level: institution_level,
+      high_degree: high_degree,
+      predominant_degree: predominant_degree,
+      inst_degree: inst_degree,
       admissions_rate: admissions_rate,
       sat_avg: sat_avg,
       yearly_cost: yearly_costs,
