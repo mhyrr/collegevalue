@@ -12,6 +12,18 @@ defmodule CollegevalueWeb.RankController do
         Rankings.get_bachelors_debt_earnings("top", count)
       "bottom_debt_to_earnings" ->
         Rankings.get_bachelors_debt_earnings("bottom", count)
+      "top_college_debt_to_earnings" ->
+        Rankings.get_colleges_by_costs(:debt_median, :earnings_median_after10, :top, count)
+      "bottom_college_debt_to_earnings" ->
+        Rankings.get_colleges_by_costs(:debt_median, :earnings_median_after10, :bottom, count)
+      "top_college_graddebt_to_earnings" ->
+        Rankings.get_colleges_by_costs(:graduated_debt_median, :earnings_median_after10, :top, count)
+      "bottom_college_graddebt_to_earnings" ->
+        Rankings.get_colleges_by_costs(:graduated_debt_median, :earnings_median_after10, :bottom, count)
+      "top_college_yearly_earnings" ->
+        Rankings.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :top, count)
+      "bottom_college_yearly_earnings" ->
+        Rankings.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :bottom, count)
     end
 
     render(conn, "index.html", ranks: ranks)
