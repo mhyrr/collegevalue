@@ -12,6 +12,8 @@
     <li><strong>Control:</strong> <%= @college.control %></li>
     <li><strong>Url:</strong> <%= @college.url %></li>
     <li><strong>Accreditation:</strong> <%= defaults(@college.accreditation) %></li>
+    <li><strong>Highest Degree Offered:</strong> <%= @college.high_degree %></li>
+    <li><strong>???:</strong> <%= @college.institution_level %></li>
     <button phx-click="toggle_credentials"><%= @cred_label %></button>
   </ul>
 </section>

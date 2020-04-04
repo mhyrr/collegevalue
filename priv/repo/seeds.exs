@@ -127,6 +127,7 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
       high_degree: high_degree,
       predominant_degree: predominant_degree,
       inst_degree: inst_degree,
+
       admissions_rate: admissions_rate,
       sat_avg: sat_avg,
       yearly_cost: yearly_costs,

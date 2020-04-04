@@ -65,8 +65,8 @@ defmodule Collegevalue.Rankings do
 
     query =
       base
-      |> filter_results(:debt_median)
-      |> filter_results(:earnings_median_after10)
+      |> filter_results(cost_field)
+      |> filter_results(payoff_field)
 
     IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
 
