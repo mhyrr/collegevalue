@@ -22,7 +22,6 @@ defmodule Collegevalue.Colleges do
   end
 
 
-
   def list_colleges(a, page \\ 1, per_page \\ 100)
 
   def list_colleges(:paged, page, per_page) do

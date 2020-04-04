@@ -8,17 +8,26 @@
     </tr>
   </thead>
   <tbody>
-<%= for rank <- @ranks do %>
+    <thead>
     <tr>
-
-      <td>
-        <span><%= link "Show", to: Routes.rank_path(@conn, :show, rank) %></span>
-        <span><%= link "Edit", to: Routes.rank_path(@conn, :edit, rank) %></span>
-        <span><%= link "Delete", to: Routes.rank_path(@conn, :delete, rank), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      <th>College Name</th>
+      <th>Field</th>
+      <th>Degree</th>
+      <th><%= List.first(@ranks).cost_field%></th>
+      <th><%= List.first(@ranks).payoff_field%></th>
+      <th>Difference</th>
+    </tr>
+  </thead>
+  <%= for rank <- @ranks do %>
+    <tr>
+      <td><%= live_link rank.college_name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, rank.college_name) %> </td>
+      <td><%= live_link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name) %> </td>
+      <td><%= degree(rank.credential_level) %></td>
+      <td><%= cash(rank.cost) %></td>
+      <td><%= cash(rank.payoff) %></td>
+      <td><%= cash(rank.diff) %></td>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Rank", to: Routes.rank_path(@conn, :new) %></span>

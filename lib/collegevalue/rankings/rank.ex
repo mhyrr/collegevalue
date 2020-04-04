@@ -1,16 +1,21 @@
 defmodule Collegevalue.Rankings.Rank do
   use Ecto.Schema
-  import Ecto.Changeset
 
   schema "ranks" do
+
+    field :field_name, :string
+    field :credential_level, :integer
+    field :cost, :integer
+    field :cost_field, :string
+    field :payoff, :integer
+    field :payoff_field, :integer
+    field :diff, :integer
+    field :name, :string
+    field :college_name, :string
+    field :college_id, :integer
+    field :url, :string
 
     timestamps()
   end
 
-  @doc false
-  def changeset(rank, attrs) do
-    rank
-    |> cast(attrs, [])
-    |> validate_required([])
-  end
 end
