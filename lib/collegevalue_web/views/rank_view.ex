@@ -3,6 +3,15 @@ defmodule CollegevalueWeb.RankView do
 
   alias Collegevalue.Credential
 
+  @rank_views [
+    {"Top College/Majors By Debt to Earnings Ratio", "top_debt_to_earnings"},
+    {"Bottom College/Majors By Debt to Earnigns Ratio", "bottom_debt_to_earnings"}
+  ]
+
+  def rank_views() do
+    @rank_views
+  end
+
   def degree(level) do
     Credential.lookup(level)
   end

@@ -9,7 +9,9 @@ defmodule Collegevalue.Rankings do
 
   alias Collegevalue.Rankings.Rank
 
-  def get_top_bachelors_debt_earnings(limit \\ 100) do
+  def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100) do
+
+    direction = if sort == "top", do: :desc, else: :asc
 
     query = from c in College,
       join: d in Discipline,
@@ -27,15 +29,13 @@ defmodule Collegevalue.Rankings do
         college_id: c.id,
         url: c.url
       },
-      order_by: fragment("diff desc"),
+      order_by: [{^direction, fragment("diff")}],
       limit: ^limit
 
+    # IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
 
     Repo.all(query)
-
   end
-
-
 
 
 
