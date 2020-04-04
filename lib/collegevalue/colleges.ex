@@ -134,9 +134,11 @@ defmodule Collegevalue.Colleges do
 
   """
   def create_college(attrs \\ %{}) do
+
     %College{}
     |> College.changeset(attrs)
     |> Repo.insert()
+
   end
 
   @doc """

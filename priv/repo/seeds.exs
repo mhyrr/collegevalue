@@ -13,13 +13,102 @@
 alias Collegevalue.Colleges
 
 # Build primary colleges
+# Full data dictionary: https://collegescorecard.ed.gov/assets/FullDataDocumentation.pdf
+# Fields data dictionary: https://collegescorecard.ed.gov/assets/FieldOfStudyDataDocumentation.pdf
 
+defmodule Helpers do
+
+  def check_incomplete(value) do
+    case value do
+      "NULL" ->
+        -1
+      "" ->
+        -1
+      "PrivacySuppressed" ->
+        -2
+      _ ->
+        value
+    end
+  end
+
+  def yearly(costs) do
+
+    case costs do
+      {"NULL", "NULL"} ->
+        -1
+      {"NULL", cost} ->
+        cost
+      {cost, "NULL"} ->
+        cost
+      {"", ""} ->
+        -1
+      {"", cost} ->
+        cost
+      {cost, ""} ->
+        cost
+      {a, _} ->
+        a
+    end
+
+  end
+
+
+  def net(prices) do
+    case prices do
+      {"NULL", "NULL"} ->
+        -1
+      {"NULL", price} ->
+        price
+      {price, "NULL"} ->
+        price
+      {"", ""} ->
+        -1
+      {"", price} ->
+        price
+      {price, ""} ->
+        price
+      {a, _} ->
+        a
+    end
+  end
+
+end
+
+IO.inspect("Parsing cohort data..")
 
 # ccount = File.stream!("data/All100.csv")
 ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
-    Colleges.create_college(%{
+    yearly_costs = Helpers.yearly({record["COSTT4_A"], record["COSTT4_P"]})
+    netprice_1 = Helpers.net({record["NPT41_PUB"], record["NPT41_PRIV"]})
+    netprice_2 = Helpers.net({record["NPT42_PUB"], record["NPT42_PRIV"]})
+    netprice_3 = Helpers.net({record["NPT43_PUB"], record["NPT43_PRIV"]})
+    netprice_4 = Helpers.net({record["NPT44_PUB"], record["NPT44_PRIV"]})
+    netprice_5 = Helpers.net({record["NPT45_PUB"], record["NPT45_PRIV"]})
+    admissions_rate = Helpers.check_incomplete(record["ADM_RATE"])
+    sat_avg = Helpers.check_incomplete(record["SAT_AVG"])
+    tuition_out = Helpers.check_incomplete(record["TUITIONFEE_OUT"])
+    tuition_in = Helpers.check_incomplete(record["TUITIONFEE_IN"])
+    debt_median = Helpers.check_incomplete(record["DEBT_MDN"])
+    graduated_debt_median = Helpers.check_incomplete(record["GRAD_DEBT_MDN"])
+    withdrawn_debt_median = Helpers.check_incomplete(record["WDRAW_DEBT_MDN"])
+    fouryear_100_completion = Helpers.check_incomplete(record["C100_4"])
+    fouryear_150_completion = Helpers.check_incomplete(record["C150_4"])
+    l4y_100_completion = Helpers.check_incomplete( record["C100_L4"])
+    l4y_150_completion = Helpers.check_incomplete(record["c150_L4"])
+    earnings_mean_after10 = Helpers.check_incomplete(record["MN_EARN_WNE_P10"])
+    earnings_mean_after9 = Helpers.check_incomplete(record["MN_EARN_WNE_P9"])
+    earnings_mean_after8 = Helpers.check_incomplete(record["MN_EARN_WNE_P8"])
+    earnings_mean_after7 = Helpers.check_incomplete(record["MN_EARN_WNE_P7"])
+    earnings_mean_after6 = Helpers.check_incomplete(record["MN_EARN_WNE_P6"])
+    earnings_median_after10 = Helpers.check_incomplete(record["MD_EARN_WNE_P10"])
+    earnings_median_after9  = Helpers.check_incomplete(record["MD_EARN_WNE_P9"])
+    earnings_median_after8 = Helpers.check_incomplete(record["MD_EARN_WNE_P8"])
+    earnings_median_after7 = Helpers.check_incomplete(record["MD_EARN_WNE_P7"])
+    earnings_median_after6 = Helpers.check_incomplete(record["MD_EARN_WNE_P6"])
+
+    case Colleges.create_college(%{
       opeid: record["OPEID6"],
       unitid: record["\uFEFFUNITID"],
       name: record["INSTNM"],
@@ -28,19 +117,55 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
       state: record["STABBR"],
       zip: record["ZIP"],
       url: record["INSTURL"],
-      accreditation: record["ACCREDAGENCY"]
-    })
+      accreditation: record["ACCREDAGENCY"],
+      admissions_rate: admissions_rate,
+      sat_avg: sat_avg,
+      yearly_cost: yearly_costs,
+      tuition_out: tuition_out,
+      tuition_in: tuition_in,
+      debt_median: debt_median,
+      graduated_debt_median: graduated_debt_median,
+      withdrawn_debt_median: withdrawn_debt_median,
+      netprice_1: netprice_1,
+      netprice_2: netprice_2,
+      netprice_3: netprice_3,
+      netprice_4: netprice_4,
+      netprice_5: netprice_5,
+      fouryear_100_completion: fouryear_100_completion,
+      fouryear_150_completion: fouryear_150_completion,
+      l4y_100_completion: l4y_100_completion,
+      l4y_150_completion: l4y_150_completion,
+      earnings_mean_after10: earnings_mean_after10,
+      earnings_mean_after9: earnings_mean_after9,
+      earnings_mean_after8: earnings_mean_after8,
+      earnings_mean_after7: earnings_mean_after7,
+      earnings_mean_after6: earnings_mean_after6,
+      earnings_median_after10: earnings_median_after10,
+      earnings_median_after9: earnings_median_after9,
+      earnings_median_after8: earnings_median_after8,
+      earnings_median_after7: earnings_median_after7,
+      earnings_median_after6: earnings_median_after6
+
+    }) do
+      {:ok, _} ->
+        nil
+      {:error, error} ->
+        IO.inspect("ERROR")
+        IO.inspect(error)
+    end
   end)
 |> Enum.reduce(0, fn _x, acc -> 1+acc end)
 
 # Map out any other colleges in field data
+
+IO.inspect("Parsing field data..")
 
 # adtl = File.stream!("data/Field100.csv")
 adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 
-  college = case Colleges.get_college_by_opeid(record["OPEID6"]) do
+  college = case Colleges.get_college_by_name(record["INSTNM"]) do
     nil ->
       case Colleges.create_college(%{
           opeid: record["OPEID6"],
@@ -92,7 +217,7 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
 
   disc = case Collegevalue.Colleges.create_discipline(%{
     cipcode: record["CIPCODE"],
-    credential_desc: record["CIPDESC"],
+    credential_desc: String.trim_trailing(record["CIPDESC"], "."),
     credential_level: record["CREDLEV"],
     debt_count: count,
     debt_mean: debt_mean,
@@ -101,7 +226,7 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
     earnings: earnings,
     earnings_count: earnings_count,
     titleiv_count: titleiv_count,
-    name: record["CIPDESC"],
+    name: String.trim_trailing(record["CIPDESC"], "."),
     college_id: id
   }) do
     {:ok, res} ->

@@ -56,7 +56,6 @@ defmodule CollegevalueWeb.CollegesLive.Show do
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_params(%{"name" => name}, _url, socket) do
-    IO.inspect(name)
     college = Colleges.get_college_by_name!(URI.decode(name))
     majors = Colleges.get_majors_by_college(college.name)
 
