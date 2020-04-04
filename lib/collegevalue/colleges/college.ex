@@ -55,7 +55,7 @@ defmodule Collegevalue.Colleges.College do
   def changeset(college, attrs) do
     college
     |> cast(attrs, [:name, :city, :state, :zip, :opeid, :unitid, :control, :url, :accreditation, :admissions_rate, :high_degree, :institution_level,
-        :predominant_degree, :inst_level, :sat_avg, :yearly_cost,
+        :predominant_degree, :inst_degree, :sat_avg, :yearly_cost,
         :tuition_out, :tuition_in, :debt_median, :graduated_debt_median, :withdrawn_debt_median, :netprice_1, :netprice_2, :netprice_3,
         :netprice_4, :netprice_5, :fouryear_100_completion, :fouryear_150_completion, :l4y_100_completion, :l4y_150_completion,
         :earnings_mean_after10, :earnings_mean_after9, :earnings_mean_after8,

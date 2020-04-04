@@ -13,6 +13,10 @@ defmodule Collegevalue.Repo.Migrations.CreateColleges do
       add :url, :string
       add :accreditation, :string
       add :admissions_rate, :float
+      add :high_degree, :integer
+      add :institution_level, :integer
+      add :predominant_degree, :integer
+      add :inst_degree, :integer
       add :sat_avg, :float
       add :yearly_cost, :integer
       add :tuition_out, :integer
