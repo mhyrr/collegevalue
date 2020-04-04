@@ -5,100 +5,39 @@ defmodule Collegevalue.Rankings do
 
   import Ecto.Query, warn: false
   alias Collegevalue.Repo
+  alias Collegevalue.Colleges.{College, Discipline}
 
   alias Collegevalue.Rankings.Rank
 
-  @doc """
-  Returns the list of ranks.
+  def get_top_bachelors_debt_earnings(limit \\ 100) do
 
-  ## Examples
+    query = from c in College,
+      join: d in Discipline,
+      on: c.id == d.college_id,
+      where: d.credential_level == 3 and d.earnings != -1 and d.debt_mean != -1,
+      select: %Rank{
+        field_name: d.name,
+        credential_level: d.credential_level,
+        cost: d.debt_mean,
+        cost_field: "Debt Mean",
+        payoff: d.earnings,
+        payoff_field: "Field Earnings",
+        diff: fragment("d1.earnings - d1.debt_mean as diff"),
+        college_name: c.name,
+        college_id: c.id,
+        url: c.url
+      },
+      order_by: fragment("diff desc"),
+      limit: ^limit
 
-      iex> list_ranks()
-      [%Rank{}, ...]
 
-  """
-  def list_ranks do
-    Repo.all(Rank)
+    Repo.all(query)
+
   end
 
-  @doc """
-  Gets a single rank.
 
-  Raises `Ecto.NoResultsError` if the Rank does not exist.
 
-  ## Examples
 
-      iex> get_rank!(123)
-      %Rank{}
 
-      iex> get_rank!(456)
-      ** (Ecto.NoResultsError)
 
-  """
-  def get_rank!(id), do: Repo.get!(Rank, id)
-
-  @doc """
-  Creates a rank.
-
-  ## Examples
-
-      iex> create_rank(%{field: value})
-      {:ok, %Rank{}}
-
-      iex> create_rank(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def create_rank(attrs \\ %{}) do
-    %Rank{}
-    |> Rank.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  @doc """
-  Updates a rank.
-
-  ## Examples
-
-      iex> update_rank(rank, %{field: new_value})
-      {:ok, %Rank{}}
-
-      iex> update_rank(rank, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_rank(%Rank{} = rank, attrs) do
-    rank
-    |> Rank.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a Rank.
-
-  ## Examples
-
-      iex> delete_rank(rank)
-      {:ok, %Rank{}}
-
-      iex> delete_rank(rank)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_rank(%Rank{} = rank) do
-    Repo.delete(rank)
-  end
-
-  @doc """
-  Returns an `%Ecto.Changeset{}` for tracking rank changes.
-
-  ## Examples
-
-      iex> change_rank(rank)
-      %Ecto.Changeset{source: %Rank{}}
-
-  """
-  def change_rank(%Rank{} = rank) do
-    Rank.changeset(rank, %{})
-  end
 end
