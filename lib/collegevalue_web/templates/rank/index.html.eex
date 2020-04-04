@@ -1,14 +1,15 @@
 <h1>Listing Ranks</h1>
 
+<section>
+  <%= form_for @conn, Routes.rank_path(@conn, :index), [method: :get], fn f -> %>
+    <%= select f, :rank, rank_views, onchange: "this.form.submit()"%>
+    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()"%>
+  <% end %>
+
+</section>
+
 <table>
   <thead>
-    <tr>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <thead>
     <tr>
       <th>College Name</th>
       <th>Field</th>
@@ -18,10 +19,12 @@
       <th>Difference</th>
     </tr>
   </thead>
+  <tbody>
+    
   <%= for rank <- @ranks do %>
     <tr>
-      <td><%= live_link rank.college_name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, rank.college_name) %> </td>
-      <td><%= live_link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name) %> </td>
+      <td><%= link rank.college_name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, rank.college_name) %> </td>
+      <td><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name) %> </td>
       <td><%= degree(rank.credential_level) %></td>
       <td><%= cash(rank.cost) %></td>
       <td><%= cash(rank.payoff) %></td>
