@@ -21,9 +21,9 @@ defmodule CollegevalueWeb.Router do
 
     get "/colleges", CollegeController, :index
     get "/colleges/rank", CollegeController, :rank
-    live "colleges/:name", CollegesLive.Show
+    live "/colleges/:name", CollegesLive.Show
 
-    get "fields/rank", FieldController, :rank
+    get "/fields/rank", FieldController, :rank
     live "/fields", FieldsLive.Index
     live "/fields/:name", FieldsLive.Show
 

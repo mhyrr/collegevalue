@@ -4,10 +4,10 @@ Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%>
 
 <%= if @colleges.has_previous do %>
   <%= link "Previous 100", to: Routes.college_path(@conn, :index, page: @colleges.page - 1)%>
-<%= end %>
+<% end %>
 <%= if @colleges.has_next do %>
   <%= link "Next 100", to: Routes.college_path(@conn, :index, page: @colleges.page + 1)%>
-<%= end %>
+<% end %>
 <table>
   <thead>
     <tr>
@@ -40,7 +40,7 @@ Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%>
 
 <%= if @colleges.has_previous do %>
   <%= link "Previous 100", to: Routes.college_path(@conn, :index, page: @colleges.page - 1)%>
-<%= end %>
+<% end %>
 <%= if @colleges.has_next do %>
   <%= link "Next 100", to: Routes.college_path(@conn, :index, page: @colleges.page + 1)%>
-<%= end %>
+<% end %>

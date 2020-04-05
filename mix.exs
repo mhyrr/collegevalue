@@ -46,7 +46,9 @@ defmodule Collegevalue.MixProject do
       {:csv, "~> 2.3"},
       {:number, "~> 1.0.1"},
       {:phoenix_live_view, "~> 0.6.0"},
-      {:floki, ">= 0.0.0", only: :test}
+      {:floki, ">= 0.0.0", only: :test},
+      {:poison, "~> 3.0"},
+      {:chartkick, "~>0.4.0"}
     ]
   end
 
