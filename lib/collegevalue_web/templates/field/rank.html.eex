@@ -2,7 +2,7 @@
 
 <section>
   <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, rank_views(), onchange: "this.form.submit()"%>
+    <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()"%>
     <%= select f, :count, [10, 50, 100, 250, 500, 1000], onchange: "this.form.submit()"%>
   <% end %>
 

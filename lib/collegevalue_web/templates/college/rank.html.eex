@@ -2,7 +2,7 @@
 
 <section>
   <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, rank_views, onchange: "this.form.submit()"%>
+    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()"%>
     <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()"%>
   <% end %>
 
