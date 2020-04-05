@@ -1,4 +1,4 @@
-defmodule Collegevalue.Rankings.Rank do
+defmodule Collegevalue.Fields.Rank do
   use Ecto.Schema
 
   schema "ranks" do

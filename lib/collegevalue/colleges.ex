@@ -5,7 +5,7 @@ defmodule Collegevalue.Colleges do
 
   import Ecto.Query, warn: false
   alias Collegevalue.{Repo, Pagination}
-  alias Collegevalue.Colleges.{College, Discipline, Major}
+  alias Collegevalue.Colleges.{College, Discipline, Major, Rank}
 
 
   @doc """
@@ -118,6 +118,49 @@ defmodule Collegevalue.Colleges do
   def get_college_by_opeid!(id), do: Repo.get_by!(College, opeid: id)
 
   def get_college_by_opeid(id), do: Repo.get_by(College, opeid: id)
+
+
+
+  def get_colleges_by_costs(cost_field \\ :debt_median, payoff_field \\ :earnings_median_after10, sort \\ :top, limit \\ 100) do
+
+    direction = if sort == :top, do: :desc, else: :asc
+
+    base = from c in College,
+      select: %Rank{
+        credential_level: "Unknown",
+        cost: field(c, ^cost_field),
+        cost_field: ^Atom.to_string(cost_field),
+        payoff: field(c, ^payoff_field),
+        payoff_field: ^Atom.to_string(payoff_field),
+        diff: fragment("? - ? as diff", field(c, ^payoff_field), field(c, ^cost_field)),
+        college_name: c.name,
+        college_id: c.id,
+        admissions: c.admissions_rate,
+        sat_avg: c.sat_avg,
+        url: c.url,
+        tuition_out: c.tuition_out,
+        tuition_in: c.tuition_in,
+        fouryear_100_completion: c.fouryear_100_completion,
+        fouryear_150_completion: c.fouryear_150_completion
+      },
+      order_by: [{^direction, fragment("diff")}],
+      limit: ^limit
+
+    query =
+      base
+      |> filter_results(cost_field)
+      |> filter_results(payoff_field)
+
+    IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
+
+    Repo.all(query)
+  end
+
+  defp filter_results(query, key) do
+
+    from(q in query, where: field(q, ^key) != -1 and field(q, ^key) != -2 and not field(q, ^key) |> is_nil)
+
+  end
 
 
   @doc """

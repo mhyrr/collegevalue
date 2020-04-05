@@ -1,7 +1,7 @@
 <h1>Listing Ranks</h1>
 
 <section>
-  <%= form_for @conn, Routes.rank_path(@conn, :index), [method: :get], fn f -> %>
+  <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
     <%= select f, :rank, rank_views, onchange: "this.form.submit()"%>
     <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()"%>
   <% end %>
@@ -31,6 +31,6 @@
       <td><%= cash(rank.diff) %></td>
       </td>
     </tr>
-<% end %>
+  <% end %>
   </tbody>
 </table>

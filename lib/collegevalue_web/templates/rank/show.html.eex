@@ -1,8 +1,0 @@
-<h1>Show Rank</h1>
-
-<ul>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.rank_path(@conn, :edit, @rank) %></span>
-<span><%= link "Back", to: Routes.rank_path(@conn, :index) %></span>

@@ -3,8 +3,26 @@ defmodule CollegevalueWeb.FieldView do
 
   alias Collegevalue.Credential
 
-  def show_credentials() do
-    "Bachelor's Only"
+
+  @rank_views [
+    {"Top College/Majors By Debt to Earnings Ratio", "top_debt_to_earnings"},
+    {"Bottom College/Majors By Debt to Earnigns Ratio", "bottom_debt_to_earnings"}
+  ]
+
+  def rank_views() do
+    @rank_views
+  end
+
+  def degree("Unknown") do
+    ""
+  end
+
+  def degree(level) do
+    Credential.lookup(level)
+  end
+
+  def cash(nil) do
+    "No data"
   end
 
   def cash(dollars) do
@@ -18,8 +36,8 @@ defmodule CollegevalueWeb.FieldView do
     end
   end
 
-  def degree(level) do
-    Credential.lookup(level)
+  def show_credentials() do
+    "Bachelor's Only"
   end
 
   @spec sort_dir(map) :: <<_::24, _::_*8>>
