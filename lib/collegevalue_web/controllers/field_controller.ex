@@ -11,24 +11,22 @@ defmodule CollegevalueWeb.FieldController do
     render(conn, "show.html", field: field, majors: majors)
   end
 
-  def edit(conn, %{"id" => id}) do
-    field = Fields.get_field!(id)
-    changeset = Fields.change_field(field)
-    render(conn, "edit.html", field: field, changeset: changeset)
-  end
+  def rank(conn, %{"rank" => ranking, "count" => count}) do
+    IO.inspect(ranking)
 
-  def update(conn, %{"id" => id, "field" => field_params}) do
-    field = Fields.get_field!(id)
-
-    case Fields.update_field(field, field_params) do
-      {:ok, field} ->
-        conn
-        |> put_flash(:info, "Field updated successfully.")
-        |> redirect(to: Routes.field_path(conn, :show, field))
-
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", field: field, changeset: changeset)
+    ranks = case ranking do
+      "top_debt_to_earnings" ->
+        Fields.get_bachelors_debt_earnings("top", count)
+      "bottom_debt_to_earnings" ->
+        Fields.get_bachelors_debt_earnings("bottom", count)
     end
+
+    render(conn, "rank.html", ranks: ranks)
   end
+
+  def rank(conn, _params) do
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings)
+  end
+
 
 end

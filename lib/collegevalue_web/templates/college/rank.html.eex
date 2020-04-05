@@ -1,0 +1,34 @@
+<h1>Listing Ranks</h1>
+
+<section>
+  <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
+    <%= select f, :rank, rank_views, onchange: "this.form.submit()"%>
+    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()"%>
+  <% end %>
+
+</section>
+
+<table>
+  <thead>
+    <tr>
+      <th>College Name</th>
+      <th>Degree</th>
+      <th><%= List.first(@ranks).cost_field%></th>
+      <th><%= List.first(@ranks).payoff_field%></th>
+      <th>Difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  <%= for rank <- @ranks do %>
+    <tr>
+      <td><%= link rank.college_name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, rank.college_name) %> </td>
+      <td><%= degree(rank.credential_level) %></td>
+      <td><%= cash(rank.cost) %></td>
+      <td><%= cash(rank.payoff) %></td>
+      <td><%= cash(rank.diff) %></td>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

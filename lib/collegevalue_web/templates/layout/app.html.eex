@@ -15,8 +15,9 @@
         <nav role="navigation">
           <ul>
             <li><%= link "Colleges", to: "/colleges" %></li>
+            <li><%= link "Top College Rankings", to: "/colleges/rank" %></li>
             <li><%= link "Fields", to: "/fields" %></li>
-            <li><%= link "Top Rankings", to: "/top" %></li>
+            <li><%= link "Top Field Rankings", to: "/fields/rank" %></li>
             <li><%= live_render @conn, CollegevalueWeb.SearchLive %></li>
           </ul>
         </nav>
