@@ -2,10 +2,28 @@
 
 <section>
   <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, rank_views, onchange: "this.form.submit()"%>
-    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()"%>
+    <%= select f, :rank, rank_views(), onchange: "this.form.submit()"%>
+    <%= select f, :count, [10, 50, 100, 250, 500, 1000], onchange: "this.form.submit()"%>
   <% end %>
 
+</section>
+
+
+<section>
+  <% diff_data = Poison.encode!(chart_data(@ranks)) %>
+  <%= raw Chartkick.column_chart diff_data, prefix: "$", width: "100%", title: "What's Worth It?", library: %{
+      scales: %{
+        xAxes: [%{
+          ticks: %{
+            display: false
+          },
+          gridLines: %{
+            display: false
+          }
+        }]
+      }
+    }
+  %>
 </section>
 
 <table>
@@ -13,7 +31,8 @@
     <tr>
       <th>College Name</th>
       <th>Field</th>
-      <th>Degree</th>
+      <th>Admissions Rate</th>
+      <th>Average SAT Score</th>
       <th><%= List.first(@ranks).cost_field%></th>
       <th><%= List.first(@ranks).payoff_field%></th>
       <th>Difference</th>
@@ -25,7 +44,8 @@
     <tr>
       <td><%= link rank.college_name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, rank.college_name) %> </td>
       <td><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name) %> </td>
-      <td><%= degree(rank.credential_level) %></td>
+      <td><%= percent(rank.admissions) %></td>
+      <td><%= sat(rank.sat_avg)%></td>
       <td><%= cash(rank.cost) %></td>
       <td><%= cash(rank.payoff) %></td>
       <td><%= cash(rank.diff) %></td>

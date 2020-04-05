@@ -11,6 +11,8 @@ import css from "../css/app.css"
 //
 import "phoenix_html"
 
+import Chart from "chart.js"
+import Chartkick from "chartkick"
 
 import {Socket} from "phoenix"
 import LiveSocket from "phoenix_live_view"

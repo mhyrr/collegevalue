@@ -1,9 +1,0 @@
-<tr>
-  <td><%= @discipline.name%></td>
-  <td><%= @discipline.credential_desc%></td>
-  <td><%= degree(@discipline.credential_level)%></td>
-  <td><%= cash(@discipline.debt_mean)%></td>
-  <td><%= cash(@discipline.debt_median)%></td>
-  <td><%= cash(@discipline.debt_payment)%></td>
-  <td><%= cash(@discipline.earnings)%></td>
-</tr>
