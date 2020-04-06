@@ -9,12 +9,12 @@ defmodule CollegevalueWeb.SearchLive do
 
   def render(assigns) do
     ~L"""
-    <form phx-change="suggest" phx-submit="search">
-      <input  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search..."
+    <form class="bg-lightplain shadow-md rounded px-1 pt-2 pb-2 mb-4" phx-change="suggest" phx-submit="search">
+      <input class="shadow appearance-none border rounded w-full py-2 px-3"  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search Schools or Fields.. "
              <%= if @loading, do: "readonly" %>/>
       <datalist id="matches">
         <%= for match <- @matches do %>
-          <option value="<%= match %>"><%= match %></option>
+          <option class="block px-4 py-2 text-sm leading-5 text-green hover:bg-green hover:text-green focus:outline-none focus:bg-green focus:text-green" value="<%= match %>"><%= match %></option>
         <% end %>
       </datalist>
       <%= if @result do %><pre><%= @result %></pre><% end %>

@@ -15,7 +15,15 @@ defmodule CollegevalueWeb.CollegesLive.Show do
 
     college = Colleges.get_majors_by_college(name)
     majors = Colleges.get_majors_by_college(name)
-    {:ok, assign(socket, college: college, majors: majors, cred_label: @cred_all_label, toggle_cred: false, order: "desc")}
+
+    toggle_cred = case Enum.filter(majors, fn m -> m.credential_level == 3 end) |> length == 0 do
+      true ->
+        true
+      false ->
+        false
+    end
+
+    {:ok, assign(socket, college: college, majors: majors, cred_label: @cred_all_label, toggle_cred: toggle_cred, order: "desc")}
   end
 
 

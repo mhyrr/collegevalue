@@ -12,7 +12,6 @@ defmodule CollegevalueWeb.FieldController do
   end
 
   def rank(conn, %{"rank" => ranking, "count" => count}) do
-    IO.inspect(ranking)
 
     ranks = case ranking do
       "top_debt_to_earnings" ->

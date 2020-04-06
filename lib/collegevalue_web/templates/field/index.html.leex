@@ -1,30 +1,30 @@
-<h1>Listing Fields</h1>
+<h1 class="text-darkgreen">Listing Fields</h1>
 
-<table>
+<table class="min-w-full">
   <thead>
     <tr>
-      <th><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "name", order: @order || "desc"}) %></th>
-      <th><%= live_link "Num Colleges", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "count", order: @order || "desc"}) %></th>
-      <th><%= live_link "Debt Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_avg", order: @order || "desc"}) %></th>
-      <th><%= live_link "Debt Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_min", order: @order || "desc"}) %></th>
-      <th><%= live_link "Debt Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_max", order: @order || "desc"}) %></th>
-      <th><%= live_link "Earnings Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_avg", order: @order || "desc"}) %></th>
-      <th><%= live_link "Earnings Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_min", order: @order || "desc"}) %></th>
-      <th><%= live_link "Earnings Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_max", order: @order || "desc"}) %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "name", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Num Colleges", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "count", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Debt Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_avg", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Debt Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_min", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Debt Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_max", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Earnings Average", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_avg", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Earnings Min", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_min", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-green-500 uppercase tracking-wider"><%= live_link "Earnings Max", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_max", order: @order || "desc"}), class: "text-darkgreen uppercase text-medium" %></th>
     </tr>
   </thead>
   <tbody>
 <%= for field <- @fields do %>
     <tr>
 
-      <td><%= live_link "#{field.name}", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name) %></td>
-      <td><%= field.count %></td>
-      <td><%= cash(field.debt_avg) %></td>
-      <td><%= cash(field.debt_min) %></td>
-      <td><%= cash(field.debt_max) %></td>
-      <td><%= cash(field.earn_avg) %></td>
-      <td><%= cash(field.earn_min) %></td>
-      <td><%= cash(field.earn_max) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= live_link "#{field.name}", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name), class: "text-green no-underline" %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= field.count %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(field.debt_avg) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(field.debt_min) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(field.debt_max) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(field.earn_avg) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(field.earn_min) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(field.earn_max) %></td>
       
     </tr>
 <% end %>

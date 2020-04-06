@@ -1,6 +1,7 @@
 defmodule CollegevalueWeb.Views.Helpers do
 
   alias Collegevalue.Credential
+  alias Collegevalue.Colleges.College
 
   @field_rank_views [
     {"Top College/Majors By Debt to Earnings Ratio", "top_debt_to_earnings"},
@@ -23,6 +24,14 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   def field_rank_views() do
     @field_rank_views
+  end
+
+  def address(%College{city: city, state: state, zip: zip}) when city == "city" or state == "state" or zip == "zip" do
+    "Not Listed"
+  end
+
+  def address(college) do
+    college.city <> ", " <> college.state <> " " <> college.zip
   end
 
   @spec percent(nil | float) :: <<_::8, _::_*8>>
@@ -113,7 +122,6 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   def college_chart_data(majors) do
 
-    IO.inspect(majors)
     majors = majors
       |> Enum.filter(fn major -> major.credential_level == 3 end)
       |> Enum.sort(&(&1.earnings >= &2.earnings) )

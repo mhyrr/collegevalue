@@ -1,27 +1,37 @@
 
-<button phx-click="toggle_credentials"><%= @cred_label %></button>
-<table>
-  <thead>
-    <tr>
-      <th><a href="#" phx-click="sort" phx-value-sort="name">Name</a></th>
-      <th><a href="#" phx-click="sort" phx-value-sort="credential">Credential</a></th>
-      <th><a href="#" phx-click="sort" phx-value-sort="debt_mean">Debt Mean</a></th>
-      <th><a href="#" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-      <th><a href="#" phx-click="sort" phx-value-sort="earnings">Earnings</a></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= for major <- @majors do %>
-      <%= if @toggle_cred || major.credential_level == 3 do %>
+<div class="w-full">
+    <button class="bg-transparent hover:bg-black-500 text-green font-semibold hover:text-green py-2 px-4 border border-green rounded" phx-click="toggle_credentials"><%= @cred_label %></button>
+</div>
+
+<%= if length(@majors) == 0 do %>
+    <div><h2>No data</h2></div>
+
+<%= else %>
+
+    <table class="pt-8">
+    <thead>
         <tr>
-        <td><%= live_link major.name, to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name) %> </td>
-        <td><%= degree(major.credential_level) %></td>
-        <td><%= cash(major.debt_mean) %></td>
-        <td><%= cash(major.debt_median) %></td>
-        <td><%= cash(major.earnings) %></td>
-        
+        <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">Name</a></th>
+        <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="credential">Credential</a></th>
+        <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_mean">Debt Mean</a></th>
+        <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
+        <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="earnings">Earnings</a></th>
         </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+        <%= for major <- @majors do %>
+        <%= if @toggle_cred || major.credential_level == 3 do %>
+            <tr>
+            <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= live_link major.name, to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
+            <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= degree(major.credential_level) %></td>
+            <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(major.debt_mean) %></td>
+            <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(major.debt_median) %></td>
+            <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(major.earnings) %></td>
+            
+            </tr>
+        <% end %>
+        <% end %>
+    </tbody>
+    </table>
+
+<% end %>

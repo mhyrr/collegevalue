@@ -13,7 +13,6 @@ defmodule CollegevalueWeb.CollegeController do
   end
 
   def rank(conn, %{"rank" => ranking, "count" => count}) do
-    IO.inspect(ranking)
 
     ranks = case ranking do
       "top_college_debt_to_earnings" ->
@@ -38,7 +37,7 @@ defmodule CollegevalueWeb.CollegeController do
   end
 
   def show(conn, %{"name" => name}) do
-    IO.inspect("show!!")
+
     college = Colleges.get_college_by_name!(URI.decode(name))
     majors = Colleges.get_majors_by_college(college.name)
 

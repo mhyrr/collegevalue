@@ -1,33 +1,35 @@
-<h1>Listing Ranks</h1>
+<h1 class="text-darkgreen">Listing Ranks</h1>
 
 <section>
   <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()"%>
-    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()"%>
+    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow" %>
+    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow" %>
   <% end %>
 
 </section>
 
-<table>
+<table class="min-w-full">
   <thead>
     <tr>
-      <th>College Name</th>
-      <th>Degree</th>
-      <th><%= List.first(@ranks).cost_field%></th>
-      <th><%= List.first(@ranks).payoff_field%></th>
-      <th>Difference</th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">College Name</th>
+      <th class="px-6 py-3 border-b border-green-200 bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Admissions Rate</th>
+      <th class="px-6 py-3 border-b border-green-200 bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Average SAT Score</th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).cost_field%></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).payoff_field%></th>
+      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Difference</th>
     </tr>
   </thead>
   <tbody>
     
   <%= for rank <- @ranks do %>
     <tr>
-      <td><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
-      <td><%= degree(rank.credential_level) %></td>
-      <td><%= cash(rank.cost) %></td>
-      <td><%= cash(rank.payoff) %></td>
-      <td><%= cash(rank.diff) %></td>
-      </td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name), class: "no-underline text-green" %> </td>
+
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= percent(rank.admissions) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= sat(rank.sat_avg)%></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.cost) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.payoff) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.diff) %></td>
     </tr>
   <% end %>
   </tbody>

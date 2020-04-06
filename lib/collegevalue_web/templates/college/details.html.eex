@@ -1,70 +1,113 @@
-<h1>Show College</h1>
+<h1 class="text-darkgreen"><%= @college.name %></h1>
 
-<section>
-  <h4>Details</h4>
-  <ul>
-    <li><strong>Name:</strong> <%= @college.name %></li>
-    <li><strong>City:</strong> <%= defaults(@college.city) %></li>
-    <li><strong>State:</strong> <%= defaults(@college.state) %></li>
-    <li><strong>Zip:</strong> <%= defaults(@college.zip) %></li>
-    <li><strong>Opeid:</strong> <%= @college.opeid %></li>
-    <li><strong>Unitid:</strong> <%= @college.unitid %></li>
-    <li><strong>Control:</strong> <%= @college.control %></li>
-    <li><strong>Url:</strong> <%= @college.url %></li>
-    <li><strong>Accreditation:</strong> <%= defaults(@college.accreditation) %></li>
-    
-  </ul>
-</section>
-<section>
-  <h4>Attendance</h4>
-  <ul>
-    <li><strong>Admissions Rate</strong> <%= percent(@college.admissions_rate) %></li>
-    <li><strong>Average SAT Scores</strong> <%= defaults(@college.sat_avg) %></li>
-    <li><strong>Four Year Completion Rate</strong> <%= percent(@college.fouryear_100_completion) %></li>
-    <li><strong>Six Year Completion Rate</strong> <%= percent(@college.fouryear_150_completion) %></li>
-  </ul>
-</section>
-<section>
-  <h4>Costs</h4>
-  <ul>
-    <li><strong>Yearly Costs:</strong> <%= cash(@college.yearly_cost )%></li>
-    <li><strong>Out of State Tuition:</strong> <%= cash(defaults(@college.tuition_out)) %></li>
-    <li><strong>In State Tuition:</strong> <%= cash(defaults(@college.tuition_in)) %></li>
-    <li><strong>Median Debt:</strong> <%= cash(defaults(@college.debt_median)) %></li>
-    <li><strong>Median Debt for Graduates:</strong> <%= cash(@college.graduated_debt_median) %></li>
-    <li><strong>Median Debt for Withdrawals:</strong> <%= cash(@college.withdrawn_debt_median) %></li>
+<div class="mt-10">
+      <ul class="list-none md:grid md:grid-cols-2 md:col-gap-4 md:row-gap-2 bg-white-900">
+        <li>
+          <div class="flex py-2 px-4 rounded overflow-hidden ">
+            <div class="flex-shrink-0">
+                
+              <div class="flex items-center justify-center h-12 w-12 rounded-md">
+                
+              </div>
+            </div>
+            <div class="ml-4">
+                <h4 class="text-lg leading-6 font-medium text-darkgreen">Details</h4>
+                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
+                    <li><strong class="text-green">Name:</strong> <a href="https://<%= @college.url%>" class="no-underline text-green"><%= @college.name %></a></li>
+                    <li><strong class="text-green">Location:</strong> <%= address(@college) %></li>
+                    <li><strong class="text-green">Control:</strong> <%= @college.control %></li>
+                    <li><strong class="text-green">Accreditation:</strong> <%= defaults(@college.accreditation) %></li>
+                    
+                </ul>
+            </div>
+          </div>
+        </li>
+        <li class="mt-10 md:mt-0">
+          <div class="flex py-2 px-4 rounded overflow-hidden ">
+            <div class="flex-shrink-0">
+              <div class="flex items-center justify-center h-12 w-12 rounded-md ">
+                
+              </div>
+            </div>
+            <div class="ml-4">
+                <h4 class="text-lg leading-6 font-medium text-darkgreen">Attendance</h4>
+                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
+                    <li><strong class="text-green">Admissions Rate</strong> <%= percent(@college.admissions_rate) %></li>
+                    <li><strong class="text-green">Average SAT Scores</strong> <%= defaults(@college.sat_avg) %></li>
+                    <li><strong class="text-green">Four Year Completion Rate</strong> <%= percent(@college.fouryear_100_completion) %></li>
+                    <li><strong class="text-green">Six Year Completion Rate</strong> <%= percent(@college.fouryear_150_completion) %></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+        <li class="mt-10 md:mt-0">
+          <div class="flex py-2 px-4 rounded overflow-hidden ">
+            <div class="flex-shrink-0">
+              <div class="flex items-center justify-center h-12 w-12 rounded-md ">
+                
+              </div>
+            </div>
+            <div class="ml-4">
+                <h4 class="text-lg leading-6 font-medium  text-darkgreen">Costs</h4>
+                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
+                    <li><strong class="text-green">Yearly Costs:</strong> <%= cash(@college.yearly_cost )%></li>
+                    <li><strong class="text-green">Out of State Tuition:</strong> <%= cash(defaults(@college.tuition_out)) %></li>
+                    <li><strong class="text-green">In State Tuition:</strong> <%= cash(defaults(@college.tuition_in)) %></li>
+                    <li><strong class="text-green">Median Debt:</strong> <%= cash(defaults(@college.debt_median)) %></li>
+                    <li><strong class="text-green">Median Debt for Graduates:</strong> <%= cash(@college.graduated_debt_median) %></li>
+                    <li><strong class="text-green">Median Debt for Withdrawals:</strong> <%= cash(@college.withdrawn_debt_median) %></li>
 
 
-    <li><strong>Net Price Quintile 1</strong> <%= cash(defaults(@college.netprice_1)) %></li>
-    <li><strong>Net Price Quintile 2</strong> <%= cash(defaults(@college.netprice_2)) %></li>
-    <li><strong>Net Price Quintile 3</strong> <%= cash(defaults(@college.netprice_3)) %></li>
-    <li><strong>Net Price Quintile 4</strong> <%= cash(defaults(@college.netprice_4)) %></li>
-    <li><strong>Net Price Quintile 5</strong> <%= cash(defaults(@college.netprice_5)) %></li>
-  </ul>
-</section>
-<section>
-  <h4>Earnings</h4>
-  <ul>
-    <li><strong>Median 6 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after6)) %></li>
-    <li><strong>Median 7 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after7)) %></li>
-    <li><strong>Median 8 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after8)) %></li>
-    <li><strong>Median 9 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after9)) %></li>
-    <li><strong>Median 10 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after10)) %></li>
-  </ul>
-</section>
-<section>
-  <% diff_data = Poison.encode!(college_chart_data(@majors)) %>
-  <%= raw Chartkick.column_chart diff_data, prefix: "$", width: "100%", title: "What's Worth It?", library: %{
-      scales: %{
-        xAxes: [%{
-          ticks: %{
-            display: false
-          },
-          gridLines: %{
-            display: false
-          }
-        }]
-      }
-    }
-  %>
-</section>
+                    <li><strong class="text-green">Net Price Quintile 1</strong> <%= cash(defaults(@college.netprice_1)) %></li>
+                    <li><strong class="text-green">Net Price Quintile 2</strong> <%= cash(defaults(@college.netprice_2)) %></li>
+                    <li><strong class="text-green">Net Price Quintile 3</strong> <%= cash(defaults(@college.netprice_3)) %></li>
+                    <li><strong class="text-green">Net Price Quintile 4</strong> <%= cash(defaults(@college.netprice_4)) %></li>
+                    <li><strong class="text-green">Net Price Quintile 5</strong> <%= cash(defaults(@college.netprice_5)) %></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+        <li class="mt-10 md:mt-0">
+          <div class="flex py-2 px-4 rounded overflow-hidden">
+            <div class="flex-shrink-0">
+              <div class="flex items-center justify-center h-12 w-12 rounded-md ">
+                
+              </div>
+            </div>
+            <div class="ml-4">
+
+                <h4 class="text-lg leading-6 font-medium  text-darkgreen">Earnings</h4>
+                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
+                    <li><strong class="text-green">Median 6 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after6)) %></li>
+                    <li><strong class="text-green">Median 7 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after7)) %></li>
+                    <li><strong class="text-green">Median 8 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after8)) %></li>
+                    <li><strong class="text-green">Median 9 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after9)) %></li>
+                    <li><strong class="text-green">Median 10 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after10)) %></li>
+                </ul>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <%= if Enum.filter(@majors, fn m -> m.credential_level == 3 end) |> length == 0 do %>
+
+    <% else %>
+        <section class="mt-10 pb-16">
+        <% diff_data = Poison.encode!(college_chart_data(@majors)) %>
+        <%= raw Chartkick.column_chart diff_data, prefix: "$", width: "100%", title: "What's Worth It?", colors: ["#114b5f", "#1a93df", "#88d498"], library: %{
+            scales: %{
+                xAxes: [%{
+                ticks: %{
+                    display: false
+                },
+                gridLines: %{
+                    display: false
+                }
+                }]
+            }
+            }
+        %>
+        </section>
+    <% end %>

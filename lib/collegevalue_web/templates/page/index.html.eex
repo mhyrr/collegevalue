@@ -1,16 +1,18 @@
-<section class="phx-hero">
-  <h1 class="text-indigo text-5xl font-display text-center">Welcome to College Value</h1>
-</section>
+<div class="bg-white">
+  <section class="phx-hero">
+    <h1 class="text-darkgreen text-5xl font-display text-center">Welcome to College Value</h1>
+  </section>
 
-<section class="">
-  <article class="content-center">
-    <h2>What the hell is going on?</h2>
-      <p>
-        Add some words about questions to ask
-      </p>
-  </article>
-  <article class="items">
-    <h2>Data</h2>
-    <p>Info about Scorecard.gov</p>
-  </article>
-</section>
+  <section class="">
+    <article class="content-center">
+      <h2>What the hell is going on?</h2>
+        <p>
+          Add some words about cost/benefit ratios and college costs.
+        </p>
+    </article>
+    <article class="items">
+      <h2>Data</h2>
+      <p>Info about <a href="https://collegescorecard.ed.gov/" class="no-underline text-green">all the data</a>.</p>
+    </article>
+  </section>
+</div>
