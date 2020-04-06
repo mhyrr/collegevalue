@@ -1,46 +1,100 @@
-<h1>Listing Colleges</h1>
+<h1>All Colleges</h1>
 
-Showing <%=@colleges.first%>-<%=@colleges.last%> of <%=@colleges.count%> 
+<div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+  <div class="flex-1 flex justify-between sm:hidden">
+    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+      Previous
+    </a>
+    <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+      Next
+    </a>
+  </div>
+  <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <div>
+      <p class="text-sm leading-5 text-gray-700">
+        Showing
+        <span class="font-medium"><%=@colleges.first%></span>
+        to
+        <span class="font-medium"><%=@colleges.last%> </span>
+        of
+        <span class="font-medium"><%=@colleges.count%> </span>
+        results
+      </p>
+    </div>
+    <div>
+      <span class="relative z-0 inline-flex shadow-sm">
+        <%= if @colleges.has_previous do %> 
+          <%= link "Previous", to: Routes.college_path(@conn, :index, page: @colleges.page - 1), class: "relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"%>
+        <% end %>
+        <%= if @colleges.has_next do %> 
+          <%= link "Next", to: Routes.college_path(@conn, :index, page: @colleges.page + 1), class: "-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"%>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>
 
-<%= if @colleges.has_previous do %>
-  <%= link "Previous 100", to: Routes.college_path(@conn, :index, page: @colleges.page - 1)%>
-<% end %>
-<%= if @colleges.has_next do %>
-  <%= link "Next 100", to: Routes.college_path(@conn, :index, page: @colleges.page + 1)%>
-<% end %>
-<table>
+<table class="min-w-full">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Opeid</th>
-      <th>Unitid</th>
-      <th>Control</th>
-      <th>Accreditation</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Name</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">City</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">State</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Opeid</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Unitid</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Control</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Accreditation</th>
 
-      <th></th>
     </tr>
   </thead>
   <tbody>
 <%= for college <- @colleges.results do %>
     <tr>
-      <td><%= link college.name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, college.name)%></td>
-      <td><%= defaults(college.city) %></td>
-      <td><%= defaults(college.state) %></td>
-      <td><%= college.opeid %></td>
-      <td><%= college.unitid %></td>
-      <td><%= college.control %></td>
-      <td><%= college.accreditation %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link college.name, to: Routes.college_path(@conn, :show, college.name)%></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= defaults(college.city) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= defaults(college.state) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= college.opeid %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= college.unitid %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= college.control %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= college.accreditation %></td>
 
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= if @colleges.has_previous do %>
-  <%= link "Previous 100", to: Routes.college_path(@conn, :index, page: @colleges.page - 1)%>
-<% end %>
-<%= if @colleges.has_next do %>
-  <%= link "Next 100", to: Routes.college_path(@conn, :index, page: @colleges.page + 1)%>
-<% end %>
+
+
+<div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+  <div class="flex-1 flex justify-between sm:hidden">
+    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+      Previous
+    </a>
+    <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150">
+      Next
+    </a>
+  </div>
+  <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+    <div>
+      <p class="text-sm leading-5 text-gray-700">
+        Showing
+        <span class="font-medium"><%=@colleges.first%></span>
+        to
+        <span class="font-medium"><%=@colleges.last%> </span>
+        of
+        <span class="font-medium"><%=@colleges.count%> </span>
+        results
+      </p>
+    </div>
+    <div>
+      <span class="relative z-0 inline-flex shadow-sm">
+        <%= if @colleges.has_previous do %> 
+          <%= link "Previous", to: Routes.college_path(@conn, :index, page: @colleges.page - 1), class: "relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"%>
+        <% end %>
+        <%= if @colleges.has_next do %> 
+          <%= link "Next", to: Routes.college_path(@conn, :index, page: @colleges.page + 1), class: "-ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-500 transition ease-in-out duration-150"%>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</div>

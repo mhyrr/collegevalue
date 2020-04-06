@@ -24,7 +24,7 @@
     <%= for major <- @majors do %>
       <%= if @toggle_cred || major.credential_level == 3 do %>
         <tr>
-        <td><%= live_link major.college_name, to: Routes.live_path(@socket, CollegevalueWeb.CollegesLive.Show, major.college_name) %> </td>
+        <td><%= link major.college_name, to: Routes.college_path(@socket, :show, major.college_name) %> </td>
         <td><%= degree(major.credential_level) %></td>
         <td><%= cash(major.debt_mean) %></td>
         <td><%= cash(major.debt_median) %></td>

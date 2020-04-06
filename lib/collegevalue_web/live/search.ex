@@ -10,7 +10,7 @@ defmodule CollegevalueWeb.SearchLive do
   def render(assigns) do
     ~L"""
     <form phx-change="suggest" phx-submit="search">
-      <input type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search..."
+      <input  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search..."
              <%= if @loading, do: "readonly" %>/>
       <datalist id="matches">
         <%= for match <- @matches do %>
@@ -43,7 +43,7 @@ defmodule CollegevalueWeb.SearchLive do
 
     case Colleges.get_college_by_name(query) do
       college when is_map(college) ->
-        {:stop, socket |> redirect(to: Routes.live_path(socket, CollegesLive.Show, query )) }
+        {:stop, socket |> redirect(to: Routes.college_path(socket, :show, query )) }
       nil ->
         {:stop, socket |> redirect(to: Routes.live_path(socket, FieldsLive.Show, query )) }
 

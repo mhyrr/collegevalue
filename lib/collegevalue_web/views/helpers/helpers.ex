@@ -41,6 +41,10 @@ defmodule CollegevalueWeb.Views.Helpers do
     |> Kernel.<>("%")
   end
 
+  def sat(nil) do
+    "No data"
+  end
+
   def sat(-1.0) do
     "No data"
   end
@@ -107,7 +111,37 @@ defmodule CollegevalueWeb.Views.Helpers do
     end
   end
 
-  def chart_data(ranks) do
+  def college_chart_data(majors) do
+
+    IO.inspect(majors)
+    majors = majors
+      |> Enum.filter(fn major -> major.credential_level == 3 end)
+      |> Enum.sort(&(&1.earnings >= &2.earnings) )
+    chart_data = []
+
+    diffs =
+      majors
+      |> Enum.map(fn major -> [major.name, (if (major.earnings == -1 || major.debt_mean == -1), do: 0, else: major.earnings - major.debt_mean)] end)
+      |> Enum.reverse
+    chart_data = chart_data ++ [ %{name: "Difference", data: diffs}]
+
+    debt = majors
+    |> Enum.map(fn major -> [major.name, -major.debt_mean] end)
+    |> Enum.reverse
+    chart_data = chart_data ++ [ %{name: "Debt", data: debt}]
+
+    earnings = majors
+    |> Enum.map(fn major -> [major.name, major.earnings] end)
+    |> Enum.reverse
+    chart_data = chart_data ++ [ %{name: "Earnings", data: earnings}]
+
+
+
+    chart_data
+
+  end
+
+  def field_chart_data(ranks) do
 
     chart_data = []
 

@@ -5,7 +5,6 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges.College
 
   def index(conn, params) do
-
     page = params["page"] || 1
     # per_page = params["per_page"] || 100
 
@@ -36,6 +35,14 @@ defmodule CollegevalueWeb.CollegeController do
 
   def rank(conn, _params) do
     render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs)
+  end
+
+  def show(conn, %{"name" => name}) do
+    IO.inspect("show!!")
+    college = Colleges.get_college_by_name!(URI.decode(name))
+    majors = Colleges.get_majors_by_college(college.name)
+
+    render(conn, "show.html", college: college, majors: majors)
   end
 
 

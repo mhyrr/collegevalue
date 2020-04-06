@@ -1,16 +1,30 @@
-<h1>Listing Ranks</h1>
+<h1>Ranking Fields</h1>
+<h4>As measured by comparing 1-year earnings vs. debt for Bachelor's Degrees</h4>
 
-<section>
-  <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()"%>
-    <%= select f, :count, [10, 50, 100, 250, 500, 1000], onchange: "this.form.submit()"%>
-  <% end %>
+<section class="flex w-full pb-8">
+  <div class="flex-grow pl-8">
+    <label for="price" class="block flex-grow text-sm leading-5 font-medium text-gray-700">Ranking</label>
+    <div class="flex w-full mt-1 relative rounded-md">
+      <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
+        <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow"%>
+      
+    </div>
+    
+  </div>
+
+  <div class="pr-8">
+    <label for="price" class="block text-sm leading-5 font-medium text-gray-700">Count</label>
+    <div class="mt-1 relative rounded-md shadow-sm">
+        <%= select f, :count, [10, 50, 100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5"%>
+      <% end %>
+    </div>    
+  </div>
 
 </section>
 
 
 <section>
-  <% diff_data = Poison.encode!(chart_data(@ranks)) %>
+  <% diff_data = Poison.encode!(field_chart_data(@ranks)) %>
   <%= raw Chartkick.column_chart diff_data, prefix: "$", width: "100%", title: "What's Worth It?", library: %{
       scales: %{
         xAxes: [%{
@@ -26,30 +40,30 @@
   %>
 </section>
 
-<table>
+<table class="min-w-full">
   <thead>
     <tr>
-      <th>College Name</th>
-      <th>Field</th>
-      <th>Admissions Rate</th>
-      <th>Average SAT Score</th>
-      <th><%= List.first(@ranks).cost_field%></th>
-      <th><%= List.first(@ranks).payoff_field%></th>
-      <th>Difference</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">College Name</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Field</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Admissions Rate</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Average SAT Score</th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"><%= List.first(@ranks).cost_field%></th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"><%= List.first(@ranks).payoff_field%></th>
+      <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Difference</th>
     </tr>
   </thead>
   <tbody>
     
   <%= for rank <- @ranks do %>
     <tr>
-      <td><%= link rank.college_name, to: Routes.live_path(@conn, CollegevalueWeb.CollegesLive.Show, rank.college_name) %> </td>
-      <td><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name) %> </td>
-      <td><%= percent(rank.admissions) %></td>
-      <td><%= sat(rank.sat_avg)%></td>
-      <td><%= cash(rank.cost) %></td>
-      <td><%= cash(rank.payoff) %></td>
-      <td><%= cash(rank.diff) %></td>
-      </td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name) %> </td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= percent(rank.admissions) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= sat(rank.sat_avg)%></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.cost) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.payoff) %></td>
+      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.diff) %></td>
+      
     </tr>
   <% end %>
   </tbody>

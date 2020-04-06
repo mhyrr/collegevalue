@@ -1,0 +1,27 @@
+
+<button phx-click="toggle_credentials"><%= @cred_label %></button>
+<table>
+  <thead>
+    <tr>
+      <th><a href="#" phx-click="sort" phx-value-sort="name">Name</a></th>
+      <th><a href="#" phx-click="sort" phx-value-sort="credential">Credential</a></th>
+      <th><a href="#" phx-click="sort" phx-value-sort="debt_mean">Debt Mean</a></th>
+      <th><a href="#" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
+      <th><a href="#" phx-click="sort" phx-value-sort="earnings">Earnings</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for major <- @majors do %>
+      <%= if @toggle_cred || major.credential_level == 3 do %>
+        <tr>
+        <td><%= live_link major.name, to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name) %> </td>
+        <td><%= degree(major.credential_level) %></td>
+        <td><%= cash(major.debt_mean) %></td>
+        <td><%= cash(major.debt_median) %></td>
+        <td><%= cash(major.earnings) %></td>
+        
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
