@@ -79,7 +79,7 @@ IO.inspect("Parsing cohort data..")
 # ccount = File.stream!("data/All100.csv")
 ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
 |> CSV.decode(headers: true)
-|> Enum.map(fn {:ok, record} ->
+|> Stream.map(fn {:ok, record} ->
     yearly_costs = Helpers.yearly({record["COSTT4_A"], record["COSTT4_P"]})
     netprice_1 = Helpers.net({record["NPT41_PUB"], record["NPT41_PRIV"]})
     netprice_2 = Helpers.net({record["NPT42_PUB"], record["NPT42_PRIV"]})
@@ -173,7 +173,7 @@ IO.inspect("Parsing field data..")
 # adtl = File.stream!("data/Field100.csv")
 adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
 |> CSV.decode(headers: true)
-|> Enum.map(fn {:ok, record} ->
+|> Stream.map(fn {:ok, record} ->
 
   college = case Colleges.get_college_by_name(record["INSTNM"]) do
     nil ->
