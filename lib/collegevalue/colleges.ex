@@ -131,9 +131,9 @@ defmodule Collegevalue.Colleges do
     base = from c in College,
       select: %Rank{
         credential_level: "Unknown",
-        cost: fragment("?", field(c, ^cost_field)),
+        cost: field(c, ^cost_field),
         cost_field: ^Atom.to_string(cost_field),
-        payoff: fragment("?", field(c, ^payoff_field)),
+        payoff: field(c, ^payoff_field),
         payoff_field: ^Atom.to_string(payoff_field),
         diff: fragment("? - ? as diff", field(c, ^payoff_field), field(c, ^cost_field)),
         college_name: c.name,
