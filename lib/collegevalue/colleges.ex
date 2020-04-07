@@ -131,9 +131,9 @@ defmodule Collegevalue.Colleges do
     base = from c in College,
       select: %Rank{
         credential_level: "Unknown",
-        cost: field(c, ^cost_field) |> type(:string),
+        cost: fragment("?", field(c, ^cost_field)),
         cost_field: ^Atom.to_string(cost_field),
-        payoff: field(c, ^payoff_field) |> type(:string),
+        payoff: fragment("?", field(c, ^payoff_field)),
         payoff_field: ^Atom.to_string(payoff_field),
         diff: fragment("? - ? as diff", field(c, ^payoff_field), field(c, ^cost_field)),
         college_name: c.name,
@@ -156,7 +156,10 @@ defmodule Collegevalue.Colleges do
 
     IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
 
-    Repo.all(query)
+    foo = Repo.all(query)
+    IO.inspect(foo)
+    foo
+
   end
 
   defp filter_results(query, key) do
