@@ -79,7 +79,8 @@ IO.inspect("Parsing cohort data..")
 # ccount = File.stream!("data/All100.csv")
 ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
 |> CSV.decode(headers: true)
-|> Stream.map(fn {:ok, record} ->
+|> Enum.map(fn {:ok, record} ->
+    IO.inspect("record..")
     yearly_costs = Helpers.yearly({record["COSTT4_A"], record["COSTT4_P"]})
     netprice_1 = Helpers.net({record["NPT41_PUB"], record["NPT41_PRIV"]})
     netprice_2 = Helpers.net({record["NPT42_PUB"], record["NPT42_PRIV"]})
@@ -164,7 +165,7 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
         IO.inspect(error)
     end
   end)
-|> Enum.reduce(0, fn _x, acc -> 1+acc end)
+
 
 # Map out any other colleges in field data
 
@@ -173,7 +174,7 @@ IO.inspect("Parsing field data..")
 # adtl = File.stream!("data/Field100.csv")
 adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
 |> CSV.decode(headers: true)
-|> Stream.map(fn {:ok, record} ->
+|> Enum.map(fn {:ok, record} ->
 
   college = case Colleges.get_college_by_name(record["INSTNM"]) do
     nil ->
@@ -247,27 +248,27 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
 
   [college, disc]
 end)
-|> Enum.reduce(%{cnt: 0, err: 0, existed: 0, disc: 0, derr: 0}, fn res, acc ->
+# |> Enum.reduce(%{cnt: 0, err: 0, existed: 0, disc: 0, derr: 0}, fn res, acc ->
 
-  case List.first(res) do
-    {:ok, _c} ->
-      %{acc | :cnt => acc[:cnt] + 1}
-    {:error, _err} ->
-      %{acc | :err => acc[:err] + 1}
-    college ->
-      %{acc | :cnt => acc[:cnt] + 1}
-    nil ->
-      %{acc | :existed => acc[:existed] + 1}
-  end
+#   case List.first(res) do
+#     {:ok, _c} ->
+#       %{acc | :cnt => acc[:cnt] + 1}
+#     {:error, _err} ->
+#       %{acc | :err => acc[:err] + 1}
+#     college ->
+#       %{acc | :cnt => acc[:cnt] + 1}
+#     nil ->
+#       %{acc | :existed => acc[:existed] + 1}
+#   end
 
-  case List.last(res) do
-    {:ok, _d} ->
-      %{acc | :disc => acc[:disc] + 1}
-    {:error, _err} ->
-      %{acc | :derr => acc[:derr] + 1}
-  end
+#   case List.last(res) do
+#     {:ok, _d} ->
+#       %{acc | :disc => acc[:disc] + 1}
+#     {:error, _err} ->
+#       %{acc | :derr => acc[:derr] + 1}
+#   end
 
-end)
+# end)
 
-IO.puts "College count: #{ccount}, added #{adtl[:cnt]}, failed #{adtl[:err]}, existed #{adtl[:existed]}"
-IO.puts "Discipline count: #{adtl[:disc]}, Errs: #{adtl[:derr]}"
+# IO.puts "College count: #{ccount}, added #{adtl[:cnt]}, failed #{adtl[:err]}, existed #{adtl[:existed]}"
+# IO.puts "Discipline count: #{adtl[:disc]}, Errs: #{adtl[:derr]}"
