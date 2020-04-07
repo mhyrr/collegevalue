@@ -125,12 +125,15 @@ defmodule Collegevalue.Colleges do
 
     direction = if sort == :top, do: :desc, else: :asc
 
+    IO.inspect(cost_field)
+    IO.inspect(payoff_field)
+
     base = from c in College,
       select: %Rank{
         credential_level: "Unknown",
-        cost: field(c, ^cost_field),
+        cost: field(c, ^cost_field) |> type(:string),
         cost_field: ^Atom.to_string(cost_field),
-        payoff: field(c, ^payoff_field),
+        payoff: field(c, ^payoff_field) |> type(:string),
         payoff_field: ^Atom.to_string(payoff_field),
         diff: fragment("? - ? as diff", field(c, ^payoff_field), field(c, ^cost_field)),
         college_name: c.name,
