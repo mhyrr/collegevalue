@@ -7,12 +7,15 @@
     <article class="content-center">
       <h2>What the hell is going on?</h2>
         <p>
-          Add some words about cost/benefit ratios and college costs.
+          There's a lot of questions around college right now, and not just because of the forced-remote situation we're in because of the Covid pandemic.  There's also tremendous questions around the value of an education.  When so many students are going into debt, it's perfectly reasonable to ask: what's worth it?
+        </p>
+        <p>
+          College in the <a class="no-underline text-green" href="https://www.kanonical.io/education-backwards/">modern world is a cost/benefit analysis</a>.  We spend money to be educated for a purpose, and we need to do a better job at considering the benefits.  The Department of Education has a lot of great data, but I didn't see much to understand how majors or colleges compare to each other in terms of both the costs and the estimated payoffs.  That's why this place exists.  I
         </p>
     </article>
     <article class="items">
       <h2>Data</h2>
-      <p>Info about <a href="https://collegescorecard.ed.gov/" class="no-underline text-green">all the data</a>.</p>
+      <p>All of the data comes from the Deparment of Education's wonderful <a href="https://collegescorecard.ed.gov/" class="no-underline text-green">Scorecard dataset</a>.  There are significant gaps in the data where costs or earnings are unknown or, as listed in the data, "Privacy Suppressed".  All models are wrong, but some are useful.</p>
     </article>
   </section>
 </div>
