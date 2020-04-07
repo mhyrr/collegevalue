@@ -58,6 +58,7 @@ config :collegevalue, CollegevalueWeb.Endpoint,
 http: [port: {:system, "PORT"}], # Possibly not needed, but doesn't hurt
 url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 80],
 secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+check_origin: ["https://www.collegevalue.dev", "https://collegevalue.dev"],
 server: true
 
 config :collegevalue, Collegevalue.Repo,

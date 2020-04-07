@@ -43,13 +43,13 @@
 <table  class="pt-8"">
   <thead>
     <tr>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">College Name</th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Field</th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Admissions Rate</th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Average SAT Score</th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider""><%= List.first(@ranks).cost_field%></th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).payoff_field%></th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Difference</th>
+      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">College Name</th>
+      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Field</th>
+      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Admissions Rate</th>
+      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Average SAT Score</th>
+      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider""><%= List.first(@ranks).cost_field%></th>
+      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).payoff_field%></th>
+      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Difference</th>
     </tr>
   </thead>
   <tbody>

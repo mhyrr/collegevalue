@@ -10,7 +10,7 @@ defmodule CollegevalueWeb.SearchLive do
   def render(assigns) do
     ~L"""
     <form class="bg-lightplain shadow-md rounded px-1 pt-2 pb-2 mb-4" phx-change="suggest" phx-submit="search">
-      <input class="shadow appearance-none border rounded w-full py-2 px-3"  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search Schools or Fields.. "
+      <input class="shadow appearance-none border rounded w-full py-2 px-3"  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search Schools or Fields.. " phx-debounce="300"
              <%= if @loading, do: "readonly" %>/>
       <datalist id="matches">
         <%= for match <- @matches do %>
@@ -27,6 +27,8 @@ defmodule CollegevalueWeb.SearchLive do
   end
 
   def handle_event("suggest", %{"q" => query}, socket) when byte_size(query) <= 100 do
+
+    IO.inspect(query)
 
     colleges = Colleges.match_colleges_by_name(query)
     fields = Fields.match_fields_by_name(query)
