@@ -1,9 +1,12 @@
 # Collegevalue
 
+* The large CSV files in data/ are stored with Git LFS
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
+  * Update the data with `mix run priv/repo/seeds.exs`.. this is a bit slow and will take a few minutes
   * Install Node.js dependencies with `cd assets && npm install`
   * Start Phoenix endpoint with `mix phx.server`
 
