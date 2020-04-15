@@ -40,31 +40,31 @@
   %>
 </section>
 
-<table  class="pt-8"">
-  <thead>
+<table  class="md:block lg:table pt-8">
+  <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">College Name</th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Field</th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Admissions Rate</th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Average SAT Score</th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider""><%= List.first(@ranks).cost_field%></th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).payoff_field%></th>
-      <th  class="px-6 py-3 border-b border-green bg-gray-50 text-left text-sm sm:text-xs leading-4 font-medium text-darkgreen uppercase tracking-wider">Difference</th>
+      <th class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">College Name</th>
+      <th class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Field</th>
+      <th class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Admissions Rate</th>
+      <th  class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Average SAT Score</th>
+      <th  class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight""><%= List.first(@ranks).cost_field%></th>
+      <th  class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).payoff_field%></th>
+      <th  class="x-0 y-2 lg:px-2 lg:py-3 border-b border-green bg-gray-50 text-left lg:text-sm text-xs leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Difference</th>
     </tr>
   </thead>
-  <tbody>
-    
-  <%= for rank <- @ranks do %>
-    <tr>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name), class: "text-green no-underline" %> </td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name), class: "text-green no-underline" %> </td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= percent(rank.admissions) %></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= sat(rank.sat_avg)%></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.cost) %></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.payoff) %></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.diff) %></td>
-      
-    </tr>
-  <% end %>
+
+  <tbody class="md:block">  
+    <%= for rank <- @ranks do %>
+      <tr class="md:block">
+        <td class="college-field md:border-none md:relative md:block lg:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
+        <td class="field-field md:border-none md:relative md:block lg:text-sm  whitespace-wrap border-b "><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
+        <td class="admissions-field md:border-none md:relative md:block lg:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
+        <td class="sat-field md:border-none md:relative md:block lg:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
+        <td class="debt-field md:border-none md:relative md:block lg:text-sm  whitespace-wrap border-b "><%= cash(rank.cost) %></td>
+        <td class="earnings-field md:border-none md:relative md:block lg:text-sm  whitespace-wrap border-b "><%= cash(rank.payoff) %></td>
+        <td class="diff-field md:border-none md:relative md:block lg:text-sm whitespace-wrap border-b "><%= cash(rank.diff) %></td>
+        
+      </tr>
+    <% end %>
   </tbody>
 </table>

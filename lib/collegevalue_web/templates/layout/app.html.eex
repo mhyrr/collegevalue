@@ -51,10 +51,12 @@
     
     
     
-    <main role="main" class="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 font-body bg-white shadow-lg">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= render @view_module, @view_template, assigns %>
+    <main role="main" class="max-w-5xl mx-auto pt-1 px-4 font-body bg-white shadow-lg">
+      <div class="pt-8">
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <%= render @view_module, @view_template, assigns %>
+      </div>
     </main>
     
   </body>
