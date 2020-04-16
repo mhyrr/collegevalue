@@ -17,6 +17,10 @@ a {
 
 @media (max-width: 767px) {
     
+    ul {
+        padding-inline-start: 8px;
+    }
+
     tr { 
         padding-bottom: 4px;
         border-bottom: 2px solid #1a936f; 
@@ -57,14 +61,75 @@ a {
         content: "Debt Mean: ";
     }
 
+
+    tbody .debtmin-field:before {
+        content: "Debt Min: ";
+    }
+
+
+    tbody .debtmax-field:before {
+        content: "Debt Max: ";
+    }
+
     tbody .earnings-field:before {
         content: "Earnings: ";
+    }
+
+    tbody .earnmin-field:before {
+        content: "Earnings Min: ";
+    }
+
+    tbody .earnmax-field:before {
+        content: "Earnings Max: ";
     }
 
     tbody .diff-field:before {
         content: "Difference: ";
     }
 
+    tbody .cost-field:before {
+        content: "Cost: ";
+    }
+
+    tbody .payoff-field:before {
+        content: "Payoff: ";
+    }
+    
+    tbody .major-field:before {
+        content: "Major: ";
+    }
+
+
+    tbody .cred-field:before {
+        content: "Credential: ";
+    }
+
+    tbody .debtmed-field:before {
+        content: "Debt Median: ";
+    }
+
+    tbody .city-field:before {
+        content: "City: ";
+    }
+
+    tbody .state-field:before {
+        content: "State: ";
+    }
+
+    tbody .opeid-field:before {
+        content: "OPEID: ";
+    }
+
+    tbody .unitid-field:before {
+        content: "Unit: ";
+    }
+
+    tbody .control-field:before {
+        content: "Control: ";
+    }
+    tbody .accred-field:before {
+        content: "Accreditation: ";
+    }
 }
 
 

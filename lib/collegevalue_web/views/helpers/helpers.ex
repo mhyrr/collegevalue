@@ -77,9 +77,9 @@ defmodule CollegevalueWeb.Views.Helpers do
   def cash(dollars) do
     case dollars do
       0 ->
-        nil
+        "No data"
       -1 ->
-        nil
+        "No data"
       _ ->
         Number.Currency.number_to_currency(dollars)
     end
@@ -89,9 +89,9 @@ defmodule CollegevalueWeb.Views.Helpers do
 
     case geo do
       "city" ->
-        nil
+        "Unlisted"
       "state" ->
-        nil
+        "Unlisted"
       "zip" ->
         nil
       "acc" ->

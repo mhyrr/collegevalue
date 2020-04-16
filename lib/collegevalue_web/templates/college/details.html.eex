@@ -1,18 +1,18 @@
 <h1 class="text-darkgreen"><%= @college.name %></h1>
 
 <div class="mt-10">
-      <ul class="list-none md:grid md:grid-cols-2 md:col-gap-4 md:row-gap-2 bg-white-900">
+      <ul class="list-none xl:grid xl:grid-cols-2 xl:col-gap-4 xl:row-gap-2 md:block bg-white-900">
         <li>
-          <div class="flex py-2 px-4 rounded overflow-hidden ">
+          <div class="flex md:block md:px-0 py-2 px-4  rounded overflow-hidden ">
             <div class="flex-shrink-0">
                 
               <div class="flex items-center justify-center h-12 w-12 rounded-md">
                 
               </div>
             </div>
-            <div class="ml-4">
+            <div class="ml-4 md:ml-0">
                 <h4 class="text-lg leading-6 font-medium text-darkgreen">Details</h4>
-                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
+                <ul class="list-none mt-2 text-base md:-px-2 leading-6 text-gray-900">
                     <li><strong class="text-green">Name:</strong> <a href="https://<%= @college.url%>" class="no-underline text-green"><%= @college.name %></a></li>
                     <li><strong class="text-green">Location:</strong> <%= address(@college) %></li>
                     <li><strong class="text-green">Control:</strong> <%= @college.control %></li>
@@ -23,13 +23,13 @@
           </div>
         </li>
         <li class="mt-10 md:mt-0">
-          <div class="flex py-2 px-4 rounded overflow-hidden ">
+          <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
                 
               </div>
             </div>
-            <div class="ml-4">
+            <div class="ml-4 md:ml-0">
                 <h4 class="text-lg leading-6 font-medium text-darkgreen">Attendance</h4>
                 <ul class="list-none mt-2 text-base leading-6 text-gray-900">
                     <li><strong class="text-green">Admissions Rate</strong> <%= percent(@college.admissions_rate) %></li>
@@ -41,13 +41,13 @@
           </div>
         </li>
         <li class="mt-10 md:mt-0">
-          <div class="flex py-2 px-4 rounded overflow-hidden ">
+          <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
                 
               </div>
             </div>
-            <div class="ml-4">
+            <div class="ml-4 md:ml-0">
                 <h4 class="text-lg leading-6 font-medium  text-darkgreen">Costs</h4>
                 <ul class="list-none mt-2 text-base leading-6 text-gray-900">
                     <li><strong class="text-green">Yearly Costs:</strong> <%= cash(@college.yearly_cost )%></li>
@@ -68,13 +68,13 @@
           </div>
         </li>
         <li class="mt-10 md:mt-0">
-          <div class="flex py-2 px-4 rounded overflow-hidden">
+          <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
                 
               </div>
             </div>
-            <div class="ml-4">
+            <div class="ml-4 md:ml-0">
 
                 <h4 class="text-lg leading-6 font-medium  text-darkgreen">Earnings</h4>
                 <ul class="list-none mt-2 text-base leading-6 text-gray-900">

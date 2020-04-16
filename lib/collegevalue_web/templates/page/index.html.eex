@@ -3,7 +3,7 @@
     <h1 class="text-darkgreen text-5xl font-display text-center">Welcome to College Value</h1>
   </section>
 
-  <section class="">
+  <section class="p-8">
     <article class="content-center">
       <h2>What the hell is going on?</h2>
         <p>

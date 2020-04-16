@@ -8,28 +8,28 @@
 
 </section>
 
-<table class="min-w-full">
-  <thead>
+<table class="md:block xl:table pt-8">
+  <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">College Name</th>
-      <th class="px-6 py-3 border-b border-green-200 bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Admissions Rate</th>
-      <th class="px-6 py-3 border-b border-green-200 bg-gray-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Average SAT Score</th>
-      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).cost_field%></th>
-      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider"><%= List.first(@ranks).payoff_field%></th>
-      <th class="px-6 py-3 border-b border-green-200 bg-green-50 text-left text-sm leading-4 font-medium text-darkgreen uppercase tracking-wider">Difference</th>
+      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">College Name</th>
+      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Admissions Rate</th>
+      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Average SAT Score</th>
+      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).cost_field%></th>
+      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).payoff_field%></th>
+      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Difference</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="md:block">
     
   <%= for rank <- @ranks do %>
-    <tr>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name), class: "no-underline text-green" %> </td>
+    <tr class="md:block">
+      <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name), class: "no-underline text-green" %> </td>
 
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= percent(rank.admissions) %></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= sat(rank.sat_avg)%></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.cost) %></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.payoff) %></td>
-      <td class="px-2 py-4 whitespace-wrap border-b border-gray-200"><%= cash(rank.diff) %></td>
+      <td class="admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
+      <td class="sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
+      <td class="cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>
+      <td class="payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.payoff) %></td>
+      <td class="diff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.diff) %></td>
     </tr>
   <% end %>
   </tbody>

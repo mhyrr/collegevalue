@@ -25,25 +25,25 @@
 </div>
 
 
-<table class="pt-8">
-  <thead>
+<table  class="md:block lg:table pt-8">
+  <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="px-6 py-3 border-b border-green bg-gray-50 text-left text-md leading-4 font-medium text-green uppercase tracking-wider"><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="md:block">
     <%= for major <- @majors do %>
       <%= if @toggle_cred || major.credential_level == 3 do %>
-        <tr>
-        <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= link major.college_name, to: Routes.college_path(@socket, :show, major.college_name), class: "no-underline text-green" %> </td>
-        <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= degree(major.credential_level) %></td>
-        <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(major.debt_mean) %></td>
-        <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(major.debt_median) %></td>
-        <td class="px-2 py-4 whitespace-wrap border-b border-green"><%= cash(major.earnings) %></td>
+        <tr class="md:block">
+        <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link major.college_name, to: Routes.college_path(@socket, :show, major.college_name), class: "no-underline text-green" %> </td>
+        <td class="cred-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= degree(major.credential_level) %></td>
+        <td class="debt-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(major.debt_mean) %></td>
+        <td class="debtmed-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(major.debt_median) %></td>
+        <td class="earnings-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(major.earnings) %></td>
         
         </tr>
       <% end %>
