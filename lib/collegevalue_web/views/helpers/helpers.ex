@@ -177,10 +177,5 @@ defmodule CollegevalueWeb.Views.Helpers do
     rank.college_name <> " " <> rank.field_name
   end
 
-  def show_credentials() do
-    "Bachelor's Only"
-  end
 
 end
-
-

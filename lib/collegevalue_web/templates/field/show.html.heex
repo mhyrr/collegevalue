@@ -2,9 +2,9 @@
 
 <div class="flex py-2 px-4 rounded overflow-hidden ">
             <div class="flex-shrink-0">
-                
+
               <div class="flex items-center justify-center h-12 w-12 rounded-md">
-                
+
               </div>
             </div>
             <div class="ml-4">
@@ -13,7 +13,7 @@
                   <li><strong class="text-green">Number of Offering Colleges:</strong> <%= @field.count %></li>
                   <li><strong class="text-green">Average Debt on Graduation:</strong> <%= cash(@field.debt_avg) %></li>
                   <li><strong class="text-green">Expected Earnings 1 Year After:</strong> <%= cash(@field.earn_avg) %></li>
-                  
+
                 </ul>
 
             </div>
@@ -28,11 +28,11 @@
 <table  class="md:block lg:table pt-8">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
-      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_link "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_patch "Name", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "name", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_patch "Credential", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "credential", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_patch "Debt Mean", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_mean", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_patch "Debt Median", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "debt_median", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
+      <th class="x-2 y-2 xl:px-4 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= live_patch "Earnings", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, @field.name, %{sort_by: "earnings", order: @order || "desc"}), class: "text-darkgreen uppercase" %></th>
     </tr>
   </thead>
   <tbody class="md:block">
@@ -44,7 +44,7 @@
         <td class="debt-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(major.debt_mean) %></td>
         <td class="debtmed-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(major.debt_median) %></td>
         <td class="earnings-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(major.earnings) %></td>
-        
+
         </tr>
       <% end %>
     <% end %>
@@ -55,5 +55,5 @@
 
 <%# Now render a fierw for a list of disciplines pulled for this field! %>
 
-<%# <span><%= link "Edit", to: Routes.field_path(@conn, :edit, @field)</span> %> 
+<%# <span><%= link "Edit", to: Routes.field_path(@conn, :edit, @field)</span> %>
 <%# <span><%= link "Back", to: Routes.field_path(@conn, :index)</span> %>

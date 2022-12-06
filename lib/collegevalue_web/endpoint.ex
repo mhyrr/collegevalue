@@ -1,18 +1,16 @@
 defmodule CollegevalueWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :collegevalue
 
-  @session_opts [
+  # The session will be stored in the cookie and signed,
+  # this means its contents can be read but not tampered with.
+  # Set :encryption_salt if you would also like to encrypt it.
+  @session_options [
     store: :cookie,
     key: "_collegevalue_key",
-    signing_salt: "8SZ0suSI"
+    signing_salt: "GUiUxxFH"
   ]
 
-  socket "/live", Phoenix.LiveView.Socket,
-    websocket: [connect_info: [session: @session_opts]]
-
-  socket "/socket", CollegevalueWeb.UserSocket,
-    websocket: true,
-    longpoll: false
+  socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -22,7 +20,7 @@ defmodule CollegevalueWeb.Endpoint do
     at: "/",
     from: :collegevalue,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(assets fonts images favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -30,7 +28,12 @@ defmodule CollegevalueWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :collegevalue
   end
+
+  plug Phoenix.LiveDashboard.RequestLogger,
+    param_key: "request_logger",
+    cookie_key: "request_logger"
 
   plug Plug.RequestId
   plug Plug.Telemetry, event_prefix: [:phoenix, :endpoint]
@@ -42,11 +45,6 @@ defmodule CollegevalueWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  # The session will be stored in the cookie and signed,
-  # this means its contents can be read but not tampered with.
-  # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session, @session_opts
-
+  plug Plug.Session, @session_options
   plug CollegevalueWeb.Router
 end

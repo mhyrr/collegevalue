@@ -4,20 +4,17 @@
 <section class="flex md:block w-full pb-8">
   <div class="flex-grow pl-8 md:pl-0 ">
     <label for="price" class="block flex-grow text-sm leading-5 font-medium text-green">Ranking</label>
-    <div class="flex w-full mt-1 relative rounded-md">
-      <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
-        <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow"%>
-      
-    </div>
-    
+
+
+
+
   </div>
 
   <div class="pr-8">
     <label for="price" class="block text-sm leading-5 font-medium text-green">Count</label>
     <div class="mt-1 relative rounded-md shadow-sm">
-        <%= select f, :count, [10, 50, 100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5"%>
-      <% end %>
-    </div>    
+
+    </div>
   </div>
 
 </section>
@@ -47,13 +44,13 @@
       <th class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Field</th>
       <th class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Admissions Rate</th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Average SAT Score</th>
-      <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight""><%= List.first(@ranks).cost_field%></th>
+      <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).cost_field%></th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).payoff_field%></th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Difference</th>
     </tr>
   </thead>
 
-  <tbody class="md:block">  
+  <tbody class="md:block">
     <%= for rank <- @ranks do %>
       <tr class="md:block">
         <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
@@ -63,7 +60,7 @@
         <td class="debt-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= cash(rank.cost) %></td>
         <td class="earnings-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= cash(rank.payoff) %></td>
         <td class="diff-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(rank.diff) %></td>
-        
+
       </tr>
     <% end %>
   </tbody>

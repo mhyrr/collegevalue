@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Collegevalue · What's Worth It?</title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <%= live_title_tag assigns[:page_title] || "Docker + Phoenix" %>
     <%= csrf_meta_tag() %>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A production ready example Phoenix app that's using Docker and Docker Compose.">
+    <title>Collegevalue · What's Worth It?</title>
+
+    <link phx-track-static rel="stylesheet" href={Routes.static_url(@conn, "/assets/app.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_url(@conn, "/assets/app.js")}></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href={Routes.static_url(@conn, "/apple-touch-icon.png")}/>
+    <link rel="mask-icon" href={Routes.static_url(@conn, "/safari-pinned-tab.svg")} color="#384051"/>
+    <link rel="manifest" href={Routes.static_url(@conn, "/manifest.json")}/>
   </head>
-  <body id="full_body">
-      <header>
+  <body id="full_body" class="flex flex-col h-screen justify-between">
+
+    <header>
       <section>
-        
+
         <nav class="md:flex items-center justify-between flex-wrap bg-darkgreen p-6 font-display">
           <div class="md:flex items-center flex-shrink-0 text-white mr-6">
             <%# <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg> %>
@@ -40,24 +48,27 @@
             </div>
             <div>
               <div class="inline-block text-md px-8 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green mt-4 md:mt-0">
-                <%= live_render @conn, CollegevalueWeb.SearchLive %>
+
               </div>
             </div>
           </div>
         </nav>
-        
+
       </section>
     </header>
-    
-    
-    
-    <main role="main" class="max-w-5xl mx-auto pt-1 px-4 font-body bg-white shadow-lg">
+
+    <main class="max-w-5xl mx-auto pt-1 px-4 font-body bg-white shadow-lg">
       <div class="pt-8">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-        <%= render @view_module, @view_template, assigns %>
+      <%= @inner_content %>
       </div>
     </main>
-    
+
+    <footer class="text-center mt-6 pb-6 h-10">
+      <p class="text-green-600">
+        An <a class="border-b mb-1" href="https://ajtroy.com">AJ Troy</a> Production. <svg class="h-5 w-5 text-red-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+      </p>
+    </footer>
   </body>
 </html>

@@ -5,19 +5,19 @@
         <li>
           <div class="flex md:block md:px-0 py-2 px-4  rounded overflow-hidden ">
             <div class="flex-shrink-0">
-                
+
               <div class="flex items-center justify-center h-12 w-12 rounded-md">
-                
+
               </div>
             </div>
             <div class="ml-4 md:ml-0">
                 <h4 class="text-lg leading-6 font-medium text-darkgreen">Details</h4>
                 <ul class="list-none mt-2 text-base md:-px-2 leading-6 text-gray-900">
-                    <li><strong class="text-green">Name:</strong> <a href="https://<%= @college.url%>" class="no-underline text-green"><%= @college.name %></a></li>
+                    <li><strong class="text-green">Name:</strong> <a href={"https://#{@college.url}"} class="no-underline text-green"><%= @college.name %></a></li>
                     <li><strong class="text-green">Location:</strong> <%= address(@college) %></li>
                     <li><strong class="text-green">Control:</strong> <%= @college.control %></li>
                     <li><strong class="text-green">Accreditation:</strong> <%= defaults(@college.accreditation) %></li>
-                    
+
                 </ul>
             </div>
           </div>
@@ -26,7 +26,7 @@
           <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
-                
+
               </div>
             </div>
             <div class="ml-4 md:ml-0">
@@ -44,7 +44,7 @@
           <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
-                
+
               </div>
             </div>
             <div class="ml-4 md:ml-0">
@@ -71,7 +71,7 @@
           <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
-                
+
               </div>
             </div>
             <div class="ml-4 md:ml-0">
@@ -84,7 +84,7 @@
                     <li><strong class="text-green">Median 9 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after9)) %></li>
                     <li><strong class="text-green">Median 10 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after10)) %></li>
                 </ul>
-              
+
             </div>
           </div>
         </li>
