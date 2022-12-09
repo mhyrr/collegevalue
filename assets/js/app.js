@@ -28,7 +28,6 @@ import topbar from "../vendor/topbar"
 import Chart from "chart.js"
 import Chartkick from "chartkick"
 
-
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
 

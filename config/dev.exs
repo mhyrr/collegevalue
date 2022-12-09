@@ -25,8 +25,8 @@ config :collegevalue, CollegevalueWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "PYflI3Brx7zNPUfv87mqa8VvCji2Vj3GnQWLgyISUQoIOpatgOkJK9OQeewJ8DNn",
   watchers: [
-    # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    # Switching to npm assets/esbuild
+    node: ["esbuild.js", "--watch", cd: Path.expand("../assets", __DIR__)],
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 

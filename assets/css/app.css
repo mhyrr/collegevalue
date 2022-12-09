@@ -1,8 +1,8 @@
 /* This file is for your main application css. */
 
 /* @import "./phoenix.css"; */
-@import "../../deps/phoenix_live_view/assets/css/live_view.css";
-@import "../../node_modules/@fortawesome/fontawesome-free/css/all.css";
+/* @import "../../deps/phoenix_live_view/assets/css/live_view.css"; */
+/* @import "../../node_modules/@fortawesome/fontawesome-free/css/all.css"; */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
