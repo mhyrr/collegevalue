@@ -53,13 +53,13 @@
   <tbody class="md:block">
     <%= for rank <- @ranks do %>
       <tr class="md:block">
-        <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
-        <td class="field-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
+        <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b text-green"><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
+        <td class="field-field md:border-none md:relative md:block   whitespace-wrap border-b text-green"><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
         <td class="admissions-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="sat-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
         <td class="debt-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= cash(rank.cost) %></td>
         <td class="earnings-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= cash(rank.payoff) %></td>
-        <td class="diff-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= cash(rank.diff) %></td>
+        <td class="diff-field md:border-none md:relative md:block font-bold whitespace-wrap border-b "><%= cash(rank.diff) %></td>
 
       </tr>
     <% end %>
