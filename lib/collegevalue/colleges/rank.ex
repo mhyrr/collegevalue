@@ -1,6 +1,8 @@
 defmodule Collegevalue.Colleges.Rank do
   use Ecto.Schema
 
+  # Ranks correspond to colleges.
+
   schema "ranks" do
 
     field :credential_level, :integer

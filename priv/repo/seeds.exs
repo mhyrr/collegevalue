@@ -76,8 +76,8 @@ end
 
 IO.inspect("Parsing cohort data..")
 
-# ccount = File.stream!("data/All100.csv")
-ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
+# ccount = File.stream!("data/All100_new.csv")
+ccount = File.stream!("data/Most-Recent-Cohorts-Institution.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
     IO.inspect("record..")
@@ -116,7 +116,7 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
 
     case Colleges.create_college(%{
       opeid: record["OPEID6"],
-      unitid: record["\uFEFFUNITID"],
+      unitid: record["UNITID"],
       name: record["INSTNM"],
       control: "unknown",
       city: record["CITY"],
@@ -171,8 +171,8 @@ ccount = File.stream!("data/Most-Recent-Cohorts-All-Data-Elements.csv")
 
 IO.inspect("Parsing field data..")
 
-# adtl = File.stream!("data/Field100.csv")
-adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
+# adtl = File.stream!("data/Field100_new.csv")
+adtl = File.stream!("data/Most-Recent-Cohorts-Field-of-Study.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 
@@ -180,7 +180,7 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
     nil ->
       case Colleges.create_college(%{
           opeid: record["OPEID6"],
-          unitid: record["\uFEFFUNITID"],
+          unitid: record["UNITID"],
           name: record["INSTNM"],
           control: record["CONTROL"],
           city: "city",
@@ -199,16 +199,29 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
   end
 
 
-#   IO.inspect(Collegevalue.Colleges.get_college_by_opeid(record["OPEID6"]))
+  # IO.inspect(Collegevalue.Colleges.get_college_by_opeid(record["OPEID6"]))
 
-  count = if (record["COUNT"] == "PrivacySuppressed"), do: -1, else: record["COUNT"]
-  debt_mean =  if (record["DEBTMEAN"] == "PrivacySuppressed"), do: -1, else: record["DEBTMEAN"]
-  debt_median = if (record["DEBTMEDIAN"] == "PrivacySuppressed"), do: -1, else: record["DEBTMEDIAN"]
-  debt_payment = if (record["DEBTPAYMENT10YR"] == "PrivacySuppressed"), do: -1, else: record["DEBTPAYMENT10YR"]
-  earnings = if (record["MD_EARN_WNE"] == "PrivacySuppressed"), do: -1, else: record["MD_EARN_WNE"]
-  earnings_count = if (record["EARNINGSCOUNT"] == "PrivacySuppressed"), do: -1, else: record["EARNINGSCOUNT"]
-  titleiv_count = if (record["TITLEIVCOUNT"] == "PrivacySuppressed"), do: -1, else: record["TITLEIVCOUNT"]
+  count = if (record["IPEDSCOUNT1"] == "NULL"), do: -1, else: record["IPEDSCOUNT1"]
+  pp_debt_mean =  if (record["DEBT_ALL_PP_ANY_MEAN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_MEAN"]
+  pp_debt_median = if (record["DEBT_ALL_PP_ANY_MDN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_MDN"]
+  pp_debt_payment = if (record["DEBT_ALL_PP_ANY_MDN10YRPAY"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_MDN10YRPAY"]
+  pp_debt_count = if (record["DEBT_ALL_PP_ANY_N"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_N"]
 
+  stgp_debt_mean =  if (record["DEBT_ALL_STGP_ANY_MEAN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_MEAN"]
+  stgp_debt_median = if (record["DEBT_ALL_STGP_ANY_MDN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_MDN"]
+  stgp_debt_payment = if (record["DEBT_ALL_STGP_ANY_MDN10YRPAY"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_MDN10YRPAY"]
+  stgp_debt_count = if (record["DEBT_ALL_STGP_ANY_N"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_N"]
+
+  earnings_1yr = if (record["EARN_MDN_HI_1YR"] == "PrivacySuppressed"), do: -1, else: record["EARN_MDN_HI_1YR"]
+  earnings_1yr_count = if (record["EARN_COUNT_WNE_HI_1YR"] == "PrivacySuppressed"), do: -1, else: record["EARN_COUNT_WNE_HI_1YR"]
+  earnings_2yr = if (record["EARN_MDN_HI_2YR"] == "PrivacySuppressed"), do: -1, else: record["EARN_MDN_HI_2YR"]
+  earnings_2yr_count = if (record["EARN_COUNT_WNE_HI_2YR"] == "PrivacySuppressed"), do: -1, else: record["EARN_COUNT_WNE_HI_2YR"]
+
+  debt_counts = [
+    (if (pp_debt_count == -1), do: 0, else: String.to_integer(pp_debt_count)),
+    (if (stgp_debt_count == -1), do: 0, else: String.to_integer(stgp_debt_count)),
+  ]
+  titleiv_count = Enum.sum(debt_counts)
 
   id = case college do
     nil ->
@@ -230,12 +243,19 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
     cipcode: record["CIPCODE"],
     credential_desc: String.trim_trailing(record["CIPDESC"], "."),
     credential_level: record["CREDLEV"],
-    debt_count: count,
-    debt_mean: debt_mean,
-    debt_median: debt_median,
-    debt_payment: debt_payment,
-    earnings: earnings,
-    earnings_count: earnings_count,
+    count: count,
+    pp_debt_count: pp_debt_count,
+    pp_debt_mean: pp_debt_mean,
+    pp_debt_median: pp_debt_median,
+    pp_debt_payment: pp_debt_payment,
+    stgp_debt_count: stgp_debt_count,
+    stgp_debt_mean: stgp_debt_mean,
+    stgp_debt_median: stgp_debt_median,
+    stgp_debt_payment: stgp_debt_payment,
+    earnings_1yr: earnings_1yr,
+    earnings_1yr_count: earnings_1yr_count,
+    earnings_2yr: earnings_2yr,
+    earnings_2yr_count: earnings_2yr_count,
     titleiv_count: titleiv_count,
     name: String.trim_trailing(record["CIPDESC"], "."),
     college_id: id
@@ -244,7 +264,11 @@ adtl = File.stream!("data/Most-Recent-Field-Data-Elements.csv")
       {:ok, res}
     {:error, err} ->
       {:error, err}
+      IO.inspect("ERROR")
+      IO.inspect(err)
   end
+
+  IO.inspect(disc)
 
   [college, disc]
 end)

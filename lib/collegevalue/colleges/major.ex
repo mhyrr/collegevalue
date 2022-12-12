@@ -2,6 +2,8 @@ defmodule Collegevalue.Colleges.Major do
 use Ecto.Schema
 import Ecto.Changeset
 
+  # Majors correspond to disciplines.  Map this out.
+
   schema "majors" do
     field :credential_desc, :string
     field :credential_level, :integer
@@ -17,4 +19,3 @@ import Ecto.Changeset
   end
 
 end
-
