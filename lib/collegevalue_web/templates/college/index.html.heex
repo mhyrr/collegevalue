@@ -25,9 +25,13 @@
       <span class="relative z-0 inline-flex shadow-sm">
         <%= if @colleges.has_previous do %>
           <%= link "Previous", to: Routes.college_path(@conn, :index, page: @colleges.page - 1), class: "no-underline text-green relative inline-flex items-center px-2 py-2 rounded-l-md border border-green-300 bg-white text-sm leading-5 font-medium text-green-500 hover:text-green-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-green-100 active:text-green-500 transition ease-in-out duration-150"%>
+        <%= else %>
+          <div class="no-underline text-green relative inline-flex items-center px-2 py-2 rounded-l-md border border-green-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-green-100 active:text-green-500 transition ease-in-out duration-150">Previous</div>
         <% end %>
         <%= if @colleges.has_next do %>
           <%= link "Next", to: Routes.college_path(@conn, :index, page: @colleges.page + 1), class: "no-underline text-green -ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-green-300 bg-white text-sm leading-5 font-medium text-green-500 hover:text-green-400 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-green-100 active:text-green-500 transition ease-in-out duration-150"%>
+        <%= else %>
+          <div class="no-underline text-green -ml-px relative inline-flex items-center px-2 py-2 rounded-r-md border border-green-300 bg-white text-sm leading-5 font-medium text-gray-500 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-green-100 active:text-green-500 transition ease-in-out duration-150">Next</div>
         <% end %>
       </span>
     </div>

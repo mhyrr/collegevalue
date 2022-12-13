@@ -37,7 +37,7 @@
   %>
 </section>
 
-<table  class="md:block lg:table pt-8">
+<table  class="md:block lg:table pt-8 table-auto">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
       <th class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left lg:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">College Name</th>
@@ -52,9 +52,9 @@
 
   <tbody class="md:block">
     <%= for rank <- @ranks do %>
-      <tr class="md:block">
-        <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b text-green"><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
-        <td class="field-field md:border-none md:relative md:block   whitespace-wrap border-b text-green"><%= link rank.field_name, to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
+      <tr class="md:block odd:bg-gray-100">
+        <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b text-green"><%= link shorten(rank.college_name), to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
+        <td class="field-field md:border-none md:relative md:block   whitespace-wrap border-b text-green"><%= link shorten(rank.field_name), to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
         <td class="admissions-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="sat-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
         <td class="debt-field md:border-none md:relative md:block   whitespace-wrap border-b "><%= cash(rank.cost) %></td>

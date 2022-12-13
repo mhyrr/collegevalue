@@ -6,11 +6,12 @@ defmodule CollegevalueWeb.SearchLive do
   alias CollegevalueWeb.FieldsLive
   alias CollegevalueWeb.CollegesLive
   alias CollegevalueWeb.Router.Helpers, as: Routes
+  alias CollegevalueWeb.Endpoint
 
   def render(assigns) do
     ~L"""
-    <form class="bg-lightplain shadow-md rounded px-1 pt-2 pb-2 mb-4" phx-change="suggest" phx-submit="search">
-      <input class="shadow appearance-none border rounded w-full py-2 px-3"  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search Schools or Fields.. " phx-debounce="300"
+    <form class="bg-lightplain rounded px-2 pt-2 pb-2 mb-4 w-80" phx-change="suggest" phx-submit="search">
+      <input class="shadow appearance-none border rounded w-full py-1 px-1 w-80"  type="text" name="q" value="<%= @query %>" list="matches" placeholder="Search Schools or Fields.. " phx-debounce="300"
              <%= if @loading, do: "readonly" %>/>
       <datalist id="matches">
         <%= for match <- @matches do %>
@@ -28,8 +29,6 @@ defmodule CollegevalueWeb.SearchLive do
 
   def handle_event("suggest", %{"q" => query}, socket) when byte_size(query) <= 100 do
 
-    IO.inspect(query)
-
     colleges = Colleges.match_colleges_by_name(query)
     fields = Fields.match_fields_by_name(query)
 
@@ -43,12 +42,15 @@ defmodule CollegevalueWeb.SearchLive do
 
   def handle_info({:search, query}, socket) do
 
+    IO.inspect(socket)
+
     case Colleges.get_college_by_name(query) do
       college when is_map(college) ->
-        {:stop, socket |> redirect(to: Routes.college_path(socket, :show, query )) }
+        IO.inspect(college)
+        {:noreply, socket |> redirect(to: Routes.college_path(socket, :show, query )) }
       nil ->
-        {:stop, socket |> redirect(to: Routes.live_path(socket, FieldsLive.Show, query )) }
-
+        {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
+        # {:noreply, socket |> redirect(to: Routes.live_path(socket, CollegeValueWeb.FieldsLive.Show, query )) }
     end
 
   end

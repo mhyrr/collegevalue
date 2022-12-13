@@ -13,7 +13,7 @@ module.exports = {
     screens: {
         'xl': {'max': '2000px'},
         // => @media (max-width: 1279px) { ... }
-        'lg': {'max': '1023px'},
+        'lg': {'max': '1199px'},
         // => @media (max-width: 1023px) { ... }
         'md': {'max': '767px'},
         // => @media (max-width: 767px) { ... }
@@ -38,8 +38,8 @@ module.exports = {
             plainlight: '#f3e9d2',
         },
         margin: {
-            '96': '24rem',
-            '128': '32rem',
+            '96': '20rem',
+            '128': '28rem',
         },
         inset: {
             '-9999': '-9999px',

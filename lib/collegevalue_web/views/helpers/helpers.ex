@@ -120,6 +120,14 @@ defmodule CollegevalueWeb.Views.Helpers do
     end
   end
 
+  def shorten(field) do
+    if String.length(field) > 36 do
+      String.slice(field, 0..36) <> "..."
+    else
+      field
+    end
+  end
+
   def college_chart_data(majors) do
 
     majors = majors
