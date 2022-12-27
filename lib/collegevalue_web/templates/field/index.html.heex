@@ -17,14 +17,14 @@
 <%= for field <- @fields do %>
     <tr class="md:block">
 
-      <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= live_patch "#{field.name}", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name), class: "text-green no-underline" %></td>
-      <td class="count-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= field.count %></td>
-      <td class="debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(field.debt_avg) %></td>
-      <td class="debtmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(field.debt_min) %></td>
-      <td class="debtmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(field.debt_max) %></td>
-      <td class="earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(field.earn_avg) %></td>
-      <td class="earnmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(field.earn_min) %></td>
-      <td class="earnmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(field.earn_max) %></td>
+      <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= live_patch "#{field.name}", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name), class: "text-green no-underline" %></td>
+      <td class="count-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= field.count %></td>
+      <td class="debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.debt_avg) %></td>
+      <td class="debtmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.debt_min) %></td>
+      <td class="debtmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.debt_max) %></td>
+      <td class="earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.earn_avg) %></td>
+      <td class="earnmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.earn_min) %></td>
+      <td class="earnmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.earn_max) %></td>
 
     </tr>
 <% end %>

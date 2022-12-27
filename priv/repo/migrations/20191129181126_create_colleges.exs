@@ -7,7 +7,7 @@ defmodule Collegevalue.Repo.Migrations.CreateColleges do
       add :city, :string
       add :state, :string
       add :zip, :string
-      add :opeid, :integer
+      add :opeid, :string
       add :unitid, :integer
       add :control, :string
       add :url, :string
@@ -48,7 +48,7 @@ defmodule Collegevalue.Repo.Migrations.CreateColleges do
       timestamps()
     end
 
-    create unique_index(:colleges, [:name])
+    create unique_index(:colleges, [:name, :state])
     create unique_index(:colleges, [:unitid])
   end
 end

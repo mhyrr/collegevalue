@@ -122,7 +122,7 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   def shorten(field) do
     if String.length(field) > 36 do
-      String.slice(field, 0..36) <> "..."
+      String.slice(field, 0..35) <> "..."
     else
       field
     end

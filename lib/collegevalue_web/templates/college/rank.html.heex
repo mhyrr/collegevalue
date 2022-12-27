@@ -1,7 +1,10 @@
 <h1 class="text-green-500">Listing Ranks</h1>
 
 <section>
-
+  <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
+    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow" %>
+    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow" %>
+  <% end %>
 
 
 </section>

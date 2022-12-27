@@ -111,13 +111,44 @@ defmodule Collegevalue.Colleges do
 
   def get_college(id), do: Repo.get(College, id)
 
-  def get_college_by_name!(name), do: Repo.get_by!(College, name: name)
+  def get_college_by_name!(name) do
 
-  def get_college_by_name(name), do: Repo.get_by(College, name: name)
+    try do
+      IO.inspect("ok")
+      Repo.get_by!(College, name: name)
+    rescue
+      err -> IO.inspect(err)
+    end
+
+  end
+
+  def get_college_by_name(name) do
+
+    try do
+      Repo.get_by(College, name: name)
+    rescue
+      err ->
+        {:error, err}
+    end
+  end
+
+  def get_college_by_name_and_unitid!(name, id), do: Repo.get_by!(College, name: name, unitid: id)
+
+  def get_college_by_name_and_unitid(name, id), do: Repo.get_by(College, name: name, unitid: id)
+
+  def get_college_by_name_and_opeid!(name, id), do: Repo.get_by!(College, name: name, opeid: id)
+
+  def get_college_by_name_and_opeid(name, id), do: Repo.get_by(College, name: name, opeid: id)
+
+  ## Problem: opeid is not unique
 
   def get_college_by_opeid!(id), do: Repo.get_by!(College, opeid: id)
 
   def get_college_by_opeid(id), do: Repo.get_by(College, opeid: id)
+
+  def get_college_by_unitid!(id), do: Repo.get_by!(College, unitid: id)
+
+  def get_college_by_unitid(id), do: Repo.get_by(College, unitid: id)
 
 
 
