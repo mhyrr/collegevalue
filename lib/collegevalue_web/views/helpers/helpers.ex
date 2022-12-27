@@ -5,7 +5,9 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   @field_rank_views [
     {"Top College/Majors By Debt to Earnings Ratio", "top_debt_to_earnings"},
-    {"Bottom College/Majors By Debt to Earnigns Ratio", "bottom_debt_to_earnings"}
+    {"Bottom College/Majors By Debt to Earnigns Ratio", "bottom_debt_to_earnings"},
+    {"Top College/Majors by Earnings Only", "top_earnings"},
+    {"Bottom College/Majors by Earnings Only", "bottom_earnings"}
   ]
 
 

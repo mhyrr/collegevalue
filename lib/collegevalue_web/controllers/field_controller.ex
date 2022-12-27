@@ -18,9 +18,13 @@ defmodule CollegevalueWeb.FieldController do
         Fields.get_bachelors_debt_earnings("top", count)
       "bottom_debt_to_earnings" ->
         Fields.get_bachelors_debt_earnings("bottom", count)
+      "top_earnings" ->
+        Fields.get_bachelors_earnings("top", count)
+      "bottom_earnings" ->
+        Fields.get_bachelors_earnings("bottom", count)
     end
 
-    render(conn, "rank.html", ranks: ranks)
+    render(conn, "rank.html", ranks: ranks, ranking: ranking)
   end
 
   def rank(conn, _params) do

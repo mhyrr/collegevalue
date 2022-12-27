@@ -17,6 +17,7 @@
 
 
   </div>
+
 </section>
 
 <section>
@@ -57,8 +58,10 @@
         <td class="admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
         <td class="debt-field md:border-none md:relative md:block  xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>
-        <td class="earnings-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= cash(rank.payoff) %></td>
-        <td class="diff-field md:border-none md:relative md:block xl:text-sm font-bold whitespace-wrap border-b "><%= cash(rank.diff) %></td>
+
+        <td class={"earnings-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_earnings" || @ranking == "bottom_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.payoff) %></td>
+
+           <td class={"diff-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_debt_to_earnings" || @ranking == "bottom_debt_to_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.diff) %></td>
 
       </tr>
     <% end %>

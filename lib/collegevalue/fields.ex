@@ -44,6 +44,37 @@ defmodule Collegevalue.Fields do
 
   def get_field!(name), do: Repo.get_by(Field, name: name)
 
+  def get_bachelors_earnings(sort \\ "top", limit \\ 100) do
+
+    direction = if sort == "top", do: :desc, else: :asc
+
+    query = from c in College,
+      join: d in Discipline,
+      on: c.id == d.college_id,
+      where: d.credential_level == 3 and d.earnings_1yr != -1,
+      select: %Rank{
+        field_name: d.name,
+        credential_level: d.credential_level,
+        cost: d.pp_debt_mean,
+        cost_field: "Debt Mean",
+        payoff: d.earnings_1yr,
+        payoff_field: "Field Earnings",
+        diff: fragment("d1.earnings_1yr - d1.pp_debt_mean as diff"),
+        college_name: c.name,
+        college_id: c.id,
+        admissions: c.admissions_rate,
+        sat_avg: c.sat_avg,
+        url: c.url
+      },
+      order_by: [{^direction, d.earnings_1yr}],
+      limit: ^limit
+
+    # IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
+
+    Repo.all(query)
+
+  end
+
   def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100) do
 
     direction = if sort == "top", do: :desc, else: :asc
