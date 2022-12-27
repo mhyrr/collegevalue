@@ -54,7 +54,7 @@ defmodule CollegevalueWeb.Views.Helpers do
     "No data"
   end
 
-  def sat(-1.0) do
+  def sat(-1) do
     "No data"
   end
 
@@ -80,6 +80,8 @@ defmodule CollegevalueWeb.Views.Helpers do
         "No data"
       -1 ->
         "No data"
+      "No data" -> #gross
+        "No data"
       _ ->
         Number.Currency.number_to_currency(dollars)
     end
@@ -97,6 +99,8 @@ defmodule CollegevalueWeb.Views.Helpers do
       "acc" ->
         "None"
       -1.0 ->
+        "No data"
+      -1 ->
         "No data"
       _ ->
         geo
