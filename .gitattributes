@@ -2,5 +2,4 @@ data/2020_Fields.csv filter=lfs diff=lfs merge=lfs -text
 data/2020_Institutions.csv filter=lfs diff=lfs merge=lfs -text
 data/Most-Recent-Cohorts-Field-of-Study.csv filter=lfs diff=lfs merge=lfs -text
 data/Most-Recent-Cohorts-Institution.csv filter=lfs diff=lfs merge=lfs -text
-data/*.csv filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
