@@ -49,6 +49,5 @@ defmodule Collegevalue.Repo.Migrations.CreateColleges do
     end
 
     create unique_index(:colleges, [:name, :state])
-    create unique_index(:colleges, [:unitid])
   end
 end

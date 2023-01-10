@@ -106,6 +106,5 @@ defmodule Collegevalue.Colleges.College do
         ])
     |> validate_required([:name, :city, :state, :zip, :opeid, :unitid, :control, :url, :accreditation])
     |> unique_constraint([:name, :state])
-    |> unique_constraint(:unitid)
   end
 end

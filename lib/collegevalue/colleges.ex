@@ -146,6 +146,8 @@ defmodule Collegevalue.Colleges do
 
   def get_college_by_opeid(id), do: Repo.get_by(College, opeid: id)
 
+  ## Problem: unitid is not unique
+
   def get_college_by_unitid!(id), do: Repo.get_by!(College, unitid: id)
 
   def get_college_by_unitid(id), do: Repo.get_by(College, unitid: id)

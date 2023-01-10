@@ -103,6 +103,7 @@ defmodule Helpers do
             {:ok, res} ->
               {:ok, res}
             {:error, err} ->
+              IO.binwrite(file, "UNITID was NULL, #{record["INSTNM"]}")
               IO.binwrite(file, Helpers.changeset_error_to_string(err))
               {type, name} = Ecto.Changeset.fetch_field(err, :name)
               IO.binwrite(file, "#{type}: #{name}\n\n")
@@ -125,12 +126,13 @@ defmodule Helpers do
               city: "unknown city",
               state: "unknown state",
               zip: "unknown zip",
-              url: "unknown url",
+              url: "https://www.google.com/search?q=#{record["INSTNM"]}",
               accreditation: "unknown acc",
             } ) do
             {:ok, res} ->
               {:ok, res}
             {:error, err} ->
+              IO.binwrite(file, "UNITID and NAME, #{record["INSTNM"]}, #{record["UNITID"]}")
               IO.binwrite(file, Helpers.changeset_error_to_string(err))
               {type, name} = Ecto.Changeset.fetch_field(err, :name)
               IO.binwrite(file, "#{type}: #{name}\n")
@@ -358,6 +360,7 @@ ccount = File.stream!("data/Most-Recent-Cohorts-Institution.csv")
       {:error, error} ->
         IO.inspect("ERROR")
         IO.inspect(error)
+        IO.binwrite(file, "Tried creating a college from institution data")
         IO.binwrite(file, Helpers.changeset_error_to_string(error))
         {type, name} = Ecto.Changeset.fetch_field(error, :name)
         IO.binwrite(file, "#{type}: #{name}\n\n")
@@ -449,6 +452,7 @@ adtl = File.stream!("data/Most-Recent-Cohorts-Field-of-Study.csv")
       {:ok, res}
     {:error, err} ->
       {:error, err}
+      IO.binwrite(file, "Create discipline")
       IO.binwrite(file, Helpers.changeset_error_to_string(err))
       {type, name} = Ecto.Changeset.fetch_field(err, :name)
       IO.binwrite(file, "#{type}: #{name}\n\n")

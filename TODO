@@ -1,0 +1,14 @@
+# Todo
+
+- Control field to real text
+- College Titles
+
+
+# Weird Outliers
+
+- http://localhost:4000/fields/Hospitality%20Administration%2FManagement?order=desc&sort_by=earnings
+Hospitality Management certificate?
+- http://localhost:4000/fields/Registered%20Nursing%2C%20Nursing%20Administration%2C%20Nursing%20Research%20and%20Clinical%20Nursing?order=desc&sort_by=earnings
+Certificate from U Penn for Nursing
+- Nursing Rules the debt to earnings ratio
+- Analyze U Phoenix and Strayer relationships

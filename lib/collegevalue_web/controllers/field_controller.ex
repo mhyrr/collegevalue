@@ -27,6 +27,10 @@ defmodule CollegevalueWeb.FieldController do
     render(conn, "rank.html", ranks: ranks, ranking: ranking)
   end
 
+  def rank(conn, %{}) do
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings")
+  end
+
   def rank(conn, _params) do
     render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings)
   end
