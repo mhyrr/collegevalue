@@ -15,6 +15,11 @@ alias Collegevalue.Colleges
 # Full data dictionary: https://collegescorecard.ed.gov/assets/FullDataDocumentation.pdf
 # Fields data dictionary: https://collegescorecard.ed.gov/assets/FieldOfStudyDataDocumentation.pdf
 
+{_, [institutions, fields], _} = OptionParser.parse(System.argv, strict: [])
+
+IO.inspect(institutions)
+IO.inspect(fields)
+
 defmodule Helpers do
 
   def check_incomplete(value) do
@@ -154,7 +159,7 @@ IO.inspect("Parsing cohort data..")
 {:ok, file} = File.open "data/error.log", [:append, {:delayed_write, 100, 20}]
 
 # ccount = File.stream!("data/All100_new.csv")
-ccount = File.stream!("data/Most-Recent-Cohorts-Institution.csv")
+ccount = File.stream!(institutions)
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
     # IO.inspect("record..")
@@ -377,7 +382,7 @@ ccount = File.stream!("data/Most-Recent-Cohorts-Institution.csv")
 IO.inspect("Parsing field data..")
 
 # adtl = File.stream!("data/Field100_new.csv")
-adtl = File.stream!("data/Most-Recent-Cohorts-Field-of-Study.csv")
+adtl = File.stream!(fields)
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 

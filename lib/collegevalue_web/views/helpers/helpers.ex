@@ -1,6 +1,7 @@
 defmodule CollegevalueWeb.Views.Helpers do
 
   alias Collegevalue.Credential
+  alias Collegevalue.Control
   alias Collegevalue.Colleges.College
 
   @field_rank_views [
@@ -70,6 +71,28 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   def degree(level) do
     Credential.lookup(level)
+  end
+
+  def control(control) do
+    case Integer.parse(control) do
+      {c, _} ->
+        IO.inspect(c)
+        Control.lookup(c)
+      _ ->
+        control
+    end
+  end
+
+  def accreditation(acc) do
+    case acc do
+
+      "NULL" ->
+        "None Listed"
+      "EXEMPT" ->
+        "Exempt"
+      _ ->
+        acc
+    end
   end
 
   def cash(nil) do

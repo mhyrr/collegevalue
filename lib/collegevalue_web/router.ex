@@ -18,6 +18,7 @@ defmodule CollegevalueWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/data", PageController, :data
 
     get "/colleges", CollegeController, :index
     get "/colleges/rank", CollegeController, :rank
@@ -28,6 +29,7 @@ defmodule CollegevalueWeb.Router do
     live "/fields/:name", FieldsLive.Show
 
     live "/search", SearchLive
+
 
   end
 

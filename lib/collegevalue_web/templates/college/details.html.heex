@@ -1,4 +1,4 @@
-<h1 class="text-darkgreen"><%= @college.name %></h1>
+<h1 class="text-2xl text-darkgreen"><%= @college.name %></h1>
 
 <div class="mt-10">
       <ul class="list-none xl:grid xl:grid-cols-2 xl:col-gap-4 xl:row-gap-2 md:block bg-white-900">
@@ -15,8 +15,8 @@
                 <ul class="list-none mt-2 text-base md:-px-2 leading-6 text-gray-900">
                     <li><strong class="text-green">Name:</strong> <a href={"https://#{@college.url}"} class="no-underline text-green"><%= @college.name %></a></li>
                     <li><strong class="text-green">Location:</strong> <%= address(@college) %></li>
-                    <li><strong class="text-green">Control:</strong> <%= @college.control %></li>
-                    <li><strong class="text-green">Accreditation:</strong> <%= defaults(@college.accreditation) %></li>
+                    <li><strong class="text-green">Control:</strong> <%= control(@college.control) %></li>
+                    <li><strong class="text-green">Accreditation:</strong> <%= accreditation(defaults(@college.accreditation)) %></li>
 
                 </ul>
             </div>

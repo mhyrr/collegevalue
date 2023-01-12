@@ -1,0 +1,107 @@
+<div class="bg-white">
+  <section class="phx-hero">
+    <h1 class="text-darkgreen text-5xl font-display text-center">Welcome to College Value</h1>
+  </section>
+
+  <section class="p-8">
+    <article class="content-center">
+      <h2 class="text-darkgreen text-2xl font-display py-2">Where's This Come From?</h2>
+        <p>
+          All of the data you see here comes from the Department of Education's
+          <a class="text-green" href="https://collegescorecard.ed.gov/data">College Scorecard dataset</a>.  Specifically, it's mashed up from two
+          huge CSV files: Most-Recent-Cohorts-Institution.csv and Most-Recent-Cohorts-Field-of-Study.csv
+        </p>
+        <br/>
+        <ul>
+          <li><a class="text-green" href="https://collegescorecard.ed.gov/assets/InstitutionDataDocumentation.pdf">Institution Level Documentation</a></li>
+          <li><a class="text-green" href="https://collegescorecard.ed.gov/assets/FieldOfStudyDataDocumentation.pdf">Field of Study Level Documentation</a></li>
+        </ul>
+        <br/>
+        <p>
+          To be honest, some of the data is kind of a pain. For instance, there are multiple colleges with the same name, which is especially true for
+          cosmetology schools.  Some are different branches in different areas and some are unrelated.  There are other cases where the OPEID or UNITID fields
+          are either blank or incorrect (for example, they refer to the main campus rather than the satellite campus that the data is for).  In other cases,
+          the primary URL for a school is empty or just plain wrong.  So there's issues here and there.  As we find these, we'll try to get them updated.
+        </p>
+        <br/>
+        <p>
+          The data is only based on federal student loan and grant programs, so it does not include those who take out private loans, or have the good fortune
+          to be able to cover the cost of college themselves, or scholarships, etc.
+        </p>
+    </article>
+    <article class="Details">
+      <h4 class="text-darkgreen text-xl font-display py-4">Graduation Rates</h4>
+        <p>I was surprisied to learn that the Dept. of Education measures completion rates at the 8 year mark.  So when you look on collegescorecard
+        at a specific school and see their graduation rate - for example, at
+        <a class="text-green" href="https://collegescorecard.ed.gov/school/?183257-Granite-State-College">Granite State College</a> you'll see a rate of 42%.
+        This is the 8 year rate, which they mention in the small print infobox, if you hover over it.  There's probably good reasons for this.  Granite State is
+        an online college, and so the students are going to be far more likely to already have fulltime jobs and families.  But it seems a bit disingenuous, especially
+        when the 6 year graduation rate is only 14% and the 4 year rate is 3%!
+       </p>
+      <h4 class="text-darkgreen text-xl font-display py-4">Incomes</h4>
+      <p>Incomes for both college and field rankings are based on numbers 1 year post-graduation.  Median earnings at the college level are measured at 6-10
+      year levels and are listed for colleges, but I think there are some questions to detail here.
+      <br/><br/>
+      DOE has started breaking this up based on family income, but this isn't represented here yet.  They have three
+      terciles for this: low-income: $30,000 or less; middle-income: $30,001-$75,000; and high-income: $75,001+.  Another open question I have is how payback
+      rate affects what is reported.  In other words, I believe the only income statistics received are for those still paying loans.  If some students are
+      able to pay off their loans much quicker, their (possibly skewed higher) income is not accounted.  This would affect 6-10 year median incomes much more than
+      the 1 year post-graduation incomes used here to compile rankings.
+      <br/><br/>
+      One of the reasons for building this site in the first place is to test the hypothesis that the correlation of majors and colleges together often matter
+      more than either variable alone.  It appears that this is the case, for example the expected earnings across nursing degrees varies wildly, especially when
+      accounting for debt loads and graduation rates.
+      <br/><br/>
+      It's important to note that this is still a very limited and possibly skewed view.  Some details noted by the DOE:
+      <blockquote>
+          One of the most common reasons students cite in choosing to go to college is the expansion of
+employment opportunities. To that end, data on the earnings and employment prospects of former
+students can provide key information. To measure the labor market outcomes of individuals attending
+institutions of higher education, data on cohorts of federally aided undergraduate students were linked
+with earnings data from de-identified tax records and reported back at the aggregate, institutional level.
+Mean earnings data elements at the institution-level were last updated in the fall of 2018.
+</blockquote>
+<blockquote>
+There are two notable limitations that researchers should keep in mind for all of these metrics. First,
+research suggests that the variation across programs within an institution may be even greater than
+aggregate earnings across institutions. For information related to more recent earnings calculations by
+field of study, please see the technical documentation for field of study data files. Second, the data
+include only Title IV-receiving students, so figures may not be representative of institutions with a low
+proportion of Title IV-eligible students. Additionally, the data are restricted to students who are not
+enrolled (enrolled means having an in-school deferment status for at least 30 days of the measurement
+so students who are currently enrolled in, for example, graduate school at the time of
+measurement are excluded.
+        </blockquote>
+      </p>
+      <h4 class="text-darkgreen text-xl font-display py-4">Debt Loads</h4>
+      <p>One key insight is that the amount of debt incurred is independent from completion rate, and the students are still beholden to this debt load!
+      As <a class="text-green" href="https://www.amazon.com/Case-against-Education-System-Waste/dp/0691196451/ref=sr_1_1?keywords=case+against+education+caplan&qid=1673542269&sprefix=case+against+ed%2Caps%2C183&sr=8-1">Bryan Caplan</a>
+      and others have pointed out, the majority of the value of an undergraduate degree is in the last year and actually receiving the diploma rather than averaged
+      over 4 years.
+      <br/><br/>
+        The DOE says:
+        <blockquote>
+          "At institutions where large numbers of students withdraw before completion, a lower median debt level could simply reflect the lack of time that a typical student spends at the institution. Therefore, the Department uses the typical debt level for students who complete (GRAD_DEBT_MDN_SUPP or GRAD_DEBT_MDN10YR_SUPP for the debt level expressed in monthly payments26) on the consumer website. Additionally, this measure can be placed in context by looking at the borrowing rate of students at the institution (FTFTPCTFLOAN; see above); at institutions where few students borrow, the numbers may represent outliers."
+        </blockquote>
+      <br/>
+      For colleges, we break this down and show median debt for graduates, withdrawals, and both.  For individual majors, the debt is based on the loans for only those students who completed the program.
+      </p>
+      <h4 class="text-darkgreen text-xl font-display py-4">Privacy</h4>
+      <p>This is a sparse matrix.  A lot of the data is empty to maintain student privacy.  We can still get bigger trends in a lot of cases, but
+      smaller institutions or fields will not have much data.
+      <br/>
+      DOE:
+      <blockquote>
+         ..Those data that do not meet
+reporting standards are shown as PrivacySuppressed. Note that for many elements, we have also taken
+additional steps to ensure data are stable from year to year and representative of a certain number of
+students. For many elements, data are pooled across two years of data to reduce year-over-year
+variability in figures (i.e. repayment rate, debt figures, earnings). Moreover, for elements that are
+highlighted on the consumer-facing College Scorecard, a separate version of the element is available
+that suppresses data for institutions with fewer than 30 students in the denominator to ensure data are
+as representative as possible.
+      </blockquote>
+      </p>
+    </article>
+  </section>
+</div>

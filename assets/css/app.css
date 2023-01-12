@@ -11,6 +11,23 @@ a {
     @apply  no-underline;
 }
 
+blockquote {
+    padding: 1em;
+    margin: 1em;
+    width: 96%;
+
+    background: linear-gradient(135deg,rgba(255,255,255,0.6) 0%,rgba(26,147, 111,0.4) 200%);
+    border-radius: 8px;
+    /* background-color: rgba(26 147 111, 0.3); */
+
+    @media (min-width: 768px) {
+        padding: 1em;
+        margin: 1em;
+        width: 92%;
+    }
+
+}
+
 #full_body {
     background-color: #ffffff;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%2388d498' fill-opacity='0.16'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
