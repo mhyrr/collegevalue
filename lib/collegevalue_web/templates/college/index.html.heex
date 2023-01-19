@@ -42,12 +42,12 @@
   <tbody class="md:block">
 <%= for college <- @colleges.results do %>
     <tr class="md:block">
-      <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@conn, :show, college.name), class: "no-underline text-green"%></td>
+      <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@conn, :show, college.unitid, college.name), class: "no-underline text-green"%></td>
       <td class="city-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.city) %></td>
       <td class="state-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.state) %></td>
-      <td class="opeid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= college.opeid %></td>
-      <td class="unitid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= college.unitid %></td>
-      <td class="control-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= college.control %></td>
+      <td class="opeid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.opeid) %></td>
+      <td class="unitid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.unitid) %></td>
+      <td class="control-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= control(college.control) %></td>
       <td class="accred-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.accreditation) %></td>
 
     </tr>

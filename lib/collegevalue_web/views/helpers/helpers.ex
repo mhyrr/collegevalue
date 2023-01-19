@@ -90,6 +90,8 @@ defmodule CollegevalueWeb.Views.Helpers do
         "None Listed"
       "EXEMPT" ->
         "Exempt"
+      "unknown acc" ->
+        "Unknown"
       _ ->
         acc
     end
@@ -118,6 +120,10 @@ defmodule CollegevalueWeb.Views.Helpers do
       "city" ->
         "Unlisted"
       "state" ->
+        "Unlisted"
+      "unknown city" ->
+        "Unlisted"
+      "unknown state" ->
         "Unlisted"
       "zip" ->
         nil

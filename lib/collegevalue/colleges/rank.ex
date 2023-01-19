@@ -14,6 +14,7 @@ defmodule Collegevalue.Colleges.Rank do
     field :name, :string
     field :college_name, :string
     field :college_id, :integer
+    field :unit_id, :integer
     field :admissions, :float
     field :sat_avg, :float
     field :url, :string

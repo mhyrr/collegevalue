@@ -57,6 +57,7 @@ defmodule Collegevalue.Colleges do
         earnings: d.earnings_1yr,
         earnings_count: d.earnings_1yr_count,
         name: d.name,
+        unit_id: c.unitid,
         college_name: c.name,
         college_id: c.id,
         url: c.url
@@ -170,6 +171,7 @@ defmodule Collegevalue.Colleges do
         payoff_field: ^Atom.to_string(payoff_field),
         diff: fragment("? - ? as diff", field(c, ^payoff_field), field(c, ^cost_field)),
         college_name: c.name,
+        unit_id: c.unitid,
         college_id: c.id,
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,

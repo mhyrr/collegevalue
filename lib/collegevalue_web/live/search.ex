@@ -10,10 +10,11 @@ defmodule CollegevalueWeb.SearchLive do
 
   def render(assigns) do
     ~L"""
-    <form class="bg-lightplain rounded px-2 pt-2 pb-0 mb-4 w-80" phx-change="suggest" phx-submit="search">
+    <form class="bg-lightplain rounded px-2 pt-2 pb-0 mb-4 w-80 md:w-auto md:mb-0 md:px-0" phx-change="suggest" phx-submit="search">
       <div class="search-container">
-      <input class="search-box shadow appearance-none border rounded w-full py-1 px-1 w-80"  type="text" name="q" value="<%= if @result, do: @result, else: @query %>" list="matches" placeholder="Search Schools or Fields.. " phx-debounce="300"
-             <%= if @loading, do: "readonly" %>/>
+      <input class="search-box shadow appearance-none border rounded w-full py-1 px-1 w-80"  type="text" name="q"
+        value="<%= if @result, do: @result, else: @query %>" list="matches" placeholder="Search Schools or Fields.. " phx-debounce="300"
+        <%= if @loading, do: "readonly" %>/>
       <button class="search-button">Go</button>
       <datalist id="matches">
         <%= for match <- @matches do %>
@@ -50,9 +51,27 @@ defmodule CollegevalueWeb.SearchLive do
     case Colleges.get_college_by_name(query) do
       college when is_map(college) ->
         IO.inspect(college)
-        {:noreply, socket |> redirect(to: Routes.college_path(socket, :show, query )) }
+        {:noreply, socket |> redirect(to: Routes.college_path(socket, :show, college.unitid, query )) }
       nil ->
-        {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
+
+        fields = Fields.match_fields_by_name(query)
+
+        case length(fields) do
+
+          n when n == 1 ->
+            IO.inspect("returning")
+            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
+          n when n > 1 ->
+            IO.inspect( fields)
+            send(self(), {:search, query})
+            {:noreply, assign(socket, matches: fields )}
+          0 ->
+            IO.inspect("none..")
+            {:noreply, assign(socket, query: query, result: "Not found", loading: false, matches: [])}
+
+        end
+
+        # {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
         # {:noreply, socket |> redirect(to: Routes.live_path(socket, CollegeValueWeb.FieldsLive.Show, query )) }
     end
 

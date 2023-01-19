@@ -7,11 +7,11 @@
       <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
       <div class="md:pl-0" style="float: left;">
         <label for="price" class="block flex-grow text-sm leading-5 font-medium text-green">Ranking</label>
-          <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow"%>
+          <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 flex-grow"%>
       </div>
       <div class="pl-8 md:pl-0"  style="float: left;">
         <label for="price" class="block text-sm leading-5 font-medium text-green">Count</label>
-          <%= select f, :count, [10, 50, 100, 250, 500, 1000], selected: 100, onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5"%>
+          <%= select f, :count, [10, 50, 100, 250, 500, 1000], selected: 100, onchange: "this.form.submit()", class: "form-input pl-6 pr-8 sm:text-sm sm:leading-5"%>
       </div>
       <% end %>
 
@@ -53,7 +53,7 @@
   <tbody class="md:block">
     <%= for rank <- @ranks do %>
       <tr class="md:block odd:bg-gray-100">
-        <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b text-green"><%= link shorten(rank.college_name), to: Routes.college_path(@conn, :show, rank.college_name) %> </td>
+        <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b text-green"><%= link shorten(rank.college_name), to: Routes.college_path(@conn, :show, rank.unit_id, rank.college_name) %> </td>
         <td class="field-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b text-green"><%= link shorten(rank.field_name), to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
         <td class="admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>

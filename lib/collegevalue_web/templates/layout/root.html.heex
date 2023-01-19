@@ -28,42 +28,72 @@
     <header>
       <section>
 
-        <nav class="md:flex items-center justify-between flex-wrap bg-darkgreen p-4 pl-12 font-display">
+        <nav class="md:flex items-center justify-between flex-wrap bg-darkgreen p-4 pl-12 font-display md:p-4">
           <div class="md:w-full w-auto md:block md:flex-grow flex items-center text-white pb-4">
             <%# <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg> %>
-            <div class="flex-grow">
+            <div class="flex-grow md:text-center">
               <span class="font-semibold text-xl tracking-tight"><%= link "CollegeValue", to: "/", class: "no-underline text-plainlight" %></span>
             </div>
-            <div class="md:mt-0">
+            <div class="md:items-center">
               <%= live_render @conn, CollegevalueWeb.SearchLive %>
             </div>
 
           </div>
-          <div class="md:block hidden">
-            <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-              <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-            </button>
-          </div>
-          <div class="md:w-full md:block md:flex-grow flex items-center w-auto md:mt-0">
+          <!-- Gross but sep. for now -->
+          <div id="mobileMenu" class="md:block hidden">
+            <input id="toggle-menu" type="checkbox" class="hidden" checked/>
+            <div class="md:block hidden">
+              <label for="toggle-menu" class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+              </label>
+            </div>
+            <div id="topMenu" class="md:w-full md:block md:flex-grow block items-center w-auto md:mt-0">
 
-            <div class="md:text-sm flex-grow">
-              <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
-                <%= link "Colleges", to: "/colleges", class: "no-underline text-plainlight" %>
+              <div class="md:text-sm flex">
+                <div class="grow">
+                  <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                    <%= link "Colleges", to: "/colleges", class: "no-underline text-plainlight" %>
+                  </div>
+                  <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                    <%= link "Top College Rankings", to: "/colleges/rank", class: "no-underline text-plainlight" %>
+                  </div>
+                  <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                    <%= link "Fields", to: "/fields", class: "no-underline text-plainlight" %>
+                  </div>
+                  <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                    <%= link "Top Field Rankings", to: "/fields/rank", class: "no-underline text-plainlight" %>
+                  </div>
+                </div>
+                <span class="md:text-sm md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4"><%= link "About The Data", to: "/data", class: "no-underline text-plainlight" %></span>
+
               </div>
-              <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
-                <%= link "Top College Rankings", to: "/colleges/rank", class: "no-underline text-plainlight" %>
-              </div>
-              <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
-                <%= link "Fields", to: "/fields", class: "no-underline text-plainlight" %>
-              </div>
-              <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
-                <%= link "Top Field Rankings", to: "/fields/rank", class: "no-underline text-plainlight" %>
+
+            </div>
+          </div>
+          <div id="normalMenu" class="md:hidden block">
+            <div class="md:w-full md:block md:flex-grow block items-center w-auto md:mt-0">
+
+                <div class="md:text-sm flex">
+                  <div class="grow">
+                    <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                      <%= link "Colleges", to: "/colleges", class: "no-underline text-plainlight" %>
+                    </div>
+                    <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                      <%= link "Top College Rankings", to: "/colleges/rank", class: "no-underline text-plainlight" %>
+                    </div>
+                    <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                      <%= link "Fields", to: "/fields", class: "no-underline text-plainlight" %>
+                    </div>
+                    <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
+                      <%= link "Top Field Rankings", to: "/fields/rank", class: "no-underline text-plainlight" %>
+                    </div>
+                  </div>
+                  <span class="md:text-sm md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4"><%= link "About The Data", to: "/data", class: "no-underline text-plainlight" %></span>
+
+                </div>
+
               </div>
             </div>
-
-            <span class="inline-block mr-4 tracking-tight"><%= link "About The Data", to: "/data", class: "no-underline text-plainlight" %></span>
-
-          </div>
         </nav>
 
       </section>
@@ -79,7 +109,7 @@
 
     <footer class="text-center mt-6 pb-6 h-10">
       <p class="text-green-600">
-        An <a class="border-b mb-1" href="https://ajtroy.com">AJ Troy</a> Production. <svg class="h-5 w-5 text-red-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+        An <a class="border-b mb-1" href="https://ajtroy.com">AJ Troy</a> Project. <svg class="h-5 w-5 text-red-600 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
       </p>
     </footer>
   </body>

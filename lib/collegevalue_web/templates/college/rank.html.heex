@@ -2,8 +2,8 @@
 
 <section>
   <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow" %>
-    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-7 pr-12 sm:text-sm sm:leading-5 flex-grow" %>
+    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()", class: "form-input pl-3 pr-0 sm:text-sm sm:leading-5 flex-grow" %>
+    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-3 pr-8 sm:text-sm sm:leading-5 flex-grow" %>
   <% end %>
 
 
@@ -24,8 +24,7 @@
 
   <%= for rank <- @ranks do %>
     <tr class="md:block">
-      <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.college_name), class: "no-underline text-green" %> </td>
-
+      <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.unit_id, rank.college_name), class: "no-underline text-green" %> </td>
       <td class="admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
       <td class="sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(rank.sat_avg)%></td>
       <td class="cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>

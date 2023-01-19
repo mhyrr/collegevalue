@@ -36,9 +36,9 @@ defmodule CollegevalueWeb.CollegeController do
     render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs)
   end
 
-  def show(conn, %{"name" => name}) do
+  def show(conn, %{"name" => name, "unitid" => unitid}) do
 
-    college = Colleges.get_college_by_name!(URI.decode(name))
+    college = Colleges.get_college_by_name_and_unitid!(URI.decode(name), unitid)
     majors = Colleges.get_majors_by_college(college.name)
 
     render(conn, "show.html", college: college, majors: majors)
