@@ -9,7 +9,7 @@ defmodule CollegevalueWeb.CollegeController do
     # per_page = params["per_page"] || 100
 
     colleges = Colleges.list_colleges(:paged, page)
-    render(conn, "index.html", colleges: colleges)
+    render(conn, "index.html", colleges: colleges, page_title: "All Colleges")
   end
 
   def rank(conn, %{"rank" => ranking, "count" => count}) do
@@ -29,11 +29,11 @@ defmodule CollegevalueWeb.CollegeController do
         Colleges.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :bottom, count)
     end
 
-    render(conn, "rank.html", ranks: ranks)
+    render(conn, "rank.html", ranks: ranks, page_title: "Ranked Colleges")
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs)
+    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs, page_title: "Ranked Colleges")
   end
 
   def show(conn, %{"name" => name, "unitid" => unitid}) do
@@ -41,7 +41,7 @@ defmodule CollegevalueWeb.CollegeController do
     college = Colleges.get_college_by_name_and_unitid!(URI.decode(name), unitid)
     majors = Colleges.get_majors_by_college(college.name)
 
-    render(conn, "show.html", college: college, majors: majors)
+    render(conn, "show.html", college: college, majors: majors, page_title: name)
   end
 
 

@@ -8,7 +8,8 @@ defmodule CollegevalueWeb.PageController do
     render(conn, "home.html",
       run_mode: run_mode,
       phoenix_ver: Application.spec(:phoenix, :vsn),
-      elixir_ver: System.version()
+      elixir_ver: System.version(),
+      page_title: "CollegeValue"
     )
   end
 
@@ -18,7 +19,8 @@ defmodule CollegevalueWeb.PageController do
     render(conn, "data.html",
       run_mode: run_mode,
       phoenix_ver: Application.spec(:phoenix, :vsn),
-      elixir_ver: System.version()
+      elixir_ver: System.version(),
+      page_title: "About the Data"
     )
   end
 

@@ -23,7 +23,7 @@
           </div>
         </li>
         <li class="mt-10 md:mt-0">
-          <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden ">
+          <div class="flex md:block md:px-0 py-2 px-4 rounded  ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
 
@@ -34,41 +34,85 @@
                 <ul class="list-none mt-2 text-base leading-6 text-gray-900">
                     <li><strong class="text-green">Admissions Rate</strong> <%= percent(@college.admissions_rate) %></li>
                     <li><strong class="text-green">Average SAT Scores</strong> <%= defaults(@college.sat_avg) %></li>
-                    <li><strong class="text-green">Four Year Completion Rate</strong> <%= percent(@college.fouryear_100_completion) %></li>
-                    <li><strong class="text-green">Six Year Completion Rate</strong> <%= percent(@college.fouryear_150_completion) %></li>
+                    <li class="hover-text">
+                      <strong class="text-green">Four Year Completion Rate</strong> <%= percent(@college.fouryear_100_completion) %>
+                      <span class="tooltip-text-left" >Completion rates for full-time, first-time students within 4 years</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Six Year Completion Rate</strong> <%= percent(@college.fouryear_150_completion) %>
+                      <span class="tooltip-text-left"  >Completion rates for full-time, first-time students within 6 years</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Eight Year Completion Rate</strong> <%= percent(@college.fouryear_200_completion) %>
+                      <span class="tooltip-text-left"  >Completion rates for full-time, first-time students within 8 years.  This is what is normally reported for college completion rates.</span>
+                    </li>
                 </ul>
             </div>
           </div>
         </li>
         <li class="mt-10 md:mt-0">
-          <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden ">
+          <div class="flex md:block md:px-0 py-2 px-4 rounded  ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
 
               </div>
             </div>
-            <div class="ml-4 md:ml-0">
+            <div class="ml-4 md:ml-0 ">
                 <h4 class="text-lg leading-6 font-medium  text-darkgreen">Costs</h4>
-                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
-                    <li><strong class="text-green">Yearly Costs:</strong> <%= cash(@college.yearly_cost )%></li>
-                    <li><strong class="text-green">Out of State Tuition:</strong> <%= cash(defaults(@college.tuition_out)) %></li>
-                    <li><strong class="text-green">In State Tuition:</strong> <%= cash(defaults(@college.tuition_in)) %></li>
-                    <li><strong class="text-green">Median Debt:</strong> <%= cash(defaults(@college.debt_median)) %></li>
-                    <li><strong class="text-green">Median Debt for Graduates:</strong> <%= cash(@college.graduated_debt_median) %></li>
-                    <li><strong class="text-green">Median Debt for Withdrawals:</strong> <%= cash(@college.withdrawn_debt_median) %></li>
+                <ul class="list-none mt-2 text-base leading-6 text-gray-900 ">
+                    <li class="hover-text">
+                      <strong class="text-green">Yearly Costs:</strong> <%= cash(@college.yearly_cost )%>
+                      <span class="tooltip-text"  >The average annual cost of attendance includes tuition and fees, books and supplies, and living expenses for all full-time, first-time, degree-certificate-seeking undergraduates</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Out of State Tuition:</strong> <%= cash(defaults(@college.tuition_out)) %>
+                      <span class="tooltip-text"  >Tuition and required fees for out-of-state students</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">In State Tuition:</strong> <%= cash(defaults(@college.tuition_in)) %>
+                      <span class="tooltip-text"  >Tuition and required fees for in-state students</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median Debt Total:</strong> <%= cash(defaults(@college.debt_median)) %>
+                      <span class="tooltip-text"  >Median loan debt accumulated at the institution (the sum of all undergraduate federal loans over students’ college education at the institution for which the median debt is reported)</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median Debt for Graduates:</strong> <%= cash(@college.graduated_debt_median) %>
+                      <span class="tooltip-text"  >Median loan debt accumulated for only graduates</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median Debt for Withdrawals:</strong> <%= cash(@college.withdrawn_debt_median) %>
+                      <span class="tooltip-text"  >Median loan debt accumulated for only graduates</span>
+                    </li>
 
 
-                    <li><strong class="text-green">Net Price Quintile 1</strong> <%= cash(defaults(@college.netprice_1)) %></li>
-                    <li><strong class="text-green">Net Price Quintile 2</strong> <%= cash(defaults(@college.netprice_2)) %></li>
-                    <li><strong class="text-green">Net Price Quintile 3</strong> <%= cash(defaults(@college.netprice_3)) %></li>
-                    <li><strong class="text-green">Net Price Quintile 4</strong> <%= cash(defaults(@college.netprice_4)) %></li>
-                    <li><strong class="text-green">Net Price Quintile 5</strong> <%= cash(defaults(@college.netprice_5)) %></li>
+                    <li class="hover-text">
+                      <strong class="text-green">Net Price Quintile 1</strong> <%= cash(defaults(@college.netprice_1)) %>
+                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $0-$30,000</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Net Price Quintile 2</strong> <%= cash(defaults(@college.netprice_2)) %>
+                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $30,001-$48,000</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Net Price Quintile 3</strong> <%= cash(defaults(@college.netprice_3)) %>
+                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $48,001-$75,000</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Net Price Quintile 4</strong> <%= cash(defaults(@college.netprice_4)) %>
+                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of  $75,001-$110,000</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Net Price Quintile 5</strong> <%= cash(defaults(@college.netprice_5)) %>
+                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $110,000+</span>
+                    </li>
+
                 </ul>
             </div>
           </div>
         </li>
         <li class="mt-10 md:mt-0">
-          <div class="flex md:block md:px-0 py-2 px-4 rounded overflow-hidden">
+          <div class="flex md:block md:px-0 py-2 px-4 rounded ">
             <div class="flex-shrink-0">
               <div class="flex items-center justify-center h-12 w-12 rounded-md ">
 
@@ -78,11 +122,26 @@
 
                 <h4 class="text-lg leading-6 font-medium  text-darkgreen">Earnings</h4>
                 <ul class="list-none mt-2 text-base leading-6 text-gray-900">
-                    <li><strong class="text-green">Median 6 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after6)) %></li>
-                    <li><strong class="text-green">Median 7 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after7)) %></li>
-                    <li><strong class="text-green">Median 8 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after8)) %></li>
-                    <li><strong class="text-green">Median 9 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after9)) %></li>
-                    <li><strong class="text-green">Median 10 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after10)) %></li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median 6 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after6)) %>
+                      <span class="tooltip-text-left">Median earnings measured 6 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median 7 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after7)) %>
+                      <span class="tooltip-text-left">Median earnings measured 7 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median 8 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after8)) %>
+                      <span class="tooltip-text-left">Median earnings measured 8 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median 9 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after9)) %>
+                      <span class="tooltip-text-left">Median earnings measured 9 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
+                    </li>
+                    <li class="hover-text">
+                      <strong class="text-green">Median 10 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after10)) %>
+                      <span class="tooltip-text-left">Median earnings measured 10 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
+                    </li>
                 </ul>
 
             </div>

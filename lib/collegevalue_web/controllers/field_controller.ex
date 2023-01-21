@@ -8,7 +8,7 @@ defmodule CollegevalueWeb.FieldController do
     field = Fields.get_field!(name)
     majors = Colleges.get_majors_by_field(field.name)
 
-    render(conn, "show.html", field: field, majors: majors)
+    render(conn, "show.html", field: field, majors: majors, page_title: name)
   end
 
   def rank(conn, %{"rank" => ranking, "count" => count}) do
@@ -24,15 +24,15 @@ defmodule CollegevalueWeb.FieldController do
         Fields.get_bachelors_earnings("bottom", count)
     end
 
-    render(conn, "rank.html", ranks: ranks, ranking: ranking)
+    render(conn, "rank.html", ranks: ranks, ranking: ranking, page_title: "Ranked Fields")
   end
 
   def rank(conn, %{}) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings")
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", page_title: "Ranked Fields")
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings)
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings, page_title: "Ranked Fields" )
   end
 
 
