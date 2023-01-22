@@ -52,7 +52,7 @@ if config_env() == :prod do
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :collegevalue, CollegevalueWeb.Endpoint,
-    url: [host: host, port: 443, scheme: "https"],
+    url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -61,7 +61,7 @@ if config_env() == :prod do
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
     ],
-    secret_key_base: secret_key_base
+    secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
 
   # ## Configuring the mailer
   #

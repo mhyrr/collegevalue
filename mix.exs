@@ -68,6 +68,7 @@ defmodule Collegevalue.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["cmd --cd assets npm run deployjs", "tailwind default --minify", "phx.digest"]
+      #In prod calls into the package.json. Note that teh "deploy" task there is used specifically by Gigalixir, so renamed here.
     ]
   end
 end
