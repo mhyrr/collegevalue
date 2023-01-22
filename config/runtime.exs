@@ -52,6 +52,7 @@ if config_env() == :prod do
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :collegevalue, CollegevalueWeb.Endpoint,
+    http: [port: {:system, "PORT"}],
     url: [host: System.get_env("APP_NAME") <> ".gigalixirapp.com", port: 443],
     http: [
       # Enable IPv6 and bind on all interfaces.
