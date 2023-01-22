@@ -61,7 +61,7 @@ if config_env() == :prod do
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
     ],
-    secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
+    secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 
   # ## Configuring the mailer
   #
