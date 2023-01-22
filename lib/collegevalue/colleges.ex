@@ -115,7 +115,6 @@ defmodule Collegevalue.Colleges do
   def get_college_by_name!(name) do
 
     try do
-      IO.inspect("ok")
       Repo.get_by!(College, name: name)
     rescue
       err -> IO.inspect(err)
