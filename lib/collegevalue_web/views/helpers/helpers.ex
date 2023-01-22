@@ -76,7 +76,6 @@ defmodule CollegevalueWeb.Views.Helpers do
   def control(control) do
     case Integer.parse(control) do
       {c, _} ->
-        IO.inspect(c)
         Control.lookup(c)
       _ ->
         control

@@ -50,7 +50,6 @@ defmodule CollegevalueWeb.SearchLive do
 
     case Colleges.get_college_by_name(query) do
       college when is_map(college) ->
-        IO.inspect(college)
         {:noreply, socket |> redirect(to: Routes.college_path(socket, :show, college.unitid, query )) }
       nil ->
 
@@ -59,14 +58,11 @@ defmodule CollegevalueWeb.SearchLive do
         case length(fields) do
 
           n when n == 1 ->
-            IO.inspect("returning")
             {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
           n when n > 1 ->
-            IO.inspect( fields)
             send(self(), {:search, query})
             {:noreply, assign(socket, matches: fields )}
           0 ->
-            IO.inspect("none..")
             {:noreply, assign(socket, query: query, result: "Not found", loading: false, matches: [])}
 
         end
