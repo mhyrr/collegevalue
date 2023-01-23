@@ -15,10 +15,10 @@ alias Collegevalue.Colleges
 # Full data dictionary: https://collegescorecard.ed.gov/assets/FullDataDocumentation.pdf
 # Fields data dictionary: https://collegescorecard.ed.gov/assets/FieldOfStudyDataDocumentation.pdf
 
-{_, [institutions, fields], _} = OptionParser.parse(System.argv, strict: [])
+# {_, [institutions, fields], _} = OptionParser.parse(System.argv, strict: [])
 
-IO.inspect(institutions)
-IO.inspect(fields)
+# IO.inspect(institutions)
+# IO.inspect(fields)
 
 defmodule Helpers do
 
@@ -159,7 +159,8 @@ IO.inspect("Parsing cohort data..")
 {:ok, file} = File.open "data/error.log", [:append, {:delayed_write, 100, 20}]
 
 # ccount = File.stream!("data/All100_new.csv")
-ccount = File.stream!(institutions)
+# ccount = File.stream!(institutions)
+ccount = File.stream!("data/Institutions.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
     # IO.inspect("record..")
@@ -382,7 +383,8 @@ ccount = File.stream!(institutions)
 IO.inspect("Parsing field data..")
 
 # adtl = File.stream!("data/Field100_new.csv")
-adtl = File.stream!(fields)
+# adtl = File.stream!(fields)
+adtl = File.stream!("data/Fields-of-Study.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 
