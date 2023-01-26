@@ -48,7 +48,7 @@
       <td class="opeid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.opeid) %></td>
       <td class="unitid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.unitid) %></td>
       <td class="control-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= control(college.control) %></td>
-      <td class="accred-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.accreditation) %></td>
+      <td class="accred-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= accreditation(defaults(college.accreditation)) %></td>
 
     </tr>
 <% end %>

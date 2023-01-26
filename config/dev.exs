@@ -10,6 +10,23 @@ config :collegevalue, Collegevalue.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+### Messing with seeds if needed
+# database_url =
+#   System.get_env("DATABASE_URL") ||
+#     raise """
+#     environment variable DATABASE_URL is missing.
+#     For example: ecto://USER:PASS@HOST/DATABASE
+#     """
+
+# maybe_ipv6 = if System.get_env("ECTO_IPV6"), do: [:inet6], else: []
+
+# config :collegevalue, Collegevalue.Repo,
+#   # ssl: true,
+#   url: database_url,
+#   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+#   socket_options: maybe_ipv6
+###
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
