@@ -49,7 +49,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  # host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :collegevalue, CollegevalueWeb.Endpoint,
@@ -62,7 +62,7 @@ if config_env() == :prod do
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
     ],
-    check_origin: ["https://" <> System.get_env("APP_NAME") <> ".gigalixirapp.com", "https://collegevalue.dev", "https://collegevalue.co"],
+    check_origin: ["//*.gigalixirapp.com", "//*.collegevalue.dev", "//*.collegevalue.co"],
     secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
 
   # ## Configuring the mailer
