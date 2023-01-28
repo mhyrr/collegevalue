@@ -45,8 +45,8 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     end
 
     majors = case sort_by do
-      sort_by when sort_by in ~w(name credential debt_mean debt_median earnings) ->
-        Colleges.get_majors_by_field(field.name) |> sort_majors(sort_by) |> handle_direction(sort_order)
+      sort_by when sort_by in ~w(name credential_level debt_mean debt_median earnings) ->
+        Colleges.get_majors_by_field(field.name) |> sort_majors(sort_by) |> handle_direction(sort_order, sort_by)
       _ ->
         Colleges.get_majors_by_field(field.name)
     end
@@ -77,15 +77,28 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   end
 
-
-  def handle_direction(majors, order) do
+  def handle_direction(majors, order, sort_by) do
     case order do
       "desc" ->
         Enum.reverse(majors)
       _ ->
         majors
     end
+    |> trailing_data(sort_by)
+
   end
+
+  def trailing_data(fields, sort_by) do
+
+    {no_data, data} = fields
+    |> Enum.split_with( fn x ->
+      Map.get(x, String.to_existing_atom(sort_by)) == -1
+    end)
+
+    Enum.concat(data, no_data)
+
+  end
+
 
   def sort_majors(majors, "name") do
     majors
@@ -93,9 +106,9 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   end
 
 
-  def sort_majors(majors, "credential") do
+  def sort_majors(majors, "credential_level") do
     majors
-    |> Enum.sort_by(fn major  -> major.credential_level end)
+    |> Enum.sort_by(fn major ->IO.inspect(major); major.credential_level end)
   end
 
   def sort_majors(majors, "debt_mean") do

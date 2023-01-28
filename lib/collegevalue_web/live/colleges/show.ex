@@ -69,7 +69,7 @@ defmodule CollegevalueWeb.CollegesLive.Show do
         "desc"
     end
 
-    majors = socket.assigns.majors |> sort_majors(sort) |> handle_direction(sort_order)
+    majors = socket.assigns.majors |> sort_majors(sort) |> handle_direction(sort_order, sort)
     {:noreply, socket |> assign(majors: majors) |> assign(order: sort_order)}
 
   end
@@ -89,13 +89,23 @@ defmodule CollegevalueWeb.CollegesLive.Show do
   end
 
 
-  def handle_direction(majors, order) do
+  def handle_direction(majors, order, sort_by) do
     case order do
       "desc" ->
-        Enum.reverse(majors)
+        Enum.reverse(majors) |> trailing_data(sort_by)
       _ ->
-        majors
+        majors |> trailing_data(sort_by)
     end
+  end
+
+  def trailing_data(majors, sort_by) do
+    {no_data, data} = majors
+    |> Enum.split_with( fn x ->
+      Map.get(x, String.to_existing_atom(sort_by)) == -1
+    end)
+
+    Enum.concat(data, no_data)
+
   end
 
   def sort_majors(majors, "name") do
@@ -104,7 +114,7 @@ defmodule CollegevalueWeb.CollegesLive.Show do
   end
 
 
-  def sort_majors(majors, "credential") do
+  def sort_majors(majors, "credential_level") do
     majors
     |> Enum.sort_by(fn major  -> major.credential_level end)
   end

@@ -32,7 +32,7 @@ defmodule CollegevalueWeb.FieldsLive.Index do
 
     case sort_by do
       sort_by when sort_by in ~w(name count debt_avg debt_min debt_max earn_max earn_avg earn_min) ->
-        {:noreply, assign(socket, order: sort_order, fields: sort_fields(socket.assigns.fields, sort_by) |> handle_direction(sort_order) )}
+        {:noreply, assign(socket, order: sort_order, fields: sort_fields(socket.assigns.fields, sort_by) |> handle_direction(sort_order, sort_by) )}
       _ ->
         {:noreply, socket}
     end
@@ -42,13 +42,25 @@ defmodule CollegevalueWeb.FieldsLive.Index do
     {:noreply, socket}
   end
 
-  def handle_direction(fields, order) do
+  def handle_direction(fields, order, sort_by) do
     case order do
       "desc" ->
         Enum.reverse(fields)
       _ ->
         fields
     end
+    |> trailing_data(sort_by)
+  end
+
+  def trailing_data(fields, sort_by) do
+
+    {no_data, data} = fields
+    |> Enum.split_with( fn x ->
+      Map.get(x, String.to_existing_atom(sort_by)) == 0
+    end)
+
+    Enum.concat(data, no_data)
+
   end
 
   def sort_fields(fields, "name") do
@@ -65,14 +77,15 @@ defmodule CollegevalueWeb.FieldsLive.Index do
   def sort_fields(fields, "debt_avg") do
     fields
     |> Enum.map( fn x ->
-      case Map.get(x, :debt_avg) do
-        nil ->
-          Map.put(x, :debt_avg, 0)
-        _ ->
-          x
+        case Map.get(x, :debt_avg) do
+          nil ->
+            Map.put(x, :debt_avg, 0)
+          _ ->
+            x
+        end
       end
-    end)
-    |> Enum.sort_by(fn field  -> field.debt_avg end, &Decimal.cmp(&1, &2) != :lt)
+    )
+    |> Enum.sort_by(fn field  ->  field.debt_avg end, &Decimal.cmp(&1, &2) != :lt)
   end
 
   def sort_fields(fields, "debt_min") do
@@ -141,4 +154,3 @@ defmodule CollegevalueWeb.FieldsLive.Index do
   end
 
 end
-
