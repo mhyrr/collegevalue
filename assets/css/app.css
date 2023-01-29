@@ -7,6 +7,10 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/*  #1A936F */
+/*  #114B5F */
+/*  #E5E7EB */
+
 a {
     @apply  no-underline;
 }

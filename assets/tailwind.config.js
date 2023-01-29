@@ -35,7 +35,7 @@ module.exports = {
             green: '#1a936f',
             lightgreen: '#88d498',
             plain: '#dbd8c0',
-            plainlight: '#f3e9d2',
+            plainlight: '#E5E7EB',
         },
         margin: {
             '96': '20rem',
