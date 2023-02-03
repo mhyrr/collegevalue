@@ -1,5 +1,6 @@
-defmodule CollegevalueWeb.SearchLive do
+defmodule CollegevalueWeb.SearchLive.Search do
   use Phoenix.LiveView
+  import Logger
 
   alias Collegevalue.Colleges
   alias Collegevalue.Fields
@@ -40,11 +41,9 @@ defmodule CollegevalueWeb.SearchLive do
   end
 
   def handle_event("search", %{"q" => query}, socket) when byte_size(query) <= 100 do
-    send(self(), {:search, query})
-    {:noreply, assign(socket, query: query, result: "Searching...", loading: true, matches: [])}
-  end
+    # send(self(), {:search, query})
+    # {:noreply, assign(socket, query: query, result: "Searching...", loading: true, matches: [])}
 
-  def handle_info({:search, query}, socket) do
 
     IO.inspect(socket)
 
@@ -58,18 +57,25 @@ defmodule CollegevalueWeb.SearchLive do
         case length(fields) do
 
           n when n == 1 ->
-            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
+            Logger.info "got 1"
+            [field | _ ] = fields
+            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, field ))}
           n when n > 1 ->
-            send(self(), {:search, query})
-            {:noreply, assign(socket, matches: fields )}
+            Logger.info "got 2"
+            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}
           0 ->
-            {:noreply, assign(socket, query: query, result: "Not found", loading: false, matches: [])}
+            Logger.info "got 0"
+            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}
 
         end
 
         # {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
         # {:noreply, socket |> redirect(to: Routes.live_path(socket, CollegeValueWeb.FieldsLive.Show, query )) }
     end
+  end
+
+  def handle_info({:search, query}, socket) do
+
 
   end
 end

@@ -36,7 +36,7 @@
               <span class="ml-2 font-semibold text-xl tracking-tight inline-block"><%= link "CollegeValue", to: "/", class: "no-underline text-plainlight" %></span>
             </div>
             <div class="md:items-center">
-              <%= live_render @conn, CollegevalueWeb.SearchLive %>
+              <%= live_render @conn, CollegevalueWeb.SearchLive.Search %>
             </div>
 
           </div>
@@ -65,7 +65,7 @@
                     <%= link "Top Field Rankings", to: "/fields/rank", class: "no-underline text-plainlight" %>
                   </div>
                   <div class="md:block md:mt-2 inline-block mt-0 text-teal-200 hover:text-white mr-4">
-                    <a href="https://collegevalue.beehiiv.com/subscribe" class="no-underline text-plainlight">Blog!</a>
+                    <a href="https://collegevalue.beehiiv.com/" class="no-underline text-plainlight">Blog!</a>
                   </div>
                 </div>
 
@@ -108,7 +108,7 @@
       </section>
     </header>
 
-    <main class="max-w-5xl mx-auto pt-1 px-4 font-body bg-white shadow-lg">
+    <main class="max-w-5xl mx-auto pt-1 px-4 font-body bg-white shadow-lg min-w-[50%]">
       <div class="pt-8">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>

@@ -1,0 +1,46 @@
+
+<div class="ml-4 p-12 md:p-4 md:ml-0">
+
+    <%= if length(@colleges) > 0 || length(@fields) > 0 do %>
+        <h2 class="text-lg leading-6 font-medium text-darkgreen py-4">Search Results</h2>
+    <% end %>
+
+    <%= if @message != "" do %>
+        <span class="font-medium"><%= @message %> </span>
+    <% end %>
+
+    <%= if length(@colleges) > 0 do %>
+
+        <h2 class="text-lg leading-6 font-medium text-darkgreen p-4">Colleges</h2>
+        <table class="md:block xl:table pt-8 min-w-full">
+            <tbody class="md:block">
+            <%= for college <- @colleges do %>
+                <tr class="md:block pl-4">
+                    <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= link college.name, to: Routes.college_path(@socket, :show, college.unitid, college.name), class: "no-underline text-green"%></td>
+                    <td class="city-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= defaults(college.city) %></td>
+                    <td class="state-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= defaults(college.state) %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    <% else %>
+        <h2 class="text-lg leading-6 font-medium text-darkgreen p-4">No colleges found</h2>
+    <% end %>
+    <%= if length(@fields) > 0 do %>
+
+        <h2 class="text-lg leading-6 font-medium text-darkgreen p-4">Fields</h2>
+
+        <table class="md:block xl:table pt-8 min-w-full">
+            <tbody class="md:block">
+            <%= for field <- @fields do %>
+                <tr class="md:block">
+                    <td class="major-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= link "#{field.name}", to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name), class: "text-green no-underline" %></td>
+                    <td class="count-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= field.count %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+    <% else %>
+        <h2 class="text-lg leading-6 font-medium text-darkgreen p-4">No fields found</h2>
+    <% end %>
+</div>

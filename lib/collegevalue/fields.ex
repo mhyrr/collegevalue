@@ -42,6 +42,17 @@ defmodule Collegevalue.Fields do
 
   end
 
+  def match_fields(name) do
+
+    like = "%#{name}%"
+
+    query = from f in Field,
+      where: ilike(f.name, ^like),
+      order_by: [{:asc, :name}]
+    Repo.all(query)
+
+  end
+
   def get_field!(name), do: Repo.get_by(Field, name: name)
 
   def get_bachelors_earnings(sort \\ "top", limit \\ 100) do

@@ -42,6 +42,15 @@ defmodule Collegevalue.Colleges do
 
   end
 
+  def match_colleges(name) do
+    like = "%#{name}%"
+
+    query = from c in College,
+      where: ilike(c.name, ^like),
+      order_by: [{:asc, :name}]
+    Repo.all(query)
+  end
+
   def get_majors_by_field(field) do
 
     query = from c in College,

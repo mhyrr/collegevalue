@@ -4,6 +4,9 @@
 - Filter out no data option.
 - Figure out how to roll up colleges into systems.  Like U of Phoenix or U of washington
 - School sizes?
+- Build a list of other stats - SAT, Admissions, etc.
+- Look for other data
+- Blog: Life at 30 with debt or earnings?
 
 
 # Weird Outliers
@@ -14,3 +17,21 @@ Hospitality Management certificate?
 Certificate from U Penn for Nursing
 - Nursing Rules the debt to earnings ratio
 - Analyze U Phoenix and Strayer relationships
+
+# Other Blog Ideas
+
+- Thiel Fellowships
+- https://en.wikipedia.org/wiki/Bloom%27s_2_sigma_problem#
+
+# Twitter
+
+- Favorite rate majors
+- Hardest schools to get into
+- highest SATs
+- lowest?
+- select c.name, d.name, d.credential_level, d.earnings_1yr from disciplines as d, colleges as c where c.id = d.college_id and d.credential_level = 1 order by d.earnings_1yr desc;
+- select name, sat_avg, admissions_rate, earnings_median_after10, yearly_cost, tuition_in, debt_median, fouryear_100_completion from colleges where sat_avg >= 1500 order by sat_avg desc;
+- select name, sat_avg, admissions_rate, earnings_median_after10, yearly_cost, tuition_in, debt_median, fouryear_100_completion from colleges where yearly_cost > 75000 order by earnings_median_after10 desc;
+- select name, sat_avg, graduated_debt_median, control from colleges order by graduated_debt_median desc;
+
+
