@@ -49,7 +49,7 @@ defmodule CollegevalueWeb.SearchLive.Results do
 
     case String.length(query) > 2 do
       false ->
-        assign(socket, message: "I need a little more to work with here!", colleges: @colleges, fields: @fields)
+        assign(socket, message: "Too short a search.. I need a little more to work with here! Give me at least 3 characters.", colleges: @colleges, fields: @fields)
       true ->
         colleges = Colleges.match_colleges(query)
         fields = Fields.match_fields(query)
