@@ -37,7 +37,7 @@
   </thead>
   <tbody class="md:block">
     <%= for major <- @majors do %>
-      <%= if @toggle_cred || major.credential_level == 3 do %>
+      <%= if @show_all || major.credential_level == 3 do %>
         <tr class="md:block">
         <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-bpx-2 "><%= link major.college_name, to: Routes.college_path(@socket, :show, major.unit_id, major.college_name), class: "no-underline text-green" %> </td>
         <td class="cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= degree(major.credential_level) %></td>

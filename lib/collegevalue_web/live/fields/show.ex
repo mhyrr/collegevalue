@@ -1,7 +1,9 @@
 defmodule CollegevalueWeb.FieldsLive.Show do
   use Phoenix.LiveView
+  import Logger
 
   alias Collegevalue.{Fields, Colleges}
+  alias CollegevalueWeb.Router.Helpers, as: Routes
 
   @cred_all_label "Show All Degrees"
   @cred_bach_only "Bachelor's Only"
@@ -11,28 +13,65 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   end
 
   @spec mount(any, any, any) :: {:ok, any}
-  def mount(%{"order" => order, "show_all" => toggle_cred}, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: toggle_cred, order: order)}
+  def mount(%{"order" => order, "show_all" => show_all}, _, socket) do
+    {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: order)}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(%{"order" => order}, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: false, order: order)}
+    {:ok, assign(socket, cred_label: @cred_all_label, show_all: false, order: order)}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
-  def mount(%{"show_all" => toggle_cred}, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: toggle_cred, order: "desc")}
+  def mount(%{"show_all" => show_all}, _, socket) do
+    {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: "desc")}
+  end
+
+  @spec mount(any, any, any) :: {:ok, any}
+  def mount(%{"show_all" => show_all, "order" => order, "sort_by" => sort_by}, _, socket) do
+    IO.inspect("here it is..")
+    {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: order, sort_by: sort_by)}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(_, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, toggle_cred: false, order: "desc")}
+    {:ok, assign(socket, cred_label: @cred_all_label, show_all: false, order: "desc")}
   end
 
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
+  def handle_params(%{"name" => name, "sort_by" => sort_by, "show_all" => show_all}, _url, socket) do
+
+    Logger.debug("handle params 3")
+
+    Logger.debug(show_all)
+
+    field = Fields.get_field!(URI.decode(name))
+
+    sort_order = case socket.assigns.order do
+      "desc" ->
+        "asc"
+      "asc" ->
+        "desc"
+      _ ->
+        "desc"
+    end
+
+    majors = case sort_by do
+      sort_by when sort_by in ~w(name credential_level debt_mean debt_median earnings) ->
+        Colleges.get_majors_by_field(field.name) |> sort_majors(sort_by) |> handle_direction(sort_order, sort_by)
+      _ ->
+        Colleges.get_majors_by_field(field.name)
+    end
+
+    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all)}
+  end
+
+  @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_params(%{"name" => name, "sort_by" => sort_by}, _url, socket) do
+
+    Logger.debug("handle params 2")
+
     field = Fields.get_field!(URI.decode(name))
 
     sort_order = case socket.assigns.order do
@@ -54,8 +93,11 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order)}
   end
 
+
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
   def handle_params(%{"name" => name}, _url, socket) do
+    Logger.debug("handle params 1")
+
     field = Fields.get_field!(URI.decode(name))
     majors = Colleges.get_majors_by_field(field.name)
 
@@ -65,15 +107,17 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   def handle_event("toggle_credentials", _value, socket) do
 
-    toggle_cred = !socket.assigns.toggle_cred
-    cred_label = if (toggle_cred == true), do: "Bachelor's Only", else: "Show All Degrees"
+    Logger.debug("toggling creds")
+    # Logger.debug(@field.name)
+    IO.inspect(socket.assigns)
 
-    new_socket =
-      socket
-      |> assign(toggle_cred: toggle_cred)
-      |> assign(cred_label: cred_label)
+    show_all = !socket.assigns.show_all
+    cred_label = if (show_all == true), do: "Bachelor's Only", else: "Show All Degrees"
 
-    {:noreply, new_socket}
+    # {:noreply, socket |> assign(show_all: show_all) |> assign(cred_label: cred_label)}
+
+    {:noreply, push_patch(socket |> assign(show_all: show_all) |> assign(cred_label: cred_label),
+      to: Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, socket.assigns.field.name, %{show_all: show_all}))}
 
   end
 
