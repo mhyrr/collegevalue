@@ -14,12 +14,18 @@ defmodule CollegevalueWeb.CollegeController do
 
 
   def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat}) do
-    render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance), String.to_integer(sat)), page_title: "Matches For You")
+
+    case sat do
+      nil ->
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), page_title: "Matches For You")
+      "" ->
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), page_title: "Matches For You")
+      _ ->
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance), String.to_integer(sat)), page_title: "Matches For You")
+    end
+
   end
 
-  def you(conn, %{"zip" => zip, "distance" => distance}) do
-    render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), page_title: "Matches For You")
-  end
 
   def you(conn, _params) do
     render(conn, "you.html", colleges: [], page_title: "Ranked Colleges")
