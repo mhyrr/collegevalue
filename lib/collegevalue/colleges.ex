@@ -5,6 +5,7 @@ defmodule Collegevalue.Colleges do
 
   import Ecto.Query, warn: false
   alias Collegevalue.{Repo, Pagination}
+  alias Collegevalue.Location
   alias Collegevalue.Colleges.{College, Discipline, Major, Rank}
 
 
@@ -161,8 +162,6 @@ defmodule Collegevalue.Colleges do
 
   def get_college_by_unitid(id), do: Repo.get_by(College, unitid: id)
 
-
-
   def get_colleges_by_costs(cost_field \\ :debt_median, payoff_field \\ :earnings_median_after10, sort \\ :top, limit \\ 100) do
 
     direction = if sort == :top, do: :desc, else: :asc
@@ -204,6 +203,74 @@ defmodule Collegevalue.Colleges do
     foo
 
   end
+
+  def get_colleges_by_location(zip \\ "10001", distance \\ 25) do
+
+    query = from c in College
+
+    query |> with_location(zip, distance) |> Repo.all
+
+    # having: fragment("SQRT(POW(69.1*(? - ?), 2) + POW(69.1 * (? - ?) * COS(? / 57.3), 2))", c.latitude, ^pointx, ^pointy, c.longitude, c.latitude) < 25,
+    # group_by: c.id
+    # order_by: fragment("SQRT(POW(69.1*(? - ?), 2) + POW(69.1 * (? - ?) * COS(? / 57.3), 2))", c.latitude, ^pointx, ^pointy, c.longitude, c.latitude)
+
+
+
+  end
+
+  def with_location(query \\ Query, zip \\ "10001", distance \\ 25) do
+
+    {pointx, pointy} = Location.get_location(zip)
+
+    query
+    |> having([c], fragment("SQRT(POW(69.1*(? - ?), 2) + POW(69.1 * (? - ?) * COS(? / 57.3), 2))", c.latitude, ^pointx, ^pointy, c.longitude, c.latitude) < ^distance)
+    |> group_by([c], c.id)
+
+  end
+
+  def with_sat(query \\ Query, sat \\ 1100, range \\ 100) do
+
+    max = sat+range
+    min = sat-range*2
+
+    query
+    |> where([c], c.sat_avg < ^max)
+    |> where([c], c.sat_avg > ^min)
+    |> where([c], c.sat_avg != -1)
+
+  end
+
+
+  def find_good_colleges(location \\ "10001", sat \\ 1100, radius \\ 50) do
+
+
+    query = from c in College
+
+    query
+    |> with_location(location, radius)
+    |> with_sat(sat)
+    |> Repo.all
+
+  end
+
+
+  def find_good_majors(location \\ "10001", sat \\ 1100, radius \\ 50, major \\ "Computer Science") do
+
+    query = from c in College
+
+    query
+    |> with_location(location, radius)
+    |> with_sat(sat)
+    |> join(:left, [c], d in Discipline, on: c.id == d.college_id)
+    |> where([c, d], d.name == ^major)
+    |> where([c,d], d.credential_level == 3)
+    |> select([c,d], d)
+    |> group_by([c,d], d.id)
+    |> order_by([c,d], d.earnings_1yr)
+    |> Repo.all |> Repo.preload([:college])
+
+  end
+
 
   defp filter_results(query, key) do
 

@@ -29,7 +29,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(%{"show_all" => show_all, "order" => order, "sort_by" => sort_by}, _, socket) do
-    IO.inspect("here it is..")
+    # IO.inspect("here it is..")
     {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: order, sort_by: sort_by)}
   end
 
@@ -109,7 +109,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
     Logger.debug("toggling creds")
     # Logger.debug(@field.name)
-    IO.inspect(socket.assigns)
+    # IO.inspect(socket.assigns)
 
     show_all = !socket.assigns.show_all
     cred_label = if (show_all == true), do: "Bachelor's Only", else: "Show All Degrees"

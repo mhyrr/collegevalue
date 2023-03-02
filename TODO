@@ -35,3 +35,4 @@ Certificate from U Penn for Nursing
 - select name, sat_avg, graduated_debt_median, control from colleges order by graduated_debt_median desc;
 
 
+ENDOWMENT sizes
