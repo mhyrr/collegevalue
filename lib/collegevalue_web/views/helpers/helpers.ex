@@ -106,6 +106,8 @@ defmodule CollegevalueWeb.Views.Helpers do
         "No data"
       -1 ->
         "No data"
+      -2 ->
+        "No data"
       "No data" -> #gross
         "No data"
       _ ->

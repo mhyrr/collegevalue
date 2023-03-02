@@ -241,8 +241,19 @@ defmodule Collegevalue.Colleges do
   end
 
 
-  def find_good_colleges(location \\ "10001", sat \\ 1100, radius \\ 50) do
+  def find_good_colleges(location \\ "10001", radius \\ 50) do
 
+
+    query = from c in College
+
+    query
+    |> with_location(location, radius)
+    # |> with_sat(sat)
+    |> Repo.all
+
+  end
+
+  def find_good_colleges(location, radius, sat) do
 
     query = from c in College
 
