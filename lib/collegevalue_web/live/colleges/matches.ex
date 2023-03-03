@@ -9,7 +9,7 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
   end
 
   @spec mount(any, any, any) :: {:ok, any}
-  def mount(_, %{"colleges" => colleges}, socket) do
+  def mount(_, %{"colleges" => colleges, "stretch" => stretch}, socket) do
 
     # college = Colleges.get_colleges_by_college(name)
     # colleges = Colleges.get_colleges_by_college(name)
@@ -21,7 +21,7 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
     #     false
     # end
 
-    {:ok, assign(socket, colleges: colleges, order: "desc")}
+    {:ok, assign(socket, colleges: colleges, stretch: stretch, order: "desc")}
   end
 
 
@@ -72,20 +72,22 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
 
   end
 
-  def handle_event("toggle_credentials", _value, socket) do
 
-    toggle_cred = !socket.assigns.toggle_cred
-    cred_label = if (toggle_cred == true), do: "Bachelor's Only", else: "Show All Degrees"
+  def handle_event("sort_stretch", %{"sort" => sort}, socket) do
 
-    new_socket =
-      socket
-      |> assign(toggle_cred: toggle_cred)
-      |> assign(cred_label: cred_label)
+    sort_order = case socket.assigns.order do
+      "desc" ->
+        "asc"
+      "asc" ->
+        "desc"
+      _ ->
+        "desc"
+    end
 
-    {:noreply, new_socket}
+    stretch = socket.assigns.stretch |> sort_colleges(sort) |> handle_direction(sort_order, sort)
+    {:noreply, socket |> assign(stretch: stretch) |> assign(order: sort_order)}
 
   end
-
 
   def handle_direction(colleges, order, sort_by) do
     case order do

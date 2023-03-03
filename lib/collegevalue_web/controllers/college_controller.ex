@@ -15,20 +15,24 @@ defmodule CollegevalueWeb.CollegeController do
 
   def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat}) do
 
+
+
     case sat do
       nil ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), page_title: "Matches For You")
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You")
       "" ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), page_title: "Matches For You")
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You")
       _ ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance), String.to_integer(sat)), page_title: "Matches For You")
+        score = String.to_integer(sat)
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance), score - 150, score + 70),
+          stretch: Colleges.find_good_colleges(zip, String.to_integer(distance), score + 70, score + 200), page_title: "Matches For You")
     end
 
   end
 
 
   def you(conn, _params) do
-    render(conn, "you.html", colleges: [], page_title: "Ranked Colleges")
+    render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges")
   end
 
   def rank(conn, %{"rank" => ranking, "count" => count}) do

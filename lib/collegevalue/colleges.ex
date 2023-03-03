@@ -228,10 +228,7 @@ defmodule Collegevalue.Colleges do
 
   end
 
-  def with_sat(query \\ Query, sat \\ 1100, range \\ 100) do
-
-    max = sat+range
-    min = sat-range*2
+  def with_sat(query \\ Query, min \\ 1000, max \\ 1200) do
 
     query
     |> where([c], c.sat_avg < ^max)
@@ -243,7 +240,6 @@ defmodule Collegevalue.Colleges do
 
   def find_good_colleges(location \\ "10001", radius \\ 50) do
 
-
     query = from c in College
 
     query
@@ -253,25 +249,25 @@ defmodule Collegevalue.Colleges do
 
   end
 
-  def find_good_colleges(location, radius, sat) do
+  def find_good_colleges(location, radius, min, max) do
 
     query = from c in College
 
     query
     |> with_location(location, radius)
-    |> with_sat(sat)
+    |> with_sat(min, max)
     |> Repo.all
 
   end
 
 
-  def find_good_majors(location \\ "10001", sat \\ 1100, radius \\ 50, major \\ "Computer Science") do
+  def find_good_majors(location \\ "10001", min \\ 1000, max \\ 1200, radius \\ 50, major \\ "Computer Science") do
 
     query = from c in College
 
     query
     |> with_location(location, radius)
-    |> with_sat(sat)
+    |> with_sat(min, max)
     |> join(:left, [c], d in Discipline, on: c.id == d.college_id)
     |> where([c, d], d.name == ^major)
     |> where([c,d], d.credential_level == 3)
