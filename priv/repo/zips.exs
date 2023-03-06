@@ -3,7 +3,7 @@ alias Collegevalue.Location.Zipcode
 
 IO.inspect("building zip code list")
 
-zips = File.stream!("data/zips.csv")
+zips = File.stream!("data/zips")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 
