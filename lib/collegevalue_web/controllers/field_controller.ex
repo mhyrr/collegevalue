@@ -4,7 +4,6 @@ defmodule CollegevalueWeb.FieldController do
   alias Collegevalue.{Fields, Colleges}
 
 
-  @discs  Fields.list_fields() |> Enum.filter( fn major -> major.count > 50 end) |> Enum.map( fn major -> major.name end)
 
 
   @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
@@ -17,6 +16,9 @@ defmodule CollegevalueWeb.FieldController do
 
 
   def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat, "major" => major}) do
+
+
+    discs = Fields.list_fields() |> Enum.filter( fn major -> major.count > 50 end) |> Enum.map( fn major -> major.name end)
 
     IO.inspect("majors")
     IO.inspect(major)
@@ -53,15 +55,19 @@ defmodule CollegevalueWeb.FieldController do
           stretch = [ Colleges.find_good_majors(zip, score + 70, score + 200, String.to_integer(distance), m) | stretch]
           end)
         |> List.flatten
-        render(conn, "you.html", discs: @discs, majors: majors,
+        render(conn, "you.html", discs: discs, majors: majors,
           stretch: stretch, page_title: "Matches For You")
     end
 
   end
 
   def you(conn, _params) do
+
+
+    discs = Fields.list_fields() |> Enum.filter( fn major -> major.count > 50 end) |> Enum.map( fn major -> major.name end)
+
     IO.inspect("base")
-    render(conn, "you.html", discs: @discs, majors: [], stretch: [], page_title: "Ranked Majors")
+    render(conn, "you.html", discs: discs, majors: [], stretch: [], page_title: "Ranked Majors")
   end
 
 
