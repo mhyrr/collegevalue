@@ -1,13 +1,14 @@
 <h1 class="x-0 y-2 xl:px-0 xl:py-8 xl:text-2xl text-green-500">Find A Great School</h1>
 
 <section>
-  <%= form_for @conn, Routes.college_path(@conn, :you), [method: :get], fn f -> %>
+  <%= form_for @conn, Routes.field_path(@conn, :you), [method: :get], fn f -> %>
     <label>Starting Zipcode:</label><%= text_input f, :zip,  class: "form-input pl-3 pr-0 sm:text-sm sm:leading-5 flex-grow", required: true, pattern: "\\d{5,5}"  %>
     <label>Max Distance:</label><%= select f, :distance, [25, 50, 100, 250, 500, 1000, 3000], onchange: "this.form.submit()", class: "form-input pl-3 pr-8 sm:text-sm sm:leading-5 flex-grow" %>
     <label>Your SAT (We'll give you a range):</label><%= text_input f, :sat,  class: "form-input pl-3 pr-0 sm:text-sm sm:leading-5 flex-grow", pattern: "\\d{4,4}"  %>
-
+    <label>Your Major (Select a few):</label><%= multiple_select f, :major, @discs,  class: "form-input pl-3 pr-0 sm:text-sm sm:leading-5 flex-grow" %>
     <%= submit "GO!" %>
   <% end %>
 </section>
 
-<%= live_render @conn, CollegevalueWeb.CollegesLive.Matches, session: %{"colleges" => @colleges, "stretch" => @stretch} %>
+
+<%= live_render @conn, CollegevalueWeb.FieldsLive.Matches, session: %{"majors" => @majors, "stretch" => @stretch} %>

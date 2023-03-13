@@ -3,6 +3,7 @@ defmodule CollegevalueWeb.CollegeController do
 
   alias Collegevalue.Colleges
   alias Collegevalue.Colleges.College
+  alias Collegevalue.Fields
 
   def index(conn, params) do
     page = params["page"] || 1
@@ -13,9 +14,29 @@ defmodule CollegevalueWeb.CollegeController do
   end
 
 
+  # def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat, "major" => major}) do
+
+  #   IO.inspect("majors")
+  #   IO.inspect(major)
+
+  #   m = Enum.at(major, 0)
+
+  #   case sat do
+  #     nil ->
+  #       render(conn, "you.html", majors: @majors, colleges: [], discs: Colleges.find_good_majors(zip, String.to_integer(distance), m), stretch: [], page_title: "Matches For You")
+  #     "" ->
+  #       render(conn, "you.html", majors: @majors, colleges: [], discs: Colleges.find_good_majors(zip, String.to_integer(distance), m), stretch: [], page_title: "Matches For You")
+  #     _ ->
+  #       score = String.to_integer(sat)
+  #       render(conn, "you.html", majors: @majors, colleges: [], discs: Colleges.find_good_majors(zip, String.to_integer(distance), score - 150, score + 70, m),
+  #         stretch: Colleges.find_good_majors(zip, String.to_integer(distance), score + 70, score + 200, m), page_title: "Matches For You")
+  #   end
+
+
+  # end
+
+
   def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat}) do
-
-
 
     case sat do
       nil ->
@@ -32,6 +53,7 @@ defmodule CollegevalueWeb.CollegeController do
 
 
   def you(conn, _params) do
+    IO.inspect("base")
     render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges")
   end
 

@@ -261,7 +261,24 @@ defmodule Collegevalue.Colleges do
   end
 
 
-  def find_good_majors(location \\ "10001", min \\ 1000, max \\ 1200, radius \\ 50, major \\ "Computer Science") do
+  def find_good_majors(location \\ "10001", radius \\ 50, major \\ "Computer Science") do
+
+    query = from c in College
+
+    query
+    |> with_location(location, radius)
+    # |> with_sat(min, max)
+    |> join(:left, [c], d in Discipline, on: c.id == d.college_id)
+    |> where([c, d], d.name == ^major)
+    |> where([c,d], d.credential_level == 3)
+    |> select([c,d], d)
+    |> group_by([c,d], d.id)
+    |> order_by([c,d], d.earnings_1yr)
+    |> Repo.all |> Repo.preload([:college])
+
+  end
+
+  def find_good_majors(location \\ "10001", min, max , radius, major) do
 
     query = from c in College
 

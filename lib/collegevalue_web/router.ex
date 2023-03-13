@@ -27,6 +27,7 @@ defmodule CollegevalueWeb.Router do
 
     get "/fields/rank", FieldController, :rank
     live "/fields", FieldsLive.Index
+    get "/fields/you", FieldController, :you
     live "/fields/:name", FieldsLive.Show
 
     live_session :search do
