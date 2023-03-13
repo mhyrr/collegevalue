@@ -34,9 +34,9 @@ defmodule CollegevalueWeb.FieldController do
 
     case sat do
       nil ->
-        render(conn, "you.html",discs: @discs, majors: majors, stretch: [], page_title: "Matches For You")
+        render(conn, "you.html",discs: discs, majors: majors, stretch: [], page_title: "Matches For You")
       "" ->
-        render(conn, "you.html", discs: @discs, majors: majors, stretch: [], page_title: "Matches For You")
+        render(conn, "you.html", discs: discs, majors: majors, stretch: [], page_title: "Matches For You")
       _ ->
 
         score = String.to_integer(sat)
