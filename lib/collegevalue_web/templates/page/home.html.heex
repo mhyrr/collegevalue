@@ -6,7 +6,28 @@
   <section class="md:p-2 p-8">
 
     <article class="content-center">
-      <h2 class="text-darkgreen text-2xl font-display py-2">The Choice</h2>
+
+      <p>
+          <b>They say college is a credential.  Fine, let's treat it like one.</b> What do you get for your money?  Can we measure it?
+          <br/>
+          Yup, we can.  If you like that idea start here:
+
+          <ul class="py-2">
+            <li><%= link "Colleges For You", to: "/colleges/you", class: "text-darkgreen text-xl underline py-2"%> - Find the colleges where grads have the highest earnings and lowest debt.  Narrow it down by location and SAT score.</li>
+
+            <li><%= link "Majors For You", to: "/fields/you", class: "text-darkgreen text-xl underline py-2"%> - Not all degrees have the same outcome!  A nursing grad from two different schools might expect much different outcomes!  Find the majors at colleges where grads have the highest earnings and lowest debt.  Compare different majors against earning potential.  Narrow it down by location and SAT score.</li>
+          </ul>
+
+          Just want to see the <b>top schools and majors</b> regardless of location and match?  We've got that too.
+
+          <ul class="py-2">
+            <li><%= link "College Rankings", to: "/colleges/rank", class: "text-darkgreen text-xl underline py-2"%> - The best and worst colleges based on earnings and debt.</li>
+
+            <li><%= link "Major Rankings", to: "/fields/rank", class: "text-darkgreen text-xl underline py-2"%> - The best and worst college majors based on earnings and debt.</li>
+          </ul>
+        </p>
+
+      <h2 class="text-darkgreen text-2xl font-display pt-8 pb-2">The Choice</h2>
         <p>
           Should you go to college?  What do you study?  How much will it cost?
         </p>
@@ -14,7 +35,7 @@
         <p>
           There's a lot of questions around college right now, from the growing number of administrators compared to faculty,
           the country-club style amenities on campus, the equality of different segments student populations, the DEI initiatives,
-          the forced-remote landscape from the Covid pandemic, and the sheer ballooning cost.
+          the forced-remote landscape from the Covid pandemic, and the <b>sheer ballooning cost.</b>
         </p>
         <br/>
         <p>
@@ -22,10 +43,13 @@
            of a better job - and consequently, more financial freedom - it's perfectly reasonable to ask: is it worth it?
         </p>
         <br/>
+
         <p>
           College in the modern world is a <a class="no-underline text-green" href="https://www.ajtroy.com/education-backwards/">cost/benefit analysis</a>.
           We spend money to be educated for a purpose, and we need to do a better job at considering the outcomes.
           Different majors and colleges differ greatly in terms of both the costs and the estimated payoffs.  And that's why this place exists.
+          The Department of Education has loads of this data, it's just hard to find and parse.  And a lot of it is missing, so keep that in mind too.
+          <%= link "There's more about the data here", to: "/data", class: "no-underline text-green" %>.
         </p>
         <br/>
         <p>
@@ -41,8 +65,11 @@
            <a class="no-underline text-green" href="/fields/rank">fields</a> and <a class="no-underline text-green"href="/colleges/rank">colleges</a>.
            Our goal is to help you explore what it really means to get the most out of college, knowing that every dollar matters.  College isn't one-size-fits-all
            and the needs and goals of every student are going to be different.  We want to get you the data you need.
-           There's plenty of other college review sites.  We think they all suck.  They're built on advertising to serve college admissions rather than prospective students.
+           There's plenty of other college review sites.  <b>We think they all suck.</b>  They're built on advertising to serve college admissions rather than prospective students.
+           This is an experiment, an MVP, based on the idea of measuring school based on good outcomes.  Let us know what you think!
         </p>
+
+
     </article>
 
     <h2 class="text-darkgreen text-2xl font-display py-8">Want Some More? Sign Up!</h2>

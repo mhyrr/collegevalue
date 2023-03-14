@@ -21,7 +21,7 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
     #     false
     # end
 
-    {:ok, assign(socket, colleges: colleges, stretch: stretch, order: "desc")}
+    {:ok, assign(socket, colleges: sort_colleges(colleges, "earnings"), stretch: sort_colleges(stretch, "earnings"), order: "desc")}
   end
 
 

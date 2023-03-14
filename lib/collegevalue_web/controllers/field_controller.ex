@@ -20,6 +20,10 @@ defmodule CollegevalueWeb.FieldController do
 
     discs = Fields.list_fields() |> Enum.filter( fn major -> major.count > 50 end) |> Enum.map( fn major -> major.name end)
 
+    if Collegevalue.Location.get_location(zip) == "couldn't get lat/long from zip" do
+      render(conn, "you.html",discs: discs, majors: [], stretch: [], page_title: "Matches For You" , zipmsg: "Enter a valid Zip!!")
+    end
+
     IO.inspect("majors")
     IO.inspect(major)
 
@@ -34,9 +38,9 @@ defmodule CollegevalueWeb.FieldController do
 
     case sat do
       nil ->
-        render(conn, "you.html",discs: discs, majors: majors, stretch: [], page_title: "Matches For You")
+        render(conn, "you.html",discs: discs, majors: majors, stretch: [], page_title: "Matches For You", zipmsg: "")
       "" ->
-        render(conn, "you.html", discs: discs, majors: majors, stretch: [], page_title: "Matches For You")
+        render(conn, "you.html", discs: discs, majors: majors, stretch: [], page_title: "Matches For You", zipmsg: "")
       _ ->
 
         score = String.to_integer(sat)
@@ -56,7 +60,7 @@ defmodule CollegevalueWeb.FieldController do
           end)
         |> List.flatten
         render(conn, "you.html", discs: discs, majors: majors,
-          stretch: stretch, page_title: "Matches For You")
+          stretch: stretch, page_title: "Matches For You", zipmsg: "")
     end
 
   end
@@ -67,7 +71,7 @@ defmodule CollegevalueWeb.FieldController do
     discs = Fields.list_fields() |> Enum.filter( fn major -> major.count > 50 end) |> Enum.map( fn major -> major.name end)
 
     IO.inspect("base")
-    render(conn, "you.html", discs: discs, majors: [], stretch: [], page_title: "Ranked Majors")
+    render(conn, "you.html", discs: discs, majors: [], stretch: [], page_title: "Ranked Majors", zipmsg: "")
   end
 
 

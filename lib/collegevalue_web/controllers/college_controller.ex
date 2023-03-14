@@ -38,23 +38,29 @@ defmodule CollegevalueWeb.CollegeController do
 
   def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat}) do
 
+    if Collegevalue.Location.get_location(zip) == "couldn't get lat/long from zip" do
+      render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges", zipmsg: "Enter a valid Zip!!")
+    end
+
     case sat do
       nil ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You")
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You", zipmsg: "")
       "" ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You")
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You", zipmsg: "")
       _ ->
         score = String.to_integer(sat)
         render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance), score - 150, score + 70),
-          stretch: Colleges.find_good_colleges(zip, String.to_integer(distance), score + 70, score + 200), page_title: "Matches For You")
+          stretch: Colleges.find_good_colleges(zip, String.to_integer(distance), score + 70, score + 200), page_title: "Matches For You", zipmsg: "")
     end
+
+
 
   end
 
 
   def you(conn, _params) do
     IO.inspect("base")
-    render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges")
+    render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges", zipmsg: "")
   end
 
   def rank(conn, %{"rank" => ranking, "count" => count}) do
