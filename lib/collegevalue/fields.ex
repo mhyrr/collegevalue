@@ -74,6 +74,8 @@ defmodule Collegevalue.Fields do
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,
+        tuition_out: c.tuition_out,
+        tuition_in: c.tuition_in,
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,
         url: c.url
@@ -106,6 +108,8 @@ defmodule Collegevalue.Fields do
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,
+        tuition_out: c.tuition_out,
+        tuition_in: c.tuition_in,
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,
         url: c.url

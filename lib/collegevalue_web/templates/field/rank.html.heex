@@ -44,6 +44,7 @@
       <th class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Field</th>
       <th class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Admissions Rate</th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Average SAT Score</th>
+      <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Tuition</th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).cost_field%></th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= List.first(@ranks).payoff_field%></th>
       <th  class="x-2 y-2 xl:px-2 xl:py-3  border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Difference</th>
@@ -57,6 +58,7 @@
         <td class="field-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b text-green"><%= link shorten(rank.field_name), to: Routes.live_path(@conn, CollegevalueWeb.FieldsLive.Show, rank.field_name)%> </td>
         <td class="admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
+        <td class="tuition md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= cash(rank.tuition_in)%></td>
         <td class="debt-field md:border-none md:relative md:block  xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>
 
         <td class={"earnings-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_earnings" || @ranking == "bottom_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.payoff) %></td>

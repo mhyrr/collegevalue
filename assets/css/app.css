@@ -225,21 +225,38 @@ blockquote {
     }
 
     tbody .diff-field:before {
-        content: "Difference: ";
+        content: "Diff (Earnings-Debt): ";
+    }
+
+
+    tbody .earnings1yr-field:before {
+        content: "1st Year Earnings: ";
+    }
+
+
+    tbody .earnings2yr-field:before {
+        content: "2nd Year Earnings: ";
     }
 
     tbody .cost-field:before {
-        content: "Cost: ";
+        content: "Debt: ";
     }
 
     tbody .payoff-field:before {
-        content: "Payoff: ";
+        content: "10 Year Earnings: ";
     }
     
     tbody .major-field:before {
         content: "Major: ";
     }
 
+    tbody .majordebt-field:before {
+        content: "Debt For Major: ";
+    }
+
+    tbody .tuition-field:before {
+        content: "Tuition: ";
+    }
 
     tbody .cred-field:before {
         content: "Credential: ";
