@@ -11,7 +11,7 @@ module.exports = {
   ],
   theme: {
     screens: {
-        'xl': {'max': '2000px'},
+        'xl': {'max': '2800px'},
         // => @media (max-width: 1279px) { ... }
         'lg': {'max': '1199px'},
         // => @media (max-width: 1023px) { ... }
