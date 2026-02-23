@@ -254,17 +254,17 @@ defmodule CollegevalueWeb.Views.Helpers do
 
     diffs =
       ranks
-      |> Enum.map(fn rank -> [chart_name(rank), rank.diff] end)
+      |> Enum.map(fn rank -> [chart_name(rank), rank.diff || 0] end)
       |> Enum.reverse
     chart_data = chart_data ++ [ %{name: "Difference", data: diffs}]
 
     debt = ranks
-    |> Enum.map(fn rank -> [chart_name(rank), -rank.cost] end)
+    |> Enum.map(fn rank -> [chart_name(rank), -(rank.cost || 0)] end)
     |> Enum.reverse
     chart_data = chart_data ++ [ %{name: "Debt", data: debt}]
 
     earnings = ranks
-    |> Enum.map(fn rank -> [chart_name(rank), rank.payoff] end)
+    |> Enum.map(fn rank -> [chart_name(rank), rank.payoff || 0] end)
     |> Enum.reverse
     chart_data = chart_data ++ [ %{name: "Earnings", data: earnings}]
 

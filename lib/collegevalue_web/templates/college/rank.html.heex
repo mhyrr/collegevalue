@@ -12,13 +12,13 @@
 <table class="md:block xl:table pt-8">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">College Name</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Admissions Rate</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Average SAT Score</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= humanize_header(List.first(@ranks).cost_field) %></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= humanize_header(List.first(@ranks).payoff_field) %></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Difference</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Completion</th>
+      <.header label="College Name" tooltip_key="name" />
+      <.header label="Admissions Rate" tooltip_key="admissions" />
+      <.header label="Avg SAT" tooltip_key="sat" />
+      <.header label={humanize_header(List.first(@ranks).cost_field)} tooltip="The cost metric for this ranking view — may be debt, tuition, or yearly cost depending on the ranking selected" />
+      <.header label={humanize_header(List.first(@ranks).payoff_field)} tooltip="The earnings metric for this ranking view — may be 1-year, 2-year, or 10-year earnings depending on the ranking selected" />
+      <.header label="Difference" tooltip_key="difference" />
+      <.header label="Completion" tooltip_key="completion" />
     </tr>
   </thead>
   <tbody class="md:block">

@@ -1,6 +1,9 @@
 defmodule CollegevalueWeb.CalculatorLive.Index do
   use Phoenix.LiveView
 
+  import Phoenix.HTML
+  use PhoenixHTMLHelpers
+  import Phoenix.Component
   import CollegevalueWeb.Views.Helpers
   import CollegevalueWeb.DataComponents
   alias CollegevalueWeb.Router.Helpers, as: Routes

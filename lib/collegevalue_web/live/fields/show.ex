@@ -64,7 +64,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all)}
+    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by)}
   end
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
@@ -90,7 +90,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order)}
+    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by)}
   end
 
 
@@ -101,7 +101,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     field = Fields.get_field!(URI.decode(name))
     majors = Colleges.get_majors_by_field(field.name)
 
-    {:noreply, socket |> assign(field: field) |> assign(majors: majors)}
+    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(sort_by: nil)}
   end
 
 

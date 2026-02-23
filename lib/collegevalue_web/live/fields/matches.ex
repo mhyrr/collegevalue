@@ -21,7 +21,7 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     #     false
     # end
 
-    {:ok, assign(socket, majors: sort_majors(majors, "earnings1yr"), stretch: sort_majors(stretch, "earnings1yr"), order: "desc")}
+    {:ok, assign(socket, majors: sort_majors(majors, "earnings1yr"), stretch: sort_majors(stretch, "earnings1yr"), order: "desc", sort_by: "earnings1yr")}
   end
 
 
@@ -68,7 +68,7 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     end
 
     majors = socket.assigns.majors |> sort_majors(sort) |> handle_direction(sort_order, sort)
-    {:noreply, socket |> assign(majors: majors) |> assign(order: sort_order)}
+    {:noreply, socket |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort)}
 
   end
 
@@ -85,7 +85,7 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     end
 
     stretch = socket.assigns.stretch |> sort_majors(sort) |> handle_direction(sort_order, sort)
-    {:noreply, socket |> assign(stretch: stretch) |> assign(order: sort_order)}
+    {:noreply, socket |> assign(stretch: stretch) |> assign(order: sort_order) |> assign(sort_by: sort)}
 
   end
 

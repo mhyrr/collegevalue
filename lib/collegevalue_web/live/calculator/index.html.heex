@@ -1,0 +1,269 @@
+<div class="max-w-4xl mx-auto">
+  <h1 class="text-3xl font-display text-darkgreen text-center mb-2">ROI Calculator</h1>
+  <p class="text-center text-gray-600 mb-8">Is this college + major worth it for you? Enter your details and we'll crunch the numbers.</p>
+
+  <section class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-8">
+    <.form for={%{}} as={:calculator} phx-submit="calculate" phx-change="validate">
+
+      <div class="grid grid-cols-1 md:block gap-6 xl:grid-cols-2">
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">Family Income Band</label>
+          <div class="space-y-2">
+            <%= for {val, label} <- @income_bands do %>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="calculator[income_band]" value={val}
+                  checked={@income_band == val}
+                  class="form-radio text-green" />
+                <span class="text-sm"><%= label %></span>
+              </label>
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">Major</label>
+          <select name="calculator[major]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="">Select a major...</option>
+            <%= for m <- @majors do %>
+              <option value={m} selected={@major == m}><%= m %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">Zipcode</label>
+          <input type="text" name="calculator[zip]" value={@zip} pattern="\d{5}"
+            placeholder="e.g. 10001"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">Max Distance (miles)</label>
+          <select name="calculator[distance]" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <%= for d <- [25, 50, 100, 250, 500, 1000, 3000] do %>
+              <option value={d} selected={@distance == d}><%= d %> miles</option>
+            <% end %>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 text-sm font-bold mb-2">SAT Score (optional)</label>
+          <input type="text" name="calculator[sat]" value={@sat} pattern="\d{3,4}"
+            placeholder="e.g. 1200"
+            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+          <p class="text-xs text-gray-500 mt-1">Narrows results to schools matching your score range</p>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <button type="submit" class="bg-green hover:bg-green-700 text-white font-bold text-lg py-3 px-8 rounded w-full focus:outline-none focus:shadow-outline">
+          Calculate ROI
+        </button>
+      </div>
+    </.form>
+  </section>
+
+  <%= if @error do %>
+    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
+      <%= @error %>
+    </div>
+  <% end %>
+
+  <%= if @results do %>
+    <%= if length(@results) == 0 do %>
+      <div class="bg-amber-50 border border-amber-200 text-amber-700 px-4 py-3 rounded mb-6">
+        No matching colleges found. Try expanding your distance or adjusting your SAT range.
+      </div>
+    <% else %>
+      <h2 class="text-xl text-darkgreen mb-4"><%= length(@results) %> Colleges Found for "<%= @major %>"</h2>
+
+      <%!-- ROI explanation --%>
+      <div class="bg-emerald-50 border border-emerald-200 rounded-lg px-5 py-4 mb-6">
+        <div class="flex md:block items-start gap-3">
+          <span class="text-emerald-600 font-bold text-lg mt-0.5 shrink-0">ROI</span>
+          <div class="text-sm text-emerald-900">
+            <p class="font-medium mb-1">How we calculate Return on Investment</p>
+            <p class="text-emerald-700">We show two ROI measures for each college:</p>
+            <ul class="text-emerald-700 mt-1 space-y-1 list-disc list-inside">
+              <li><strong>Earnings vs Debt</strong> &mdash; 10-year median earnings minus what graduates actually borrowed (major-specific debt when available, otherwise college-level median). Answers: <em>"Can I pay back my loans?"</em></li>
+              <li><strong>Earnings vs Cost</strong> &mdash; 10-year median earnings minus total cost of attendance (net price &times; 4 years, based on your income band). Answers: <em>"Is this a good investment of the total money spent?"</em></li>
+            </ul>
+            <p class="text-emerald-700 mt-1">The <strong>Debt-to-Earnings ratio</strong> shows how many years of post-grad salary it takes to pay off debt &mdash; under 1.0x is excellent, over 1.5x is a warning sign.</p>
+          </div>
+        </div>
+      </div>
+
+      <%!-- Top ROI bar chart --%>
+      <% chart_results = Enum.take(@results, 10) %>
+      <% best_roi = fn p -> p.roi_debt || p.roi_cost || 0 end %>
+      <% max_roi = chart_results |> Enum.map(best_roi) |> Enum.max(fn -> 1 end) |> max(1) %>
+      <section class="mb-8 bg-white shadow rounded-lg p-6 border border-gray-100">
+        <h3 class="text-sm font-medium text-darkgreen mb-4">Top ROI: 10-Year Earnings vs Debt</h3>
+        <div class="space-y-2">
+          <%= for p <- chart_results do %>
+            <% roi_val = best_roi.(p) %>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-gray-600 w-28 truncate shrink-0" title={p.college_name}><%= shorten(p.college_name) %></span>
+              <div class="flex-1 bg-gray-100 rounded h-5 relative">
+                <div class={"h-5 rounded #{if roi_val > 0, do: "bg-emerald-500", else: "bg-red-400"}"} style={"width: #{Float.round(min(roi_val / max_roi * 100, 100), 1)}%"}></div>
+              </div>
+              <span class={"text-xs font-medium w-20 text-right #{if roi_val > 0, do: "text-emerald-600", else: "text-red-500"}"}><%= cash(roi_val) %></span>
+            </div>
+          <% end %>
+        </div>
+      </section>
+
+      <%!-- College result cards --%>
+      <div class="space-y-5">
+        <%= for projection <- @results do %>
+          <div class="bg-white shadow rounded-lg border border-gray-100 overflow-hidden">
+            <%!-- Card header: name + ROI hero --%>
+            <div class="flex md:block justify-between items-start px-6 pt-5 pb-4 border-b border-gray-100 bg-gray-50/50">
+              <div>
+                <h3 class="text-lg font-semibold">
+                  <%= link projection.college_name, to: Routes.college_path(@socket, :show, projection.unit_id, projection.college_name), class: "text-green no-underline hover:underline" %>
+                </h3>
+                <div class="mt-1.5 flex items-center gap-2">
+                  <%= if projection.completion_rate do %>
+                    <.completion_badge rate={projection.completion_rate} />
+                  <% end %>
+                  <%= if projection.admissions_rate do %>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                      <%= percent(projection.admissions_rate) %> admit
+                    </span>
+                  <% end %>
+                  <%= if projection.sat_avg && projection.sat_avg > 0 do %>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                      SAT <%= projection.sat_avg %>
+                    </span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="text-right md:text-left md:mt-3 flex md:block gap-6">
+                <%= if projection.roi_debt do %>
+                  <div class="group relative">
+                    <div class={"text-2xl font-bold tracking-tight #{if projection.roi_debt > 0, do: "text-emerald-600", else: "text-red-500"}"}>
+                      <%= cash(projection.roi_debt) %>
+                    </div>
+                    <div class="text-[10px] text-gray-400 uppercase tracking-wide font-medium cursor-help">Earnings vs Debt</div>
+                    <span class="hidden group-hover:block absolute z-10 top-full right-0 md:left-0 md:right-auto mt-1 w-56 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg font-normal normal-case tracking-normal">
+                      10-year median earnings minus debt. Answers: "Can I pay back my loans?"
+                    </span>
+                  </div>
+                <% end %>
+                <%= if projection.roi_cost do %>
+                  <div class="group relative">
+                    <div class={"text-2xl font-bold tracking-tight #{if projection.roi_cost > 0, do: "text-emerald-600", else: "text-red-500"}"}>
+                      <%= cash(projection.roi_cost) %>
+                    </div>
+                    <div class="text-[10px] text-gray-400 uppercase tracking-wide font-medium cursor-help">Earnings vs Cost</div>
+                    <span class="hidden group-hover:block absolute z-10 top-full right-0 md:left-0 md:right-auto mt-1 w-64 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg font-normal normal-case tracking-normal">
+                      10-year median earnings minus total cost of attendance (net price &times; 4 years). Answers: "Was this a good investment of the total money spent?"
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+
+            <%!-- Card body: stats grid --%>
+            <div class="px-6 py-4">
+              <div class="grid grid-cols-2 md:block xl:grid-cols-4 gap-x-6 gap-y-4">
+                <%!-- Net Price --%>
+                <div>
+                  <div class="flex items-center gap-1 mb-1">
+                    <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Net Price</span>
+                    <span class="group relative">
+                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
+                      <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
+                        The actual cost after grants and scholarships, based on your family income band. This is what you'd really pay per year.
+                      </span>
+                    </span>
+                  </div>
+                  <div class="text-base font-semibold text-gray-900"><%= if projection.net_price, do: cash(projection.net_price), else: "N/A" %></div>
+                </div>
+
+                <%!-- Debt --%>
+                <div>
+                  <div class="flex items-center gap-1 mb-1">
+                    <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Debt</span>
+                    <span class="group relative">
+                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
+                      <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
+                        <%= case projection.debt_source do %>
+                          <% :major -> %>Median debt for graduates of this specific major at this college.
+                          <% :college -> %>Major-specific debt not available. Showing college-wide median debt instead.
+                          <% _ -> %>No debt data available for this college.
+                        <% end %>
+                      </span>
+                    </span>
+                  </div>
+                  <%= if projection.debt_used do %>
+                    <div class="text-base font-semibold text-gray-900"><%= cash(projection.debt_used) %></div>
+                    <div class="text-[10px] text-gray-400"><%= if projection.debt_source == :major, do: "major-specific", else: "college-wide" %></div>
+                  <% else %>
+                    <div class="text-base font-semibold text-gray-400">N/A</div>
+                  <% end %>
+                </div>
+
+                <%!-- 1yr Earnings --%>
+                <div>
+                  <div class="flex items-center gap-1 mb-1">
+                    <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">1yr Earnings</span>
+                    <span class="group relative">
+                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
+                      <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
+                        Median earnings one year after graduation for this major at this college.
+                      </span>
+                    </span>
+                  </div>
+                  <div class="text-base font-semibold text-gray-900"><%= if projection.major_earnings_1yr, do: cash(projection.major_earnings_1yr), else: "N/A" %></div>
+                </div>
+
+                <%!-- 10yr Earnings --%>
+                <div>
+                  <div class="flex items-center gap-1 mb-1">
+                    <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">10yr Earnings</span>
+                    <span class="group relative">
+                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
+                      <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
+                        Median earnings 10 years after enrollment for all graduates of this college (not major-specific).
+                      </span>
+                    </span>
+                  </div>
+                  <div class="text-base font-semibold text-gray-900"><%= if projection.college_earnings_10yr, do: cash(projection.college_earnings_10yr), else: "N/A" %></div>
+                </div>
+              </div>
+
+              <%!-- Debt-to-Earnings ratio bar --%>
+              <%= if projection.debt_to_earnings_ratio do %>
+                <div class="mt-4 pt-4 border-t border-gray-100">
+                  <div class="flex items-center gap-1 mb-2">
+                    <span class="text-xs font-medium text-gray-400 uppercase tracking-wide">Debt-to-Earnings Ratio</span>
+                    <span class="group relative">
+                      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
+                      <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
+                        Total debt divided by first-year earnings. Under 1.0x means you could pay off debt in less than a year. Over 1.5x is a warning sign.
+                      </span>
+                    </span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex-1 bg-gray-100 rounded-full h-3">
+                      <% bar_pct = min(projection.debt_to_earnings_ratio / 2.0 * 100, 100) %>
+                      <div class={"h-3 rounded-full #{if projection.debt_to_earnings_ratio > 1.5, do: "bg-red-400", else: if(projection.debt_to_earnings_ratio > 1.0, do: "bg-amber-400", else: "bg-emerald-500")}"} style={"width: #{Float.round(bar_pct, 1)}%"}></div>
+                    </div>
+                    <span class={"text-sm font-bold #{if projection.debt_to_earnings_ratio > 1.5, do: "text-red-500", else: if(projection.debt_to_earnings_ratio > 1.0, do: "text-amber-600", else: "text-emerald-600")}"}><%= projection.debt_to_earnings_ratio %>x</span>
+                  </div>
+                  <div class="flex justify-between text-[10px] text-gray-300 mt-0.5 px-0.5">
+                    <span>0x</span>
+                    <span>1x</span>
+                    <span>2x+</span>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

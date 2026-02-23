@@ -16,7 +16,7 @@
       <div class="pl-8 md:pl-0 pt-5" style="float: left;">
         <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
           <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
-          Only show with debt data
+          Only show with major-level debt data
         </label>
       </div>
       <% end %>
@@ -46,14 +46,14 @@
 <table  class="md:block lg:table pt-8 table-auto">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">College Name</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Field</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Admissions Rate</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Average SAT Score</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Tuition</th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= humanize_header(List.first(@ranks).cost_field) %></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><%= humanize_header(List.first(@ranks).payoff_field) %></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left  xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Difference</th>
+      <.header label="College Name" tooltip_key="name" />
+      <.header label="Field" tooltip_key="field" />
+      <.header label="Admissions Rate" tooltip_key="admissions" />
+      <.header label="Avg SAT" tooltip_key="sat" />
+      <.header label="Tuition" tooltip_key="tuition" />
+      <.header label={humanize_header(List.first(@ranks).cost_field)} tooltip="Debt for this major. Uses major-specific debt when available, otherwise falls back to the college-wide median debt." />
+      <.header label={humanize_header(List.first(@ranks).payoff_field)} tooltip="The earnings metric for this ranking view — may be 1-year or 2-year earnings depending on the ranking selected" />
+      <.header label="Difference" tooltip_key="difference" />
     </tr>
   </thead>
 
@@ -65,7 +65,13 @@
         <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
         <td class="px-4 py-3 tuition md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= cash(rank.tuition_in)%></td>
-        <td class="px-4 py-3 debt-field md:border-none md:relative md:block  xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>
+        <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
+          <%= if no_data?(rank.cost) do %>
+            <span class="text-gray-400 italic">N/A</span>
+          <% else %>
+            <%= cash(rank.cost) %> <span class={"px-1 rounded text-[10px] font-medium #{if rank.has_major_debt, do: "text-emerald-600", else: "text-gray-400"}"}><%= if rank.has_major_debt, do: "major", else: "college" %></span>
+          <% end %>
+        </td>
 
         <td class={"px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_earnings" || @ranking == "bottom_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.payoff) %></td>
 

@@ -4,15 +4,15 @@
 <table class="md:block xl:table pt-8">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="major">Major</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings1yr">Earnings After 1 Year</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings2yr">Earnings After 2 Years</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="college_debt_median">Tuition</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings10yr">College Earnings After 10 Years</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
-      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT</a></th>
+      <.sort_header label="College Name" sort_key="name" current_sort={@sort_by} order={@order} />
+      <.sort_header label="Major" sort_key="major" current_sort={@sort_by} order={@order} />
+      <.sort_header label="1yr Earnings" sort_key="earnings1yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 1 year after graduation for this specific major at this college" />
+      <.sort_header label="2yr Earnings" sort_key="earnings2yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 2 years after graduation for this specific major at this college" />
+      <.sort_header label="Major Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} tooltip="Median federal loan debt at graduation for this specific major" />
+      <.sort_header label="Tuition" sort_key="college_debt_median" current_sort={@sort_by} order={@order} tooltip="Published in-state tuition and fees per year" />
+      <.sort_header label="10yr Earnings" sort_key="earnings10yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 10 years after enrollment for all graduates of this college (not major-specific)" />
+      <.sort_header label="Admit Rate" sort_key="admissions" current_sort={@sort_by} order={@order} />
+      <.sort_header label="Avg SAT" sort_key="sat" current_sort={@sort_by} order={@order} />
     </tr>
   </thead>
   <tbody class="md:block">
@@ -46,15 +46,15 @@
     <table class="md:block xl:table pt-8">
       <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="major">Major</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings1yr">Earnings After 1 Year</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings2yr">Earnings After 2 Years</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="college_debt_median">Tuition</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings10yr">College Earnings After 10 Years</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT</a></th>
+          <.sort_header label="College Name" sort_key="name" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="Major" sort_key="major" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="1yr Earnings" sort_key="earnings1yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 1 year after graduation for this specific major at this college" />
+          <.sort_header label="2yr Earnings" sort_key="earnings2yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 2 years after graduation for this specific major at this college" />
+          <.sort_header label="Major Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median federal loan debt at graduation for this specific major" />
+          <.sort_header label="Tuition" sort_key="college_debt_median" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Published in-state tuition and fees per year" />
+          <.sort_header label="10yr Earnings" sort_key="earnings10yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 10 years after enrollment for all graduates of this college (not major-specific)" />
+          <.sort_header label="Admit Rate" sort_key="admissions" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="Avg SAT" sort_key="sat" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
         </tr>
       </thead>
       <tbody class="md:block">

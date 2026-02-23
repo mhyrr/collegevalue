@@ -66,11 +66,11 @@ defmodule Collegevalue.Fields do
       select: %Rank{
         field_name: d.name,
         credential_level: d.credential_level,
-        cost: d.pp_debt_mean,
-        cost_field: "Debt Mean",
+        cost: fragment("COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0))", c.debt_median),
+        cost_field: "Debt",
         payoff: d.earnings_1yr,
         payoff_field: "Field Earnings",
-        diff: fragment("d1.earnings_1yr - d1.pp_debt_mean as diff"),
+        diff: fragment("d1.earnings_1yr - COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0)) as diff", c.debt_median),
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,
@@ -78,7 +78,8 @@ defmodule Collegevalue.Fields do
         tuition_in: c.tuition_in,
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,
-        url: c.url
+        url: c.url,
+        has_major_debt: fragment("d1.pp_debt_mean > 0")
       },
       order_by: [{^direction, d.earnings_1yr}],
       limit: ^limit
@@ -99,11 +100,11 @@ defmodule Collegevalue.Fields do
       select: %Rank{
         field_name: d.name,
         credential_level: d.credential_level,
-        cost: d.pp_debt_mean,
-        cost_field: "Debt Mean",
+        cost: fragment("COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0))", c.debt_median),
+        cost_field: "Debt",
         payoff: d.earnings_1yr,
         payoff_field: "Field Earnings",
-        diff: fragment("d1.earnings_1yr - d1.pp_debt_mean as diff"),
+        diff: fragment("d1.earnings_1yr - COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0)) as diff", c.debt_median),
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,
@@ -111,10 +112,16 @@ defmodule Collegevalue.Fields do
         tuition_in: c.tuition_in,
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,
-        url: c.url
+        url: c.url,
+        has_major_debt: fragment("d1.pp_debt_mean > 0")
       },
-      order_by: [{^direction, fragment("diff")}],
       limit: ^limit
+
+    query = if sort == "top" do
+      order_by(query, fragment("diff DESC NULLS LAST"))
+    else
+      order_by(query, fragment("diff ASC NULLS LAST"))
+    end
 
     query = if require_debt, do: where(query, [_c, d], d.pp_debt_mean > 0), else: query
 

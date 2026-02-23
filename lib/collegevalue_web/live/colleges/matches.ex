@@ -21,7 +21,7 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
     #     false
     # end
 
-    {:ok, assign(socket, colleges: sort_colleges(colleges, "earnings"), stretch: sort_colleges(stretch, "earnings"), order: "desc")}
+    {:ok, assign(socket, colleges: sort_colleges(colleges, "earnings"), stretch: sort_colleges(stretch, "earnings"), order: "desc", sort_by: "earnings")}
   end
 
 
@@ -68,7 +68,7 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
     end
 
     colleges = socket.assigns.colleges |> sort_colleges(sort) |> handle_direction(sort_order, sort)
-    {:noreply, socket |> assign(colleges: colleges) |> assign(order: sort_order)}
+    {:noreply, socket |> assign(colleges: colleges) |> assign(order: sort_order) |> assign(sort_by: sort)}
 
   end
 
@@ -85,7 +85,7 @@ defmodule CollegevalueWeb.CollegesLive.Matches do
     end
 
     stretch = socket.assigns.stretch |> sort_colleges(sort) |> handle_direction(sort_order, sort)
-    {:noreply, socket |> assign(stretch: stretch) |> assign(order: sort_order)}
+    {:noreply, socket |> assign(stretch: stretch) |> assign(order: sort_order) |> assign(sort_by: sort)}
 
   end
 

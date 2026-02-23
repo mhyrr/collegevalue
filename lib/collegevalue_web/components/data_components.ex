@@ -89,6 +89,119 @@ defmodule CollegevalueWeb.DataComponents do
     """
   end
 
+  @th_class "px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"
+
+  @tooltips %{
+    "name" => "Institution name",
+    "tuition" => "Published in-state tuition and fees per year",
+    "admissions" => "Percentage of applicants who are admitted",
+    "sat" => "Average SAT score of admitted students (combined reading + math)",
+    "debt_median" => "Median federal loan debt at graduation for all students at this college",
+    "debt_mean" => "Average federal loan debt at graduation — can be skewed by outliers, unlike the median",
+    "earnings" => "Median earnings 10 years after enrollment, from tax records (W-2 data)",
+    "earnings10yr" => "Median earnings 10 years after enrollment for all graduates of this college (not major-specific)",
+    "earnings1yr" => "Median earnings 1 year after graduation for this specific major at this college",
+    "earnings2yr" => "Median earnings 2 years after graduation for this specific major at this college",
+    "difference" => "Earnings minus debt — a simple ROI measure. Higher is better. Green means graduates earn more than they borrowed.",
+    "college_debt_median" => "Published in-state tuition and fees per year",
+    "completion" => "Percentage of first-time, full-time students who graduate within 8 years (200% of normal time)",
+    "credential_level" => "Degree type: Certificate, Associate's, Bachelor's, Master's, etc.",
+    "major" => "The specific field of study / program",
+    "field" => "The specific field of study / program"
+  }
+
+  # Sortable table header with tooltip and sort indicator
+  # Used in LiveView tables with phx-click sorting
+  attr :label, :string, required: true
+  attr :sort_key, :string, required: true
+  attr :current_sort, :string, default: nil
+  attr :order, :string, default: "desc"
+  attr :sort_event, :string, default: "sort"
+  attr :tooltip, :string, default: nil
+  def sort_header(assigns) do
+    tip = assigns.tooltip || Map.get(@tooltips, assigns.sort_key, nil)
+    active = assigns.current_sort == assigns.sort_key
+    arrow = if active, do: (if assigns.order == "desc", do: "▼", else: "▲"), else: nil
+    assigns = assign(assigns, tip: tip, active: active, arrow: arrow, th_class: @th_class)
+
+    ~H"""
+    <th class={@th_class}>
+      <div class="flex items-center gap-1">
+        <a href="#" class={"text-darkgreen #{if @active, do: "font-bold underline", else: ""}"} phx-click={@sort_event} phx-value-sort={@sort_key}>
+          <%= @label %><%= if @arrow do %> <span class="text-[10px]"><%= @arrow %></span><% end %>
+        </a>
+        <%= if @tip do %>
+          <span class="group relative">
+            <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help normal-case">?</span>
+            <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs font-normal normal-case tracking-normal text-white bg-gray-800 rounded-lg shadow-lg">
+              <%= @tip %>
+            </span>
+          </span>
+        <% end %>
+      </div>
+    </th>
+    """
+  end
+
+  # Sortable header using <.link patch=...> for URL-based sorting (field show page)
+  attr :label, :string, required: true
+  attr :sort_key, :string, required: true
+  attr :current_sort, :string, default: nil
+  attr :order, :string, default: "desc"
+  attr :patch_url, :string, required: true
+  attr :tooltip, :string, default: nil
+  def sort_header_link(assigns) do
+    tip = assigns.tooltip || Map.get(@tooltips, assigns.sort_key, nil)
+    active = assigns.current_sort == assigns.sort_key
+    arrow = if active, do: (if assigns.order == "desc", do: "▼", else: "▲"), else: nil
+    assigns = assign(assigns, tip: tip, active: active, arrow: arrow, th_class: @th_class)
+
+    ~H"""
+    <th class={@th_class}>
+      <div class="flex items-center gap-1">
+        <.link patch={@patch_url} class={"text-darkgreen uppercase #{if @active, do: "font-bold underline", else: ""}"}>
+          <%= @label %><%= if @arrow do %> <span class="text-[10px]"><%= @arrow %></span><% end %>
+        </.link>
+        <%= if @tip do %>
+          <span class="group relative">
+            <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help normal-case">?</span>
+            <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs font-normal normal-case tracking-normal text-white bg-gray-800 rounded-lg shadow-lg">
+              <%= @tip %>
+            </span>
+          </span>
+        <% end %>
+      </div>
+    </th>
+    """
+  end
+
+  # Non-sortable header with tooltip (for rank tables and static headers)
+  attr :label, :string, required: true
+  attr :tooltip_key, :string, default: nil
+  attr :tooltip, :string, default: nil
+  def header(assigns) do
+    tip = assigns.tooltip || Map.get(@tooltips, assigns.tooltip_key, nil)
+    assigns = assign(assigns, tip: tip, th_class: @th_class)
+
+    ~H"""
+    <th class={@th_class}>
+      <div class="flex items-center gap-1">
+        <span><%= @label %></span>
+        <%= if @tip do %>
+          <span class="group relative">
+            <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help normal-case">?</span>
+            <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs font-normal normal-case tracking-normal text-white bg-gray-800 rounded-lg shadow-lg">
+              <%= @tip %>
+            </span>
+          </span>
+        <% end %>
+      </div>
+    </th>
+    """
+  end
+
+  defp th_class, do: @th_class
+
   defp completion_category(nil), do: :no_data
   defp completion_category(rate) when rate < 0, do: :no_data
   defp completion_category(rate) when rate >= 0.70, do: :high

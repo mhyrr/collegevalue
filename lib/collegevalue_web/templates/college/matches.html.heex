@@ -6,13 +6,13 @@
     <table class="md:block xl:table pt-8">
       <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="tuition">Tuition</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT Score</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings">Earnings After 10 Years</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="difference">Difference (Earnings-Debt)</a></th>
+          <.sort_header label="College Name" sort_key="name" current_sort={@sort_by} order={@order} />
+          <.sort_header label="Tuition" sort_key="tuition" current_sort={@sort_by} order={@order} />
+          <.sort_header label="Admissions Rate" sort_key="admissions" current_sort={@sort_by} order={@order} />
+          <.sort_header label="Avg SAT" sort_key="sat" current_sort={@sort_by} order={@order} />
+          <.sort_header label="Median Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} />
+          <.sort_header label="10yr Earnings" sort_key="earnings" current_sort={@sort_by} order={@order} tooltip="Median earnings 10 years after enrollment for all graduates of this college" />
+          <.sort_header label="Difference" sort_key="difference" current_sort={@sort_by} order={@order} tooltip="Earnings minus debt — a simple ROI measure. Higher is better. Green means graduates earn more than they borrowed." />
         </tr>
       </thead>
       <tbody class="md:block">
@@ -40,13 +40,13 @@
     <table class="md:block xl:table pt-8">
       <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="name">College Name</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="tuition">Tuition</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="admissions">Admissions Rate</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="sat">Average SAT Score</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="debt_median">Debt Median</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="earnings">Earnings After 10 Years</a></th>
-          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="difference">Difference</a></th>
+          <.sort_header label="College Name" sort_key="name" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="Tuition" sort_key="tuition" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="Admissions Rate" sort_key="admissions" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="Avg SAT" sort_key="sat" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="Median Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="10yr Earnings" sort_key="earnings" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 10 years after enrollment for all graduates of this college" />
+          <.sort_header label="Difference" sort_key="difference" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Earnings minus debt — a simple ROI measure. Higher is better." />
         </tr>
       </thead>
       <tbody class="md:block">
