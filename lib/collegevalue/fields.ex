@@ -55,14 +55,14 @@ defmodule Collegevalue.Fields do
 
   def get_field!(name), do: Repo.get_by(Field, name: name)
 
-  def get_bachelors_earnings(sort \\ "top", limit \\ 100) do
-
+  def get_bachelors_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
+    require_debt = Keyword.get(opts, :require_debt, true)
 
     query = from c in College,
       join: d in Discipline,
       on: c.id == d.college_id,
-      where: d.credential_level == 3 and d.earnings_1yr != -1,
+      where: d.credential_level == 3 and d.earnings_1yr > 0,
       select: %Rank{
         field_name: d.name,
         credential_level: d.credential_level,
@@ -83,20 +83,19 @@ defmodule Collegevalue.Fields do
       order_by: [{^direction, d.earnings_1yr}],
       limit: ^limit
 
-    # IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
+    query = if require_debt, do: where(query, [_c, d], d.pp_debt_mean > 0), else: query
 
     Repo.all(query)
-
   end
 
-  def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100) do
-
+  def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
+    require_debt = Keyword.get(opts, :require_debt, true)
 
     query = from c in College,
       join: d in Discipline,
       on: c.id == d.college_id,
-      where: d.credential_level == 3 and d.earnings_1yr != -1 and d.pp_debt_mean != -1,
+      where: d.credential_level == 3 and d.earnings_1yr > 0,
       select: %Rank{
         field_name: d.name,
         credential_level: d.credential_level,
@@ -117,7 +116,7 @@ defmodule Collegevalue.Fields do
       order_by: [{^direction, fragment("diff")}],
       limit: ^limit
 
-    # IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
+    query = if require_debt, do: where(query, [_c, d], d.pp_debt_mean > 0), else: query
 
     Repo.all(query)
   end

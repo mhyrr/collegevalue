@@ -59,17 +59,17 @@ defmodule CollegevalueWeb.SearchLive.Search do
           n when n == 1 ->
             Logger.info "got 1"
             [field | _ ] = fields
-            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, field ))}
+            {:noreply, socket |> push_navigate(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, field ))}
           n when n > 1 ->
             Logger.info "got 2"
-            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}
+            {:noreply, socket |> push_navigate(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}
           0 ->
             Logger.info "got 0"
-            {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}
+            {:noreply, socket |> push_navigate(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}
 
         end
 
-        # {:noreply, socket |> push_redirect(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
+        # {:noreply, socket |> push_navigate(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, query ))}
         # {:noreply, socket |> redirect(to: Routes.live_path(socket, CollegeValueWeb.FieldsLive.Show, query )) }
     end
   end

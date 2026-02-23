@@ -75,28 +75,26 @@ defmodule CollegevalueWeb.FieldController do
   end
 
 
-  def rank(conn, %{"rank" => ranking, "count" => count}) do
+  def rank(conn, %{"rank" => ranking, "count" => count} = params) do
+    require_debt = params["require_debt"] == "true"
+    opts = [require_debt: require_debt]
 
     ranks = case ranking do
       "top_debt_to_earnings" ->
-        Fields.get_bachelors_debt_earnings("top", count)
+        Fields.get_bachelors_debt_earnings("top", count, opts)
       "bottom_debt_to_earnings" ->
-        Fields.get_bachelors_debt_earnings("bottom", count)
+        Fields.get_bachelors_debt_earnings("bottom", count, opts)
       "top_earnings" ->
-        Fields.get_bachelors_earnings("top", count)
+        Fields.get_bachelors_earnings("top", count, opts)
       "bottom_earnings" ->
-        Fields.get_bachelors_earnings("bottom", count)
+        Fields.get_bachelors_earnings("bottom", count, opts)
     end
 
-    render(conn, "rank.html", ranks: ranks, ranking: ranking, page_title: "Ranked Fields")
-  end
-
-  def rank(conn, %{}) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", page_title: "Ranked Fields")
+    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "Ranked Fields")
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings, page_title: "Ranked Fields" )
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", require_debt: false, page_title: "Ranked Fields")
   end
 
 

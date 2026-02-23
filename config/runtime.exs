@@ -35,6 +35,7 @@ if config_env() == :prod do
     # ssl: true,
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+    timeout: 30_000,
     socket_options: maybe_ipv6
 
   # The secret key base is used to sign/encrypt cookies and other secrets.
@@ -49,21 +50,17 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  # host = System.get_env("PHX_HOST") || "example.com"
+  host = System.get_env("PHX_HOST") || "collegevalue.fly.dev"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :collegevalue, CollegevalueWeb.Endpoint,
-    url: [host: "www.collegevalue.dev", port: 443, scheme: "https"],
+    url: [host: host, port: 443, scheme: "https"],
     http: [
-      # Enable IPv6 and bind on all interfaces.
-      # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
-      # See the documentation on https://hexdocs.pm/plug_cowboy/Plug.Cowboy.html
-      # for details about using IPv6 vs IPv4 and loopback vs public addresses.
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
     ],
-    check_origin: ["//*.gigalixirapp.com", "//*.collegevalue.dev", "//*.collegevalue.co"],
-    secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE")
+    check_origin: ["//*.fly.dev", "//*.collegevalue.dev", "//*.collegevalue.co"],
+    secret_key_base: secret_key_base
 
   # ## Configuring the mailer
   #

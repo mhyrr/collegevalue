@@ -1,9 +1,17 @@
-<%= for {type, message} <- @flash do %>
-  <% class = ViewHelpers.flash_class(type) %>
-  <div class={"text-white px-4 py-2 relative mb-4 text-center #{class}"} role="alert">
+<%= if info = Phoenix.Flash.get(@flash, :info) do %>
+  <div class="text-white px-4 py-2 relative mb-4 text-center bg-green-500" role="alert">
     <p class="inline-block align-middle mr-8"
        phx-click="lv:clear-flash"
-       phx-value-key={type}><%= message %>
+       phx-value-key="info"><%= info %>
+    </p>
+  </div>
+<% end %>
+
+<%= if error = Phoenix.Flash.get(@flash, :error) do %>
+  <div class="text-white px-4 py-2 relative mb-4 text-center bg-red-500" role="alert">
+    <p class="inline-block align-middle mr-8"
+       phx-click="lv:clear-flash"
+       phx-value-key="error"><%= error %>
     </p>
   </div>
 <% end %>

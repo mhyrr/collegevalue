@@ -9,14 +9,42 @@
         <p>
           All of the data you see here comes from the Department of Education's wonderful
           <a class="text-green" href="https://collegescorecard.ed.gov/data">College Scorecard dataset</a>.  Specifically, it's mashed up from two
-          huge CSV files: <code>Most-Recent-Cohorts-Institution.csv</code> and <code>Most-Recent-Cohorts-Field-of-Study.csv</code>
+          huge CSV files: <code>Most-Recent-Cohorts-Institution.csv</code> and <code>Most-Recent-Cohorts-Field-of-Study.csv</code>.
           This data is compiled based on the subset of students who take out federal student loans or grants, so it's not by any means a complete picture.
-          There are also significant gaps in the data where costs or earnings are unknown or, as listed in the data, "Privacy Suppressed".
+          There are also significant gaps in the data where costs or earnings are unknown or privacy suppressed.
+        </p>
+        <br/>
+
+      <h4 class="text-darkgreen text-xl font-display py-4">Data Vintage</h4>
+        <p>
+          The College Scorecard data is updated several times per year.  The data currently used on CollegeValue
+          was published in <strong>October 2024</strong>, which includes:
+        </p>
+        <br/>
+        <ul class="list-disc pl-8">
+          <li>Refreshed institution-level earnings for 6, 8, and 10 years after starting school (updated June 2024)</li>
+          <li>Refreshed field-of-study earnings for 1 and 2 years after graduation, plus new 5-year earnings data</li>
+          <li>Updated Federal Student Aid metrics including operating status, accreditation, and cohort default rates (October 2024)</li>
+          <li>Updated IPEDS-derived metrics for enrollment, admissions, completion rates, and institutional characteristics</li>
+        </ul>
+        <br/>
+        <p>
+          It's important to understand that "most recent" doesn't mean current-year.
+          Earnings are measured from de-identified tax records with a significant lag.  For field-of-study data, the DOE combines
+          students into 2-year cohorts (e.g., graduates from 2019-20 and 2020-21 pooled together) to increase sample sizes and
+          reduce privacy suppression.  The 1-year post-graduation earnings you see for a given major represent
+          earnings roughly 2-3 years ago.  Institution-level earnings at 6-10 years after enrollment look even further back.
+        </p>
+        <br/>
+        <p>
+          Program-level data collection through NSLDS only began in the 2014-15 award year, which limits how far
+          back field-of-study cohorts can go.
         </p>
         <br/>
         <ul>
           <li><a class="text-green" href="https://collegescorecard.ed.gov/assets/InstitutionDataDocumentation.pdf">Institution Level Documentation</a></li>
           <li><a class="text-green" href="https://collegescorecard.ed.gov/assets/FieldOfStudyDataDocumentation.pdf">Field of Study Level Documentation</a></li>
+          <li><a class="text-green" href="https://collegescorecard.ed.gov/data/data-documentation/">Full Data Documentation &amp; Glossary</a></li>
         </ul>
         <br/>
         <p>
@@ -33,7 +61,7 @@
     </article>
     <article class="Details">
       <h4 class="text-darkgreen text-xl font-display py-4">Graduation Rates</h4>
-        <p>I was surprisied to learn that the Dept. of Education measures completion rates at the 8 year mark.  So when you look on collegescorecard
+        <p>I was surprised to learn that the Dept. of Education measures completion rates at the 8 year mark.  So when you look on collegescorecard
         at a specific school and see their graduation rate - for example, at
         <a class="text-green" href="https://collegescorecard.ed.gov/school/?183257-Granite-State-College">Granite State College</a> you'll see a rate of 42%.
         This is the 8 year rate, which they mention in the small print infobox, if you hover over it.  There's probably good reasons for this.  Granite State is
@@ -41,15 +69,12 @@
         when the 6 year graduation rate is only 14% and the 4 year rate is 3%!
        </p>
       <h4 class="text-darkgreen text-xl font-display py-4">Incomes</h4>
-      <p>Incomes for both college and field rankings are based on numbers 1 year post-graduation.  Median earnings at the college level are measured at 6-10
-      year levels and are listed for colleges, but there are some questions to detail here.
+      <p>Incomes for field rankings are based on median earnings 1 year post-graduation.  At the college level,
+      median earnings are available at 6, 8, and 10 year marks after enrollment.
       <br/><br/>
-      DOE has started breaking this up based on family income, but this isn't represented on CV yet.  They have three
-      terciles for this: low-income: $30,000 or less; middle-income: $30,001-$75,000; and high-income: $75,001+.  How payback
-      rate affects what is reported is not specified.  In other words, it seems like the only income statistics received are for those still paying loans.
-      If some students are able to pay off their loans much quicker, their (possibly skewed higher) income is not accounted.
-      This could affect 6-10 year median incomes much more than
-      the 1 year post-graduation incomes used here to compile rankings.
+      The DOE breaks earnings down by family income tercile: low-income ($30,000 or less), middle-income ($30,001-$75,000),
+      and high-income ($75,001+).  The data only includes students who are not currently enrolled (e.g., those in graduate school
+      at the time of measurement are excluded), so the figures may undercount high-earning graduates who continued their education.
       <br/><br/>
       One of the reasons for building this site in the first place is to test the hypothesis that the correlation of majors and colleges together often matter
       more than either variable alone.  It appears that this is the case, for example the expected earnings across nursing degrees varies wildly, especially when
@@ -57,21 +82,13 @@
       <br/><br/>
       It's important to note that this is still a very limited and possibly skewed view.  Some details noted by the DOE:
       <blockquote>
-          "One of the most common reasons students cite in choosing to go to college is the expansion of
-employment opportunities. To that end, data on the earnings and employment prospects of former
-students can provide key information. To measure the labor market outcomes of individuals attending
-institutions of higher education, data on cohorts of federally aided undergraduate students were linked
-with earnings data from de-identified tax records and reported back at the aggregate, institutional level.
-Mean earnings data elements at the institution-level were last updated in the fall of 2018."
-</blockquote>
-<blockquote>
 "There are two notable limitations that researchers should keep in mind for all of these metrics. First,
 research suggests that the variation across programs within an institution may be even greater than
 aggregate earnings across institutions. For information related to more recent earnings calculations by
 field of study, please see the technical documentation for field of study data files. Second, the data
 include only Title IV-receiving students, so figures may not be representative of institutions with a low
 proportion of Title IV-eligible students. Additionally, the data are restricted to students who are not
-enrolled (enrolled means having an in-school deferment status for at least 30 days of the measurement
+enrolled (enrolled means having an in-school deferment status for at least 30 days of the measurement)
 so students who are currently enrolled in, for example, graduate school at the time of
 measurement are excluded."
         </blockquote>
@@ -84,10 +101,15 @@ measurement are excluded."
       <br/><br/>
         The DOE says:
         <blockquote>
-          "At institutions where large numbers of students withdraw before completion, a lower median debt level could simply reflect the lack of time that a typical student spends at the institution. Therefore, the Department uses the typical debt level for students who complete (GRAD_DEBT_MDN_SUPP or GRAD_DEBT_MDN10YR_SUPP for the debt level expressed in monthly payments26) on the consumer website. Additionally, this measure can be placed in context by looking at the borrowing rate of students at the institution (FTFTPCTFLOAN; see above); at institutions where few students borrow, the numbers may represent outliers."
+          "At institutions where large numbers of students withdraw before completion, a lower median debt level could simply reflect the lack of time that a typical student spends at the institution. Therefore, the Department uses the typical debt level for students who complete (GRAD_DEBT_MDN_SUPP or GRAD_DEBT_MDN10YR_SUPP for the debt level expressed in monthly payments) on the consumer website. Additionally, this measure can be placed in context by looking at the borrowing rate of students at the institution (FTFTPCTFLOAN; see above); at institutions where few students borrow, the numbers may represent outliers."
         </blockquote>
       <br/>
       For colleges, we break this down and show median debt for graduates, withdrawals, and both.  For individual majors, the debt is based on the loans for only those students who completed the program.
+      <br/><br/>
+      Note that the field-of-study level debt data has significant gaps &mdash; many programs have their debt figures
+      privacy suppressed due to small sample sizes.  On ranking pages, you can use the "Only show with debt data" checkbox
+      to filter to programs where actual debt figures are available, which gives a more accurate picture of the
+      true cost/benefit tradeoff.
       </p>
 
       <h4 class="text-darkgreen text-xl font-display py-4">Privacy</h4>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= live_title_tag assigns[:page_title] || "CollegeValue", prefix: "CV - " %>
+    <.live_title prefix="CV - "><%= assigns[:page_title] || "CollegeValue" %></.live_title>
     <%= csrf_meta_tag() %>
 
     <!-- Google tag (gtag.js) -->
@@ -30,7 +30,7 @@
 
         <nav class="md:flex items-center justify-between flex-wrap bg-darkgreen p-4 pl-12 font-display md:p-4">
           <div class="md:w-full w-auto md:block md:flex-grow flex items-center text-white pb-4">
-            <%# <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg> %>
+            <%!-- <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg> --%>
             <div class="flex-grow md:text-center ">
               <a href="/"><img src="/images/cvlogo.png" alt="CV" class="rounded w-8 h-8 inline-block" style="margin-bottom: 8px"></a>
               <span class="ml-2 font-semibold text-xl tracking-tight inline-block"><%= link "CollegeValue", to: "/", class: "no-underline text-plainlight" %></span>
@@ -132,8 +132,8 @@
 
     <main class="max-w-5xl mx-auto pt-1 px-4 font-body bg-white shadow-lg min-w-[50%]">
       <div class="pt-8">
-        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+        <p class="alert alert-info" role="alert"><%= Phoenix.Flash.get(@conn.assigns[:flash] || %{}, :info) %></p>
+        <p class="alert alert-danger" role="alert"><%= Phoenix.Flash.get(@conn.assigns[:flash] || %{}, :error) %></p>
       <%= @inner_content %>
       </div>
     </main>

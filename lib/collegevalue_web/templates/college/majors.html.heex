@@ -22,7 +22,7 @@
         <%= for major <- @majors do %>
         <%= if @toggle_cred || major.credential_level == 3 do %>
             <tr class="md:block">
-                <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= live_patch major.name, to: Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
+                <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><.link navigate={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name)} class="no-underline text-green"><%= major.name %></.link> </td>
                 <td class="cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= degree(major.credential_level) %></td>
                 <td class="debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_mean) %></td>
                 <td class="debtmed-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_median) %></td>

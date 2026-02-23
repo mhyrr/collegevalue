@@ -13,6 +13,12 @@
         <label for="price" class="block text-sm leading-5 font-medium text-green">Count</label>
           <%= select f, :count, [10, 50, 100, 250, 500, 1000], selected: 100, onchange: "this.form.submit()", class: "form-input pl-6 pr-8 sm:text-sm sm:leading-5"%>
       </div>
+      <div class="pl-8 md:pl-0 pt-5" style="float: left;">
+        <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
+          <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
+          Only show with debt data
+        </label>
+      </div>
       <% end %>
 
 

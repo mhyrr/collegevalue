@@ -42,8 +42,7 @@ config :collegevalue, CollegevalueWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "PYflI3Brx7zNPUfv87mqa8VvCji2Vj3GnQWLgyISUQoIOpatgOkJK9OQeewJ8DNn",
   watchers: [
-    # Switching to npm assets/esbuild
-    node: ["esbuild.js", "--watch", cd: Path.expand("../assets", __DIR__)],
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
@@ -78,7 +77,7 @@ config :collegevalue, CollegevalueWeb.Endpoint,
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/collegevalue_web/(live|views)/.*(ex)$",
-      ~r"lib/collegevalue_web/templates/.*(eex)$"
+      ~r"lib/collegevalue_web/templates/.*(eex|heex)$"
     ]
   ]
 

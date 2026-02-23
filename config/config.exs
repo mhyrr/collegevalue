@@ -12,8 +12,9 @@ config :collegevalue,
 
 # Configures the endpoint
 config :collegevalue, CollegevalueWeb.Endpoint,
+  adapter: Bandit.PhoenixAdapter,
   url: [host: "localhost"],
-  render_errors: [view: CollegevalueWeb.ErrorView, accepts: ~w(html json), layout: false],
+  render_errors: [formats: [html: CollegevalueWeb.ErrorHTML, json: CollegevalueWeb.ErrorJSON], layout: false],
   pubsub_server: Collegevalue.PubSub,
   live_view: [signing_salt: "9nU9+RMZ"]
 
@@ -29,18 +30,17 @@ config :collegevalue, Collegevalue.Mailer, adapter: Swoosh.Adapters.Local
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
-# Configure esbuild (the version is required)
-# config :esbuild,
-#   version: "0.14.29",
-#   default: [
-#     args:
-#       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-#     cd: Path.expand("../assets", __DIR__),
-#     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
-#   ]
+config :esbuild,
+  version: "0.17.11",
+  default: [
+    args:
+      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../assets", __DIR__),
+    env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
+  ]
 
 config :tailwind,
-  version: "3.0.24",
+  version: "3.4.3",
   default: [
     args: ~w(
       --config=tailwind.config.js
@@ -59,6 +59,7 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+config :chartkick, json_serializer: Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

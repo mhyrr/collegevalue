@@ -22,57 +22,30 @@ alias Collegevalue.Colleges
 
 defmodule Helpers do
 
+  def missing?(value), do: value in ["NULL", "NA", "", nil]
+  def suppressed?(value), do: value in ["PrivacySuppressed", "PS"]
+
   def check_incomplete(value) do
-    case value do
-      "NULL" ->
-        -1
-      "" ->
-        -1
-      "PrivacySuppressed" ->
-        -2
-      _ ->
-        value
+    cond do
+      missing?(value) -> -1
+      suppressed?(value) -> -2
+      true -> value
     end
   end
 
-  def yearly(costs) do
-
-    case costs do
-      {"NULL", "NULL"} ->
-        -1
-      {"NULL", cost} ->
-        cost
-      {cost, "NULL"} ->
-        cost
-      {"", ""} ->
-        -1
-      {"", cost} ->
-        cost
-      {cost, ""} ->
-        cost
-      {a, _} ->
-        a
+  def yearly({a, b}) do
+    cond do
+      !missing?(a) -> a
+      !missing?(b) -> b
+      true -> -1
     end
-
   end
 
-
-  def net(prices) do
-    case prices do
-      {"NULL", "NULL"} ->
-        -1
-      {"NULL", price} ->
-        price
-      {price, "NULL"} ->
-        price
-      {"", ""} ->
-        -1
-      {"", price} ->
-        price
-      {price, ""} ->
-        price
-      {a, _} ->
-        a
+  def net({a, b}) do
+    cond do
+      !missing?(a) -> a
+      !missing?(b) -> b
+      true -> -1
     end
   end
 
@@ -90,8 +63,10 @@ defmodule Helpers do
 
 
   def get_college_from_record(record, file) do
-
-    if (record["UNITID"] == "NULL") do
+    if is_nil(record["INSTNM"]) or record["INSTNM"] == "" do
+      {:error, :nil_name}
+    else
+    if Helpers.missing?(record["UNITID"]) do
       case Colleges.get_college_by_name(record["INSTNM"]) do
         nil ->
           case Colleges.create_college(%{
@@ -147,7 +122,7 @@ defmodule Helpers do
           college
       end
     end
-
+    end
 
   end
 
@@ -160,7 +135,7 @@ IO.inspect("Parsing cohort data..")
 
 # ccount = File.stream!("data/All100_new.csv")
 # ccount = File.stream!(institutions)
-ccount = File.stream!("data/Most-Recent-Cohorts-Institution.csv")
+ccount = File.stream!("data/Most-Recent-Cohorts-Institution_new.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
     # IO.inspect("record..")
@@ -384,7 +359,7 @@ IO.inspect("Parsing field data..")
 
 # adtl = File.stream!("data/Field100_new.csv")
 # adtl = File.stream!(fields)
-adtl = File.stream!("data/Most-Recent-Cohorts-Field-of-Study.csv")
+adtl = File.stream!("data/Most-Recent-Cohorts-Field-of-Study_new.csv")
 |> CSV.decode(headers: true)
 |> Enum.map(fn {:ok, record} ->
 
@@ -394,25 +369,25 @@ adtl = File.stream!("data/Most-Recent-Cohorts-Field-of-Study.csv")
 
   # IO.inspect(Collegevalue.Colleges.get_college_by_opeid(record["OPEID6"]))
 
-  count = if (record["IPEDSCOUNT1"] == "NULL"), do: -1, else: record["IPEDSCOUNT1"]
-  pp_debt_mean =  if (record["DEBT_ALL_PP_ANY_MEAN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_MEAN"]
-  pp_debt_median = if (record["DEBT_ALL_PP_ANY_MDN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_MDN"]
-  pp_debt_payment = if (record["DEBT_ALL_PP_ANY_MDN10YRPAY"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_MDN10YRPAY"]
-  pp_debt_count = if (record["DEBT_ALL_PP_ANY_N"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_PP_ANY_N"]
+  count = if Helpers.missing?(record["IPEDSCOUNT1"]), do: -1, else: record["IPEDSCOUNT1"]
+  pp_debt_mean = Helpers.check_incomplete(record["DEBT_ALL_PP_ANY_MEAN"])
+  pp_debt_median = Helpers.check_incomplete(record["DEBT_ALL_PP_ANY_MDN"])
+  pp_debt_payment = Helpers.check_incomplete(record["DEBT_ALL_PP_ANY_MDN10YRPAY"])
+  pp_debt_count = Helpers.check_incomplete(record["DEBT_ALL_PP_ANY_N"])
 
-  stgp_debt_mean =  if (record["DEBT_ALL_STGP_ANY_MEAN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_MEAN"]
-  stgp_debt_median = if (record["DEBT_ALL_STGP_ANY_MDN"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_MDN"]
-  stgp_debt_payment = if (record["DEBT_ALL_STGP_ANY_MDN10YRPAY"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_MDN10YRPAY"]
-  stgp_debt_count = if (record["DEBT_ALL_STGP_ANY_N"] == "PrivacySuppressed"), do: -1, else: record["DEBT_ALL_STGP_ANY_N"]
+  stgp_debt_mean = Helpers.check_incomplete(record["DEBT_ALL_STGP_ANY_MEAN"])
+  stgp_debt_median = Helpers.check_incomplete(record["DEBT_ALL_STGP_ANY_MDN"])
+  stgp_debt_payment = Helpers.check_incomplete(record["DEBT_ALL_STGP_ANY_MDN10YRPAY"])
+  stgp_debt_count = Helpers.check_incomplete(record["DEBT_ALL_STGP_ANY_N"])
 
-  earnings_1yr = if (record["EARN_MDN_HI_1YR"] == "PrivacySuppressed" || record["EARN_MDN_HI_1YR"] == "NULL"), do: -1, else: record["EARN_MDN_HI_1YR"]
-  earnings_1yr_count = if (record["EARN_COUNT_WNE_HI_1YR"] == "PrivacySuppressed" || record["EARN_COUNT_WNE_HI_1YR"] == "NULL"), do: -1, else: record["EARN_COUNT_WNE_HI_1YR"]
-  earnings_2yr = if (record["EARN_MDN_HI_2YR"] == "PrivacySuppressed" || record["EARN_MDN_HI_2YR"] == "NULL"), do: -1, else: record["EARN_MDN_HI_2YR"]
-  earnings_2yr_count = if (record["EARN_COUNT_WNE_HI_2YR"] == "PrivacySuppressed" || record["EARN_COUNT_WNE_HI_2YR"] == "NULL"), do: -1, else: record["EARN_COUNT_WNE_HI_2YR"]
+  earnings_1yr = Helpers.check_incomplete(record["EARN_MDN_HI_1YR"])
+  earnings_1yr_count = Helpers.check_incomplete(record["EARN_COUNT_WNE_HI_1YR"])
+  earnings_2yr = Helpers.check_incomplete(record["EARN_MDN_HI_2YR"])
+  earnings_2yr_count = Helpers.check_incomplete(record["EARN_COUNT_WNE_HI_2YR"])
 
   debt_counts = [
-    (if (pp_debt_count == -1), do: 0, else: String.to_integer(pp_debt_count)),
-    (if (stgp_debt_count == -1), do: 0, else: String.to_integer(stgp_debt_count)),
+    (if (pp_debt_count in [-1, -2]), do: 0, else: String.to_integer(to_string(pp_debt_count))),
+    (if (stgp_debt_count in [-1, -2]), do: 0, else: String.to_integer(to_string(stgp_debt_count))),
   ]
   titleiv_count = Enum.sum(debt_counts)
 
