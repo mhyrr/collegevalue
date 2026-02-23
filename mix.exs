@@ -55,7 +55,8 @@ defmodule Collegevalue.MixProject do
       {:phoenix_html_helpers, "~> 1.0"},
       {:bandit, "~> 1.6"},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
-      {:tailwind, "~> 0.2", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
+      {:tidewave, "~> 0.5", only: :dev}
     ]
   end
 

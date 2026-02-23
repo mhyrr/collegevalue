@@ -98,6 +98,7 @@ defmodule CollegevalueWeb do
 
       import CollegevalueWeb.ErrorHelpers
       import CollegevalueWeb.Gettext
+      import CollegevalueWeb.DataComponents
       alias CollegevalueWeb.Router.Helpers, as: Routes
     end
   end

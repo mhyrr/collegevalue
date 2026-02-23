@@ -97,23 +97,65 @@ defmodule CollegevalueWeb.Views.Helpers do
     end
   end
 
-  def cash(nil) do
-    "No data"
-  end
+  def no_data?(nil), do: true
+  def no_data?(0), do: true
+  def no_data?(-1), do: true
+  def no_data?(-2), do: true
+  def no_data?(-1.0), do: true
+  def no_data?("No data"), do: true
+  def no_data?(_), do: false
+
+  def cash(val) when is_nil(val), do: "No data"
 
   def cash(dollars) do
-    case dollars do
-      0 ->
-        "No data"
-      -1 ->
-        "No data"
-      -2 ->
-        "No data"
-      "No data" -> #gross
-        "No data"
-      _ ->
-        Number.Currency.number_to_currency(dollars)
+    if no_data?(dollars) do
+      "No data"
+    else
+      Number.Currency.number_to_currency(dollars, precision: 0)
     end
+  end
+
+  def cash_compact(val) when is_nil(val), do: "N/A"
+
+  def cash_compact(dollars) do
+    if no_data?(dollars) do
+      "N/A"
+    else
+      cond do
+        dollars >= 1_000_000 ->
+          "$#{Float.round(dollars / 1_000_000, 1)}M"
+        dollars >= 1000 ->
+          "$#{round(dollars / 1000)}k"
+        dollars <= -1_000_000 ->
+          "-$#{Float.round(abs(dollars) / 1_000_000, 1)}M"
+        dollars <= -1000 ->
+          "-$#{round(abs(dollars) / 1000)}k"
+        true ->
+          "$#{dollars}"
+      end
+    end
+  end
+
+  @header_map %{
+    "debt_median" => "Median Debt",
+    "graduated_debt_median" => "Grad Debt",
+    "yearly_cost" => "Annual Cost",
+    "earnings_median_after10" => "10-Year Earnings",
+    "earnings_median_after9" => "9-Year Earnings",
+    "earnings_median_after8" => "8-Year Earnings",
+    "earnings_median_after7" => "7-Year Earnings",
+    "earnings_median_after6" => "6-Year Earnings",
+    "earnings_mean_after10" => "10-Year Earnings (Mean)",
+    "admissions_rate" => "Admit Rate",
+    "sat_avg" => "Avg SAT",
+    "tuition_in" => "In-State Tuition",
+    "tuition_out" => "Out-of-State Tuition",
+    "Debt Mean" => "Debt Mean",
+    "Field Earnings" => "1-Year Earnings"
+  }
+
+  def humanize_header(field_name) do
+    Map.get(@header_map, field_name, field_name |> String.replace("_", " ") |> String.capitalize())
   end
 
   def defaults(geo) do
@@ -163,6 +205,18 @@ defmodule CollegevalueWeb.Views.Helpers do
     else
       field
     end
+  end
+
+  def income_cost_chart_data(net_price_bands) do
+    net_price_bands
+    |> Enum.map(fn {label, value} -> [label, value] end)
+  end
+
+  def income_earnings_chart_data(earnings_series) do
+    earnings_series
+    |> Enum.map(fn {name, data} ->
+      %{name: name, data: Enum.map(data, fn {label, val} -> [label, if(is_nil(val) or val <= 0, do: 0, else: val)] end)}
+    end)
   end
 
   def college_chart_data(majors) do

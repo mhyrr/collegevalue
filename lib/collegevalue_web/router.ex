@@ -31,10 +31,12 @@ defmodule CollegevalueWeb.Router do
     live "/fields/:name", FieldsLive.Show
 
     live_session :search do
-
       live "/search", SearchLive.Search
       live "/results/:query", SearchLive.Results
+    end
 
+    live_session :calculator do
+      live "/calculator", CalculatorLive.Index
     end
 
   end

@@ -1,13 +1,14 @@
-<h1 class="x-0 y-2 xl:px-0 xl:py-8 xl:text-2xl text-green-500">Find A Great School</h1>
+<h1 class="text-green-500">Find Your Best-Value College</h1>
+<p class="text-gray-600 mb-6">Tell us about yourself and we'll find colleges where graduates earn more and owe less.</p>
 
-<section class="w-full max-w-xs">
+<section class="w-full max-w-md mx-auto">
   <%= form_for @conn, Routes.college_path(@conn, :you), [method: :get, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"], fn f -> %>
 
     <label class="block text-gray-700 text-sm font-bold mt-2 mb-2">Starting Zipcode:<%= if @zipmsg != "" do %><span class="text-green"> Enter a valid zip!</span><% end %></label><%= text_input f, :zip,  class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", required: true, pattern: "\\d{5,5}"  %>
     <label class="block text-gray-700 text-sm font-bold mt-2 mb-2">Max Distance (Miles):</label><%= select f, :distance, [25, 50, 100, 250, 500, 1000, 3000], onchange: "this.form.submit()", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-    <label class="block text-gray-700 text-sm font-bold mt-2 mb-2">Your SAT (We'll use this to give you a range of matches and stretches):</label><%= text_input f, :sat,  class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", pattern: "\\d{4,4}"  %>
+    <label class="block text-gray-700 text-sm font-bold mt-2 mb-2">Your SAT Score (optional):</label><%= text_input f, :sat,  class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline", pattern: "\\d{4,4}"  %>
 
-    <%= submit "GO!", class: "bg-green hover:bg-green-700 text-white font-bold mt-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    <%= submit "GO!", class: "bg-green hover:bg-green-700 text-white font-bold mt-2 py-2 px-4 text-lg w-full rounded focus:outline-none focus:shadow-outline" %>
   <% end %>
 </section>
 

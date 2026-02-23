@@ -3,28 +3,28 @@
 <table class="md:block xl:table pt-8 min-w-full">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "name", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Name</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "count", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Num Colleges</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_avg", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Debt Average</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_min", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Debt Min</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_max", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Debt Max</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_avg", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Earnings Average</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_min", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Earnings Min</.link></th>
-      <th class="x-0 y-2 xl:px-1 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_max", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Earnings Max</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "name", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Name</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "count", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Num Colleges</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_avg", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Debt Average</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_min", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Debt Min</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "debt_max", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Debt Max</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_avg", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Earnings Average</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_min", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Earnings Min</.link></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><.link patch={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Index, %{sort_by: "earn_max", order: @order || "desc"})} class="text-darkgreen uppercase text-medium">Earnings Max</.link></th>
     </tr>
   </thead>
   <tbody class="md:block">
 <%= for field <- @fields do %>
-    <tr class="md:block">
+    <tr class="md:block odd:bg-gray-50">
 
-      <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><.link navigate={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name)} class="text-green no-underline"><%= field.name %></.link></td>
-      <td class="count-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= field.count %></td>
-      <td class="debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.debt_avg) %></td>
-      <td class="debtmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.debt_min) %></td>
-      <td class="debtmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.debt_max) %></td>
-      <td class="earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.earn_avg) %></td>
-      <td class="earnmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.earn_min) %></td>
-      <td class="earnmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b px-2"><%= cash(field.earn_max) %></td>
+      <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><.link navigate={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, field.name)} class="text-green no-underline"><%= field.name %></.link></td>
+      <td class="px-4 py-3 count-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= field.count %></td>
+      <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.debt_avg) %></td>
+      <td class="px-4 py-3 debtmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.debt_min) %></td>
+      <td class="px-4 py-3 debtmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.debt_max) %></td>
+      <td class="px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.earn_avg) %></td>
+      <td class="px-4 py-3 earnmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.earn_min) %></td>
+      <td class="px-4 py-3 earnmax-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.earn_max) %></td>
 
     </tr>
 <% end %>

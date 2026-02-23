@@ -1,31 +1,31 @@
 
   <%= if length(@colleges) > 0 do %>
 
-    <h2 class="x-0 y-2 xl:px-0 xl:py-8 xl:text-xl">Good Matches</h2>
+    <h2 class="px-0 py-8 xl:text-xl">Good Matches</h2>
 
     <table class="md:block xl:table pt-8">
       <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
-          <th class="x-4 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="tuition">Tuition</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT Score</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings">Earnings After 10 Years</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="difference">Difference (Earnings-Debt)</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="tuition">Tuition</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT Score</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings">Earnings After 10 Years</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="difference">Difference (Earnings-Debt)</a></th>
         </tr>
       </thead>
       <tbody class="md:block">
 
       <%= for college <- @colleges do %>
-        <tr class="md:block">
-          <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@socket, :show, college.unitid, college.name), class: "no-underline text-green" %> </td>
-          <td class="px-4 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.tuition_in) %></td>
-          <td class="admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(college.admissions_rate) %></td>
-          <td class="sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(college.sat_avg)%></td>
-          <td class="cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.debt_median) %></td>
-          <td class="payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.earnings_median_after10) %></td>
-          <td class="diff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.earnings_median_after10 - college.debt_median) %></td>
+        <tr class="md:block odd:bg-gray-50">
+          <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@socket, :show, college.unitid, college.name), class: "no-underline text-green" %> </td>
+          <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.tuition_in) %></td>
+          <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(college.admissions_rate) %></td>
+          <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(college.sat_avg)%></td>
+          <td class="px-4 py-3 cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.debt_median) %></td>
+          <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.earnings_median_after10) %></td>
+          <.diff_cell value={college.earnings_median_after10 - college.debt_median} />
         </tr>
       <% end %>
       </tbody>
@@ -35,31 +35,31 @@
 
 
   <%= if length(@stretch) > 0 do %>
-    <h2 class="x-0 y-2 xl:px-0 xl:py-8 xl:text-xl">Stretch Schools</h2>
+    <h2 class="px-0 py-8 xl:text-xl">Stretch Schools</h2>
 
     <table class="md:block xl:table pt-8">
       <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="name">College Name</a></th>
-          <th class="x-4 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="tuition">Tuition</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="admissions">Admissions Rate</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="sat">Average SAT Score</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="debt_median">Debt Median</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="earnings">Earnings After 10 Years</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="difference">Difference</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="name">College Name</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="tuition">Tuition</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="admissions">Admissions Rate</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="sat">Average SAT Score</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="debt_median">Debt Median</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="earnings">Earnings After 10 Years</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort_stretch" phx-value-sort="difference">Difference</a></th>
         </tr>
       </thead>
       <tbody class="md:block">
 
       <%= for college <- @stretch do %>
-        <tr class="md:block">
-          <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@socket, :show, college.unitid, college.name), class: "no-underline text-green" %> </td>
-          <td class="px-4 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.tuition_in) %></td>
-          <td class="admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(college.admissions_rate) %></td>
-          <td class="sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(college.sat_avg)%></td>
-          <td class="cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.debt_median) %></td>
-          <td class="payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.earnings_median_after10) %></td>
-          <td class="diff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.earnings_median_after10 - college.debt_median) %></td>
+        <tr class="md:block odd:bg-gray-50">
+          <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@socket, :show, college.unitid, college.name), class: "no-underline text-green" %> </td>
+          <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.tuition_in) %></td>
+          <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(college.admissions_rate) %></td>
+          <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(college.sat_avg)%></td>
+          <td class="px-4 py-3 cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.debt_median) %></td>
+          <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(college.earnings_median_after10) %></td>
+          <.diff_cell value={college.earnings_median_after10 - college.debt_median} />
         </tr>
       <% end %>
       </tbody>

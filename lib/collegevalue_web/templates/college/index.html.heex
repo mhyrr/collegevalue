@@ -29,26 +29,26 @@
 <table class="md:block xl:table pt-8 min-w-full">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Name</th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">City</th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">State</th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Opeid</th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Unitid</th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Control</th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Accreditation</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Name</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">City</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">State</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Opeid</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Unitid</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Control</th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight">Accreditation</th>
 
     </tr>
   </thead>
   <tbody class="md:block">
 <%= for college <- @colleges.results do %>
-    <tr class="md:block">
-      <td class="college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@conn, :show, college.unitid, college.name), class: "no-underline text-green"%></td>
-      <td class="city-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.city) %></td>
-      <td class="state-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.state) %></td>
-      <td class="opeid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.opeid) %></td>
-      <td class="unitid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.unitid) %></td>
-      <td class="control-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= control(college.control) %></td>
-      <td class="accred-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= accreditation(defaults(college.accreditation)) %></td>
+    <tr class="md:block odd:bg-gray-50">
+      <td class="px-4 py-3 college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@conn, :show, college.unitid, college.name), class: "no-underline text-green"%></td>
+      <td class="px-4 py-3 city-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.city) %></td>
+      <td class="px-4 py-3 state-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.state) %></td>
+      <td class="px-4 py-3 opeid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.opeid) %></td>
+      <td class="px-4 py-3 unitid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.unitid) %></td>
+      <td class="px-4 py-3 control-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= control(college.control) %></td>
+      <td class="px-4 py-3 accred-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= accreditation(defaults(college.accreditation)) %></td>
 
     </tr>
 <% end %>

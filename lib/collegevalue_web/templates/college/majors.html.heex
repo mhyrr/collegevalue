@@ -11,22 +11,22 @@
     <table class="md:block xl:table pt-8">
     <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-        <th class="x-0 y-2 xl:px-4 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">Name</a></th>
-        <th class="x-0 y-2 xl:px-8 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="credential_level">Credential</a></th>
-        <th class="x-0 y-2 xl:px-8 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_mean">Debt Mean</a></th>
-        <th class="x-0 y-2 xl:px-8 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-        <th class="x-0 y-2 xl:px-8 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="earnings">Earnings</a></th>
+        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">Name</a></th>
+        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="credential_level">Credential</a></th>
+        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_mean">Debt Mean</a></th>
+        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
+        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="earnings">Earnings</a></th>
         </tr>
     </thead>
     <tbody class="md:block">
         <%= for major <- @majors do %>
         <%= if @toggle_cred || major.credential_level == 3 do %>
-            <tr class="md:block">
-                <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><.link navigate={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name)} class="no-underline text-green"><%= major.name %></.link> </td>
-                <td class="cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= degree(major.credential_level) %></td>
-                <td class="debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_mean) %></td>
-                <td class="debtmed-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_median) %></td>
-                <td class="earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings) %></td>
+            <tr class="md:block odd:bg-gray-50">
+                <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><.link navigate={Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name)} class="no-underline text-green"><%= major.name %></.link> </td>
+                <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= degree(major.credential_level) %></td>
+                <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_mean) %></td>
+                <td class="px-4 py-3 debtmed-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_median) %></td>
+                <td class="px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings) %></td>
 
             </tr>
         <% end %>

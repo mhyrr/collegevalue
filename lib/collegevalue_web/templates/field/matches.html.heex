@@ -1,37 +1,37 @@
 
-<h2 class="x-0 y-2 xl:px-0 xl:py-8 xl:text-xl">Good Matches</h2>
+<h2 class="px-0 py-8 xl:text-xl">Good Matches</h2>
 
 <table class="md:block xl:table pt-8">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="major">Major</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings1yr">Earnings After 1 Year</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings2yr">Earnings After 2 Years</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="college_debt_median">Tuition</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings10yr">College Earnings After 10 Years</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
-      <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="major">Major</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings1yr">Earnings After 1 Year</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings2yr">Earnings After 2 Years</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="college_debt_median">Tuition</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings10yr">College Earnings After 10 Years</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
+      <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT</a></th>
     </tr>
   </thead>
   <tbody class="md:block">
 
   <%= for major <- @majors do %>
-    <tr class="md:block">
-      <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college.name, to: Routes.college_path(@socket, :show, major.college.unitid, major.college.name), class: "no-underline text-green" %> </td>
-      <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
+    <tr class="md:block odd:bg-gray-50">
+      <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college.name, to: Routes.college_path(@socket, :show, major.college.unitid, major.college.name), class: "no-underline text-green" %> </td>
+      <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
 
-      <td class="earnings1yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_1yr) %></td>
-      <td class="earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
+      <td class="px-4 py-3 earnings1yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_1yr) %></td>
+      <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
 
-      <td class="majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.pp_debt_median) %></td>
-      <td class="px-4 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
+      <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.pp_debt_median) %></td>
+      <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
 
-      <td class="payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
+      <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
 
-      <td class="admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(major.college.admissions_rate) %></td>
-      <td class="sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(major.college.sat_avg)%></td>
+      <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(major.college.admissions_rate) %></td>
+      <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(major.college.sat_avg)%></td>
 
     </tr>
   <% end %>
@@ -40,40 +40,40 @@
 
 
   <%= if length(@stretch) > 0 do %>
-    <h2 class="x-0 y-2 xl:px-0 xl:py-8 xl:text-xl">Stretch Schools</h2>
+    <h2 class="px-0 py-8 xl:text-xl">Stretch Schools</h2>
 
 
     <table class="md:block xl:table pt-8">
       <thead class="md:absolute md:-top-9999 md:-left-9999">
         <tr>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="major">Major</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings1yr">Earnings After 1 Year</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings2yr">Earnings After 2 Years</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="college_debt_median">Tuition</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings10yr">College Earnings After 10 Years</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
-          <th class="x-0 y-2 xl:px-2 xl:py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">College Name</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight" ><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="major">Major</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings1yr">Earnings After 1 Year</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings2yr">Earnings After 2 Years</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="college_debt_median">Tuition</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="earnings10yr">College Earnings After 10 Years</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="admissions">Admissions Rate</a></th>
+          <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="sat">Average SAT</a></th>
         </tr>
       </thead>
       <tbody class="md:block">
 
       <%= for major <- @stretch do %>
-        <tr class="md:block">
-          <td class="college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college.name, to: Routes.college_path(@socket, :show, major.college.unitid, major.college.name), class: "no-underline text-green" %> </td>
-          <td class="major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
+        <tr class="md:block odd:bg-gray-50">
+          <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college.name, to: Routes.college_path(@socket, :show, major.college.unitid, major.college.name), class: "no-underline text-green" %> </td>
+          <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
 
-          <td class="earnings1yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_1yr) %></td>
-          <td class="earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
+          <td class="px-4 py-3 earnings1yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_1yr) %></td>
+          <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
 
-          <td class="majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.pp_debt_median) %></td>
-          <td class="px-4 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
+          <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.pp_debt_median) %></td>
+          <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
 
-          <td class="payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
+          <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
 
-          <td class="admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(major.college.admissions_rate) %></td>
-          <td class="sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(major.college.sat_avg)%></td>
+          <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(major.college.admissions_rate) %></td>
+          <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(major.college.sat_avg)%></td>
 
         </tr>
       <% end %>

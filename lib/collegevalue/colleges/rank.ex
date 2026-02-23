@@ -22,6 +22,7 @@ defmodule Collegevalue.Colleges.Rank do
     field :tuition_in, :integer
     field :fouryear_100_completion, :float
     field :fouryear_150_completion, :float
+    field :fouryear_200_completion, :float
 
     timestamps()
   end

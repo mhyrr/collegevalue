@@ -186,7 +186,8 @@ defmodule Collegevalue.Colleges do
         tuition_out: c.tuition_out,
         tuition_in: c.tuition_in,
         fouryear_100_completion: c.fouryear_100_completion,
-        fouryear_150_completion: c.fouryear_150_completion
+        fouryear_150_completion: c.fouryear_150_completion,
+        fouryear_200_completion: c.fouryear_200_completion
       },
       order_by: [{^direction, fragment("diff")}],
       limit: ^limit
@@ -295,6 +296,12 @@ defmodule Collegevalue.Colleges do
 
   end
 
+
+  def completion_category(nil), do: :no_data
+  def completion_category(rate) when rate < 0, do: :no_data
+  def completion_category(rate) when rate >= 0.70, do: :high
+  def completion_category(rate) when rate >= 0.40, do: :average
+  def completion_category(_rate), do: :low
 
   defp filter_results(query, key) do
 
@@ -486,5 +493,40 @@ defmodule Collegevalue.Colleges do
     Discipline.changeset(discipline, %{})
   end
 
+
+  def net_price_by_income(college) do
+    bands = [
+      {"$0-30k", college.netprice_1},
+      {"$30k-48k", college.netprice_2},
+      {"$48k-75k", college.netprice_3},
+      {"$75k-110k", college.netprice_4},
+      {"$110k+", college.netprice_5}
+    ]
+    Enum.reject(bands, fn {_label, val} -> is_nil(val) or val <= 0 end)
+  end
+
+  def earnings_by_family_income(college) do
+    series = [
+      {"Low Income Family", [
+        {"6 Years", college.low_family_earnings_median_after6},
+        {"8 Years", college.low_family_earnings_median_after8},
+        {"10 Years", college.low_family_earnings_median_after10}
+      ]},
+      {"Middle Income Family", [
+        {"6 Years", college.medium_family_earnings_median_after6},
+        {"8 Years", college.medium_family_earnings_median_after8},
+        {"10 Years", college.medium_family_earnings_median_after10}
+      ]},
+      {"High Income Family", [
+        {"6 Years", college.high_family_earnings_median_after6},
+        {"8 Years", college.high_family_earnings_median_after8},
+        {"10 Years", college.high_family_earnings_median_after10}
+      ]}
+    ]
+    # Only include series that have at least one valid data point
+    Enum.filter(series, fn {_name, data} ->
+      Enum.any?(data, fn {_label, val} -> not is_nil(val) and val > 0 end)
+    end)
+  end
 
 end

@@ -47,6 +47,14 @@
                       <span class="tooltip-text"  >Completion rates for full-time, first-time students within 8 years.  This is what is normally reported for college completion rates.</span>
                     </li>
                 </ul>
+                <div class="mt-4">
+                  <.completion_badge rate={@college.fouryear_200_completion} />
+                </div>
+                <div class="mt-4 max-w-md">
+                  <.completion_bar rate={@college.fouryear_100_completion} label="4 Year" />
+                  <.completion_bar rate={@college.fouryear_150_completion} label="6 Year" />
+                  <.completion_bar rate={@college.fouryear_200_completion} label="8 Year" />
+                </div>
             </div>
           </div>
         </li>
@@ -170,3 +178,31 @@
         %>
         </section>
     <% end %>
+
+<% net_prices = Collegevalue.Colleges.net_price_by_income(@college) %>
+<%= if length(net_prices) > 0 do %>
+  <section class="mt-10 pb-8">
+    <h3 class="text-lg font-medium text-darkgreen mb-4">What This College Costs By Family Income</h3>
+    <p class="text-sm text-gray-600 mb-4">Net price after grants and scholarships, by family income band.</p>
+    <% cost_data = Poison.encode!(income_cost_chart_data(net_prices)) %>
+    <%= raw Chartkick.column_chart(cost_data, prefix: "$", width: "100%", colors: ["#114b5f"], library: %{
+      scales: %{
+        yAxes: [%{ticks: %{beginAtZero: true}}]
+      }
+    }) %>
+  </section>
+<% end %>
+
+<% earnings_by_income = Collegevalue.Colleges.earnings_by_family_income(@college) %>
+<%= if length(earnings_by_income) > 0 do %>
+  <section class="mt-10 pb-16">
+    <h3 class="text-lg font-medium text-darkgreen mb-4">What Graduates Earn By Family Background</h3>
+    <p class="text-sm text-gray-600 mb-4">Median earnings by family income tercile, showing income mobility over time.</p>
+    <% earn_data = Poison.encode!(income_earnings_chart_data(earnings_by_income)) %>
+    <%= raw Chartkick.column_chart(earn_data, prefix: "$", width: "100%", colors: ["#1a93df", "#88d498", "#114b5f"], library: %{
+      scales: %{
+        yAxes: [%{ticks: %{beginAtZero: true}}]
+      }
+    }) %>
+  </section>
+<% end %>
