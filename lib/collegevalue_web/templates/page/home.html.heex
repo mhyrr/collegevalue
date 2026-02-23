@@ -8,80 +8,91 @@
     <article class="content-center">
 
       <p>
-          <b>They say college is a credential.  Fine, let's treat it like one.</b> What do you get for your money?  Can we measure it?
-          <br/>
-          Yup, we can.  If you like that idea start here:
+        <b>They say college is a credential. Fine, let's treat it like one.</b> What do you get for your money? Can we measure it?
+      </p>
+      <p class="pt-2 pb-4">Start here:</p>
 
-          <ul class="py-2">
-            <li><%= link "Colleges For You", to: "/colleges/you", class: "text-darkgreen text-xl underline py-2"%> - Find the colleges where grads have the highest earnings and lowest debt.  Narrow it down by location and SAT score.</li>
+      <div class="grid grid-cols-3 md:grid-cols-1 gap-6">
+        <a href="/colleges/you" class="block no-underline border border-gray-200 rounded-lg border-t-4 border-t-darkgreen p-6 hover:shadow-lg transition-shadow bg-white">
+          <div class="text-darkgreen text-xl font-display font-bold">Colleges For You</div>
+          <div class="text-gray-600 text-sm">Find colleges where grads earn more and owe less. Filter by location and SAT score.</div>
+        </a>
+        <a href="/fields/you" class="block no-underline border border-gray-200 rounded-lg border-t-4 border-t-darkgreen p-6 hover:shadow-lg transition-shadow bg-white">
+          <div class="text-darkgreen text-xl font-display font-bold">Majors For You</div>
+          <div class="text-gray-600 text-sm">Compare the same major across different schools. See which ones deliver the best outcomes for the least debt.</div>
+        </a>
+        <a href="/calculator" class="block no-underline border border-gray-200 rounded-lg border-t-4 border-t-darkgreen p-6 hover:shadow-lg transition-shadow bg-white">
+          <div class="text-darkgreen text-xl font-display font-bold">ROI Calculator</div>
+          <div class="text-gray-600 text-sm">Is a specific college + major worth it for you? Enter your details for personalized ROI projections.</div>
+        </a>
+      </div>
 
-            <li><%= link "Majors For You", to: "/fields/you", class: "text-darkgreen text-xl underline py-2"%> - Not all degrees have the same outcome!  A nursing grad from two different schools might expect much different outcomes!  Find the majors at colleges where grads have the highest earnings and lowest debt.  Compare different majors against earning potential.  Narrow it down by location and SAT score.</li>
+      <p class="py-6">Just want to see the <b>top schools and majors</b> regardless of location and match?</p>
 
-            <li><%= link "ROI Calculator", to: "/calculator", class: "text-darkgreen text-xl underline py-2"%> - Is a specific college + major worth it for YOU? Enter your family income, target major, and location to see personalized ROI projections.</li>
-          </ul>
-
-          Just want to see the <b>top schools and majors</b> regardless of location and match?  We've got that too.
-
-          <ul class="py-2">
-            <li><%= link "College Rankings", to: "/colleges/rank", class: "text-darkgreen text-xl underline py-2"%> - The best and worst colleges based on earnings and debt.</li>
-
-            <li><%= link "Major Rankings", to: "/fields/rank", class: "text-darkgreen text-xl underline py-2"%> - The best and worst college majors based on earnings and debt.</li>
-          </ul>
-        </p>
+      <div class="grid grid-cols-2 md:grid-cols-1 gap-6">
+        <a href="/colleges/rank" class="block no-underline border border-gray-200 rounded-lg p-5 hover:shadow-lg transition-shadow bg-white">
+          <div class="text-darkgreen text-lg font-display font-bold">College Rankings</div>
+          <div class="text-gray-600 text-sm">The best and worst colleges based on earnings and debt.</div>
+        </a>
+        <a href="/fields/rank" class="block no-underline border border-gray-200 rounded-lg p-5 hover:shadow-lg transition-shadow bg-white">
+          <div class="text-darkgreen text-lg font-display font-bold">Major Rankings</div>
+          <div class="text-gray-600 text-sm">The best and worst college majors based on earnings and debt.</div>
+        </a>
+      </div>
 
       <h2 class="text-darkgreen text-2xl font-display pt-8 pb-2">The Choice</h2>
         <p>
-          Should you go to college?  What do you study?  How much will it cost?
+          Should you go to college? What should you study? How much will it cost?
         </p>
         <br/>
         <p>
-          There's a lot of questions around college right now, from the growing number of administrators compared to faculty,
-          the country-club style amenities on campus, the equality of different segments student populations, the DEI initiatives,
-          the forced-remote landscape from the Covid pandemic, and the <b>sheer ballooning cost.</b>
+          There are a lot of questions around college right now — the growing number of administrators compared to faculty,
+          the country-club amenities on campus, the shifting priorities in student life,
+          and above all, the <b>sheer ballooning cost.</b>
         </p>
         <br/>
         <p>
-          Most importantly, there's a question of value.  When so many students are going into tremendous debt for the hope
+          Most importantly, there's a question of value. When so many students are going into tremendous debt for the hope
            of a better job - and consequently, more financial freedom - it's perfectly reasonable to ask: is it worth it?
         </p>
         <br/>
 
         <p>
           College in the modern world is a <a class="no-underline text-green" href="https://www.kanonical.io/education-backwards/">cost/benefit analysis</a>.
-          We spend money to be educated for a purpose, and we need to do a better job at considering the outcomes.
-          Different majors and colleges differ greatly in terms of both the costs and the estimated payoffs.  And that's why this place exists.
-          The Department of Education has loads of this data, it's just hard to find and parse.  And a lot of it is missing, so keep that in mind too.
+          We spend money to be educated for a purpose, and we should do a better job of considering the outcomes.
+          Different majors and colleges differ greatly in terms of both the costs and the estimated payoffs. And that's why this place exists.
+          The Department of Education has loads of this data, but it's hard to find and harder to parse. Some of it is missing, so keep that in mind too.
           <%= link "There's more about the data here", to: "/data", class: "no-underline text-green" %>.
         </p>
         <br/>
         <p>
           The original thesis behind building this was that considering either colleges OR majors isn't enough.
           For instance, a <a class="no-underline text-green" href="/fields/Registered%20Nursing%2C%20Nursing%20Administration%2C%20Nursing%20Research%20and%20Clinical%20Nursing?order=desc&sort_by=earnings">nursing degree</a>
-          from <a class="no-underline text-green" href="/colleges/131113/Wilmington%20University">Wilmington Univeristy</a> is not the same as one from
-          <a class="no-underline text-green" href="/colleges/130226/Quinnipiac%20University">Quinnipiac University</a>.  A graduate from either can expect to earn about $72,000 a year,
+          from <a class="no-underline text-green" href="/colleges/131113/Wilmington%20University">Wilmington University</a> is not the same as one from
+          <a class="no-underline text-green" href="/colleges/130226/Quinnipiac%20University">Quinnipiac University</a>. A graduate from either can expect to earn about $72,000 a year,
           but the Quinnipiac grad will have $77,000 in debt and the Wilmington U. grad will have less than $10k.
         </p>
         <br/>
         <p>
            There's plenty to look at for both different
            <a class="no-underline text-green" href="/fields/rank">fields</a> and <a class="no-underline text-green"href="/colleges/rank">colleges</a>.
-           Our goal is to help you explore what it really means to get the most out of college, knowing that every dollar matters.  College isn't one-size-fits-all
-           and the needs and goals of every student are going to be different.  We want to get you the data you need.
-           There's plenty of other college review sites.  <b>We think they all suck.</b>  They're built on advertising to serve college admissions rather than prospective students.
-           This is an experiment, an MVP, based on the idea of measuring school based on good outcomes.  Let us know what you think!
+           Our goal is to help you explore what it really means to get the most out of college, knowing that every dollar matters. College isn't one-size-fits-all
+           and the needs and goals of every student are going to be different. We want to get you the data you need.
+           There's plenty of other college review sites. <b>We think they're built backwards</b> — on advertising to serve college admissions rather than prospective students.
+           This is an experiment, built on the idea of measuring schools by their outcomes. Let us know what you think!
         </p>
 
 
     </article>
 
-    <h2 class="text-darkgreen text-2xl font-display py-8">Want Some More? Sign Up!</h2>
+    <h2 class="text-darkgreen text-2xl font-display py-8">Stay In The Loop</h2>
     <article class="items-center">
       <iframe src="https://embeds.beehiiv.com/8f16ef98-f0d5-4ba4-aec1-05aea7685f06" data-test-id="beehiiv-embed" width="100%" height="320" frameborder="0" scrolling="no" style="border-radius: 4px; margin: 0; background-color: transparent;"></iframe>
     </article>
 
     <h2 class="text-darkgreen text-2xl font-display py-8">Have Ideas?</h2>
     <article class="items-center">
-      <p>This is going to evolve a lot over time.  We're looking for more data to incorporate and more stories to tell!  If you have ideas or things you'd like to see, <a class="no-underline text-green" href="mailto:troy@collegevalue.dev">drop a line!</a></p>
+      <p>This is going to evolve a lot over time.  We're looking for more data to incorporate and more stories to tell!  If you have ideas or things you'd like to see, <a class="no-underline text-green" href="mailto:greg@collegevalue.co">drop a line!</a></p>
 
 
     </article>
