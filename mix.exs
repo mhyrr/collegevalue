@@ -48,7 +48,6 @@ defmodule Collegevalue.MixProject do
       {:jason, "~> 1.4"},
       {:poison, "~> 3.0"},
       {:chartkick, "~> 1.0"},
-      {:uuid, "~> 1.1"},
       {:csv, "~> 3.2"},
       {:number, "~> 1.0.1"},
       {:phoenix_view, "~> 2.0"},
