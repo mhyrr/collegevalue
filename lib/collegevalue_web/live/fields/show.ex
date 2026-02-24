@@ -100,8 +100,10 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
     field = Fields.get_field!(URI.decode(name))
     majors = Colleges.get_majors_by_field(field.name)
+      |> sort_majors("earnings")
+      |> handle_direction("desc", "earnings")
 
-    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(sort_by: nil)}
+    {:noreply, socket |> assign(field: field) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc")}
   end
 
 
