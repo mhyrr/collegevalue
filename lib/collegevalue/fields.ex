@@ -57,7 +57,7 @@ defmodule Collegevalue.Fields do
 
   def get_bachelors_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
-    require_debt = Keyword.get(opts, :require_debt, true)
+    require_debt = Keyword.get(opts, :require_debt, false)
 
     query = from c in College,
       join: d in Discipline,
@@ -91,7 +91,7 @@ defmodule Collegevalue.Fields do
 
   def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
-    require_debt = Keyword.get(opts, :require_debt, true)
+    require_debt = Keyword.get(opts, :require_debt, false)
 
     query = from c in College,
       join: d in Discipline,
