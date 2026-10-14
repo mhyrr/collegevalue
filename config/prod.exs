@@ -11,6 +11,10 @@ import Config
 # before starting your production server.
 config :collegevalue, CollegevalueWeb.Endpoint, cache_static_manifest: "priv/static/cache_manifest.json"
 
+# The public origin for canonical links. The endpoint's host (PHX_HOST) is the
+# fly.dev name; the site is served at collegevalue.co.
+config :collegevalue, canonical_url: "https://collegevalue.co"
+
 # Do not print debug messages in production
 config :logger, level: :info
 

@@ -3,6 +3,8 @@ defmodule CollegevalueWeb.FieldController do
 
   alias Collegevalue.{Fields, Colleges}
 
+  @rank_description "Bachelor's programs ranked college by college on 1-year earnings against debt, or on earnings alone, top and bottom."
+
 
 
 
@@ -90,11 +92,11 @@ defmodule CollegevalueWeb.FieldController do
         Fields.get_bachelors_earnings("bottom", count, opts)
     end
 
-    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "Ranked Fields")
+    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "Ranked Fields", meta_description: @rank_description)
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", require_debt: false, page_title: "Ranked Fields")
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", require_debt: false, page_title: "Ranked Fields", meta_description: @rank_description)
   end
 
 

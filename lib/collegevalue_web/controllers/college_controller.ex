@@ -5,12 +5,15 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields
 
+  @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
+  @rank_description "Colleges ranked by yearly cost, median debt and graduates' median debt against median earnings 10 years out, top and bottom."
+
   def index(conn, params) do
     page = params["page"] || 1
     # per_page = params["per_page"] || 100
 
     colleges = Colleges.list_colleges(:paged, page)
-    render(conn, "index.html", colleges: colleges, page_title: "All Colleges")
+    render(conn, "index.html", colleges: colleges, page_title: "All Colleges", meta_description: @index_description)
   end
 
 
@@ -80,11 +83,11 @@ defmodule CollegevalueWeb.CollegeController do
         Colleges.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :bottom, count)
     end
 
-    render(conn, "rank.html", ranks: ranks, page_title: "Ranked Colleges")
+    render(conn, "rank.html", ranks: ranks, page_title: "Ranked Colleges", meta_description: @rank_description)
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs, page_title: "Ranked Colleges")
+    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs, page_title: "Ranked Colleges", meta_description: @rank_description)
   end
 
   def show(conn, %{"name" => name, "unitid" => unitid}) do

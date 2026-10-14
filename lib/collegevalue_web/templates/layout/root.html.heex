@@ -16,8 +16,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Higher Ed 1 Dollar At A Time!  Should you go to college? What do you study? How much will it cost?.">
-    <title>Collegevalue · What's Worth It?</title>
+    <meta name="description" content={meta_description(assigns)}>
+    <link rel="canonical" href={canonical_url(@conn)}>
 
     <link phx-track-static rel="stylesheet" href={Routes.static_url(@conn, "/assets/app.css")}/>
     <script phx-track-static type="text/javascript" src={Routes.static_url(@conn, "/assets/app.js")}></script>

@@ -4,18 +4,20 @@ defmodule CollegevalueWeb.FieldsLive.Index do
   alias Collegevalue.Fields
   alias Collegevalue.Fields.Field
 
+  @description "Every field of study with the number of colleges that offer it and its average, lowest and highest debt and earnings."
+
   def render(assigns) do
     Phoenix.View.render(CollegevalueWeb.FieldView, "index.html", assigns)
   end
 
   def mount(%{"order" => order}, _session, socket) do
     fields = Fields.list_fields()
-    {:ok, assign(socket, fields: fields, order: order)}
+    {:ok, assign(socket, fields: fields, order: order, meta_description: @description)}
   end
 
   def mount(_, _, socket) do
     fields = Fields.list_fields()
-    {:ok, assign(socket, fields: fields, order: "desc")}
+    {:ok, assign(socket, fields: fields, order: "desc", meta_description: @description)}
   end
 
   @spec handle_params(any, any, any) :: {:noreply, any}

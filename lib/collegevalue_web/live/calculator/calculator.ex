@@ -24,6 +24,8 @@ defmodule CollegevalueWeb.CalculatorLive.Index do
     {:ok,
      assign(socket,
        page_title: "ROI Calculator",
+       meta_description:
+         "Is a college and major worth it for you? Enter your family income, major, zip code and SAT score to see nearby colleges with 10-year earnings against debt.",
        majors: majors,
        income_bands: @income_bands,
        income_band: 3,
