@@ -12,12 +12,12 @@ defmodule CollegevalueWeb.FieldsLive.Index do
 
   def mount(%{"order" => order}, _session, socket) do
     fields = Fields.list_fields()
-    {:ok, assign(socket, fields: fields, order: order, meta_description: @description)}
+    {:ok, assign(socket, fields: fields, order: order, page_title: "Fields of Study", meta_description: @description)}
   end
 
   def mount(_, _, socket) do
     fields = Fields.list_fields()
-    {:ok, assign(socket, fields: fields, order: "desc", meta_description: @description)}
+    {:ok, assign(socket, fields: fields, order: "desc", page_title: "Fields of Study", meta_description: @description)}
   end
 
   @spec handle_params(any, any, any) :: {:noreply, any}

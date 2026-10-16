@@ -25,6 +25,13 @@ defmodule Collegevalue.Colleges do
 
   def list_colleges(a, page \\ 1, per_page \\ 100)
 
+  @doc """
+  How many pages `list_colleges(:paged, page)` has at `per_page` a page.
+  """
+  def college_page_count(per_page \\ 100) do
+    div(Repo.aggregate(College, :count) + per_page - 1, per_page)
+  end
+
   def list_colleges(:paged, page, per_page) do
     College
     |> order_by(asc: :name)
@@ -145,6 +152,32 @@ defmodule Collegevalue.Colleges do
   def get_college_by_name_and_unitid!(name, id), do: Repo.get_by!(College, name: name, unitid: id)
 
   def get_college_by_name_and_unitid(name, id), do: Repo.get_by(College, name: name, unitid: id)
+
+  @doc """
+  Whether the Scorecard reports a yearly cost, a median debt or median
+  earnings for the college. A college without one has a page with nothing on
+  it but its name, so it stays out of the search index and the sitemap.
+
+  Missing values are stored as nil or as negative sentinels (-1, -2).
+  """
+  def has_outcomes?(%College{} = college) do
+    Enum.any?([college.yearly_cost, college.debt_median, college.earnings_median_after10], &positive?/1)
+  end
+
+  @doc """
+  `{unitid, name}` for every college that `has_outcomes?/1`, ordered by name.
+  """
+  def list_indexable_colleges do
+    College
+    |> where([c], c.yearly_cost > 0 or c.debt_median > 0 or c.earnings_median_after10 > 0)
+    |> order_by(asc: :name)
+    |> select([c], {c.unitid, c.name})
+    |> Repo.all()
+  end
+
+  defp positive?(value) when is_number(value), do: value > 0
+  defp positive?(%Decimal{} = value), do: Decimal.gt?(value, 0)
+  defp positive?(_value), do: false
 
   def get_college_by_name_and_opeid!(name, id), do: Repo.get_by!(College, name: name, opeid: id)
 

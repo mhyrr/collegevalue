@@ -55,6 +55,28 @@ defmodule Collegevalue.Fields do
 
   def get_field!(name), do: Repo.get_by(Field, name: name)
 
+  @doc """
+  Whether any college reports debt or earnings for the field. A field without
+  either has a page with nothing on it but a list of names, so it stays out of
+  the search index and the sitemap.
+  """
+  def has_outcomes?(%Field{debt_avg: debt, earn_avg: earn}), do: positive?(debt) or positive?(earn)
+
+  @doc """
+  The name of every field that `has_outcomes?/1`, ordered by name.
+  """
+  def list_indexable_field_names do
+    Field
+    |> where([f], f.debt_avg > 0 or f.earn_avg > 0)
+    |> order_by(asc: :name)
+    |> select([f], f.name)
+    |> Repo.all()
+  end
+
+  defp positive?(%Decimal{} = value), do: Decimal.gt?(value, 0)
+  defp positive?(value) when is_number(value), do: value > 0
+  defp positive?(_value), do: false
+
   def get_bachelors_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
     require_debt = Keyword.get(opts, :require_debt, false)

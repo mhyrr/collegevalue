@@ -103,6 +103,7 @@ defmodule CollegevalueWeb.Views.Helpers do
   def no_data?(-2), do: true
   def no_data?(-1.0), do: true
   def no_data?("No data"), do: true
+  def no_data?(%Decimal{} = value), do: not Decimal.gt?(value, 0)
   def no_data?(_), do: false
 
   def cash(val) when is_nil(val), do: "No data"
@@ -274,6 +275,81 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   defp chart_name(rank) do
     rank.college_name <> " " <> rank.field_name
+  end
+
+  @doc """
+  "City, ST" for a US college with a listed city, else nil.
+  """
+  def place(%College{city: city, state: state})
+      when is_binary(city) and city not in ["", "city", "unknown city"] and is_binary(state) do
+    if state =~ ~r/^[A-Z]{2}$/, do: "#{city}, #{state}"
+  end
+
+  def place(_college), do: nil
+
+  @doc """
+  The page title for a college: its name, and its place when known, so
+  colleges that share a name get titles of their own.
+  """
+  def college_title(%College{name: name} = college) do
+    case place(college) do
+      nil -> name
+      place -> "#{name} (#{place})"
+    end
+  end
+
+  @doc """
+  A paragraph on the college built from the figures it reports. Empty when it
+  reports none of them.
+  """
+  def college_summary(%College{} = college) do
+    control = if is_binary(college.control), do: control(college.control), else: ""
+
+    [
+      is_binary(college.control) && college.control =~ ~r/^[123]$/ && place(college) &&
+        "#{college.name} is a #{String.downcase(control)} college in #{place(college)}.",
+      !no_data?(college.yearly_cost) &&
+        "A year there costs #{cash(college.yearly_cost)} on average, tuition, fees, books and living costs together.",
+      !no_data?(college.debt_median) &&
+        "Students who borrow leave with a median federal debt of #{cash(college.debt_median)}.",
+      !no_data?(college.earnings_median_after10) &&
+        "Ten years after they start, its students earn a median of #{cash(college.earnings_median_after10)} a year.",
+      !no_data?(college.fouryear_150_completion) &&
+        "#{percent(college.fouryear_150_completion)} of full-time, first-time students finish within six years."
+    ]
+    |> Enum.filter(&is_binary/1)
+    |> summary_text(1)
+  end
+
+  @doc """
+  A paragraph on the field built from its debt and earnings across colleges.
+  Empty when no college reports either.
+  """
+  def field_summary(%Collegevalue.Fields.Field{} = field) do
+    [
+      "#{field.count} #{if field.count == 1, do: "college offers", else: "colleges offer"} #{field.name} in the College Scorecard data.",
+      !no_data?(field.debt_avg) &&
+        "Graduates leave with an average federal debt of #{cash(field.debt_avg)}" <>
+          range(field.debt_min, field.debt_max, "program") <> ".",
+      !no_data?(field.earn_avg) &&
+        "One year after graduating they earn #{cash(field.earn_avg)} on average" <>
+          range(field.earn_min, field.earn_max, "program") <> "."
+    ]
+    |> Enum.filter(&is_binary/1)
+    |> summary_text(1)
+  end
+
+  # The first `lead` sentences only set the scene; without a figure after them
+  # there is no summary.
+  defp summary_text(sentences, lead) when length(sentences) > lead, do: Enum.join(sentences, " ")
+  defp summary_text(_sentences, _lead), do: ""
+
+  defp range(min, max, unit) do
+    if no_data?(min) or no_data?(max) or min == max do
+      ""
+    else
+      ", from #{cash(min)} at the lowest #{unit} to #{cash(max)} at the highest"
+    end
   end
 
 

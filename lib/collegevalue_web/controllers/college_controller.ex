@@ -5,6 +5,8 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields
 
+  import CollegevalueWeb.Views.Helpers, only: [college_title: 1]
+
   @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
   @rank_description "Colleges ranked by yearly cost, median debt and graduates' median debt against median earnings 10 years out, top and bottom."
 
@@ -13,7 +15,16 @@ defmodule CollegevalueWeb.CollegeController do
     # per_page = params["per_page"] || 100
 
     colleges = Colleges.list_colleges(:paged, page)
-    render(conn, "index.html", colleges: colleges, page_title: "All Colleges", meta_description: @index_description)
+
+    {title, description} =
+      if colleges.page > 1 do
+        {"All Colleges, #{colleges.first}–#{colleges.last}",
+         "Colleges #{colleges.first} to #{colleges.last} of #{colleges.count} in the College Scorecard data, A to Z, with location, control and accreditation."}
+      else
+        {"All Colleges", @index_description}
+      end
+
+    render(conn, "index.html", colleges: colleges, page_title: title, meta_description: description)
   end
 
 
@@ -95,7 +106,12 @@ defmodule CollegevalueWeb.CollegeController do
     college = Colleges.get_college_by_name_and_unitid!(URI.decode(name), unitid)
     majors = Colleges.get_majors_by_college(college.name)
 
-    render(conn, "show.html", college: college, majors: majors, page_title: name)
+    render(conn, "show.html",
+      college: college,
+      majors: majors,
+      page_title: college_title(college),
+      noindex: not Colleges.has_outcomes?(college)
+    )
   end
 
 
