@@ -43,3 +43,8 @@ erl_crash.dump
 /assets/node_modules/
 /priv/static/assets/
 /priv/static/cache_manifest.json
+
+# Raw Scorecard source files (git LFS). The data lives in the database; the
+# image never reads them.
+/data/
+/Field100_new.csv
