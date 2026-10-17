@@ -299,6 +299,13 @@ defmodule CollegevalueWeb.Views.Helpers do
   end
 
   @doc """
+  The field page's title, phrased as the question people search for. The
+  Scorecard's ", General" suffix is dropped: nobody searches "Psychology, General".
+  """
+  def field_title(%{name: name}),
+    do: "Is #{String.replace_suffix(name, ", General", "")} Worth It? Debt vs. Earnings by College"
+
+  @doc """
   A paragraph on the college built from the figures it reports. Empty when it
   reports none of them.
   """

@@ -1,0 +1,88 @@
+# The keyword map: one entry per query we mean to win. A query belongs to
+# exactly one page. Read by seodash for demand and rankings tracking.
+#
+# Format: a strict subset of YAML (plain scalars, two-space indents, no
+# quotes, flow lists or anchors).
+#
+#   intent:   informational | commercial | navigational | transactional
+#   role:     primary | secondary (each page has exactly one primary)
+#   status:   candidate | planned | drafted | published | dropped
+#   page:     required unless status is candidate or dropped
+#
+# Head terms (cost-benefit, ROI) are crowded by Georgetown CEW, NerdWallet and
+# the Scorecard itself. The per-major "is X worth it" queries are the near-term
+# wins; they build the authority the head terms need.
+clusters:
+  cost-benefit:
+    intent: informational
+    queries:
+      - query: college cost benefit
+        page: /
+        role: primary
+        status: published
+      - query: college cost benefit analysis
+        page: /
+        role: secondary
+        status: published
+      - query: is college worth it by major
+        page: /
+        role: secondary
+        status: published
+      - query: college roi calculator
+        page: /calculator
+        role: primary
+        status: published
+  rankings:
+    intent: commercial
+    queries:
+      - query: best value colleges
+        page: /colleges/rank
+        role: primary
+        status: published
+      - query: college roi rankings
+        page: /colleges/rank
+        role: secondary
+        status: published
+      - query: college majors ranked by earnings vs debt
+        page: /fields/rank
+        role: primary
+        status: published
+      - query: college roi by major
+        page: /fields/rank
+        role: secondary
+        status: published
+  major-worth-it:
+    intent: informational
+    queries:
+      - query: is a psychology degree worth it
+        page: /fields/Psychology%2C%20General
+        role: primary
+        status: published
+      - query: is a nursing degree worth it
+        page: /fields/Registered%20Nursing%2C%20Nursing%20Administration%2C%20Nursing%20Research%20and%20Clinical%20Nursing
+        role: primary
+        status: published
+      - query: is a computer science degree worth it
+        page: /fields/Computer%20Science
+        role: primary
+        status: published
+      - query: is a business degree worth it
+        page: /fields/Business%20Administration%2C%20Management%20and%20Operations
+        role: primary
+        status: published
+      - query: is a biology degree worth it
+        page: /fields/Biology%2C%20General
+        role: primary
+        status: published
+      - query: is an economics degree worth it
+        page: /fields/Economics
+        role: primary
+        status: published
+      - query: is an english degree worth it
+        page: /fields/English%20Language%20and%20Literature%2C%20General
+        role: primary
+        status: published
+      - query: is a mechanical engineering degree worth it
+        page: /fields/Mechanical%20Engineering
+        role: primary
+        status: published

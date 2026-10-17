@@ -4,6 +4,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   alias Collegevalue.{Fields, Colleges}
   alias CollegevalueWeb.Router.Helpers, as: Routes
+  import CollegevalueWeb.Views.Helpers, only: [field_title: 1]
 
   @cred_all_label "Show All Degrees"
   @cred_bach_only "Bachelor's Only"
@@ -64,7 +65,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field.name, noindex: not Fields.has_outcomes?(field)) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by)}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by)}
   end
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
@@ -90,7 +91,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field.name, noindex: not Fields.has_outcomes?(field)) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by)}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by)}
   end
 
 
@@ -103,7 +104,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
       |> sort_majors("earnings")
       |> handle_direction("desc", "earnings")
 
-    {:noreply, socket |> assign(field: field, page_title: field.name, noindex: not Fields.has_outcomes?(field)) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc")}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc")}
   end
 
 

@@ -59,7 +59,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
     test "a college with data is indexable and titled with its place", %{conn: conn} do
       html = conn |> get("/colleges/130794/Yale%20University") |> html_response(200)
 
-      assert html =~ "<title data-prefix=\"CV - \">CV - Yale University (New Haven, CT)</title>"
+      assert html =~ "<title data-suffix=\" · CollegeValue\">Yale University (New Haven, CT) · CollegeValue</title>"
       assert html =~ ~s(<link rel="canonical" href="http://localhost:4002/colleges/130794/Yale%20University">)
       refute html =~ "noindex"
     end
@@ -81,7 +81,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
     test "keep the page past the first, and give it its own title", %{conn: conn} do
       html = conn |> get("/colleges?page=2") |> html_response(200)
       assert html =~ ~s(<link rel="canonical" href="http://localhost:4002/colleges?page=2">)
-      assert html =~ "CV - All Colleges, 101–2"
+      assert html =~ "All Colleges, 101–2"
 
       html = build_conn() |> get("/colleges?page=1") |> html_response(200)
       assert html =~ ~s(<link rel="canonical" href="http://localhost:4002/colleges">)

@@ -94,11 +94,11 @@ defmodule CollegevalueWeb.CollegeController do
         Colleges.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :bottom, count)
     end
 
-    render(conn, "rank.html", ranks: ranks, page_title: "Ranked Colleges", meta_description: @rank_description)
+    render(conn, "rank.html", ranks: ranks, page_title: "Best Value Colleges: Earnings vs. Debt", meta_description: @rank_description)
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs, page_title: "Ranked Colleges", meta_description: @rank_description)
+    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs, page_title: "Best Value Colleges: Earnings vs. Debt", meta_description: @rank_description)
   end
 
   def show(conn, %{"name" => name, "unitid" => unitid}) do

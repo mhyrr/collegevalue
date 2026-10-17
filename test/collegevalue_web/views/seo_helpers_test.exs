@@ -56,6 +56,13 @@ defmodule CollegevalueWeb.SeoHelpersTest do
     end
   end
 
+  describe "field_title/1" do
+    test "asks the question searchers ask, with the field's name" do
+      assert field_title(%Field{name: "Accounting"}) == "Is Accounting Worth It? Debt vs. Earnings by College"
+      assert field_title(%Field{name: "Psychology, General"}) == "Is Psychology Worth It? Debt vs. Earnings by College"
+    end
+  end
+
   describe "college_summary/1" do
     test "states each figure the college reports" do
       summary = college_summary(@yale)

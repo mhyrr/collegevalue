@@ -92,11 +92,11 @@ defmodule CollegevalueWeb.FieldController do
         Fields.get_bachelors_earnings("bottom", count, opts)
     end
 
-    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "Ranked Fields", meta_description: @rank_description)
+    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "College Majors Ranked by Earnings vs. Debt", meta_description: @rank_description)
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", require_debt: false, page_title: "Ranked Fields", meta_description: @rank_description)
+    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", require_debt: false, page_title: "College Majors Ranked by Earnings vs. Debt", meta_description: @rank_description)
   end
 
 
