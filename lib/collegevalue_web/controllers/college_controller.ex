@@ -8,7 +8,7 @@ defmodule CollegevalueWeb.CollegeController do
   import CollegevalueWeb.Views.Helpers, only: [college_title: 1]
 
   @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
-  @rank_description "Colleges ranked by yearly cost, median debt and graduates' median debt against median earnings 10 years out, top and bottom."
+  @rank_description "Best value colleges ranked by yearly cost, student debt and graduation rate against median earnings 10 years after enrolling."
 
   def index(conn, params) do
     page = params["page"] || 1

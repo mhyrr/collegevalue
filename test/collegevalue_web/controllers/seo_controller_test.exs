@@ -87,4 +87,23 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert html =~ ~s(<link rel="canonical" href="http://localhost:4002/colleges">)
     end
   end
+
+  # Google reads the first, static render, so each method section must be in it.
+  describe "keyword-map pages explain their method" do
+    test "the rank page says how it ranks and where the data comes from", %{conn: conn} do
+      html = conn |> get("/colleges/rank") |> html_response(200)
+
+      assert html =~ "How we rank colleges"
+      assert html =~ "graduation rate"
+      assert html =~ "Where the numbers come from"
+    end
+
+    test "the calculator says how it computes degree ROI", %{conn: conn} do
+      html = conn |> get("/calculator") |> html_response(200)
+
+      assert html =~ "<title data-suffix=\" · CollegeValue\">College ROI Calculator: Degree Cost vs. Earnings · CollegeValue</title>"
+      assert html =~ "How the degree ROI calculator works"
+      assert html =~ "Earnings vs. cost."
+    end
+  end
 end

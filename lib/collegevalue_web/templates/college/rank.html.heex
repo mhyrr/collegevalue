@@ -1,5 +1,12 @@
 <h1 class="text-darkgreen">Best Value Colleges: Earnings vs. Debt</h1>
 
+<p class="text-gray-700 pb-4 max-w-3xl">
+  A college is a good investment when its graduates earn well and owe little.
+  This list ranks every college in the College Scorecard by what students pay or borrow
+  against what they earn 10 years later. Pick a ranking below to sort by yearly cost,
+  student debt or graduates' debt, from the best value to the worst.
+</p>
+
 <section>
   <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
     <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()", class: "form-input pl-3 pr-0 sm:text-sm sm:leading-5 flex-grow" %>
@@ -38,3 +45,27 @@
   <% end %>
   </tbody>
 </table>
+
+<section class="pt-12 text-gray-700 space-y-4 max-w-3xl">
+  <h2 class="text-xl text-darkgreen">How we rank colleges</h2>
+  <p>
+    Each ranking subtracts a cost from an earnings figure. The difference column is that gap:
+    the larger it is, the better the return on the money spent or borrowed.
+  </p>
+  <ul class="list-disc list-inside space-y-2">
+    <li><strong>Yearly cost to earnings.</strong> Median earnings 10 years after enrolling, minus one year's full cost of attendance. This is the price before financial aid. Grants and scholarships lower it for most families, so the <a href="/calculator" class="text-green">ROI calculator</a> uses net price for your income instead.</li>
+    <li><strong>Debt to 10-year earnings.</strong> The same earnings, minus the median student debt of everyone who borrowed, including students who left without a degree.</li>
+    <li><strong>Graduated debt to 10-year earnings.</strong> The same, counting only the debt of students who finished.</li>
+  </ul>
+  <p>
+    Earnings alone can flatter a college whose students rarely finish, so the completion column
+    shows the graduation rate: the share of students who complete within twice the normal time.
+    Read a high return next to a low graduation rate with care.
+  </p>
+  <h2 class="text-xl text-darkgreen pt-4">Where the numbers come from</h2>
+  <p>
+    All data comes from the U.S. Department of Education's College Scorecard. Earnings and debt
+    are medians for students who received federal financial aid. To compare the same major across
+    schools, see <a href="/fields/rank" class="text-green">majors ranked by earnings vs. debt</a>.
+  </p>
+</section>
