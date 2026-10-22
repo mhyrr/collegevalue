@@ -1,0 +1,96 @@
+{
+  "name": "Fire Protection",
+  "hash": "25e2b1796c19",
+  "rank": null,
+  "debt_median": 5376,
+  "flagged": [
+    {
+      "state": "IL",
+      "college": "Southern Illinois University-Carbondale",
+      "unitid": 149222,
+      "earnings": 103432,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 21
+    },
+    {
+      "state": "CO",
+      "college": "Colorado State University-Fort Collins",
+      "unitid": 126818,
+      "earnings": 76384,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 18
+    },
+    {
+      "state": "IA",
+      "college": "Waldorf University",
+      "unitid": 154518,
+      "earnings": 74071,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 87
+    },
+    {
+      "state": "IL",
+      "college": "Western Illinois University",
+      "unitid": 149772,
+      "earnings": 35038,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 28
+    },
+    {
+      "state": "NJ",
+      "college": "New Jersey City University",
+      "unitid": 185129,
+      "earnings": 32493,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 19
+    },
+    {
+      "state": "NC",
+      "college": "Methodist University",
+      "unitid": 198969,
+      "earnings": 26240,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 21
+    }
+  ],
+  "earnings_median": 57522,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 43087,
+  "earnings_p75": 71931,
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "NC": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "programs": 55,
+  "programs_with_debt": 1,
+  "programs_with_earnings": 18,
+  "ranked_of": 147,
+  "debt_to_earnings": null
+}

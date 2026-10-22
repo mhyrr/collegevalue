@@ -1,0 +1,43 @@
+{
+  "facts_hash": "ea8aff20c7d3",
+  "field": "Economics",
+  "hash": "cef6f307829e",
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Claremont McKenna is a highly selective college, and its career office says economics majors are recruited by top banking, consulting, asset management and accounting firms through on-campus industry nights and information sessions.",
+      "source": "https://www.cmc.edu/robert-day-school/career/networking/economics-majors",
+      "unitid": 112260
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Duke is a highly selective university, and its economics department says business and finance is the most common career path for its majors.",
+      "source": "https://econ.duke.edu/undergraduate/careers",
+      "unitid": 198419
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Harvard is among the most selective universities, and its economics department lists finance and consulting as major paths after graduation, with on-campus recruiting for both.",
+      "source": "https://www.economics.harvard.edu/after-graduation",
+      "unitid": 166027
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "The college's program page describes a standard liberal-arts economics major, with nothing about who it admits, how it is delivered or where graduates work that would explain the lower earnings.",
+      "source": null,
+      "unitid": 196219
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "UNM career services says about half of economics graduates work for government agencies, but no source shows that this or the state's pay levels alone explain the lower earnings.",
+      "source": null,
+      "unitid": 187985
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The earnings figure comes from fewer than twenty graduates, too few to give a reliable typical salary for this program.",
+      "source": null,
+      "unitid": 190549
+    }
+  ]
+}

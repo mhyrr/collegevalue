@@ -1,0 +1,43 @@
+{
+  "facts_hash": "25e2b1796c19",
+  "field": "Fire Protection",
+  "hash": "5e7d171fc107",
+  "programs": [
+    {
+      "cause": "experienced_students",
+      "evidence": "SIU's fire service management track sits in a Public Safety Management bachelor's offered online, and SIU profiles working firefighters who chose it because the schedule fit their jobs and it accepts their fire science associate degrees.",
+      "source": "https://chhs.siu.edu/about/e-newsletter/fall-2022/public-safety.html",
+      "unitid": 149222
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "CSU's Fire and Emergency Services Administration bachelor's is a long-running online program for fire and emergency leaders, and CSU notes a bachelor's is usually needed for promotion in fire departments.",
+      "source": "https://source.colostate.edu/online-program-trains-fire-and-emergency-leaders-around-the-u-s",
+      "unitid": 126818
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "Waldorf's Fire Science Administration bachelor's is offered only online, and its applied version is aimed at experienced fire professionals and gives credit for field experience.",
+      "source": "https://waldorf.edu/online-fire-science-degree",
+      "unitid": 154518
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "WIU's Fire Protection Services major has an online administration option for working firefighters and also on-campus fire science and fire medic options, and I found nothing that explains the low earnings.",
+      "source": "https://www.wiu.edu/academics/majors/education_and_human_services/fire-protection-services.php",
+      "unitid": 149772
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The earnings figure comes from fewer than twenty graduates, too few to trust; NJCU's Fire Science BS is a general program open to students with a minimum GPA and requires no fire service experience.",
+      "source": "https://catalog.njcu.edu/undergraduate/professional-studies/fire-science/fire-science-bs/",
+      "unitid": 185129
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I couldn't find an official Methodist University page for this program; third-party data only says its degrees are filed under fire and arson investigation, which doesn't explain the low earnings.",
+      "source": null,
+      "unitid": 198969
+    }
+  ]
+}

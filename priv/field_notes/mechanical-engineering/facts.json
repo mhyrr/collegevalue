@@ -1,0 +1,93 @@
+{
+  "name": "Mechanical Engineering",
+  "hash": "17cf3065cc54",
+  "rank": 24,
+  "debt_median": 30590,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "California State University Maritime Academy",
+      "unitid": 111188,
+      "earnings": 83137,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 46
+    },
+    {
+      "state": "MA",
+      "college": "Massachusetts Institute of Technology",
+      "unitid": 166683,
+      "earnings": 80396,
+      "debt": 51429,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 128
+    },
+    {
+      "state": "PA",
+      "college": "University of Pennsylvania",
+      "unitid": 215062,
+      "earnings": 78166,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 26
+    },
+    {
+      "state": "VA",
+      "college": "Virginia Military Institute",
+      "unitid": 234085,
+      "earnings": 41215,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 36
+    },
+    {
+      "state": "VT",
+      "college": "Norwich University",
+      "unitid": 230995,
+      "earnings": 40053,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 42
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Gurabo Campus",
+      "unitid": 243601,
+      "earnings": 36383,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 38
+    }
+  ],
+  "earnings_median": 65131,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 61933,
+  "earnings_p75": 67834,
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "programs": 397,
+  "programs_with_debt": 163,
+  "programs_with_earnings": 309,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.47
+}

@@ -1,0 +1,98 @@
+{
+  "name": "Biology, General",
+  "hash": "a91f3e32d03d",
+  "rank": 109,
+  "debt_median": 27702,
+  "flagged": [
+    {
+      "state": "MA",
+      "college": "Massachusetts Institute of Technology",
+      "unitid": 166683,
+      "earnings": 46373,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 27
+    },
+    {
+      "state": "ME",
+      "college": "Bowdoin College",
+      "unitid": 161004,
+      "earnings": 44658,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 16
+    },
+    {
+      "state": "CA",
+      "college": "Northeastern University Oakland",
+      "unitid": 118888,
+      "earnings": 43916,
+      "debt": 43257,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 79
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Humacao",
+      "unitid": 243179,
+      "earnings": 13131,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 17
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Aguadilla",
+      "unitid": 243106,
+      "earnings": 11037,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 35
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico at Cayey",
+      "unitid": 243151,
+      "earnings": 10219,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 20
+    }
+  ],
+  "earnings_median": 27179,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 23885,
+  "earnings_p75": 30842,
+  "outliers": {
+    "below_half_median": {
+      "count": 3,
+      "top_states": {
+        "PR": 3
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "programs": 1411,
+  "programs_with_debt": 351,
+  "programs_with_earnings": 837,
+  "ranked_of": 147,
+  "debt_to_earnings": 1.02
+}

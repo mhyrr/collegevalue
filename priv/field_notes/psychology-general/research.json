@@ -1,0 +1,43 @@
+{
+  "facts_hash": "497719c39a21",
+  "field": "Psychology, General",
+  "hash": "e41c5851c821",
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Stanford is one of the most selective universities in the country and admits only a very small share of its undergraduate applicants.",
+      "source": "https://www.collegetransitions.com/?p=12800",
+      "unitid": 243744
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "Santa Clara sits in Silicon Valley, and its career center says most graduates find jobs within months, with major local technology companies among its featured employers.",
+      "source": "https://www.scu.edu/careercenter/outcomes/",
+      "unitid": 122931
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Colgate is a highly selective liberal arts university that admits a small share of applicants, and most of its enrolled students ranked near the top of their high school classes.",
+      "source": "https://www.collegetransitions.com/blog/how-to-get-into-colgate-university/",
+      "unitid": 190099
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Census figures show Puerto Rico has the lowest median household income of any U.S. state or territory, well below even the poorest states, so wages for new graduates on the island are low.",
+      "source": "https://puertoricoreport.com/census-bureau-reports-household-income-rising-states-dropping-puerto-rico/",
+      "unitid": 243221
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico has the lowest median household income in the U.S., which depresses graduate pay; this campus reports figures identical to the Ponce campus, which suggests they are reported together.",
+      "source": "https://puertoricoreport.com/census-bureau-reports-household-income-rising-states-dropping-puerto-rico/",
+      "unitid": 241395
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico has the lowest median household income in the U.S., which depresses graduate pay; this campus reports figures identical to the Arecibo campus, which suggests they are reported together.",
+      "source": "https://puertoricoreport.com/census-bureau-reports-household-income-rising-states-dropping-puerto-rico/",
+      "unitid": 241410
+    }
+  ]
+}

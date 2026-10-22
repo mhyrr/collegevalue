@@ -1,0 +1,55 @@
+{
+  "facts_hash": "cd22d074f116",
+  "field": "Business Administration, Management and Operations",
+  "hash": "833e175645c7",
+  "programs": [
+    {
+      "cause": "experienced_students",
+      "evidence": "Bismarck State's online BAS in Energy Management is for people already working in the energy industry who want supervisory roles, and admission requires an AAS, certificate or approved energy program.",
+      "source": "https://catalog.bismarckstate.edu/catalog/degrees/bas/energy-management/",
+      "unitid": 200022
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Michigan Ross is a highly selective undergraduate business school whose BBA graduates are hired mostly into financial services and consulting, by firms such as McKinsey, Goldman Sachs and Citi.",
+      "source": "https://michiganross.umich.edu/news/michigan-ross-undergraduates-remain-high-demand-secure-top-salaries-according-2025-employment",
+      "unitid": 170976
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "CityU's BS in Business Administration is an online or hybrid degree-completion program for working adults that accepts up to 90 transferred lower-division credits.",
+      "source": "https://www.cityu.edu/programs-overview/bachelor-science-business-administration/",
+      "unitid": 234915
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The earnings figure comes from fewer than 20 graduates, too few to be a reliable measure of the program's typical outcome.",
+      "source": null,
+      "unitid": 197993
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Lane College runs a conventional on-campus business administration major, and no admission rule, delivery format or credential difference was found that would explain the low earnings.",
+      "source": null,
+      "unitid": 220598
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Incomes in Puerto Rico are far below those on the mainland, and this campus reports the same figure as the other PUCPR campuses, so the data appear to be pooled across the system.",
+      "source": "https://puertoricoreport.com/puerto-ricans-in-states-have-much-higher-incomes-than-puerto-ricans-in-territory",
+      "unitid": 241395
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Incomes in Puerto Rico are far below those on the mainland, and this campus reports the same figure as the other PUCPR campuses, so the data appear to be pooled across the system.",
+      "source": "https://puertoricoreport.com/puerto-ricans-in-states-have-much-higher-incomes-than-puerto-ricans-in-territory",
+      "unitid": 241410
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Incomes in Puerto Rico are far below those on the mainland, and this campus reports the same figure as the other PUCPR campuses, so the data appear to be pooled across the system.",
+      "source": "https://puertoricoreport.com/puerto-ricans-in-states-have-much-higher-incomes-than-puerto-ricans-in-territory",
+      "unitid": 243586
+    }
+  ]
+}

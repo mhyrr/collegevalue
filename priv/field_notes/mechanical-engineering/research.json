@@ -1,0 +1,43 @@
+{
+  "facts_hash": "17cf3065cc54",
+  "field": "Mechanical Engineering",
+  "hash": "0a963eeb9e75",
+  "programs": [
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Cal Maritime's mechanical engineering degree has a Coast Guard Third Assistant Engineer license option with three sea terms, so many graduates become licensed marine engineers instead of typical shore-based mechanical engineers.",
+      "source": "https://www.csum.edu/mechanical-engineering/majors.html",
+      "unitid": 111188
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "MIT is highly selective, and its mechanical engineering department lists Apple, Google, Tesla, Boeing, McKinsey and Bain among the top employers of its alumni.",
+      "source": "https://meche.mit.edu/careers",
+      "unitid": 166683
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Penn is a highly selective Ivy League school, and its engineering school says employers in consulting, technology, finance and manufacturing seek out its graduates.",
+      "source": "https://ugradadm.seas.upenn.edu/?p=987",
+      "unitid": 215062
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "VMI's destination reports show that more than half of each graduating class is commissioned into the armed forces, which may lower recorded civilian earnings, but none of the listed causes clearly explains the gap.",
+      "source": "https://stagetest-www.vmi.edu/media/content-assets/documents/career-services/First-Destination-Report-2020-2021.pdf",
+      "unitid": 234085
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Norwich is a senior military college whose Corps of Cadets prepares students for commissioning through ROTC, but I found no data on mechanical engineering commissioning and no listed cause clearly explains the gap.",
+      "source": "https://home.norwich.edu/on/corps-cadets",
+      "unitid": 230995
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "This is a Puerto Rico campus whose students are mainly local, so most graduates enter the island's labor market, where engineering pay is well below mainland U.S. levels.",
+      "source": "https://bigfuture.collegeboard.org/colleges/universidad-ana-g-mendez-gurabo-campus",
+      "unitid": 243601
+    }
+  ]
+}

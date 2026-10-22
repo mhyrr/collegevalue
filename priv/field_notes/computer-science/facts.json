@@ -1,0 +1,148 @@
+{
+  "name": "Computer Science",
+  "hash": "1b25d9af2d3e",
+  "rank": 19,
+  "debt_median": 27376,
+  "flagged": [
+    {
+      "state": "PA",
+      "college": "Carnegie Mellon University",
+      "unitid": 211440,
+      "earnings": 161723,
+      "debt": null,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 97
+    },
+    {
+      "state": "MA",
+      "college": "Harvard University",
+      "unitid": 166027,
+      "earnings": 140072,
+      "debt": null,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 58
+    },
+    {
+      "state": "CA",
+      "college": "Stanford University",
+      "unitid": 243744,
+      "earnings": 136126,
+      "debt": null,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 96
+    },
+    {
+      "state": "RI",
+      "college": "Brown University",
+      "unitid": 217156,
+      "earnings": 130101,
+      "debt": null,
+      "reasons": [
+        "above_2x_median"
+      ],
+      "cohort": 95
+    },
+    {
+      "state": "CA",
+      "college": "California Institute of Technology",
+      "unitid": 110404,
+      "earnings": 129693,
+      "debt": null,
+      "reasons": [
+        "above_2x_median"
+      ],
+      "cohort": 29
+    },
+    {
+      "state": "NY",
+      "college": "Cornell University",
+      "unitid": 190415,
+      "earnings": 127764,
+      "debt": 34964,
+      "reasons": [
+        "above_2x_median"
+      ],
+      "cohort": 228
+    },
+    {
+      "state": "PA",
+      "college": "University of Pennsylvania",
+      "unitid": 215062,
+      "earnings": 127623,
+      "debt": null,
+      "reasons": [
+        "above_2x_median"
+      ],
+      "cohort": 16
+    },
+    {
+      "state": "IN",
+      "college": "Indiana University-Northwest",
+      "unitid": 151360,
+      "earnings": 35316,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 40
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-Ponce",
+      "unitid": 242662,
+      "earnings": 26265,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 16
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-Bayamon",
+      "unitid": 242705,
+      "earnings": 26017,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 18
+    }
+  ],
+  "earnings_median": 63428,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 55125,
+  "earnings_p75": 72790,
+  "outliers": {
+    "below_half_median": {
+      "count": 2,
+      "top_states": {
+        "PR": 2
+      }
+    },
+    "above_2x_median": {
+      "count": 7,
+      "top_states": {
+        "CA": 2,
+        "MA": 1,
+        "PA": 2
+      }
+    }
+  },
+  "programs": 756,
+  "programs_with_debt": 84,
+  "programs_with_earnings": 318,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.43
+}

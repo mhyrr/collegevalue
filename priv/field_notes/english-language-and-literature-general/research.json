@@ -1,0 +1,43 @@
+{
+  "facts_hash": "bd0e919b8f92",
+  "field": "English Language and Literature, General",
+  "hash": "2b2d14f62ab2",
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Georgetown is a highly selective university, and its English department says many majors double major in fields like government, history or STEM and go on to competitive jobs and graduate schools.",
+      "source": "https://english.georgetown.edu/welcome-undergraduate-program/why-english-georgetown/",
+      "unitid": 131496
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Yale is one of the most selective universities in the country, and its English major stresses research, argument and writing, which places graduates with top employers.",
+      "source": "https://catalog.yale.edu/ycps/subjects-of-instruction/english-language-literature",
+      "unitid": 130794
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Colgate is a highly selective liberal arts university that admits only a small share of its applicants, and its graduates tend to go to strong employers.",
+      "source": "https://la.datausa.io/profile/university/190099",
+      "unitid": 190099
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Canisius offers a standard English BA for traditional undergraduates, with transfer pathways from community colleges, and I found nothing in its admission or format that explains the low earnings.",
+      "source": "https://catalog.canisius.edu/undergraduate/college-arts-sciences/english/english/english.pdf",
+      "unitid": 189705
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Tennessee Tech offers a standard English BA with literature, creative writing, rhetoric and technical communication concentrations, and I found no admission or format feature that explains the low earnings.",
+      "source": "https://tntech.edu/cas/english/bachelorofarts",
+      "unitid": 221847
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The earnings figure rests on fewer than twenty graduates, too few to be a reliable measure of the program.",
+      "source": null,
+      "unitid": 192819
+    }
+  ]
+}

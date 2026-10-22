@@ -1,0 +1,93 @@
+{
+  "name": "English Language and Literature, General",
+  "hash": "bd0e919b8f92",
+  "rank": 88,
+  "debt_median": 24480,
+  "flagged": [
+    {
+      "state": "DC",
+      "college": "Georgetown University",
+      "unitid": 131496,
+      "earnings": 49812,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 57
+    },
+    {
+      "state": "CT",
+      "college": "Yale University",
+      "unitid": 130794,
+      "earnings": 48264,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 23
+    },
+    {
+      "state": "NY",
+      "college": "Colgate University",
+      "unitid": 190099,
+      "earnings": 44610,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 27
+    },
+    {
+      "state": "NY",
+      "college": "Canisius University",
+      "unitid": 189705,
+      "earnings": 16394,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 21
+    },
+    {
+      "state": "TN",
+      "college": "Tennessee Technological University",
+      "unitid": 221847,
+      "earnings": 16305,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 24
+    },
+    {
+      "state": "NY",
+      "college": "Marist University",
+      "unitid": 192819,
+      "earnings": 16210,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 19
+    }
+  ],
+  "earnings_median": 27906,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 24552,
+  "earnings_p75": 31443,
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "programs": 1335,
+  "programs_with_debt": 140,
+  "programs_with_earnings": 527,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.88
+}

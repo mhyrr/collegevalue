@@ -1,0 +1,127 @@
+{
+  "name": "Business Administration, Management and Operations",
+  "hash": "cd22d074f116",
+  "rank": 29,
+  "debt_median": 21636,
+  "flagged": [
+    {
+      "state": "ND",
+      "college": "Bismarck State College",
+      "unitid": 200022,
+      "earnings": 94930,
+      "debt": null,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 59
+    },
+    {
+      "state": "MI",
+      "college": "University of Michigan-Ann Arbor",
+      "unitid": 170976,
+      "earnings": 83131,
+      "debt": 47104,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 401
+    },
+    {
+      "state": "WA",
+      "college": "City University of Seattle",
+      "unitid": 234915,
+      "earnings": 79719,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 54
+    },
+    {
+      "state": "NC",
+      "college": "Bennett College",
+      "unitid": 197993,
+      "earnings": 20156,
+      "debt": null,
+      "reasons": [
+        "below_half_median"
+      ],
+      "cohort": 18
+    },
+    {
+      "state": "TN",
+      "college": "Lane College",
+      "unitid": 220598,
+      "earnings": 18143,
+      "debt": null,
+      "reasons": [
+        "below_half_median"
+      ],
+      "cohort": 45
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Arecibo",
+      "unitid": 241395,
+      "earnings": 17901,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 38
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Ponce",
+      "unitid": 241410,
+      "earnings": 17901,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 38
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Mayaguez",
+      "unitid": 243586,
+      "earnings": 17901,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 38
+    }
+  ],
+  "earnings_median": 41068,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 36586,
+  "earnings_p75": 46828,
+  "outliers": {
+    "below_half_median": {
+      "count": 5,
+      "top_states": {
+        "NC": 1,
+        "PR": 3,
+        "TN": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 2,
+      "top_states": {
+        "MI": 1,
+        "ND": 1
+      }
+    }
+  },
+  "programs": 1695,
+  "programs_with_debt": 563,
+  "programs_with_earnings": 1213,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.53
+}

@@ -219,7 +219,7 @@ defmodule Collegevalue.FieldNotes do
   """
   def check_note(body, facts) do
     allowed = allowed_numbers(facts)
-    sentences = body |> String.split(~r/(?<=[.!?])\s+/, trim: true) |> length()
+    sentences = sentence_count(body)
 
     stray =
       ~r/\d[\d,]*(?:\.\d+)?/
@@ -237,6 +237,18 @@ defmodule Collegevalue.FieldNotes do
       |> Enum.filter(&is_binary/1)
 
     if errors == [], do: :ok, else: {:error, errors}
+  end
+
+  @doc """
+  The sentences in `text`. A period after an initial ("Ana G. Mendez") or a
+  common abbreviation ("U.S.", "St. Louis") doesn't end one.
+  """
+  def sentence_count(text) do
+    text
+    |> String.replace(~r/\b(?:U\.S|St|Mt|Ft|Dr|Jr|Sr|Inc|vs)\./, "\\0~")
+    |> String.replace(~r/\b[A-Z]\./, "\\0~")
+    |> String.split(~r/(?<=[.!?])\s+/, trim: true)
+    |> length()
   end
 
   defp allowed_numbers(facts) do

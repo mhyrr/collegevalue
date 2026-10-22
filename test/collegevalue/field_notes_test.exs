@@ -72,6 +72,12 @@ defmodule Collegevalue.FieldNotesTest do
     end
   end
 
+  test "sentence_count/1 doesn't end a sentence at an initial or an abbreviation" do
+    assert FieldNotes.sentence_count("Graduates of Universidad Ana G. Mendez stay home. Pay is low.") == 2
+    assert FieldNotes.sentence_count("It is the poorest U.S. state. Washington University in St. Louis pays well.") == 2
+    assert FieldNotes.sentence_count("One. Two! Three?") == 3
+  end
+
   describe "status/1" do
     test "walks missing, current, stale and approved", %{facts: facts} do
       assert %{research: :missing, note: :missing} = FieldNotes.status("Fire Protection")

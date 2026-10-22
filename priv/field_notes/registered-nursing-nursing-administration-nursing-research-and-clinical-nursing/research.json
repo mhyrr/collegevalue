@@ -1,0 +1,67 @@
+{
+  "facts_hash": "d0815bb06014",
+  "field": "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing",
+  "hash": "fb63b51e94d5",
+  "programs": [
+    {
+      "cause": "experienced_students",
+      "evidence": "Mercy University runs a fully online RN to B.S. degree completion track for nurses who already hold a license, so many of its graduates were already working nurses before they graduated.",
+      "source": "https://mercy.edu/node/60",
+      "unitid": 193016
+    },
+    {
+      "cause": "experienced_students",
+      "evidence": "Pacific College's nursing bachelor's is described as an RN-to-BSN completion program taught mostly online, not a route to first licensure, so its students are already licensed working nurses.",
+      "source": "https://nursa.com/nursing-programs/pacific-college",
+      "unitid": 422695
+    },
+    {
+      "cause": "experienced_students",
+      "evidence": "Sonoma State's Post-Licensure BSN requires a current California RN license for upper-division credit and draws from partner community college ADN programs, so many graduates are already RNs in the high-paying Bay Area.",
+      "source": "https://nursing.sonoma.edu/nursing-programs/post-licensure-bsn/roadmaps/individual-roadmaps/college-marin-ssu-roadmap-bachelor",
+      "unitid": 123572
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 243203
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 241191
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 242662
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 241410
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 242644
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 243346
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Registered nurse pay in Puerto Rico is the lowest among the states, D.C. and Puerto Rico, far below the mainland, and that alone explains low earnings for its nursing graduates.",
+      "source": "https://nurse.org/articles/highest-paying-states-for-registered-nurses",
+      "unitid": 242617
+    }
+  ]
+}

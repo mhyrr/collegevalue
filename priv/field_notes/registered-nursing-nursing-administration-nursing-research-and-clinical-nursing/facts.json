@@ -1,0 +1,143 @@
+{
+  "name": "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing",
+  "hash": "d0815bb06014",
+  "rank": 9,
+  "debt_median": 20508,
+  "flagged": [
+    {
+      "state": "NY",
+      "college": "Mercy University",
+      "unitid": 193016,
+      "earnings": 115215,
+      "debt": 24000,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 50
+    },
+    {
+      "state": "CA",
+      "college": "Pacific College",
+      "unitid": 422695,
+      "earnings": 114248,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 29
+    },
+    {
+      "state": "CA",
+      "college": "Sonoma State University",
+      "unitid": 123572,
+      "earnings": 110859,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 79
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Medical Sciences",
+      "unitid": 243203,
+      "earnings": 14847,
+      "debt": null,
+      "reasons": [
+        "below_half_median"
+      ],
+      "cohort": 52
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Adventista de las Antillas",
+      "unitid": 241191,
+      "earnings": 14401,
+      "debt": null,
+      "reasons": [
+        "below_half_median"
+      ],
+      "cohort": 130
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-Ponce",
+      "unitid": 242662,
+      "earnings": 13571,
+      "debt": null,
+      "reasons": [
+        "below_half_median"
+      ],
+      "cohort": 45
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Ponce",
+      "unitid": 241410,
+      "earnings": 12923,
+      "debt": null,
+      "reasons": [
+        "below_half_median"
+      ],
+      "cohort": 94
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-Barranquitas",
+      "unitid": 242644,
+      "earnings": 12611,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 51
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Carolina Campus",
+      "unitid": 243346,
+      "earnings": 10662,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 82
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-San German",
+      "unitid": 242617,
+      "earnings": 9360,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 54
+    }
+  ],
+  "earnings_median": 62698,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 58868,
+  "earnings_p75": 68395,
+  "outliers": {
+    "below_half_median": {
+      "count": 35,
+      "top_states": {
+        "PR": 30,
+        "unknown state": 5
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "programs": 1233,
+  "programs_with_debt": 585,
+  "programs_with_earnings": 981,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.33
+}

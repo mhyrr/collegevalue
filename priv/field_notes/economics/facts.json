@@ -1,0 +1,101 @@
+{
+  "name": "Economics",
+  "hash": "ea8aff20c7d3",
+  "rank": 83,
+  "debt_median": 39273,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "Claremont McKenna College",
+      "unitid": 112260,
+      "earnings": 95566,
+      "debt": null,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 39
+    },
+    {
+      "state": "NC",
+      "college": "Duke University",
+      "unitid": 198419,
+      "earnings": 94699,
+      "debt": null,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ],
+      "cohort": 130
+    },
+    {
+      "state": "MA",
+      "college": "Harvard University",
+      "unitid": 166027,
+      "earnings": 89515,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 98
+    },
+    {
+      "state": "NY",
+      "college": "SUNY at Purchase College",
+      "unitid": 196219,
+      "earnings": 28093,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 27
+    },
+    {
+      "state": "NM",
+      "college": "University of New Mexico-Main Campus",
+      "unitid": 187985,
+      "earnings": 27677,
+      "debt": null,
+      "reasons": [
+        "bottom_3"
+      ],
+      "cohort": 45
+    },
+    {
+      "state": "NY",
+      "college": "CUNY Brooklyn College",
+      "unitid": 190549,
+      "earnings": 17854,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 18
+    }
+  ],
+  "earnings_median": 45786,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 39704,
+  "earnings_p75": 53280,
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "NY": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 2,
+      "top_states": {
+        "CA": 1,
+        "NC": 1
+      }
+    }
+  },
+  "programs": 815,
+  "programs_with_debt": 103,
+  "programs_with_earnings": 358,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.86
+}

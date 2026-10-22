@@ -1,0 +1,98 @@
+{
+  "name": "Psychology, General",
+  "hash": "497719c39a21",
+  "rank": 91,
+  "debt_median": 25532,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "Stanford University",
+      "unitid": 243744,
+      "earnings": 51407,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 38
+    },
+    {
+      "state": "CA",
+      "college": "Santa Clara University",
+      "unitid": 122931,
+      "earnings": 50081,
+      "debt": 75072,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 57
+    },
+    {
+      "state": "NY",
+      "college": "Colgate University",
+      "unitid": 190099,
+      "earnings": 48179,
+      "debt": null,
+      "reasons": [
+        "top_3"
+      ],
+      "cohort": 28
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Rio Piedras",
+      "unitid": 243221,
+      "earnings": 12250,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 52
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Arecibo",
+      "unitid": 241395,
+      "earnings": 11557,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 29
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Ponce",
+      "unitid": 241410,
+      "earnings": 11557,
+      "debt": null,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ],
+      "cohort": 29
+    }
+  ],
+  "earnings_median": 28486,
+  "all_majors_earnings_median": 37050,
+  "earnings_p25": 25760,
+  "earnings_p75": 31145,
+  "outliers": {
+    "below_half_median": {
+      "count": 3,
+      "top_states": {
+        "PR": 3
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "programs": 1438,
+  "programs_with_debt": 496,
+  "programs_with_earnings": 992,
+  "ranked_of": 147,
+  "debt_to_earnings": 0.9
+}

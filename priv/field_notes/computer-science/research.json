@@ -1,0 +1,67 @@
+{
+  "facts_hash": "1b25d9af2d3e",
+  "field": "Computer Science",
+  "hash": "422f7b718d09",
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Carnegie Mellon is a highly selective school, and its career center publishes first-destination reports on graduates' employers, pay and locations, which include major technology firms.",
+      "source": "https://www.cmu.edu/career/outcomes/index.html",
+      "unitid": 211440
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Harvard is highly selective, and its senior survey names technology, finance and consulting as graduates' most popular industries, with many going to high-cost cities like New York and Boston.",
+      "source": "https://features.thecrimson.com/2024/senior-survey/after-harvard/",
+      "unitid": 166027
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Stanford admits only a tiny share of applicants, and computer science is its most popular major, feeding graduates to elite technology employers.",
+      "source": "https://www.koppelmangroup.com/blog/2026/4/10/the-best-majors-at-stanford",
+      "unitid": 243744
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Brown is a highly selective Ivy League school, and its CS department has said top technology firms such as Facebook recruit there and that most of its graduates find jobs readily.",
+      "source": "https://www.browndailyherald.com/article/2013/11/stem-concentrators-find-employment-success",
+      "unitid": 217156
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Caltech is a highly selective, research-focused institute whose computer science majors train in a rigorous program and can do research with faculty and at JPL.",
+      "source": "https://www.cms.caltech.edu/academics/ugrad",
+      "unitid": 110404
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Cornell is a highly selective Ivy League school, and its Arts and Sciences college reports that most CS majors who take jobs enter technology and financial services, with Meta and Google as top employers.",
+      "source": "https://as.cornell.edu/computer-science-major-minor",
+      "unitid": 190415
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is too small to trust, though the figure matches other highly selective schools.",
+      "source": null,
+      "unitid": 215062
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "IU Northwest's computer science bachelor's is a fully online degree shared across several IU campuses and launched recently, and I found nothing that clearly explains these graduates' low earnings.",
+      "source": "https://academics.iu.edu/degrees/northwest/bachelor-of-science-in-computer-science-online.html",
+      "unitid": 151360
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Pay in Puerto Rico is far below the U.S. mainland, even in the San Juan metro area, which explains the gap for graduates who stay on the island; the cohort is also small.",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
+      "unitid": 242662
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Pay in Puerto Rico is far below the U.S. mainland, even in the San Juan metro area that includes Bayamón, which explains the gap for local graduates; the cohort is also small.",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
+      "unitid": 242705
+    }
+  ]
+}
