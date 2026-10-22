@@ -53,7 +53,7 @@ defmodule Collegevalue.Fields do
 
   end
 
-  def get_field!(name), do: Repo.get_by(Field, name: name)
+  def get_field!(name), do: Repo.get_by!(Field, name: name)
 
   @doc """
   Whether any college reports debt or earnings for the field. A field without

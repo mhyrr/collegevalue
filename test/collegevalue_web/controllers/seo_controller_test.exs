@@ -137,5 +137,9 @@ defmodule CollegevalueWeb.SeoControllerTest do
 
       refute html =~ "degree worth it?"
     end
+
+    test "is a 404 for a field that doesn't exist", %{conn: conn} do
+      assert_error_sent 404, fn -> get(conn, "/fields/No%20Such%20Field") end
+    end
   end
 end
