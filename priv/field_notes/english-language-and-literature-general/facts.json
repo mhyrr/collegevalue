@@ -1,6 +1,6 @@
 {
   "name": "English Language and Literature, General",
-  "hash": "bd0e919b8f92",
+  "hash": "2234f9ae7450",
   "rank": 88,
   "debt_median": 24480,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Georgetown University",
       "unitid": 131496,
       "earnings": 49812,
+      "admission_rate": 0.1308,
       "debt": null,
       "reasons": [
         "top_3"
@@ -20,6 +21,7 @@
       "college": "Yale University",
       "unitid": 130794,
       "earnings": 48264,
+      "admission_rate": 0.045,
       "debt": null,
       "reasons": [
         "top_3"
@@ -31,6 +33,7 @@
       "college": "Colgate University",
       "unitid": 190099,
       "earnings": 44610,
+      "admission_rate": 0.1195,
       "debt": null,
       "reasons": [
         "top_3"
@@ -42,6 +45,7 @@
       "college": "Canisius University",
       "unitid": 189705,
       "earnings": 16394,
+      "admission_rate": 0.8177,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -53,6 +57,7 @@
       "college": "Tennessee Technological University",
       "unitid": 221847,
       "earnings": 16305,
+      "admission_rate": 0.8316,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -64,6 +69,7 @@
       "college": "Marist University",
       "unitid": 192819,
       "earnings": 16210,
+      "admission_rate": 0.6471,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -72,6 +78,39 @@
     }
   ],
   "earnings_median": 27906,
+  "programs": 1335,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 493
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.71,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CO": 1,
+        "NY": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.28,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "CT": 2,
+        "TX": 2
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 24552,
   "earnings_p75": 31443,
@@ -85,7 +124,6 @@
       "top_states": {}
     }
   },
-  "programs": 1335,
   "programs_with_debt": 140,
   "programs_with_earnings": 527,
   "ranked_of": 147,

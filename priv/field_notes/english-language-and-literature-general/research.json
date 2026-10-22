@@ -1,43 +1,61 @@
 {
-  "facts_hash": "bd0e919b8f92",
+  "facts_hash": "2234f9ae7450",
   "field": "English Language and Literature, General",
-  "hash": "2b2d14f62ab2",
+  "hash": "f19c51c651a6",
+  "major": {
+    "location": {
+      "evidence": "No state has more than a few of the top or bottom programs, and the outliers show no regional pattern, so location does not explain either end.",
+      "finding": "none",
+      "source": null
+    },
+    "prestige": {
+      "evidence": "The best-paying English programs are at far more selective schools than the typical program. Their career offices report that graduates across all majors go into business, consulting, law, media and technology, so the pay follows the school's recruiting reach more than the major.",
+      "finding": "school",
+      "source": "https://www.colgate.edu/success-after-colgate/career-and-continuing-education-outcomes"
+    },
+    "stepping_stone": {
+      "evidence": "Many English graduates go straight to graduate school. At Cornell, close to a third of English graduates did, and law was their most common field, ahead of English and creative writing.",
+      "finding": "some",
+      "source": "https://as.cornell.edu/major_minor_gradfield/english"
+    }
+  },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "Georgetown is a highly selective university, and its English department says many majors double major in fields like government, history or STEM and go on to competitive jobs and graduate schools.",
+      "evidence": "Georgetown is a highly selective school in Washington, and its English department says many of its majors go on to jobs in management, media and law.",
       "source": "https://english.georgetown.edu/welcome-undergraduate-program/why-english-georgetown/",
       "unitid": 131496
     },
     {
       "cause": "selective_school",
-      "evidence": "Yale is one of the most selective universities in the country, and its English major stresses research, argument and writing, which places graduates with top employers.",
-      "source": "https://catalog.yale.edu/ycps/subjects-of-instruction/english-language-literature",
+      "evidence": "Yale is one of the most selective universities in the country, and its career office reports that nearly all graduates are working or in graduate school soon after graduating.",
+      "source": "https://ocs.yale.edu/outcomes/",
       "unitid": 130794
     },
     {
       "cause": "selective_school",
-      "evidence": "Colgate is a highly selective liberal arts university that admits only a small share of its applicants, and its graduates tend to go to strong employers.",
-      "source": "https://la.datausa.io/profile/university/190099",
+      "evidence": "Colgate is a highly selective liberal arts college, and its career office lists business, consulting, law and technology among the fields where its graduates go.",
+      "source": "https://www.colgate.edu/success-after-colgate/career-and-continuing-education-outcomes",
       "unitid": 190099
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "Canisius offers a standard English BA for traditional undergraduates, with transfer pathways from community colleges, and I found nothing in its admission or format that explains the low earnings.",
-      "source": "https://catalog.canisius.edu/undergraduate/college-arts-sciences/english/english/english.pdf",
+      "evidence": "Canisius offers a standard English major with no special admission rules or delivery format, and nothing found explains its lower earnings.",
+      "source": null,
       "unitid": 189705
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "Tennessee Tech offers a standard English BA with literature, creative writing, rhetoric and technical communication concentrations, and I found no admission or format feature that explains the low earnings.",
-      "source": "https://tntech.edu/cas/english/bachelorofarts",
+      "evidence": "Tennessee Tech's English degree has the usual concentrations in literature, creative writing and rhetoric, and nothing found explains its lower earnings.",
+      "source": null,
       "unitid": 221847
     },
     {
       "cause": "small_cohort",
-      "evidence": "The earnings figure rests on fewer than twenty graduates, too few to be a reliable measure of the program.",
+      "evidence": "Marist's figure rests on too few graduates to be reliable.",
       "source": null,
       "unitid": 192819
     }
-  ]
+  ],
+  "prompt_hash": "40f34bfc7854"
 }

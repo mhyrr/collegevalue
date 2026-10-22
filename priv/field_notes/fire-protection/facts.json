@@ -1,6 +1,6 @@
 {
   "name": "Fire Protection",
-  "hash": "25e2b1796c19",
+  "hash": "50bace9e2941",
   "rank": null,
   "debt_median": 5376,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Southern Illinois University-Carbondale",
       "unitid": 149222,
       "earnings": 103432,
+      "admission_rate": 0.9044,
       "debt": null,
       "reasons": [
         "top_3"
@@ -20,6 +21,7 @@
       "college": "Colorado State University-Fort Collins",
       "unitid": 126818,
       "earnings": 76384,
+      "admission_rate": 0.8959,
       "debt": null,
       "reasons": [
         "top_3"
@@ -31,6 +33,7 @@
       "college": "Waldorf University",
       "unitid": 154518,
       "earnings": 74071,
+      "admission_rate": 0.726,
       "debt": null,
       "reasons": [
         "top_3"
@@ -42,6 +45,7 @@
       "college": "Western Illinois University",
       "unitid": 149772,
       "earnings": 35038,
+      "admission_rate": 0.7496,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -53,6 +57,7 @@
       "college": "New Jersey City University",
       "unitid": 185129,
       "earnings": 32493,
+      "admission_rate": 0.8918,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -64,6 +69,7 @@
       "college": "Methodist University",
       "unitid": 198969,
       "earnings": 26240,
+      "admission_rate": 0.752,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -73,6 +79,39 @@
     }
   ],
   "earnings_median": 57522,
+  "programs": 55,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.75,
+        "reporting": 14
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.75,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CT": 1,
+        "FL": 1
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.72,
+        "reporting": 6
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "CO": 1,
+        "FL": 2
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 43087,
   "earnings_p75": 71931,
@@ -88,7 +127,6 @@
       "top_states": {}
     }
   },
-  "programs": 55,
   "programs_with_debt": 1,
   "programs_with_earnings": 18,
   "ranked_of": 147,

@@ -11,6 +11,14 @@ hide. The first target is the 8 majors in `docs/seo/keywords.yml`.
 Code computes, the model interprets. No model output contains a number the
 code didn't compute.
 
+## The editorial guide
+
+`priv/field_notes/GUIDE.md` is the single source for how notes read: their
+shape (two paragraphs), the questions every note answers (reputation or
+major, where, stepping stone), when to name a school, and the voice. Both
+prompts include it. Review feedback goes into the guide, not into one
+prompt, so it shapes every later run.
+
 ## Layers
 
 1. **Facts (code, free).** `Collegevalue.FieldNotes.Facts` computes, per major
@@ -18,8 +26,11 @@ code didn't compute.
    - the program count, the median, 25th and 75th percentile of first-year
      earnings, and the median debt;
    - the median debt-to-earnings ratio, and the major's rank by it among all majors;
-   - the **flagged programs**: the top 3 and bottom 3 by earnings, and any program
-     above 2x or below 0.5x the major's median.
+   - the **flagged programs**: the top 3 and bottom 3 by earnings, plus the 4
+     farthest past 2x or under 0.5x the median (the rest are counted by state
+     in `outliers`);
+   - `ends`: the states and median admission rate of the 10 best- and
+     worst-paying programs, against the major's median admission rate.
 
    The facts are written to `priv/field_notes/<slug>/facts.json` with a hash.
    The answer section on the page renders from these facts alone, so every
@@ -28,21 +39,23 @@ code didn't compute.
    and web search. For each flagged program, it returns a cause from a fixed
    list, one sentence of evidence and a source URL. The output is
    `research.json`, which carries the facts hash it was made from.
-3. **Note (model, paid).** One call per major. The call gets the facts and the
-   research, and writes 2 or 3 plain sentences to `note.md`, with front matter
-   (`status: draft`). The note then gets a deslopify pass.
+3. **Note (model, paid).** One call per major. The call gets the facts, the
+   research and the guide, and writes two paragraphs to `note.md`, with
+   front matter (`status: draft`).
 4. **Review (Greg).** Greg reads the drafts, edits `note.md` and sets
    `status: approved`. Only approved notes render. Git history is the review log.
 
 ## Token spend
 
 - `mix field_notes.status` lists what each major needs. Research runs only when
-  `research.json` is missing or its facts hash differs from the current facts.
-  The same holds for a note and its research hash. A Scorecard re-import that
+  `research.json` is missing, or was made from other facts, prompt or guide.
+  The same holds for a note and its research, prompt and guide. An approved
+  note is never overwritten: its redraft goes to `note.next.md`, and the
+  approved note stays live until `mix field_notes.approve` promotes it. A Scorecard re-import that
   doesn't change a major's facts costs nothing.
-- `scripts/field_notes/run.sh` runs one step for one major through
-  `claude -p`, with a turn and tool limit. Adding majors means passing more
-  names. The script never sweeps all majors.
+- `mix field_notes.run` calls `claude -p` with only the tools a step needs,
+  a dollar cap and a deadline. Adding majors means passing more names; it
+  refuses more than `--max-fields` (12) at once.
 - Order: the 8 keyword-map majors, then majors by program count.
 
 ## Decisions

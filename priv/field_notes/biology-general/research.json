@@ -1,43 +1,61 @@
 {
-  "facts_hash": "a91f3e32d03d",
+  "facts_hash": "87535491037a",
   "field": "Biology, General",
-  "hash": "3be9eb21e6fc",
+  "hash": "1d9892ebf712",
+  "major": {
+    "location": {
+      "evidence": "Top programs cluster in Massachusetts, near the nation's largest life sciences cluster, while the lowest cluster in Puerto Rico, where BLS data show wages trail the U.S. mainland in every major occupational group.",
+      "finding": "both",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers"
+    },
+    "prestige": {
+      "evidence": "The top programs are more selective than typical biology programs, but not elite as a group. Half of them sit in Massachusetts, home to the Boston-Cambridge life sciences cluster, the largest in the nation. So both the schools and the local biotech jobs shape the top end.",
+      "finding": "both",
+      "source": "https://bostonplans.org/getattachment/7927a2d5-097d-4218-af82-ecd64ad150d4"
+    },
+    "stepping_stone": {
+      "evidence": "Biological sciences is by far the most common undergraduate major among medical school applicants and matriculants, so many biology graduates are still in training a year after college.",
+      "finding": "strong",
+      "source": "https://www.ama-assn.org/medical-students/preparing-medical-school/which-undergrad-majors-are-best-med-school"
+    }
+  },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "MIT admits only a small share of first-year applicants through one institute-wide process, so its biology graduates come from one of the most selective schools in the country.",
-      "source": "https://facts.mit.edu/undergraduate-admissions/",
+      "evidence": "MIT admits very few applicants, and its biology department says graduates often go on to PhD and MD programs or into drug development and other industry jobs near the Boston biotech cluster.",
+      "source": "https://firstyear.mit.edu/wp-content/uploads/2025/02/Course-7-2025.pdf",
       "unitid": 166683
     },
     {
       "cause": "small_cohort",
-      "evidence": "This earnings figure comes from fewer than 20 graduates, which is too small a group to rely on, even though Bowdoin is also a selective liberal arts college.",
+      "evidence": "Too few Bowdoin biology graduates are in this cohort for a reliable earnings figure.",
       "source": null,
       "unitid": 161004
     },
     {
-      "cause": "high_cost_region",
-      "evidence": "The campus, formerly Mills College, is in Oakland in the San Francisco Bay Area, a high-wage labor market, which likely explains the higher earnings for its biology graduates.",
-      "source": "https://oakland.northeastern.edu/about/campus-location",
+      "cause": "data_error",
+      "evidence": "This Oakland campus is the former Mills College, which graduated only a handful of biology majors a year, so the cohort size and selective admission rate look pooled with Northeastern's Boston campus.",
+      "source": null,
       "unitid": 118888
     },
     {
-      "cause": "low_cost_region",
-      "evidence": "Census data shows household incomes in Puerto Rico are far below every U.S. state, so local graduates enter a much lower-paying job market. All three flagged low-earning programs are in Puerto Rico.",
-      "source": "https://www.census.gov/newsroom/archives/2014-pr/cb14-17.html",
+      "cause": "small_cohort",
+      "evidence": "Too few Humacao biology graduates are in this cohort for a reliable earnings figure, though it shares Puerto Rico's low wage levels.",
+      "source": null,
       "unitid": 243179
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Census data shows household incomes in Puerto Rico are far below every U.S. state, so graduates of this Aguadilla campus enter a much lower-paying local job market.",
-      "source": "https://www.census.gov/newsroom/archives/2014-pr/cb14-17.html",
+      "evidence": "Wages in Puerto Rico trail the U.S. mainland in every major occupational group, so island biology graduates start well below mainland peers.",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
       "unitid": 243106
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Census data shows household incomes in Puerto Rico are far below every U.S. state, so graduates of this Cayey campus enter a much lower-paying local job market.",
-      "source": "https://www.census.gov/newsroom/archives/2014-pr/cb14-17.html",
+      "evidence": "Wages in Puerto Rico trail the U.S. mainland in every major occupational group, so Cayey's biology graduates start well below mainland peers.",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
       "unitid": 243151
     }
-  ]
+  ],
+  "prompt_hash": "40f34bfc7854"
 }

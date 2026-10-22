@@ -1,6 +1,6 @@
 {
   "name": "Biology, General",
-  "hash": "a91f3e32d03d",
+  "hash": "87535491037a",
   "rank": 109,
   "debt_median": 27702,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Massachusetts Institute of Technology",
       "unitid": 166683,
       "earnings": 46373,
+      "admission_rate": 0.0474,
       "debt": null,
       "reasons": [
         "top_3"
@@ -20,6 +21,7 @@
       "college": "Bowdoin College",
       "unitid": 161004,
       "earnings": 44658,
+      "admission_rate": 0.0802,
       "debt": null,
       "reasons": [
         "top_3"
@@ -31,6 +33,7 @@
       "college": "Northeastern University Oakland",
       "unitid": 118888,
       "earnings": 43916,
+      "admission_rate": 0.1654,
       "debt": 43257,
       "reasons": [
         "top_3"
@@ -42,6 +45,7 @@
       "college": "University of Puerto Rico-Humacao",
       "unitid": 243179,
       "earnings": 13131,
+      "admission_rate": 0.5849,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -54,6 +58,7 @@
       "college": "University of Puerto Rico-Aguadilla",
       "unitid": 243106,
       "earnings": 11037,
+      "admission_rate": 0.8174,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -66,6 +71,7 @@
       "college": "University of Puerto Rico at Cayey",
       "unitid": 243151,
       "earnings": 10219,
+      "admission_rate": 0.9584,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -75,6 +81,39 @@
     }
   ],
   "earnings_median": 27179,
+  "programs": 1411,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 793
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.58,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "IL": 1,
+        "PR": 4
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.58,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "MA": 5,
+        "ME": 1
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 23885,
   "earnings_p75": 30842,
@@ -90,7 +129,6 @@
       "top_states": {}
     }
   },
-  "programs": 1411,
   "programs_with_debt": 351,
   "programs_with_earnings": 837,
   "ranked_of": 147,

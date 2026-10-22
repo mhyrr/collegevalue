@@ -1,6 +1,6 @@
 {
   "name": "Economics",
-  "hash": "ea8aff20c7d3",
+  "hash": "8de3bfe2c6f6",
   "rank": 83,
   "debt_median": 39273,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Claremont McKenna College",
       "unitid": 112260,
       "earnings": 95566,
+      "admission_rate": 0.1112,
       "debt": null,
       "reasons": [
         "top_3",
@@ -21,6 +22,7 @@
       "college": "Duke University",
       "unitid": 198419,
       "earnings": 94699,
+      "admission_rate": 0.0678,
       "debt": null,
       "reasons": [
         "top_3",
@@ -33,6 +35,7 @@
       "college": "Harvard University",
       "unitid": 166027,
       "earnings": 89515,
+      "admission_rate": 0.0345,
       "debt": null,
       "reasons": [
         "top_3"
@@ -44,6 +47,7 @@
       "college": "SUNY at Purchase College",
       "unitid": 196219,
       "earnings": 28093,
+      "admission_rate": 0.7283,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -55,6 +59,7 @@
       "college": "University of New Mexico-Main Campus",
       "unitid": 187985,
       "earnings": 27677,
+      "admission_rate": 0.9545,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -66,6 +71,7 @@
       "college": "CUNY Brooklyn College",
       "unitid": 190549,
       "earnings": 17854,
+      "admission_rate": 0.5366,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -75,6 +81,39 @@
     }
   ],
   "earnings_median": 45786,
+  "programs": 815,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.69,
+        "reporting": 350
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.76,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "GA": 1,
+        "NY": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.07,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CT": 1,
+        "MA": 3
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 39704,
   "earnings_p75": 53280,
@@ -93,7 +132,6 @@
       }
     }
   },
-  "programs": 815,
   "programs_with_debt": 103,
   "programs_with_earnings": 358,
   "ranked_of": 147,

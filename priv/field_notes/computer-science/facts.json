@@ -1,6 +1,6 @@
 {
   "name": "Computer Science",
-  "hash": "1b25d9af2d3e",
+  "hash": "d0833d016369",
   "rank": 19,
   "debt_median": 27376,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Carnegie Mellon University",
       "unitid": 211440,
       "earnings": 161723,
+      "admission_rate": 0.114,
       "debt": null,
       "reasons": [
         "top_3",
@@ -21,6 +22,7 @@
       "college": "Harvard University",
       "unitid": 166027,
       "earnings": 140072,
+      "admission_rate": 0.0345,
       "debt": null,
       "reasons": [
         "top_3",
@@ -33,6 +35,7 @@
       "college": "Stanford University",
       "unitid": 243744,
       "earnings": 136126,
+      "admission_rate": 0.0391,
       "debt": null,
       "reasons": [
         "top_3",
@@ -45,6 +48,7 @@
       "college": "Brown University",
       "unitid": 217156,
       "earnings": 130101,
+      "admission_rate": 0.0523,
       "debt": null,
       "reasons": [
         "above_2x_median"
@@ -56,6 +60,7 @@
       "college": "California Institute of Technology",
       "unitid": 110404,
       "earnings": 129693,
+      "admission_rate": 0.0314,
       "debt": null,
       "reasons": [
         "above_2x_median"
@@ -67,6 +72,7 @@
       "college": "Cornell University",
       "unitid": 190415,
       "earnings": 127764,
+      "admission_rate": 0.0816,
       "debt": 34964,
       "reasons": [
         "above_2x_median"
@@ -78,6 +84,7 @@
       "college": "University of Pennsylvania",
       "unitid": 215062,
       "earnings": 127623,
+      "admission_rate": 0.0587,
       "debt": null,
       "reasons": [
         "above_2x_median"
@@ -89,6 +96,7 @@
       "college": "Indiana University-Northwest",
       "unitid": 151360,
       "earnings": 35316,
+      "admission_rate": 0.767,
       "debt": null,
       "reasons": [
         "bottom_3"
@@ -100,6 +108,7 @@
       "college": "Inter American University of Puerto Rico-Ponce",
       "unitid": 242662,
       "earnings": 26265,
+      "admission_rate": 0.7029,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -112,6 +121,7 @@
       "college": "Inter American University of Puerto Rico-Bayamon",
       "unitid": 242705,
       "earnings": 26017,
+      "admission_rate": 0.3642,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -121,6 +131,39 @@
     }
   ],
   "earnings_median": 63428,
+  "programs": 756,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.76,
+        "reporting": 291
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.71,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "FL": 1,
+        "NC": 2,
+        "PR": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.06,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 4,
+        "MA": 2,
+        "PA": 2
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 55125,
   "earnings_p75": 72790,
@@ -140,7 +183,6 @@
       }
     }
   },
-  "programs": 756,
   "programs_with_debt": 84,
   "programs_with_earnings": 318,
   "ranked_of": 147,

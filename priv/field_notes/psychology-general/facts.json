@@ -1,6 +1,6 @@
 {
   "name": "Psychology, General",
-  "hash": "497719c39a21",
+  "hash": "b2069c5f9d73",
   "rank": 91,
   "debt_median": 25532,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Stanford University",
       "unitid": 243744,
       "earnings": 51407,
+      "admission_rate": 0.0391,
       "debt": null,
       "reasons": [
         "top_3"
@@ -20,6 +21,7 @@
       "college": "Santa Clara University",
       "unitid": 122931,
       "earnings": 50081,
+      "admission_rate": 0.4384,
       "debt": 75072,
       "reasons": [
         "top_3"
@@ -31,6 +33,7 @@
       "college": "Colgate University",
       "unitid": 190099,
       "earnings": 48179,
+      "admission_rate": 0.1195,
       "debt": null,
       "reasons": [
         "top_3"
@@ -42,6 +45,7 @@
       "college": "University of Puerto Rico-Rio Piedras",
       "unitid": 243221,
       "earnings": 12250,
+      "admission_rate": 0.532,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -54,6 +58,7 @@
       "college": "Pontifical Catholic University of Puerto Rico-Arecibo",
       "unitid": 241395,
       "earnings": 11557,
+      "admission_rate": 0.8538,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -66,6 +71,7 @@
       "college": "Pontifical Catholic University of Puerto Rico-Ponce",
       "unitid": 241410,
       "earnings": 11557,
+      "admission_rate": 0.9033,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -75,6 +81,39 @@
     }
   ],
   "earnings_median": 28486,
+  "programs": 1438,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 899
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.71,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "GA": 1,
+        "NC": 1,
+        "PR": 6
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.11,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "CT": 1,
+        "NC": 2
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 25760,
   "earnings_p75": 31145,
@@ -90,7 +129,6 @@
       "top_states": {}
     }
   },
-  "programs": 1438,
   "programs_with_debt": 496,
   "programs_with_earnings": 992,
   "ranked_of": 147,

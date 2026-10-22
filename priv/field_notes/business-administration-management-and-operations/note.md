@@ -1,10 +1,13 @@
 ---
 field: Business Administration, Management and Operations
 status: draft
-facts_hash: cd22d074f116
-research_hash: 833e175645c7
+facts_hash: b497d827c7d0
+research_hash: 9bb449ac505f
+prompt_hash: a2667981a511
 model: opus
 drafted: 2026-10-22
 ---
 
-Two of the three highest-paying programs in this major enroll people who already have careers. Bismarck State College's energy management degree admits workers already in the energy industry, and City University of Seattle's program lets working adults finish a degree online, so their pay reflects experience a new student won't bring. The University of Michigan-Ann Arbor's high figure comes from a very selective business school whose graduates mostly go into finance and consulting. At the low end, three of the five programs paid under half the median are Pontifical Catholic University of Puerto Rico campuses that seem to share one pooled figure and reflect Puerto Rico's lower incomes, so they count as one pattern.
+Business graduates start out earning more than the typical graduate across all majors, which ranks this major ahead of most others. The best-paying programs admit far fewer applicants than is usual for the major, and highly selective business schools send most of their graduates to banks and consulting firms. Two other top programs serve people who already have careers: Bismarck State College's energy management degree requires prior energy training or an applied associate degree, and City University of Seattle runs an online degree completion program for working adults.
+
+Three of the lowest-paying programs are campuses of the Pontifical Catholic University of Puerto Rico, and all three report identical earnings and graduate counts, so their figure looks pooled across campuses. Pay in Puerto Rico also runs well below the mainland in every major job group. Most business graduates go straight to work, and those who earn an MBA usually wait several years first, so first-year earnings show where this degree typically starts.

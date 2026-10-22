@@ -1,43 +1,61 @@
 {
-  "facts_hash": "497719c39a21",
+  "facts_hash": "b2069c5f9d73",
   "field": "Psychology, General",
-  "hash": "e41c5851c821",
+  "hash": "8738f60d58cf",
+  "major": {
+    "location": {
+      "evidence": "Most of the lowest-paying programs are in Puerto Rico. Federal wage data show workers in the San Juan area earn far less than mainland workers, and every major occupational group there pays below its national average.",
+      "finding": "explains_bottom",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers"
+    },
+    "prestige": {
+      "evidence": "The best-paying programs are at schools that admit few applicants. Colleges like Colgate report graduates going to employers and top graduate schools through organized career pipelines that have little to do with the psychology major itself.",
+      "finding": "school",
+      "source": "https://www.colgate.edu/success-after-colgate/outcome-and-employment-data"
+    },
+    "stepping_stone": {
+      "evidence": "A Georgetown analysis reported by the American Psychological Association found psychology majors earn graduate degrees at a higher rate than college graduates overall, often in counseling, social work, education or other fields.",
+      "finding": "strong",
+      "source": "https://www.apa.org/monitor/2016/02/numbers"
+    }
+  },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "Stanford is one of the most selective universities in the country and admits only a very small share of its undergraduate applicants.",
-      "source": "https://www.collegetransitions.com/?p=12800",
+      "evidence": "Stanford admits very few applicants, and its psychology department says the major prepares students for careers in business, law and medicine, so its graduates reach well-paid employers.",
+      "source": "https://psychology.stanford.edu/academics/undergraduate-program",
       "unitid": 243744
     },
     {
       "cause": "high_cost_region",
-      "evidence": "Santa Clara sits in Silicon Valley, and its career center says most graduates find jobs within months, with major local technology companies among its featured employers.",
-      "source": "https://www.scu.edu/careercenter/outcomes/",
+      "evidence": "Santa Clara is not highly selective but sits in Silicon Valley, and its admissions materials point to internships and jobs at nearby tech employers such as Apple, Google and Meta.",
+      "source": "https://www.scu.edu/media/institutional-pages/admission/pdfs/2026-2027-Introduction-Brochure-Admission.pdf",
       "unitid": 122931
     },
     {
       "cause": "selective_school",
-      "evidence": "Colgate is a highly selective liberal arts university that admits a small share of applicants, and most of its enrolled students ranked near the top of their high school classes.",
-      "source": "https://www.collegetransitions.com/blog/how-to-get-into-colgate-university/",
+      "evidence": "Colgate is a highly selective liberal arts college, and it tracks graduates going on to employers and top graduate schools through a structured career program.",
+      "source": "https://www.colgate.edu/success-after-colgate/outcome-and-employment-data",
       "unitid": 190099
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Census figures show Puerto Rico has the lowest median household income of any U.S. state or territory, well below even the poorest states, so wages for new graduates on the island are low.",
-      "source": "https://puertoricoreport.com/census-bureau-reports-household-income-rising-states-dropping-puerto-rico/",
+      "evidence": "Puerto Rico's labor market pays far less than the mainland in every major occupational group, which explains this program's low earnings.",
+      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
       "unitid": 243221
     },
     {
-      "cause": "low_cost_region",
-      "evidence": "Puerto Rico has the lowest median household income in the U.S., which depresses graduate pay; this campus reports figures identical to the Ponce campus, which suggests they are reported together.",
-      "source": "https://puertoricoreport.com/census-bureau-reports-household-income-rising-states-dropping-puerto-rico/",
+      "cause": "data_error",
+      "evidence": "The Arecibo campus reports the same earnings and cohort as the Ponce campus, which suggests the figures pool the university's campuses rather than describe this one.",
+      "source": null,
       "unitid": 241395
     },
     {
-      "cause": "low_cost_region",
-      "evidence": "Puerto Rico has the lowest median household income in the U.S., which depresses graduate pay; this campus reports figures identical to the Arecibo campus, which suggests they are reported together.",
-      "source": "https://puertoricoreport.com/census-bureau-reports-household-income-rising-states-dropping-puerto-rico/",
+      "cause": "data_error",
+      "evidence": "The Ponce campus reports the same earnings and cohort as the Arecibo campus, which suggests the figures pool the university's campuses rather than describe this one.",
+      "source": null,
       "unitid": 241410
     }
-  ]
+  ],
+  "prompt_hash": "40f34bfc7854"
 }

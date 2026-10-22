@@ -1,43 +1,61 @@
 {
-  "facts_hash": "25e2b1796c19",
+  "facts_hash": "50bace9e2941",
   "field": "Fire Protection",
-  "hash": "5e7d171fc107",
+  "hash": "a110f46c7ed9",
+  "major": {
+    "location": {
+      "evidence": "The top and bottom programs are spread across many states, with no more than two in any one state, so no regional pattern explains either end.",
+      "finding": "none",
+      "source": null
+    },
+    "prestige": {
+      "evidence": "The top programs admit about as many applicants as the major overall. They are degree-completion programs for people already working in public safety, so their pay comes from students' fire service careers and not from the school's selectivity.",
+      "finding": "major",
+      "source": "https://catalog.siu.edu/programs/psm/requirements.php"
+    },
+    "stepping_stone": {
+      "evidence": "We found no reliable data on how many fire protection graduates go to graduate school. Sources link master's degrees mainly to chief officers later in a career, not to study right after the bachelor's.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
   "programs": [
     {
       "cause": "experienced_students",
-      "evidence": "SIU's fire service management track sits in a Public Safety Management bachelor's offered online, and SIU profiles working firefighters who chose it because the schedule fit their jobs and it accepts their fire science associate degrees.",
-      "source": "https://chhs.siu.edu/about/e-newsletter/fall-2022/public-safety.html",
+      "evidence": "SIU's fire service management track admits only students with a public safety associate degree, license, certification or job experience, so its graduates are mostly working firefighters.",
+      "source": "https://catalog.siu.edu/programs/psm/requirements.php",
       "unitid": 149222
     },
     {
       "cause": "online_adult",
-      "evidence": "CSU's Fire and Emergency Services Administration bachelor's is a long-running online program for fire and emergency leaders, and CSU notes a bachelor's is usually needed for promotion in fire departments.",
-      "source": "https://source.colostate.edu/online-program-trains-fire-and-emergency-leaders-around-the-u-s",
+      "evidence": "Colorado State's fire and emergency services administration degree is an online degree-completion program built around the schedules of working fire and emergency professionals who want to move into leadership.",
+      "source": "https://online.colostate.edu/degrees/fire-services",
       "unitid": 126818
     },
     {
       "cause": "online_adult",
-      "evidence": "Waldorf's Fire Science Administration bachelor's is offered only online, and its applied version is aimed at experienced fire professionals and gives credit for field experience.",
-      "source": "https://waldorf.edu/online-fire-science-degree",
+      "evidence": "Waldorf's fire science administration degrees are online only, with eight-week classes and credit for field experience, and the school partners with departments such as the FDNY to educate working fire professionals.",
+      "source": "https://waldorf.edu/fdny",
       "unitid": 154518
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "WIU's Fire Protection Services major has an online administration option for working firefighters and also on-campus fire science and fire medic options, and I found nothing that explains the low earnings.",
-      "source": "https://www.wiu.edu/academics/majors/education_and_human_services/fire-protection-services.php",
+      "evidence": "Western Illinois offers an online fire administration option for working firefighters and on-campus options in Macomb whose graduates take entry-level jobs. We could not confirm which group drives its figure.",
+      "source": null,
       "unitid": 149772
     },
     {
       "cause": "small_cohort",
-      "evidence": "The earnings figure comes from fewer than twenty graduates, too few to trust; NJCU's Fire Science BS is a general program open to students with a minimum GPA and requires no fire service experience.",
-      "source": "https://catalog.njcu.edu/undergraduate/professional-studies/fire-science/fire-science-bs/",
+      "evidence": "This program has too few graduates in the data for its earnings figure to be reliable.",
+      "source": null,
       "unitid": 185129
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "I couldn't find an official Methodist University page for this program; third-party data only says its degrees are filed under fire and arson investigation, which doesn't explain the low earnings.",
+      "evidence": "We could not find a current fire protection program page or admission requirements at Methodist University that would explain its figure.",
       "source": null,
       "unitid": 198969
     }
-  ]
+  ],
+  "prompt_hash": "40f34bfc7854"
 }

@@ -1,10 +1,13 @@
 ---
 field: Mechanical Engineering
 status: draft
-facts_hash: 17cf3065cc54
-research_hash: 0a963eeb9e75
+facts_hash: c9184f45357e
+research_hash: c6bb83a05128
+prompt_hash: a2667981a511
 model: opus
 drafted: 2026-10-22
 ---
 
-The highest pay in this major comes from California State University Maritime Academy, where many graduates earn a Coast Guard license and work at sea as marine engineers. A student who wants a typical engineering job on land should not expect that pay. MIT and the University of Pennsylvania come next; both are highly selective schools whose graduates are recruited into technology, consulting and finance. At the low end, most graduates of Universidad Ana G. Mendez-Gurabo Campus stay in Puerto Rico, where engineering pay is well below mainland levels.
+Mechanical engineering graduates start out well ahead of most majors, and most programs pay close to the major's median. The top programs admit far fewer students than the typical one, and the most selective private universities send graduates to leading employers and graduate schools, though less selective public campuses in California and Michigan also make the top group; California pays mechanical engineers among the most, and Michigan employs more of them than any other state, according to the Bureau of Labor Statistics. Cal Maritime leads the list because many of its students earn a Coast Guard license and work as marine engineers on ships.
+
+The lowest-paying programs include two military colleges, Virginia Military Institute and Norwich University, where many graduates commission through ROTC and start as junior officers. Campuses in Puerto Rico also pay less, since wages on the island fall far below mainland levels and engineering jobs are scarce, according to the Bureau of Labor Statistics. Most new mechanical engineers go straight to work, though some continue to graduate school, as Penn's survey of its engineering graduates shows, and median debt comes to under half of first-year earnings.

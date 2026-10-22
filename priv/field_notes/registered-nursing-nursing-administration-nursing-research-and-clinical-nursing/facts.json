@@ -1,6 +1,6 @@
 {
   "name": "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing",
-  "hash": "d0815bb06014",
+  "hash": "956fee7bb0c7",
   "rank": 9,
   "debt_median": 20508,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Mercy University",
       "unitid": 193016,
       "earnings": 115215,
+      "admission_rate": 0.8547,
       "debt": 24000,
       "reasons": [
         "top_3"
@@ -20,6 +21,7 @@
       "college": "Pacific College",
       "unitid": 422695,
       "earnings": 114248,
+      "admission_rate": 0.5,
       "debt": null,
       "reasons": [
         "top_3"
@@ -31,6 +33,7 @@
       "college": "Sonoma State University",
       "unitid": 123572,
       "earnings": 110859,
+      "admission_rate": 0.9473,
       "debt": null,
       "reasons": [
         "top_3"
@@ -42,6 +45,7 @@
       "college": "University of Puerto Rico-Medical Sciences",
       "unitid": 243203,
       "earnings": 14847,
+      "admission_rate": -1.0,
       "debt": null,
       "reasons": [
         "below_half_median"
@@ -53,6 +57,7 @@
       "college": "Universidad Adventista de las Antillas",
       "unitid": 241191,
       "earnings": 14401,
+      "admission_rate": 1.0,
       "debt": null,
       "reasons": [
         "below_half_median"
@@ -64,6 +69,7 @@
       "college": "Inter American University of Puerto Rico-Ponce",
       "unitid": 242662,
       "earnings": 13571,
+      "admission_rate": 0.7029,
       "debt": null,
       "reasons": [
         "below_half_median"
@@ -75,6 +81,7 @@
       "college": "Pontifical Catholic University of Puerto Rico-Ponce",
       "unitid": 241410,
       "earnings": 12923,
+      "admission_rate": 0.9033,
       "debt": null,
       "reasons": [
         "below_half_median"
@@ -86,6 +93,7 @@
       "college": "Inter American University of Puerto Rico-Barranquitas",
       "unitid": 242644,
       "earnings": 12611,
+      "admission_rate": 0.6583,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -98,6 +106,7 @@
       "college": "Universidad Ana G. Mendez-Carolina Campus",
       "unitid": 243346,
       "earnings": 10662,
+      "admission_rate": -1.0,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -110,6 +119,7 @@
       "college": "Inter American University of Puerto Rico-San German",
       "unitid": 242617,
       "earnings": 9360,
+      "admission_rate": 0.5067,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -119,6 +129,36 @@
     }
   ],
   "earnings_median": 62698,
+  "programs": 1233,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 768
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.66,
+        "reporting": 7
+      },
+      "programs": 10,
+      "top_states": {
+        "PR": 10
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.94,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 8,
+        "NY": 2
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 58868,
   "earnings_p75": 68395,
@@ -135,7 +175,6 @@
       "top_states": {}
     }
   },
-  "programs": 1233,
   "programs_with_debt": 585,
   "programs_with_earnings": 981,
   "ranked_of": 147,

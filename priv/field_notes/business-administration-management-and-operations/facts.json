@@ -1,6 +1,6 @@
 {
   "name": "Business Administration, Management and Operations",
-  "hash": "cd22d074f116",
+  "hash": "b497d827c7d0",
   "rank": 29,
   "debt_median": 21636,
   "flagged": [
@@ -9,6 +9,7 @@
       "college": "Bismarck State College",
       "unitid": 200022,
       "earnings": 94930,
+      "admission_rate": -1.0,
       "debt": null,
       "reasons": [
         "top_3",
@@ -21,6 +22,7 @@
       "college": "University of Michigan-Ann Arbor",
       "unitid": 170976,
       "earnings": 83131,
+      "admission_rate": 0.1794,
       "debt": 47104,
       "reasons": [
         "top_3",
@@ -33,6 +35,7 @@
       "college": "City University of Seattle",
       "unitid": 234915,
       "earnings": 79719,
+      "admission_rate": -1.0,
       "debt": null,
       "reasons": [
         "top_3"
@@ -44,6 +47,7 @@
       "college": "Bennett College",
       "unitid": 197993,
       "earnings": 20156,
+      "admission_rate": 0.3361,
       "debt": null,
       "reasons": [
         "below_half_median"
@@ -55,6 +59,7 @@
       "college": "Lane College",
       "unitid": 220598,
       "earnings": 18143,
+      "admission_rate": -1.0,
       "debt": null,
       "reasons": [
         "below_half_median"
@@ -66,6 +71,7 @@
       "college": "Pontifical Catholic University of Puerto Rico-Arecibo",
       "unitid": 241395,
       "earnings": 17901,
+      "admission_rate": 0.8538,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -78,6 +84,7 @@
       "college": "Pontifical Catholic University of Puerto Rico-Ponce",
       "unitid": 241410,
       "earnings": 17901,
+      "admission_rate": 0.9033,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -90,6 +97,7 @@
       "college": "Pontifical Catholic University of Puerto Rico-Mayaguez",
       "unitid": 243586,
       "earnings": 17901,
+      "admission_rate": 0.973,
       "debt": null,
       "reasons": [
         "bottom_3",
@@ -99,6 +107,39 @@
     }
   ],
   "earnings_median": 41068,
+  "programs": 1695,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.79,
+        "reporting": 959
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.67,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "NC": 2,
+        "PR": 3,
+        "SC": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.15,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "GA": 1,
+        "PA": 2
+      }
+    }
+  },
   "all_majors_earnings_median": 37050,
   "earnings_p25": 36586,
   "earnings_p75": 46828,
@@ -119,7 +160,6 @@
       }
     }
   },
-  "programs": 1695,
   "programs_with_debt": 563,
   "programs_with_earnings": 1213,
   "ranked_of": 147,

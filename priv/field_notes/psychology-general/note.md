@@ -1,10 +1,13 @@
 ---
 field: Psychology, General
 status: draft
-facts_hash: 497719c39a21
-research_hash: e41c5851c821
+facts_hash: b2069c5f9d73
+research_hash: 8738f60d58cf
+prompt_hash: a2667981a511
 model: opus
 drafted: 2026-10-22
 ---
 
-Psychology graduates start out earning less in their first year than the typical graduate across all majors. The top earners come from Stanford and Colgate, two highly selective schools that admit few applicants, and from Santa Clara University, which sits in Silicon Valley near major technology employers. All three programs paying under half the median are in Puerto Rico, which has the lowest household income of any U.S. state or territory, so they reflect one regional pattern. Two of them, the Arecibo and Ponce campuses of Pontifical Catholic University of Puerto Rico, report identical figures and are likely counted together.
+Psychology graduates start out earning less than the typical graduate across all majors, and the major ranks in the lower half. The best-paying programs sit at schools that admit very few applicants, while most psychology programs admit most who apply, and those schools steer graduates into business, law, medicine and top graduate schools through organized career pipelines. That pay reflects the school more than the major, and one Silicon Valley campus pays well because its students find internships and jobs at nearby tech firms.
+
+Most of the lowest-paying programs are in Puerto Rico, where federal wage data show every major occupational group pays below its national average. The Arecibo and Ponce campuses of the Pontifical Catholic University of Puerto Rico report identical figures, which suggests the numbers pool the university's campuses. First-year pay also understates the major, since a Georgetown analysis reported by the American Psychological Association found psychology majors earn graduate degrees more often than college graduates overall, often in counseling, social work or education.

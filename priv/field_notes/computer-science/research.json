@@ -1,67 +1,85 @@
 {
-  "facts_hash": "1b25d9af2d3e",
+  "facts_hash": "d0833d016369",
   "field": "Computer Science",
-  "hash": "422f7b718d09",
+  "hash": "1edc6d73c390",
+  "major": {
+    "location": {
+      "evidence": "Top programs cluster in California, home to the highest-paying tech hub. The lowest cluster in Puerto Rico, where federal wage data show software developers earn far less than the national level.",
+      "finding": "both",
+      "source": "https://www.bls.gov/oes/2020/May/oes_pr.htm"
+    },
+    "prestige": {
+      "evidence": "The top-paying programs admit a small fraction of applicants, compared with most of them for the major as a whole, and tech firms recruit heavily at these campuses. At Stanford, companies pay large fees just for career fair tables.",
+      "finding": "both",
+      "source": "https://pitlab.stanford.edu/career-pathways"
+    },
+    "stepping_stone": {
+      "evidence": "A minority of computer science graduates go straight to graduate school, mostly for a master's in computing. At Cornell, most of those who went on chose a professional MEng degree.",
+      "finding": "some",
+      "source": "https://as.cornell.edu/computer-science-major-minor"
+    }
+  },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "Carnegie Mellon is a highly selective school, and its career center publishes first-destination reports on graduates' employers, pay and locations, which include major technology firms.",
+      "evidence": "Carnegie Mellon is a highly selective school with a top computer science school, and its career center tracks graduates hired by major tech employers.",
       "source": "https://www.cmu.edu/career/outcomes/index.html",
       "unitid": 211440
     },
     {
       "cause": "selective_school",
-      "evidence": "Harvard is highly selective, and its senior survey names technology, finance and consulting as graduates' most popular industries, with many going to high-cost cities like New York and Boston.",
-      "source": "https://features.thecrimson.com/2024/senior-survey/after-harvard/",
+      "evidence": "Harvard admits very few applicants, and its computer science concentrators made up a large share of seniors expecting the highest starting salaries, mostly in tech, consulting and finance.",
+      "source": "https://thecrimson.com/article/2016/10/21/students-going-into-tech",
       "unitid": 166027
     },
     {
       "cause": "selective_school",
-      "evidence": "Stanford admits only a tiny share of applicants, and computer science is its most popular major, feeding graduates to elite technology employers.",
-      "source": "https://www.koppelmangroup.com/blog/2026/4/10/the-best-majors-at-stanford",
+      "evidence": "Stanford is highly selective and sits in Silicon Valley, and tech companies compete hard to recruit its computer science graduates.",
+      "source": "https://pitlab.stanford.edu/career-pathways",
       "unitid": 243744
     },
     {
       "cause": "selective_school",
-      "evidence": "Brown is a highly selective Ivy League school, and its CS department has said top technology firms such as Facebook recruit there and that most of its graduates find jobs readily.",
-      "source": "https://www.browndailyherald.com/article/2013/11/stem-concentrators-find-employment-success",
+      "evidence": "Brown is highly selective, and Google and other large tech firms recruit its computer science students, partly through the department's industry partners program.",
+      "source": "https://www.browndailyherald.com/article/2015/09/brown-grads-flock-to-top-companies",
       "unitid": 217156
     },
     {
       "cause": "selective_school",
-      "evidence": "Caltech is a highly selective, research-focused institute whose computer science majors train in a rigorous program and can do research with faculty and at JPL.",
-      "source": "https://www.cms.caltech.edu/academics/ugrad",
+      "evidence": "Caltech is among the most selective schools, and its graduates who go straight to work often join large tech firms such as Google, NVIDIA, Microsoft and Apple.",
+      "source": "https://www.collegetransitions.com/blog/top-universities-for-tech-jobs/",
       "unitid": 110404
     },
     {
       "cause": "selective_school",
-      "evidence": "Cornell is a highly selective Ivy League school, and its Arts and Sciences college reports that most CS majors who take jobs enter technology and financial services, with Meta and Google as top employers.",
+      "evidence": "Cornell is highly selective, and its computer science majors mostly go to work in tech or continue to a professional master's in computing.",
       "source": "https://as.cornell.edu/computer-science-major-minor",
       "unitid": 190415
     },
     {
       "cause": "small_cohort",
-      "evidence": "The cohort is too small to trust, though the figure matches other highly selective schools.",
+      "evidence": "This figure rests on too few graduates to trust, even though it fits the pattern of other highly selective schools.",
       "source": null,
       "unitid": 215062
     },
     {
-      "cause": "no_clear_cause",
-      "evidence": "IU Northwest's computer science bachelor's is a fully online degree shared across several IU campuses and launched recently, and I found nothing that clearly explains these graduates' low earnings.",
-      "source": "https://academics.iu.edu/degrees/northwest/bachelor-of-science-in-computer-science-online.html",
+      "cause": "credential_mismatch",
+      "evidence": "Until IU Northwest added an online computer science degree in 2023, its bachelor's in this area was Computer Information Systems, which trains systems analysts and programmers.",
+      "source": "https://www.govtech.com/education/higher-ed/indiana-university-northwest-to-offer-online-compsci-degree",
       "unitid": 151360
     },
     {
-      "cause": "low_cost_region",
-      "evidence": "Pay in Puerto Rico is far below the U.S. mainland, even in the San Juan metro area, which explains the gap for graduates who stay on the island; the cohort is also small.",
-      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
+      "cause": "small_cohort",
+      "evidence": "This figure rests on too few graduates to trust. Puerto Rico's lower pay for software jobs may also play a part.",
+      "source": null,
       "unitid": 242662
     },
     {
-      "cause": "low_cost_region",
-      "evidence": "Pay in Puerto Rico is far below the U.S. mainland, even in the San Juan metro area that includes Bayamón, which explains the gap for local graduates; the cohort is also small.",
-      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
+      "cause": "small_cohort",
+      "evidence": "This figure rests on too few graduates to trust. Puerto Rico's lower pay for software jobs may also play a part.",
+      "source": null,
       "unitid": 242705
     }
-  ]
+  ],
+  "prompt_hash": "40f34bfc7854"
 }
