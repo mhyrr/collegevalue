@@ -1,11 +1,11 @@
 ---
-field: Business Administration, Management and Operations
-status: draft
-facts_hash: b497d827c7d0
-research_hash: 9bb449ac505f
-prompt_hash: a2667981a511
-model: opus
 drafted: 2026-10-22
+facts_hash: b497d827c7d0
+field: Business Administration, Management and Operations
+model: opus
+prompt_hash: a2667981a511
+research_hash: 9bb449ac505f
+status: approved
 ---
 
 Business graduates start out earning more than the typical graduate across all majors, which ranks this major ahead of most others. The best-paying programs admit far fewer applicants than is usual for the major, and highly selective business schools send most of their graduates to banks and consulting firms. Two other top programs serve people who already have careers: Bismarck State College's energy management degree requires prior energy training or an applied associate degree, and City University of Seattle runs an online degree completion program for working adults.

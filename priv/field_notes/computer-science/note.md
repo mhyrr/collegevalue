@@ -1,11 +1,11 @@
 ---
-field: Computer Science
-status: draft
-facts_hash: d0833d016369
-research_hash: 1edc6d73c390
-prompt_hash: a2667981a511
-model: opus
 drafted: 2026-10-22
+facts_hash: d0833d016369
+field: Computer Science
+model: opus
+prompt_hash: a2667981a511
+research_hash: 1edc6d73c390
+status: approved
 ---
 
 Computer science graduates start out earning far more than graduates of most majors, and the major ranks near the top of the list. The best-paying programs are at the most selective private universities, which admit a small fraction of applicants while the major's typical program admits most of them, and big tech firms recruit heavily on those campuses. Several of these programs are in California, home to the country's highest-paying tech hub.

@@ -1,11 +1,11 @@
 ---
-field: English Language and Literature, General
-status: draft
-facts_hash: 2234f9ae7450
-research_hash: f19c51c651a6
-prompt_hash: a2667981a511
-model: opus
 drafted: 2026-10-22
+facts_hash: 2234f9ae7450
+field: English Language and Literature, General
+model: opus
+prompt_hash: a2667981a511
+research_hash: f19c51c651a6
+status: approved
 ---
 
 English graduates start out earning well below the typical major, and the major ranks in the lower half of those we compare. The best-paying programs are at schools that admit a small share of applicants, and the typical English program admits most who apply. Career offices at those schools report graduates of every major going into business, consulting, law, media and technology, so that pay follows each school's recruiting reach more than the major.

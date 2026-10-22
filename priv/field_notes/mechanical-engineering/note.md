@@ -1,11 +1,11 @@
 ---
-field: Mechanical Engineering
-status: draft
-facts_hash: c9184f45357e
-research_hash: c6bb83a05128
-prompt_hash: a2667981a511
-model: opus
 drafted: 2026-10-22
+facts_hash: c9184f45357e
+field: Mechanical Engineering
+model: opus
+prompt_hash: a2667981a511
+research_hash: c6bb83a05128
+status: approved
 ---
 
 Mechanical engineering graduates start out well ahead of most majors, and most programs pay close to the major's median. The top programs admit far fewer students than the typical one, and the most selective private universities send graduates to leading employers and graduate schools, though less selective public campuses in California and Michigan also make the top group; California pays mechanical engineers among the most, and Michigan employs more of them than any other state, according to the Bureau of Labor Statistics. Cal Maritime leads the list because many of its students earn a Coast Guard license and work as marine engineers on ships.
