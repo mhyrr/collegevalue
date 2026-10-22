@@ -61,14 +61,25 @@ defmodule Collegevalue.FieldNotes.Facts do
   A short, stable name for a version of the facts: the first 12 hex digits of
   a SHA-256 over every fact except the hash itself.
   """
-  def hash(facts) do
-    facts
-    |> Map.delete(:hash)
-    |> :erlang.term_to_binary()
+  def hash(facts), do: facts |> Map.delete(:hash) |> stable_hash()
+
+  @doc """
+  A 12-hex-digit SHA-256 of `term` that is the same in every VM. Maps are
+  sorted by key text first: since OTP 26 a small map's atom keys serialize in
+  atom-creation order, which differs between runs.
+  """
+  def stable_hash(term) do
+    term
+    |> canonical()
+    |> :erlang.term_to_binary([:deterministic])
     |> then(&:crypto.hash(:sha256, &1))
     |> Base.encode16(case: :lower)
     |> binary_part(0, 12)
   end
+
+  defp canonical(%{} = map), do: map |> Enum.map(fn {k, v} -> {to_string(k), canonical(v)} end) |> Enum.sort()
+  defp canonical(list) when is_list(list), do: Enum.map(list, &canonical/1)
+  defp canonical(other), do: other
 
   @doc """
   The every-major ranking by median debt over median first-year earnings,
@@ -122,7 +133,9 @@ defmodule Collegevalue.FieldNotes.Facts do
   defp programs(name) do
     Discipline
     |> join(:inner, [d], c in College, on: c.id == d.college_id)
-    |> where([d], d.name == ^name and d.credential_level == @bachelors)
+    # unitid -1 marks a college with no Department of Education ID, mostly
+    # outside the U.S.; many share it, so research couldn't tell them apart.
+    |> where([d, c], d.name == ^name and d.credential_level == @bachelors and c.unitid > 0)
     |> select([d, c], %{
       unitid: c.unitid,
       college: c.name,

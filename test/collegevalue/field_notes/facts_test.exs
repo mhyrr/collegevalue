@@ -59,6 +59,16 @@ defmodule Collegevalue.FieldNotes.FactsTest do
       assert %{rank: nil, debt_to_earnings: nil} = Facts.for_field("Thin")
     end
 
+    test "leaves out colleges with no Department of Education ID" do
+      programs("Economics", List.duplicate({45_000, 25_000}, 3))
+      college = Repo.insert!(%College{name: "Aarhus University", unitid: -1, state: "unknown state"})
+      Repo.insert!(%Discipline{name: "Economics", credential_level: 3, earnings_1yr: 90_000, college_id: college.id})
+
+      facts = Facts.for_field("Economics")
+      assert facts.programs == 3
+      refute Enum.any?(facts.flagged, &(&1.unitid == -1))
+    end
+
     test "the hash changes with the data and only with it" do
       programs("Economics", List.duplicate({45_000, 25_000}, 5))
       first = Facts.for_field("Economics")

@@ -256,7 +256,5 @@ defmodule Collegevalue.FieldNotes do
   defp collect_numbers(list) when is_list(list), do: Enum.flat_map(list, &collect_numbers/1)
   defp collect_numbers(_other), do: []
 
-  defp hash(term) do
-    :crypto.hash(:sha256, :erlang.term_to_binary(term)) |> Base.encode16(case: :lower) |> binary_part(0, 12)
-  end
+  defp hash(term), do: Facts.stable_hash(term)
 end
