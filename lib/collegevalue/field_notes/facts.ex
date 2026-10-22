@@ -16,6 +16,9 @@ defmodule Collegevalue.FieldNotes.Facts do
   # A major needs this many programs reporting both figures to be ranked.
   @min_ranked 5
   @flag_count 3
+  # Programs past 2x or under 0.5x the median, beyond the top and bottom few,
+  # that go to research. The rest are only counted, by state, in `outliers`.
+  @flag_extra 4
 
   @doc """
   The facts for the major named `name`, or `nil` when no program reports
@@ -44,7 +47,8 @@ defmodule Collegevalue.FieldNotes.Facts do
         debt_median: if(debts == [], do: nil, else: round_to(percentile(debts, 0.5))),
         all_majors_earnings_median: round_to(ranking.earnings_median),
         ranked_of: length(ranking.ranked),
-        flagged: flagged(with_earnings, median)
+        flagged: flagged(with_earnings, median),
+        outliers: outliers(with_earnings, median)
       }
 
       facts
@@ -131,13 +135,23 @@ defmodule Collegevalue.FieldNotes.Facts do
   end
 
   # The programs a reader would ask about: the highest and lowest earners, and
-  # any far from the median. Each carries why it was flagged.
+  # the few farthest from the median. Each carries why it was flagged.
   defp flagged(programs, median) do
     sorted = Enum.sort_by(programs, &{-&1.earnings, &1.unitid})
+    ends = MapSet.new(Enum.take(sorted, @flag_count) ++ Enum.take(sorted, -@flag_count), & &1.unitid)
+
+    extra =
+      sorted
+      |> Enum.filter(&(far?(&1, median) and not MapSet.member?(ends, &1.unitid)))
+      |> Enum.sort_by(&{-abs(:math.log(&1.earnings / median)), &1.unitid})
+      |> Enum.take(@flag_extra)
+      |> MapSet.new(& &1.unitid)
+
     top = sorted |> Enum.take(@flag_count) |> MapSet.new(& &1.unitid)
     bottom = sorted |> Enum.take(-@flag_count) |> MapSet.new(& &1.unitid)
 
     sorted
+    |> Enum.filter(&(MapSet.member?(ends, &1.unitid) or MapSet.member?(extra, &1.unitid)))
     |> Enum.map(fn p ->
       reasons =
         [
@@ -150,7 +164,27 @@ defmodule Collegevalue.FieldNotes.Facts do
 
       p |> Map.put(:reasons, reasons) |> Map.update!(:debt, &if(positive?(&1), do: &1))
     end)
-    |> Enum.filter(&(&1.reasons != []))
+  end
+
+  defp far?(p, median), do: p.earnings > 2 * median or p.earnings < 0.5 * median
+
+  # Every program past 2x or under 0.5x the median, counted, with the states
+  # that hold most of them: 30 low-paying nursing programs in Puerto Rico are
+  # one finding, not 30.
+  defp outliers(programs, median) do
+    for {key, test} <- [above_2x_median: &(&1.earnings > 2 * median), below_half_median: &(&1.earnings < 0.5 * median)],
+        into: %{} do
+      matching = Enum.filter(programs, test)
+
+      states =
+        matching
+        |> Enum.frequencies_by(& &1.state)
+        |> Enum.sort_by(fn {state, n} -> {-n, state} end)
+        |> Enum.take(3)
+        |> Map.new()
+
+      {key, %{count: length(matching), top_states: states}}
+    end
   end
 
   @doc """

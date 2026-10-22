@@ -3,6 +3,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   import Logger
 
   alias Collegevalue.{Fields, Colleges}
+  alias Collegevalue.FieldNotes
   alias Collegevalue.FieldNotes.Facts
   alias CollegevalueWeb.Router.Helpers, as: Routes
   import CollegevalueWeb.Views.Helpers, only: [field_title: 1]
@@ -201,5 +202,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   # Sorting patches the URL and reruns handle_params; the facts only depend on
   # the field, so they are computed once per field.
   defp assign_facts(%{assigns: %{facts: %{name: name}}} = socket, %{name: name}), do: socket
-  defp assign_facts(socket, field), do: assign(socket, facts: Facts.for_field(field.name))
+  defp assign_facts(socket, field) do
+    assign(socket, facts: Facts.for_field(field.name), note: FieldNotes.approved_paragraphs(field.name))
+  end
 end

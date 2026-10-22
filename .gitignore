@@ -32,3 +32,6 @@ collegevalue-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+# Field notes replies that failed their check; kept locally for debugging.
+/priv/field_notes/**/*.rejected.*

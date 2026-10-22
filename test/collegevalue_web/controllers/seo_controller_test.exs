@@ -116,6 +116,22 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert html =~ "one year after graduating, for students who received federal aid"
     end
 
+    test "shows the note once it is approved, never as a draft", %{conn: conn} do
+      root = Path.join(System.tmp_dir!(), "field_notes_#{System.unique_integer([:positive])}")
+      Application.put_env(:collegevalue, :field_notes_root, root)
+      on_exit(fn -> Application.delete_env(:collegevalue, :field_notes_root); File.rm_rf!(root) end)
+
+      body = "The school matters as much as the major here."
+      write = &Collegevalue.FieldNotes.write!("Computer Science", "note.md",
+                 Collegevalue.FieldNotes.render_note([status: &1], body))
+
+      write.("draft")
+      refute conn |> get("/fields/Computer%20Science") |> html_response(200) =~ body
+
+      write.("approved")
+      assert build_conn() |> get("/fields/Computer%20Science") |> html_response(200) =~ body
+    end
+
     test "has no answer when no program reports earnings", %{conn: conn} do
       html = conn |> get("/fields/Air%20Force%20ROTC%2C%20Air%20Science%20and%20Operations") |> html_response(200)
 
