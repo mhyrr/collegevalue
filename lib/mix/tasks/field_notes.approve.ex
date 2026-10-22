@@ -2,7 +2,8 @@ defmodule Mix.Tasks.FieldNotes.Approve do
   @shortdoc "Approve (or --reject) a major's draft note so the page shows it"
   @moduledoc """
   Sets `status: approved` in each named major's `note.md`, after checking the
-  note, edits included, against the current facts. `--reject` sets
+  note, edits included, against the current facts. When a redraft waits in
+  `note.next.md`, approving promotes it over the live note. `--reject` sets
   `status: rejected`, which keeps the note off the page and stops the runner
   redrafting it until its inputs change.
 
@@ -21,10 +22,11 @@ defmodule Mix.Tasks.FieldNotes.Approve do
 
     for name <- names do
       status = FieldNotes.status(name)
-      note = FieldNotes.read_note(name) || Mix.raise("#{name}: no note.md")
+      next = FieldNotes.read_note(name, "note.next.md")
+      note = next || FieldNotes.read_note(name) || Mix.raise("#{name}: no note.md")
 
       cond do
-        status.note == :stale ->
+        status.note in [:stale, :approved_stale] ->
           Mix.raise("#{name}: the note was made from older facts or research; rerun field_notes.run")
 
         opts[:reject] ->
@@ -39,9 +41,11 @@ defmodule Mix.Tasks.FieldNotes.Approve do
     end
   end
 
+  # Approving a redraft (note.next.md) promotes it over the live note.
   defp save(name, note, state) do
     meta = note.meta |> Map.put("status", state) |> Enum.sort_by(&elem(&1, 0))
     FieldNotes.write!(name, "note.md", FieldNotes.render_note(meta, note.body))
+    File.rm(FieldNotes.path(name, "note.next.md"))
     Mix.shell().info("#{name}: #{state}")
   end
 end

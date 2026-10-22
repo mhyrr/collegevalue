@@ -7,7 +7,9 @@ defmodule Mix.Tasks.FieldNotes.Run do
     2. researches the flagged programs, when `research.json` is missing or
        made from other facts (one web-search call per major);
     3. drafts `note.md` with `status: draft`, when the note is missing or made
-       from other research (one text-only call per major).
+       from other research, prompt or guide (one text-only call per major).
+       A redraft of an approved note goes to `note.next.md`, so the approved
+       note stays live until `field_notes.approve` promotes the new one.
 
   A step whose input hasn't changed is skipped and costs nothing. A reply
   that fails its check is saved next to the notes as `*.rejected.*` and not
@@ -80,7 +82,7 @@ defmodule Mix.Tasks.FieldNotes.Run do
 
       true ->
         Mix.shell().info("#{name}: researching #{length(facts.flagged)} flagged programs…")
-        prompt = prompt("research.md", facts: facts)
+        prompt = prompt(:research, facts: facts)
 
         call(name, prompt, ~w(WebSearch WebFetch), opts[:budget] || 1.5, opts, fn text ->
           with {:ok, reply} <- decode_json(text),
@@ -102,7 +104,7 @@ defmodule Mix.Tasks.FieldNotes.Run do
         Mix.shell().info("#{name}: no current research; note skipped")
         0.0
 
-      state in [:draft, :approved, :rejected] and !opts[:force] ->
+      not FieldNotes.needs_note?(state) and !opts[:force] ->
         Mix.shell().info("#{name}: note #{state}")
         0.0
 
@@ -113,7 +115,7 @@ defmodule Mix.Tasks.FieldNotes.Run do
       true ->
         Mix.shell().info("#{name}: drafting the note…")
         research = FieldNotes.read_json(name, "research.json")
-        prompt = prompt("note.md", facts: facts, research: research["programs"])
+        prompt = prompt(:note, facts: facts, research: Map.take(research, ["major", "programs"]))
         model = opts[:model] || "opus"
 
         call(name, prompt, [], opts[:budget] || 0.25, opts, fn text ->
@@ -122,9 +124,10 @@ defmodule Mix.Tasks.FieldNotes.Run do
           case FieldNotes.check_note(body, facts) do
             :ok ->
               meta = [field: name, status: "draft", facts_hash: facts.hash, research_hash: research["hash"],
-                      model: model, drafted: Date.to_iso8601(Date.utc_today())]
+                      prompt_hash: FieldNotes.prompt_hash(:note), model: model,
+                      drafted: Date.to_iso8601(Date.utc_today())]
 
-              FieldNotes.write!(name, "note.md", FieldNotes.render_note(meta, body))
+              FieldNotes.write!(name, FieldNotes.draft_file(name), FieldNotes.render_note(meta, body))
               :ok
 
             {:error, errors} ->
@@ -151,10 +154,10 @@ defmodule Mix.Tasks.FieldNotes.Run do
     end
   end
 
-  defp prompt(file, bindings) do
-    template = File.read!(Path.join([FieldNotes.root(), "prompts", file]))
+  defp prompt(step, bindings) do
+    {template, guide} = FieldNotes.prompt_template(step)
 
-    Enum.reduce(bindings, template, fn {key, value}, acc ->
+    Enum.reduce(bindings, String.replace(template, "{{guide}}", guide), fn {key, value}, acc ->
       value = value |> strip_hash() |> Jason.encode!(pretty: true)
       String.replace(acc, "{{#{key}}}", value)
     end)

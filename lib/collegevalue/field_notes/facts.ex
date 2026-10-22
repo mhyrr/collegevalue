@@ -19,6 +19,8 @@ defmodule Collegevalue.FieldNotes.Facts do
   # Programs past 2x or under 0.5x the median, beyond the top and bottom few,
   # that go to research. The rest are only counted, by state, in `outliers`.
   @flag_extra 4
+  # How many programs at each end `ends/1` describes.
+  @end_size 10
 
   @doc """
   The facts for the major named `name`, or `nil` when no program reports
@@ -48,7 +50,8 @@ defmodule Collegevalue.FieldNotes.Facts do
         all_majors_earnings_median: round_to(ranking.earnings_median),
         ranked_of: length(ranking.ranked),
         flagged: flagged(with_earnings, median),
-        outliers: outliers(with_earnings, median)
+        outliers: outliers(with_earnings, median),
+        ends: ends(with_earnings)
       }
 
       facts
@@ -142,7 +145,8 @@ defmodule Collegevalue.FieldNotes.Facts do
       state: c.state,
       earnings: d.earnings_1yr,
       cohort: d.earnings_1yr_count,
-      debt: d.pp_debt_median
+      debt: d.pp_debt_median,
+      admission_rate: c.admissions_rate
     })
     |> Repo.all()
   end
@@ -177,6 +181,38 @@ defmodule Collegevalue.FieldNotes.Facts do
 
       p |> Map.put(:reasons, reasons) |> Map.update!(:debt, &if(positive?(&1), do: &1))
     end)
+  end
+
+  # Where the best- and worst-paying programs are, and how selective their
+  # schools are against the major as a whole: the patterns a note explains
+  # (all the top nursing programs in California; top economics programs at
+  # schools that admit almost no one). Admission rates exist only for
+  # colleges that report one, so each median carries its count.
+  defp ends(programs) do
+    sorted = Enum.sort_by(programs, &{-&1.earnings, &1.unitid})
+
+    %{
+      top: end_summary(Enum.take(sorted, @end_size)),
+      bottom: end_summary(Enum.take(sorted, -@end_size)),
+      all: %{admission_rate: admission_summary(programs)}
+    }
+  end
+
+  defp end_summary(programs) do
+    states =
+      programs
+      |> Enum.frequencies_by(& &1.state)
+      |> Enum.sort_by(fn {state, n} -> {-n, state} end)
+      |> Enum.take(3)
+      |> Map.new()
+
+    %{programs: length(programs), top_states: states, admission_rate: admission_summary(programs)}
+  end
+
+  defp admission_summary(programs) do
+    rates = programs |> Enum.map(& &1.admission_rate) |> Enum.filter(&(is_number(&1) and &1 > 0))
+    median = percentile(rates, 0.5)
+    %{median: median && Float.round(median * 1.0, 2), reporting: length(rates)}
   end
 
   defp far?(p, median), do: p.earnings > 2 * median or p.earnings < 0.5 * median

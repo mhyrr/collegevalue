@@ -22,7 +22,7 @@ defmodule Mix.Tasks.FieldNotes.Review do
     for name <- FieldNotes.select_fields(names, opts), status = FieldNotes.status(name), status.facts do
       research = FieldNotes.read_json(name, "research.json") || %{"programs" => []}
       causes = Map.new(research["programs"], &{&1["unitid"], &1})
-      note = FieldNotes.read_note(name)
+      note = FieldNotes.read_note(name, "note.next.md") || FieldNotes.read_note(name)
 
       Mix.shell().info("""
 

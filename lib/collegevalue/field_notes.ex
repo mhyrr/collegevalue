@@ -22,6 +22,12 @@ defmodule Collegevalue.FieldNotes do
   # Causes a reader can verify from the facts alone, so they need no source.
   @sourceless ~w(small_cohort data_error no_clear_cause)
   @evidence_max 280
+  # The guide's questions about a major as a whole, and their allowed findings.
+  @major_findings %{
+    "prestige" => ~w(school both major unclear),
+    "location" => ~w(explains_top explains_bottom both none),
+    "stepping_stone" => ~w(strong some weak unclear)
+  }
 
   def causes, do: @causes
 
@@ -69,6 +75,21 @@ defmodule Collegevalue.FieldNotes do
     target
   end
 
+  @doc """
+  The text a step's model call is built from: its prompt and the editorial
+  guide (`GUIDE.md`) it includes.
+  """
+  def prompt_template(step) when step in [:research, :note] do
+    read = fn file -> case File.read(Path.join(root(), file)), do: ({:ok, text} -> text; _ -> "") end
+    {read.("prompts/#{step}.md"), read.("GUIDE.md")}
+  end
+
+  @doc """
+  A hash of `prompt_template/1`. Output made under another prompt or guide
+  is stale, so revising the guide redrafts exactly what it affects.
+  """
+  def prompt_hash(step), do: step |> prompt_template() |> Facts.stable_hash()
+
   ## Reading
 
   def read_json(name, file) do
@@ -82,8 +103,8 @@ defmodule Collegevalue.FieldNotes do
   The note for `name` as `%{meta: map, body: string}`, or `nil` when there is
   none.
   """
-  def read_note(name) do
-    case File.read(path(name, "note.md")) do
+  def read_note(name, file \\ "note.md") do
+    case File.read(path(name, file)) do
       {:ok, text} -> parse_note(text)
       {:error, :enoent} -> nil
     end
@@ -124,7 +145,9 @@ defmodule Collegevalue.FieldNotes do
   What `name` needs, comparing the stored hashes with the current facts:
 
     * `:research` — `:missing`, `:stale` or `:current`
-    * `:note` — `:missing`, `:stale`, `:draft`, `:approved` or `:rejected`
+    * `:note` — `:missing`, `:stale`, `:draft`, `:approved`, `:rejected`,
+      `:approved_stale` (live, but made from older inputs) or `:next_draft`
+      (live, with a fresh redraft in `note.next.md` awaiting approval)
 
   A major with no earnings data has `facts: nil` and needs nothing.
   """
@@ -138,21 +161,42 @@ defmodule Collegevalue.FieldNotes do
         is_nil(facts) -> :none
         is_nil(research) -> :missing
         research["facts_hash"] != facts.hash -> :stale
+        research["prompt_hash"] != prompt_hash(:research) -> :stale
         true -> :current
       end
 
+    fresh? = fn note ->
+      research_state == :current and note.meta["research_hash"] == research["hash"] and
+        note.meta["prompt_hash"] == prompt_hash(:note)
+    end
+
+    # An approved note stays live until its replacement is approved: a
+    # redraft goes to note.next.md (`:next_draft`), never over it.
     note_state =
       cond do
         is_nil(facts) -> :none
         is_nil(note) -> :missing
-        research_state != :current -> :stale
-        note.meta["research_hash"] != research["hash"] -> :stale
-        note.meta["status"] == "approved" -> :approved
+        note.meta["status"] == "approved" and fresh?.(note) -> :approved
+        note.meta["status"] == "approved" ->
+          next = read_note(name, "note.next.md")
+          if next && fresh?.(next), do: :next_draft, else: :approved_stale
+        not fresh?.(note) -> :stale
         note.meta["status"] == "rejected" -> :rejected
         true -> :draft
       end
 
     %{name: name, facts: facts, research: research_state, note: note_state}
+  end
+
+  @doc "Whether a note in `state` needs drafting."
+  def needs_note?(state), do: state in [:missing, :stale, :approved_stale]
+
+  @doc "The file a new draft goes to: beside an approved note, never over it."
+  def draft_file(name) do
+    case read_note(name) do
+      %{meta: %{"status" => "approved"}} -> "note.next.md"
+      _ -> "note.md"
+    end
   end
 
   ## Checks on model output
@@ -162,12 +206,14 @@ defmodule Collegevalue.FieldNotes do
   flagged program, each with a known cause, short evidence and, unless the
   cause needs none, an http(s) source. Returns the research to store.
   """
-  def check_research(%{"programs" => programs}, facts) when is_list(programs) do
+  def check_research(%{"programs" => programs} = reply, facts) when is_list(programs) do
     flagged = MapSet.new(facts.flagged, & &1.unitid)
     unitids = Enum.map(programs, & &1["unitid"])
+    major = reply["major"]
 
     errors =
-      Enum.flat_map(programs, &program_errors/1) ++
+      major_errors(major) ++
+        Enum.flat_map(programs, &program_errors/1) ++
         missing_errors(flagged, MapSet.new(unitids)) ++
         if(length(unitids) != length(Enum.uniq(unitids)), do: ["a program appears twice"], else: [])
 
@@ -175,6 +221,8 @@ defmodule Collegevalue.FieldNotes do
       research = %{
         "field" => facts.name,
         "facts_hash" => facts.hash,
+        "prompt_hash" => prompt_hash(:research),
+        "major" => Map.new(major, fn {key, answer} -> {key, Map.take(answer, ~w(finding evidence source))} end),
         "programs" => Enum.map(programs, &Map.take(&1, ~w(unitid cause evidence source)))
       }
 
@@ -185,6 +233,30 @@ defmodule Collegevalue.FieldNotes do
   end
 
   def check_research(_reply, _facts), do: {:error, ["the reply has no programs list"]}
+
+  defp major_errors(%{} = major) do
+    Enum.flat_map(@major_findings, fn {key, findings} ->
+      case major[key] do
+        %{"finding" => finding, "evidence" => evidence} = answer ->
+          source = answer["source"]
+
+          [
+            finding not in findings && "major #{key}: unknown finding #{inspect(finding)}",
+            !(is_binary(evidence) and evidence != "" and String.length(evidence) <= @evidence_max) &&
+              "major #{key}: evidence missing or over #{@evidence_max} characters",
+            finding in findings and finding not in ~w(unclear none) and
+              not (is_binary(source) and source =~ ~r{^https?://}) &&
+              "major #{key}: finding #{finding} needs an http(s) source"
+          ]
+          |> Enum.filter(&is_binary/1)
+
+        _ ->
+          ["major: no #{key} answer"]
+      end
+    end)
+  end
+
+  defp major_errors(_major), do: ["the reply has no major section"]
 
   defp program_errors(%{"unitid" => unitid, "cause" => cause, "evidence" => evidence} = program) do
     source = program["source"]
@@ -214,12 +286,13 @@ defmodule Collegevalue.FieldNotes do
   end
 
   @doc """
-  Checks a note's text: two to four sentences, and no number the facts don't
-  hold. The model interprets; it never computes.
+  Checks a note's text: two paragraphs of one to three sentences (see
+  GUIDE.md), and no number the facts don't hold. The model interprets; it never computes.
   """
   def check_note(body, facts) do
     allowed = allowed_numbers(facts)
-    sentences = sentence_count(body)
+    paragraphs = String.split(String.trim(body), ~r/\n\s*\n/, trim: true)
+    sentences = Enum.map(paragraphs, &sentence_count/1)
 
     stray =
       ~r/\d[\d,]*(?:\.\d+)?/
@@ -231,7 +304,9 @@ defmodule Collegevalue.FieldNotes do
 
     errors =
       [
-        sentences not in 2..4 && "#{sentences} sentences; a note has 2 to 4",
+        length(paragraphs) != 2 && "#{length(paragraphs)} paragraphs; a note has 2",
+        Enum.any?(sentences, &(&1 not in 1..3)) &&
+          "paragraphs of #{Enum.join(sentences, " and ")} sentences; each has 1 to 3",
         stray != [] && "numbers not in the facts: #{Enum.join(stray, ", ")}"
       ]
       |> Enum.filter(&is_binary/1)

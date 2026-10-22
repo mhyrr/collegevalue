@@ -24,6 +24,12 @@ defmodule Collegevalue.FieldNotesTest do
     %{facts: Collegevalue.FieldNotes.Facts.for_field("Fire Protection")}
   end
 
+  @major %{
+    "prestige" => %{"finding" => "unclear", "evidence" => "Nothing found.", "source" => nil},
+    "location" => %{"finding" => "none", "evidence" => "No cluster.", "source" => nil},
+    "stepping_stone" => %{"finding" => "some", "evidence" => "Some go on to a master's.", "source" => "https://example.edu/outcomes"}
+  }
+
   defp reply(facts, overrides \\ %{}) do
     programs =
       for p <- facts.flagged do
@@ -31,14 +37,18 @@ defmodule Collegevalue.FieldNotesTest do
                   Map.get(overrides, p.unitid, %{}))
       end
 
-    %{"programs" => programs}
+    %{"major" => @major, "programs" => programs}
   end
 
+  @two_paragraphs "Online programs for working firefighters pay the most. Their students already have jobs.\n\n" <>
+                    "The lowest figures rest on small classes."
+
   describe "check_research/2" do
-    test "accepts one entry per flagged program and stamps the facts hash", %{facts: facts} do
+    test "accepts one entry per flagged program and stamps the facts and prompt hashes", %{facts: facts} do
       assert {:ok, research} = FieldNotes.check_research(reply(facts), facts)
       assert research["facts_hash"] == facts.hash
-      assert is_binary(research["hash"])
+      assert research["prompt_hash"] == FieldNotes.prompt_hash(:research)
+      assert research["major"]["stepping_stone"]["finding"] == "some"
     end
 
     test "rejects unknown causes, missing sources and missing programs", %{facts: facts} do
@@ -51,24 +61,41 @@ defmodule Collegevalue.FieldNotesTest do
       assert {:error, [error]} = FieldNotes.check_research(unsourced, facts)
       assert error =~ "needs an http(s) source"
 
-      short = %{"programs" => tl(reply(facts)["programs"])}
+      short = Map.update!(reply(facts), "programs", &tl/1)
       assert {:error, [error]} = FieldNotes.check_research(short, facts)
       assert error =~ "no entry for flagged"
+    end
+
+    test "wants every major-level question answered, with a source for a finding", %{facts: facts} do
+      assert {:error, ["the reply has no major section"]} = FieldNotes.check_research(Map.delete(reply(facts), "major"), facts)
+
+      no_location = Map.update!(reply(facts), "major", &Map.delete(&1, "location"))
+      assert {:error, ["major: no location answer"]} = FieldNotes.check_research(no_location, facts)
+
+      unsourced = put_in(reply(facts), ["major", "prestige"], %{"finding" => "school", "evidence" => "Banks recruit there."})
+      assert {:error, [error]} = FieldNotes.check_research(unsourced, facts)
+      assert error =~ "prestige: finding school needs an http(s) source"
     end
   end
 
   describe "check_note/2" do
     test "allows the facts' numbers and nothing else", %{facts: facts} do
-      ok = "Most programs pay close to the median of $74,000. One pays far more because it admits working professionals."
+      ok = "Most programs pay close to the median of $74,000. One pays far more.\n\nThe rest pay less."
       assert FieldNotes.check_note(ok, facts) == :ok
 
-      assert {:error, [error]} = FieldNotes.check_note("Most pay $74,000. Graduates average $91,500 by year 5.", facts)
+      assert {:error, [error]} = FieldNotes.check_note("Most pay $74,000. Others $91,500.\n\nSome less.", facts)
       assert error =~ "91500"
     end
 
-    test "wants two to four sentences", %{facts: facts} do
-      assert {:error, [error]} = FieldNotes.check_note("Just one sentence.", facts)
-      assert error =~ "1 sentences"
+    test "wants two paragraphs of one to three sentences", %{facts: facts} do
+      assert FieldNotes.check_note(@two_paragraphs, facts) == :ok
+
+      assert {:error, [error]} = FieldNotes.check_note("One paragraph. Only.", facts)
+      assert error =~ "1 paragraphs"
+
+      long = "One. Two. Three. Four.\n\nFive."
+      assert {:error, [error]} = FieldNotes.check_note(long, facts)
+      assert error =~ "paragraphs of 4 and 1 sentences"
     end
   end
 
@@ -79,27 +106,59 @@ defmodule Collegevalue.FieldNotesTest do
   end
 
   describe "status/1" do
-    test "walks missing, current, stale and approved", %{facts: facts} do
+    setup %{facts: facts} do
+      {:ok, research} = FieldNotes.check_research(reply(facts), facts)
+      meta = [field: "Fire Protection", status: "draft", facts_hash: facts.hash, research_hash: research["hash"],
+              prompt_hash: FieldNotes.prompt_hash(:note)]
+
+      %{research: research, meta: meta}
+    end
+
+    defp put_note(meta, file \\ "note.md"), do: FieldNotes.write!("Fire Protection", file, FieldNotes.render_note(meta, @two_paragraphs))
+
+    test "walks missing, current, draft, approved and stale", %{research: research, meta: meta} do
       assert %{research: :missing, note: :missing} = FieldNotes.status("Fire Protection")
 
-      {:ok, research} = FieldNotes.check_research(reply(facts), facts)
       FieldNotes.write!("Fire Protection", "research.json", Jason.encode!(research))
       assert %{research: :current, note: :missing} = FieldNotes.status("Fire Protection")
 
-      body = "The school matters less here than in most majors. One program pays far more."
-      meta = [field: "Fire Protection", status: "draft", facts_hash: facts.hash, research_hash: research["hash"]]
-      FieldNotes.write!("Fire Protection", "note.md", FieldNotes.render_note(meta, body))
+      put_note(meta)
       assert %{note: :draft} = FieldNotes.status("Fire Protection")
       assert FieldNotes.approved_paragraphs("Fire Protection") == []
 
-      FieldNotes.write!("Fire Protection", "note.md", FieldNotes.render_note(Keyword.put(meta, :status, "approved"), body))
-      assert FieldNotes.approved_paragraphs("Fire Protection") == [body]
+      put_note(Keyword.put(meta, :status, "approved"))
+      assert %{note: :approved} = FieldNotes.status("Fire Protection")
+      assert length(FieldNotes.approved_paragraphs("Fire Protection")) == 2
 
-      # New data changes the facts, so the research and the note behind them are stale.
+      # New data changes the facts: the research is stale, and the approved
+      # note is stale but stays live.
       college = Repo.insert!(%College{name: "Late College", unitid: 999_999, state: "IL"})
       Repo.insert!(%Discipline{name: "Fire Protection", credential_level: 3, earnings_1yr: 30_000,
                                earnings_1yr_count: 30, college_id: college.id})
+      assert %{research: :stale, note: :approved_stale} = FieldNotes.status("Fire Protection")
+      assert length(FieldNotes.approved_paragraphs("Fire Protection")) == 2
+    end
+
+    test "a guide change makes research and notes stale", %{research: research, meta: meta} do
+      FieldNotes.write!("Fire Protection", "research.json", Jason.encode!(research))
+      put_note(meta)
+      assert %{research: :current, note: :draft} = FieldNotes.status("Fire Protection")
+
+      File.write!(Path.join(FieldNotes.root(), "GUIDE.md"), "Name no schools.")
       assert %{research: :stale, note: :stale} = FieldNotes.status("Fire Protection")
+    end
+
+    test "a redraft waits beside the approved note, which stays live", %{research: research, meta: meta} do
+      FieldNotes.write!("Fire Protection", "research.json", Jason.encode!(research))
+      put_note(Keyword.merge(meta, status: "approved", prompt_hash: "older"))
+      assert %{note: :approved_stale} = FieldNotes.status("Fire Protection")
+      assert FieldNotes.needs_note?(:approved_stale)
+      assert FieldNotes.draft_file("Fire Protection") == "note.next.md"
+
+      put_note(meta, "note.next.md")
+      assert %{note: :next_draft} = FieldNotes.status("Fire Protection")
+      refute FieldNotes.needs_note?(:next_draft)
+      assert length(FieldNotes.approved_paragraphs("Fire Protection")) == 2
     end
   end
 

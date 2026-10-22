@@ -30,7 +30,7 @@ defmodule Mix.Tasks.FieldNotes.Status do
     end
 
     research_calls = Enum.count(statuses, &(&1.research in [:missing, :stale]))
-    note_calls = Enum.count(statuses, &(&1.note in [:missing, :stale]))
+    note_calls = Enum.count(statuses, &FieldNotes.needs_note?(&1.note))
     Mix.shell().info("\nA run would make #{research_calls} research and #{note_calls} note calls.")
   end
 end
