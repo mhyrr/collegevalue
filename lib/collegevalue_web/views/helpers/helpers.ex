@@ -303,7 +303,48 @@ defmodule CollegevalueWeb.Views.Helpers do
   Scorecard's ", General" suffix is dropped: nobody searches "Psychology, General".
   """
   def field_title(%{name: name}),
-    do: "Is #{String.replace_suffix(name, ", General", "")} Worth It? Debt vs. Earnings by College"
+    do: "Is #{field_short_name(name)} Worth It? Debt vs. Earnings by College"
+
+  def field_short_name(name), do: String.replace_suffix(name, ", General", "")
+
+  @doc """
+  The question a field page answers: "Is a Psychology degree worth it?"
+  """
+  def field_question(name) do
+    short = field_short_name(name)
+    article = if short =~ ~r/^[AEIOU]/i, do: "an", else: "a"
+    "Is #{article} #{short} degree worth it?"
+  end
+
+  @doc """
+  The answer to `field_question/1`, as sentences built from
+  `Collegevalue.FieldNotes.Facts`. Every figure comes from the facts; there is
+  no verdict, because one year of earnings can't carry one.
+  """
+  def field_answer(nil), do: []
+
+  def field_answer(facts) do
+    [
+      "Across #{facts.programs_with_earnings} bachelor's #{if facts.programs_with_earnings == 1, do: "program", else: "programs"} that report earnings, " <>
+        "the median pays its graduates #{cash(facts.earnings_median)} a year after graduation" <>
+        if(facts.programs_with_earnings >= 4,
+          do: ", and the middle half pay between #{cash(facts.earnings_p25)} and #{cash(facts.earnings_p75)}.",
+          else: "."
+        ),
+      "The median for all majors is #{cash(facts.all_majors_earnings_median)}.",
+      facts.debt_median &&
+        "At the median program, graduates who borrowed owe #{cash(facts.debt_median)}.",
+      facts.rank &&
+        "Debt is #{facts.debt_to_earnings}x first-year earnings, which ranks #{ordinal(facts.rank)} of #{facts.ranked_of} majors, where 1st carries the least debt for the pay."
+    ]
+    |> Enum.filter(&is_binary/1)
+  end
+
+  def ordinal(n) when rem(n, 100) in 11..13, do: "#{n}th"
+  def ordinal(n) when rem(n, 10) == 1, do: "#{n}st"
+  def ordinal(n) when rem(n, 10) == 2, do: "#{n}nd"
+  def ordinal(n) when rem(n, 10) == 3, do: "#{n}rd"
+  def ordinal(n), do: "#{n}th"
 
   @doc """
   A paragraph on the college built from the figures it reports. Empty when it

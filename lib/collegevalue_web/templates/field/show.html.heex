@@ -1,6 +1,17 @@
 <h1 class="text-xl text-darkgreen"><%= @field.name %></h1>
 <p class="mt-4 max-w-3xl text-base leading-6 text-gray-900"><%= field_summary(@field) %></p>
 
+<%= if @facts do %>
+  <section class="mt-6 max-w-3xl space-y-3 text-base leading-6 text-gray-900">
+    <h2 class="text-lg text-darkgreen"><%= field_question(@field.name) %></h2>
+    <p><%= Enum.join(field_answer(@facts), " ") %></p>
+    <p class="text-sm text-gray-600">
+      These are earnings one year after graduating, for students who received federal aid.
+      Majors that lead to graduate school, or to careers that start slowly, look worse here than they will ten years on.
+    </p>
+  </section>
+<% end %>
+
 <div class="flex py-2 px-4 rounded overflow-hidden ">
             <div class="flex-shrink-0">
 

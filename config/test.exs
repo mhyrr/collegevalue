@@ -28,3 +28,6 @@ config :logger, level: :warn
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+# The every-major ranking is cached for the life of the VM; tests insert their own data.
+config :collegevalue, cache_field_ranking: false

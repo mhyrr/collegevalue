@@ -106,4 +106,20 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert html =~ "Earnings vs. cost."
     end
   end
+
+  describe "the field page" do
+    test "answers whether the degree is worth it, from the data", %{conn: conn} do
+      html = conn |> get("/fields/Computer%20Science") |> html_response(200)
+
+      assert html =~ "Is a Computer Science degree worth it?"
+      assert html =~ "the median pays its graduates $65,959 a year after graduation."
+      assert html =~ "one year after graduating, for students who received federal aid"
+    end
+
+    test "has no answer when no program reports earnings", %{conn: conn} do
+      html = conn |> get("/fields/Air%20Force%20ROTC%2C%20Air%20Science%20and%20Operations") |> html_response(200)
+
+      refute html =~ "degree worth it?"
+    end
+  end
 end

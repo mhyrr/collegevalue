@@ -112,4 +112,41 @@ defmodule CollegevalueWeb.SeoHelpersTest do
       assert field_summary(%Field{name: "Air Force ROTC", count: 1}) == ""
     end
   end
+
+  describe "field_question/1" do
+    test "drops the Scorecard suffix and picks the article" do
+      assert field_question("Psychology, General") == "Is a Psychology degree worth it?"
+      assert field_question("Economics") == "Is an Economics degree worth it?"
+    end
+  end
+
+  describe "field_answer/1" do
+    @facts %{programs_with_earnings: 998, earnings_median: 28_486, earnings_p25: 25_741, earnings_p75: 31_146,
+             all_majors_earnings_median: 37_050, debt_median: 25_532, rank: 91, ranked_of: 147, debt_to_earnings: 0.9}
+
+    test "states the medians, the spread and the rank" do
+      assert Enum.join(field_answer(@facts), " ") ==
+               "Across 998 bachelor's programs that report earnings, the median pays its graduates $28,486 a year after graduation, " <>
+                 "and the middle half pay between $25,741 and $31,146. The median for all majors is $37,050. " <>
+                 "At the median program, graduates who borrowed owe $25,532. " <>
+                 "Debt is 0.9x first-year earnings, which ranks 91st of 147 majors, where 1st carries the least debt for the pay."
+    end
+
+    test "leaves out what the data can't support" do
+      sentences = field_answer(%{@facts | programs_with_earnings: 2, debt_median: nil, rank: nil})
+
+      assert hd(sentences) =~ "a year after graduation."
+      refute Enum.any?(sentences, &(&1 =~ "owe" or &1 =~ "ranks"))
+    end
+
+    test "is empty without facts" do
+      assert field_answer(nil) == []
+    end
+  end
+
+  describe "ordinal/1" do
+    test "handles the teens" do
+      assert Enum.map([1, 2, 3, 4, 11, 12, 13, 21, 112], &ordinal/1) == ~w(1st 2nd 3rd 4th 11th 12th 13th 21st 112th)
+    end
+  end
 end
