@@ -18,7 +18,7 @@ defmodule CollegevalueWeb.SitemapController do
     origin = LayoutView.origin(conn)
 
     field_paths =
-      Enum.map(Fields.list_indexable_field_names(), &Routes.live_path(conn, CollegevalueWeb.FieldsLive.Show, &1))
+      Enum.map(Fields.list_indexable_field_names(), &CollegevalueWeb.Views.Helpers.field_page_path/1)
 
     page_paths =
       Enum.map(2..Colleges.college_page_count()//1, &Routes.college_path(conn, :index, page: &1))

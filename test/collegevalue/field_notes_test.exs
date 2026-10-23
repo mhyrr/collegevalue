@@ -167,9 +167,21 @@ defmodule Collegevalue.FieldNotesTest do
     assert %{meta: %{"field" => "Economics", "status" => "draft"}, body: "One.\n\nTwo."} = FieldNotes.parse_note(text)
   end
 
-  test "keyword_map_fields/0 reads the field pages the keyword map targets" do
-    fields = FieldNotes.keyword_map_fields()
-    assert "Psychology, General" in fields
-    refute "rank" in fields
+  test "keyword_map_fields/1 reads the field pages the keyword map targets, by slug" do
+    college = Repo.insert!(%College{name: "Map College", unitid: 888_888, state: "IL"})
+
+    for name <- ["Psychology, General", "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing"] do
+      Repo.insert!(%Discipline{name: name, credential_level: 3, college_id: college.id})
+    end
+
+    map = Path.join(System.tmp_dir!(), "keywords_#{System.unique_integer([:positive])}.yml")
+    File.write!(map, "page: /fields/rank\npage: /fields/psychology\npage: /fields/nursing\npage: /fields/psychology\n")
+    on_exit(fn -> File.rm(map) end)
+
+    assert FieldNotes.keyword_map_fields(map) ==
+             ["Psychology, General", "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing"]
+
+    File.write!(map, "page: /fields/no-such-field\n")
+    assert_raise Ecto.NoResultsError, fn -> FieldNotes.keyword_map_fields(map) end
   end
 end

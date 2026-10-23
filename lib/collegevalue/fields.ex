@@ -55,6 +55,48 @@ defmodule Collegevalue.Fields do
 
   def get_field!(name), do: Repo.get_by!(Field, name: name)
 
+  # Majors people search by a shorter name than Scorecard's. A slug is
+  # permanent once live: renaming one means another redirect. The bare
+  # "Nursing" field (no reported outcomes) gives up "nursing" to the RN field.
+  @slugs %{
+    "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing" => "nursing",
+    "Nursing" => "nursing-other",
+    "Business Administration, Management and Operations" => "business",
+    "English Language and Literature, General" => "english"
+  }
+
+  @doc """
+  The field's URL segment: a name from `@slugs`, else the name in lowercase
+  words joined by hyphens, without Scorecard's trailing ", General".
+
+      iex> Collegevalue.Fields.slug("Psychology, General")
+      "psychology"
+  """
+  def slug(name) do
+    Map.get_lazy(@slugs, name, fn ->
+      name
+      |> String.replace(~r/,\s*General\.?$/, "")
+      |> String.downcase()
+      |> String.replace(~r/[^a-z0-9]+/, "-")
+      |> String.trim("-")
+    end)
+  end
+
+  @doc "Whether `segment` has the shape of a slug, so it can't be an old name URL."
+  def slug?(segment), do: segment =~ ~r/^[a-z0-9-]+$/
+
+  @doc "The field whose `slug/1` is `slug`. Raises `Ecto.NoResultsError` (a 404) when none is."
+  def get_field_by_slug!(slug) do
+    Field
+    |> select([f], f.name)
+    |> Repo.all()
+    |> Enum.find(&(slug(&1) == slug))
+    |> case do
+      nil -> raise Ecto.NoResultsError, queryable: Field
+      name -> get_field!(name)
+    end
+  end
+
   @doc """
   Whether any college reports debt or earnings for the field. A field without
   either has a page with nothing on it but a list of names, so it stays out of

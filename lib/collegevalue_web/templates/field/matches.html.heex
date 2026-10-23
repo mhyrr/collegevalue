@@ -20,7 +20,7 @@
   <%= for major <- @majors do %>
     <tr class="md:block odd:bg-gray-50">
       <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college.name, to: Routes.college_path(@socket, :show, major.college.unitid, major.college.name), class: "no-underline text-green" %> </td>
-      <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
+      <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  field_page_path(major.name), class: "no-underline text-green" %> </td>
 
       <td class="px-4 py-3 earnings1yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_1yr) %></td>
       <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
@@ -62,7 +62,7 @@
       <%= for major <- @stretch do %>
         <tr class="md:block odd:bg-gray-50">
           <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college.name, to: Routes.college_path(@socket, :show, major.college.unitid, major.college.name), class: "no-underline text-green" %> </td>
-          <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  Routes.live_path(@socket, CollegevalueWeb.FieldsLive.Show, major.name), class: "no-underline text-green" %> </td>
+          <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.name, to:  field_page_path(major.name), class: "no-underline text-green" %> </td>
 
           <td class="px-4 py-3 earnings1yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_1yr) %></td>
           <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>

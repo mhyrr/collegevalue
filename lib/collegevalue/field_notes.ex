@@ -44,14 +44,16 @@ defmodule Collegevalue.FieldNotes do
   def path(name, file), do: Path.join([root(), slug(name), file])
 
   @doc """
-  The majors the keyword map targets, by the `/fields/<name>` pages it names.
+  The majors the keyword map targets, by the `/fields/<slug>` pages it names.
+  A page whose slug matches no field raises, so a typo in the map can't drop a major.
   """
   def keyword_map_fields(path \\ "docs/seo/keywords.yml") do
     ~r{page:\s*/fields/([^\s#]+)}
     |> Regex.scan(File.read!(path))
-    |> Enum.map(fn [_, encoded] -> URI.decode(encoded) end)
+    |> Enum.map(fn [_, slug] -> slug end)
     |> Enum.reject(&(&1 == "rank"))
     |> Enum.uniq()
+    |> Enum.map(&Collegevalue.Fields.get_field_by_slug!(&1).name)
   end
 
   @doc """

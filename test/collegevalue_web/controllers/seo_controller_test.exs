@@ -48,10 +48,10 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert xml =~ ~s(<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">)
       assert xml =~ "/colleges/rank</loc>"
       assert xml =~ "/colleges/130794/Yale%20University</loc>"
-      assert xml =~ "/fields/Computer%20Science</loc>"
+      assert xml =~ "/fields/computer-science</loc>"
 
       refute xml =~ "Aarhus"
-      refute xml =~ "Air%20Force"
+      refute xml =~ "air-force"
     end
   end
 
@@ -109,7 +109,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
 
   describe "the field page" do
     test "answers whether the degree is worth it, from the data", %{conn: conn} do
-      html = conn |> get("/fields/Computer%20Science") |> html_response(200)
+      html = conn |> get("/fields/computer-science") |> html_response(200)
 
       assert html =~ "Is a Computer Science degree worth it?"
       assert html =~ "the median pays its graduates $65,959 a year after graduation."
@@ -126,20 +126,60 @@ defmodule CollegevalueWeb.SeoControllerTest do
                  Collegevalue.FieldNotes.render_note([status: &1], body))
 
       write.("draft")
-      refute conn |> get("/fields/Computer%20Science") |> html_response(200) =~ body
+      refute conn |> get("/fields/computer-science") |> html_response(200) =~ body
 
       write.("approved")
-      assert build_conn() |> get("/fields/Computer%20Science") |> html_response(200) =~ body
+      assert build_conn() |> get("/fields/computer-science") |> html_response(200) =~ body
     end
 
     test "has no answer when no program reports earnings", %{conn: conn} do
-      html = conn |> get("/fields/Air%20Force%20ROTC%2C%20Air%20Science%20and%20Operations") |> html_response(200)
+      html = conn |> get("/fields/air-force-rotc-air-science-and-operations") |> html_response(200)
 
       refute html =~ "degree worth it?"
     end
 
     test "is a 404 for a field that doesn't exist", %{conn: conn} do
+      assert_error_sent 404, fn -> get(conn, "/fields/no-such-field") end
+    end
+
+    test "links to itself by slug", %{conn: conn} do
+      html = conn |> get("/fields/computer-science") |> html_response(200)
+
+      assert html =~ ~s(href="/fields/computer-science?sort_by=name&amp;order=desc")
+      refute html =~ "/fields/Computer%20Science"
+    end
+  end
+
+  describe "old field URLs" do
+    test "move to the slug for good, keeping the query", %{conn: conn} do
+      conn = get(conn, "/fields/Computer%20Science?sort_by=name&order=asc")
+
+      assert conn.status == 301
+      assert get_resp_header(conn, "location") == ["/fields/computer-science?sort_by=name&order=asc"]
+    end
+
+    test "of a name that isn't a field are a 404, not a redirect", %{conn: conn} do
       assert_error_sent 404, fn -> get(conn, "/fields/No%20Such%20Field") end
+    end
+
+    test "leave the rank and you pages alone", %{conn: conn} do
+      assert conn |> get("/fields/rank") |> html_response(200)
+    end
+  end
+
+  describe "field slugs" do
+    alias Collegevalue.Fields
+
+    test "are the name in lowercase words, without Scorecard's ', General'" do
+      assert Fields.slug("Psychology, General") == "psychology"
+      assert Fields.slug("Computer Science") == "computer-science"
+      assert Fields.slug("Botany/Plant Biology") == "botany-plant-biology"
+    end
+
+    test "use the short name people search for the majors that need one" do
+      assert Fields.slug("Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing") == "nursing"
+      assert Fields.slug("Nursing") == "nursing-other"
+      assert Fields.slug("Business Administration, Management and Operations") == "business"
     end
   end
 end

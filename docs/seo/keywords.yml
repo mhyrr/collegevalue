@@ -55,34 +55,34 @@ clusters:
     intent: informational
     queries:
       - query: is a psychology degree worth it
-        page: /fields/Psychology%2C%20General
+        page: /fields/psychology
         role: primary
         status: published
       - query: is a nursing degree worth it
-        page: /fields/Registered%20Nursing%2C%20Nursing%20Administration%2C%20Nursing%20Research%20and%20Clinical%20Nursing
+        page: /fields/nursing
         role: primary
         status: published
       - query: is a computer science degree worth it
-        page: /fields/Computer%20Science
+        page: /fields/computer-science
         role: primary
         status: published
       - query: is a business degree worth it
-        page: /fields/Business%20Administration%2C%20Management%20and%20Operations
+        page: /fields/business
         role: primary
         status: published
       - query: is a biology degree worth it
-        page: /fields/Biology%2C%20General
+        page: /fields/biology
         role: primary
         status: published
       - query: is an economics degree worth it
-        page: /fields/Economics
+        page: /fields/economics
         role: primary
         status: published
       - query: is an english degree worth it
-        page: /fields/English%20Language%20and%20Literature%2C%20General
+        page: /fields/english
         role: primary
         status: published
       - query: is a mechanical engineering degree worth it
-        page: /fields/Mechanical%20Engineering
+        page: /fields/mechanical-engineering
         role: primary
         status: published

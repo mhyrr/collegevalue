@@ -59,7 +59,7 @@ defmodule CollegevalueWeb.SearchLive.Search do
           n when n == 1 ->
             Logger.info "got 1"
             [field | _ ] = fields
-            {:noreply, socket |> push_navigate(to:  Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, field ))}
+            {:noreply, socket |> push_navigate(to: CollegevalueWeb.Views.Helpers.field_page_path(field))}
           n when n > 1 ->
             Logger.info "got 2"
             {:noreply, socket |> push_navigate(to:  Routes.live_path(socket, CollegevalueWeb.SearchLive.Results, query ))}

@@ -308,6 +308,19 @@ defmodule CollegevalueWeb.Views.Helpers do
   def field_short_name(name), do: String.replace_suffix(name, ", General", "")
 
   @doc """
+  The path of a field's page, by its slug: `/fields/psychology`. Every link
+  to a field page goes through here, so none points at an old name URL.
+  """
+  def field_page_path(name, params \\ %{}) do
+    CollegevalueWeb.Router.Helpers.live_path(
+      CollegevalueWeb.Endpoint,
+      CollegevalueWeb.FieldsLive.Show,
+      Collegevalue.Fields.slug(name),
+      params
+    )
+  end
+
+  @doc """
   The question a field page answers: "Is a Psychology degree worth it?"
   """
   def field_question(name) do

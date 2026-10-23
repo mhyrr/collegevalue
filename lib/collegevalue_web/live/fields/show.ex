@@ -6,7 +6,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   alias Collegevalue.FieldNotes
   alias Collegevalue.FieldNotes.Facts
   alias CollegevalueWeb.Router.Helpers, as: Routes
-  import CollegevalueWeb.Views.Helpers, only: [field_title: 1]
+  import CollegevalueWeb.Views.Helpers, only: [field_title: 1, field_page_path: 2]
 
   @cred_all_label "Show All Degrees"
   @cred_bach_only "Bachelor's Only"
@@ -49,7 +49,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
     Logger.debug(show_all)
 
-    field = Fields.get_field!(URI.decode(name))
+    field = Fields.get_field_by_slug!(name)
 
     sort_order = case socket.assigns.order do
       "desc" ->
@@ -75,7 +75,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
     Logger.debug("handle params 2")
 
-    field = Fields.get_field!(URI.decode(name))
+    field = Fields.get_field_by_slug!(name)
 
     sort_order = case socket.assigns.order do
       "desc" ->
@@ -101,7 +101,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   def handle_params(%{"name" => name}, _url, socket) do
     Logger.debug("handle params 1")
 
-    field = Fields.get_field!(URI.decode(name))
+    field = Fields.get_field_by_slug!(name)
     majors = Colleges.get_majors_by_field(field.name)
       |> sort_majors("earnings")
       |> handle_direction("desc", "earnings")
@@ -122,7 +122,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     # {:noreply, socket |> assign(show_all: show_all) |> assign(cred_label: cred_label)}
 
     {:noreply, push_patch(socket |> assign(show_all: show_all) |> assign(cred_label: cred_label),
-      to: Routes.live_path(socket, CollegevalueWeb.FieldsLive.Show, socket.assigns.field.name, %{show_all: show_all}))}
+      to: field_page_path(socket.assigns.field.name, %{show_all: show_all}))}
 
   end
 
