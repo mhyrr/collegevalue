@@ -61,7 +61,7 @@
     <%= for rank <- @ranks do %>
       <tr class="md:block odd:bg-gray-50">
         <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b text-green"><%= link shorten(rank.college_name), to: Routes.college_path(@conn, :show, rank.unit_id, rank.college_name) %> </td>
-        <td class="px-4 py-3 field-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b text-green"><%= link shorten(rank.field_name), to: field_page_path(rank.field_name)%> </td>
+        <td class="px-4 py-3 field-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b text-green"><%= link field_short_name(rank.field_name), to: field_page_path(rank.field_name)%> </td>
         <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
         <td class="px-4 py-3 tuition md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= cash(rank.tuition_in)%></td>

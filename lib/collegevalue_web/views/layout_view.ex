@@ -4,7 +4,7 @@ defmodule CollegevalueWeb.LayoutView do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields.Field
 
-  import CollegevalueWeb.Views.Helpers, only: [place: 1]
+  import CollegevalueWeb.Views.Helpers, only: [place: 1, field_short_name: 1]
 
   @default_description "Higher Ed 1 Dollar At A Time!  Should you go to college? What do you study? How much will it cost?."
 
@@ -53,7 +53,7 @@ defmodule CollegevalueWeb.LayoutView do
   end
 
   def meta_description(%{field: %Field{name: name}}) do
-    "#{name}: how many colleges offer it, average debt at graduation and expected earnings " <>
+    "#{field_short_name(name)}: how many colleges offer it, average debt at graduation and expected earnings " <>
       "one year after, with each college's program compared by debt and earnings."
   end
 

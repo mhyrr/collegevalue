@@ -55,10 +55,17 @@ defmodule Collegevalue.Fields do
 
   def get_field!(name), do: Repo.get_by!(Field, name: name)
 
-  # Majors people search by a shorter name than Scorecard's. A slug is
-  # permanent once live: renaming one means another redirect. The bare
-  # "Nursing" field (no reported outcomes) gives up "nursing" to the RN field.
-  @slugs %{
+  # Short names, reviewed by hand: what a student searches, not Scorecard's
+  # CIP title. A field missing from the file gets `default_short_name/1`.
+  # The short name makes the slug, and a slug is permanent once live:
+  # renaming one means another redirect.
+  @short_names_path Path.expand("../../priv/fields/short_names.json", __DIR__)
+  @external_resource @short_names_path
+  @short_names @short_names_path |> File.read!() |> Jason.decode!()
+
+  # The slugs that were live from 2026-10-23 to the short names. Kept so
+  # those URLs 301 to the new ones.
+  @legacy_slugs %{
     "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing" => "nursing",
     "Nursing" => "nursing-other",
     "Business Administration, Management and Operations" => "business",
@@ -66,34 +73,57 @@ defmodule Collegevalue.Fields do
   }
 
   @doc """
-  The field's URL segment: a name from `@slugs`, else the name in lowercase
-  words joined by hyphens, without Scorecard's trailing ", General".
+  The name the site shows for a field: "Nursing" for Scorecard's
+  "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing".
+  """
+  def short_name(name), do: Map.get_lazy(@short_names, name, fn -> default_short_name(name) end)
+
+  defp default_short_name(name) do
+    name
+    |> String.replace(~r/,\s*General\.?$/, "")
+    |> String.replace(~r/,\s*Other$/, " (Other)")
+  end
+
+  @doc """
+  The field's URL segment: its short name in lowercase words joined by hyphens.
 
       iex> Collegevalue.Fields.slug("Psychology, General")
       "psychology"
   """
-  def slug(name) do
-    Map.get_lazy(@slugs, name, fn ->
-      name
-      |> String.replace(~r/,\s*General\.?$/, "")
-      |> String.downcase()
-      |> String.replace(~r/[^a-z0-9]+/, "-")
-      |> String.trim("-")
-    end)
+  def slug(name), do: slugify(short_name(name))
+
+  @doc "The slug a field had before short names, which now redirects."
+  def legacy_slug(name) do
+    Map.get_lazy(@legacy_slugs, name, fn -> name |> String.replace(~r/,\s*General\.?$/, "") |> slugify() end)
   end
 
-  @doc "Whether `segment` has the shape of a slug, so it can't be an old name URL."
-  def slug?(segment), do: segment =~ ~r/^[a-z0-9-]+$/
+  defp slugify(text) do
+    text
+    |> String.downcase()
+    |> String.replace(~r/[^a-z0-9]+/, "-")
+    |> String.trim("-")
+  end
+
+  @doc """
+  What a `/fields/<segment>` URL points at: `{:ok, name}` for a current slug,
+  `{:moved, slug}` for an old name URL or a legacy slug, `:error` for neither.
+  `segment` is decoded.
+  """
+  def resolve_field_segment(segment) do
+    names = Field |> select([f], f.name) |> Repo.all()
+
+    cond do
+      name = Enum.find(names, &(slug(&1) == segment)) -> {:ok, name}
+      name = Enum.find(names, &(&1 == segment or legacy_slug(&1) == segment)) -> {:moved, slug(name)}
+      true -> :error
+    end
+  end
 
   @doc "The field whose `slug/1` is `slug`. Raises `Ecto.NoResultsError` (a 404) when none is."
   def get_field_by_slug!(slug) do
-    Field
-    |> select([f], f.name)
-    |> Repo.all()
-    |> Enum.find(&(slug(&1) == slug))
-    |> case do
-      nil -> raise Ecto.NoResultsError, queryable: Field
-      name -> get_field!(name)
+    case resolve_field_segment(slug) do
+      {:ok, name} -> get_field!(name)
+      _ -> raise Ecto.NoResultsError, queryable: Field
     end
   end
 

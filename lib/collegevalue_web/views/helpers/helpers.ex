@@ -299,13 +299,13 @@ defmodule CollegevalueWeb.Views.Helpers do
   end
 
   @doc """
-  The field page's title, phrased as the question people search for. The
-  Scorecard's ", General" suffix is dropped: nobody searches "Psychology, General".
+  The field page's title, phrased as the question people search for, with
+  the field's short name: nobody searches "Psychology, General".
   """
   def field_title(%{name: name}),
     do: "Is #{field_short_name(name)} Worth It? Debt vs. Earnings by College"
 
-  def field_short_name(name), do: String.replace_suffix(name, ", General", "")
+  def field_short_name(name), do: Collegevalue.Fields.short_name(name)
 
   @doc """
   The path of a field's page, by its slug: `/fields/psychology`. Every link

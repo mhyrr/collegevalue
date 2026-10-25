@@ -34,7 +34,7 @@
             <tbody class="md:block">
             <%= for field <- @fields do %>
                 <tr class="md:block">
-                    <td class="major-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= link "#{field.name}", to: field_page_path(field.name), class: "text-green no-underline" %></td>
+                    <td class="major-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= link field_short_name(field.name), to: field_page_path(field.name), class: "text-green no-underline" %></td>
                     <td class="count-field md:border-none md:relative md:block  whitespace-wrap border-b pl-4"><%= field.count %></td>
                 </tr>
             <% end %>

@@ -86,3 +86,51 @@ clusters:
         page: /fields/mechanical-engineering
         role: primary
         status: published
+      - query: is an accounting degree worth it
+        page: /fields/accounting
+        role: primary
+        status: published
+      - query: is a communications degree worth it
+        page: /fields/communications
+        role: primary
+        status: published
+      - query: is a marketing degree worth it
+        page: /fields/marketing
+        role: primary
+        status: published
+      - query: is a finance degree worth it
+        page: /fields/finance
+        role: primary
+        status: published
+      - query: is a criminal justice degree worth it
+        page: /fields/criminal-justice
+        role: primary
+        status: published
+      - query: is a political science degree worth it
+        page: /fields/political-science
+        role: primary
+        status: published
+      - query: is an education degree worth it
+        page: /fields/teacher-education
+        role: primary
+        status: published
+      - query: is a sociology degree worth it
+        page: /fields/sociology
+        role: primary
+        status: published
+      - query: is a history degree worth it
+        page: /fields/history
+        role: primary
+        status: published
+      - query: is a social work degree worth it
+        page: /fields/social-work
+        role: primary
+        status: published
+      - query: is an art degree worth it
+        page: /fields/fine-arts
+        role: primary
+        status: published
+      - query: is a kinesiology degree worth it
+        page: /fields/kinesiology-and-exercise-science
+        role: primary
+        status: published

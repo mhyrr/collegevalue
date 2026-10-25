@@ -1,4 +1,7 @@
-<h1 class="text-xl text-darkgreen"><%= @field.name %></h1>
+<h1 class="text-xl text-darkgreen"><%= field_short_name(@field.name) %></h1>
+<%= if field_short_name(@field.name) != @field.name do %>
+  <p class="text-sm text-gray-600">College Scorecard field: <%= @field.name %></p>
+<% end %>
 <p class="mt-4 max-w-3xl text-base leading-6 text-gray-900"><%= field_summary(@field) %></p>
 
 <%= if @facts do %>

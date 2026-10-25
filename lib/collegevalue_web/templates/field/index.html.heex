@@ -17,7 +17,7 @@
 <%= for field <- @fields do %>
     <tr class="md:block odd:bg-gray-50">
 
-      <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><.link navigate={field_page_path(field.name)} class="text-green no-underline"><%= field.name %></.link></td>
+      <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><.link navigate={field_page_path(field.name)} class="text-green no-underline"><%= field_short_name(field.name) %></.link></td>
       <td class="px-4 py-3 count-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= field.count %></td>
       <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.debt_avg) %></td>
       <td class="px-4 py-3 debtmin-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(field.debt_min) %></td>

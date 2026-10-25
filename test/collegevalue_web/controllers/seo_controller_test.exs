@@ -133,7 +133,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
 
     test "has no answer when no program reports earnings", %{conn: conn} do
-      html = conn |> get("/fields/air-force-rotc-air-science-and-operations") |> html_response(200)
+      html = conn |> get("/fields/air-force-rotc") |> html_response(200)
 
       refute html =~ "degree worth it?"
     end
@@ -158,6 +158,13 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert get_resp_header(conn, "location") == ["/fields/computer-science?sort_by=name&order=asc"]
     end
 
+    test "of a slug from before short names move to the short one", %{conn: conn} do
+      conn = get(conn, "/fields/air-force-rotc-air-science-and-operations")
+
+      assert conn.status == 301
+      assert get_resp_header(conn, "location") == ["/fields/air-force-rotc"]
+    end
+
     test "of a name that isn't a field are a 404, not a redirect", %{conn: conn} do
       assert_error_sent 404, fn -> get(conn, "/fields/No%20Such%20Field") end
     end
@@ -167,19 +174,43 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
-  describe "field slugs" do
+  describe "field short names and slugs" do
     alias Collegevalue.Fields
 
-    test "are the name in lowercase words, without Scorecard's ', General'" do
+    test "come from the reviewed short name, else drop Scorecard's ', General'" do
+      assert Fields.short_name("Accounting and Related Services") == "Accounting"
+      assert Fields.short_name("Psychology, General") == "Psychology"
+      assert Fields.short_name("Psychology, Other") == "Psychology (Other)"
       assert Fields.slug("Psychology, General") == "psychology"
-      assert Fields.slug("Computer Science") == "computer-science"
-      assert Fields.slug("Botany/Plant Biology") == "botany-plant-biology"
+      assert Fields.slug("Psychology, Other") == "psychology-other"
+      assert Fields.slug("Teacher Education and Professional Development, Specific Levels and Methods") == "teacher-education"
     end
 
-    test "use the short name people search for the majors that need one" do
+    test "keep the slugs that were already short" do
       assert Fields.slug("Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing") == "nursing"
       assert Fields.slug("Nursing") == "nursing-other"
       assert Fields.slug("Business Administration, Management and Operations") == "business"
+      assert Fields.slug("English Language and Literature, General") == "english"
+    end
+
+    test "are one slug per field in the reviewed file, none a reserved path" do
+      slugs =
+        Path.join(:code.priv_dir(:collegevalue), "fields/short_names.json")
+        |> File.read!()
+        |> Jason.decode!()
+        |> Map.keys()
+        |> Enum.map(&Fields.slug/1)
+
+      assert slugs -- Enum.uniq(slugs) == []
+      refute Enum.any?(slugs, &(&1 in ["rank", "you", ""]))
+    end
+
+    test "head the page, with the Scorecard name beneath", %{conn: conn} do
+      html = conn |> get("/fields/air-force-rotc") |> html_response(200)
+
+      assert html =~ ~s(<h1 class="text-xl text-darkgreen">Air Force ROTC</h1>)
+      assert html =~ "College Scorecard field: Air Force ROTC, Air Science and Operations"
+      assert html =~ ">Is Air Force ROTC Worth It?"
     end
   end
 end
