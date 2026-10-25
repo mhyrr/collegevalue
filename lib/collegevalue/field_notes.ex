@@ -24,9 +24,10 @@ defmodule Collegevalue.FieldNotes do
   @evidence_max 280
   # The guide's questions about a major as a whole, and their allowed findings.
   @major_findings %{
-    "prestige" => ~w(school both major unclear),
-    "location" => ~w(explains_top explains_bottom both none),
-    "stepping_stone" => ~w(strong some weak unclear)
+    "school_matters" => ~w(two_markets some little unclear),
+    "who_is_counted" => ~w(new_graduates mixed working_adults unclear),
+    "leads_to" => ~w(licensure graduate_school direct_jobs mixed unclear),
+    "nearby_pair" => ~w(comparable not_comparable none)
   }
 
   def causes, do: @causes

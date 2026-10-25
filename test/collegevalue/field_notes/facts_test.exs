@@ -79,4 +79,59 @@ defmodule Collegevalue.FieldNotes.FactsTest do
       refute Facts.for_field("Economics").hash == first.hash
     end
   end
+
+  describe "value facts" do
+    # One program per keyword list: earnings, debt, cohort, admit, control, lat, lng.
+    defp program(name, attrs) do
+      n = System.unique_integer([:positive])
+
+      college =
+        Repo.insert!(%College{name: attrs[:college] || "#{name} College #{n}", unitid: n, state: "DC", city: "Washington",
+                              admissions_rate: attrs[:admit], control: attrs[:control] || "1",
+                              latitude: attrs[:lat], longitude: attrs[:lng]})
+
+      Repo.insert!(%Discipline{name: name, credential_level: 3, earnings_1yr: attrs[:earnings], earnings_1yr_count: attrs[:cohort] || 30,
+                               pp_debt_median: attrs[:debt], college_id: college.id})
+    end
+
+    test "split earnings and debt by admission band and by public or private" do
+      program("Computer Science", earnings: 110_000, debt: 40_000, admit: 0.05, control: "2")
+      program("Computer Science", earnings: 60_000, debt: 20_000, admit: 0.80, control: "1")
+      program("Computer Science", earnings: 62_000, debt: 22_000, admit: 0.70, control: "Public")
+
+      facts = Facts.for_field("Computer Science")
+      bands = Map.new(facts.by_admission, &{&1.band, &1})
+
+      assert bands["under_10_percent"] == %{band: "under_10_percent", programs: 1, earnings_median: 110_000, debt_median: 40_000}
+      assert bands["over_60_percent"].earnings_median == 61_000
+      assert facts.by_control.public == %{programs: 2, earnings_median: 61_000, debt_median: 21_000}
+      assert facts.by_control.private_nonprofit.programs == 1
+    end
+
+    test "find two nearby programs that pay alike while one owes far more" do
+      program("Economics", college: "Big State", earnings: 50_000, debt: 27_000, lat: 38.99, lng: -76.94)
+      program("Economics", college: "Pricey Private", earnings: 49_000, debt: 81_000, control: "2", lat: 38.94, lng: -77.09)
+      # Pays alike and owes more, but too far away to be a choice.
+      program("Economics", college: "Far Away", earnings: 50_500, debt: 120_000, lat: 34.05, lng: -118.24)
+
+      pair = Facts.for_field("Economics").nearby_pair
+
+      assert pair.miles == 9
+      assert [%{college: "Big State", debt: 27_000}, %{college: "Pricey Private", control: :private_nonprofit}] = pair.programs
+    end
+
+    test "leave pooled campuses out of the pair and count them once among the largest" do
+      for campus <- ["Camden", "Newark"],
+          do: program("Economics", college: "Rutgers-" <> campus, earnings: 49_765, cohort: 493, debt: 20_000, lat: 39.95, lng: -75.12)
+
+      program("Economics", college: "Nearby Private", earnings: 49_000, cohort: 40, debt: 70_000, control: "2", lat: 39.96, lng: -75.13)
+
+      facts = Facts.for_field("Economics")
+
+      assert facts.nearby_pair == nil
+      assert facts.largest.programs == 2
+      assert facts.largest.pooled == 1
+      assert facts.largest.share_of_graduates_percent == 100
+    end
+  end
 end

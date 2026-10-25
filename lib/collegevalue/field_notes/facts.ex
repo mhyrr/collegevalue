@@ -21,13 +21,27 @@ defmodule Collegevalue.FieldNotes.Facts do
   @flag_extra 4
   # How many programs at each end `ends/1` describes.
   @end_size 10
+  # Admission-rate bands for "how much does the school matter". A wide gap
+  # between the top band and the open one means two job markets (computer
+  # science); a narrow one means the school barely moves pay (nursing).
+  @bands [
+    {"under_10_percent", 0.0, 0.10},
+    {"10_to_25_percent", 0.10, 0.25},
+    {"25_to_60_percent", 0.25, 0.60},
+    {"over_60_percent", 0.60, 1.01}
+  ]
+  # A nearby pair: programs this close, paying within this share of each
+  # other, with enough graduates to trust, and one owing at least twice the other.
+  @pair_miles 15
+  @pair_pay_gap 0.10
+  @pair_min_cohort 20
 
   @doc """
   The facts for the major named `name`, or `nil` when no program reports
   earnings.
   """
   def for_field(name) do
-    programs = programs(name)
+    programs = name |> programs() |> mark_pooled()
     with_earnings = Enum.filter(programs, &positive?(&1.earnings))
 
     if with_earnings == [] do
@@ -40,6 +54,7 @@ defmodule Collegevalue.FieldNotes.Facts do
 
       facts = %{
         name: name,
+        short_name: Collegevalue.Fields.short_name(name),
         programs: length(programs),
         programs_with_earnings: length(with_earnings),
         programs_with_debt: length(debts),
@@ -47,11 +62,18 @@ defmodule Collegevalue.FieldNotes.Facts do
         earnings_p25: round_to(percentile(earnings, 0.25)),
         earnings_p75: round_to(percentile(earnings, 0.75)),
         debt_median: if(debts == [], do: nil, else: round_to(percentile(debts, 0.5))),
+        debt_p25: round_to(percentile(debts, 0.25)),
+        debt_p75: round_to(percentile(debts, 0.75)),
         all_majors_earnings_median: round_to(ranking.earnings_median),
         ranked_of: length(ranking.ranked),
         flagged: flagged(with_earnings, median),
         outliers: outliers(with_earnings, median),
-        ends: ends(with_earnings)
+        ends: ends(with_earnings),
+        by_admission: by_admission(with_earnings),
+        by_control: by_control(with_earnings),
+        online_only: group_summary(Enum.filter(with_earnings, &(&1.online == 1))),
+        largest: largest(with_earnings),
+        nearby_pair: nearby_pair(with_earnings)
       }
 
       facts
@@ -146,7 +168,12 @@ defmodule Collegevalue.FieldNotes.Facts do
       earnings: d.earnings_1yr,
       cohort: d.earnings_1yr_count,
       debt: d.pp_debt_median,
-      admission_rate: c.admissions_rate
+      admission_rate: c.admissions_rate,
+      control: c.control,
+      online: c.distanceonly,
+      city: c.city,
+      latitude: c.latitude,
+      longitude: c.longitude
     })
     |> Repo.all()
   end
@@ -179,7 +206,10 @@ defmodule Collegevalue.FieldNotes.Facts do
         ]
         |> Enum.filter(& &1)
 
-      p |> Map.put(:reasons, reasons) |> Map.update!(:debt, &if(positive?(&1), do: &1))
+      p
+      |> Map.take([:unitid, :college, :state, :earnings, :cohort, :debt, :admission_rate])
+      |> Map.put(:reasons, reasons)
+      |> Map.update!(:debt, &if(positive?(&1), do: &1))
     end)
   end
 
@@ -213,6 +243,108 @@ defmodule Collegevalue.FieldNotes.Facts do
     rates = programs |> Enum.map(& &1.admission_rate) |> Enum.filter(&(is_number(&1) and &1 > 0))
     median = percentile(rates, 0.5)
     %{median: median && Float.round(median * 1.0, 2), reporting: length(rates)}
+  end
+
+  # A chain that reports one figure for all its campuses (Chamberlain, Caribbean
+  # University) shows the same earnings and graduate count at each. Such a
+  # figure describes no one campus, so a pooled program never makes a nearby pair.
+  defp mark_pooled(programs) do
+    counts = Enum.frequencies_by(programs, &{&1.earnings, &1.cohort})
+    Enum.map(programs, &Map.put(&1, :pooled, positive?(&1.earnings) and is_integer(&1.cohort) and counts[{&1.earnings, &1.cohort}] > 1))
+  end
+
+  defp by_admission(programs) do
+    for {band, low, high} <- @bands do
+      programs
+      |> Enum.filter(&(is_number(&1.admission_rate) and &1.admission_rate > 0 and &1.admission_rate >= low and &1.admission_rate < high))
+      |> group_summary()
+      |> Map.put(:band, band)
+    end
+  end
+
+  # Public, private nonprofit and for-profit programs: what each costs in debt
+  # against what it pays, the value question a student weighs between schools.
+  defp by_control(programs) do
+    programs
+    |> Enum.group_by(&control/1)
+    |> Map.delete(:other)
+    |> Map.new(fn {kind, group} -> {kind, group_summary(group)} end)
+  end
+
+  defp control(%{control: c}) when c in ["1", "Public"], do: :public
+  defp control(%{control: c}) when c in ["2", "Private, nonprofit"], do: :private_nonprofit
+  defp control(%{control: c}) when c in ["3", "Private, for-profit"], do: :for_profit
+  defp control(_), do: :other
+
+  # The programs that graduate the most students, and their share of all the
+  # major's graduates: where most students actually are. When they pay above
+  # the median, they often serve working adults (RN-to-BSN completion).
+  # A pooled group counts once: its campuses share one set of graduates.
+  defp largest(programs) do
+    programs = Enum.uniq_by(programs, &if(&1.pooled, do: {&1.earnings, &1.cohort}, else: &1.unitid))
+    total = programs |> Enum.map(&(&1.cohort || 0)) |> Enum.sum()
+    big = programs |> Enum.sort_by(&{-(&1.cohort || 0), &1.unitid}) |> Enum.take(@end_size)
+    share = if total > 0, do: round(100 * Enum.sum(Enum.map(big, &(&1.cohort || 0))) / total)
+
+    big
+    |> group_summary()
+    |> Map.merge(%{
+      share_of_graduates_percent: share,
+      online_only: Enum.count(big, &(&1.online == 1)),
+      pooled: Enum.count(big, & &1.pooled)
+    })
+  end
+
+  # The sharpest case of "same pay, different debt" between two programs a
+  # student could choose between: within @pair_miles of each other, paying
+  # within @pair_pay_gap, each with enough graduates, and the larger debt at
+  # least twice the smaller. nil when no pair qualifies.
+  defp nearby_pair(programs) do
+    candidates =
+      Enum.filter(programs, &(not &1.pooled and is_number(&1.latitude) and is_number(&1.longitude) and positive?(&1.debt) and (&1.cohort || 0) >= @pair_min_cohort))
+
+    pairs =
+      for {a, i} <- Enum.with_index(candidates),
+          b <- Enum.drop(candidates, i + 1),
+          abs(a.earnings - b.earnings) <= @pair_pay_gap * max(a.earnings, b.earnings),
+          max(a.debt, b.debt) >= 2 * min(a.debt, b.debt),
+          miles <- [miles(a, b)],
+          miles <= @pair_miles,
+          do: {abs(a.debt - b.debt), miles, a, b}
+
+    case Enum.max_by(pairs, fn {gap, _, a, b} -> {gap, -min(a.unitid, b.unitid)} end, fn -> nil end) do
+      nil ->
+        nil
+
+      {_gap, miles, a, b} ->
+        [low, high] = Enum.sort_by([a, b], & &1.debt)
+
+        %{
+          miles: round(miles),
+          programs:
+            for p <- [low, high] do
+              %{college: p.college, city: p.city, state: p.state, control: control(p), earnings: p.earnings, debt: p.debt}
+            end
+        }
+    end
+  end
+
+  defp miles(a, b) do
+    rad = &(&1 * :math.pi() / 180)
+    dlat = rad.(b.latitude - a.latitude)
+    dlon = rad.(b.longitude - a.longitude)
+    h = :math.pow(:math.sin(dlat / 2), 2) + :math.cos(rad.(a.latitude)) * :math.cos(rad.(b.latitude)) * :math.pow(:math.sin(dlon / 2), 2)
+    3958.8 * 2 * :math.asin(:math.sqrt(h))
+  end
+
+  defp group_summary(programs) do
+    debts = programs |> Enum.map(& &1.debt) |> Enum.filter(&positive?/1)
+
+    %{
+      programs: length(programs),
+      earnings_median: round_to(percentile(Enum.map(programs, & &1.earnings), 0.5)),
+      debt_median: round_to(percentile(debts, 0.5))
+    }
   end
 
   defp far?(p, median), do: p.earnings > 2 * median or p.earnings < 0.5 * median

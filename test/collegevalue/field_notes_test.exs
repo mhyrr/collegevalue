@@ -25,9 +25,10 @@ defmodule Collegevalue.FieldNotesTest do
   end
 
   @major %{
-    "prestige" => %{"finding" => "unclear", "evidence" => "Nothing found.", "source" => nil},
-    "location" => %{"finding" => "none", "evidence" => "No cluster.", "source" => nil},
-    "stepping_stone" => %{"finding" => "some", "evidence" => "Some go on to a master's.", "source" => "https://example.edu/outcomes"}
+    "school_matters" => %{"finding" => "unclear", "evidence" => "Nothing found.", "source" => nil},
+    "who_is_counted" => %{"finding" => "new_graduates", "evidence" => "Open to first-year students.", "source" => "https://example.edu/admissions"},
+    "leads_to" => %{"finding" => "graduate_school", "evidence" => "Some go on to a master's.", "source" => "https://example.edu/outcomes"},
+    "nearby_pair" => %{"finding" => "none", "evidence" => "No nearby pair.", "source" => nil}
   }
 
   defp reply(facts, overrides \\ %{}) do
@@ -48,7 +49,7 @@ defmodule Collegevalue.FieldNotesTest do
       assert {:ok, research} = FieldNotes.check_research(reply(facts), facts)
       assert research["facts_hash"] == facts.hash
       assert research["prompt_hash"] == FieldNotes.prompt_hash(:research)
-      assert research["major"]["stepping_stone"]["finding"] == "some"
+      assert research["major"]["leads_to"]["finding"] == "graduate_school"
     end
 
     test "rejects unknown causes, missing sources and missing programs", %{facts: facts} do
@@ -69,12 +70,12 @@ defmodule Collegevalue.FieldNotesTest do
     test "wants every major-level question answered, with a source for a finding", %{facts: facts} do
       assert {:error, ["the reply has no major section"]} = FieldNotes.check_research(Map.delete(reply(facts), "major"), facts)
 
-      no_location = Map.update!(reply(facts), "major", &Map.delete(&1, "location"))
-      assert {:error, ["major: no location answer"]} = FieldNotes.check_research(no_location, facts)
+      no_pair = Map.update!(reply(facts), "major", &Map.delete(&1, "nearby_pair"))
+      assert {:error, ["major: no nearby_pair answer"]} = FieldNotes.check_research(no_pair, facts)
 
-      unsourced = put_in(reply(facts), ["major", "prestige"], %{"finding" => "school", "evidence" => "Banks recruit there."})
+      unsourced = put_in(reply(facts), ["major", "school_matters"], %{"finding" => "two_markets", "evidence" => "Big tech recruits there."})
       assert {:error, [error]} = FieldNotes.check_research(unsourced, facts)
-      assert error =~ "prestige: finding school needs an http(s) source"
+      assert error =~ "school_matters: finding two_markets needs an http(s) source"
     end
   end
 
