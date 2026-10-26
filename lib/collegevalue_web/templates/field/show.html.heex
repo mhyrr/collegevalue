@@ -13,6 +13,7 @@
     <% end %>
     <p class="text-sm text-gray-600">
       These are earnings one year after graduating, for students who received federal aid.
+      Debt is the median federal student-loan debt of graduates who borrowed; it leaves out loans parents took.
       Majors that lead to graduate school, or to careers that start slowly, look worse here than they will ten years on.
     </p>
   </section>
@@ -29,7 +30,7 @@
                 <h4 class="text-lg leading-6 font-medium text-darkgreen">Details</h4>
                 <ul class="list-none">
                   <li><strong class="text-green">Number of Offering Colleges:</strong> <%= @field.count %></li>
-                  <li><strong class="text-green">Average Debt on Graduation:</strong> <%= cash(@field.debt_avg) %></li>
+                  <li><strong class="text-green">Student-Loan Debt, Average Program:</strong> <%= cash(@field.debt_avg) %></li>
                   <li><strong class="text-green">Expected Earnings 1 Year After:</strong> <%= cash(@field.earn_avg) %></li>
 
                 </ul>
@@ -48,8 +49,8 @@
     <tr>
       <.sort_header_link label="Name" sort_key="name" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "name", order: @order || "desc"})} />
       <.sort_header_link label="Credential" sort_key="credential_level" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "credential_level", order: @order || "desc"})} tooltip="Degree type: Certificate, Associate's, Bachelor's, Master's, etc." />
-      <.sort_header_link label="Debt Mean" sort_key="debt_mean" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_mean", order: @order || "desc"})} tooltip="Average federal loan debt at graduation — can be skewed by outliers, unlike the median" />
-      <.sort_header_link label="Debt Median" sort_key="debt_median" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_median", order: @order || "desc"})} tooltip="Median federal loan debt at graduation — the middle value, less affected by extreme outliers" />
+      <.sort_header_link label="Debt Mean" sort_key="debt_mean" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_mean", order: @order || "desc"})} tooltip="Average federal student-loan debt of graduates who borrowed. A few large loans can pull it up." />
+      <.sort_header_link label="Debt Median" sort_key="debt_median" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_median", order: @order || "desc"})} tooltip="Median federal student-loan debt of graduates who borrowed. Half owe more, half owe less." />
       <.sort_header_link label="Earnings" sort_key="earnings" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "earnings", order: @order || "desc"})} tooltip="Median earnings 1 year after graduation for this major" />
     </tr>
   </thead>

@@ -229,12 +229,12 @@ defmodule CollegevalueWeb.Views.Helpers do
 
     diffs =
       majors
-      |> Enum.map(fn major -> [major.name, (if (major.earnings == -1 || major.debt_mean == -1), do: 0, else: major.earnings - major.debt_mean)] end)
+      |> Enum.map(fn major -> [major.name, (if no_data?(major.earnings) || no_data?(major.debt_median), do: 0, else: major.earnings - major.debt_median)] end)
       |> Enum.reverse
     chart_data = chart_data ++ [ %{name: "Difference", data: diffs}]
 
     debt = majors
-    |> Enum.map(fn major -> [major.name, -major.debt_mean] end)
+    |> Enum.map(fn major -> [major.name, (if no_data?(major.debt_median), do: 0, else: -major.debt_median)] end)
     |> Enum.reverse
     chart_data = chart_data ++ [ %{name: "Debt", data: debt}]
 
@@ -390,7 +390,7 @@ defmodule CollegevalueWeb.Views.Helpers do
     [
       "#{field.count} #{if field.count == 1, do: "college offers", else: "colleges offer"} #{field.name} in the College Scorecard data.",
       !no_data?(field.debt_avg) &&
-        "Graduates leave with an average federal debt of #{cash(field.debt_avg)}" <>
+        "At the average program, graduates who borrowed owe a median of #{cash(field.debt_avg)} in federal student loans" <>
           range(field.debt_min, field.debt_max, "program") <> ".",
       !no_data?(field.earn_avg) &&
         "One year after graduating they earn #{cash(field.earn_avg)} on average" <>

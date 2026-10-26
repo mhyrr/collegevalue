@@ -149,56 +149,60 @@ defmodule Collegevalue.Fields do
   defp positive?(value) when is_number(value), do: value > 0
   defp positive?(_value), do: false
 
+  @doc """
+  Bachelor's programs ranked by first-year earnings alone, highest first for
+  `"top"`. A program's debt is its own median federal student-loan debt
+  (`stgp_debt_median`), never the college's: a program without one shows no
+  debt. `require_debt: true` keeps only programs that report it.
+  """
   def get_bachelors_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
-    require_debt = Keyword.get(opts, :require_debt, false)
 
-    query = from c in College,
-      join: d in Discipline,
-      on: c.id == d.college_id,
-      where: d.credential_level == 3 and d.earnings_1yr > 0,
-      select: %Rank{
-        field_name: d.name,
-        credential_level: d.credential_level,
-        cost: fragment("COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0))", c.debt_median),
-        cost_field: "Debt",
-        payoff: d.earnings_1yr,
-        payoff_field: "Field Earnings",
-        diff: fragment("d1.earnings_1yr - COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0)) as diff", c.debt_median),
-        college_name: c.name,
-        unit_id: c.unitid,
-        college_id: c.id,
-        tuition_out: c.tuition_out,
-        tuition_in: c.tuition_in,
-        admissions: c.admissions_rate,
-        sat_avg: c.sat_avg,
-        url: c.url,
-        has_major_debt: fragment("d1.pp_debt_mean > 0")
-      },
-      order_by: [{^direction, d.earnings_1yr}],
-      limit: ^limit
+    query =
+      bachelors_ranks()
+      |> order_by([_c, d], [{^direction, d.earnings_1yr}, {:asc, d.id}])
+      |> limit(^limit)
 
-    query = if require_debt, do: where(query, [_c, d], d.pp_debt_mean > 0), else: query
+    query =
+      if Keyword.get(opts, :require_debt, false),
+        do: where(query, [_c, d], d.stgp_debt_median > 0),
+        else: query
 
     Repo.all(query)
   end
 
-  def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
+  @doc """
+  Bachelor's programs ranked by first-year earnings minus the program's
+  median federal student-loan debt, highest first for `"top"`. Only programs
+  that report both figures are ranked: a missing debt is never filled in
+  with the college's.
+  """
+  def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100, _opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
-    require_debt = Keyword.get(opts, :require_debt, false)
 
-    query = from c in College,
+    bachelors_ranks()
+    |> where([_c, d], d.stgp_debt_median > 0)
+    |> order_by([_c, d], [{^direction, d.earnings_1yr - d.stgp_debt_median}, {:asc, d.id}])
+    |> limit(^limit)
+    |> Repo.all()
+  end
+
+  # Every bachelor's program that reports first-year earnings, as a `Rank`.
+  # Missing Scorecard figures are stored as -1 or -2, so a debt that isn't
+  # positive is nil here.
+  defp bachelors_ranks do
+    from c in College,
       join: d in Discipline,
       on: c.id == d.college_id,
       where: d.credential_level == 3 and d.earnings_1yr > 0,
       select: %Rank{
         field_name: d.name,
         credential_level: d.credential_level,
-        cost: fragment("COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0))", c.debt_median),
+        cost: fragment("NULLIF(GREATEST(?, 0), 0)", d.stgp_debt_median),
         cost_field: "Debt",
         payoff: d.earnings_1yr,
         payoff_field: "Field Earnings",
-        diff: fragment("d1.earnings_1yr - COALESCE(NULLIF(GREATEST(d1.pp_debt_mean, 0), 0), NULLIF(GREATEST(?, 0), 0)) as diff", c.debt_median),
+        diff: fragment("? - NULLIF(GREATEST(?, 0), 0)", d.earnings_1yr, d.stgp_debt_median),
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,
@@ -207,21 +211,7 @@ defmodule Collegevalue.Fields do
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,
         url: c.url,
-        has_major_debt: fragment("d1.pp_debt_mean > 0")
-      },
-      limit: ^limit
-
-    query = if sort == "top" do
-      order_by(query, fragment("diff DESC NULLS LAST"))
-    else
-      order_by(query, fragment("diff ASC NULLS LAST"))
-    end
-
-    query = if require_debt, do: where(query, [_c, d], d.pp_debt_mean > 0), else: query
-
-    Repo.all(query)
+        has_major_debt: d.stgp_debt_median > 0
+      }
   end
-
-
-
 end

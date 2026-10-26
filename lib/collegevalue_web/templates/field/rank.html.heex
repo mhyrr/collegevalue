@@ -16,7 +16,7 @@
       <div class="pl-8 md:pl-0 pt-5" style="float: left;">
         <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
           <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
-          Only show with major-level debt data
+          Only show majors that report debt
         </label>
       </div>
       <% end %>
@@ -51,7 +51,7 @@
       <.header label="Admissions Rate" tooltip_key="admissions" />
       <.header label="Avg SAT" tooltip_key="sat" />
       <.header label="Tuition" tooltip_key="tuition" />
-      <.header label={humanize_header(List.first(@ranks).cost_field)} tooltip="Debt for this major. Uses major-specific debt when available, otherwise falls back to the college-wide median debt." />
+      <.header label={humanize_header(List.first(@ranks).cost_field)} tooltip="The median federal student-loan debt of graduates of this major who borrowed. Parent PLUS loans are not included." />
       <.header label={humanize_header(List.first(@ranks).payoff_field)} tooltip="The earnings metric for this ranking view — may be 1-year or 2-year earnings depending on the ranking selected" />
       <.header label="Difference" tooltip_key="difference" />
     </tr>
@@ -69,7 +69,7 @@
           <%= if no_data?(rank.cost) do %>
             <span class="text-gray-400 italic">N/A</span>
           <% else %>
-            <%= cash(rank.cost) %> <span class={"px-1 rounded text-[10px] font-medium #{if rank.has_major_debt, do: "text-emerald-600", else: "text-gray-400"}"}><%= if rank.has_major_debt, do: "major", else: "college" %></span>
+            <%= cash(rank.cost) %>
           <% end %>
         </td>
 

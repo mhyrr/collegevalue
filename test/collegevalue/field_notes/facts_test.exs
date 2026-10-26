@@ -11,7 +11,7 @@ defmodule Collegevalue.FieldNotes.FactsTest do
       college = Repo.insert!(%College{name: "#{name} College #{n}", unitid: n, state: "IL"})
 
       Repo.insert!(%Discipline{name: name, credential_level: 3, earnings_1yr: earnings, earnings_1yr_count: 30,
-                               pp_debt_median: debt, college_id: college.id})
+                               stgp_debt_median: debt, college_id: college.id})
     end
   end
 
@@ -59,6 +59,21 @@ defmodule Collegevalue.FieldNotes.FactsTest do
       assert %{rank: nil, debt_to_earnings: nil} = Facts.for_field("Thin")
     end
 
+    test "debt is the students' own loan median, never Parent PLUS" do
+      for {student, parent} <- [{20_000, 90_000}, {22_000, 95_000}, {-2, 99_000}] do
+        n = System.unique_integer([:positive])
+        college = Repo.insert!(%College{name: "Loans College #{n}", unitid: n, state: "IL"})
+
+        Repo.insert!(%Discipline{name: "Loans", credential_level: 3, earnings_1yr: 50_000, earnings_1yr_count: 30,
+                                 stgp_debt_median: student, pp_debt_median: parent, pp_debt_mean: parent,
+                                 college_id: college.id})
+      end
+
+      facts = Facts.for_field("Loans")
+      assert facts.debt_median == 21_000
+      assert facts.programs_with_debt == 2
+    end
+
     test "leaves out colleges with no Department of Education ID" do
       programs("Economics", List.duplicate({45_000, 25_000}, 3))
       college = Repo.insert!(%College{name: "Aarhus University", unitid: -1, state: "unknown state"})
@@ -91,7 +106,7 @@ defmodule Collegevalue.FieldNotes.FactsTest do
                               latitude: attrs[:lat], longitude: attrs[:lng]})
 
       Repo.insert!(%Discipline{name: name, credential_level: 3, earnings_1yr: attrs[:earnings], earnings_1yr_count: attrs[:cohort] || 30,
-                               pp_debt_median: attrs[:debt], college_id: college.id})
+                               stgp_debt_median: attrs[:debt], college_id: college.id})
     end
 
     test "split earnings and debt by admission band and by public or private" do

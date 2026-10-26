@@ -77,7 +77,7 @@ defmodule Collegevalue.Calculator do
         unit_id: c.unitid,
         url: c.url,
         net_price: field(c, ^net_price_field),
-        major_debt: d.pp_debt_median,
+        major_debt: d.stgp_debt_median,
         major_earnings_1yr: d.earnings_1yr,
         major_earnings_2yr: d.earnings_2yr,
         college_earnings_10yr: c.earnings_median_after10,
@@ -99,12 +99,9 @@ defmodule Collegevalue.Calculator do
     net_price = safe_val(row.net_price)
     earnings_10yr = safe_val(row.college_earnings_10yr)
 
-    # Best available debt: major-specific > college-level
-    {debt, debt_source} = cond do
-      major_debt -> {major_debt, :major}
-      college_debt -> {college_debt, :college}
-      true -> {nil, nil}
-    end
+    # The program's own median student-loan debt. The college-wide figure
+    # describes other students, so it never stands in for a missing one.
+    {debt, debt_source} = if major_debt, do: {major_debt, :major}, else: {nil, nil}
 
     # Total 4-year cost of attendance
     total_cost = if net_price, do: net_price * 4, else: nil

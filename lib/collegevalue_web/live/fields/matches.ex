@@ -124,30 +124,14 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     |> Enum.sort_by(fn m -> m.college.admissions_rate end)
   end
 
+  # The program's median student-loan debt; missing figures (stored as -1 or
+  # -2) sort as 0.
   def sort_majors(majors, "debt_median") do
-    majors
-    |> Enum.map( fn x ->
-      case Map.get(x, :pp_debt_median) do
-        nil ->
-          Map.put(x, :pp_debt_median, 0)
-        _ ->
-          x
-      end
-    end)
-    |> Enum.sort_by(fn m  -> m.pp_debt_median end, &Decimal.cmp(&1, &2) != :lt)
+    Enum.sort_by(majors, fn m -> max(m.stgp_debt_median || 0, 0) end, :desc)
   end
 
-  def sort_majors(majors, "college_debt_median") do
-    majors
-    |> Enum.map( fn x ->
-      case Map.get(x.college, :debt_median) do
-        nil ->
-          Map.put(x.college, :debt_median, 0)
-        _ ->
-          x
-      end
-    end)
-    |> Enum.sort_by(fn m  -> m.college.debt_median end, &Decimal.cmp(&1, &2) != :lt)
+  def sort_majors(majors, "tuition") do
+    Enum.sort_by(majors, fn m -> max(m.college.tuition_in || 0, 0) end, :desc)
   end
 
   def sort_majors(majors, "sat") do

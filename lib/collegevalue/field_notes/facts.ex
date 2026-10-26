@@ -1,7 +1,9 @@
 defmodule Collegevalue.FieldNotes.Facts do
   @moduledoc """
   The figures behind a major's "Is it worth it?" answer, from bachelor's
-  programs (credential level 3) only.
+  programs (credential level 3) only. A program's debt is its median federal
+  student-loan debt (`stgp_debt_median`) among graduates who borrowed; Parent
+  PLUS loans (`pp_debt_*`) are a different borrower and never count here.
 
   Everything a model later writes about a major rests on these facts, and no
   model output may contain a number that isn't here. `hash/1` names a version
@@ -131,9 +133,9 @@ defmodule Collegevalue.FieldNotes.Facts do
       |> select([d], %{
         name: d.name,
         earnings: fragment("percentile_cont(0.5) within group (order by ?) filter (where ? > 0)", d.earnings_1yr, d.earnings_1yr),
-        debt: fragment("percentile_cont(0.5) within group (order by ?) filter (where ? > 0)", d.pp_debt_median, d.pp_debt_median),
+        debt: fragment("percentile_cont(0.5) within group (order by ?) filter (where ? > 0)", d.stgp_debt_median, d.stgp_debt_median),
         with_earnings: fragment("count(*) filter (where ? > 0)", d.earnings_1yr),
-        with_debt: fragment("count(*) filter (where ? > 0)", d.pp_debt_median)
+        with_debt: fragment("count(*) filter (where ? > 0)", d.stgp_debt_median)
       })
       |> Repo.all()
 
@@ -167,7 +169,7 @@ defmodule Collegevalue.FieldNotes.Facts do
       state: c.state,
       earnings: d.earnings_1yr,
       cohort: d.earnings_1yr_count,
-      debt: d.pp_debt_median,
+      debt: d.stgp_debt_median,
       admission_rate: c.admissions_rate,
       control: c.control,
       online: c.distanceonly,

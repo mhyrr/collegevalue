@@ -104,7 +104,7 @@ defmodule CollegevalueWeb.SeoHelpersTest do
       summary = field_summary(field)
 
       assert summary =~ "783 colleges offer Computer Science"
-      assert summary =~ "average federal debt of $33,795, from $10,346 at the lowest program to $78,433"
+      assert summary =~ "graduates who borrowed owe a median of $33,795 in federal student loans, from $10,346 at the lowest program to $78,433"
       assert summary =~ "earn $65,959 on average, from $26,017"
     end
 

@@ -85,7 +85,7 @@
             <p class="font-medium mb-1">How we calculate Return on Investment</p>
             <p class="text-emerald-700">We show two ROI measures for each college:</p>
             <ul class="text-emerald-700 mt-1 space-y-1 list-disc list-inside">
-              <li><strong>Earnings vs Debt</strong> &mdash; 10-year median earnings minus what graduates actually borrowed (major-specific debt when available, otherwise college-level median). Answers: <em>"Can I pay back my loans?"</em></li>
+              <li><strong>Earnings vs Debt</strong> &mdash; 10-year median earnings minus the median federal student loans of graduates of this major who borrowed. A major that doesn't report its debt gets no Earnings vs Debt figure. Answers: <em>"Can I pay back my loans?"</em></li>
               <li><strong>Earnings vs Cost</strong> &mdash; 10-year median earnings minus total cost of attendance (net price &times; 4 years, based on your income band). Answers: <em>"Is this a good investment of the total money spent?"</em></li>
             </ul>
             <p class="text-emerald-700 mt-1">The <strong>Debt-to-Earnings ratio</strong> shows how many years of post-grad salary it takes to pay off debt &mdash; under 1.0x is excellent, over 1.5x is a warning sign.</p>
@@ -189,17 +189,17 @@
                     <span class="group relative">
                       <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
                       <span class="hidden group-hover:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 px-3 py-2 text-xs text-white bg-gray-800 rounded-lg shadow-lg">
-                        <%= case projection.debt_source do %>
-                          <% :major -> %>Median debt for graduates of this specific major at this college.
-                          <% :college -> %>Major-specific debt not available. Showing college-wide median debt instead.
-                          <% _ -> %>No debt data available for this college.
+                        <%= if projection.debt_source == :major do %>
+                          The median federal student-loan debt of graduates of this major here who borrowed.
+                        <% else %>
+                          This major here doesn't report student-loan debt.
                         <% end %>
                       </span>
                     </span>
                   </div>
                   <%= if projection.debt_used do %>
                     <div class="text-base font-semibold text-gray-900"><%= cash(projection.debt_used) %></div>
-                    <div class="text-[10px] text-gray-400"><%= if projection.debt_source == :major, do: "major-specific", else: "college-wide" %></div>
+                    <div class="text-[10px] text-gray-400">student loans</div>
                   <% else %>
                     <div class="text-base font-semibold text-gray-400">N/A</div>
                   <% end %>
@@ -275,7 +275,7 @@
     </p>
     <ul class="list-disc list-inside space-y-2">
       <li><strong>Earnings vs. cost.</strong> Median earnings 10 years after enrolling, minus four years of net price. Net price is the cost of attendance after grants and scholarships, for your family income band.</li>
-      <li><strong>Earnings vs. debt.</strong> The same earnings, minus the median debt graduates of that major carry. When the major has no debt data, we use the college's median debt.</li>
+      <li><strong>Earnings vs. debt.</strong> The same earnings, minus the median federal student-loan debt of graduates of that major who borrowed. When the major doesn't report its debt, we leave this out rather than use another figure.</li>
     </ul>
     <p>
       The debt-to-earnings ratio divides that debt by first-year earnings.

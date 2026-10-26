@@ -31,10 +31,10 @@ defmodule CollegevalueWeb.SeoControllerTest do
       })
 
     # `fields` is a view that rolls up bachelor's (credential level 3) disciplines.
-    Repo.insert!(%Discipline{name: "Computer Science", credential_level: 3, pp_debt_mean: 33_795,
+    Repo.insert!(%Discipline{name: "Computer Science", credential_level: 3, stgp_debt_median: 33_795,
                              earnings_1yr: 65_959, college_id: with_data.id})
     Repo.insert!(%Discipline{name: "Air Force ROTC, Air Science and Operations", credential_level: 3,
-                             pp_debt_mean: -1, earnings_1yr: -1, college_id: without_data.id})
+                             stgp_debt_median: -2, earnings_1yr: -1, college_id: without_data.id})
 
     %{with_data: with_data, without_data: without_data}
   end
