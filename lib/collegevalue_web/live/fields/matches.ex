@@ -21,7 +21,12 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     #     false
     # end
 
-    {:ok, assign(socket, majors: sort_majors(majors, "earnings1yr"), stretch: sort_majors(stretch, "earnings1yr"), order: "desc", sort_by: "earnings1yr")}
+    {:ok, assign(socket, majors: sort_majors(majors, "earnings1yr"), stretch: sort_majors(stretch, "earnings1yr"), order: "desc", sort_by: "earnings1yr", income: Fields.default_income_bracket())}
+  end
+
+  # The family-income bracket for the cost columns; invalid values mean 3.
+  def handle_event("income", %{"income" => income}, socket) do
+    {:noreply, assign(socket, income: Fields.income_bracket(income))}
   end
 
 
@@ -67,7 +72,7 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
         "desc"
     end
 
-    majors = socket.assigns.majors |> sort_majors(sort) |> handle_direction(sort_order, sort)
+    majors = socket.assigns.majors |> sort_majors(sort, socket.assigns.income) |> handle_direction(sort_order, sort)
     {:noreply, socket |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort)}
 
   end
@@ -84,7 +89,7 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
         "desc"
     end
 
-    stretch = socket.assigns.stretch |> sort_majors(sort) |> handle_direction(sort_order, sort)
+    stretch = socket.assigns.stretch |> sort_majors(sort, socket.assigns.income) |> handle_direction(sort_order, sort)
     {:noreply, socket |> assign(stretch: stretch) |> assign(order: sort_order) |> assign(sort_by: sort)}
 
   end
@@ -107,6 +112,19 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     Enum.concat(data, no_data)
 
   end
+
+  # The cost and value sorts depend on the family-income bracket.
+  # Four-year net price, most expensive first; schools without one last.
+  def sort_majors(majors, "cost", income) do
+    Enum.sort_by(majors, fn m -> Fields.net_price(m.college, income) || 0 end, :desc)
+  end
+
+  # Fewest years of pay to cover the cost first; programs without a figure last.
+  def sort_majors(majors, "value", income) do
+    Enum.sort_by(majors, fn m -> CollegevalueWeb.Views.Helpers.program_value_years(m, income) || 1.0e9 end)
+  end
+
+  def sort_majors(majors, sort, _income), do: sort_majors(majors, sort)
 
   def sort_majors(majors, "major") do
     majors

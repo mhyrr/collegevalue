@@ -1,4 +1,18 @@
 
+<%= if @majors != [] or @stretch != [] do %>
+  <form id="matches-income" phx-change="income" class="pt-8">
+    <label for="matches_income" class="block text-sm leading-5 font-medium text-green">Family income</label>
+    <select id="matches_income" name="income" class="form-input pl-2 pr-8 sm:text-sm sm:leading-5 max-w-full">
+      <%= Phoenix.HTML.Form.options_for_select(income_bracket_options(), @income) %>
+    </select>
+    <p class="mt-2 max-w-3xl text-sm text-gray-600">
+      Costs for families earning <%= income_bracket_label(@income) %> a year: four years after grants, including housing and food.
+      It's the average for aided first-time full-time students, for the whole school rather than each major.
+      Families who get no aid pay closer to the sticker price.
+    </p>
+  </form>
+<% end %>
+
 <h2 class="px-0 py-8 xl:text-xl">Good Matches</h2>
 
 <table class="md:block xl:table pt-8">
@@ -10,7 +24,8 @@
       <.sort_header label="2yr Earnings" sort_key="earnings2yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 2 years after graduation for this specific major at this college" />
       <.sort_header label="Major Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} tooltip="Median federal student-loan debt of graduates of this major who borrowed" />
       <.sort_header label="Months to Repay" sort_key="months" current_sort={@sort_by} order={@order} />
-      <.sort_header label="Tuition" sort_key="tuition" current_sort={@sort_by} order={@order} tooltip="Published in-state tuition and fees per year" />
+          <.sort_header label="Years of Pay" sort_key="value" current_sort={@sort_by} order={@order} />
+      <.sort_header label="4-Year Cost" sort_key="cost" current_sort={@sort_by} order={@order} />
       <.sort_header label="10yr Earnings" sort_key="earnings10yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 10 years after enrollment for all graduates of this college (not major-specific)" />
       <.sort_header label="Admit Rate" sort_key="admissions" current_sort={@sort_by} order={@order} />
       <.sort_header label="Avg SAT" sort_key="sat" current_sort={@sort_by} order={@order} />
@@ -28,7 +43,8 @@
 
       <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.stgp_debt_median) %></td>
       <.months_cell value={program_months(major)} parent_debt={major.pp_debt_median} earnings={major.earnings_1yr} />
-      <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
+      <.years_cell value={program_value_years(major, @income)} />
+      <.cost_cell net_price={Collegevalue.Fields.net_price(major.college, @income)} sticker={major.college.yearly_cost} debt={major.stgp_debt_median} />
 
       <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
 
@@ -54,7 +70,8 @@
           <.sort_header label="2yr Earnings" sort_key="earnings2yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 2 years after graduation for this specific major at this college" />
           <.sort_header label="Major Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median federal student-loan debt of graduates of this major who borrowed" />
           <.sort_header label="Months to Repay" sort_key="months" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
-          <.sort_header label="Tuition" sort_key="tuition" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Published in-state tuition and fees per year" />
+          <.sort_header label="Years of Pay" sort_key="value" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
+          <.sort_header label="4-Year Cost" sort_key="cost" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
           <.sort_header label="10yr Earnings" sort_key="earnings10yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 10 years after enrollment for all graduates of this college (not major-specific)" />
           <.sort_header label="Admit Rate" sort_key="admissions" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
           <.sort_header label="Avg SAT" sort_key="sat" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
@@ -72,7 +89,8 @@
 
           <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.stgp_debt_median) %></td>
           <.months_cell value={program_months(major)} parent_debt={major.pp_debt_median} earnings={major.earnings_1yr} />
-          <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
+      <.years_cell value={program_value_years(major, @income)} />
+          <.cost_cell net_price={Collegevalue.Fields.net_price(major.college, @income)} sticker={major.college.yearly_cost} debt={major.stgp_debt_median} />
 
           <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
 

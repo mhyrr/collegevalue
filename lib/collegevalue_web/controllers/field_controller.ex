@@ -3,7 +3,7 @@ defmodule CollegevalueWeb.FieldController do
 
   alias Collegevalue.{Fields, Colleges}
 
-  @rank_description "Bachelor's programs ranked college by college on how many months of first-year pay it takes to clear the student-loan debt, or on earnings alone."
+  @rank_description "Bachelor's programs ranked college by college on how many months of first-year pay it takes to clear the student-loan debt, on years of pay to cover four years of net price, or on earnings alone."
 
 
 
@@ -77,33 +77,44 @@ defmodule CollegevalueWeb.FieldController do
   end
 
 
-  # The old debt-to-earnings ranking keys still work, as the repayment
-  # ranking that replaced them.
-  def rank(conn, %{"rank" => ranking, "count" => count} = params) do
-    require_debt = params["require_debt"] == "true"
-    opts = [require_debt: require_debt]
+  @rank_counts [10, 50, 100, 250, 500, 1000]
 
-    {ranking, ranks} = case ranking do
+  # The old debt-to-earnings ranking keys still work, as the repayment
+  # ranking that replaced them. `income` (1 to 5) picks the family-income
+  # bracket for the cost columns; anything else means bracket 3.
+  def rank(conn, params) do
+    require_debt = params["require_debt"] == "true"
+    income = Fields.income_bracket(params["income"])
+    count = rank_count(params["count"])
+    opts = [require_debt: require_debt, income: income]
+
+    {ranking, ranks} = case params["rank"] do
       r when r in ["slowest_repay", "bottom_debt_to_earnings"] ->
-        {"slowest_repay", Fields.get_bachelors_months_to_repay("slowest", count)}
+        {"slowest_repay", Fields.get_bachelors_months_to_repay("slowest", count, income)}
+      "best_value" ->
+        {"best_value", Fields.get_bachelors_value("best", count, income)}
+      "worst_value" ->
+        {"worst_value", Fields.get_bachelors_value("worst", count, income)}
       "top_earnings" ->
         {"top_earnings", Fields.get_bachelors_earnings("top", count, opts)}
       "bottom_earnings" ->
         {"bottom_earnings", Fields.get_bachelors_earnings("bottom", count, opts)}
       _ ->
-        {"fastest_repay", Fields.get_bachelors_months_to_repay("fastest", count)}
+        {"fastest_repay", Fields.get_bachelors_months_to_repay("fastest", count, income)}
     end
 
-    render_rank(conn, ranks, ranking, require_debt)
+    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, income: income,
+      count: count, rank_counts: @rank_counts, page_title: "College Majors Ranked by Earnings vs. Debt",
+      meta_description: @rank_description)
   end
 
-  def rank(conn, _params) do
-    render_rank(conn, Fields.get_bachelors_months_to_repay("fastest", 100), "fastest_repay", false)
+  defp rank_count(value) do
+    case Integer.parse(to_string(value)) do
+      {count, ""} when count in @rank_counts -> count
+      _ -> 100
+    end
   end
 
-  defp render_rank(conn, ranks, ranking, require_debt) do
-    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "College Majors Ranked by Earnings vs. Debt", meta_description: @rank_description)
-  end
 
 
 end

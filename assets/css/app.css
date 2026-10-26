@@ -258,6 +258,18 @@ blockquote {
         content: "Tuition: ";
     }
 
+    tbody .cost4-field:before {
+        content: "4-Year Cost: ";
+    }
+
+    tbody .months-field:before {
+        content: "Months to Repay: ";
+    }
+
+    tbody .years-field:before {
+        content: "Years of Pay: ";
+    }
+
     tbody .cred-field:before {
         content: "Credential: ";
     }
@@ -290,3 +302,13 @@ blockquote {
     }
 }
 
+
+/* The majors ranking has nine columns: tighten them on tablet widths so
+   the table fits the page. */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .rank-table th,
+    .rank-table td {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}

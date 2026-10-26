@@ -46,11 +46,57 @@ defmodule CollegevalueWeb.DataComponents do
     <td class="px-4 py-3 months-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
       <span class={@color}><%= @display %></span>
       <%= if @parent_note do %>
-        <span class="parent-plus-warning block mt-1 w-44 md:w-auto whitespace-normal text-xs leading-4 text-gray-700" title={@parent_note}>
+        <span class="parent-plus-warning block mt-1 w-32 md:w-auto whitespace-normal text-xs leading-4 text-gray-700" title={@parent_note}>
           <span class="inline-block px-2 py-0.5 mb-0.5 rounded-full bg-amber-100 text-amber-800 font-medium">Parent loans</span>
           <%= @parent_note %>
         </span>
       <% end %>
+    </td>
+    """
+  end
+
+  @gap_tip "What four years cost beyond the median federal student loan for this major: the part a family covers from savings, work, Parent PLUS or private loans."
+
+  # Four years of net price after grants for the income bracket, with the
+  # four-year sticker price and the gap federal loans leave beneath it.
+  # `net_price` and `sticker` are yearly; `debt` is the program's median
+  # student-loan debt.
+  attr :net_price, :any, default: nil
+  attr :sticker, :any, default: nil
+  attr :debt, :any, default: nil
+  def cost_cell(assigns) do
+    assigns =
+      assign(assigns,
+        cost: Collegevalue.Fields.four_year_cost(assigns.net_price),
+        sticker_total: Collegevalue.Fields.four_year_cost(assigns.sticker),
+        gap: Collegevalue.Fields.gap_after_loans(assigns.net_price, assigns.debt),
+        gap_tip: @gap_tip
+      )
+
+    ~H"""
+    <td class="px-4 py-3 cost4-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
+      <%= if @cost do %>
+        <span class="font-medium"><%= Helpers.cash(@cost) %></span>
+      <% else %>
+        <span class="text-gray-400 italic">No data</span>
+      <% end %>
+      <span class="block text-xs text-gray-500">Sticker: <%= if @sticker_total, do: Helpers.cash_compact(@sticker_total), else: "No data" %></span>
+      <%= if @gap do %>
+        <span class="gap-after-loans block w-28 md:w-auto whitespace-normal text-xs text-gray-700" title={@gap_tip}><%= Helpers.gap_text(@gap) %></span>
+      <% end %>
+    </td>
+    """
+  end
+
+  # Years of first-year pay to cover four years of net price.
+  attr :value, :any, default: nil
+  attr :bold, :boolean, default: false
+  def years_cell(assigns) do
+    assigns = assign(assigns, :display, Helpers.years(assigns.value))
+
+    ~H"""
+    <td class="px-4 py-3 years-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
+      <span class={[@display == "N/A" && "text-gray-400 italic", @display != "N/A" && @bold && "font-bold text-lg"]}><%= @display %></span>
     </td>
     """
   end
@@ -135,6 +181,10 @@ defmodule CollegevalueWeb.DataComponents do
     "earnings10yr" => "Median earnings 10 years after enrollment for all graduates of this college (not major-specific)",
     "earnings1yr" => "Median earnings 1 year after graduation for this specific major at this college",
     "earnings2yr" => "Median earnings 2 years after graduation for this specific major at this college",
+    "cost4" => "Four years at the average yearly price after grants for aided first-time full-time students in this family-income bracket. It includes housing, food and books. Schools report it for the whole school, not each major. Families who get no aid pay closer to the sticker price. Below it: what's left after the median federal student loan, which a family covers from savings, work, Parent PLUS or private loans.",
+    "value_years" => "Years of first-year pay it takes to equal the four-year cost: four years of net price divided by a year's pay. Lower is better.",
+    "cost" => "Four years at the average yearly price after grants for aided first-time full-time students in this family-income bracket. It includes housing, food and books. Schools report it for the whole school, not each major. Families who get no aid pay closer to the sticker price. Below it: what's left after the median federal student loan, which a family covers from savings, work, Parent PLUS or private loans.",
+    "value" => "Years of first-year pay it takes to equal the four-year cost: four years of net price divided by a year's pay. Lower is better.",
     "months" => "Months of first-year pay it takes to equal the debt: median student-loan debt divided by monthly pay. It uses gross pay, before taxes and bills, and counts only graduates who borrowed. Lower is better.",
     "difference" => "Earnings minus debt — a simple ROI measure. Higher is better. Green means graduates earn more than they borrowed.",
     "college_debt_median" => "Published in-state tuition and fees per year",

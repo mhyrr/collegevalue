@@ -7,6 +7,8 @@ defmodule CollegevalueWeb.Views.Helpers do
   @field_rank_views [
     {"Fastest to Repay the Debt", "fastest_repay"},
     {"Slowest to Repay the Debt", "slowest_repay"},
+    {"Best Value for the Cost", "best_value"},
+    {"Worst Value for the Cost", "worst_value"},
     {"Top College/Majors by Earnings Only", "top_earnings"},
     {"Bottom College/Majors by Earnings Only", "bottom_earnings"}
   ]
@@ -114,6 +116,13 @@ defmodule CollegevalueWeb.Views.Helpers do
     do: Collegevalue.Fields.months_to_repay(debt, earnings)
 
   @doc """
+  Years of first-year pay to cover four years of the program's school net
+  price for the income bracket (a `Discipline` with its college), or nil.
+  """
+  def program_value_years(%{college: college, earnings_1yr: earnings}, income),
+    do: Collegevalue.Fields.value_years(Collegevalue.Fields.net_price(college, income), earnings)
+
+  @doc """
   Months to repay for display: one decimal under 10 months ("1.5 months"),
   whole months from 10 up ("36 months"), "N/A" with no figure.
   """
@@ -132,6 +141,55 @@ defmodule CollegevalueWeb.Views.Helpers do
   def months(_value), do: "N/A"
 
   defdelegate parent_plus_warning_months, to: Collegevalue.Fields
+
+  @income_bracket_labels %{
+    1 => "$0–30,000",
+    2 => "$30,000–48,000",
+    3 => "$48,000–75,000",
+    4 => "$75,000–110,000",
+    5 => "$110,000 or more"
+  }
+
+  @doc "Family-income brackets for a select: `{label, bracket}`."
+  def income_bracket_options do
+    for bracket <- Collegevalue.Fields.income_brackets(), do: {@income_bracket_labels[bracket], bracket}
+  end
+
+  @doc ~S|The bracket's income range, as in "for families earning $48,000–75,000".|
+  def income_bracket_label(bracket), do: @income_bracket_labels[Collegevalue.Fields.income_bracket(bracket)]
+
+  @doc """
+  The heading for a /fields/rank view: what the ranking measures.
+  """
+  def field_rank_heading("slowest_repay"), do: "Slowest to repay: most months of first-year pay to clear the debt"
+  def field_rank_heading("best_value"), do: "Best value: fewest years of pay to cover the cost"
+  def field_rank_heading("worst_value"), do: "Worst value: most years of pay to cover the cost"
+  def field_rank_heading("top_earnings"), do: "Highest first-year pay"
+  def field_rank_heading("bottom_earnings"), do: "Lowest first-year pay"
+  def field_rank_heading(_ranking), do: "Fastest to repay: fewest months of first-year pay to clear the debt"
+
+  @doc "Whether a /fields/rank view needs the note about majors that lead to graduate school."
+  def grad_school_note?(ranking), do: ranking in ["slowest_repay", "worst_value"]
+
+  @doc """
+  Years of pay for display, one decimal ("1.8 years"); "N/A" with no figure.
+  """
+  def years(value) when is_number(value) and value > 0 do
+    rounded = Float.round(value * 1.0, 1)
+
+    cond do
+      rounded < 0.1 -> "under 0.1 years"
+      rounded == 1.0 -> "1.0 year"
+      true -> "#{:erlang.float_to_binary(rounded, decimals: 1)} years"
+    end
+  end
+
+  def years(_value), do: "N/A"
+
+  @doc ~S|The gap after federal loans for display: "$93k beyond federal loans".|
+  def gap_text(0), do: "$0 beyond federal loans"
+  def gap_text(gap) when is_number(gap) and gap > 0, do: "#{cash_compact(gap)} beyond federal loans"
+  def gap_text(_gap), do: nil
 
   @doc """
   The Parent PLUS warning for a program, as a sentence, or nil when its

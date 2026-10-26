@@ -8,6 +8,12 @@ defmodule Collegevalue.Fields do
   alias Collegevalue.Fields.{Field, Rank}
   alias Collegevalue.Repo
 
+  # College Scorecard reports net price (NPT4) in five family-income brackets:
+  # 1: $0-30k, 2: $30-48k, 3: $48-75k, 4: $75-110k, 5: $110k+.
+  @net_price_columns %{1 => :netprice_1, 2 => :netprice_2, 3 => :netprice_3, 4 => :netprice_4, 5 => :netprice_5}
+  @default_income_bracket 3
+  @years_of_study 4
+
   def list_fields do
 
     Repo.all(Field)
@@ -153,13 +159,14 @@ defmodule Collegevalue.Fields do
   Bachelor's programs ranked by first-year earnings alone, highest first for
   `"top"`. A program's debt is its own median federal student-loan debt
   (`stgp_debt_median`), never the college's: a program without one shows no
-  debt. `require_debt: true` keeps only programs that report it.
+  debt. `require_debt: true` keeps only programs that report it; `income:`
+  picks the family-income bracket for the cost columns.
   """
   def get_bachelors_earnings(sort \\ "top", limit \\ 100, opts \\ []) do
     direction = if sort == "top", do: :desc, else: :asc
 
     query =
-      bachelors_ranks()
+      bachelors_ranks(Keyword.get(opts, :income, @default_income_bracket))
       |> order_by([_c, d], [{^direction, d.earnings_1yr}, {:asc, d.id}])
       |> limit(^limit)
 
@@ -176,14 +183,35 @@ defmodule Collegevalue.Fields do
   federal student-loan debt over one month of its median first-year
   earnings. `"fastest"` puts the fewest months first, `"slowest"` the most.
   Only programs that report both figures are ranked: a missing debt is never
-  filled in with the college's.
+  filled in with the college's. `income` picks the family-income bracket for
+  the cost columns.
   """
-  def get_bachelors_months_to_repay(sort \\ "fastest", limit \\ 100) do
+  def get_bachelors_months_to_repay(sort \\ "fastest", limit \\ 100, income \\ @default_income_bracket) do
     direction = if sort == "slowest", do: :desc, else: :asc
 
-    bachelors_ranks()
+    bachelors_ranks(income)
     |> where([_c, d], d.stgp_debt_median > 0)
     |> order_by([_c, d], [{^direction, fragment("?::float * 12 / ?", d.stgp_debt_median, d.earnings_1yr)}, {:asc, d.id}])
+    |> limit(^limit)
+    |> Repo.all()
+  end
+
+  @doc """
+  Bachelor's programs ranked by value: years of first-year pay it takes to
+  equal four years of the school's net price for the family-income bracket.
+  `"best"` puts the fewest years first, `"worst"` the most. Only programs
+  whose school reports a net price for the bracket are ranked.
+  """
+  def get_bachelors_value(sort \\ "best", limit \\ 100, income \\ @default_income_bracket) do
+    direction = if sort == "worst", do: :desc, else: :asc
+    column = net_price_column(income)
+
+    bachelors_ranks(income)
+    |> where([c, _d], field(c, ^column) > 0)
+    |> order_by([c, d], [
+      {^direction, fragment("?::float * ? / ?", field(c, ^column), type(^@years_of_study, :integer), d.earnings_1yr)},
+      {:asc, d.id}
+    ])
     |> limit(^limit)
     |> Repo.all()
   end
@@ -199,6 +227,70 @@ defmodule Collegevalue.Fields do
       do: debt * 12 / earnings_1yr
 
   def months_to_repay(_debt, _earnings_1yr), do: nil
+
+  @doc "The family-income brackets, 1 to 5."
+  def income_brackets, do: @net_price_columns |> Map.keys() |> Enum.sort()
+
+  def default_income_bracket, do: @default_income_bracket
+
+  @doc "Years of study the cost figures assume."
+  def years_of_study, do: @years_of_study
+
+  @doc """
+  The income bracket for a URL value ("1" to "5"); anything else falls back
+  to the default bracket, 3.
+  """
+  def income_bracket(bracket) when is_map_key(@net_price_columns, bracket), do: bracket
+
+  def income_bracket(value) when is_binary(value) do
+    case Integer.parse(value) do
+      {bracket, ""} -> income_bracket(bracket)
+      _ -> @default_income_bracket
+    end
+  end
+
+  def income_bracket(_value), do: @default_income_bracket
+
+  defp net_price_column(bracket), do: Map.fetch!(@net_price_columns, income_bracket(bracket))
+
+  @doc """
+  A college's yearly net price after grants for the income bracket, or nil
+  when it isn't reported (stored as -2, -1 or 0).
+  """
+  def net_price(%College{} = college, bracket) do
+    case Map.get(college, net_price_column(bracket)) do
+      price when is_number(price) and price > 0 -> price
+      _ -> nil
+    end
+  end
+
+  @doc "Four years of a yearly cost, or nil unless the cost is positive."
+  def four_year_cost(yearly) when is_number(yearly) and yearly > 0, do: yearly * @years_of_study
+  def four_year_cost(_yearly), do: nil
+
+  @doc """
+  What four years of net price leaves after the program's median federal
+  student-loan debt: what a family covers from savings, work, Parent PLUS or
+  private loans. Never below 0; nil unless both figures are positive.
+  """
+  def gap_after_loans(yearly_net_price, debt) when is_number(debt) and debt > 0 do
+    case four_year_cost(yearly_net_price) do
+      nil -> nil
+      cost -> max(0, cost - debt)
+    end
+  end
+
+  def gap_after_loans(_yearly_net_price, _debt), do: nil
+
+  @doc """
+  Years of first-year pay it takes to equal four years of net price, or nil
+  unless both are positive. `get_bachelors_value/3` sorts on the same figure.
+  """
+  def value_years(yearly_net_price, earnings_1yr)
+      when is_number(yearly_net_price) and is_number(earnings_1yr) and yearly_net_price > 0 and earnings_1yr > 0,
+      do: yearly_net_price * @years_of_study / earnings_1yr
+
+  def value_years(_yearly_net_price, _earnings_1yr), do: nil
 
   # Parent PLUS medians above this many months of first-year pay get a
   # warning beside the student figure.
@@ -220,10 +312,12 @@ defmodule Collegevalue.Fields do
     end
   end
 
-  # Every bachelor's program that reports first-year earnings, as a `Rank`.
-  # Missing Scorecard figures are stored as -1 or -2, so a debt that isn't
-  # positive is nil here.
-  defp bachelors_ranks do
+  # Every bachelor's program that reports first-year earnings, as a `Rank`,
+  # with its school's net price for the income bracket. Missing Scorecard
+  # figures are stored as -1 or -2, so a figure that isn't positive is nil.
+  defp bachelors_ranks(income) do
+    column = net_price_column(income)
+
     from c in College,
       join: d in Discipline,
       on: c.id == d.college_id,
@@ -246,7 +340,11 @@ defmodule Collegevalue.Fields do
         sat_avg: c.sat_avg,
         url: c.url,
         has_major_debt: d.stgp_debt_median > 0,
-        parent_debt: fragment("NULLIF(GREATEST(?, 0), 0)", d.pp_debt_median)
+        parent_debt: fragment("NULLIF(GREATEST(?, 0), 0)", d.pp_debt_median),
+        net_price: fragment("NULLIF(GREATEST(?, 0), 0)", field(c, ^column)),
+        sticker: fragment("NULLIF(GREATEST(?, 0), 0)", c.yearly_cost),
+        value_years:
+          fragment("NULLIF(GREATEST(?, 0), 0)::float * ? / ?", field(c, ^column), type(^@years_of_study, :integer), d.earnings_1yr)
       }
   end
 end

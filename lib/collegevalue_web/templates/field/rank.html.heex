@@ -1,10 +1,16 @@
 <h1 class="text-darkgreen">College Majors Ranked by Earnings vs. Debt</h1>
-<h4 class="text-green">How many months of first-year pay it takes to clear the debt, for bachelor's degrees</h4>
+<h4 class="text-green"><%= field_rank_heading(@ranking) %>, for bachelor's degrees</h4>
+<p class="text-green">Costs for families earning <%= income_bracket_label(@income) %> a year</p>
 
 <section class="mt-4 max-w-3xl space-y-2 text-base leading-6 text-gray-900">
   <p>
     Months to repay divides a program's median student-loan debt by one month of its graduates' median pay in their first year.
     At 6 months, the typical borrower owes about half a year's pay. Lower is better.
+  </p>
+  <p>
+    The four-year cost is what a year costs after grants, times four. It includes housing, food and books.
+    Years of pay divides that cost by a year of first-year pay, so 2.0 years means four years of school cost two years of pay.
+    The gap is what's left after the median federal student loan. A family covers it from savings, work, Parent PLUS or private loans.
   </p>
   <p class="text-sm text-gray-600">
     This uses gross pay, before taxes, rent and other bills, so paying the loans off really takes longer.
@@ -12,33 +18,41 @@
     Programs that don't report their debt aren't ranked.
     When parents who took Parent PLUS loans owed more than <%= parent_plus_warning_months() %> months of their child's first-year pay, a "Parent loans" note shows that figure on its own.
   </p>
+  <p class="text-sm text-gray-600">
+    The cost is the average for aided first-time full-time students in your family's income bracket.
+    Schools report it for the whole school, not for each major, and it assumes you finish in four years.
+    Families who get no aid pay closer to the sticker price.
+  </p>
+  <%= if grad_school_note?(@ranking) do %>
+    <p class="grad-school-note text-sm text-gray-900 bg-amber-50 border-l-4 border-amber-400 px-3 py-2">
+      Majors that lead to graduate school, like communication disorders or pre-physical therapy, show low first-year pay because many graduates are still in school.
+    </p>
+  <% end %>
 </section>
 
-<section class="flex md:block w-full pb-8 pt-8">
-  <div class="flex-grow md:pl-0 " style="float: left;">
-
-      <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
-      <div class="md:pl-0" style="float: left;">
-        <label for="price" class="block flex-grow text-sm leading-5 font-medium text-green">Ranking</label>
-          <%= select f, :rank, field_rank_views(), selected: @ranking, onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 flex-grow max-w-full"%>
+<section class="w-full pb-8 pt-8">
+  <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get, class: "flex flex-wrap items-end gap-x-8 gap-y-4"], fn f -> %>
+    <div class="max-w-full">
+      <label for="rank_select" class="block text-sm leading-5 font-medium text-green">Ranking</label>
+      <%= select f, :rank, field_rank_views(), id: "rank_select", value: @ranking, onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 max-w-full" %>
+    </div>
+    <div class="max-w-full">
+      <label for="income_select" class="block text-sm leading-5 font-medium text-green">Family income</label>
+      <%= select f, :income, income_bracket_options(), id: "income_select", value: @income, onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 max-w-full" %>
+    </div>
+    <div>
+      <label for="count_select" class="block text-sm leading-5 font-medium text-green">Count</label>
+      <%= select f, :count, @rank_counts, id: "count_select", value: @count, onchange: "this.form.submit()", class: "form-input pl-6 pr-8 sm:text-sm sm:leading-5" %>
+    </div>
+    <%= if @ranking in ["top_earnings", "bottom_earnings"] do %>
+      <div class="pb-1">
+        <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
+          <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
+          Only show majors that report debt
+        </label>
       </div>
-      <div class="pl-8 md:pl-0"  style="float: left;">
-        <label for="price" class="block text-sm leading-5 font-medium text-green">Count</label>
-          <%= select f, :count, [10, 50, 100, 250, 500, 1000], selected: 100, onchange: "this.form.submit()", class: "form-input pl-6 pr-8 sm:text-sm sm:leading-5"%>
-      </div>
-      <%= if @ranking in ["top_earnings", "bottom_earnings"] do %>
-        <div class="pl-8 md:pl-0 pt-5" style="float: left;">
-          <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
-            <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
-            Only show majors that report debt
-          </label>
-        </div>
-      <% end %>
-      <% end %>
-
-
-  </div>
-
+    <% end %>
+  <% end %>
 </section>
 
 <section>
@@ -58,17 +72,18 @@
   %>
 </section>
 
-<table  class="md:block lg:table pt-8 table-auto">
+<table class="rank-table md:block lg:table pt-8 table-auto">
   <thead class="md:absolute md:-top-9999 md:-left-9999">
     <tr>
       <.header label="College Name" tooltip_key="name" />
       <.header label="Field" tooltip_key="field" />
       <.header label="Admissions Rate" tooltip_key="admissions" />
       <.header label="Avg SAT" tooltip_key="sat" />
-      <.header label="Tuition" tooltip_key="tuition" />
+      <.header label="4-Year Cost" tooltip_key="cost4" />
       <.header label="Debt" tooltip="The median federal student-loan debt of graduates of this major who borrowed. Parent PLUS loans are not included." />
       <.header label={humanize_header("Field Earnings")} tooltip="Median earnings 1 year after graduation for this major at this college" />
       <.header label="Months to Repay" tooltip_key="months" />
+      <.header label="Years of Pay" tooltip_key="value_years" />
     </tr>
   </thead>
 
@@ -79,8 +94,8 @@
         <td class="px-4 py-3 field-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b text-green"><%= link field_short_name(rank.field_name), to: field_page_path(rank.field_name)%> </td>
         <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
         <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
-        <td class="px-4 py-3 tuition md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= cash(rank.tuition_in)%></td>
-        <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
+        <.cost_cell net_price={rank.net_price} sticker={rank.sticker} debt={rank.cost} />
+        <td class="px-4 py-3 cost-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
           <%= if no_data?(rank.cost) do %>
             <span class="text-gray-400 italic">N/A</span>
           <% else %>
@@ -91,6 +106,7 @@
         <td class={"px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_earnings" || @ranking == "bottom_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.payoff) %></td>
 
         <.months_cell value={rank.months} parent_debt={rank.parent_debt} earnings={rank.payoff} />
+        <.years_cell value={rank.value_years} bold={@ranking in ["best_value", "worst_value"]} />
 
       </tr>
     <% end %>

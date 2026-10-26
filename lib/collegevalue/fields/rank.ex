@@ -22,6 +22,9 @@ defmodule Collegevalue.Fields.Rank do
     field :url, :string
     field :has_major_debt, :boolean
     field :parent_debt, :integer
+    field :net_price, :integer
+    field :sticker, :integer
+    field :value_years, :float
 
     timestamps()
   end
