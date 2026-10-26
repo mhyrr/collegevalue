@@ -5,8 +5,8 @@ defmodule CollegevalueWeb.Views.Helpers do
   alias Collegevalue.Colleges.College
 
   @field_rank_views [
-    {"Top College/Majors By Debt to Earnings Ratio", "top_debt_to_earnings"},
-    {"Bottom College/Majors By Debt to Earnigns Ratio", "bottom_debt_to_earnings"},
+    {"Fastest to Repay: Fewest Months of Pay to Clear the Debt", "fastest_repay"},
+    {"Slowest to Repay: Most Months of Pay to Clear the Debt", "slowest_repay"},
     {"Top College/Majors by Earnings Only", "top_earnings"},
     {"Bottom College/Majors by Earnings Only", "bottom_earnings"}
   ]
@@ -105,6 +105,31 @@ defmodule CollegevalueWeb.Views.Helpers do
   def no_data?("No data"), do: true
   def no_data?(%Decimal{} = value), do: not Decimal.gt?(value, 0)
   def no_data?(_), do: false
+
+  @doc """
+  Months to repay for a program (a `Discipline`): its median student-loan
+  debt over one month of its first-year earnings, or nil.
+  """
+  def program_months(%{stgp_debt_median: debt, earnings_1yr: earnings}),
+    do: Collegevalue.Fields.months_to_repay(debt, earnings)
+
+  @doc """
+  Months to repay for display: one decimal under 10 months ("1.5 months"),
+  whole months from 10 up ("36 months"), "N/A" with no figure.
+  """
+  def months(nil), do: "N/A"
+
+  def months(value) when is_number(value) and value > 0 do
+    rounded = Float.round(value * 1.0, 1)
+
+    cond do
+      rounded >= 10 -> "#{round(value)} months"
+      rounded < 0.1 -> "under 0.1 months"
+      true -> "#{:erlang.float_to_binary(rounded, decimals: 1)} months"
+    end
+  end
+
+  def months(_value), do: "N/A"
 
   def cash(val) when is_nil(val), do: "No data"
 
@@ -252,12 +277,6 @@ defmodule CollegevalueWeb.Views.Helpers do
   def field_chart_data(ranks) do
 
     chart_data = []
-
-    diffs =
-      ranks
-      |> Enum.map(fn rank -> [chart_name(rank), rank.diff || 0] end)
-      |> Enum.reverse
-    chart_data = chart_data ++ [ %{name: "Difference", data: diffs}]
 
     debt = ranks
     |> Enum.map(fn rank -> [chart_name(rank), -(rank.cost || 0)] end)

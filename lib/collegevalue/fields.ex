@@ -172,20 +172,33 @@ defmodule Collegevalue.Fields do
   end
 
   @doc """
-  Bachelor's programs ranked by first-year earnings minus the program's
-  median federal student-loan debt, highest first for `"top"`. Only programs
-  that report both figures are ranked: a missing debt is never filled in
-  with the college's.
+  Bachelor's programs ranked by months to repay: the program's median
+  federal student-loan debt over one month of its median first-year
+  earnings. `"fastest"` puts the fewest months first, `"slowest"` the most.
+  Only programs that report both figures are ranked: a missing debt is never
+  filled in with the college's.
   """
-  def get_bachelors_debt_earnings(sort \\ "top", limit \\ 100, _opts \\ []) do
-    direction = if sort == "top", do: :desc, else: :asc
+  def get_bachelors_months_to_repay(sort \\ "fastest", limit \\ 100) do
+    direction = if sort == "slowest", do: :desc, else: :asc
 
     bachelors_ranks()
     |> where([_c, d], d.stgp_debt_median > 0)
-    |> order_by([_c, d], [{^direction, d.earnings_1yr - d.stgp_debt_median}, {:asc, d.id}])
+    |> order_by([_c, d], [{^direction, fragment("?::float * 12 / ?", d.stgp_debt_median, d.earnings_1yr)}, {:asc, d.id}])
     |> limit(^limit)
     |> Repo.all()
   end
+
+  @doc """
+  Months of first-year pay it takes to equal the debt:
+  `debt / (earnings_1yr / 12)`. nil unless both are positive. Gross pay, so
+  it is a floor on how long repayment really takes. The SQL in
+  `bachelors_ranks/0` computes the same figure so rankings can sort on it.
+  """
+  def months_to_repay(debt, earnings_1yr)
+      when is_number(debt) and is_number(earnings_1yr) and debt > 0 and earnings_1yr > 0,
+      do: debt * 12 / earnings_1yr
+
+  def months_to_repay(_debt, _earnings_1yr), do: nil
 
   # Every bachelor's program that reports first-year earnings, as a `Rank`.
   # Missing Scorecard figures are stored as -1 or -2, so a debt that isn't
@@ -203,6 +216,7 @@ defmodule Collegevalue.Fields do
         payoff: d.earnings_1yr,
         payoff_field: "Field Earnings",
         diff: fragment("? - NULLIF(GREATEST(?, 0), 0)", d.earnings_1yr, d.stgp_debt_median),
+        months: fragment("NULLIF(GREATEST(?, 0), 0)::float * 12 / ?", d.stgp_debt_median, d.earnings_1yr),
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,

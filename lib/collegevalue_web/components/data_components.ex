@@ -27,6 +27,28 @@ defmodule CollegevalueWeb.DataComponents do
     """
   end
 
+  # Months of first-year pay to clear the debt. Lower is better: green within
+  # a year of pay, amber within two, red past that.
+  attr :value, :any, default: nil
+  def months_cell(assigns) do
+    assigns =
+      assign(assigns,
+        display: Helpers.months(assigns.value),
+        color: months_color(assigns.value)
+      )
+
+    ~H"""
+    <td class={["px-4 py-3 months-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b", @color]}>
+      <%= @display %>
+    </td>
+    """
+  end
+
+  defp months_color(months) when is_number(months) and months > 0 and months <= 12, do: "font-bold text-lg text-emerald-600"
+  defp months_color(months) when is_number(months) and months > 0 and months <= 24, do: "font-bold text-lg text-amber-600"
+  defp months_color(months) when is_number(months) and months > 0, do: "font-bold text-lg text-red-500"
+  defp months_color(_months), do: "text-gray-400 italic"
+
   attr :value, :any, default: nil
   def no_data_cell(assigns) do
     assigns = assign(assigns, :no_data?, Helpers.no_data?(assigns.value))
@@ -102,6 +124,7 @@ defmodule CollegevalueWeb.DataComponents do
     "earnings10yr" => "Median earnings 10 years after enrollment for all graduates of this college (not major-specific)",
     "earnings1yr" => "Median earnings 1 year after graduation for this specific major at this college",
     "earnings2yr" => "Median earnings 2 years after graduation for this specific major at this college",
+    "months" => "Months of first-year pay it takes to equal the debt: median student-loan debt divided by monthly pay. It uses gross pay, before taxes and bills, and counts only graduates who borrowed. Lower is better.",
     "difference" => "Earnings minus debt — a simple ROI measure. Higher is better. Green means graduates earn more than they borrowed.",
     "college_debt_median" => "Published in-state tuition and fees per year",
     "completion" => "Percentage of first-time, full-time students who graduate within 8 years (200% of normal time)",

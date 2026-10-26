@@ -3,7 +3,7 @@ defmodule CollegevalueWeb.FieldController do
 
   alias Collegevalue.{Fields, Colleges}
 
-  @rank_description "Bachelor's programs ranked college by college on 1-year earnings against debt, or on earnings alone, top and bottom."
+  @rank_description "Bachelor's programs ranked college by college on how many months of first-year pay it takes to clear the student-loan debt, or on earnings alone."
 
 
 
@@ -77,26 +77,32 @@ defmodule CollegevalueWeb.FieldController do
   end
 
 
+  # The old debt-to-earnings ranking keys still work, as the repayment
+  # ranking that replaced them.
   def rank(conn, %{"rank" => ranking, "count" => count} = params) do
     require_debt = params["require_debt"] == "true"
     opts = [require_debt: require_debt]
 
-    ranks = case ranking do
-      "top_debt_to_earnings" ->
-        Fields.get_bachelors_debt_earnings("top", count, opts)
-      "bottom_debt_to_earnings" ->
-        Fields.get_bachelors_debt_earnings("bottom", count, opts)
+    {ranking, ranks} = case ranking do
+      r when r in ["slowest_repay", "bottom_debt_to_earnings"] ->
+        {"slowest_repay", Fields.get_bachelors_months_to_repay("slowest", count)}
       "top_earnings" ->
-        Fields.get_bachelors_earnings("top", count, opts)
+        {"top_earnings", Fields.get_bachelors_earnings("top", count, opts)}
       "bottom_earnings" ->
-        Fields.get_bachelors_earnings("bottom", count, opts)
+        {"bottom_earnings", Fields.get_bachelors_earnings("bottom", count, opts)}
+      _ ->
+        {"fastest_repay", Fields.get_bachelors_months_to_repay("fastest", count)}
     end
 
-    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "College Majors Ranked by Earnings vs. Debt", meta_description: @rank_description)
+    render_rank(conn, ranks, ranking, require_debt)
   end
 
   def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Fields.get_bachelors_debt_earnings("top", 100), ranking: "top_debt_to_earnings", require_debt: false, page_title: "College Majors Ranked by Earnings vs. Debt", meta_description: @rank_description)
+    render_rank(conn, Fields.get_bachelors_months_to_repay("fastest", 100), "fastest_repay", false)
+  end
+
+  defp render_rank(conn, ranks, ranking, require_debt) do
+    render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, page_title: "College Majors Ranked by Earnings vs. Debt", meta_description: @rank_description)
   end
 
 

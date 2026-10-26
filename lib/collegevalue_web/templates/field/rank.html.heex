@@ -1,5 +1,17 @@
 <h1 class="text-darkgreen">College Majors Ranked by Earnings vs. Debt</h1>
-<h4 class="text-green">As measured by comparing 1-year earnings vs. debt for Bachelor's Degrees</h4>
+<h4 class="text-green">How many months of first-year pay it takes to clear the debt, for bachelor's degrees</h4>
+
+<section class="mt-4 max-w-3xl space-y-2 text-base leading-6 text-gray-900">
+  <p>
+    Months to repay divides a program's median student-loan debt by one month of its graduates' median pay in their first year.
+    At 6 months, the typical borrower owes about half a year's pay. Lower is better.
+  </p>
+  <p class="text-sm text-gray-600">
+    This uses gross pay, before taxes, rent and other bills, so paying the loans off really takes longer.
+    It counts only graduates who borrowed federal student loans, and leaves out loans their parents took.
+    Programs that don't report their debt aren't ranked.
+  </p>
+</section>
 
 <section class="flex md:block w-full pb-8 pt-8">
   <div class="flex-grow md:pl-0 " style="float: left;">
@@ -7,18 +19,20 @@
       <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
       <div class="md:pl-0" style="float: left;">
         <label for="price" class="block flex-grow text-sm leading-5 font-medium text-green">Ranking</label>
-          <%= select f, :rank, field_rank_views(), onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 flex-grow"%>
+          <%= select f, :rank, field_rank_views(), selected: @ranking, onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 flex-grow"%>
       </div>
       <div class="pl-8 md:pl-0"  style="float: left;">
         <label for="price" class="block text-sm leading-5 font-medium text-green">Count</label>
           <%= select f, :count, [10, 50, 100, 250, 500, 1000], selected: 100, onchange: "this.form.submit()", class: "form-input pl-6 pr-8 sm:text-sm sm:leading-5"%>
       </div>
-      <div class="pl-8 md:pl-0 pt-5" style="float: left;">
-        <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
-          <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
-          Only show majors that report debt
-        </label>
-      </div>
+      <%= if @ranking in ["top_earnings", "bottom_earnings"] do %>
+        <div class="pl-8 md:pl-0 pt-5" style="float: left;">
+          <label class="inline-flex items-center text-sm leading-5 font-medium text-green cursor-pointer">
+            <%= checkbox f, :require_debt, value: @require_debt, onchange: "this.form.submit()", class: "form-checkbox mr-2" %>
+            Only show majors that report debt
+          </label>
+        </div>
+      <% end %>
       <% end %>
 
 
@@ -51,9 +65,9 @@
       <.header label="Admissions Rate" tooltip_key="admissions" />
       <.header label="Avg SAT" tooltip_key="sat" />
       <.header label="Tuition" tooltip_key="tuition" />
-      <.header label={humanize_header(List.first(@ranks).cost_field)} tooltip="The median federal student-loan debt of graduates of this major who borrowed. Parent PLUS loans are not included." />
-      <.header label={humanize_header(List.first(@ranks).payoff_field)} tooltip="The earnings metric for this ranking view — may be 1-year or 2-year earnings depending on the ranking selected" />
-      <.header label="Difference" tooltip_key="difference" />
+      <.header label="Debt" tooltip="The median federal student-loan debt of graduates of this major who borrowed. Parent PLUS loans are not included." />
+      <.header label={humanize_header("Field Earnings")} tooltip="Median earnings 1 year after graduation for this major at this college" />
+      <.header label="Months to Repay" tooltip_key="months" />
     </tr>
   </thead>
 
@@ -75,7 +89,7 @@
 
         <td class={"px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_earnings" || @ranking == "bottom_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.payoff) %></td>
 
-        <.diff_cell value={rank.diff} />
+        <.months_cell value={rank.months} />
 
       </tr>
     <% end %>

@@ -10,6 +10,7 @@ defmodule Collegevalue.Fields.Rank do
     field :payoff, :integer
     field :payoff_field, :integer
     field :diff, :integer
+    field :months, :float
     field :name, :string
     field :college_name, :string
     field :unit_id, :integer

@@ -33,17 +33,40 @@ defmodule Collegevalue.ProgramDebtTest do
     :ok
   end
 
-  describe "Fields.get_bachelors_debt_earnings/3" do
-    test "ranks by earnings minus the student-loan median and leaves out programs without one" do
-      ranks = Fields.get_bachelors_debt_earnings("top", 10)
+  describe "Fields.get_bachelors_months_to_repay/2" do
+    test "ranks by months of first-year pay to clear the student-loan median, fewest first" do
+      ranks = Fields.get_bachelors_months_to_repay("fastest", 10)
 
-      assert Enum.map(ranks, &{&1.college_name, &1.cost, &1.diff}) ==
-               [{"Cheap State", 10_000, 40_000}, {"Student Loans U", 30_000, 30_000}]
+      # 10,000 / (50,000 / 12) = 2.4 months; 30,000 / (60,000 / 12) = 6 months.
+      assert Enum.map(ranks, &{&1.college_name, &1.cost, &1.payoff}) ==
+               [{"Cheap State", 10_000, 50_000}, {"Student Loans U", 30_000, 60_000}]
+
+      assert_in_delta hd(ranks).months, 2.4, 1.0e-9
+      assert_in_delta List.last(ranks).months, 6.0, 1.0e-9
     end
 
-    test "bottom reverses the order" do
+    test "leaves out programs without a student-loan figure, whatever their Parent PLUS or college debt" do
+      names = Fields.get_bachelors_months_to_repay("fastest", 10) |> Enum.map(& &1.college_name)
+      refute "Parent Plus College" in names
+    end
+
+    test "slowest reverses the order" do
       assert ["Student Loans U", "Cheap State"] ==
-               Fields.get_bachelors_debt_earnings("bottom", 10) |> Enum.map(& &1.college_name)
+               Fields.get_bachelors_months_to_repay("slowest", 10) |> Enum.map(& &1.college_name)
+    end
+
+    test "the SQL figure matches Fields.months_to_repay/2" do
+      for rank <- Fields.get_bachelors_months_to_repay("fastest", 10),
+          do: assert_in_delta(rank.months, Fields.months_to_repay(rank.cost, rank.payoff), 1.0e-9)
+    end
+  end
+
+  describe "Fields.months_to_repay/2" do
+    test "is debt over one month of first-year pay, and nil without both figures" do
+      assert Fields.months_to_repay(30_000, 60_000) == 6.0
+      assert Fields.months_to_repay(-2, 60_000) == nil
+      assert Fields.months_to_repay(30_000, -2) == nil
+      assert Fields.months_to_repay(nil, 60_000) == nil
     end
   end
 
@@ -51,7 +74,7 @@ defmodule Collegevalue.ProgramDebtTest do
     test "shows no debt, not the college's, for a program without a student-loan figure" do
       [first | _] = ranks = Fields.get_bachelors_earnings("top", 10)
 
-      assert %{college_name: "Parent Plus College", cost: nil, diff: nil} = first
+      assert %{college_name: "Parent Plus College", cost: nil, diff: nil, months: nil} = first
       assert length(ranks) == 3
       assert Enum.find(ranks, &(&1.college_name == "Cheap State")).cost == 10_000
     end

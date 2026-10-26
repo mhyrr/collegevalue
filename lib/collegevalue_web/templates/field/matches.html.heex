@@ -9,6 +9,7 @@
       <.sort_header label="1yr Earnings" sort_key="earnings1yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 1 year after graduation for this specific major at this college" />
       <.sort_header label="2yr Earnings" sort_key="earnings2yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 2 years after graduation for this specific major at this college" />
       <.sort_header label="Major Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} tooltip="Median federal student-loan debt of graduates of this major who borrowed" />
+      <.sort_header label="Months to Repay" sort_key="months" current_sort={@sort_by} order={@order} />
       <.sort_header label="Tuition" sort_key="tuition" current_sort={@sort_by} order={@order} tooltip="Published in-state tuition and fees per year" />
       <.sort_header label="10yr Earnings" sort_key="earnings10yr" current_sort={@sort_by} order={@order} tooltip="Median earnings 10 years after enrollment for all graduates of this college (not major-specific)" />
       <.sort_header label="Admit Rate" sort_key="admissions" current_sort={@sort_by} order={@order} />
@@ -26,6 +27,7 @@
       <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
 
       <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.stgp_debt_median) %></td>
+      <.months_cell value={program_months(major)} />
       <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
 
       <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
@@ -51,6 +53,7 @@
           <.sort_header label="1yr Earnings" sort_key="earnings1yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 1 year after graduation for this specific major at this college" />
           <.sort_header label="2yr Earnings" sort_key="earnings2yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 2 years after graduation for this specific major at this college" />
           <.sort_header label="Major Debt" sort_key="debt_median" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median federal student-loan debt of graduates of this major who borrowed" />
+          <.sort_header label="Months to Repay" sort_key="months" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
           <.sort_header label="Tuition" sort_key="tuition" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Published in-state tuition and fees per year" />
           <.sort_header label="10yr Earnings" sort_key="earnings10yr" current_sort={@sort_by} order={@order} sort_event="sort_stretch" tooltip="Median earnings 10 years after enrollment for all graduates of this college (not major-specific)" />
           <.sort_header label="Admit Rate" sort_key="admissions" current_sort={@sort_by} order={@order} sort_event="sort_stretch" />
@@ -68,6 +71,7 @@
           <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
 
           <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.stgp_debt_median) %></td>
+          <.months_cell value={program_months(major)} />
           <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
 
           <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>

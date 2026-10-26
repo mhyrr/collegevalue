@@ -130,6 +130,11 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     Enum.sort_by(majors, fn m -> max(m.stgp_debt_median || 0, 0) end, :desc)
   end
 
+  # Fewest months to repay first; programs without a figure last.
+  def sort_majors(majors, "months") do
+    Enum.sort_by(majors, fn m -> CollegevalueWeb.Views.Helpers.program_months(m) || 1.0e9 end)
+  end
+
   def sort_majors(majors, "tuition") do
     Enum.sort_by(majors, fn m -> max(m.college.tuition_in || 0, 0) end, :desc)
   end
