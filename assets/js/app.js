@@ -36,6 +36,11 @@ topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"})
 window.addEventListener("phx:page-loading-start", info => topbar.show())
 window.addEventListener("phx:page-loading-stop", info => topbar.hide())
 
+// Keep the family-income bracket picked on the matches page for the other pages.
+window.addEventListener("phx:remember_income", e => {
+  document.cookie = `cv_income=${e.detail.income}; path=/; max-age=31536000; samesite=lax`
+})
+
 // connect if there are any LiveViews on the page
 liveSocket.connect()
 

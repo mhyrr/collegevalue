@@ -8,25 +8,23 @@ defmodule CollegevalueWeb.FieldsLive.Matches do
     Phoenix.View.render(CollegevalueWeb.FieldView, "matches.html", assigns)
   end
 
+  # `income` is the bracket from the income cookie. With `all_majors`, the
+  # matches span every major and arrive fastest to repay first.
   @spec mount(any, any, any) :: {:ok, any}
-  def mount(_, %{"majors" => majors, "stretch" => stretch}, socket) do
+  def mount(_, %{"majors" => majors, "stretch" => stretch} = session, socket) do
+    all_majors = Map.get(session, "all_majors", false)
+    sort_by = if all_majors, do: "months", else: "earnings1yr"
+    order = if all_majors, do: "asc", else: "desc"
 
-    # college = majors.get_majors_by_college(name)
-    # majors = majors.get_majors_by_college(name)
-
-    # toggle_cred = case Enum.filter(majors, fn m -> m.credential_level == 3 end) |> length == 0 do
-    #   true ->
-    #     true
-    #   false ->
-    #     false
-    # end
-
-    {:ok, assign(socket, majors: sort_majors(majors, "earnings1yr"), stretch: sort_majors(stretch, "earnings1yr"), order: "desc", sort_by: "earnings1yr", income: Fields.default_income_bracket())}
+    {:ok, assign(socket, majors: sort_majors(majors, sort_by), stretch: sort_majors(stretch, sort_by), order: order,
+      sort_by: sort_by, all_majors: all_majors, income: Fields.income_bracket(Map.get(session, "income")))}
   end
 
   # The family-income bracket for the cost columns; invalid values mean 3.
+  # The browser keeps the choice in the income cookie for the other pages.
   def handle_event("income", %{"income" => income}, socket) do
-    {:noreply, assign(socket, income: Fields.income_bracket(income))}
+    income = Fields.income_bracket(income)
+    {:noreply, socket |> assign(income: income) |> push_event("remember_income", %{income: income})}
   end
 
 

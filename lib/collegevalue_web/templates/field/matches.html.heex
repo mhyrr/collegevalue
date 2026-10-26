@@ -13,7 +13,13 @@
   </form>
 <% end %>
 
-<h2 class="px-0 py-8 xl:text-xl">Good Matches</h2>
+<h2 class="px-0 pt-8 xl:text-xl">Good Matches</h2>
+<%= if @all_majors and @majors != [] do %>
+  <p class="all-majors-note pt-2 max-w-3xl text-sm text-gray-600">
+    No major picked, so these are the <%= length(@majors) %> programs of any major near you that are fastest to repay. Pick majors above to compare just those.
+  </p>
+<% end %>
+<div class="pb-8"></div>
 
 <table class="md:block xl:table pt-8">
   <thead class="md:absolute md:-top-9999 md:-left-9999">

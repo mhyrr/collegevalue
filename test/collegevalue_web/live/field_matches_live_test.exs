@@ -65,4 +65,31 @@ defmodule CollegevalueWeb.FieldMatchesLiveTest do
     body = tbody(socket)
     assert :binary.match(body, "Ithaca Test") < :binary.match(body, "Cheap Test")
   end
+
+  test "starts on the income from the cookie, and asks the browser to keep a new pick" do
+    majors = [major("Ithaca Test", 29_170, 45_000, 40_000, -2)]
+    {:ok, socket} = Matches.mount(:not_mounted_at_router, %{"majors" => majors, "stretch" => [], "income" => 5}, %Phoenix.LiveView.Socket{})
+    assert socket.assigns.income == 5
+    assert html(socket) =~ "$180,000"
+
+    socket = event(socket, "income", %{"income" => "2"})
+    assert ["remember_income", %{income: 2}] in pushed(socket)
+  end
+
+  test "all majors arrive fastest to repay first, with a note saying so" do
+    majors = [major("Slow Test", -2, -2, 20_000, -2), major("Quick Test", -2, -2, 96_000, -2)]
+    session = %{"majors" => majors, "stretch" => [], "all_majors" => true}
+    {:ok, socket} = Matches.mount(:not_mounted_at_router, session, %Phoenix.LiveView.Socket{})
+
+    body = tbody(socket)
+    assert :binary.match(body, "Quick Test") < :binary.match(body, "Slow Test")
+    assert html(socket) =~ "No major picked, so these are the 2 programs of any major near you that are fastest to repay."
+  end
+
+  test "picked majors keep the earnings order and no all-majors note", %{socket: socket} do
+    refute html(socket) =~ "No major picked"
+    assert socket.assigns.sort_by == "earnings1yr"
+  end
+
+  defp pushed(socket), do: socket.private |> Map.get(:live_temp, %{}) |> Map.get(:push_events, [])
 end

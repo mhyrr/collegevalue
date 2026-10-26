@@ -330,6 +330,26 @@ defmodule Collegevalue.Colleges do
   end
 
 
+  @doc """
+  Bachelor's programs of every major within `radius` miles of `zip`, fastest
+  to repay first: the program's median student-loan debt over one month of
+  its first-year pay. Only programs that report both figures are ranked.
+  `sat` is an optional `{min, max}` range for the college's average SAT.
+  """
+  def find_best_majors(zip, radius, sat \\ nil, limit \\ 100) do
+    College
+    |> with_location(zip, radius)
+    |> then(fn query -> if sat, do: with_sat(query, elem(sat, 0), elem(sat, 1)), else: query end)
+    |> join(:inner, [c], d in Discipline, on: c.id == d.college_id)
+    |> where([_c, d], d.credential_level == 3 and d.stgp_debt_median > 0 and d.earnings_1yr > 0)
+    |> group_by([_c, d], d.id)
+    |> order_by([_c, d], [asc: fragment("?::float * 12 / ?", d.stgp_debt_median, d.earnings_1yr), asc: d.id])
+    |> limit(^limit)
+    |> select([_c, d], d)
+    |> Repo.all()
+    |> Repo.preload([:college])
+  end
+
   def completion_category(nil), do: :no_data
   def completion_category(rate) when rate < 0, do: :no_data
   def completion_category(rate) when rate >= 0.70, do: :high
