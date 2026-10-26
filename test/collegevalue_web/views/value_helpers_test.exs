@@ -7,7 +7,10 @@ defmodule CollegevalueWeb.ValueHelpersTest do
     assert years(1.8) == "1.8 years"
     assert years(2.916) == "2.9 years"
     assert years(1.0) == "1.0 year"
-    assert years(0.03) == "under 0.1 years"
+    assert years(0.03) == "0.03 years"
+    assert years(0.094) == "0.09 years"
+    assert years(0.095) == "0.1 years"
+    assert years(0.004) == "under 0.01 years"
     assert years(nil) == "N/A"
     assert years(-2) == "N/A"
   end

@@ -34,7 +34,7 @@ defmodule CollegevalueWeb.FieldValueControllerTest do
     assert html =~ "4-Year Cost"
     refute html =~ ">Tuition<"
     assert html =~ "housing, food and books"
-    assert html =~ "not for each major"
+    assert html =~ "rather than each major"
     assert html =~ "four years"
     assert html =~ "closer to the sticker price"
 

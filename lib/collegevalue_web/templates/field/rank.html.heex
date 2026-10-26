@@ -4,24 +4,8 @@
 
 <section class="mt-4 max-w-3xl space-y-2 text-base leading-6 text-gray-900">
   <p>
-    Months to repay divides a program's median student-loan debt by one month of its graduates' median pay in their first year.
-    At 6 months, the typical borrower owes about half a year's pay. Lower is better.
-  </p>
-  <p>
-    The four-year cost is what a year costs after grants, times four. It includes housing, food and books.
-    Years of pay divides that cost by a year of first-year pay, so 2.0 years means four years of school cost two years of pay.
-    The gap is what's left after the median federal student loan. A family covers it from savings, work, Parent PLUS or private loans.
-  </p>
-  <p class="text-sm text-gray-600">
-    This uses gross pay, before taxes, rent and other bills, so paying the loans off really takes longer.
-    It counts only graduates who borrowed federal student loans, and leaves out loans their parents took.
-    Programs that don't report their debt aren't ranked.
-    When parents who took Parent PLUS loans owed more than <%= parent_plus_warning_months() %> months of their child's first-year pay, a "Parent loans" note shows that figure on its own.
-  </p>
-  <p class="text-sm text-gray-600">
-    The cost is the average for aided first-time full-time students in your family's income bracket.
-    Schools report it for the whole school, not for each major, and it assumes you finish in four years.
-    Families who get no aid pay closer to the sticker price.
+    Months to repay is how many months of first-year pay it takes to clear the typical student loan. Years of pay is how many years of first-year pay the full four-year cost takes.
+    Lower is better for both. <a href="#how-we-figure" class="text-green">How we figure these</a>.
   </p>
   <%= if grad_school_note?(@ranking) do %>
     <p class="grad-school-note text-sm text-gray-900 bg-amber-50 border-l-4 border-amber-400 px-3 py-2">
@@ -78,7 +62,6 @@
       <.header label="College Name" tooltip_key="name" />
       <.header label="Field" tooltip_key="field" />
       <.header label="Admissions Rate" tooltip_key="admissions" />
-      <.header label="Avg SAT" tooltip_key="sat" />
       <.header label="4-Year Cost" tooltip_key="cost4" />
       <.header label="Debt" tooltip="The median federal student-loan debt of graduates of this major who borrowed. Parent PLUS loans are not included." />
       <.header label={humanize_header("Field Earnings")} tooltip="Median earnings 1 year after graduation for this major at this college" />
@@ -92,8 +75,12 @@
       <tr class="md:block odd:bg-gray-50">
         <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b text-green"><%= link shorten(rank.college_name), to: Routes.college_path(@conn, :show, rank.unit_id, rank.college_name) %> </td>
         <td class="px-4 py-3 field-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b text-green"><%= link field_short_name(rank.field_name), to: field_page_path(rank.field_name)%> </td>
-        <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
-        <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b "><%= sat(rank.sat_avg)%></td>
+        <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm  whitespace-wrap border-b ">
+          <%= percent(rank.admissions) %>
+          <%= if is_number(rank.sat_avg) and rank.sat_avg > 0 do %>
+            <div class="text-xs text-gray-600">Avg SAT <%= rank.sat_avg %></div>
+          <% end %>
+        </td>
         <.cost_cell net_price={rank.net_price} sticker={rank.sticker} debt={rank.cost} />
         <td class="px-4 py-3 cost-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
           <%= if no_data?(rank.cost) do %>
@@ -112,3 +99,30 @@
     <% end %>
   </tbody>
 </table>
+
+<section id="how-we-figure" class="pt-12 text-gray-700 space-y-4 max-w-3xl">
+  <h2 class="text-xl text-darkgreen">How we figure these</h2>
+  <p>
+    <strong>Months to repay</strong> divides a program's median federal student-loan debt by one month of its graduates' median pay in their first year.
+    At 6 months, the typical borrower owes about half a year's pay. It uses gross pay, before taxes, rent and other bills, so paying the loans off really takes longer.
+    It counts only graduates who borrowed, and leaves out loans their parents took. Programs that don't report their debt aren't ranked.
+  </p>
+  <p>
+    <strong>Parent loans.</strong> When parents who took Parent PLUS loans owed more than <%= parent_plus_warning_months() %> months of their child's first-year pay, a note shows that figure on its own.
+    We never add it to the student's debt.
+  </p>
+  <p>
+    <strong>Four-year cost</strong> is a year's cost after grants, times four. It includes housing, food and books.
+    It is the average for aided first-time full-time students in the family income bracket you pick, reported for the whole school rather than each major.
+    It assumes you finish in four years. Families who get no aid pay closer to the sticker price, shown beneath it.
+  </p>
+  <p>
+    <strong>The gap</strong> is the four-year cost minus the median federal student loan. A family covers it from savings, work, Parent PLUS or private loans.
+  </p>
+  <p>
+    <strong>Years of pay</strong> divides the four-year cost by a year of first-year pay. At 2.0 years, the degree costs two years of a graduate's first-year pay.
+  </p>
+  <p>
+    All data comes from the U.S. Department of Education's College Scorecard.
+  </p>
+</section>

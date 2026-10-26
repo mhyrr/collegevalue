@@ -172,13 +172,20 @@ defmodule CollegevalueWeb.Views.Helpers do
   def grad_school_note?(ranking), do: ranking in ["slowest_repay", "worst_value"]
 
   @doc """
-  Years of pay for display, one decimal ("1.8 years"); "N/A" with no figure.
+  Years of pay for display, one decimal ("1.8 years"), or two under 0.1 so
+  near-free schools still differ ("0.03 years"); "N/A" with no figure.
   """
+  def years(value) when is_number(value) and value > 0 and value < 0.095 do
+    case Float.round(value * 1.0, 2) do
+      small when small < 0.01 -> "under 0.01 years"
+      small -> "#{:erlang.float_to_binary(small, decimals: 2)} years"
+    end
+  end
+
   def years(value) when is_number(value) and value > 0 do
     rounded = Float.round(value * 1.0, 1)
 
     cond do
-      rounded < 0.1 -> "under 0.1 years"
       rounded == 1.0 -> "1.0 year"
       true -> "#{:erlang.float_to_binary(rounded, decimals: 1)} years"
     end
