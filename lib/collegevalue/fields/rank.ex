@@ -21,6 +21,7 @@ defmodule Collegevalue.Fields.Rank do
     field :sat_avg, :float
     field :url, :string
     field :has_major_debt, :boolean
+    field :parent_debt, :integer
 
     timestamps()
   end

@@ -200,6 +200,26 @@ defmodule Collegevalue.Fields do
 
   def months_to_repay(_debt, _earnings_1yr), do: nil
 
+  # Parent PLUS medians above this many months of first-year pay get a
+  # warning beside the student figure.
+  @parent_plus_warning_months 24
+
+  @doc "Months of first-year pay above which a Parent PLUS median is flagged."
+  def parent_plus_warning_months, do: @parent_plus_warning_months
+
+  @doc """
+  Months of first-year pay it takes to equal the program's Parent PLUS
+  median, when that median is past `parent_plus_warning_months/0`; nil
+  otherwise. Parent PLUS is a median over parents who borrowed, so it is
+  shown beside the student figure and never added to it.
+  """
+  def parent_plus_warning(parent_debt, earnings_1yr) do
+    case months_to_repay(parent_debt, earnings_1yr) do
+      months when is_number(months) and months > @parent_plus_warning_months -> months
+      _ -> nil
+    end
+  end
+
   # Every bachelor's program that reports first-year earnings, as a `Rank`.
   # Missing Scorecard figures are stored as -1 or -2, so a debt that isn't
   # positive is nil here.
@@ -225,7 +245,8 @@ defmodule Collegevalue.Fields do
         admissions: c.admissions_rate,
         sat_avg: c.sat_avg,
         url: c.url,
-        has_major_debt: d.stgp_debt_median > 0
+        has_major_debt: d.stgp_debt_median > 0,
+        parent_debt: fragment("NULLIF(GREATEST(?, 0), 0)", d.pp_debt_median)
       }
   end
 end

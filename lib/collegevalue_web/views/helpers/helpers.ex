@@ -131,6 +131,20 @@ defmodule CollegevalueWeb.Views.Helpers do
 
   def months(_value), do: "N/A"
 
+  defdelegate parent_plus_warning_months, to: Collegevalue.Fields
+
+  @doc """
+  The Parent PLUS warning for a program, as a sentence, or nil when its
+  Parent PLUS median is within `Fields.parent_plus_warning_months/0` of
+  first-year pay (or isn't reported).
+  """
+  def parent_plus_note(parent_debt, earnings_1yr) do
+    case Collegevalue.Fields.parent_plus_warning(parent_debt, earnings_1yr) do
+      nil -> nil
+      months -> "Parents who borrowed owed a median of #{cash(parent_debt)} (#{round(months)} months of pay)."
+    end
+  end
+
   def cash(val) when is_nil(val), do: "No data"
 
   def cash(dollars) do

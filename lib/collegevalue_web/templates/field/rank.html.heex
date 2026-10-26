@@ -10,6 +10,7 @@
     This uses gross pay, before taxes, rent and other bills, so paying the loans off really takes longer.
     It counts only graduates who borrowed federal student loans, and leaves out loans their parents took.
     Programs that don't report their debt aren't ranked.
+    When parents who took Parent PLUS loans owed more than <%= parent_plus_warning_months() %> months of their child's first-year pay, a "Parent loans" note shows that figure on its own.
   </p>
 </section>
 
@@ -89,7 +90,7 @@
 
         <td class={"px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm #{if @ranking == "top_earnings" || @ranking == "bottom_earnings", do: "font-bold", else: ""} whitespace-wrap border-b "}><%= cash(rank.payoff) %></td>
 
-        <.months_cell value={rank.months} />
+        <.months_cell value={rank.months} parent_debt={rank.parent_debt} earnings={rank.payoff} />
 
       </tr>
     <% end %>

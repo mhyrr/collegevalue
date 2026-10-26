@@ -28,18 +28,29 @@ defmodule CollegevalueWeb.DataComponents do
   end
 
   # Months of first-year pay to clear the debt. Lower is better: green within
-  # a year of pay, amber within two, red past that.
+  # a year of pay, amber within two, red past that. With `parent_debt` and
+  # `earnings`, a large Parent PLUS median gets a warning beneath the figure;
+  # it never changes the figure.
   attr :value, :any, default: nil
+  attr :parent_debt, :any, default: nil
+  attr :earnings, :any, default: nil
   def months_cell(assigns) do
     assigns =
       assign(assigns,
         display: Helpers.months(assigns.value),
-        color: months_color(assigns.value)
+        color: months_color(assigns.value),
+        parent_note: Helpers.parent_plus_note(assigns.parent_debt, assigns.earnings)
       )
 
     ~H"""
-    <td class={["px-4 py-3 months-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b", @color]}>
-      <%= @display %>
+    <td class="px-4 py-3 months-field md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
+      <span class={@color}><%= @display %></span>
+      <%= if @parent_note do %>
+        <span class="parent-plus-warning block mt-1 w-44 md:w-auto whitespace-normal text-xs leading-4 text-gray-700" title={@parent_note}>
+          <span class="inline-block px-2 py-0.5 mb-0.5 rounded-full bg-amber-100 text-amber-800 font-medium">Parent loans</span>
+          <%= @parent_note %>
+        </span>
+      <% end %>
     </td>
     """
   end

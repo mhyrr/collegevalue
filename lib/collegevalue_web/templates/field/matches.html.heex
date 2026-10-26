@@ -27,7 +27,7 @@
       <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
 
       <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.stgp_debt_median) %></td>
-      <.months_cell value={program_months(major)} />
+      <.months_cell value={program_months(major)} parent_debt={major.pp_debt_median} earnings={major.earnings_1yr} />
       <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
 
       <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>
@@ -71,7 +71,7 @@
           <td class="px-4 py-3 earnings2yr-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings_2yr) %></td>
 
           <td class="px-4 py-3 majordebt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.stgp_debt_median) %></td>
-          <.months_cell value={program_months(major)} />
+          <.months_cell value={program_months(major)} parent_debt={major.pp_debt_median} earnings={major.earnings_1yr} />
           <td class="px-4 py-3 tuition-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.tuition_in) %></td>
 
           <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.college.earnings_median_after10) %></td>

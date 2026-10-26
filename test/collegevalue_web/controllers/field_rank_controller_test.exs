@@ -19,6 +19,8 @@ defmodule CollegevalueWeb.FieldRankControllerTest do
 
   defp order(html), do: Regex.scan(~r/(Quick|Middle|Slow|Plus Only) College/, html |> String.split("<tbody") |> List.last()) |> Enum.map(&Enum.at(&1, 1)) |> Enum.uniq()
 
+  defp row(html, college), do: html |> String.split("<tbody") |> List.last() |> String.split("<tr") |> Enum.find(&(&1 =~ "#{college} College"))
+
   test "sorts by months to repay, fewest first, by default", %{conn: conn} do
     html = conn |> get("/fields/rank") |> html_response(200)
 
@@ -44,7 +46,28 @@ defmodule CollegevalueWeb.FieldRankControllerTest do
     html = conn |> get("/fields/rank?rank=top_earnings&count=10") |> html_response(200)
 
     assert hd(order(html)) == "Plus Only"
-    refute html =~ "$70,000"
+    refute row(html, "Plus Only") =~ "$70,000"
     refute html =~ "$99,000"
+  end
+
+  describe "Parent PLUS warning" do
+    # Every program here reports a Parent PLUS median of $70,000.
+    # Slow: 70,000 / (15,000 / 12) = 56 months, past the 24-month line.
+    # Quick: 21 months and Middle: 17.5 months stay under it.
+    test "shows beside months to repay only past the threshold", %{conn: conn} do
+      html = conn |> get("/fields/rank") |> html_response(200)
+
+      assert row(html, "Slow") =~ "Parent loans"
+      assert row(html, "Slow") =~ "Parents who borrowed owed a median of $70,000 (56 months of pay)."
+      refute row(html, "Quick") =~ "Parent loans"
+      refute row(html, "Middle") =~ "Parent loans"
+    end
+
+    test "never changes the student figure or the order", %{conn: conn} do
+      html = conn |> get("/fields/rank?rank=slowest_repay&count=10") |> html_response(200)
+
+      assert row(html, "Slow") =~ "36 months"
+      assert order(html) == ["Slow", "Middle", "Quick"]
+    end
   end
 end
