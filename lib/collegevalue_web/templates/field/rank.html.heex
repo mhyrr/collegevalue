@@ -19,7 +19,7 @@
       <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get], fn f -> %>
       <div class="md:pl-0" style="float: left;">
         <label for="price" class="block flex-grow text-sm leading-5 font-medium text-green">Ranking</label>
-          <%= select f, :rank, field_rank_views(), selected: @ranking, onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 flex-grow"%>
+          <%= select f, :rank, field_rank_views(), selected: @ranking, onchange: "this.form.submit()", class: "form-input pl-2 pr-8 sm:text-sm sm:leading-5 flex-grow max-w-full"%>
       </div>
       <div class="pl-8 md:pl-0"  style="float: left;">
         <label for="price" class="block text-sm leading-5 font-medium text-green">Count</label>

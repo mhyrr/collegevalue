@@ -5,8 +5,8 @@ defmodule CollegevalueWeb.Views.Helpers do
   alias Collegevalue.Colleges.College
 
   @field_rank_views [
-    {"Fastest to Repay: Fewest Months of Pay to Clear the Debt", "fastest_repay"},
-    {"Slowest to Repay: Most Months of Pay to Clear the Debt", "slowest_repay"},
+    {"Fastest to Repay the Debt", "fastest_repay"},
+    {"Slowest to Repay the Debt", "slowest_repay"},
     {"Top College/Majors by Earnings Only", "top_earnings"},
     {"Bottom College/Majors by Earnings Only", "bottom_earnings"}
   ]
