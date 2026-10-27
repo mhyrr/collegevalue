@@ -6,7 +6,7 @@ Below are the facts for one major (bachelor's programs only; earnings are median
 
 - `school_matters`: what explains the gap, or the lack of one, between the `by_admission` bands? For a wide gap, find the mechanism and its scale: which employers hire the top tier, and how many entry jobs they offer. For a narrow one, find what levels pay (a license, a fixed pay scale). `finding`: `two_markets` (a wide gap with a distinct top job market), `some`, `little` or `unclear`.
 - `who_is_counted`: are the major's largest programs (`largest`, which counts pooled and online-only programs) full of new graduates, or of working adults finishing a degree? Look at the largest programs' admission requirements. `finding`: `new_graduates`, `mixed`, `working_adults` or `unclear`.
-- `leads_to`: what do graduates of this major need or do next: a license, a further degree, a particular first job? Find how common it is. `finding`: `licensure`, `graduate_school`, `direct_jobs`, `mixed` or `unclear`.
+- `leads_to`: what do graduates of this major need or do next: a license, a further degree, a particular first job? Find how common it is, and whether students at the most selective schools choose the major as a stepping stone to law, medical or doctoral study, or to finance and consulting. `finding`: `licensure`, `graduate_school`, `direct_jobs`, `mixed` or `unclear`.
 - `nearby_pair`: when `nearby_pair` is not null, are both programs open to new students, so a student could choose between them? Check each program's admission requirements and format. `finding`: `comparable`, `not_comparable`, or `none` when `nearby_pair` is null.
 
 Each answer has one plain `evidence` sentence of at most 280 characters, and the `source` URL it rests on (null only for `unclear` or `none`).

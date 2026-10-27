@@ -82,6 +82,15 @@ Use the facts first; research supplies the mechanism behind them.
   this major: the CPA's extra year, physical therapy school, law school,
   medical school. First-year earnings understate a major whose graduates go
   on to more school.
+- **A stepping stone.** Some majors are a means, not the end: at the most
+  selective schools, students pick economics, philosophy, history or
+  political science on the way to law school, a Ph.D., medicine, or finance,
+  consulting and private equity. When research shows the major is used this
+  way, say who uses it, what it leads to, and that first-year pay
+  understates them. Then say what that means for the typical student, who
+  is usually not on that path. This differs from the swap-test pattern:
+  the point is why students choose the major, not that selective schools
+  pay more.
 
 Skip what the facts and research don't support. A short note with one sharp
 point beats a full one with four generic ones.
@@ -92,8 +101,8 @@ Two paragraphs, two or three sentences each.
 
 1. **The sharpest finding**: the one thing about this major a student
    wouldn't guess.
-2. **What follows for a student choosing**: the cost, the path, or the
-   expectation to set.
+2. **What to do about it**: the move a student choosing should make, or
+   the expectation to set. End on the move.
 
 No sentence that only restates the computed answer above the note.
 
@@ -117,8 +126,12 @@ low-paying region, and never cite one school's outcomes as the major's.
   words, and use a figure only where it carries the point (months of pay,
   the cost gap, the two markets). The page shows the rest. Quote dollar
   figures as the facts round them ("about $60,000"), and months as written.
-- No verdict: not "worth it", "not worth it" or "a smart choice". The data
-  covers one year after graduating.
+- Advise, don't judge. When the facts make the choice clear, say it as
+  plain advice: "If you want to be a nurse, get the RN and the bachelor's
+  at the lowest cost you can; the license, not the school, sets your pay."
+  Advice says what to do. A verdict on the degree ("worth it", "not worth
+  it", "a smart choice") is still out: the data covers one year after
+  graduating, and the choice is the student's.
 - A claim from outside the Scorecard (hiring numbers, licensure rules,
   graduate school rates) must come from the research, with its source.
 
