@@ -1,85 +1,172 @@
 {
   "name": "Psychology, General",
-  "hash": "b2069c5f9d73",
-  "rank": 91,
-  "debt_median": 25532,
+  "largest": {
+    "debt_median": 20350,
+    "earnings_median": 27850,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 45000,
+    "months_to_repay_median": 8.6,
+    "years_of_pay_48_75k_median": 1.7,
+    "pooled": 2,
+    "share_of_graduates_percent": 8
+  },
+  "hash": "a56513f91fde",
+  "rank": 186,
+  "debt_median": 25611,
   "flagged": [
     {
       "state": "CA",
       "college": "Stanford University",
       "unitid": 243744,
       "earnings": 51407,
-      "admission_rate": 0.0391,
       "debt": null,
+      "admission_rate": 0.0391,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 5292,
+      "cohort": 38,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 38
+      ]
     },
     {
       "state": "CA",
       "college": "Santa Clara University",
       "unitid": 122931,
       "earnings": 50081,
+      "debt": 17667,
       "admission_rate": 0.4384,
-      "debt": 75072,
+      "months_to_repay": 4.2,
+      "four_year_cost_48_75k": 166396,
+      "cohort": 57,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 57
+      ]
     },
     {
       "state": "NY",
       "college": "Colgate University",
       "unitid": 190099,
       "earnings": 48179,
-      "admission_rate": 0.1195,
       "debt": null,
+      "admission_rate": 0.1195,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 70740,
+      "cohort": 28,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 28
+      ]
     },
     {
       "state": "PR",
       "college": "University of Puerto Rico-Rio Piedras",
       "unitid": 243221,
       "earnings": 12250,
+      "debt": 5500,
       "admission_rate": 0.532,
-      "debt": null,
+      "months_to_repay": 5.4,
+      "four_year_cost_48_75k": 32096,
+      "cohort": 52,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 52
+      ]
     },
     {
       "state": "PR",
       "college": "Pontifical Catholic University of Puerto Rico-Arecibo",
       "unitid": 241395,
       "earnings": 11557,
+      "debt": 12250,
       "admission_rate": 0.8538,
-      "debt": null,
+      "months_to_repay": 12.7,
+      "four_year_cost_48_75k": 46652,
+      "cohort": 29,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 29
+      ]
     },
     {
       "state": "PR",
       "college": "Pontifical Catholic University of Puerto Rico-Ponce",
       "unitid": 241410,
       "earnings": 11557,
+      "debt": 12250,
       "admission_rate": 0.9033,
-      "debt": null,
+      "months_to_repay": 12.7,
+      "four_year_cost_48_75k": 54432,
+      "cohort": 29,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 29
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 14157,
+      "earnings_median": 36163,
+      "programs": 13,
+      "four_year_cost_48_75k_median": 27000,
+      "months_to_repay_median": 4.8,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19258,
+      "earnings_median": 33323,
+      "programs": 28,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 8.3,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 24938,
+      "earnings_median": 27951,
+      "programs": 145,
+      "four_year_cost_48_75k_median": 76000,
+      "months_to_repay_median": 10.1,
+      "years_of_pay_48_75k_median": 2.8
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25367,
+      "earnings_median": 28438,
+      "programs": 713,
+      "four_year_cost_48_75k_median": 71000,
+      "months_to_repay_median": 10.5,
+      "years_of_pay_48_75k_median": 2.5
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24000,
+      "earnings_median": 28453,
+      "programs": 476,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 9.9,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    "private_nonprofit": {
+      "debt_median": 26500,
+      "earnings_median": 28538,
+      "programs": 501,
+      "four_year_cost_48_75k_median": 86000,
+      "months_to_repay_median": 11.0,
+      "years_of_pay_48_75k_median": 3.1
+    },
+    "for_profit": {
+      "debt_median": 54702,
+      "earnings_median": 26893,
+      "programs": 15,
+      "four_year_cost_48_75k_median": 100000,
+      "months_to_repay_median": 24.4,
+      "years_of_pay_48_75k_median": 3.1
+    }
+  },
   "earnings_median": 28486,
   "programs": 1438,
   "ends": {
@@ -114,9 +201,61 @@
       }
     }
   },
+  "short_name": "Psychology",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 22995,
+  "debt_p75": 27000,
   "earnings_p25": 25760,
   "earnings_p75": 31145,
+  "four_year_cost": {
+    "sticker": 134000,
+    "gap_48_75k": 45000,
+    "programs_48_75k": 956,
+    "years_of_pay_48_75k": 2.4,
+    "income_0_30k": 55000,
+    "income_48_75k": 70000,
+    "income_110k_plus": 100000
+  },
+  "months_to_repay": {
+    "median": 10.5,
+    "programs": 931,
+    "of_major": 10.6,
+    "p25": 9.0,
+    "p75": 12.1
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "MN",
+        "college": "University of Minnesota-Twin Cities",
+        "earnings": 34392,
+        "city": "Minneapolis",
+        "debt": 20674,
+        "months_to_repay": 7.2,
+        "four_year_cost_48_75k": 43444
+      },
+      {
+        "control": "for_profit",
+        "state": "MN",
+        "college": "Walden University",
+        "earnings": 34217,
+        "city": "Minneapolis",
+        "debt": 52781,
+        "months_to_repay": 18.5,
+        "four_year_cost_48_75k": null
+      }
+    ],
+    "miles": 2
+  },
+  "online_only": {
+    "debt_median": 27957,
+    "earnings_median": 33708,
+    "programs": 10,
+    "four_year_cost_48_75k_median": 56000,
+    "months_to_repay_median": 9.9,
+    "years_of_pay_48_75k_median": 1.8
+  },
   "outliers": {
     "below_half_median": {
       "count": 3,
@@ -129,8 +268,12 @@
       "top_states": {}
     }
   },
-  "programs_with_debt": 496,
+  "parent_plus_over_24_months": {
+    "of": 486,
+    "programs": 47
+  },
+  "programs_with_debt": 1071,
   "programs_with_earnings": 992,
-  "ranked_of": 147,
+  "ranked_of": 222,
   "debt_to_earnings": 0.9
 }

@@ -1,13 +1,13 @@
 ---
-drafted: 2026-10-22
-facts_hash: d0833d016369
+drafted: 2026-10-27
+facts_hash: 4846db4e24e5
 field: Computer Science
 model: opus
-prompt_hash: a2667981a511
-research_hash: 1edc6d73c390
+prompt_hash: 248519280f58
+research_hash: ae8ceeafb818
 status: approved
 ---
 
-Computer science graduates start out earning far more than graduates of most majors, and the major ranks near the top of the list. The best-paying programs are at the most selective private universities, which admit a small fraction of applicants while the major's typical program admits most of them, and big tech firms recruit heavily on those campuses. Several of these programs are in California, home to the country's highest-paying tech hub.
+Computer Science graduates of schools that admit most applicants earn about $60,000 in their first year, while those from the 16 programs that admit under a tenth earn about $113,000. Career offices at those few schools report graduates going to large tech employers such as Amazon, Google, Microsoft and NVIDIA, and most graduates of open schools do not land those jobs (Carnegie Mellon career outcomes). Those same selective schools typically cost a middle-income family about $24,000 over four years, against about $62,000 at schools that admit most applicants.
 
-The lowest-paying programs cluster on campuses in Puerto Rico, where federal wage data show software developers earn far less than the national level, and each of those figures rests on few graduates. Indiana University Northwest sits near the bottom because its bachelor's in this area was long Computer Information Systems, which trains systems analysts and programmers. A minority of graduates go straight on to a master's in computing, so first-year pay understates their path, and typical debt comes to less than half of typical first-year earnings.
+At ordinary schools, debt separates programs that pay alike. In two programs 4 miles apart in the Provo area, one pays about $83,000 and its typical loan takes 1.7 months of pay to repay, while the other pays about $75,000 and takes 4.0 months. For-profit programs take 8.1 months and pay less than public or private nonprofit schools.

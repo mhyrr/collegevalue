@@ -1,0 +1,294 @@
+{
+  "name": "Social Work",
+  "largest": {
+    "debt_median": 23051,
+    "earnings_median": 33699,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 60000,
+    "months_to_repay_median": 8.2,
+    "years_of_pay_48_75k_median": 1.8,
+    "pooled": 2,
+    "share_of_graduates_percent": 11
+  },
+  "hash": "ea23988def44",
+  "rank": 165,
+  "debt_median": 26500,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "University of California-Berkeley",
+      "unitid": 110635,
+      "earnings": 42882,
+      "debt": 13719,
+      "months_to_repay": 3.8,
+      "admission_rate": 0.1166,
+      "four_year_cost_48_75k": 45696,
+      "cohort": 127,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MN",
+      "college": "Bethel University",
+      "unitid": 173160,
+      "earnings": 42826,
+      "debt": 25000,
+      "months_to_repay": 7.0,
+      "admission_rate": 0.9099,
+      "four_year_cost_48_75k": 89116,
+      "cohort": 19,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NJ",
+      "college": "Monmouth University",
+      "unitid": 185572,
+      "earnings": 42523,
+      "debt": 27000,
+      "months_to_repay": 7.6,
+      "admission_rate": 0.8954,
+      "four_year_cost_48_75k": 116568,
+      "cohort": 21,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MS",
+      "college": "Alcorn State University",
+      "unitid": 175342,
+      "earnings": 15803,
+      "debt": 31900,
+      "months_to_repay": 24.2,
+      "admission_rate": 0.2466,
+      "four_year_cost_48_75k": 65800,
+      "cohort": 17,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Gurabo Campus",
+      "unitid": 243601,
+      "earnings": 15454,
+      "debt": 10004,
+      "months_to_repay": 7.8,
+      "admission_rate": -1.0,
+      "four_year_cost_48_75k": 38312,
+      "cohort": 39,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Ponce",
+      "unitid": 241410,
+      "earnings": 10077,
+      "debt": 17500,
+      "months_to_repay": 20.8,
+      "admission_rate": 0.9033,
+      "four_year_cost_48_75k": 54432,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Mayaguez",
+      "unitid": 243586,
+      "earnings": 10077,
+      "debt": 17500,
+      "months_to_repay": 20.8,
+      "admission_rate": 0.973,
+      "four_year_cost_48_75k": 46568,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "four_year_cost": {
+    "sticker": 101000,
+    "gap_48_75k": 35000,
+    "programs_48_75k": 347,
+    "years_of_pay_48_75k": 2.0,
+    "income_0_30k": 46000,
+    "income_48_75k": 62000,
+    "income_110k_plus": 86000
+  },
+  "months_to_repay": {
+    "median": 9.9,
+    "programs": 331,
+    "of_major": 10.0,
+    "p25": 8.5,
+    "p75": 11.4
+  },
+  "short_name": "Social Work",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": null,
+      "earnings_median": null,
+      "programs": 0,
+      "four_year_cost_48_75k_median": null,
+      "months_to_repay_median": null,
+      "years_of_pay_48_75k_median": null
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 29450,
+      "earnings_median": 28895,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 66000,
+      "months_to_repay_median": 16.9,
+      "years_of_pay_48_75k_median": 2.4
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 25683,
+      "earnings_median": 31535,
+      "programs": 39,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 1.9
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26303,
+      "earnings_median": 32157,
+      "programs": 277,
+      "four_year_cost_48_75k_median": 64000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 2.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 26000,
+      "earnings_median": 31728,
+      "programs": 267,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 9.6,
+      "years_of_pay_48_75k_median": 1.8
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 31847,
+      "programs": 85,
+      "four_year_cost_48_75k_median": 78000,
+      "months_to_repay_median": 11.1,
+      "years_of_pay_48_75k_median": 2.5
+    },
+    "for_profit": {
+      "debt_median": 35959,
+      "earnings_median": 35775,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 12.1,
+      "years_of_pay_48_75k_median": 2.5
+    }
+  },
+  "earnings_median": 31737,
+  "programs": 637,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.82,
+        "reporting": 321
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.9,
+        "reporting": 7
+      },
+      "programs": 10,
+      "top_states": {
+        "ID": 1,
+        "MS": 2,
+        "PR": 7
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.84,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "MN": 4,
+        "NJ": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 23622,
+  "debt_p75": 28823,
+  "earnings_p25": 29548,
+  "earnings_p75": 34200,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "private_nonprofit",
+        "state": "PR",
+        "college": "Universidad Ana G. Mendez-Gurabo Campus",
+        "earnings": 15454,
+        "city": "Gurabo",
+        "debt": 10004,
+        "months_to_repay": 7.8,
+        "four_year_cost_48_75k": 38312
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "PR",
+        "college": "Universidad Ana G. Mendez-Cupey Campus",
+        "earnings": 16542,
+        "city": "San Juan",
+        "debt": 23779,
+        "months_to_repay": 17.2,
+        "four_year_cost_48_75k": 30368
+      }
+    ],
+    "miles": 11
+  },
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": null,
+    "programs": 0,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 4,
+      "top_states": {
+        "MS": 1,
+        "PR": 3
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 102,
+    "programs": 0
+  },
+  "programs_with_debt": 426,
+  "programs_with_earnings": 353,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.83
+}

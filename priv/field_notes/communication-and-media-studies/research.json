@@ -1,0 +1,66 @@
+{
+  "facts_hash": "8827e132be36",
+  "field": "Communication and Media Studies",
+  "hash": "f594f9850673",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS says PR specialists usually need a bachelor's in communications or a related field, with no license required. Graduates go straight into media, PR and marketing jobs rather than a set next degree.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/media-and-communication/public-relations-specialists.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both are on-campus bachelor's programs that freshmen enter directly. One is a public college's communication studies BA in Manhattan. The other is a private university's communication BA with six concentrations at its Riverdale, Bronx campus.",
+      "finding": "comparable",
+      "source": "https://manhattan.edu/academics/programs/communication"
+    },
+    "school_matters": {
+      "evidence": "Graduates of the most selective schools earn more, but entry jobs like PR specialist need only a bachelor's in communications, social science or business, with no license. Hiring is open to any school's graduates, so no separate top market showed up.",
+      "finding": "some",
+      "source": "https://www.bls.gov/ooh/media-and-communication/public-relations-specialists.htm"
+    },
+    "who_is_counted": {
+      "evidence": "I could not confirm admission requirements for the largest programs. Most seem to be large public universities that admit freshmen, but one is pooled, and I did not check whether its students are working adults.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "high_cost_region",
+      "evidence": "Santa Clara is in Silicon Valley, and its communication department sends graduates into tech, entertainment and corporate communication jobs in the high-paying Bay Area market.",
+      "source": "https://www.scu.edu/bulletin//undergraduate/chapter-3-college-of-arts-and-sciences/communication.html",
+      "unitid": 122931
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "This figure most likely belongs to the CUNY School of Professional Studies, whose results are reported under the Graduate Center. Its Communication and Media BA is an online degree-completion program for transfer students and adults.",
+      "source": "https://sps.cuny.edu/academics/undergraduate/bachelor-arts-communication-and-media-ba",
+      "unitid": 190576
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates were counted for this figure to be reliable.",
+      "source": null,
+      "unitid": 193900
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates were counted for this figure to be reliable.",
+      "source": null,
+      "unitid": 140553
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found nothing about this program's admissions, format or graduates' jobs that explains its low earnings.",
+      "source": null,
+      "unitid": 218733
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates were counted for this figure to be reliable.",
+      "source": null,
+      "unitid": 220598
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

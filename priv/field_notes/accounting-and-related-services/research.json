@@ -1,0 +1,90 @@
+{
+  "facts_hash": "5d429359610b",
+  "field": "Accounting and Related Services",
+  "hash": "7e56b0292c0a",
+  "major": {
+    "leads_to": {
+      "evidence": "The CPA license has long required 150 credit hours, a fifth year beyond the bachelor's. Since 2026 states such as Ohio also accept a 120-hour bachelor's plus two years of supervised experience and passing the CPA Exam.",
+      "finding": "licensure",
+      "source": "https://ohiocpa.com/get-involved/news/2025/12/18/ohio-s-new-cpa-licensure-pathways-set-to-take-effect-jan.-1--2026"
+    },
+    "nearby_pair": {
+      "evidence": "Both take new freshmen. Hunter admits freshmen to the college, and its accounting BS meets New York's CPA education rules. Berkeley College admits on a rolling basis and offers an accounting BBA to students starting out.",
+      "finding": "comparable",
+      "source": "https://www.hunter.cuny.edu/artsci/economics/accounting-program/bs-in-accounting"
+    },
+    "school_matters": {
+      "evidence": "The gap is moderate. The most selective schools are 'key schools' where the Big Four firms recruit, but those firms and other CPA firms also hire from many ordinary schools, so the less selective bands earn about the same.",
+      "finding": "some",
+      "source": "https://www2.lehigh.edu/academics/undergraduate-studies/degree-programs/accounting"
+    },
+    "who_is_counted": {
+      "evidence": "Two of the largest programs are online only and two are pooled. Schools like WGU say most of their students are working adults with full-time jobs and an average age of about 33, while other large programs enroll traditional students.",
+      "finding": "mixed",
+      "source": "https://www.axios.com/local/seattle/2025/08/19/western-governors-university-affordable-degrees-federal-skills-seattle"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Georgetown's business school places almost all of its job-seeking undergraduates within three months, with employers that include PwC and top finance and consulting firms. Most of its accounting graduates work in New York and Washington.",
+      "source": "https://msb.georgetown.edu/news-story/undergraduate-program-ranks-first-for-accounting-based-on-alumni-salaries/",
+      "unitid": 131496
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Recruiters name Lehigh's accounting program a key school, and the Big Four firms have recruited there for a long time.",
+      "source": "https://www2.lehigh.edu/academics/undergraduate-studies/degree-programs/accounting",
+      "unitid": 213543
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Boston College reports that about half of a recent class of accounting graduates went to Big Four firms.",
+      "source": "https://www.bc.edu/content/bc-web/schools/carroll-school/news/2016/by-the-numbers--accounting-career-outcomes.html",
+      "unitid": 164924
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 241395
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 243197
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 243179
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 243115
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 243106
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 243151
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Accountants in Puerto Rico earn far less than accountants in the states, the same as workers in every other occupation there.",
+      "source": "https://www.bls.gov/oes/current/oes132011.htm",
+      "unitid": 243133
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

@@ -1,73 +1,78 @@
 {
-  "facts_hash": "b497d827c7d0",
+  "facts_hash": "418711a720b0",
   "field": "Business Administration, Management and Operations",
-  "hash": "9bb449ac505f",
+  "hash": "8f49fe3e1fda",
   "major": {
-    "location": {
-      "evidence": "Three of the lowest-paying programs are campuses in Puerto Rico. Pay on the island is well below the mainland in every major occupational group.",
-      "finding": "explains_bottom",
-      "source": "https://newsismybusiness.com/workers-in-p-r-s-metro-area-earned-42-less-an-hour-vs-u-s-counterparts"
+    "leads_to": {
+      "evidence": "Business graduates mostly go straight to work without a license. BLS counts general and operations manager as the bachelor's-level job with the most openings. Higher-paying roles like management analyst also expect several years of experience or an MBA.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/opub/ted/2026/projected-job-openings-in-occupations-typically-requiring-a-bachelors-degree-2024-34.htm"
     },
-    "prestige": {
-      "evidence": "The top programs admit far fewer applicants than is typical for the major, and schools like Michigan Ross send most graduates to banks and consulting firms. Some other top programs are open-admission degrees for working adults.",
-      "finding": "both",
-      "source": "https://michiganross.umich.edu/news/michigan-ross-undergraduates-remain-high-demand-secure-top-salaries-according-2025-employment"
+    "nearby_pair": {
+      "evidence": "Cal State LA admits first-year students, and Fremont University's Cerritos campus admits anyone with a high school diploma or GED. A new student in the Los Angeles area could choose either one.",
+      "finding": "comparable",
+      "source": "https://fremont.edu/prospective-students/"
     },
-    "stepping_stone": {
-      "evidence": "Most business graduates go straight to work. The usual graduate degree is an MBA, and most MBA students wait several years after their bachelor's degree before they enroll.",
-      "finding": "weak",
-      "source": "https://rti.org/sites/default/files/resources/student_financing_graduate_first-professional_education_1995-96.pdf"
+    "school_matters": {
+      "evidence": "Business pay barely changes across schools that admit over a quarter of applicants. Schools that admit under a quarter feed banks and consultancies: at Michigan's Ross business school, 42.9% of 2023 BBAs went into financial services and 24.8% into consulting.",
+      "finding": "some",
+      "source": "https://poetsandquantsforundergrads.com/first-jobs/jobs-michigan-ross-business-grads-snagged-record-high-salaries-in-2023/"
+    },
+    "who_is_counted": {
+      "evidence": "The largest programs include online and pooled programs at schools like WGU, where four in five students work while enrolled and the average age is about 36. These graduates are mostly working adults, while traditional campuses enroll new graduates.",
+      "finding": "mixed",
+      "source": "https://www.wgu.edu/blog/what-wgu-students-look-like-study-in-diversity2009.html"
     }
   },
   "programs": [
     {
       "cause": "experienced_students",
-      "evidence": "Bismarck State's online Energy Management bachelor's requires an applied associate degree or energy training before admission. It is built for people already working in the energy industry who want to become supervisors or managers.",
-      "source": "https://catalog.bismarckstate.edu/catalog/degrees/bas/energy-management/",
+      "evidence": "Bismarck State's online applied bachelor's in energy management admits only students who already hold an associate degree, certificate or diploma in electric power technology. Its students are already utility and power plant workers.",
+      "source": "https://catalog.bismarckstate.edu/catalog/degrees/bas/energy-management/energy-management",
       "unitid": 200022
     },
     {
       "cause": "selective_school",
-      "evidence": "Michigan's Ross School of Business is highly selective. Nearly all of its business graduates get job offers, mostly from financial services and consulting firms such as McKinsey and Goldman Sachs.",
-      "source": "https://michiganross.umich.edu/news/michigan-ross-undergraduates-remain-high-demand-secure-top-salaries-according-2025-employment",
+      "evidence": "Michigan's Ross business school sends most of its BBA graduates to financial services and consulting firms such as PwC Strategy&, Bank of America, JPMorgan Chase and Boston Consulting Group.",
+      "source": "https://poetsandquantsforundergrads.com/first-jobs/jobs-michigan-ross-business-grads-snagged-record-high-salaries-in-2023/",
       "unitid": 170976
     },
     {
       "cause": "online_adult",
-      "evidence": "City University of Seattle offers its business degree online as a degree-completion program for working adults and transfer students.",
-      "source": "https://careerbridge.wa.gov/learn/program/4",
+      "evidence": "City University of Seattle's business bachelor's is a degree-completion program for working professionals and adult learners. It accepts up to 90 lower-division transfer credits and offers part-time study.",
+      "source": "https://cityu.smartcatalogiq.com/en/2020-2021/catalog/transfer-credit-toward-advanced-standing-2100-18/transfer-policies-for-undergraduate-degree-and-certificate-programs-2100-21",
       "unitid": 234915
     },
     {
       "cause": "small_cohort",
-      "evidence": "Too few graduates are in this program's earnings group for its figure to be reliable.",
+      "evidence": "Too few graduates are counted to give a reliable earnings figure.",
       "source": null,
       "unitid": 197993
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "No admission requirement, delivery format or program detail turned up that explains why this program's earnings are low.",
+      "evidence": "No program feature, admission rule or delivery format turned up that explains the low earnings.",
       "source": null,
       "unitid": 220598
     },
     {
       "cause": "data_error",
-      "evidence": "This campus reports exactly the same earnings and cohort as the university's Ponce and Mayaguez campuses, so the figure looks pooled across campuses.",
+      "evidence": "Arecibo reports exactly the same earnings, debt and cohort as the Ponce and Mayaguez campuses, so the figure looks pooled across the university's Puerto Rico campuses.",
       "source": null,
       "unitid": 241395
     },
     {
       "cause": "data_error",
-      "evidence": "This campus reports exactly the same earnings and cohort as the university's Arecibo and Mayaguez campuses, so the figure looks pooled across campuses.",
+      "evidence": "Ponce reports exactly the same earnings, debt and cohort as the Arecibo and Mayaguez campuses, so the figure looks pooled across the university's Puerto Rico campuses.",
       "source": null,
       "unitid": 241410
     },
     {
       "cause": "data_error",
-      "evidence": "This campus reports exactly the same earnings and cohort as the university's Arecibo and Ponce campuses, so the figure looks pooled across campuses.",
+      "evidence": "Mayaguez reports exactly the same earnings, debt and cohort as the Arecibo and Ponce campuses, so the figure looks pooled across the university's Puerto Rico campuses.",
       "source": null,
       "unitid": 243586
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

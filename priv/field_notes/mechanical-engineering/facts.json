@@ -1,82 +1,161 @@
 {
   "name": "Mechanical Engineering",
-  "hash": "c9184f45357e",
-  "rank": 24,
-  "debt_median": 30590,
+  "largest": {
+    "debt_median": 24448,
+    "earnings_median": 67886,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 53000,
+    "months_to_repay_median": 4.3,
+    "years_of_pay_48_75k_median": 0.8,
+    "pooled": 1,
+    "share_of_graduates_percent": 11
+  },
+  "hash": "41c921b58b7e",
+  "rank": 18,
+  "debt_median": 24786,
   "flagged": [
     {
       "state": "CA",
       "college": "California State University Maritime Academy",
       "unitid": 111188,
       "earnings": 83137,
+      "debt": 19690,
       "admission_rate": 0.9873,
-      "debt": null,
+      "months_to_repay": 2.8,
+      "four_year_cost_48_75k": 66592,
+      "cohort": 46,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 46
+      ]
     },
     {
       "state": "MA",
       "college": "Massachusetts Institute of Technology",
       "unitid": 166683,
       "earnings": 80396,
+      "debt": 11334,
       "admission_rate": 0.0474,
-      "debt": 51429,
+      "months_to_repay": 1.7,
+      "four_year_cost_48_75k": 18484,
+      "cohort": 128,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 128
+      ]
     },
     {
       "state": "PA",
       "college": "University of Pennsylvania",
       "unitid": 215062,
       "earnings": 78166,
+      "debt": 12455,
       "admission_rate": 0.0587,
-      "debt": null,
+      "months_to_repay": 1.9,
+      "four_year_cost_48_75k": 70340,
+      "cohort": 26,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 26
+      ]
     },
     {
       "state": "VA",
       "college": "Virginia Military Institute",
       "unitid": 234085,
       "earnings": 41215,
+      "debt": 19971,
       "admission_rate": 0.8173,
-      "debt": null,
+      "months_to_repay": 5.8,
+      "four_year_cost_48_75k": 42204,
+      "cohort": 36,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 36
+      ]
     },
     {
       "state": "VT",
       "college": "Norwich University",
       "unitid": 230995,
       "earnings": 40053,
+      "debt": 21500,
       "admission_rate": 0.7361,
-      "debt": null,
+      "months_to_repay": 6.4,
+      "four_year_cost_48_75k": 89692,
+      "cohort": 42,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 42
+      ]
     },
     {
       "state": "PR",
       "college": "Universidad Ana G. Mendez-Gurabo Campus",
       "unitid": 243601,
       "earnings": 36383,
+      "debt": 16197,
       "admission_rate": -1.0,
-      "debt": null,
+      "months_to_repay": 5.3,
+      "four_year_cost_48_75k": 38312,
+      "cohort": 38,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 38
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15355,
+      "earnings_median": 70134,
+      "programs": 14,
+      "four_year_cost_48_75k_median": 27000,
+      "months_to_repay_median": 2.6,
+      "years_of_pay_48_75k_median": 0.4
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19000,
+      "earnings_median": 69404,
+      "programs": 13,
+      "four_year_cost_48_75k_median": 55000,
+      "months_to_repay_median": 3.5,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23000,
+      "earnings_median": 66633,
+      "programs": 60,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 4.1,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25000,
+      "earnings_median": 64194,
+      "programs": 211,
+      "four_year_cost_48_75k_median": 63000,
+      "months_to_repay_median": 4.7,
+      "years_of_pay_48_75k_median": 1.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24083,
+      "earnings_median": 64632,
+      "programs": 213,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 4.5,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    "private_nonprofit": {
+      "debt_median": 26248,
+      "earnings_median": 66717,
+      "programs": 96,
+      "four_year_cost_48_75k_median": 87000,
+      "months_to_repay_median": 4.7,
+      "years_of_pay_48_75k_median": 1.4
+    }
+  },
   "earnings_median": 65131,
   "programs": 397,
   "ends": {
@@ -111,9 +190,61 @@
       }
     }
   },
+  "short_name": "Mechanical Engineering",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 20625,
+  "debt_p75": 27000,
   "earnings_p25": 61933,
   "earnings_p75": 67834,
+  "four_year_cost": {
+    "sticker": 114000,
+    "gap_48_75k": 38000,
+    "programs_48_75k": 308,
+    "years_of_pay_48_75k": 1.0,
+    "income_0_30k": 45000,
+    "income_48_75k": 62000,
+    "income_110k_plus": 99000
+  },
+  "months_to_repay": {
+    "median": 4.5,
+    "programs": 299,
+    "of_major": 4.5,
+    "p25": 3.9,
+    "p75": 4.9
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY City College",
+        "earnings": 63296,
+        "city": "New York",
+        "debt": 13232,
+        "months_to_repay": 2.5,
+        "four_year_cost_48_75k": 28752
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "NY",
+        "college": "Manhattan University",
+        "earnings": 65446,
+        "city": "Riverdale",
+        "debt": 27000,
+        "months_to_repay": 5.0,
+        "four_year_cost_48_75k": 108168
+      }
+    ],
+    "miles": 5
+  },
+  "online_only": {
+    "debt_median": 18131,
+    "earnings_median": 67197,
+    "programs": 1,
+    "four_year_cost_48_75k_median": 21000,
+    "months_to_repay_median": 3.2,
+    "years_of_pay_48_75k_median": 0.3
+  },
   "outliers": {
     "below_half_median": {
       "count": 0,
@@ -124,8 +255,12 @@
       "top_states": {}
     }
   },
-  "programs_with_debt": 163,
+  "parent_plus_over_24_months": {
+    "of": 163,
+    "programs": 0
+  },
+  "programs_with_debt": 310,
   "programs_with_earnings": 309,
-  "ranked_of": 147,
-  "debt_to_earnings": 0.47
+  "ranked_of": 222,
+  "debt_to_earnings": 0.38
 }

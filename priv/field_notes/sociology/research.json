@@ -1,0 +1,66 @@
+{
+  "facts_hash": "4067f360f114",
+  "field": "Sociology",
+  "hash": "1bd98f3d199c",
+  "major": {
+    "leads_to": {
+      "evidence": "In ASA's national survey, most sociology graduates were working and not in graduate school, and only about a tenth were enrolled in a graduate program. Many held jobs in social services, counseling or clerical work.",
+      "finding": "direct_jobs",
+      "source": "https://asanet.org/?p=1014"
+    },
+    "nearby_pair": {
+      "evidence": "Ashford University, now the University of Arizona Global Campus, is an open-enrollment online school whose students were mostly working adults, with a median age near 35. San Diego State is a campus university that admits freshmen.",
+      "finding": "not_comparable",
+      "source": "https://www.sdbj.com/?p=26066"
+    },
+    "school_matters": {
+      "evidence": "Only the schools that admit under a tenth of applicants pay more. Their graduates enter the campus-wide pipeline into finance, consulting and tech. Schools admitting 10 to 60 percent pay about what open schools pay.",
+      "finding": "some",
+      "source": "https://features.thecrimson.com/2026/senior-survey/after-harvard/"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest sociology programs are at large public universities such as UC Santa Barbara, which admit freshmen. They pay about the major's median and carry low debt, with no sign of an adult degree-completion population.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/sociology-451101"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Duke is among the most selective universities, and its graduates in every major go heavily into finance, consulting and tech.",
+      "source": "https://features.thecrimson.com/2026/senior-survey/after-harvard/",
+      "unitid": 198419
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Harvard's seniors go heavily into finance, consulting and tech, and its sociology alumni include associates at firms like Boston Consulting Group.",
+      "source": "https://sociology.fas.harvard.edu/pages/alumni-profiles",
+      "unitid": 166027
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Columbia is among the most selective universities, and its New York graduates go to the same finance and consulting employers that recruit at other elite schools.",
+      "source": "https://features.thecrimson.com/2026/senior-survey/after-harvard/",
+      "unitid": 190150
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is too small to trust, and the record has no state because Clarion has since merged into PennWest University.",
+      "source": null,
+      "unitid": 211644
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found about this flagship public program explains earnings this far below other sociology programs.",
+      "source": null,
+      "unitid": 157085
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found about the program's admissions or format explains the low figure, and the cohort is close to the small-cohort line.",
+      "source": null,
+      "unitid": 199999
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

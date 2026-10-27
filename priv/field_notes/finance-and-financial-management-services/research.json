@@ -1,0 +1,66 @@
+{
+  "facts_hash": "4718f333975b",
+  "field": "Finance and Financial Management Services",
+  "hash": "0ae730be86c9",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS lists a bachelor's degree, with no work experience, as the usual entry education for financial analysts. Some employers prefer a master's, and the CFA charter is an optional later credential.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/business-and-financial/financial-analysts.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Ashford, now the University of Arizona Global Campus, runs its bachelor's degrees online with conditional admission and transfer credit. San Diego State is a campus public university, so the two programs serve different students.",
+      "finding": "not_comparable",
+      "source": "https://uagc.edu/catalog/undergraduate-programs/admission-policies-and-procedures-for-bachelors-degree-programs"
+    },
+    "school_matters": {
+      "evidence": "Wharton's career office reported that almost half its Class of 2015 went into investment banking or consulting. That is a top entry market that typical finance programs barely reach.",
+      "finding": "two_markets",
+      "source": "https://thedp.com/article/2015/12/investment-banking-and-consulting-most-popular-careers-for-2015-wharton-grads"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest producers of finance degrees are large flagship and city publics such as Ohio State and Baruch, and their undergraduate business schools mostly enroll traditional first-year and transfer students.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/general-finance?redirect=true"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Wharton undergraduates go heavily into investment banking and consulting, the best-paid entry jobs in finance.",
+      "source": "https://thedp.com/article/2015/12/investment-banking-and-consulting-most-popular-careers-for-2015-wharton-grads",
+      "unitid": 215062
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Notre Dame is a highly selective school whose business graduates are recruited by top banks and consulting firms.",
+      "source": "https://www.collegetransitions.com/blog/best-colleges-for-finance",
+      "unitid": 152080
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Georgetown is a highly selective school whose business graduates are recruited by top banks and consulting firms.",
+      "source": "https://www.collegetransitions.com/blog/best-colleges-for-finance",
+      "unitid": 131496
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found in the program's admission rules, format or local job market explains its low earnings.",
+      "source": null,
+      "unitid": 229063
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This is a campus program in a high-cost city, and nothing found explains its low earnings.",
+      "source": null,
+      "unitid": 190549
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are lower than on the mainland in nearly every occupation, including financial jobs.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 243221
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

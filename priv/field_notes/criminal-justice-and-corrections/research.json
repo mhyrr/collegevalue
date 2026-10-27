@@ -1,0 +1,84 @@
+{
+  "facts_hash": "a9943d52a502",
+  "field": "Criminal Justice and Corrections",
+  "hash": "79a54dcc011a",
+  "major": {
+    "leads_to": {
+      "evidence": "Graduates mostly go straight into police, corrections and similar jobs. Police must still finish their agency's training academy, and a bachelor's is usually required only for promotion to lieutenant or higher or by some federal agencies.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/protective-service/police-and-detectives.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both programs take new students. Colorado Technical University's criminal justice bachelor's is taught at its Colorado Springs campus and online, and UCCS is a public university that admits first-year students.",
+      "finding": "comparable",
+      "source": "https://coloradotech.smartcatalogiq.com/en/2025/catalog/degree-programs/bachelors/bachelor-of-science-in-criminal-justice"
+    },
+    "school_matters": {
+      "evidence": "Admission bands earn about the same. Most police jobs need only a high school diploma plus the agency's own academy, and pay depends on experience, tenure and location. A degree mostly helps with promotion or adds a small incentive.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/protective-service/police-and-detectives.htm"
+    },
+    "who_is_counted": {
+      "evidence": "I could not confirm the admission requirements of the largest programs. Several are pooled across campuses, and the top earners in the major include completion programs for working officers, so the mix of students is uncertain.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "experienced_students",
+      "evidence": "Union's Criminal Justice Management degree was an accelerated online completion program for working law enforcement officers. It gave transfer credit for police academy training, so its graduates were already employed officers. The school has since closed.",
+      "source": "https://myunion.edu/cjm",
+      "unitid": 206279
+    },
+    {
+      "cause": "experienced_students",
+      "evidence": "Fisher markets its online and on-campus criminal justice bachelor's to working police officers. It gives credit for police academy training, accepts up to 90 transfer credits, and is an approved provider for the state's police career incentive pay program.",
+      "source": "https://discover.fisher.edu/cj",
+      "unitid": 165802
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "Siena Heights runs bachelor's completion centers for adult students and a transfer path for graduates of a community college law enforcement associate degree. Its graduates likely include working officers, but I could not confirm the criminal justice program uses this format.",
+      "source": "https://www.jccmi.edu/wp-content/uploads/Siena-Heights-University-Public-Services-Administration-JC-Law-Enforcement-AAS.pdf",
+      "unitid": 172264
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small, and the same figures appear for all four Caribbean University campuses, so the data are pooled across them.",
+      "source": null,
+      "unitid": 241377
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small, and the same figures appear for all four Caribbean University campuses, so the data are pooled across them.",
+      "source": null,
+      "unitid": 241386
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small, and the same figures appear for all four Caribbean University campuses, so the data are pooled across them.",
+      "source": null,
+      "unitid": 363907
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small, and the same figures appear for all four Caribbean University campuses, so the data are pooled across them.",
+      "source": null,
+      "unitid": 363916
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are lower across occupations, and that alone explains this program's earnings.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 242705
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is too small to trust, and like the other Puerto Rico programs it sits in a low-wage labor market.",
+      "source": null,
+      "unitid": 242626
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

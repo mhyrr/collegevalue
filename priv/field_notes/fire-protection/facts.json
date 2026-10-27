@@ -1,83 +1,170 @@
 {
   "name": "Fire Protection",
-  "hash": "50bace9e2941",
-  "rank": null,
-  "debt_median": 5376,
+  "largest": {
+    "debt_median": 24237,
+    "earnings_median": 51015,
+    "programs": 10,
+    "online_only": 1,
+    "four_year_cost_48_75k_median": 53000,
+    "months_to_repay_median": 4.7,
+    "years_of_pay_48_75k_median": 0.8,
+    "pooled": 0,
+    "share_of_graduates_percent": 83
+  },
+  "hash": "c5fdc29e9164",
+  "rank": 22,
+  "debt_median": 22723,
   "flagged": [
     {
       "state": "IL",
       "college": "Southern Illinois University-Carbondale",
       "unitid": 149222,
       "earnings": 103432,
+      "debt": 17725,
       "admission_rate": 0.9044,
-      "debt": null,
+      "months_to_repay": 2.1,
+      "four_year_cost_48_75k": 52824,
+      "cohort": 21,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 21
+      ]
     },
     {
       "state": "CO",
       "college": "Colorado State University-Fort Collins",
       "unitid": 126818,
       "earnings": 76384,
+      "debt": 34008,
       "admission_rate": 0.8959,
-      "debt": null,
+      "months_to_repay": 5.3,
+      "four_year_cost_48_75k": 58444,
+      "cohort": 18,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 18
+      ]
     },
     {
       "state": "IA",
       "college": "Waldorf University",
       "unitid": 154518,
       "earnings": 74071,
+      "debt": 21783,
       "admission_rate": 0.726,
-      "debt": null,
+      "months_to_repay": 3.5,
+      "four_year_cost_48_75k": 95548,
+      "cohort": 87,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 87
+      ]
     },
     {
       "state": "IL",
       "college": "Western Illinois University",
       "unitid": 149772,
       "earnings": 35038,
+      "debt": 22723,
       "admission_rate": 0.7496,
-      "debt": null,
+      "months_to_repay": 7.8,
+      "four_year_cost_48_75k": 46432,
+      "cohort": 28,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 28
+      ]
     },
     {
       "state": "NJ",
       "college": "New Jersey City University",
       "unitid": 185129,
       "earnings": 32493,
+      "debt": 26000,
       "admission_rate": 0.8918,
-      "debt": null,
+      "months_to_repay": 9.6,
+      "four_year_cost_48_75k": 52640,
+      "cohort": 19,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 19
+      ]
     },
     {
       "state": "NC",
       "college": "Methodist University",
       "unitid": 198969,
       "earnings": 26240,
+      "debt": 27000,
       "admission_rate": 0.752,
-      "debt": null,
+      "months_to_repay": 12.3,
+      "four_year_cost_48_75k": 92452,
+      "cohort": 21,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 21
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": null,
+      "earnings_median": null,
+      "programs": 0,
+      "four_year_cost_48_75k_median": null,
+      "months_to_repay_median": null,
+      "years_of_pay_48_75k_median": null
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 12296,
+      "earnings_median": 61715,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 33000,
+      "months_to_repay_median": 2.4,
+      "years_of_pay_48_75k_median": 0.5
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 16500,
+      "earnings_median": 43142,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 31000,
+      "months_to_repay_median": 4.6,
+      "years_of_pay_48_75k_median": 0.7
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25875,
+      "earnings_median": 45929,
+      "programs": 12,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 6.0,
+      "years_of_pay_48_75k_median": 1.1
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 22723,
+      "earnings_median": 53328,
+      "programs": 13,
+      "four_year_cost_48_75k_median": 46000,
+      "months_to_repay_median": 4.6,
+      "years_of_pay_48_75k_median": 0.7
+    },
+    "private_nonprofit": {
+      "debt_median": 26688,
+      "earnings_median": 34698,
+      "programs": 2,
+      "four_year_cost_48_75k_median": 112000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 3.3
+    },
+    "for_profit": {
+      "debt_median": 21248,
+      "earnings_median": 70128,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 58000,
+      "months_to_repay_median": 3.6,
+      "years_of_pay_48_75k_median": 0.8
+    }
+  },
   "earnings_median": 57522,
   "programs": 55,
   "ends": {
@@ -112,9 +199,37 @@
       }
     }
   },
+  "short_name": "Fire Protection",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 17725,
+  "debt_p75": 26375,
   "earnings_p25": 43087,
   "earnings_p75": 71931,
+  "four_year_cost": {
+    "sticker": 92000,
+    "gap_48_75k": 24000,
+    "programs_48_75k": 18,
+    "years_of_pay_48_75k": 0.8,
+    "income_0_30k": 41000,
+    "income_48_75k": 51000,
+    "income_110k_plus": 71000
+  },
+  "months_to_repay": {
+    "median": 4.5,
+    "programs": 18,
+    "of_major": 4.6,
+    "p25": 3.5,
+    "p75": 7.2
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": 19434,
+    "earnings_median": 61979,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 29000,
+    "months_to_repay_median": 3.6,
+    "years_of_pay_48_75k_median": 0.5
+  },
   "outliers": {
     "below_half_median": {
       "count": 1,
@@ -127,8 +242,12 @@
       "top_states": {}
     }
   },
-  "programs_with_debt": 1,
+  "parent_plus_over_24_months": {
+    "of": 1,
+    "programs": 0
+  },
+  "programs_with_debt": 21,
   "programs_with_earnings": 18,
-  "ranked_of": 147,
-  "debt_to_earnings": null
+  "ranked_of": 222,
+  "debt_to_earnings": 0.4
 }

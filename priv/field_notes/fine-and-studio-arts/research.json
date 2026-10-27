@@ -1,0 +1,66 @@
+{
+  "facts_hash": "3c12ac8955c9",
+  "field": "Fine and Studio Arts",
+  "hash": "6d51bd8871d0",
+  "major": {
+    "leads_to": {
+      "evidence": "No license or required next degree exists. BLS says most fine artists are self-employed and many hold other jobs alongside their art, and teaching art in college usually requires an MFA.",
+      "finding": "mixed",
+      "source": "https://www.bls.gov/ooh/arts-and-design/craft-and-fine-artists.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both programs take first-year students. Academy of Art University in San Francisco has open admission and accepts anyone with a high school diploma or GED, and Berkeley admits freshmen into its art practice major.",
+      "finding": "comparable",
+      "source": "https://nces.ed.gov/collegenavigator/?id=108232"
+    },
+    "school_matters": {
+      "evidence": "Schools that admit under a tenth of applicants pay only a little more than open ones. No elite employer pipeline exists: BLS says most fine artists are self-employed and sell their own work, so a school's name moves first-year pay very little.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/arts-and-design/craft-and-fine-artists.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The big programs admit students straight from high school. Academy of Art University, one of the largest, has open admission and needs only a high school diploma or GED, so the numbers mostly reflect new graduates.",
+      "finding": "new_graduates",
+      "source": "https://nces.ed.gov/collegenavigator/?id=108232"
+    }
+  },
+  "programs": [
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates were counted to give a reliable figure.",
+      "source": null,
+      "unitid": 130253
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Cal Poly's Art and Design BFA includes a graphic design concentration that covers branding, packaging, interaction and motion design, so many of its graduates take design jobs rather than studio art work.",
+      "source": "https://catalog.calpoly.edu/liberal-arts/art-design/art-design-bfa/",
+      "unitid": 110422
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Graphic design is a separate BFA at Utah, and its studio art BFA has the usual emphases, so nothing found explains the higher pay.",
+      "source": null,
+      "unitid": 230764
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates were counted to give a reliable figure.",
+      "source": null,
+      "unitid": 169442
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico pays less in every occupation, and that local labor market explains the low figure.",
+      "source": "https://www.bls.gov/oes/current/oessrcst.htm",
+      "unitid": 243221
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates were counted to give a reliable figure.",
+      "source": null,
+      "unitid": 156295
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

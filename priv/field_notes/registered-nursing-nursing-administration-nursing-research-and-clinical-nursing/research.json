@@ -1,85 +1,90 @@
 {
-  "facts_hash": "956fee7bb0c7",
+  "facts_hash": "08f735c2eecc",
   "field": "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing",
-  "hash": "fa87db236a45",
+  "hash": "f4ea84d661f7",
   "major": {
-    "location": {
-      "evidence": "California has the highest registered nurse wages in the country, and most of the top programs are there. Every one of the bottom programs is in Puerto Rico, where nurses earn far less than on the mainland. Low pay is the main reason Puerto Rican nurses leave for the mainland.",
-      "finding": "both",
-      "source": "https://www.wlrn.org/health/2023-12-04/puerto-rico-mortality-rate-healthcare-system"
+    "leads_to": {
+      "evidence": "Graduates must pass the NCLEX-RN and get a state license before they can work as registered nurses. Most go straight into staff RN jobs.",
+      "finding": "licensure",
+      "source": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm#tab-4"
     },
-    "prestige": {
-      "evidence": "The best-paying programs admit a larger share of applicants than the typical nursing program, so selectivity does not explain their pay. They are mostly in California, which pays registered nurses more than any other state.",
-      "finding": "major",
-      "source": "https://www.beckershospitalreview.com/compensation-issues/rn-pay-for-all-50-states-adjusted-by-cost-of-living-2024/"
+    "nearby_pair": {
+      "evidence": "Miami Dade College's BSN is an RN-to-BSN program that requires a nursing associate degree and a Florida RN license, so its graduates are already working nurses. Florida National University runs a pre-licensure BSN with an entrance exam.",
+      "finding": "not_comparable",
+      "source": "https://mdc.edu/bsn/admission-requirements.aspx"
     },
-    "stepping_stone": {
-      "evidence": "Most nursing graduates go straight to work as registered nurses. A minority earn a master's or doctorate later, usually after working for some years, for roles such as nurse practitioner.",
-      "finding": "some",
-      "source": "https://data.hrsa.gov/DataDownload/NSSRN/GeneralPUF18/2018_NSSRN_Summary_Report-508.pdf"
+    "school_matters": {
+      "evidence": "Every new RN must pass the same NCLEX-RN licensing exam, so the license sets a common entry floor. Pay is about the same whether a school admits under a tenth or most applicants, and it follows region and hospital more than the school's name.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/healthcare/registered-nurses.htm#tab-4"
+    },
+    "who_is_counted": {
+      "evidence": "The largest programs pay above the major's median, and half of them are pooled or online-only. That pattern fits RN-to-BSN completion programs, which admit only nurses who already hold an RN license and an associate degree. I did not check which programs are the largest.",
+      "finding": "mixed",
+      "source": "https://catalog.wvu.edu/undergraduate/schoolofnursing/rnbsn/"
     }
   },
   "programs": [
     {
       "cause": "experienced_students",
-      "evidence": "Mercy University runs an online RN to BS completion program for registered nurses who already hold an associate degree or nursing diploma, so many of its graduates were already working as nurses in the New York area.",
+      "evidence": "Mercy University runs an online RN to B.S. completion program for registered nurses who already hold an associate degree or diploma in nursing. Those already-employed nurses are likely counted together with its traditional BSN graduates.",
       "source": "https://mercy.edu/node/60",
       "unitid": 193016
     },
     {
       "cause": "experienced_students",
-      "evidence": "Accreditation records list Pacific College's bachelor's in nursing as an RN to BSN completion program taught by distance education. It is for nurses who are already licensed, not for students preparing for the licensing exam.",
-      "source": "https://wscuc.org/institutions/pacific-college/?print=pdf",
+      "evidence": "Pacific College's BSN is an RN-to-BSN completion program taught by distance education, so its graduates are already licensed, working nurses.",
+      "source": "https://www.wscuc.org/program/bachelor-of-science-in-nursing-rn-to-bsn-completion",
       "unitid": 422695
     },
     {
-      "cause": "experienced_students",
-      "evidence": "Sonoma State runs a post-licensure BSN that requires a current California RN license. Many of its graduates are working nurses finishing a bachelor's, in a Northern California market that pays nurses some of the highest wages in the country.",
-      "source": "https://nursing.sonoma.edu/academic-programs/post-licensure/roadmaps/college-marin",
+      "cause": "high_cost_region",
+      "evidence": "Sonoma State is in Northern California, which pays registered nurses more than anywhere else in the country. It also runs an RN-to-BSN track for nurses who are already licensed.",
+      "source": "https://health.ucdavis.edu/insideout/news/headlines/northern-california-ranks-top-in-wages-for-registered-nurses/2025/04",
       "unitid": 123572
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn a small fraction of mainland nurse pay. That low local pay explains this campus's figure, even though it is the island's main health sciences campus.",
-      "source": "https://www.wlrn.org/health/2023-12-04/puerto-rico-mortality-rate-healthcare-system",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 243203
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland. Low pay is the main reason Puerto Rican nurses leave for the mainland.",
-      "source": "https://jsr.org/hs/index.php/path/article/view/6347",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 241191
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so graduates who stay on the island start at much lower pay.",
-      "source": "https://www.wlrn.org/health/2023-12-04/puerto-rico-mortality-rate-healthcare-system",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 242662
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so graduates who stay on the island start at much lower pay.",
-      "source": "https://www.wlrn.org/health/2023-12-04/puerto-rico-mortality-rate-healthcare-system",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 241410
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland. Research names low pay as the main reason the island's nurses move to the mainland.",
-      "source": "https://jsr.org/hs/index.php/path/article/view/6347",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 242644
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so graduates who stay on the island start at much lower pay.",
-      "source": "https://www.wlrn.org/health/2023-12-04/puerto-rico-mortality-rate-healthcare-system",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 243346
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland. Research names low pay as the main reason the island's nurses move to the mainland.",
-      "source": "https://jsr.org/hs/index.php/path/article/view/6347",
+      "evidence": "Registered nurses in Puerto Rico earn far less than nurses on the mainland, so all of the island's nursing programs report low pay.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_7200006.htm",
       "unitid": 242617
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

@@ -1,61 +1,66 @@
 {
-  "facts_hash": "8de3bfe2c6f6",
+  "facts_hash": "915891d1c739",
   "field": "Economics",
-  "hash": "c9805366b653",
+  "hash": "d9b00f12b382",
   "major": {
-    "location": {
-      "evidence": "The top programs lean toward Massachusetts and the bottom ones toward New York, but these are highly selective and less selective schools. That points to selectivity, not to the regional pay for economics jobs.",
-      "finding": "none",
-      "source": null
+    "leads_to": {
+      "evidence": "Most graduates go straight into jobs in business, finance and government. Working as an economist usually takes a master's or Ph.D., and some majors go on to law or other graduate school, so first-year pay understates them.",
+      "finding": "mixed",
+      "source": "https://www.bls.gov/ooh/life-physical-and-social-science/economists.htm"
     },
-    "prestige": {
-      "evidence": "The best-paying economics programs are at schools that admit very few applicants. Duke's economics department reports that most of its graduates who take jobs go into finance, and many of the rest go into consulting.",
-      "finding": "school",
-      "source": "https://econ.duke.edu/news/duke-beats-out-harvard-yale-top-college-economics-degree"
+    "nearby_pair": {
+      "evidence": "Both are traditional undergraduate colleges in Manhattan that take freshmen straight from high school. Baruch accepts first-year applicants on a rolling basis through CUNY's standard freshman application.",
+      "finding": "comparable",
+      "source": "https://enrollmentmanagement.baruch.cuny.edu/undergraduate-admissions/how-to-apply/"
     },
-    "stepping_stone": {
-      "evidence": "Many economics majors go on to graduate school, most often law school or an MBA. These degrees usually come after a few years of work, so first-year earnings capture only part of the picture.",
-      "finding": "some",
-      "source": "https://uwgb.edu/economics/careers-grads/graduate-information"
+    "school_matters": {
+      "evidence": "At the most selective schools, economics feeds Wall Street. Duke's economics department says about four in five majors take full-time jobs by graduation, and roughly two-thirds of those go into finance and about a sixth into consulting.",
+      "finding": "two_markets",
+      "source": "https://econ.duke.edu/undergraduate/careers"
+    },
+    "who_is_counted": {
+      "evidence": "Most economics degrees come from public four-year universities, and the major is taught almost entirely on campus to students who enter as freshmen. Only one program in the data is online-only.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/economics"
     }
   },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "Claremont McKenna is highly selective. Its economics career office holds employer information sessions and industry nights focused on careers in finance, consulting and accounting.",
-      "source": "https://www.cmc.edu/robert-day-school/career/networking/economics-majors",
+      "evidence": "Claremont McKenna is highly selective and is one of the top liberal arts colleges for placing graduates in finance and consulting firms.",
+      "source": "https://claremontmckenna.edu/news/future-so-bright",
       "unitid": 112260
     },
     {
       "cause": "selective_school",
-      "evidence": "Duke is highly selective, and its economics department reports that most graduates who take jobs go into finance or management consulting.",
-      "source": "https://econ.duke.edu/news/duke-beats-out-harvard-yale-top-college-economics-degree",
+      "evidence": "Duke's economics department reports that most of its majors take full-time jobs by graduation, mainly in finance and consulting.",
+      "source": "https://econ.duke.edu/undergraduate/careers",
       "unitid": 198419
     },
     {
       "cause": "selective_school",
-      "evidence": "Harvard admits almost no one, and student surveys show a large share of its working graduates go into high-paying finance and consulting jobs.",
-      "source": "https://www.harvardmagazine.com/node/45300",
+      "evidence": "Harvard is among the most selective schools in the country, and its economics graduates are recruited by top banks and consultancies.",
+      "source": "https://econ.duke.edu/undergraduate/careers",
       "unitid": 166027
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "Nothing found about Purchase's economics program, such as admissions, format or graduate destinations, explains why its graduates earn less.",
+      "evidence": "Purchase is a SUNY campus focused on the arts with a small economics program, and nothing I found explains its low first-year pay.",
       "source": null,
       "unitid": 196219
     },
     {
-      "cause": "low_cost_region",
-      "evidence": "Federal wage data show that pay in the Albuquerque area falls below the national average, which helps explain lower starting pay for local graduates.",
-      "source": "https://www.bls.gov/regions/southwest/news-release/occupationalemploymentandwages_albuquerque.htm",
+      "cause": "no_clear_cause",
+      "evidence": "New Mexico's lower wages may account for part of the gap, but I found no clear reason this program pays so far below other open-admission schools.",
+      "source": null,
       "unitid": 187985
     },
     {
       "cause": "small_cohort",
-      "evidence": "The earnings figure comes from too few graduates to be reliable.",
+      "evidence": "Fewer than twenty graduates are counted, too few for a reliable earnings figure.",
       "source": null,
       "unitid": 190549
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

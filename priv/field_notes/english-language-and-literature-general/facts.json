@@ -1,82 +1,169 @@
 {
   "name": "English Language and Literature, General",
-  "hash": "2234f9ae7450",
-  "rank": 88,
-  "debt_median": 24480,
+  "largest": {
+    "debt_median": 22125,
+    "earnings_median": 29572,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 45000,
+    "months_to_repay_median": 9.5,
+    "years_of_pay_48_75k_median": 1.6,
+    "pooled": 3,
+    "share_of_graduates_percent": 10
+  },
+  "hash": "5c03c7c87aee",
+  "rank": 180,
+  "debt_median": 24529,
   "flagged": [
     {
       "state": "DC",
       "college": "Georgetown University",
       "unitid": 131496,
       "earnings": 49812,
+      "debt": 16500,
       "admission_rate": 0.1308,
-      "debt": null,
+      "months_to_repay": 4.0,
+      "four_year_cost_48_75k": 53856,
+      "cohort": 57,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 57
+      ]
     },
     {
       "state": "CT",
       "college": "Yale University",
       "unitid": 130794,
       "earnings": 48264,
-      "admission_rate": 0.045,
       "debt": null,
+      "admission_rate": 0.045,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 83600,
+      "cohort": 23,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 23
+      ]
     },
     {
       "state": "NY",
       "college": "Colgate University",
       "unitid": 190099,
       "earnings": 44610,
+      "debt": 15875,
       "admission_rate": 0.1195,
-      "debt": null,
+      "months_to_repay": 4.3,
+      "four_year_cost_48_75k": 70740,
+      "cohort": 27,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 27
+      ]
     },
     {
       "state": "NY",
       "college": "Canisius University",
       "unitid": 189705,
       "earnings": 16394,
-      "admission_rate": 0.8177,
       "debt": null,
+      "admission_rate": 0.8177,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 66628,
+      "cohort": 21,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 21
+      ]
     },
     {
       "state": "TN",
       "college": "Tennessee Technological University",
       "unitid": 221847,
       "earnings": 16305,
+      "debt": 19039,
       "admission_rate": 0.8316,
-      "debt": null,
+      "months_to_repay": 14.0,
+      "four_year_cost_48_75k": 57620,
+      "cohort": 24,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 24
+      ]
     },
     {
       "state": "NY",
       "college": "Marist University",
       "unitid": 192819,
       "earnings": 16210,
+      "debt": 27000,
       "admission_rate": 0.6471,
-      "debt": null,
+      "months_to_repay": 20.0,
+      "four_year_cost_48_75k": 139852,
+      "cohort": 19,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 19
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15920,
+      "earnings_median": 31485,
+      "programs": 19,
+      "four_year_cost_48_75k_median": 27000,
+      "months_to_repay_median": 6.3,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18832,
+      "earnings_median": 31848,
+      "programs": 24,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 6.9,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 22592,
+      "earnings_median": 29210,
+      "programs": 88,
+      "four_year_cost_48_75k_median": 74000,
+      "months_to_repay_median": 8.8,
+      "years_of_pay_48_75k_median": 2.4
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24744,
+      "earnings_median": 27500,
+      "programs": 362,
+      "four_year_cost_48_75k_median": 65000,
+      "months_to_repay_median": 10.5,
+      "years_of_pay_48_75k_median": 2.4
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23667,
+      "earnings_median": 27536,
+      "programs": 349,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 10.2,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    "private_nonprofit": {
+      "debt_median": 25750,
+      "earnings_median": 29742,
+      "programs": 175,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 9.7,
+      "years_of_pay_48_75k_median": 3.1
+    },
+    "for_profit": {
+      "debt_median": 40559,
+      "earnings_median": 31030,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 61000,
+      "months_to_repay_median": 17.7,
+      "years_of_pay_48_75k_median": 2.0
+    }
+  },
   "earnings_median": 27906,
   "programs": 1335,
   "ends": {
@@ -111,9 +198,61 @@
       }
     }
   },
+  "short_name": "English",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 21000,
+  "debt_p75": 26500,
   "earnings_p25": 24552,
   "earnings_p75": 31443,
+  "four_year_cost": {
+    "sticker": 111000,
+    "gap_48_75k": 38000,
+    "programs_48_75k": 514,
+    "years_of_pay_48_75k": 2.3,
+    "income_0_30k": 46000,
+    "income_48_75k": 63000,
+    "income_110k_plus": 96000
+  },
+  "months_to_repay": {
+    "median": 10.2,
+    "programs": 461,
+    "of_major": 10.5,
+    "p25": 8.4,
+    "p75": 11.6
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Queens College",
+        "earnings": 27410,
+        "city": "Queens",
+        "debt": 9500,
+        "months_to_repay": 4.2,
+        "four_year_cost_48_75k": 28744
+      },
+      {
+        "control": "public",
+        "state": "NJ",
+        "college": "New Jersey City University",
+        "earnings": 26714,
+        "city": "Jersey City",
+        "debt": 26980,
+        "months_to_repay": 12.1,
+        "four_year_cost_48_75k": 52640
+      }
+    ],
+    "miles": 14
+  },
+  "online_only": {
+    "debt_median": 26697,
+    "earnings_median": 32214,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 46000,
+    "months_to_repay_median": 11.0,
+    "years_of_pay_48_75k_median": 1.5
+  },
   "outliers": {
     "below_half_median": {
       "count": 0,
@@ -124,8 +263,12 @@
       "top_states": {}
     }
   },
-  "programs_with_debt": 140,
+  "parent_plus_over_24_months": {
+    "of": 138,
+    "programs": 16
+  },
+  "programs_with_debt": 545,
   "programs_with_earnings": 527,
-  "ranked_of": 147,
+  "ranked_of": 222,
   "debt_to_earnings": 0.88
 }

@@ -1,0 +1,66 @@
+{
+  "facts_hash": "fc0e1a37ce98",
+  "field": "Health and Physical Education/Fitness",
+  "hash": "1da659d06286",
+  "major": {
+    "leads_to": {
+      "evidence": "Many kinesiology graduates go on to physical therapy, occupational therapy, athletic training or physician assistant programs. In Penn State's survey of its 2024 movement science class, most who answered were in graduate programs, including DPT programs.",
+      "finding": "graduate_school",
+      "source": "https://hhd.psu.edu/kines/undergraduate/additional-resources/post-graduate-destination-reports/post-graduate"
+    },
+    "nearby_pair": {
+      "evidence": "Both Queens programs take new freshmen in person: Queens College's Exercise Science and Human Performance BS, and St. John's undergraduate Sport Management BS, which seems to be what its figure counts. The two differ in focus.",
+      "finding": "comparable",
+      "source": "https://www.qc.cuny.edu/academics/fnes/?p=2769"
+    },
+    "school_matters": {
+      "evidence": "Pay barely rises with selectivity. Schools that admit 10 to 60 percent earn no more than open schools, and only one program sits in the top band. The usual entry jobs, like fitness trainer, are lower-paid work that often needs a certification more than a degree.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/personal-care-and-service/fitness-trainers-and-instructors.htm"
+    },
+    "who_is_counted": {
+      "evidence": "None of the largest programs are online-only or pooled, which suggests traditional students, but I did not check their admission requirements.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "online_adult",
+      "evidence": "An online-only sports and health sciences bachelor's from the American Public University System, the parent of American Military University. It serves military members and other working adults and accepts up to 90 transfer credits.",
+      "source": "https://www.apu.apus.edu/online-bachelor-degrees/bachelor-of-science-in-sports-and-health-sciences",
+      "unitid": 449339
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "SMU's department includes a Sport Management major aimed at the business side of sports: marketing, sponsorship, consulting and team management. That is a different job path from exercise science.",
+      "source": "https://www.smu.edu/simmons/academics/applied-physiology-and-sport-management/apsm-bs",
+      "unitid": 228246
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is under 20 graduates, too few for a reliable earnings figure.",
+      "source": null,
+      "unitid": 200059
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found nothing specific to this program that explains its low earnings, and its cohort is right at the edge of reliable size.",
+      "source": null,
+      "unitid": 199582
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is under 20 graduates, too few for a reliable earnings figure.",
+      "source": null,
+      "unitid": 195243
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "This Puerto Rico campus mainly trains physical education teachers, including adapted physical education, for the island's labor market, where pay is lower in every occupation.",
+      "source": "https://inter.smartcatalogiq.com/en/2021-2022/general-catalog-2021-2022/programs-of-study-undergraduate-associate-and-bachelor-s-degree-programs/physical-education-and-health-education",
+      "unitid": 242617
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

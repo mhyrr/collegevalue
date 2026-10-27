@@ -1,0 +1,277 @@
+{
+  "name": "History",
+  "largest": {
+    "debt_median": 21614,
+    "earnings_median": 30868,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 61000,
+    "months_to_repay_median": 8.6,
+    "years_of_pay_48_75k_median": 1.9,
+    "pooled": 3,
+    "share_of_graduates_percent": 9
+  },
+  "hash": "6df16a721938",
+  "rank": 163,
+  "debt_median": 24000,
+  "flagged": [
+    {
+      "state": "CT",
+      "college": "Yale University",
+      "unitid": 130794,
+      "earnings": 52357,
+      "debt": 12000,
+      "months_to_repay": 2.8,
+      "admission_rate": 0.045,
+      "four_year_cost_48_75k": 83600,
+      "cohort": 37,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NJ",
+      "college": "Princeton University",
+      "unitid": 186131,
+      "earnings": 50775,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.045,
+      "four_year_cost_48_75k": 30608,
+      "cohort": 34,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Harvard University",
+      "unitid": 166027,
+      "earnings": 50411,
+      "debt": 12721,
+      "months_to_repay": 3.0,
+      "admission_rate": 0.0345,
+      "four_year_cost_48_75k": 8668,
+      "cohort": 47,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "FL",
+      "college": "Flagler College",
+      "unitid": 133711,
+      "earnings": 16447,
+      "debt": 27000,
+      "months_to_repay": 19.7,
+      "admission_rate": 0.7809,
+      "four_year_cost_48_75k": 101712,
+      "cohort": 20,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "SUNY Oneonta",
+      "unitid": 196185,
+      "earnings": 15564,
+      "debt": 21750,
+      "months_to_repay": 16.8,
+      "admission_rate": 0.7015,
+      "four_year_cost_48_75k": 71100,
+      "cohort": 17,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "MN",
+      "college": "Gustavus Adolphus College",
+      "unitid": 173647,
+      "earnings": 13913,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.618,
+      "four_year_cost_48_75k": 70444,
+      "cohort": 19,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "four_year_cost": {
+    "sticker": 108000,
+    "gap_48_75k": 37000,
+    "programs_48_75k": 423,
+    "years_of_pay_48_75k": 2.1,
+    "income_0_30k": 44000,
+    "income_48_75k": 60000,
+    "income_110k_plus": 93000
+  },
+  "months_to_repay": {
+    "median": 9.5,
+    "programs": 378,
+    "of_major": 9.8,
+    "p25": 8.0,
+    "p75": 11.2
+  },
+  "short_name": "History",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15459,
+      "earnings_median": 41565,
+      "programs": 18,
+      "four_year_cost_48_75k_median": 31000,
+      "months_to_repay_median": 5.0,
+      "years_of_pay_48_75k_median": 0.7
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19000,
+      "earnings_median": 34693,
+      "programs": 20,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 6.8,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 21250,
+      "earnings_median": 28768,
+      "programs": 60,
+      "four_year_cost_48_75k_median": 66000,
+      "months_to_repay_median": 8.9,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24250,
+      "earnings_median": 28555,
+      "programs": 307,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 9.9,
+      "years_of_pay_48_75k_median": 2.2
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23208,
+      "earnings_median": 28443,
+      "programs": 323,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 9.6,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    "private_nonprofit": {
+      "debt_median": 25125,
+      "earnings_median": 30623,
+      "programs": 105,
+      "four_year_cost_48_75k_median": 78000,
+      "months_to_repay_median": 9.0,
+      "years_of_pay_48_75k_median": 2.5
+    },
+    "for_profit": {
+      "debt_median": 32237,
+      "earnings_median": 38970,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 12.5,
+      "years_of_pay_48_75k_median": 2.7
+    }
+  },
+  "earnings_median": 29011,
+  "programs": 1304,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.79,
+        "reporting": 405
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.77,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AZ": 1,
+        "CA": 2,
+        "NY": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.09,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CT": 1,
+        "DC": 1,
+        "MA": 3
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 20500,
+  "debt_p75": 26616,
+  "earnings_p25": 25545,
+  "earnings_p75": 32850,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Hunter College",
+        "earnings": 25141,
+        "city": "New York",
+        "debt": 10500,
+        "months_to_repay": 5.0,
+        "four_year_cost_48_75k": 25828
+      },
+      {
+        "control": "public",
+        "state": "NJ",
+        "college": "Montclair State University",
+        "earnings": 26388,
+        "city": "Montclair",
+        "debt": 25500,
+        "months_to_repay": 11.6,
+        "four_year_cost_48_75k": 63960
+      }
+    ],
+    "miles": 14
+  },
+  "online_only": {
+    "debt_median": 26582,
+    "earnings_median": 36849,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 46000,
+    "months_to_repay_median": 9.3,
+    "years_of_pay_48_75k_median": 1.4
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "MN": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 87,
+    "programs": 0
+  },
+  "programs_with_debt": 454,
+  "programs_with_earnings": 431,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.83
+}

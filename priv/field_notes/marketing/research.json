@@ -1,0 +1,66 @@
+{
+  "facts_hash": "fa577c0c870f",
+  "field": "Marketing",
+  "hash": "469be8c545d5",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS lists a bachelor's degree as the usual entry education for market research analysts, with no license required. Some employers prefer a master's degree, and many new graduates start in entry roles such as marketing assistant.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/business-and-financial/market-research-analysts.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both programs take students straight from high school. At FIT, freshmen start in the two-year associate degree and then move up to the bachelor's. Berkeley College admits freshmen directly into its four-year marketing communications BBA.",
+      "finding": "comparable",
+      "source": "https://catalog.fitnyc.edu/undergraduate/admissions/selectionofapplicantsforbaccalaureatedegreeprograms/selectionofapplicantsforbaccalaureatedegreeprograms.pdf"
+    },
+    "school_matters": {
+      "evidence": "Top undergraduate business schools send most graduates to finance and consulting, and marketing is one of several smaller destinations. Only a few schools have marketing programs in the top admission bands, so most marketing graduates compete in the ordinary job market.",
+      "finding": "some",
+      "source": "https://msb.georgetown.edu/news-story/career/undergraduate-class-of-2023-achieves-record-employment-outcomes/"
+    },
+    "who_is_counted": {
+      "evidence": "The schools that award the most marketing degrees are large public universities such as the University of Alabama, which mostly enroll first-time students. None of the largest programs is online-only or pooled.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/marketing"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Wharton is a highly selective undergraduate business school. Its graduates are recruited mainly by banks and consulting firms, and big consumer brands also recruit there.",
+      "source": "https://poetsandquantsforundergrads.com/first-jobs/can-expect-make-biz-degree/",
+      "unitid": 215062
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Georgetown's McDonough is a selective business school. Most of its undergraduates go into financial services and consulting, and marketing and advertising are smaller destinations.",
+      "source": "https://msb.georgetown.edu/news-story/career/undergraduate-class-of-2023-achieves-record-employment-outcomes/",
+      "unitid": 131496
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "WashU's Olin is a selective business school. Its BSBA graduates are hired mostly into finance and consulting, at salaries well above typical business pay.",
+      "source": "https://olin.washu.edu/_assets/docs/programs/employment/BSBA-EmploymentReport.pdf",
+      "unitid": 179867
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are far below the U.S. average in every occupation, so the island's lower pay explains this program's figure.",
+      "source": "https://www.bls.gov/regions/northeast/news-release/2025/occupationalemploymentandwages_sanjuan_20250429.htm",
+      "unitid": 243221
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are far below the U.S. average in every occupation, so the island's lower pay explains this program's figure.",
+      "source": "https://www.bls.gov/regions/northeast/news-release/2025/occupationalemploymentandwages_sanjuan_20250429.htm",
+      "unitid": 243106
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are far below the U.S. average in every occupation, so the island's lower pay explains this program's low earnings. Its debt is higher than at the island's public campuses.",
+      "source": "https://www.bls.gov/regions/northeast/news-release/2025/occupationalemploymentandwages_sanjuan_20250429.htm",
+      "unitid": 243601
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

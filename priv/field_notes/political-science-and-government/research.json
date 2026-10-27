@@ -1,0 +1,66 @@
+{
+  "facts_hash": "676ab9dde76a",
+  "field": "Political Science and Government",
+  "hash": "565f314367aa",
+  "major": {
+    "leads_to": {
+      "evidence": "Political science is the most common major among law school applicants by a wide margin, and most of those applicants are admitted. Many other graduates go straight into jobs in government, campaigns, nonprofits and business.",
+      "finding": "mixed",
+      "source": "https://ehs.stonybrook.edu/commcms/cas/students/pre_law/_includes/Applicantsbymajor.pdf"
+    },
+    "nearby_pair": {
+      "evidence": "Hunter admits first-year applicants through the standard CUNY application and teaches political science as a traditional on-campus major. Pace's Manhattan campus also admits first-year students to a conventional bachelor's program.",
+      "finding": "comparable",
+      "source": "https://hunter.cuny.edu/students/admissions/undergraduate/apply/freshman"
+    },
+    "school_matters": {
+      "evidence": "Political science graduates of the most selective schools join classmates hired by finance, tech and consulting firms, which take about half of Harvard seniors who go straight to work. Few graduates of open-admission schools get these jobs.",
+      "finding": "some",
+      "source": "https://features.thecrimson.com/2025/senior-survey/after-harvard/"
+    },
+    "who_is_counted": {
+      "evidence": "UCLA awards the most political science degrees in the country, and large programs like it admit high-school seniors and transfers into traditional on-campus study. They do not serve working adults finishing a degree.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/451001"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Harvard admits a tiny share of applicants, and many of its graduates who go straight to work take jobs in finance, tech and consulting.",
+      "source": "https://features.thecrimson.com/2025/senior-survey/after-harvard/",
+      "unitid": 166027
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Trinity sends close to half of its graduates into finance, consulting, business and real estate, at employers such as Morgan Stanley, JP Morgan and McKinsey, with help from a Wall Street pipeline program.",
+      "source": "https://www.trincoll.edu/news/class-of-2024-survey-shows-strong-next-steps-for-alumni-after-trinity/",
+      "unitid": 130590
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Yale admits a tiny share of applicants, and its graduates are recruited heavily by finance and consulting firms, the same pattern seen across the most selective schools.",
+      "source": "https://features.thecrimson.com/2025/senior-survey/after-harvard/",
+      "unitid": 130794
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This looks like an ordinary on-campus program, and I found nothing in its admissions or format that explains its low first-year pay.",
+      "source": null,
+      "unitid": 102094
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "This program had too few graduates in the cohort for a reliable earnings figure.",
+      "source": null,
+      "unitid": 226152
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "This program had too few graduates in the cohort for a reliable earnings figure.",
+      "source": null,
+      "unitid": 120883
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

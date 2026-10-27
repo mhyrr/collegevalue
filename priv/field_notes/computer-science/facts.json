@@ -1,135 +1,230 @@
 {
   "name": "Computer Science",
-  "hash": "d0833d016369",
-  "rank": 19,
-  "debt_median": 27376,
+  "largest": {
+    "debt_median": 19500,
+    "earnings_median": 70018,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 54000,
+    "months_to_repay_median": 3.3,
+    "years_of_pay_48_75k_median": 0.9,
+    "pooled": 2,
+    "share_of_graduates_percent": 18
+  },
+  "hash": "4846db4e24e5",
+  "rank": 15,
+  "debt_median": 23472,
   "flagged": [
     {
       "state": "PA",
       "college": "Carnegie Mellon University",
       "unitid": 211440,
       "earnings": 161723,
+      "debt": 21442,
       "admission_rate": 0.114,
-      "debt": null,
+      "months_to_repay": 1.6,
+      "four_year_cost_48_75k": 70136,
+      "cohort": 97,
       "reasons": [
         "top_3",
         "above_2x_median"
-      ],
-      "cohort": 97
+      ]
     },
     {
       "state": "MA",
       "college": "Harvard University",
       "unitid": 166027,
       "earnings": 140072,
-      "admission_rate": 0.0345,
       "debt": null,
+      "admission_rate": 0.0345,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 8668,
+      "cohort": 58,
       "reasons": [
         "top_3",
         "above_2x_median"
-      ],
-      "cohort": 58
+      ]
     },
     {
       "state": "CA",
       "college": "Stanford University",
       "unitid": 243744,
       "earnings": 136126,
+      "debt": 10399,
       "admission_rate": 0.0391,
-      "debt": null,
+      "months_to_repay": 0.9,
+      "four_year_cost_48_75k": 5292,
+      "cohort": 96,
       "reasons": [
         "top_3",
         "above_2x_median"
-      ],
-      "cohort": 96
+      ]
     },
     {
       "state": "RI",
       "college": "Brown University",
       "unitid": 217156,
       "earnings": 130101,
+      "debt": 11500,
       "admission_rate": 0.0523,
-      "debt": null,
+      "months_to_repay": 1.1,
+      "four_year_cost_48_75k": 31028,
+      "cohort": 95,
       "reasons": [
         "above_2x_median"
-      ],
-      "cohort": 95
+      ]
     },
     {
       "state": "CA",
       "college": "California Institute of Technology",
       "unitid": 110404,
       "earnings": 129693,
-      "admission_rate": 0.0314,
       "debt": null,
+      "admission_rate": 0.0314,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 28012,
+      "cohort": 29,
       "reasons": [
         "above_2x_median"
-      ],
-      "cohort": 29
+      ]
     },
     {
       "state": "NY",
       "college": "Cornell University",
       "unitid": 190415,
       "earnings": 127764,
+      "debt": 14698,
       "admission_rate": 0.0816,
-      "debt": 34964,
+      "months_to_repay": 1.4,
+      "four_year_cost_48_75k": 32516,
+      "cohort": 228,
       "reasons": [
         "above_2x_median"
-      ],
-      "cohort": 228
+      ]
     },
     {
       "state": "PA",
       "college": "University of Pennsylvania",
       "unitid": 215062,
       "earnings": 127623,
+      "debt": 13500,
       "admission_rate": 0.0587,
-      "debt": null,
+      "months_to_repay": 1.3,
+      "four_year_cost_48_75k": 70340,
+      "cohort": 16,
       "reasons": [
         "above_2x_median"
-      ],
-      "cohort": 16
+      ]
     },
     {
       "state": "IN",
       "college": "Indiana University-Northwest",
       "unitid": 151360,
       "earnings": 35316,
+      "debt": 22116,
       "admission_rate": 0.767,
-      "debt": null,
+      "months_to_repay": 7.5,
+      "four_year_cost_48_75k": 34356,
+      "cohort": 40,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 40
+      ]
     },
     {
       "state": "PR",
       "college": "Inter American University of Puerto Rico-Ponce",
       "unitid": 242662,
       "earnings": 26265,
+      "debt": 9833,
       "admission_rate": 0.7029,
-      "debt": null,
+      "months_to_repay": 4.5,
+      "four_year_cost_48_75k": 42600,
+      "cohort": 16,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 16
+      ]
     },
     {
       "state": "PR",
       "college": "Inter American University of Puerto Rico-Bayamon",
       "unitid": 242705,
       "earnings": 26017,
+      "debt": 5500,
       "admission_rate": 0.3642,
-      "debt": null,
+      "months_to_repay": 2.5,
+      "four_year_cost_48_75k": 43128,
+      "cohort": 18,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 18
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 14000,
+      "earnings_median": 113197,
+      "programs": 16,
+      "four_year_cost_48_75k_median": 24000,
+      "months_to_repay_median": 1.4,
+      "years_of_pay_48_75k_median": 0.2
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 16550,
+      "earnings_median": 87738,
+      "programs": 19,
+      "four_year_cost_48_75k_median": 51000,
+      "months_to_repay_median": 2.3,
+      "years_of_pay_48_75k_median": 0.6
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23000,
+      "earnings_median": 71208,
+      "programs": 51,
+      "four_year_cost_48_75k_median": 70000,
+      "months_to_repay_median": 3.6,
+      "years_of_pay_48_75k_median": 1.0
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24384,
+      "earnings_median": 60187,
+      "programs": 205,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 4.6,
+      "years_of_pay_48_75k_median": 1.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 22500,
+      "earnings_median": 61091,
+      "programs": 187,
+      "four_year_cost_48_75k_median": 52000,
+      "months_to_repay_median": 4.3,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    "private_nonprofit": {
+      "debt_median": 24129,
+      "earnings_median": 71368,
+      "programs": 121,
+      "four_year_cost_48_75k_median": 81000,
+      "months_to_repay_median": 4.1,
+      "years_of_pay_48_75k_median": 1.3
+    },
+    "for_profit": {
+      "debt_median": 38409,
+      "earnings_median": 56886,
+      "programs": 10,
+      "four_year_cost_48_75k_median": 79000,
+      "months_to_repay_median": 8.1,
+      "years_of_pay_48_75k_median": 1.4
+    }
+  },
   "earnings_median": 63428,
   "programs": 756,
   "ends": {
@@ -164,9 +259,61 @@
       }
     }
   },
+  "short_name": "Computer Science",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 19711,
+  "debt_p75": 26977,
   "earnings_p25": 55125,
   "earnings_p75": 72790,
+  "four_year_cost": {
+    "sticker": 111000,
+    "gap_48_75k": 36000,
+    "programs_48_75k": 308,
+    "years_of_pay_48_75k": 1.0,
+    "income_0_30k": 43000,
+    "income_48_75k": 60000,
+    "income_110k_plus": 96000
+  },
+  "months_to_repay": {
+    "median": 4.2,
+    "programs": 282,
+    "of_major": 4.4,
+    "p25": 3.4,
+    "p75": 5.2
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "private_nonprofit",
+        "state": "UT",
+        "college": "Brigham Young University",
+        "earnings": 82667,
+        "city": "Provo",
+        "debt": 12000,
+        "months_to_repay": 1.7,
+        "four_year_cost_48_75k": 49496
+      },
+      {
+        "control": "public",
+        "state": "UT",
+        "college": "Utah Valley University",
+        "earnings": 74830,
+        "city": "Orem",
+        "debt": 24725,
+        "months_to_repay": 4.0,
+        "four_year_cost_48_75k": 35484
+      }
+    ],
+    "miles": 4
+  },
+  "online_only": {
+    "debt_median": 44701,
+    "earnings_median": 53538,
+    "programs": 1,
+    "four_year_cost_48_75k_median": 44000,
+    "months_to_repay_median": 10.0,
+    "years_of_pay_48_75k_median": 0.8
+  },
   "outliers": {
     "below_half_median": {
       "count": 2,
@@ -183,8 +330,12 @@
       }
     }
   },
-  "programs_with_debt": 84,
+  "parent_plus_over_24_months": {
+    "of": 82,
+    "programs": 0
+  },
+  "programs_with_debt": 322,
   "programs_with_earnings": 318,
-  "ranked_of": 147,
-  "debt_to_earnings": 0.43
+  "ranked_of": 222,
+  "debt_to_earnings": 0.37
 }

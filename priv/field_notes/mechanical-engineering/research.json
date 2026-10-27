@@ -1,61 +1,66 @@
 {
-  "facts_hash": "c9184f45357e",
+  "facts_hash": "41c921b58b7e",
   "field": "Mechanical Engineering",
-  "hash": "c6bb83a05128",
+  "hash": "c1107a9415aa",
   "major": {
-    "location": {
-      "evidence": "Most top programs are in California, one of the best-paying states for mechanical engineers, or in Michigan, which employs more mechanical engineers than any other state. The bottom programs show no clear cluster.",
-      "finding": "explains_top",
-      "source": "https://www.bls.gov/oes/2023/may/oes172141.htm"
+    "leads_to": {
+      "evidence": "BLS says entry-level mechanical engineers need a bachelor's degree but no license. Graduates can take the FE exam right away, and a Professional Engineer license usually comes later in a career and is optional for many jobs.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/mechanical-engineers.htm"
     },
-    "prestige": {
-      "evidence": "The top programs admit far fewer applicants than the typical program, and MIT and Penn send graduates to top employers and graduate schools. The top ten also include less selective public schools in California and Michigan.",
-      "finding": "both",
-      "source": "https://cdn.uconnectlabs.com/wp-content/uploads/sites/74/2024/04/2023-Career-Plan-SEAS-Final.pdf"
+    "nearby_pair": {
+      "evidence": "Both programs are four-year, ABET-accredited mechanical engineering degrees that admit first-year students. City College admits them through its engineering school from high school, and Manhattan University starts them in a common first-year engineering curriculum.",
+      "finding": "comparable",
+      "source": "https://manhattan.edu/academics/programs/mechanical-engineering-bs"
     },
-    "stepping_stone": {
-      "evidence": "Most new mechanical engineers go straight to full-time jobs. A smaller share continue to graduate study, as Penn Engineering's survey of its bachelor's graduates shows.",
-      "finding": "some",
-      "source": "https://cdn.uconnectlabs.com/wp-content/uploads/sites/74/2024/04/2023-Career-Plan-SEAS-Final.pdf"
+    "school_matters": {
+      "evidence": "Employers hire entry-level mechanical engineers on an accredited bachelor's degree, and no license is needed at the start. The degree itself opens the job market, which helps explain why pay at open schools runs close to pay at the most selective ones.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/mechanical-engineers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "None of the largest programs are online-only. Mechanical engineering programs admit freshmen who are ready for calculus into a four-year sequence, so graduates are mostly traditional new graduates and not working adults finishing a degree.",
+      "finding": "new_graduates",
+      "source": "https://www.ccny.cuny.edu/engineering/admission"
     }
   },
   "programs": [
     {
       "cause": "credential_mismatch",
-      "evidence": "Cal Maritime offers a license option within its mechanical engineering degree. Those students go to sea and must pass the Coast Guard exam for a Third Assistant Engineer license, which leads to work as a licensed marine engineer on ships.",
-      "source": "https://www.csum.edu/mechanical-engineering/majors.html",
+      "evidence": "Cal Maritime's mechanical engineering license track includes sea terms and the Coast Guard Third Assistant Engineer exam, so many graduates leave as licensed marine engineers who work aboard ships.",
+      "source": "https://csum.edu/coast-guard-licensing",
       "unitid": 111188
     },
     {
       "cause": "selective_school",
-      "evidence": "MIT admits very few applicants. Its mechanical engineering graduates often go to top aerospace, automotive and energy firms or to leading graduate programs.",
-      "source": "https://dspace.mit.edu/handle/1721.1/123429",
+      "evidence": "MIT admits a very small share of applicants, and its mechanical engineering graduates are recruited by top technology, research and finance employers.",
+      "source": "https://meche.mit.edu/",
       "unitid": 166683
     },
     {
       "cause": "selective_school",
-      "evidence": "Penn is a highly selective school. Most of its engineering graduates take full-time jobs, many with large technology and industry employers, or go on to top graduate programs.",
-      "source": "https://cdn.uconnectlabs.com/wp-content/uploads/sites/74/2024/04/2023-Career-Plan-SEAS-Final.pdf",
+      "evidence": "Penn admits a very small share of applicants, and its mechanical engineering graduates are recruited by top employers, consulting firms included.",
+      "source": "https://www.me.upenn.edu/",
       "unitid": 215062
     },
     {
       "cause": "credential_mismatch",
-      "evidence": "VMI says a large share of its graduates commission into the armed forces through ROTC. Many of its engineering graduates start as junior military officers, not civilian engineers.",
+      "evidence": "More than half of VMI graduates are commissioned as military officers. They start in service at junior-officer pay, much of it in untaxed allowances, instead of taking civilian engineering jobs.",
       "source": "https://www.vmi.edu/about/quick-facts",
       "unitid": 234085
     },
     {
       "cause": "credential_mismatch",
-      "evidence": "Norwich is a senior military college, and many of its graduates commission into the armed services. Some engineering graduates start as junior officers, not civilian engineers.",
-      "source": "https://vermontbiz.com/node/168071",
+      "evidence": "Norwich is a senior military college that produces many ROTC officers each year. Many of its engineering graduates enter military service instead of civilian engineering jobs.",
+      "source": "https://files.gao.gov/interactive/data/105857/Norwich_University.html",
       "unitid": 230995
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Pay in Puerto Rico is far below mainland levels across all occupations. Engineering jobs on the island are few, so local graduates start at lower salaries.",
-      "source": "https://www.bls.gov/oes/2023/may/oes_pr.htm",
+      "evidence": "This campus is in Puerto Rico, where engineering pay sits well below mainland levels.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
       "unitid": 243601
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

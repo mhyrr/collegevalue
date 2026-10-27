@@ -1,0 +1,278 @@
+{
+  "name": "Marketing",
+  "largest": {
+    "debt_median": 22474,
+    "earnings_median": 45564,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 52000,
+    "months_to_repay_median": 5.8,
+    "years_of_pay_48_75k_median": 1.1,
+    "pooled": 0,
+    "share_of_graduates_percent": 10
+  },
+  "hash": "fa577c0c870f",
+  "rank": 88,
+  "debt_median": 24584,
+  "flagged": [
+    {
+      "state": "PA",
+      "college": "University of Pennsylvania",
+      "unitid": 215062,
+      "earnings": 69836,
+      "debt": 17412,
+      "admission_rate": 0.0587,
+      "months_to_repay": 3.0,
+      "four_year_cost_48_75k": 70340,
+      "cohort": 43,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "DC",
+      "college": "Georgetown University",
+      "unitid": 131496,
+      "earnings": 69082,
+      "debt": 17000,
+      "admission_rate": 0.1308,
+      "months_to_repay": 3.0,
+      "four_year_cost_48_75k": 53856,
+      "cohort": 56,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MO",
+      "college": "Washington University in St Louis",
+      "unitid": 179867,
+      "earnings": 61582,
+      "debt": 17500,
+      "admission_rate": 0.1196,
+      "months_to_repay": 3.4,
+      "four_year_cost_48_75k": 7452,
+      "cohort": 35,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Rio Piedras",
+      "unitid": 243221,
+      "earnings": 21004,
+      "debt": 5500,
+      "admission_rate": 0.532,
+      "months_to_repay": 3.1,
+      "four_year_cost_48_75k": 32096,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Aguadilla",
+      "unitid": 243106,
+      "earnings": 19395,
+      "debt": 5500,
+      "admission_rate": 0.8174,
+      "months_to_repay": 3.4,
+      "four_year_cost_48_75k": 37840,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Gurabo Campus",
+      "unitid": 243601,
+      "earnings": 16982,
+      "debt": 29500,
+      "admission_rate": -1.0,
+      "months_to_repay": 20.8,
+      "four_year_cost_48_75k": 38312,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 17412,
+      "earnings_median": 69836,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 70000,
+      "months_to_repay_median": 3.0,
+      "years_of_pay_48_75k_median": 1.0
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18000,
+      "earnings_median": 54502,
+      "programs": 7,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 4.0,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 22101,
+      "earnings_median": 45876,
+      "programs": 63,
+      "four_year_cost_48_75k_median": 79000,
+      "months_to_repay_median": 5.8,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24259,
+      "earnings_median": 40835,
+      "programs": 371,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 7.1,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 22500,
+      "earnings_median": 40609,
+      "programs": 266,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 6.7,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    "private_nonprofit": {
+      "debt_median": 26000,
+      "earnings_median": 42049,
+      "programs": 206,
+      "four_year_cost_48_75k_median": 89000,
+      "months_to_repay_median": 7.2,
+      "years_of_pay_48_75k_median": 2.2
+    },
+    "for_profit": {
+      "debt_median": 40905,
+      "earnings_median": 44306,
+      "programs": 23,
+      "four_year_cost_48_75k_median": 81000,
+      "months_to_repay_median": 10.8,
+      "years_of_pay_48_75k_median": 1.8
+    }
+  },
+  "earnings_median": 41440,
+  "programs": 880,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.79,
+        "reporting": 442
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "PR": 4,
+        "SC": 2,
+        "TX": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.36,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "DC": 1,
+        "TX": 2
+      }
+    }
+  },
+  "short_name": "Marketing",
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21375,
+  "debt_p75": 26675,
+  "earnings_p25": 37819,
+  "earnings_p75": 45387,
+  "four_year_cost": {
+    "sticker": 115000,
+    "gap_48_75k": 44000,
+    "programs_48_75k": 478,
+    "years_of_pay_48_75k": 1.7,
+    "income_0_30k": 54000,
+    "income_48_75k": 69000,
+    "income_110k_plus": 95000
+  },
+  "months_to_repay": {
+    "median": 6.9,
+    "programs": 463,
+    "of_major": 7.1,
+    "p25": 6.0,
+    "p75": 7.9
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "Fashion Institute of Technology",
+        "earnings": 43104,
+        "city": "New York",
+        "debt": 18721,
+        "months_to_repay": 5.2,
+        "four_year_cost_48_75k": 96308
+      },
+      {
+        "control": "for_profit",
+        "state": "NJ",
+        "college": "Berkeley College-Woodland Park",
+        "earnings": 39475,
+        "city": "Woodland Park",
+        "debt": 44088,
+        "months_to_repay": 13.4,
+        "four_year_cost_48_75k": 80020
+      }
+    ],
+    "miles": 15
+  },
+  "online_only": {
+    "debt_median": 28316,
+    "earnings_median": 43965,
+    "programs": 8,
+    "four_year_cost_48_75k_median": 64000,
+    "months_to_repay_median": 7.9,
+    "years_of_pay_48_75k_median": 1.5
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 2,
+      "top_states": {
+        "PR": 2
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 214,
+    "programs": 3
+  },
+  "programs_with_debt": 508,
+  "programs_with_earnings": 495,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.59
+}

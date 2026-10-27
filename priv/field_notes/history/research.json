@@ -1,0 +1,66 @@
+{
+  "facts_hash": "6df16a721938",
+  "field": "History",
+  "hash": "663199ea897e",
+  "major": {
+    "leads_to": {
+      "evidence": "The American Historical Association, using Census survey data, reports that more than half of history degree holders go on to graduate or professional programs, including law school.",
+      "finding": "graduate_school",
+      "source": "https://www.historians.org/resource/what-can-you-do-with-that-history-degree-exploring-the-data/"
+    },
+    "nearby_pair": {
+      "evidence": "Both are public universities that take first-year students straight from high school. Hunter admits freshmen to the college and lets them declare history, and Montclair State takes freshman applicants through its own form or the Common App.",
+      "finding": "comparable",
+      "source": "https://hunter-undergraduate.catalog.cuny.edu/admissions/freshman"
+    },
+    "school_matters": {
+      "evidence": "Harvard's history department says about 35% of its history graduates go into finance and consulting and about 30% go to law school. That is a job market the history graduates of open-admission schools rarely reach.",
+      "finding": "two_markets",
+      "source": "https://history.fas.harvard.edu/UndergradFAQs"
+    },
+    "who_is_counted": {
+      "evidence": "Large research universities such as UCLA have long awarded the most history degrees. Southern New Hampshire University, which serves mostly online adult students, awarded the most history degrees in 2021.",
+      "finding": "mixed",
+      "source": "https://datausa.io/profile/cip/54"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Yale's career office lists consulting firms such as McKinsey and Boston Consulting Group, along with financial services, among the most common first employers of its graduates.",
+      "source": "https://ocs.yale.edu/outcomes/",
+      "unitid": 130794
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Princeton's career center reports that about a third of its graduates who have jobs after graduating work in finance or consulting.",
+      "source": "https://paw.princeton.edu/article/earlier-start-finance-consulting-puts-pressure-job-hunting-undergrads",
+      "unitid": 186131
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Harvard's history department says many of its history graduates go into finance and consulting, and many others go to law school.",
+      "source": "https://history.fas.harvard.edu/UndergradFAQs",
+      "unitid": 166027
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is about twenty graduates, too few for a reliable earnings figure, and no program-specific cause turned up.",
+      "source": null,
+      "unitid": 133711
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is under twenty graduates, too few for a reliable earnings figure.",
+      "source": null,
+      "unitid": 196185
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is under twenty graduates, too few for a reliable earnings figure.",
+      "source": null,
+      "unitid": 173647
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

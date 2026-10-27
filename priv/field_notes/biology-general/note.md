@@ -1,13 +1,13 @@
 ---
-drafted: 2026-10-22
-facts_hash: 87535491037a
+drafted: 2026-10-27
+facts_hash: 5fe08703d10d
 field: Biology, General
 model: opus
-prompt_hash: a2667981a511
-research_hash: 1d9892ebf712
+prompt_hash: 248519280f58
+research_hash: bf55d75f23ed
 status: approved
 ---
 
-Biology graduates start out earning well below the typical major, and the major ranks in the bottom third of all majors. The best-paying programs admit somewhat fewer students than most biology programs, and half of them sit in Massachusetts, near the nation's largest life sciences cluster around Boston. Northeastern University Oakland's figure looks pooled with its Boston campus, because the former Mills College graduated only a handful of biology majors a year.
+Biology pay barely depends on how hard the school is to get into. Graduates of schools that admit most applicants earn more in their first year than graduates of schools in the middle bands of selectivity, because the usual entry job, biological technician, asks only for a bachelor's degree from any school (Bureau of Labor Statistics). First-year pay also misses many graduates who are still in school, since biology is the most common major among medical school applicants (American Medical Association).
 
-The lowest-paying programs cluster in Puerto Rico, where wages trail the U.S. mainland in every major occupational group. First-year pay also understates this major, because biology is by far the most common major among medical school applicants. Many graduates are still in medical school, PhD programs or other training a year after college.
+Since the school's name moves pay so little, debt is where programs differ. Two programs 13 miles apart in South Florida pay about the same, yet one leaves its typical graduate owing 8.0 months of pay and the other 18.1 months. For a middle-income family, a public university typically costs far less over four years than a private nonprofit.

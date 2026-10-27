@@ -1,13 +1,13 @@
 ---
-drafted: 2026-10-22
-facts_hash: 8de3bfe2c6f6
+drafted: 2026-10-27
+facts_hash: 915891d1c739
 field: Economics
 model: opus
-prompt_hash: a2667981a511
-research_hash: c9805366b653
+prompt_hash: 248519280f58
+research_hash: d9b00f12b382
 status: approved
 ---
 
-Economics graduates start out earning well above the typical major one year after graduating. The best-paying programs are at schools that admit almost no one, and Duke's economics department reports that most of its graduates who take jobs go into finance, with many of the rest in consulting. That pay reflects who those schools admit and which firms recruit on their campuses.
+Economics graduates from schools that admit under a tenth of applicants earn about $71,000 their first year, while those from schools that admit most applicants earn about $43,000. Those top schools feed finance and consulting: one highly selective economics department reports that about two-thirds of its majors who take jobs go into finance (Duke Economics careers page). The same schools also cost a middle-income family less, about $26,000 over four years against about $67,000 at the open schools.
 
-The lowest-paying programs are at less selective schools, including a campus in Albuquerque, where federal wage data show pay runs below the national average. CUNY Brooklyn College's figure comes from too few graduates to be reliable. Many economics majors later earn a law degree or an MBA, usually after a few years of work, the University of Wisconsin-Green Bay's economics department notes, so first-year earnings show only part of the picture.
+For most students, a school's price moves the deal more than its name. Two programs 2 miles apart in New York pay about the same, yet one leaves graduates owing 3.2 months of pay and the other 6.9 months, and its four-year cost for a middle-income family is far higher. Plan for more school if you want to work as an economist, since that job usually takes a master's or Ph.D. (Bureau of Labor Statistics).

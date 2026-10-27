@@ -1,0 +1,279 @@
+{
+  "name": "Fine and Studio Arts",
+  "largest": {
+    "debt_median": 25477,
+    "earnings_median": 25608,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 63000,
+    "months_to_repay_median": 10.9,
+    "years_of_pay_48_75k_median": 2.1,
+    "pooled": 1,
+    "share_of_graduates_percent": 12
+  },
+  "hash": "3c12ac8955c9",
+  "rank": 215,
+  "debt_median": 25515,
+  "flagged": [
+    {
+      "state": "CT",
+      "college": "Sacred Heart University",
+      "unitid": 130253,
+      "earnings": 42516,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.6768,
+      "four_year_cost_48_75k": 172512,
+      "cohort": 18,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "California Polytechnic State University-San Luis Obispo",
+      "unitid": 110422,
+      "earnings": 39354,
+      "debt": 19198,
+      "months_to_repay": 5.9,
+      "admission_rate": 0.2975,
+      "four_year_cost_48_75k": 45488,
+      "cohort": 58,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "UT",
+      "college": "University of Utah",
+      "unitid": 230764,
+      "earnings": 38615,
+      "debt": 23506,
+      "months_to_repay": 7.3,
+      "admission_rate": 0.8717,
+      "four_year_cost_48_75k": 49592,
+      "cohort": 67,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MI",
+      "college": "College for Creative Studies",
+      "unitid": 169442,
+      "earnings": 13365,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.9276,
+      "four_year_cost_48_75k": 129868,
+      "cohort": 19,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Rio Piedras",
+      "unitid": 243221,
+      "earnings": 9404,
+      "debt": 5500,
+      "months_to_repay": 7.0,
+      "admission_rate": 0.532,
+      "four_year_cost_48_75k": 32096,
+      "cohort": 25,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "KY",
+      "college": "Berea College",
+      "unitid": 156295,
+      "earnings": 7984,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.3271,
+      "four_year_cost_48_75k": 23376,
+      "cohort": 17,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "four_year_cost": {
+    "sticker": 107000,
+    "gap_48_75k": 37000,
+    "programs_48_75k": 409,
+    "years_of_pay_48_75k": 2.5,
+    "income_0_30k": 45000,
+    "income_48_75k": 62000,
+    "income_110k_plus": 93000
+  },
+  "months_to_repay": {
+    "median": 12.0,
+    "programs": 363,
+    "of_major": 12.6,
+    "p25": 10.0,
+    "p75": 14.3
+  },
+  "short_name": "Fine Arts",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 18680,
+      "earnings_median": 26841,
+      "programs": 6,
+      "four_year_cost_48_75k_median": 44000,
+      "months_to_repay_median": 8.4,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19000,
+      "earnings_median": 24813,
+      "programs": 18,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 9.7,
+      "years_of_pay_48_75k_median": 2.3
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23562,
+      "earnings_median": 23935,
+      "programs": 64,
+      "four_year_cost_48_75k_median": 70000,
+      "months_to_repay_median": 10.2,
+      "years_of_pay_48_75k_median": 2.6
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25919,
+      "earnings_median": 24620,
+      "programs": 309,
+      "four_year_cost_48_75k_median": 63000,
+      "months_to_repay_median": 12.0,
+      "years_of_pay_48_75k_median": 2.5
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 25000,
+      "earnings_median": 24843,
+      "programs": 313,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 11.7,
+      "years_of_pay_48_75k_median": 2.3
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 23921,
+      "programs": 102,
+      "four_year_cost_48_75k_median": 100000,
+      "months_to_repay_median": 13.1,
+      "years_of_pay_48_75k_median": 4.2
+    },
+    "for_profit": {
+      "debt_median": 37168,
+      "earnings_median": 20074,
+      "programs": 12,
+      "four_year_cost_48_75k_median": 147000,
+      "months_to_repay_median": 20.7,
+      "years_of_pay_48_75k_median": 6.2
+    }
+  },
+  "earnings_median": 24466,
+  "programs": 1143,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 397
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "ID": 1,
+        "KY": 1,
+        "MI": 1
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.58,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CT": 1,
+        "MA": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21656,
+  "debt_p75": 27000,
+  "earnings_p25": 21161,
+  "earnings_p75": 27395,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "CA",
+        "college": "University of California-Berkeley",
+        "earnings": 27475,
+        "city": "Berkeley",
+        "debt": 13254,
+        "months_to_repay": 5.8,
+        "four_year_cost_48_75k": 45696
+      },
+      {
+        "control": "for_profit",
+        "state": "CA",
+        "college": "Academy of Art University",
+        "earnings": 29422,
+        "city": "San Francisco",
+        "debt": 41870,
+        "months_to_repay": 17.1,
+        "four_year_cost_48_75k": 161140
+      }
+    ],
+    "miles": 10
+  },
+  "online_only": {
+    "debt_median": 23395,
+    "earnings_median": 28643,
+    "programs": 1,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": 9.8,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 2,
+      "top_states": {
+        "KY": 1,
+        "PR": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 94,
+    "programs": 17
+  },
+  "programs_with_debt": 400,
+  "programs_with_earnings": 427,
+  "ranked_of": 222,
+  "debt_to_earnings": 1.05
+}

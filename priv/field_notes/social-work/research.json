@@ -1,0 +1,72 @@
+{
+  "facts_hash": "ea23988def44",
+  "field": "Social Work",
+  "hash": "ba9289e9e3b3",
+  "major": {
+    "leads_to": {
+      "evidence": "A BSW is the usual requirement for entry-level nonclinical social work jobs. Clinical social workers need an MSW, supervised experience and a state license. BSW graduates can often finish an MSW a year early through advanced standing.",
+      "finding": "mixed",
+      "source": "https://www.bls.gov/ooh/community-and-social-service/social-workers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both Ana G. Méndez campuses are traditional undergraduate campuses with a CSWE-accredited social work bachelor's, and Cupey posts licensure disclosures for its program, so a new student could choose either one.",
+      "finding": "comparable",
+      "source": "https://documento.uagm.edu/cupey/estudiante_consumidor/professional_licensure_and_certification_req_social_work.pdf"
+    },
+    "school_matters": {
+      "evidence": "Selective schools pay no more than open ones in this major. Most BSW graduates take nonclinical jobs in agencies and government, where the pay depends on the employer's scale, not on which school a graduate attended.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/community-and-social-service/social-workers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "I found no list of the largest BSW programs or their admission rules. ASU's online BSW, aimed at adults, only started in 2024, so it is not yet in these graduates' numbers.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Berkeley admits a small share of applicants, and its graduates earn more than those of other schools in a major where selectivity usually changes pay very little.",
+      "source": "https://socialwelfare.berkeley.edu/",
+      "unitid": 110635
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "There are too few graduates to trust this figure. Minnesota programs do show up often near the top of this major.",
+      "source": null,
+      "unitid": 173160
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "New Jersey is a high-wage state for social workers, and that is enough to explain why this program's graduates earn more than typical BSW graduates.",
+      "source": "https://www.bls.gov/oes/current/oes211021.htm",
+      "unitid": 185572
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "There are too few graduates to trust this figure.",
+      "source": null,
+      "unitid": 175342
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Social workers in Puerto Rico earn far less than social workers on the mainland, so the island's labor market explains this program's low figure.",
+      "source": "https://www.bls.gov/oes/current/oes211021.htm",
+      "unitid": 243601
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Social worker pay in Puerto Rico is well below mainland pay. This figure also matches the Mayagüez campus exactly, so the two campuses may be reported together.",
+      "source": "https://www.bls.gov/oes/current/oes211021.htm",
+      "unitid": 241410
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Social worker pay in Puerto Rico is well below mainland pay. This figure also matches the Ponce campus exactly, so the two campuses may be reported together.",
+      "source": "https://www.bls.gov/oes/current/oes211021.htm",
+      "unitid": 243586
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

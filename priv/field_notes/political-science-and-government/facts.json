@@ -1,0 +1,274 @@
+{
+  "name": "Political Science and Government",
+  "largest": {
+    "debt_median": 18781,
+    "earnings_median": 35876,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 46000,
+    "months_to_repay_median": 6.5,
+    "years_of_pay_48_75k_median": 1.4,
+    "pooled": 2,
+    "share_of_graduates_percent": 12
+  },
+  "hash": "676ab9dde76a",
+  "rank": 125,
+  "debt_median": 23519,
+  "flagged": [
+    {
+      "state": "MA",
+      "college": "Harvard University",
+      "unitid": 166027,
+      "earnings": 58808,
+      "debt": null,
+      "admission_rate": 0.0345,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 8668,
+      "cohort": 68,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CT",
+      "college": "Trinity College",
+      "unitid": 130590,
+      "earnings": 57856,
+      "debt": 25000,
+      "admission_rate": 0.3352,
+      "months_to_repay": 5.2,
+      "four_year_cost_48_75k": 75024,
+      "cohort": 38,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CT",
+      "college": "Yale University",
+      "unitid": 130794,
+      "earnings": 57333,
+      "debt": 15000,
+      "admission_rate": 0.045,
+      "months_to_repay": 3.1,
+      "four_year_cost_48_75k": 83600,
+      "cohort": 67,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "AL",
+      "college": "University of South Alabama",
+      "unitid": 102094,
+      "earnings": 18376,
+      "debt": null,
+      "admission_rate": 0.6549,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 61824,
+      "cohort": 24,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "Texas A & M International University",
+      "unitid": 226152,
+      "earnings": 18259,
+      "debt": 14606,
+      "admission_rate": 0.4596,
+      "months_to_repay": 9.6,
+      "four_year_cost_48_75k": 11164,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "University of the Pacific",
+      "unitid": 120883,
+      "earnings": 17876,
+      "debt": null,
+      "admission_rate": 0.9486,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 80676,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15917,
+      "earnings_median": 48488,
+      "programs": 23,
+      "four_year_cost_48_75k_median": 27000,
+      "months_to_repay_median": 4.2,
+      "years_of_pay_48_75k_median": 0.6
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18000,
+      "earnings_median": 40625,
+      "programs": 35,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 5.6,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23250,
+      "earnings_median": 34213,
+      "programs": 97,
+      "four_year_cost_48_75k_median": 74000,
+      "months_to_repay_median": 7.5,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 23718,
+      "earnings_median": 31893,
+      "programs": 317,
+      "four_year_cost_48_75k_median": 66000,
+      "months_to_repay_median": 8.6,
+      "years_of_pay_48_75k_median": 2.1
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 22375,
+      "earnings_median": 31919,
+      "programs": 303,
+      "four_year_cost_48_75k_median": 58000,
+      "months_to_repay_median": 8.4,
+      "years_of_pay_48_75k_median": 1.8
+    },
+    "private_nonprofit": {
+      "debt_median": 24250,
+      "earnings_median": 37959,
+      "programs": 184,
+      "four_year_cost_48_75k_median": 84000,
+      "months_to_repay_median": 7.8,
+      "years_of_pay_48_75k_median": 2.4
+    },
+    "for_profit": {
+      "debt_median": 27000,
+      "earnings_median": 42042,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 8.7,
+      "years_of_pay_48_75k_median": 2.4
+    }
+  },
+  "earnings_median": 32995,
+  "programs": 1146,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.75,
+        "reporting": 472
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.7,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "AR": 1,
+        "CA": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.08,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CT": 2,
+        "MD": 2
+      }
+    }
+  },
+  "short_name": "Political Science",
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 20443,
+  "debt_p75": 26000,
+  "earnings_p25": 29234,
+  "earnings_p75": 37534,
+  "four_year_cost": {
+    "sticker": 118000,
+    "gap_48_75k": 41000,
+    "programs_48_75k": 481,
+    "years_of_pay_48_75k": 2.0,
+    "income_0_30k": 47000,
+    "income_48_75k": 65000,
+    "income_110k_plus": 102000
+  },
+  "months_to_repay": {
+    "median": 8.2,
+    "programs": 459,
+    "of_major": 8.5,
+    "p25": 6.8,
+    "p75": 9.8
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Hunter College",
+        "earnings": 34670,
+        "city": "New York",
+        "debt": 9531,
+        "months_to_repay": 3.3,
+        "four_year_cost_48_75k": 25828
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "NY",
+        "college": "Pace University",
+        "earnings": 37984,
+        "city": "New York",
+        "debt": 26000,
+        "months_to_repay": 8.2,
+        "four_year_cost_48_75k": 117232
+      }
+    ],
+    "miles": 4
+  },
+  "online_only": {
+    "debt_median": 20277,
+    "earnings_median": 42116,
+    "programs": 2,
+    "four_year_cost_48_75k_median": 29000,
+    "months_to_repay_median": 5.9,
+    "years_of_pay_48_75k_median": 0.6
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 177,
+    "programs": 14
+  },
+  "programs_with_debt": 556,
+  "programs_with_earnings": 490,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.71
+}

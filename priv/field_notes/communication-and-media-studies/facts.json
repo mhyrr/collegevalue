@@ -1,0 +1,277 @@
+{
+  "name": "Communication and Media Studies",
+  "largest": {
+    "debt_median": 19250,
+    "earnings_median": 35628,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 45000,
+    "months_to_repay_median": 6.8,
+    "years_of_pay_48_75k_median": 1.4,
+    "pooled": 1,
+    "share_of_graduates_percent": 12
+  },
+  "hash": "8827e132be36",
+  "rank": 140,
+  "debt_median": 25000,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "Santa Clara University",
+      "unitid": 122931,
+      "earnings": 53040,
+      "debt": 18500,
+      "months_to_repay": 4.2,
+      "admission_rate": 0.4384,
+      "four_year_cost_48_75k": 166396,
+      "cohort": 89,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "CUNY Graduate School and University Center",
+      "unitid": 190576,
+      "earnings": 51317,
+      "debt": 14125,
+      "months_to_repay": 3.3,
+      "admission_rate": 0.3861,
+      "four_year_cost_48_75k": null,
+      "cohort": 35,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "New York University",
+      "unitid": 193900,
+      "earnings": 50327,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.0941,
+      "four_year_cost_48_75k": 74220,
+      "cohort": 18,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "GA",
+      "college": "Morehouse College",
+      "unitid": 140553,
+      "earnings": 17470,
+      "debt": 26000,
+      "months_to_repay": 17.9,
+      "admission_rate": 0.5139,
+      "four_year_cost_48_75k": 149064,
+      "cohort": 19,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "SC",
+      "college": "South Carolina State University",
+      "unitid": 218733,
+      "earnings": 17125,
+      "debt": 31452,
+      "months_to_repay": 22.0,
+      "admission_rate": 0.8173,
+      "four_year_cost_48_75k": 78444,
+      "cohort": 37,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "TN",
+      "college": "Lane College",
+      "unitid": 220598,
+      "earnings": 15527,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": -1.0,
+      "four_year_cost_48_75k": null,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "four_year_cost": {
+    "sticker": 118000,
+    "gap_48_75k": 41000,
+    "programs_48_75k": 603,
+    "years_of_pay_48_75k": 2.1,
+    "income_0_30k": 51000,
+    "income_48_75k": 67000,
+    "income_110k_plus": 96000
+  },
+  "months_to_repay": {
+    "median": 8.8,
+    "programs": 549,
+    "of_major": 9.2,
+    "p25": 7.6,
+    "p75": 10.3
+  },
+  "short_name": "Communications",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 16875,
+      "earnings_median": 48590,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 4.2,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 20688,
+      "earnings_median": 39771,
+      "programs": 15,
+      "four_year_cost_48_75k_median": 53000,
+      "months_to_repay_median": 6.0,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23000,
+      "earnings_median": 34812,
+      "programs": 83,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 7.7,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25000,
+      "earnings_median": 32012,
+      "programs": 469,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 9.0,
+      "years_of_pay_48_75k_median": 2.2
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24050,
+      "earnings_median": 32487,
+      "programs": 351,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 8.5,
+      "years_of_pay_48_75k_median": 1.7
+    },
+    "private_nonprofit": {
+      "debt_median": 26000,
+      "earnings_median": 32427,
+      "programs": 262,
+      "four_year_cost_48_75k_median": 89000,
+      "months_to_repay_median": 9.1,
+      "years_of_pay_48_75k_median": 2.8
+    },
+    "for_profit": {
+      "debt_median": 41775,
+      "earnings_median": 41894,
+      "programs": 7,
+      "four_year_cost_48_75k_median": 96000,
+      "months_to_repay_median": 12.9,
+      "years_of_pay_48_75k_median": 2.7
+    }
+  },
+  "earnings_median": 32462,
+  "programs": 1159,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 572
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.64,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "GA": 2,
+        "IL": 1
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.12,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 3,
+        "MA": 3,
+        "NY": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21927,
+  "debt_p75": 27000,
+  "earnings_p25": 28975,
+  "earnings_p75": 36037,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Bernard M Baruch College",
+        "earnings": 36196,
+        "city": "New York",
+        "debt": 7892,
+        "months_to_repay": 2.6,
+        "four_year_cost_48_75k": 26504
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "NY",
+        "college": "Manhattan University",
+        "earnings": 38318,
+        "city": "Riverdale",
+        "debt": 26000,
+        "months_to_repay": 8.1,
+        "four_year_cost_48_75k": 108168
+      }
+    ],
+    "miles": 11
+  },
+  "online_only": {
+    "debt_median": 27000,
+    "earnings_median": 42689,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 64000,
+    "months_to_repay_median": 7.6,
+    "years_of_pay_48_75k_median": 1.4
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "TN": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 271,
+    "programs": 9
+  },
+  "programs_with_debt": 620,
+  "programs_with_earnings": 620,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.77
+}

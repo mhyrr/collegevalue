@@ -1,61 +1,66 @@
 {
-  "facts_hash": "50bace9e2941",
+  "facts_hash": "c5fdc29e9164",
   "field": "Fire Protection",
-  "hash": "a110f46c7ed9",
+  "hash": "422ffbcfb90b",
   "major": {
-    "location": {
-      "evidence": "The top and bottom programs are spread across many states, with no more than two in any one state, so no regional pattern explains either end.",
+    "leads_to": {
+      "evidence": "Fire departments hire with a high school diploma, a few months at a fire academy and usually EMT certification. A bachelor's in fire science mostly helps firefighters get promoted into officer and administrative jobs.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/protective-service/firefighters.htm"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair was identified for this major.",
       "finding": "none",
       "source": null
     },
-    "prestige": {
-      "evidence": "The top programs admit about as many applicants as the major overall. They are degree-completion programs for people already working in public safety, so their pay comes from students' fire service careers and not from the school's selectivity.",
-      "finding": "major",
-      "source": "https://catalog.siu.edu/programs/psm/requirements.php"
+    "school_matters": {
+      "evidence": "Most Fire Protection graduates go into fire service jobs, where public pay scales set pay and a degree is not needed to get hired. Graduates of the many open-admission schools earn about the same as the few more selective programs.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/protective-service/firefighters.htm"
     },
-    "stepping_stone": {
-      "evidence": "We found no reliable data on how many fire protection graduates go to graduate school. Sources link master's degrees mainly to chief officers later in a career, not to study right after the bachelor's.",
-      "finding": "unclear",
-      "source": null
+    "who_is_counted": {
+      "evidence": "Several large programs are online completion degrees for people already working in fire service. Some require a public safety associate degree, certification or job to get in. Campus programs alongside them take traditional students.",
+      "finding": "mixed",
+      "source": "https://online.colostate.edu/degrees/fire-services"
     }
   },
   "programs": [
     {
       "cause": "experienced_students",
-      "evidence": "SIU's fire service management track admits only students with a public safety associate degree, license, certification or job experience, so its graduates are mostly working firefighters.",
+      "evidence": "SIU Carbondale's Public Safety Management degree, with its Fire Service Management track, requires a public safety associate degree, equivalent fire training, a license or certification, or public safety work experience to get in.",
       "source": "https://catalog.siu.edu/programs/psm/requirements.php",
       "unitid": 149222
     },
     {
-      "cause": "online_adult",
-      "evidence": "Colorado State's fire and emergency services administration degree is an online degree-completion program built around the schedules of working fire and emergency professionals who want to move into leadership.",
+      "cause": "experienced_students",
+      "evidence": "Colorado State's fire and emergency services degree is an online completion program. It strongly prefers two years of fire or EMS experience or a fire science associate degree, and most of its students already work in the field.",
       "source": "https://online.colostate.edu/degrees/fire-services",
       "unitid": 126818
     },
     {
       "cause": "online_adult",
-      "evidence": "Waldorf's fire science administration degrees are online only, with eight-week classes and credit for field experience, and the school partners with departments such as the FDNY to educate working fire professionals.",
-      "source": "https://waldorf.edu/fdny",
+      "evidence": "Waldorf's fire science administration degree is fully online and marketed to working firefighters. It has partnerships with the FDNY and the National Volunteer Fire Council, plus an applied version for experienced professionals.",
+      "source": "https://waldorf.edu/academics/degree-programs/bachelors/bs-fire-science-administration",
       "unitid": 154518
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "Western Illinois offers an online fire administration option for working firefighters and on-campus options in Macomb whose graduates take entry-level jobs. We could not confirm which group drives its figure.",
+      "evidence": "Western Illinois offers this major on campus in Macomb and its Fire Administration option online, so its graduates may be a mix of new and working students. Nothing found explains the lower earnings.",
       "source": null,
       "unitid": 149772
     },
     {
       "cause": "small_cohort",
-      "evidence": "This program has too few graduates in the data for its earnings figure to be reliable.",
+      "evidence": "The cohort is under 20 graduates, too few for a reliable figure.",
       "source": null,
       "unitid": 185129
     },
     {
       "cause": "no_clear_cause",
-      "evidence": "We could not find a current fire protection program page or admission requirements at Methodist University that would explain its figure.",
+      "evidence": "Methodist University's own pages show no fire degree. Third-party listings show it awards degrees in fire and arson investigation, and nothing found explains the low earnings.",
       "source": null,
       "unitid": 198969
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

@@ -1,13 +1,13 @@
 ---
-drafted: 2026-10-22
-facts_hash: 956fee7bb0c7
+drafted: 2026-10-27
+facts_hash: 08f735c2eecc
 field: Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing
 model: opus
-prompt_hash: a2667981a511
-research_hash: fa87db236a45
+prompt_hash: 248519280f58
+research_hash: f4ea84d661f7
 status: approved
 ---
 
-Nursing graduates start out near the top of all majors, and pay varies little from one program to the next. The best-paying programs admit more of their applicants than the typical nursing program, and most are in California, which pays registered nurses more than any other state. Mercy University, Pacific College and Sonoma State University teach nurses who already hold a license, so many of their graduates were working nurses before they finished the degree.
+Where a Nursing student goes to school barely moves first-year pay. Every new RN must pass the same NCLEX-RN licensing exam before working, and pay follows region and hospital more than a school's name (Bureau of Labor Statistics). Graduates of schools that admit most applicants earn about the same as graduates of far more selective ones.
 
-Every one of the lowest-paying programs is in Puerto Rico, where nurses earn far less than on the mainland. Low pay is the main reason the island's nurses move to the mainland. Most nursing graduates go straight to work, and a minority later earn a master's or doctorate for roles such as nurse practitioner, which first-year pay does not capture.
+That makes the price the choice that matters. For a middle-income family, four years at a public university typically costs about $54,000, against about $83,000 at a private nonprofit and about $113,000 at a for-profit, for similar pay. For-profit graduates also borrow more: their typical loan takes 7.0 months of first-year pay to repay, against 4.8 at public schools.

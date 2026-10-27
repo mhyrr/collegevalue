@@ -1,0 +1,277 @@
+{
+  "name": "Health and Physical Education/Fitness",
+  "largest": {
+    "debt_median": 21710,
+    "earnings_median": 31012,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 66000,
+    "months_to_repay_median": 8.3,
+    "years_of_pay_48_75k_median": 2.2,
+    "pooled": 0,
+    "share_of_graduates_percent": 10
+  },
+  "hash": "fc0e1a37ce98",
+  "rank": 190,
+  "debt_median": 25922,
+  "flagged": [
+    {
+      "state": "WV",
+      "college": "American Public University System",
+      "unitid": 449339,
+      "earnings": 47616,
+      "debt": 19312,
+      "months_to_repay": 4.9,
+      "admission_rate": -1.0,
+      "four_year_cost_48_75k": 29204,
+      "cohort": 203,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "Southern Methodist University",
+      "unitid": 228246,
+      "earnings": 45216,
+      "debt": 20475,
+      "months_to_repay": 5.4,
+      "admission_rate": 0.6122,
+      "four_year_cost_48_75k": 98984,
+      "cohort": 47,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "ND",
+      "college": "Dickinson State University",
+      "unitid": 200059,
+      "earnings": 43445,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.6005,
+      "four_year_cost_48_75k": 55796,
+      "cohort": 16,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NC",
+      "college": "Saint Augustine's University",
+      "unitid": 199582,
+      "earnings": 18396,
+      "debt": 40375,
+      "months_to_repay": 26.3,
+      "admission_rate": 0.5873,
+      "four_year_cost_48_75k": 71464,
+      "cohort": 20,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "St. Thomas Aquinas College",
+      "unitid": 195243,
+      "earnings": 17958,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.8223,
+      "four_year_cost_48_75k": 82576,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-San German",
+      "unitid": 242617,
+      "earnings": 14059,
+      "debt": 10000,
+      "months_to_repay": 8.5,
+      "admission_rate": 0.5067,
+      "four_year_cost_48_75k": 43112,
+      "cohort": 36,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "four_year_cost": {
+    "sticker": 120000,
+    "gap_48_75k": 42000,
+    "programs_48_75k": 515,
+    "years_of_pay_48_75k": 2.4,
+    "income_0_30k": 53000,
+    "income_48_75k": 68000,
+    "income_110k_plus": 94000
+  },
+  "months_to_repay": {
+    "median": 10.4,
+    "programs": 485,
+    "of_major": 10.7,
+    "p25": 9.0,
+    "p75": 12.1
+  },
+  "short_name": "Kinesiology and Exercise Science",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 10000,
+      "earnings_median": 38232,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 5000,
+      "months_to_repay_median": 3.1,
+      "years_of_pay_48_75k_median": 0.1
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19883,
+      "earnings_median": 26942,
+      "programs": 7,
+      "four_year_cost_48_75k_median": 47000,
+      "months_to_repay_median": 7.5,
+      "years_of_pay_48_75k_median": 1.7
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 25841,
+      "earnings_median": 26398,
+      "programs": 60,
+      "four_year_cost_48_75k_median": 71000,
+      "months_to_repay_median": 10.4,
+      "years_of_pay_48_75k_median": 2.5
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25500,
+      "earnings_median": 28672,
+      "programs": 425,
+      "four_year_cost_48_75k_median": 69000,
+      "months_to_repay_median": 10.5,
+      "years_of_pay_48_75k_median": 2.4
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24226,
+      "earnings_median": 28907,
+      "programs": 280,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 1.9
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 27433,
+      "programs": 247,
+      "four_year_cost_48_75k_median": 86000,
+      "months_to_repay_median": 11.5,
+      "years_of_pay_48_75k_median": 3.1
+    },
+    "for_profit": {
+      "debt_median": 29125,
+      "earnings_median": 34954,
+      "programs": 4,
+      "four_year_cost_48_75k_median": 71000,
+      "months_to_repay_median": 11.2,
+      "years_of_pay_48_75k_median": 2.3
+    }
+  },
+  "earnings_median": 28403,
+  "programs": 970,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 493
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "NC": 1,
+        "NY": 2,
+        "TX": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "MA": 1,
+        "MO": 1,
+        "ND": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 23125,
+  "debt_p75": 27000,
+  "earnings_p25": 25268,
+  "earnings_p75": 31385,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Queens College",
+        "earnings": 24865,
+        "city": "Queens",
+        "debt": 5500,
+        "months_to_repay": 2.7,
+        "four_year_cost_48_75k": 28744
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "NY",
+        "college": "St. John's University-New York",
+        "earnings": 27115,
+        "city": "Queens",
+        "debt": 25748,
+        "months_to_repay": 11.4,
+        "four_year_cost_48_75k": 108788
+      }
+    ],
+    "miles": 2
+  },
+  "online_only": {
+    "debt_median": 19982,
+    "earnings_median": 32008,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 29000,
+    "months_to_repay_median": 7.5,
+    "years_of_pay_48_75k_median": 0.6
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "PR": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 248,
+    "programs": 14
+  },
+  "programs_with_debt": 610,
+  "programs_with_earnings": 531,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.91
+}

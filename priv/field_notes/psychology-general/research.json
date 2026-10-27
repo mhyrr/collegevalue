@@ -1,61 +1,66 @@
 {
-  "facts_hash": "b2069c5f9d73",
+  "facts_hash": "a56513f91fde",
   "field": "Psychology, General",
-  "hash": "8738f60d58cf",
+  "hash": "60f98eaac06c",
   "major": {
-    "location": {
-      "evidence": "Most of the lowest-paying programs are in Puerto Rico. Federal wage data show workers in the San Juan area earn far less than mainland workers, and every major occupational group there pays below its national average.",
-      "finding": "explains_bottom",
-      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers"
+    "leads_to": {
+      "evidence": "APA reports that close to half of psychology bachelor's holders go on to earn a graduate degree, often outside psychology. Becoming a psychologist takes a doctorate, and counseling roles require a master's.",
+      "finding": "graduate_school",
+      "source": "https://www.apa.org/ed/precollege/psychology-teacher-network/introductory-psychology/bachelor-degree"
     },
-    "prestige": {
-      "evidence": "The best-paying programs are at schools that admit few applicants. Colleges like Colgate report graduates going to employers and top graduate schools through organized career pipelines that have little to do with the psychology major itself.",
-      "finding": "school",
-      "source": "https://www.colgate.edu/success-after-colgate/outcome-and-employment-data"
+    "nearby_pair": {
+      "evidence": "Walden's BS in Psychology is an online program for adult learners. Applicants must be 21 or older, have college credits, or be military, and it accepts up to 135 transfer credits. A new high-school graduate cannot usually choose between it and the Minneapolis campus program.",
+      "finding": "not_comparable",
+      "source": "https://www.waldenu.edu/online-bachelors-programs/bs-in-psychology"
     },
-    "stepping_stone": {
-      "evidence": "A Georgetown analysis reported by the American Psychological Association found psychology majors earn graduate degrees at a higher rate than college graduates overall, often in counseling, social work, education or other fields.",
-      "finding": "strong",
-      "source": "https://www.apa.org/monitor/2016/02/numbers"
+    "school_matters": {
+      "evidence": "Psychology has no license at the bachelor's level, so pay does not set a floor at entry. Graduates of every kind of school compete for the same broad entry jobs, and APA data show many graduates work outside psychology. The gap between the bands is modest.",
+      "finding": "some",
+      "source": "https://www.apa.org/ed/precollege/psychology-teacher-network/introductory-psychology/bachelor-degree"
+    },
+    "who_is_counted": {
+      "evidence": "Southern New Hampshire University awards by far the most general psychology degrees and mostly enrolls adult and online students. The next largest are big public universities such as Central Florida and Florida International, which mostly enroll traditional undergraduates.",
+      "finding": "mixed",
+      "source": "https://datausa.io/profile/cip/420101"
     }
   },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "Stanford admits very few applicants, and its psychology department says the major prepares students for careers in business, law and medicine, so its graduates reach well-paid employers.",
-      "source": "https://psychology.stanford.edu/academics/undergraduate-program",
+      "evidence": "Stanford admits a tiny share of applicants, and its graduates are recruited by top employers in tech, consulting and finance whatever their major.",
+      "source": "https://www.stanford.edu/",
       "unitid": 243744
     },
     {
       "cause": "high_cost_region",
-      "evidence": "Santa Clara is not highly selective but sits in Silicon Valley, and its admissions materials point to internships and jobs at nearby tech employers such as Apple, Google and Meta.",
-      "source": "https://www.scu.edu/media/institutional-pages/admission/pdfs/2026-2027-Introduction-Brochure-Admission.pdf",
+      "evidence": "Santa Clara sits in the San Jose metro area, where wages in nearly every occupation run far above the national level, so local pay lifts its graduates' earnings.",
+      "source": "https://www.bls.gov/oes/current/oes_41940.htm",
       "unitid": 122931
     },
     {
       "cause": "selective_school",
-      "evidence": "Colgate is a highly selective liberal arts college, and it tracks graduates going on to employers and top graduate schools through a structured career program.",
-      "source": "https://www.colgate.edu/success-after-colgate/outcome-and-employment-data",
+      "evidence": "Colgate is a highly selective liberal arts college whose graduates are recruited heavily into finance, consulting and other high-paying first jobs.",
+      "source": "https://www.colgate.edu/",
       "unitid": 190099
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Puerto Rico's labor market pays far less than the mainland in every major occupational group, which explains this program's low earnings.",
+      "evidence": "Wages in Puerto Rico are far below mainland levels across occupations, and that alone explains the low first-year pay at Rio Piedras.",
       "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
       "unitid": 243221
     },
     {
       "cause": "data_error",
-      "evidence": "The Arecibo campus reports the same earnings and cohort as the Ponce campus, which suggests the figures pool the university's campuses rather than describe this one.",
+      "evidence": "The Arecibo campus reports exactly the same earnings, debt and cohort as the Ponce campus, so its figures appear to be pooled across the university's campuses. Low Puerto Rico wages also play a part.",
       "source": null,
       "unitid": 241395
     },
     {
       "cause": "data_error",
-      "evidence": "The Ponce campus reports the same earnings and cohort as the Arecibo campus, which suggests the figures pool the university's campuses rather than describe this one.",
+      "evidence": "The Ponce campus reports exactly the same earnings, debt and cohort as the Arecibo campus, so its figures appear to be pooled across the university's campuses. Low Puerto Rico wages also play a part.",
       "source": null,
       "unitid": 241410
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

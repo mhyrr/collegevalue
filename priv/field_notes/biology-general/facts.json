@@ -1,85 +1,172 @@
 {
   "name": "Biology, General",
-  "hash": "87535491037a",
-  "rank": 109,
-  "debt_median": 27702,
+  "largest": {
+    "debt_median": 20125,
+    "earnings_median": 26103,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 47000,
+    "months_to_repay_median": 8.9,
+    "years_of_pay_48_75k_median": 2.0,
+    "pooled": 2,
+    "share_of_graduates_percent": 8
+  },
+  "hash": "5fe08703d10d",
+  "rank": 193,
+  "debt_median": 25000,
   "flagged": [
     {
       "state": "MA",
       "college": "Massachusetts Institute of Technology",
       "unitid": 166683,
       "earnings": 46373,
-      "admission_rate": 0.0474,
       "debt": null,
+      "admission_rate": 0.0474,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 18484,
+      "cohort": 27,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 27
+      ]
     },
     {
       "state": "ME",
       "college": "Bowdoin College",
       "unitid": 161004,
       "earnings": 44658,
-      "admission_rate": 0.0802,
       "debt": null,
+      "admission_rate": 0.0802,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 27056,
+      "cohort": 16,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 16
+      ]
     },
     {
       "state": "CA",
       "college": "Northeastern University Oakland",
       "unitid": 118888,
       "earnings": 43916,
+      "debt": 25000,
       "admission_rate": 0.1654,
-      "debt": 43257,
+      "months_to_repay": 6.8,
+      "four_year_cost_48_75k": null,
+      "cohort": 79,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 79
+      ]
     },
     {
       "state": "PR",
       "college": "University of Puerto Rico-Humacao",
       "unitid": 243179,
       "earnings": 13131,
-      "admission_rate": 0.5849,
       "debt": null,
+      "admission_rate": 0.5849,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 63680,
+      "cohort": 17,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 17
+      ]
     },
     {
       "state": "PR",
       "college": "University of Puerto Rico-Aguadilla",
       "unitid": 243106,
       "earnings": 11037,
+      "debt": 5500,
       "admission_rate": 0.8174,
-      "debt": null,
+      "months_to_repay": 6.0,
+      "four_year_cost_48_75k": 37840,
+      "cohort": 35,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 35
+      ]
     },
     {
       "state": "PR",
       "college": "University of Puerto Rico at Cayey",
       "unitid": 243151,
       "earnings": 10219,
+      "debt": 5500,
       "admission_rate": 0.9584,
-      "debt": null,
+      "months_to_repay": 6.5,
+      "four_year_cost_48_75k": 41624,
+      "cohort": 20,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 20
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15400,
+      "earnings_median": 31980,
+      "programs": 18,
+      "four_year_cost_48_75k_median": 28000,
+      "months_to_repay_median": 6.7,
+      "years_of_pay_48_75k_median": 1.0
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18465,
+      "earnings_median": 24623,
+      "programs": 35,
+      "four_year_cost_48_75k_median": 60000,
+      "months_to_repay_median": 8.7,
+      "years_of_pay_48_75k_median": 2.2
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23836,
+      "earnings_median": 25412,
+      "programs": 133,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 10.7,
+      "years_of_pay_48_75k_median": 2.9
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25012,
+      "earnings_median": 27471,
+      "programs": 607,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 10.7,
+      "years_of_pay_48_75k_median": 2.5
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23362,
+      "earnings_median": 27533,
+      "programs": 447,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 10.2,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    "private_nonprofit": {
+      "debt_median": 26096,
+      "earnings_median": 26314,
+      "programs": 389,
+      "four_year_cost_48_75k_median": 85000,
+      "months_to_repay_median": 11.3,
+      "years_of_pay_48_75k_median": 3.2
+    },
+    "for_profit": {
+      "debt_median": 26921,
+      "earnings_median": 27166,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 11.9,
+      "years_of_pay_48_75k_median": 3.2
+    }
+  },
   "earnings_median": 27179,
   "programs": 1411,
   "ends": {
@@ -114,9 +201,61 @@
       }
     }
   },
+  "short_name": "Biology",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 21630,
+  "debt_p75": 27000,
   "earnings_p25": 23885,
   "earnings_p75": 30842,
+  "four_year_cost": {
+    "sticker": 125000,
+    "gap_48_75k": 44000,
+    "programs_48_75k": 819,
+    "years_of_pay_48_75k": 2.5,
+    "income_0_30k": 51000,
+    "income_48_75k": 67000,
+    "income_110k_plus": 99000
+  },
+  "months_to_repay": {
+    "median": 10.5,
+    "programs": 797,
+    "of_major": 11.0,
+    "p25": 9.0,
+    "p75": 12.2
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "FL",
+        "college": "Florida Atlantic University",
+        "earnings": 26231,
+        "city": "Boca Raton",
+        "debt": 17537,
+        "months_to_repay": 8.0,
+        "four_year_cost_48_75k": 35088
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "FL",
+        "college": "Keiser University-Ft Lauderdale",
+        "earnings": 25887,
+        "city": "Fort Lauderdale",
+        "debt": 39000,
+        "months_to_repay": 18.1,
+        "four_year_cost_48_75k": 143200
+      }
+    ],
+    "miles": 13
+  },
+  "online_only": {
+    "debt_median": 21250,
+    "earnings_median": 28259,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 21000,
+    "months_to_repay_median": 9.0,
+    "years_of_pay_48_75k_median": 1.1
+  },
   "outliers": {
     "below_half_median": {
       "count": 3,
@@ -129,8 +268,12 @@
       "top_states": {}
     }
   },
-  "programs_with_debt": 351,
+  "parent_plus_over_24_months": {
+    "of": 343,
+    "programs": 50
+  },
+  "programs_with_debt": 970,
   "programs_with_earnings": 837,
-  "ranked_of": 147,
-  "debt_to_earnings": 1.02
+  "ranked_of": 222,
+  "debt_to_earnings": 0.92
 }

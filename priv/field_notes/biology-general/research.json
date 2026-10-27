@@ -1,61 +1,66 @@
 {
-  "facts_hash": "87535491037a",
+  "facts_hash": "5fe08703d10d",
   "field": "Biology, General",
-  "hash": "1d9892ebf712",
+  "hash": "bf55d75f23ed",
   "major": {
-    "location": {
-      "evidence": "Top programs cluster in Massachusetts, near the nation's largest life sciences cluster, while the lowest cluster in Puerto Rico, where BLS data show wages trail the U.S. mainland in every major occupational group.",
-      "finding": "both",
-      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers"
-    },
-    "prestige": {
-      "evidence": "The top programs are more selective than typical biology programs, but not elite as a group. Half of them sit in Massachusetts, home to the Boston-Cambridge life sciences cluster, the largest in the nation. So both the schools and the local biotech jobs shape the top end.",
-      "finding": "both",
-      "source": "https://bostonplans.org/getattachment/7927a2d5-097d-4218-af82-ecd64ad150d4"
-    },
-    "stepping_stone": {
-      "evidence": "Biological sciences is by far the most common undergraduate major among medical school applicants and matriculants, so many biology graduates are still in training a year after college.",
-      "finding": "strong",
+    "leads_to": {
+      "evidence": "Biology is the most common major among medical school applicants: biological sciences majors make up the majority of applicants and matriculants each year. First-year pay misses the many graduates who are still in school or working a gap year.",
+      "finding": "graduate_school",
       "source": "https://www.ama-assn.org/medical-students/preparing-medical-school/which-undergrad-majors-are-best-med-school"
+    },
+    "nearby_pair": {
+      "evidence": "Both are bachelor's programs open to new students. Keiser asks mainly for proof of high school graduation and admits nearly all applicants, and Florida Atlantic is a public university that admits freshmen.",
+      "finding": "comparable",
+      "source": "https://www.keiseruniversity.edu/programs/health-care/bachelors-biomedical-sciences-pre-pa/"
+    },
+    "school_matters": {
+      "evidence": "The usual entry science job, biological technician, needs only a bachelor's degree from any school. Graduates of the most selective schools earn only somewhat more than graduates of open schools, and the middle bands earn less than the open ones.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/life-physical-and-social-science/biological-technicians.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest general biology programs are at large public universities such as South Florida and Florida International, which admit traditional freshmen and transfers. None of the largest programs is online-only.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/general-biological-sciences"
     }
   },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "MIT admits very few applicants, and its biology department says graduates often go on to PhD and MD programs or into drug development and other industry jobs near the Boston biotech cluster.",
-      "source": "https://firstyear.mit.edu/wp-content/uploads/2025/02/Course-7-2025.pdf",
+      "evidence": "MIT is one of the most selective schools in the country, and its biology graduates compete for the best research and biotech jobs in the Boston area.",
+      "source": "https://biology.mit.edu/",
       "unitid": 166683
     },
     {
       "cause": "small_cohort",
-      "evidence": "Too few Bowdoin biology graduates are in this cohort for a reliable earnings figure.",
+      "evidence": "This figure comes from a very small group of graduates, too few to trust.",
       "source": null,
       "unitid": 161004
     },
     {
       "cause": "data_error",
-      "evidence": "This Oakland campus is the former Mills College, which graduated only a handful of biology majors a year, so the cohort size and selective admission rate look pooled with Northeastern's Boston campus.",
+      "evidence": "This Oakland campus was Mills College until Northeastern took it over in 2022. Its admission rate and cohort size look like Northeastern's own figures, not Mills's small program, so the data are likely pooled with Northeastern's.",
       "source": null,
       "unitid": 118888
     },
     {
-      "cause": "small_cohort",
-      "evidence": "Too few Humacao biology graduates are in this cohort for a reliable earnings figure, though it shares Puerto Rico's low wage levels.",
-      "source": null,
+      "cause": "low_cost_region",
+      "evidence": "Pay in Puerto Rico is lower than on the mainland in nearly every occupation, and that explains this figure.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
       "unitid": 243179
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Wages in Puerto Rico trail the U.S. mainland in every major occupational group, so island biology graduates start well below mainland peers.",
-      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
+      "evidence": "Pay in Puerto Rico is lower than on the mainland in nearly every occupation, and that explains this figure.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
       "unitid": 243106
     },
     {
       "cause": "low_cost_region",
-      "evidence": "Wages in Puerto Rico trail the U.S. mainland in every major occupational group, so Cayey's biology graduates start well below mainland peers.",
-      "source": "https://newsismybusiness.com/workers-in-puerto-ricos-metro-area-make-43-less-than-us-mainland-peers",
+      "evidence": "Pay in Puerto Rico is lower than on the mainland in nearly every occupation, and that explains this figure.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
       "unitid": 243151
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

@@ -1,85 +1,90 @@
 {
-  "facts_hash": "d0833d016369",
+  "facts_hash": "4846db4e24e5",
   "field": "Computer Science",
-  "hash": "1edc6d73c390",
+  "hash": "ae8ceeafb818",
   "major": {
-    "location": {
-      "evidence": "Top programs cluster in California, home to the highest-paying tech hub. The lowest cluster in Puerto Rico, where federal wage data show software developers earn far less than the national level.",
-      "finding": "both",
-      "source": "https://www.bls.gov/oes/2020/May/oes_pr.htm"
+    "leads_to": {
+      "evidence": "BLS says software developers usually need a bachelor's degree in computer science or a related field. No license is required, so graduates usually go straight into developer jobs.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
     },
-    "prestige": {
-      "evidence": "The top-paying programs admit a small fraction of applicants, compared with most of them for the major as a whole, and tech firms recruit heavily at these campuses. At Stanford, companies pay large fees just for career fair tables.",
-      "finding": "both",
-      "source": "https://pitlab.stanford.edu/career-pathways"
+    "nearby_pair": {
+      "evidence": "BYU's computer science BS is open enrollment, so admitted freshmen can declare it without a separate application. Utah Valley University, a few miles away, is a public school with near-open admission. Both take new students into campus programs.",
+      "finding": "comparable",
+      "source": "https://catalog.byu.edu/pages/department-1323"
     },
-    "stepping_stone": {
-      "evidence": "A minority of computer science graduates go straight to graduate school, mostly for a master's in computing. At Cornell, most of those who went on chose a professional MEng degree.",
-      "finding": "some",
-      "source": "https://as.cornell.edu/computer-science-major-minor"
+    "school_matters": {
+      "evidence": "The most selective schools send their computer science graduates to a small set of high-paying tech employers. Carnegie Mellon lists Amazon, Google, Meta, Microsoft and NVIDIA among its top employers. Most graduates of open schools do not get those jobs.",
+      "finding": "two_markets",
+      "source": "https://www.cmu.edu/career/outcomes/post-grad-dashboard.html"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest computer science programs are campus degrees at large research universities. USC awarded the most computer science degrees in 2023. Data USA does not report admission requirements, and none of the largest programs is online-only.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/computer-science-110701"
     }
   },
   "programs": [
     {
       "cause": "selective_school",
-      "evidence": "Carnegie Mellon is a highly selective school with a top computer science school, and its career center tracks graduates hired by major tech employers.",
-      "source": "https://www.cmu.edu/career/outcomes/index.html",
+      "evidence": "Carnegie Mellon is a highly selective school whose computing graduates go mainly to large tech employers such as Amazon, Google, Microsoft and NVIDIA.",
+      "source": "https://www.cmu.edu/career/outcomes/post-grad-dashboard.html",
       "unitid": 211440
     },
     {
       "cause": "selective_school",
-      "evidence": "Harvard admits very few applicants, and its computer science concentrators made up a large share of seniors expecting the highest starting salaries, mostly in tech, consulting and finance.",
-      "source": "https://thecrimson.com/article/2016/10/21/students-going-into-tech",
+      "evidence": "Harvard is among the most selective schools in the country, and its senior surveys show many graduates going into technology, finance and consulting jobs.",
+      "source": "https://www.harvardmagazine.com/index%2ephp/what-harvard-graduates-want-2024",
       "unitid": 166027
     },
     {
       "cause": "selective_school",
-      "evidence": "Stanford is highly selective and sits in Silicon Valley, and tech companies compete hard to recruit its computer science graduates.",
-      "source": "https://pitlab.stanford.edu/career-pathways",
+      "evidence": "Stanford is among the most selective schools, and its computer science graduates are hired at high rates by major tech employers.",
+      "source": "https://www.collegetransitions.com/blog/top-universities-for-tech-jobs/",
       "unitid": 243744
     },
     {
       "cause": "selective_school",
-      "evidence": "Brown is highly selective, and Google and other large tech firms recruit its computer science students, partly through the department's industry partners program.",
+      "evidence": "Brown is a highly selective school, and its computer science graduates go to top tech employers. The department runs an industry partners program that links students to firms like Google.",
       "source": "https://www.browndailyherald.com/article/2015/09/brown-grads-flock-to-top-companies",
       "unitid": 217156
     },
     {
       "cause": "selective_school",
-      "evidence": "Caltech is among the most selective schools, and its graduates who go straight to work often join large tech firms such as Google, NVIDIA, Microsoft and Apple.",
+      "evidence": "Caltech is among the most selective schools, and its engineering and computing graduates are placed at high rates with large tech employers.",
       "source": "https://www.collegetransitions.com/blog/top-universities-for-tech-jobs/",
       "unitid": 110404
     },
     {
       "cause": "selective_school",
-      "evidence": "Cornell is highly selective, and its computer science majors mostly go to work in tech or continue to a professional master's in computing.",
-      "source": "https://as.cornell.edu/computer-science-major-minor",
+      "evidence": "Cornell is a highly selective school, and its career office reports that its computing graduates are hired by large tech and finance employers.",
+      "source": "https://career.cornell.edu/career-statistics-and-outcomes/",
       "unitid": 190415
     },
     {
       "cause": "small_cohort",
-      "evidence": "This figure rests on too few graduates to trust, even though it fits the pattern of other highly selective schools.",
+      "evidence": "This program reports under 20 graduates, too few for a reliable earnings figure.",
       "source": null,
       "unitid": 215062
     },
     {
       "cause": "credential_mismatch",
-      "evidence": "Until IU Northwest added an online computer science degree in 2023, its bachelor's in this area was Computer Information Systems, which trains systems analysts and programmers.",
+      "evidence": "Until 2023, IU Northwest's computing bachelor's was computer information systems. Its computer science degree launched then as a fully online program aimed at working adults, so the graduates counted likely earned a different degree.",
       "source": "https://www.govtech.com/education/higher-ed/indiana-university-northwest-to-offer-online-compsci-degree",
       "unitid": 151360
     },
     {
       "cause": "small_cohort",
-      "evidence": "This figure rests on too few graduates to trust. Puerto Rico's lower pay for software jobs may also play a part.",
+      "evidence": "This program reports under 20 graduates, too few for a reliable earnings figure.",
       "source": null,
       "unitid": 242662
     },
     {
       "cause": "small_cohort",
-      "evidence": "This figure rests on too few graduates to trust. Puerto Rico's lower pay for software jobs may also play a part.",
+      "evidence": "This program reports under 20 graduates, too few for a reliable earnings figure.",
       "source": null,
       "unitid": 242705
     }
   ],
-  "prompt_hash": "40f34bfc7854"
+  "prompt_hash": "9e9c64d9d818"
 }

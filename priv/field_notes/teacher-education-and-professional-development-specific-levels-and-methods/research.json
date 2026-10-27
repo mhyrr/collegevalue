@@ -1,0 +1,78 @@
+{
+  "facts_hash": "2d18a7fc4754",
+  "field": "Teacher Education and Professional Development, Specific Levels and Methods",
+  "hash": "235a7e4ce74c",
+  "major": {
+    "leads_to": {
+      "evidence": "Public school teachers must hold a state-issued certification or license in addition to a bachelor's degree, usually in education. Private schools do not always require one.",
+      "finding": "licensure",
+      "source": "https://www.bls.gov/ooh/education-Training-and-library/kindergarten-and-elementary-school-teachers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Ashford's early childhood and child development bachelor's degrees were online only and built for transfer and working adult students. San Diego State's program admits new students on campus through the CSU system.",
+      "finding": "not_comparable",
+      "source": "https://zovio.mediaroom.com/index.php?item=175"
+    },
+    "school_matters": {
+      "evidence": "Nearly all public school districts pay teachers on a fixed salary schedule set by degree and years of experience. A new teacher's pay depends on the district, not on how selective their college was.",
+      "finding": "little",
+      "source": "https://nces.ed.gov/surveys/sass/tables/sass1112_2013311_d1s_002.asp"
+    },
+    "who_is_counted": {
+      "evidence": "The facts do not name the largest programs, and one of them is pooled, so their admission requirements could not be checked.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "high_cost_region",
+      "evidence": "Washington's statewide salary schedule gives it one of the highest average starting teacher salaries in the country.",
+      "source": "https://www.yahoo.com/news/articles/see-states-pay-teachers-big-100550679.html",
+      "unitid": 236230
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "New Jersey has long had one of the highest average starting teacher salaries among the states, according to the NEA.",
+      "source": "https://neatoday.org/resource-library/educator-pay-and-student-spending-how-does-your-state-rank/starting-teacher",
+      "unitid": 186584
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "Washington's statewide salary schedule gives it one of the highest average starting teacher salaries in the country.",
+      "source": "https://www.yahoo.com/news/articles/see-states-pay-teachers-big-100550679.html",
+      "unitid": 237011
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico sets public teachers' base pay by law, and it is far below mainland starting salaries.",
+      "source": "https://www.primerahora.com/noticias/gobierno-politica/notas/pierluisi-firma-proyecto-que-aumenta-el-salario-base-de-maestros-a-2750-mensuales/",
+      "unitid": 243221
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico sets public teachers' base pay by law, and it is far below mainland starting salaries.",
+      "source": "https://www.primerahora.com/noticias/gobierno-politica/notas/pierluisi-firma-proyecto-que-aumenta-el-salario-base-de-maestros-a-2750-mensuales/",
+      "unitid": 241739
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico sets public teachers' base pay by law, and it is far below mainland starting salaries.",
+      "source": "https://www.primerahora.com/noticias/gobierno-politica/notas/pierluisi-firma-proyecto-que-aumenta-el-salario-base-de-maestros-a-2750-mensuales/",
+      "unitid": 243133
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico sets public teachers' base pay by law, and it is far below mainland starting salaries.",
+      "source": "https://www.primerahora.com/noticias/gobierno-politica/notas/pierluisi-firma-proyecto-que-aumenta-el-salario-base-de-maestros-a-2750-mensuales/",
+      "unitid": 243212
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Puerto Rico sets public teachers' base pay by law, and it is far below mainland starting salaries. This cohort is also just under the size where figures are reliable.",
+      "source": "https://www.primerahora.com/noticias/gobierno-politica/notas/pierluisi-firma-proyecto-que-aumenta-el-salario-base-de-maestros-a-2750-mensuales/",
+      "unitid": 243115
+    }
+  ],
+  "prompt_hash": "9e9c64d9d818"
+}

@@ -1,85 +1,164 @@
 {
   "name": "Economics",
-  "hash": "8de3bfe2c6f6",
-  "rank": 83,
-  "debt_median": 39273,
+  "largest": {
+    "debt_median": 20611,
+    "earnings_median": 49638,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 49000,
+    "months_to_repay_median": 4.9,
+    "years_of_pay_48_75k_median": 1.1,
+    "pooled": 2,
+    "share_of_graduates_percent": 16
+  },
+  "hash": "915891d1c739",
+  "rank": 58,
+  "debt_median": 22842,
   "flagged": [
     {
       "state": "CA",
       "college": "Claremont McKenna College",
       "unitid": 112260,
       "earnings": 95566,
+      "debt": 12000,
       "admission_rate": 0.1112,
-      "debt": null,
+      "months_to_repay": 1.5,
+      "four_year_cost_48_75k": 59716,
+      "cohort": 39,
       "reasons": [
         "top_3",
         "above_2x_median"
-      ],
-      "cohort": 39
+      ]
     },
     {
       "state": "NC",
       "college": "Duke University",
       "unitid": 198419,
       "earnings": 94699,
+      "debt": 13437,
       "admission_rate": 0.0678,
-      "debt": null,
+      "months_to_repay": 1.7,
+      "four_year_cost_48_75k": 27604,
+      "cohort": 130,
       "reasons": [
         "top_3",
         "above_2x_median"
-      ],
-      "cohort": 130
+      ]
     },
     {
       "state": "MA",
       "college": "Harvard University",
       "unitid": 166027,
       "earnings": 89515,
+      "debt": 6617,
       "admission_rate": 0.0345,
-      "debt": null,
+      "months_to_repay": 0.9,
+      "four_year_cost_48_75k": 8668,
+      "cohort": 98,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 98
+      ]
     },
     {
       "state": "NY",
       "college": "SUNY at Purchase College",
       "unitid": 196219,
       "earnings": 28093,
+      "debt": 23250,
       "admission_rate": 0.7283,
-      "debt": null,
+      "months_to_repay": 9.9,
+      "four_year_cost_48_75k": 84592,
+      "cohort": 27,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 27
+      ]
     },
     {
       "state": "NM",
       "college": "University of New Mexico-Main Campus",
       "unitid": 187985,
       "earnings": 27677,
+      "debt": 18450,
       "admission_rate": 0.9545,
-      "debt": null,
+      "months_to_repay": 8.0,
+      "four_year_cost_48_75k": 74344,
+      "cohort": 45,
       "reasons": [
         "bottom_3"
-      ],
-      "cohort": 45
+      ]
     },
     {
       "state": "NY",
       "college": "CUNY Brooklyn College",
       "unitid": 190549,
       "earnings": 17854,
-      "admission_rate": 0.5366,
       "debt": null,
+      "admission_rate": 0.5366,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 26904,
+      "cohort": 18,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 18
+      ]
     }
   ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 14500,
+      "earnings_median": 71488,
+      "programs": 25,
+      "four_year_cost_48_75k_median": 26000,
+      "months_to_repay_median": 2.5,
+      "years_of_pay_48_75k_median": 0.3
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18250,
+      "earnings_median": 57385,
+      "programs": 35,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 3.7,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23188,
+      "earnings_median": 48229,
+      "programs": 88,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 5.7,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 23688,
+      "earnings_median": 42788,
+      "programs": 202,
+      "four_year_cost_48_75k_median": 67000,
+      "months_to_repay_median": 6.5,
+      "years_of_pay_48_75k_median": 1.6
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 21674,
+      "earnings_median": 41735,
+      "programs": 198,
+      "four_year_cost_48_75k_median": 58000,
+      "months_to_repay_median": 6.0,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    "private_nonprofit": {
+      "debt_median": 24051,
+      "earnings_median": 52555,
+      "programs": 160,
+      "four_year_cost_48_75k_median": 79000,
+      "months_to_repay_median": 5.5,
+      "years_of_pay_48_75k_median": 1.6
+    }
+  },
   "earnings_median": 45786,
   "programs": 815,
   "ends": {
@@ -114,9 +193,61 @@
       }
     }
   },
+  "short_name": "Economics",
   "all_majors_earnings_median": 37050,
+  "debt_p25": 19001,
+  "debt_p75": 25438,
   "earnings_p25": 39704,
   "earnings_p75": 53280,
+  "four_year_cost": {
+    "sticker": 138000,
+    "gap_48_75k": 41000,
+    "programs_48_75k": 353,
+    "years_of_pay_48_75k": 1.5,
+    "income_0_30k": 47000,
+    "income_48_75k": 65000,
+    "income_110k_plus": 114000
+  },
+  "months_to_repay": {
+    "median": 5.8,
+    "programs": 310,
+    "of_major": 5.9,
+    "p25": 4.5,
+    "p75": 7.0
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Bernard M Baruch College",
+        "earnings": 44077,
+        "city": "New York",
+        "debt": 11758,
+        "months_to_repay": 3.2,
+        "four_year_cost_48_75k": 26504
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "NY",
+        "college": "Pace University",
+        "earnings": 45183,
+        "city": "New York",
+        "debt": 25937,
+        "months_to_repay": 6.9,
+        "four_year_cost_48_75k": 117232
+      }
+    ],
+    "miles": 2
+  },
+  "online_only": {
+    "debt_median": 16430,
+    "earnings_median": 46559,
+    "programs": 1,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": 4.2,
+    "years_of_pay_48_75k_median": null
+  },
   "outliers": {
     "below_half_median": {
       "count": 1,
@@ -132,8 +263,12 @@
       }
     }
   },
-  "programs_with_debt": 103,
+  "parent_plus_over_24_months": {
+    "of": 102,
+    "programs": 1
+  },
+  "programs_with_debt": 339,
   "programs_with_earnings": 358,
-  "ranked_of": 147,
-  "debt_to_earnings": 0.86
+  "ranked_of": 222,
+  "debt_to_earnings": 0.5
 }

@@ -1,0 +1,306 @@
+{
+  "name": "Teacher Education and Professional Development, Specific Levels and Methods",
+  "largest": {
+    "debt_median": 26382,
+    "earnings_median": 36822,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 66000,
+    "months_to_repay_median": 9.4,
+    "years_of_pay_48_75k_median": 2.0,
+    "pooled": 1,
+    "share_of_graduates_percent": 11
+  },
+  "hash": "2d18a7fc4754",
+  "rank": 128,
+  "debt_median": 26000,
+  "flagged": [
+    {
+      "state": "WA",
+      "college": "Pacific Lutheran University",
+      "unitid": 236230,
+      "earnings": 51494,
+      "debt": 19500,
+      "months_to_repay": 4.5,
+      "admission_rate": 0.8053,
+      "four_year_cost_48_75k": 74612,
+      "cohort": 26,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NJ",
+      "college": "Seton Hall University",
+      "unitid": 186584,
+      "earnings": 50470,
+      "debt": 27000,
+      "months_to_repay": 6.4,
+      "admission_rate": 0.789,
+      "four_year_cost_48_75k": 97304,
+      "cohort": 55,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "WA",
+      "college": "Western Washington University",
+      "unitid": 237011,
+      "earnings": 50090,
+      "debt": 22000,
+      "months_to_repay": 5.3,
+      "admission_rate": 0.9131,
+      "four_year_cost_48_75k": 64708,
+      "cohort": 66,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Rio Piedras",
+      "unitid": 243221,
+      "earnings": 16730,
+      "debt": 5500,
+      "months_to_repay": 3.9,
+      "admission_rate": 0.532,
+      "four_year_cost_48_75k": 32096,
+      "cohort": 25,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Cupey Campus",
+      "unitid": 241739,
+      "earnings": 16139,
+      "debt": 16125,
+      "months_to_repay": 12.0,
+      "admission_rate": -1.0,
+      "four_year_cost_48_75k": 30368,
+      "cohort": 73,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Bayamon",
+      "unitid": 243133,
+      "earnings": 13736,
+      "debt": 5500,
+      "months_to_repay": 4.8,
+      "admission_rate": 0.9245,
+      "four_year_cost_48_75k": 43232,
+      "cohort": 26,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico at Ponce",
+      "unitid": 243212,
+      "earnings": 10899,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.5614,
+      "four_year_cost_48_75k": 33340,
+      "cohort": 22,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Arecibo",
+      "unitid": 243115,
+      "earnings": 8185,
+      "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.6226,
+      "four_year_cost_48_75k": 53036,
+      "cohort": 19,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "four_year_cost": {
+    "sticker": 115000,
+    "gap_48_75k": 42000,
+    "programs_48_75k": 673,
+    "years_of_pay_48_75k": 1.9,
+    "income_0_30k": 53000,
+    "income_48_75k": 67000,
+    "income_110k_plus": 92000
+  },
+  "months_to_repay": {
+    "median": 8.5,
+    "programs": 611,
+    "of_major": 8.8,
+    "p25": 7.5,
+    "p75": 9.6
+  },
+  "short_name": "Teacher Education",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 19455,
+      "earnings_median": 38543,
+      "programs": 2,
+      "four_year_cost_48_75k_median": 50000,
+      "months_to_repay_median": 6.1,
+      "years_of_pay_48_75k_median": 1.3
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 21668,
+      "earnings_median": 34812,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 40000,
+      "months_to_repay_median": 6.8,
+      "years_of_pay_48_75k_median": 1.2
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 25000,
+      "earnings_median": 35785,
+      "programs": 77,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 8.3,
+      "years_of_pay_48_75k_median": 1.9
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26412,
+      "earnings_median": 35785,
+      "programs": 518,
+      "four_year_cost_48_75k_median": 70000,
+      "months_to_repay_median": 8.5,
+      "years_of_pay_48_75k_median": 2.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 25000,
+      "earnings_median": 35598,
+      "programs": 366,
+      "four_year_cost_48_75k_median": 55000,
+      "months_to_repay_median": 8.3,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 35538,
+      "programs": 324,
+      "four_year_cost_48_75k_median": 83000,
+      "months_to_repay_median": 8.8,
+      "years_of_pay_48_75k_median": 2.3
+    },
+    "for_profit": {
+      "debt_median": 42548,
+      "earnings_median": 35017,
+      "programs": 7,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 15.0,
+      "years_of_pay_48_75k_median": 2.3
+    }
+  },
+  "earnings_median": 35537,
+  "programs": 1245,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 602
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.59,
+        "reporting": 6
+      },
+      "programs": 10,
+      "top_states": {
+        "OH": 2,
+        "PR": 8
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "IL": 1,
+        "NJ": 5,
+        "WA": 3
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 23250,
+  "debt_p75": 27000,
+  "earnings_p25": 32729,
+  "earnings_p75": 38791,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "CA",
+        "college": "San Diego State University",
+        "earnings": 26064,
+        "city": "San Diego",
+        "debt": 12999,
+        "months_to_repay": 6.0,
+        "four_year_cost_48_75k": 56820
+      },
+      {
+        "control": "for_profit",
+        "state": "CA",
+        "college": "Ashford University",
+        "earnings": 28494,
+        "city": "San Diego",
+        "debt": 41274,
+        "months_to_repay": 17.4,
+        "four_year_cost_48_75k": 105508
+      }
+    ],
+    "miles": 5
+  },
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": 34615,
+    "programs": 1,
+    "four_year_cost_48_75k_median": 43000,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": 1.2
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 5,
+      "top_states": {
+        "PR": 5
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 201,
+    "programs": 0
+  },
+  "programs_with_debt": 685,
+  "programs_with_earnings": 697,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.73
+}

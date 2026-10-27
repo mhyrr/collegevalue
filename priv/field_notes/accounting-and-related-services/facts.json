@@ -1,0 +1,333 @@
+{
+  "name": "Accounting and Related Services",
+  "largest": {
+    "debt_median": 23635,
+    "earnings_median": 48594,
+    "programs": 10,
+    "online_only": 2,
+    "four_year_cost_48_75k_median": 49000,
+    "months_to_repay_median": 5.1,
+    "years_of_pay_48_75k_median": 1.0,
+    "pooled": 2,
+    "share_of_graduates_percent": 11
+  },
+  "hash": "5d429359610b",
+  "rank": 65,
+  "debt_median": 25112,
+  "flagged": [
+    {
+      "state": "DC",
+      "college": "Georgetown University",
+      "unitid": 131496,
+      "earnings": 77441,
+      "debt": 17500,
+      "admission_rate": 0.1308,
+      "months_to_repay": 2.7,
+      "four_year_cost_48_75k": 53856,
+      "cohort": 39,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PA",
+      "college": "Lehigh University",
+      "unitid": 213543,
+      "earnings": 71520,
+      "debt": 23179,
+      "admission_rate": 0.2926,
+      "months_to_repay": 3.9,
+      "four_year_cost_48_75k": 77980,
+      "cohort": 52,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Boston College",
+      "unitid": 164924,
+      "earnings": 69899,
+      "debt": 18000,
+      "admission_rate": 0.1565,
+      "months_to_repay": 3.1,
+      "four_year_cost_48_75k": 50216,
+      "cohort": 84,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Arecibo",
+      "unitid": 241395,
+      "earnings": 19358,
+      "debt": 18750,
+      "admission_rate": 0.8538,
+      "months_to_repay": 11.6,
+      "four_year_cost_48_75k": 46652,
+      "cohort": 36,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Mayaguez",
+      "unitid": 243197,
+      "earnings": 16611,
+      "debt": 8000,
+      "admission_rate": 0.5217,
+      "months_to_repay": 5.8,
+      "four_year_cost_48_75k": 62108,
+      "cohort": 43,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Humacao",
+      "unitid": 243179,
+      "earnings": 16251,
+      "debt": 5500,
+      "admission_rate": 0.5849,
+      "months_to_repay": 4.1,
+      "four_year_cost_48_75k": 63680,
+      "cohort": 39,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Arecibo",
+      "unitid": 243115,
+      "earnings": 14736,
+      "debt": 5300,
+      "admission_rate": 0.6226,
+      "months_to_repay": 4.3,
+      "four_year_cost_48_75k": 53036,
+      "cohort": 33,
+      "reasons": [
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Aguadilla",
+      "unitid": 243106,
+      "earnings": 14584,
+      "debt": 5500,
+      "admission_rate": 0.8174,
+      "months_to_repay": 4.5,
+      "four_year_cost_48_75k": 37840,
+      "cohort": 25,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico at Cayey",
+      "unitid": 243151,
+      "earnings": 11525,
+      "debt": null,
+      "admission_rate": 0.9584,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 41624,
+      "cohort": 28,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Bayamon",
+      "unitid": 243133,
+      "earnings": 10688,
+      "debt": 5500,
+      "admission_rate": 0.9245,
+      "months_to_repay": 6.2,
+      "four_year_cost_48_75k": 43232,
+      "cohort": 34,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": null,
+      "earnings_median": null,
+      "programs": 0,
+      "four_year_cost_48_75k_median": null,
+      "months_to_repay_median": null,
+      "years_of_pay_48_75k_median": null
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18500,
+      "earnings_median": 64488,
+      "programs": 10,
+      "four_year_cost_48_75k_median": 67000,
+      "months_to_repay_median": 3.5,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23250,
+      "earnings_median": 48003,
+      "programs": 83,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 5.2,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24776,
+      "earnings_median": 46992,
+      "programs": 503,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 6.1,
+      "years_of_pay_48_75k_median": 1.5
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23077,
+      "earnings_median": 45643,
+      "programs": 352,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 5.9,
+      "years_of_pay_48_75k_median": 1.2
+    },
+    "private_nonprofit": {
+      "debt_median": 26857,
+      "earnings_median": 48716,
+      "programs": 295,
+      "four_year_cost_48_75k_median": 88000,
+      "months_to_repay_median": 6.2,
+      "years_of_pay_48_75k_median": 1.8
+    },
+    "for_profit": {
+      "debt_median": 47435,
+      "earnings_median": 44552,
+      "programs": 64,
+      "four_year_cost_48_75k_median": 80000,
+      "months_to_repay_median": 13.4,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  },
+  "earnings_median": 47151,
+  "programs": 1243,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 596
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.84,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "PR": 10
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.27,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "MA": 2,
+        "PA": 3
+      }
+    }
+  },
+  "short_name": "Accounting",
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21898,
+  "debt_p75": 27000,
+  "earnings_p25": 42083,
+  "earnings_p75": 52328,
+  "four_year_cost": {
+    "sticker": 110000,
+    "gap_48_75k": 43000,
+    "programs_48_75k": 650,
+    "years_of_pay_48_75k": 1.5,
+    "income_0_30k": 54000,
+    "income_48_75k": 68000,
+    "income_110k_plus": 94000
+  },
+  "months_to_repay": {
+    "median": 6.2,
+    "programs": 642,
+    "of_major": 6.4,
+    "p25": 5.2,
+    "p75": 7.7
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY Hunter College",
+        "earnings": 43643,
+        "city": "New York",
+        "debt": 11070,
+        "months_to_repay": 3.0,
+        "four_year_cost_48_75k": 25828
+      },
+      {
+        "control": "for_profit",
+        "state": "NY",
+        "college": "Berkeley College-New York",
+        "earnings": 39591,
+        "city": "New York",
+        "debt": 39258,
+        "months_to_repay": 11.9,
+        "four_year_cost_48_75k": 122360
+      }
+    ],
+    "miles": 1
+  },
+  "online_only": {
+    "debt_median": 39746,
+    "earnings_median": 45951,
+    "programs": 9,
+    "four_year_cost_48_75k_median": 63000,
+    "months_to_repay_median": 10.8,
+    "years_of_pay_48_75k_median": 1.4
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 17,
+      "top_states": {
+        "PR": 17
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 194,
+    "programs": 0
+  },
+  "programs_with_debt": 734,
+  "programs_with_earnings": 711,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.53
+}

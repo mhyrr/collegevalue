@@ -1,133 +1,245 @@
 {
   "name": "Registered Nursing, Nursing Administration, Nursing Research and Clinical Nursing",
-  "hash": "956fee7bb0c7",
-  "rank": 9,
-  "debt_median": 20508,
+  "largest": {
+    "debt_median": 26709,
+    "earnings_median": 71455,
+    "programs": 10,
+    "online_only": 1,
+    "four_year_cost_48_75k_median": 58000,
+    "months_to_repay_median": 5.0,
+    "years_of_pay_48_75k_median": 1.1,
+    "pooled": 5,
+    "share_of_graduates_percent": 20
+  },
+  "hash": "08f735c2eecc",
+  "rank": 36,
+  "debt_median": 27000,
   "flagged": [
     {
       "state": "NY",
       "college": "Mercy University",
       "unitid": 193016,
       "earnings": 115215,
+      "debt": 35500,
+      "months_to_repay": 3.7,
       "admission_rate": 0.8547,
-      "debt": 24000,
+      "four_year_cost_48_75k": 68168,
+      "cohort": 50,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 50
+      ]
     },
     {
       "state": "CA",
       "college": "Pacific College",
       "unitid": 422695,
       "earnings": 114248,
-      "admission_rate": 0.5,
       "debt": null,
+      "months_to_repay": null,
+      "admission_rate": 0.5,
+      "four_year_cost_48_75k": 85752,
+      "cohort": 29,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 29
+      ]
     },
     {
       "state": "CA",
       "college": "Sonoma State University",
       "unitid": 123572,
       "earnings": 110859,
+      "debt": 19750,
+      "months_to_repay": 2.1,
       "admission_rate": 0.9473,
-      "debt": null,
+      "four_year_cost_48_75k": 51004,
+      "cohort": 79,
       "reasons": [
         "top_3"
-      ],
-      "cohort": 79
+      ]
     },
     {
       "state": "PR",
       "college": "University of Puerto Rico-Medical Sciences",
       "unitid": 243203,
       "earnings": 14847,
+      "debt": 6025,
+      "months_to_repay": 4.9,
       "admission_rate": -1.0,
-      "debt": null,
+      "four_year_cost_48_75k": null,
+      "cohort": 52,
       "reasons": [
         "below_half_median"
-      ],
-      "cohort": 52
+      ]
     },
     {
       "state": "PR",
       "college": "Universidad Adventista de las Antillas",
       "unitid": 241191,
       "earnings": 14401,
+      "debt": 19065,
+      "months_to_repay": 15.9,
       "admission_rate": 1.0,
-      "debt": null,
+      "four_year_cost_48_75k": 37644,
+      "cohort": 130,
       "reasons": [
         "below_half_median"
-      ],
-      "cohort": 130
+      ]
     },
     {
       "state": "PR",
       "college": "Inter American University of Puerto Rico-Ponce",
       "unitid": 242662,
       "earnings": 13571,
+      "debt": 5500,
+      "months_to_repay": 4.9,
       "admission_rate": 0.7029,
-      "debt": null,
+      "four_year_cost_48_75k": 42600,
+      "cohort": 45,
       "reasons": [
         "below_half_median"
-      ],
-      "cohort": 45
+      ]
     },
     {
       "state": "PR",
       "college": "Pontifical Catholic University of Puerto Rico-Ponce",
       "unitid": 241410,
       "earnings": 12923,
+      "debt": 19000,
+      "months_to_repay": 17.6,
       "admission_rate": 0.9033,
-      "debt": null,
+      "four_year_cost_48_75k": 54432,
+      "cohort": 94,
       "reasons": [
         "below_half_median"
-      ],
-      "cohort": 94
+      ]
     },
     {
       "state": "PR",
       "college": "Inter American University of Puerto Rico-Barranquitas",
       "unitid": 242644,
       "earnings": 12611,
+      "debt": 5850,
+      "months_to_repay": 5.6,
       "admission_rate": 0.6583,
-      "debt": null,
+      "four_year_cost_48_75k": 42568,
+      "cohort": 51,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 51
+      ]
     },
     {
       "state": "PR",
       "college": "Universidad Ana G. Mendez-Carolina Campus",
       "unitid": 243346,
       "earnings": 10662,
+      "debt": 18000,
+      "months_to_repay": 20.3,
       "admission_rate": -1.0,
-      "debt": null,
+      "four_year_cost_48_75k": 49936,
+      "cohort": 82,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 82
+      ]
     },
     {
       "state": "PR",
       "college": "Inter American University of Puerto Rico-San German",
       "unitid": 242617,
       "earnings": 9360,
+      "debt": 12250,
+      "months_to_repay": 15.7,
       "admission_rate": 0.5067,
-      "debt": null,
+      "four_year_cost_48_75k": 43112,
+      "cohort": 54,
       "reasons": [
         "bottom_3",
         "below_half_median"
-      ],
-      "cohort": 54
+      ]
     }
   ],
+  "four_year_cost": {
+    "sticker": 121000,
+    "gap_48_75k": 42000,
+    "programs_48_75k": 865,
+    "years_of_pay_48_75k": 1.1,
+    "income_0_30k": 56000,
+    "income_48_75k": 70000,
+    "income_110k_plus": 95000
+  },
+  "months_to_repay": {
+    "median": 5.3,
+    "programs": 935,
+    "of_major": 5.2,
+    "p25": 4.5,
+    "p75": 5.9
+  },
+  "short_name": "Nursing",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 25500,
+      "earnings_median": 69253,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 44000,
+      "months_to_repay_median": 4.4,
+      "years_of_pay_48_75k_median": 0.6
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 23026,
+      "earnings_median": 63580,
+      "programs": 13,
+      "four_year_cost_48_75k_median": 52000,
+      "months_to_repay_median": 4.6,
+      "years_of_pay_48_75k_median": 0.7
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 27000,
+      "earnings_median": 62118,
+      "programs": 105,
+      "four_year_cost_48_75k_median": 74000,
+      "months_to_repay_median": 5.4,
+      "years_of_pay_48_75k_median": 1.2
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 27000,
+      "earnings_median": 62359,
+      "programs": 645,
+      "four_year_cost_48_75k_median": 72000,
+      "months_to_repay_median": 5.2,
+      "years_of_pay_48_75k_median": 1.1
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 25683,
+      "earnings_median": 62639,
+      "programs": 427,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 4.8,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 62336,
+      "programs": 461,
+      "four_year_cost_48_75k_median": 83000,
+      "months_to_repay_median": 5.4,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    "for_profit": {
+      "debt_median": 39232,
+      "earnings_median": 66327,
+      "programs": 93,
+      "four_year_cost_48_75k_median": 113000,
+      "months_to_repay_median": 7.0,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  },
   "earnings_median": 62698,
   "programs": 1233,
   "ends": {
@@ -160,8 +272,43 @@
     }
   },
   "all_majors_earnings_median": 37050,
+  "debt_p25": 25000,
+  "debt_p75": 31000,
   "earnings_p25": 58868,
   "earnings_p75": 68395,
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "FL",
+        "college": "Miami Dade College",
+        "earnings": 73541,
+        "city": "Miami",
+        "debt": 12500,
+        "months_to_repay": 2.0,
+        "four_year_cost_48_75k": 35320
+      },
+      {
+        "control": "for_profit",
+        "state": "FL",
+        "college": "Florida National University-Main Campus",
+        "earnings": 66458,
+        "city": "Hialeah",
+        "debt": 46524,
+        "months_to_repay": 8.4,
+        "four_year_cost_48_75k": 107800
+      }
+    ],
+    "miles": 10
+  },
+  "online_only": {
+    "debt_median": 27000,
+    "earnings_median": 66330,
+    "programs": 14,
+    "four_year_cost_48_75k_median": 49000,
+    "months_to_repay_median": 4.8,
+    "years_of_pay_48_75k_median": 0.8
+  },
   "outliers": {
     "below_half_median": {
       "count": 35,
@@ -175,8 +322,12 @@
       "top_states": {}
     }
   },
-  "programs_with_debt": 585,
+  "parent_plus_over_24_months": {
+    "of": 580,
+    "programs": 0
+  },
+  "programs_with_debt": 997,
   "programs_with_earnings": 981,
-  "ranked_of": 147,
-  "debt_to_earnings": 0.33
+  "ranked_of": 222,
+  "debt_to_earnings": 0.43
 }

@@ -1,13 +1,13 @@
 ---
-drafted: 2026-10-22
-facts_hash: b497d827c7d0
+drafted: 2026-10-27
+facts_hash: 418711a720b0
 field: Business Administration, Management and Operations
 model: opus
-prompt_hash: a2667981a511
-research_hash: 9bb449ac505f
+prompt_hash: 248519280f58
+research_hash: 8f49fe3e1fda
 status: approved
 ---
 
-Business graduates start out earning more than the typical graduate across all majors, which ranks this major ahead of most others. The best-paying programs admit far fewer applicants than is usual for the major, and highly selective business schools send most of their graduates to banks and consulting firms. Two other top programs serve people who already have careers: Bismarck State College's energy management degree requires prior energy training or an applied associate degree, and City University of Seattle runs an online degree completion program for working adults.
+Business pay barely changes across schools that admit more than a quarter of applicants. Graduates of schools that admit most applicants earn about $41,000 in their first year, and those at schools admitting a quarter to 60 percent earn about $43,000. Only the schools that admit under a quarter pull ahead, because they feed banks and consulting firms, according to first-job reports from Poets&Quants.
 
-Three of the lowest-paying programs are campuses of the Pontifical Catholic University of Puerto Rico, and all three report identical earnings and graduate counts, so their figure looks pooled across campuses. Pay in Puerto Rico also runs well below the mainland in every major job group. Most business graduates go straight to work, and those who earn an MBA usually wait several years first, so first-year earnings show where this degree typically starts.
+Since the school's name does little for the typical student, the price matters more. Two programs 14 miles apart in the Los Angeles area, one public and one for-profit, both admit new students and pay about the same, but the typical loan takes 4.2 months of first-year pay at one and 14.1 at the other. The Bureau of Labor Statistics says higher-paying business roles such as management analyst usually expect several years of experience or an MBA, so a first job is the start of the path.
