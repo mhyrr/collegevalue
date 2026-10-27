@@ -59,6 +59,37 @@ defmodule Collegevalue.FieldNotes.FactsTest do
       assert %{rank: nil, debt_to_earnings: nil} = Facts.for_field("Thin")
     end
 
+    test "months to repay, four-year cost by income, the gap and years of pay" do
+      # {earnings, debt, parent debt, net price $48-75k, net price $0-30k, sticker}
+      for {earnings, debt, pp, np3, np1, sticker} <- [
+            {60_000, 30_000, 150_000, 10_000, 5_000, 30_000},
+            {40_000, 20_000, 60_000, 20_000, 8_000, 50_000},
+            {30_000, 30_000, -2, 25_000, 12_000, 70_000},
+            {50_000, -2, 20_000, -2, -2, -2}
+          ] do
+        n = System.unique_integer([:positive])
+        c = Repo.insert!(%College{name: "Cost College #{n}", unitid: n, state: "IL", control: "1", netprice_1: np1, netprice_3: np3,
+                                  netprice_5: -2, yearly_cost: sticker})
+        Repo.insert!(%Discipline{name: "Cost", credential_level: 3, earnings_1yr: earnings, earnings_1yr_count: 30,
+                                 stgp_debt_median: debt, pp_debt_median: pp, college_id: c.id})
+      end
+
+      facts = Facts.for_field("Cost")
+
+      # Months: 30,000 * 12 / 60,000 = 6; 20,000 * 12 / 40,000 = 6; 30,000 * 12 / 30,000 = 12.
+      # Of the major: median debt 30,000 over a month of median pay 45,000 = 8.
+      assert facts.months_to_repay == %{programs: 3, median: 6.0, p25: 6.0, p75: 9.0, of_major: 8.0}
+      # Four years: 40k, 80k, 100k at $48-75k; 20k, 32k, 48k at $0-30k; sticker 120k, 200k, 280k.
+      assert %{income_48_75k: 80_000, income_0_30k: 32_000, income_110k_plus: nil, sticker: 200_000, programs_48_75k: 3} = facts.four_year_cost
+      # Gaps: 40k - 30k, 80k - 20k, 100k - 30k = 10k, 60k, 70k. Years: 0.7, 2.0, 3.3.
+      assert %{gap_48_75k: 60_000, years_of_pay_48_75k: 2.0} = facts.four_year_cost
+      # Parents: 150,000 * 12 / 60,000 = 30 months, past 24; 60,000 * 12 / 40,000 = 18; 20,000 * 12 / 50,000 = 4.8.
+      assert facts.parent_plus_over_24_months == %{programs: 1, of: 3}
+
+      assert %{months_to_repay_median: 6.0, four_year_cost_48_75k_median: 80_000, years_of_pay_48_75k_median: 2.0} = facts.by_control.public
+      assert %{months_to_repay: 6.0, four_year_cost_48_75k: 40_000} = Enum.find(facts.flagged, &(&1.earnings == 60_000))
+    end
+
     test "debt is the students' own loan median, never Parent PLUS" do
       for {student, parent} <- [{20_000, 90_000}, {22_000, 95_000}, {-2, 99_000}] do
         n = System.unique_integer([:positive])
@@ -117,9 +148,11 @@ defmodule Collegevalue.FieldNotes.FactsTest do
       facts = Facts.for_field("Computer Science")
       bands = Map.new(facts.by_admission, &{&1.band, &1})
 
-      assert bands["under_10_percent"] == %{band: "under_10_percent", programs: 1, earnings_median: 110_000, debt_median: 40_000}
+      assert %{band: "under_10_percent", programs: 1, earnings_median: 110_000, debt_median: 40_000} = bands["under_10_percent"]
+      # 40,000 * 12 / 110,000 = 4.4 months; no college reports a net price.
+      assert %{months_to_repay_median: 4.4, four_year_cost_48_75k_median: nil} = bands["under_10_percent"]
       assert bands["over_60_percent"].earnings_median == 61_000
-      assert facts.by_control.public == %{programs: 2, earnings_median: 61_000, debt_median: 21_000}
+      assert %{programs: 2, earnings_median: 61_000, debt_median: 21_000} = facts.by_control.public
       assert facts.by_control.private_nonprofit.programs == 1
     end
 

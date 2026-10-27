@@ -7,13 +7,30 @@ research and writing. Revise it as reviews teach us more; git keeps the history.
 ## The job
 
 The page already shows the computed answer: median first-year earnings,
-the middle half, median debt and the major's rank. The note tells a student
+the middle half, median debt and the major's rank. Its tables show, for
+each program, months to repay, the four-year cost and years of pay. The
+note tells a student
 considering this major the one or two things its numbers show that they
 wouldn't guess, and that should change how they choose a school or a path.
 
-Value is earnings against debt. A note weighs both: two programs that pay
-the same are not the same deal when one leaves its graduates owing four
-times as much.
+Value is cost against payoff. The site measures it two ways:
+
+- **Months to repay** (`months_to_repay`): how many months of first-year
+  pay the typical student loan takes. It is the debt in a student's own
+  terms. Two programs that pay the same are not the same deal when one
+  leaves its graduates owing four times as much.
+- **The four-year cost** (`four_year_cost`): four years of net price after
+  grants, housing and food included, for a family's income bracket, and the
+  sticker price beside it. Federal loans cap what a student can borrow, so
+  the debt barely moves with price; the family covers the rest
+  (`gap_48_75k`) from savings, work, Parent PLUS or private loans. Years of
+  pay (`years_of_pay_48_75k`) is that cost over a year of first-year pay.
+
+Cost figures are each college's average for aided first-time students, not
+the major's. Quote them as what a family with that income typically pays.
+Parents' Parent PLUS loans are a separate debt: mention
+`parent_plus_over_24_months` only when a notable share of programs passes
+it, and never add it to the student's debt.
 
 Write for the typical student: the one at an ordinary school that admits
 most applicants (`by_admission`, band `over_60_percent`), not the one at the
@@ -46,8 +63,11 @@ Use the facts first; research supplies the mechanism behind them.
   earn, what the top jobs are, and how few of them there are. A narrow gap
   (nursing, where a license sets the floor) means the school barely moves
   pay, so cost matters more than name.
-- **What it costs.** Compare debt across `by_control` (public, private
-  nonprofit, for-profit) and across bands, against the earnings each pays.
+- **What it costs.** Compare `by_control` (public, private nonprofit,
+  for-profit) and the `by_admission` bands on months to repay, four-year
+  cost and years of pay, against the earnings each pays. Selective private
+  schools often cost a middle-income family less than open ones; for-profits
+  often cost more and pay less. Say which holds for this major.
   `nearby_pair` is the sharpest case: two programs a short drive apart that
   pay about the same, where one leaves graduates owing far more. Use it when
   research finds the two programs comparable (both enroll new students), and
@@ -94,8 +114,9 @@ low-paying region, and never cite one school's outcomes as the major's.
 ## Numbers and verdicts
 
 - No number that isn't in the facts; the checker rejects the note. Prefer
-  words, and use a figure only where it carries the point (the debt gap,
-  the two markets). The page shows the rest.
+  words, and use a figure only where it carries the point (months of pay,
+  the cost gap, the two markets). The page shows the rest. Quote dollar
+  figures as the facts round them ("about $60,000"), and months as written.
 - No verdict: not "worth it", "not worth it" or "a smart choice". The data
   covers one year after graduating.
 - A claim from outside the Scorecard (hiring numbers, licensure rules,

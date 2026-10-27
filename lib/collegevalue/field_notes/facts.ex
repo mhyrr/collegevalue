@@ -37,6 +37,14 @@ defmodule Collegevalue.FieldNotes.Facts do
   @pair_miles 15
   @pair_pay_gap 0.10
   @pair_min_cohort 20
+  # Cost figures assume four years of net price, for three of the Scorecard's
+  # five family-income brackets: $0-30k, $48-75k and $110k or more. The middle
+  # one is the typical student's, and the one the summaries use.
+  @years_of_study 4
+  @cost_brackets [income_0_30k: :netprice_1, income_48_75k: :netprice_3, income_110k_plus: :netprice_5]
+  # The site warns when parents' Parent PLUS debt passes this many months of
+  # their child's first-year pay.
+  @parent_plus_warning_months 24
 
   @doc """
   The facts for the major named `name`, or `nil` when no program reports
@@ -66,6 +74,9 @@ defmodule Collegevalue.FieldNotes.Facts do
         debt_median: if(debts == [], do: nil, else: round_to(percentile(debts, 0.5))),
         debt_p25: round_to(percentile(debts, 0.25)),
         debt_p75: round_to(percentile(debts, 0.75)),
+        months_to_repay: months_summary(with_earnings),
+        four_year_cost: four_year_cost(with_earnings),
+        parent_plus_over_24_months: parent_plus(with_earnings),
         all_majors_earnings_median: round_to(ranking.earnings_median),
         ranked_of: length(ranking.ranked),
         flagged: flagged(with_earnings, median),
@@ -170,6 +181,11 @@ defmodule Collegevalue.FieldNotes.Facts do
       earnings: d.earnings_1yr,
       cohort: d.earnings_1yr_count,
       debt: d.stgp_debt_median,
+      parent_debt: d.pp_debt_median,
+      netprice_1: c.netprice_1,
+      netprice_3: c.netprice_3,
+      netprice_5: c.netprice_5,
+      sticker: c.yearly_cost,
       admission_rate: c.admissions_rate,
       control: c.control,
       online: c.distanceonly,
@@ -211,6 +227,8 @@ defmodule Collegevalue.FieldNotes.Facts do
       p
       |> Map.take([:unitid, :college, :state, :earnings, :cohort, :debt, :admission_rate])
       |> Map.put(:reasons, reasons)
+      |> Map.put(:months_to_repay, months(p))
+      |> Map.put(:four_year_cost_48_75k, cost(p, :netprice_3))
       |> Map.update!(:debt, &if(positive?(&1), do: &1))
     end)
   end
@@ -325,7 +343,8 @@ defmodule Collegevalue.FieldNotes.Facts do
           miles: round(miles),
           programs:
             for p <- [low, high] do
-              %{college: p.college, city: p.city, state: p.state, control: control(p), earnings: p.earnings, debt: p.debt}
+              %{college: p.college, city: p.city, state: p.state, control: control(p), earnings: p.earnings, debt: p.debt,
+                months_to_repay: months(p), four_year_cost_48_75k: cost(p, :netprice_3)}
             end
         }
     end
@@ -345,8 +364,75 @@ defmodule Collegevalue.FieldNotes.Facts do
     %{
       programs: length(programs),
       earnings_median: round_to(percentile(Enum.map(programs, & &1.earnings), 0.5)),
-      debt_median: round_to(percentile(debts, 0.5))
+      debt_median: round_to(percentile(debts, 0.5)),
+      months_to_repay_median: programs |> Enum.map(&months/1) |> Enum.filter(& &1) |> percentile(0.5) |> round_1(),
+      four_year_cost_48_75k_median: programs |> Enum.map(&cost(&1, :netprice_3)) |> Enum.filter(& &1) |> percentile(0.5) |> round_to(1000),
+      years_of_pay_48_75k_median: programs |> Enum.map(&years_of_pay/1) |> Enum.filter(& &1) |> percentile(0.5) |> round_1()
     }
+  end
+
+  # Months of first-year pay it takes to clear the student-loan debt, across
+  # the programs that report both: the site's main measure. `of_major` is the
+  # major's median debt over its median pay, the figure its rank rests on.
+  defp months_summary(programs) do
+    months = programs |> Enum.map(&months/1) |> Enum.filter(& &1)
+    debts = programs |> Enum.map(& &1.debt) |> Enum.filter(&positive?/1)
+    pay = percentile(Enum.map(programs, & &1.earnings), 0.5)
+
+    %{
+      programs: length(months),
+      median: round_1(percentile(months, 0.5)),
+      p25: round_1(percentile(months, 0.25)),
+      p75: round_1(percentile(months, 0.75)),
+      of_major: if(debts == [], do: nil, else: round_1(percentile(debts, 0.5) * 12 / pay))
+    }
+  end
+
+  # Four years of net price (after grants, with housing and food) for aided
+  # first-time full-time students, by family income, and the sticker cost of
+  # attendance. Each is the college's figure for all its students, not the
+  # major's. `gap_48_75k` is what's left after the program's median student
+  # loan; `years_of_pay_48_75k` is the cost over a year of first-year pay.
+  # Dollar figures round to the thousand, so a note can quote them.
+  defp four_year_cost(programs) do
+    brackets =
+      for {key, column} <- @cost_brackets, into: %{} do
+        {key, programs |> Enum.map(&cost(&1, column)) |> Enum.filter(& &1) |> percentile(0.5) |> round_to(1000)}
+      end
+
+    gaps = for p <- programs, cost = cost(p, :netprice_3), cost && positive?(p.debt), do: max(cost - p.debt, 0)
+
+    Map.merge(brackets, %{
+      sticker: programs |> Enum.map(&cost(&1, :sticker)) |> Enum.filter(& &1) |> percentile(0.5) |> round_to(1000),
+      programs_48_75k: Enum.count(programs, &cost(&1, :netprice_3)),
+      gap_48_75k: gaps |> percentile(0.5) |> round_to(1000),
+      years_of_pay_48_75k: programs |> Enum.map(&years_of_pay/1) |> Enum.filter(& &1) |> percentile(0.5) |> round_1()
+    })
+  end
+
+  # Programs whose parents' Parent PLUS debt passes the site's warning line,
+  # out of those reporting it. Parents borrow apart from the student; this is
+  # never added to the student's debt.
+  defp parent_plus(programs) do
+    reporting = Enum.filter(programs, &positive?(&1.parent_debt))
+    over = Enum.count(reporting, &(&1.parent_debt * 12 / &1.earnings > @parent_plus_warning_months))
+    %{programs: over, of: length(reporting)}
+  end
+
+  defp months(%{debt: debt, earnings: earnings}) do
+    if positive?(debt) and positive?(earnings), do: Float.round(debt * 12 / earnings, 1)
+  end
+
+  defp cost(p, column) do
+    value = Map.fetch!(p, column)
+    if positive?(value), do: value * @years_of_study
+  end
+
+  defp years_of_pay(p) do
+    case cost(p, :netprice_3) do
+      nil -> nil
+      cost -> Float.round(cost / p.earnings, 1)
+    end
   end
 
   defp far?(p, median), do: p.earnings > 2 * median or p.earnings < 0.5 * median
@@ -387,6 +473,12 @@ defmodule Collegevalue.FieldNotes.Facts do
 
   defp round_to(nil), do: nil
   defp round_to(value), do: round(value)
+
+  defp round_to(nil, _step), do: nil
+  defp round_to(value, step), do: round(value / step) * step
+
+  defp round_1(nil), do: nil
+  defp round_1(value), do: Float.round(value * 1.0, 1)
 
   defp positive?(value) when is_number(value), do: value > 0
   defp positive?(_value), do: false
