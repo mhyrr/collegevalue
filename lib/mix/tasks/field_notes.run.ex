@@ -121,7 +121,7 @@ defmodule Mix.Tasks.FieldNotes.Run do
         call(name, prompt, [], opts[:budget] || 0.25, opts, fn text ->
           body = String.trim(text)
 
-          case FieldNotes.check_note(body, facts) do
+          case FieldNotes.check_note(body, facts, research) do
             :ok ->
               meta = [field: name, status: "draft", facts_hash: facts.hash, research_hash: research["hash"],
                       prompt_hash: FieldNotes.prompt_hash(:note), model: model,

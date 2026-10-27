@@ -291,9 +291,14 @@ defmodule Collegevalue.FieldNotes do
   @doc """
   Checks a note's text: two paragraphs of one to three sentences (see
   GUIDE.md), and no number the facts don't hold. The model interprets; it never computes.
+
+  A number may also be a fact's dollar figure rounded to the nearest $500 or
+  $1,000 ("about $71,000"), one of the site's own labels (the income brackets,
+  the admission bands, four years), or a number in the research's sourced
+  evidence on the major as a whole (the CPA's 150 credit hours).
   """
-  def check_note(body, facts) do
-    allowed = allowed_numbers(facts)
+  def check_note(body, facts, research \\ nil) do
+    allowed = facts |> allowed_numbers() |> MapSet.union(research_numbers(research))
     paragraphs = String.split(String.trim(body), ~r/\n\s*\n/, trim: true)
     sentences = Enum.map(paragraphs, &sentence_count/1)
 
@@ -329,17 +334,39 @@ defmodule Collegevalue.FieldNotes do
     |> length()
   end
 
+  # The family-income brackets ($0-30,000, $48,000-75,000, $110,000 or more),
+  # the admission-band edges (10, 25 and 60 percent) and the four years the
+  # cost figures assume.
+  @site_labels MapSet.new(~w(0 30000 48000 75000 110000 10 25 60 4))
+
   defp allowed_numbers(facts) do
     facts
     |> Map.delete(:hash)
     |> collect_numbers()
     |> Enum.flat_map(fn
       n when is_float(n) -> [Float.to_string(n), :erlang.float_to_binary(n, decimals: 1)]
-      n -> [Integer.to_string(n)]
+      n -> Enum.map([n | rounded(n)], &Integer.to_string/1)
     end)
     |> MapSet.new()
     |> MapSet.union(MapSet.new(~w(1 2 3 10)))
+    |> MapSet.union(@site_labels)
   end
+
+  defp rounded(n) when is_integer(n) and n >= 1000, do: [div(n + 250, 500) * 500, div(n + 500, 1000) * 1000]
+  defp rounded(_n), do: []
+
+  # Numbers in the sourced evidence on the major as a whole. The program
+  # evidence carries no figures (the research prompt forbids them).
+  defp research_numbers(%{"major" => %{} = major}) do
+    major
+    |> Map.values()
+    |> Enum.filter(&(is_map(&1) and is_binary(&1["source"]) and is_binary(&1["evidence"])))
+    |> Enum.flat_map(&Regex.scan(~r/\d[\d,]*(?:\.\d+)?/, &1["evidence"]))
+    |> List.flatten()
+    |> MapSet.new(&String.replace(&1, ",", ""))
+  end
+
+  defp research_numbers(_research), do: MapSet.new()
 
   defp collect_numbers(n) when is_number(n), do: [n]
   defp collect_numbers(%{} = map), do: map |> Map.values() |> Enum.flat_map(&collect_numbers/1)

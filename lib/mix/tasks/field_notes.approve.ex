@@ -33,7 +33,7 @@ defmodule Mix.Tasks.FieldNotes.Approve do
           save(name, note, "rejected")
 
         true ->
-          case FieldNotes.check_note(note.body, status.facts) do
+          case FieldNotes.check_note(note.body, status.facts, FieldNotes.read_json(name, "research.json")) do
             :ok -> save(name, note, "approved")
             {:error, errors} -> Mix.raise("#{name}: #{Enum.join(errors, "; ")}")
           end

@@ -88,6 +88,21 @@ defmodule Collegevalue.FieldNotesTest do
       assert error =~ "91500"
     end
 
+    test "allows rounded dollar figures, the site's labels and sourced research numbers", %{facts: facts} do
+      # The facts hold 74,000; 74,500 and 74,000 are roundings, 48,000 to 75,000 a bracket label.
+      ok = "Families earning $48,000 to $75,000 pay most. Graduates earn about $74,000.\n\nSchools that admit under 25 percent cost less over 4 years."
+      assert FieldNotes.check_note(ok, facts) == :ok
+
+      research = %{"major" => %{"leads_to" => %{"finding" => "licensure", "evidence" => "Most states require 150 credit hours.", "source" => "https://nasba.org"},
+                                "who_is_counted" => %{"finding" => "unclear", "evidence" => "About 2026 adults.", "source" => nil}}}
+      note = "A CPA needs 150 credit hours.\n\nThe rest pay less."
+      assert {:error, _} = FieldNotes.check_note(note, facts)
+      assert FieldNotes.check_note(note, facts, research) == :ok
+      # Evidence without a source lends no numbers.
+      assert {:error, [error]} = FieldNotes.check_note("About 2026 adults.\n\nThe rest pay less.", facts, research)
+      assert error =~ "2026"
+    end
+
     test "wants two paragraphs of one to three sentences", %{facts: facts} do
       assert FieldNotes.check_note(@two_paragraphs, facts) == :ok
 
