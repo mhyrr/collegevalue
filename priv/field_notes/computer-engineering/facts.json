@@ -1,0 +1,250 @@
+{
+  "name": "Computer Engineering",
+  "largest": {
+    "debt_median": 22625,
+    "earnings_median": 73672,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 58000,
+    "months_to_repay_median": 3.8,
+    "years_of_pay_48_75k_median": 0.8,
+    "pooled": 1,
+    "share_of_graduates_percent": 21
+  },
+  "hash": "829d9aefa66c",
+  "rank": 8,
+  "debt_median": 24500,
+  "flagged": [
+    {
+      "state": "WA",
+      "college": "University of Washington-Seattle Campus",
+      "unitid": 236948,
+      "earnings": 137584,
+      "debt": 16127,
+      "admission_rate": 0.4253,
+      "months_to_repay": 1.4,
+      "four_year_cost_48_75k": 31268,
+      "cohort": 33,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "WA",
+      "college": "University of Washington-Bothell Campus",
+      "unitid": 377555,
+      "earnings": 137584,
+      "debt": 16127,
+      "admission_rate": 0.9177,
+      "months_to_repay": 1.4,
+      "four_year_cost_48_75k": 32236,
+      "cohort": 33,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NJ",
+      "college": "Princeton University",
+      "unitid": 186131,
+      "earnings": 122809,
+      "debt": null,
+      "admission_rate": 0.045,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 30608,
+      "cohort": 41,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "DeVry University-Texas",
+      "unitid": 482635,
+      "earnings": 44748,
+      "debt": null,
+      "admission_rate": 0.0,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": null,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "VA",
+      "college": "DeVry University-Virginia",
+      "unitid": 482653,
+      "earnings": 44748,
+      "debt": null,
+      "admission_rate": 1.0,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": null,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "St. Mary's University",
+      "unitid": 228149,
+      "earnings": 38443,
+      "debt": null,
+      "admission_rate": 0.8895,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 79992,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Computer Engineering",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 16750,
+      "earnings_median": 108817,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 2.5,
+      "years_of_pay_48_75k_median": 0.4
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 20500,
+      "earnings_median": 82875,
+      "programs": 8,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 2.9,
+      "years_of_pay_48_75k_median": 0.6
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23000,
+      "earnings_median": 71802,
+      "programs": 41,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 4.1,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25000,
+      "earnings_median": 68487,
+      "programs": 120,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 4.4,
+      "years_of_pay_48_75k_median": 0.9
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23125,
+      "earnings_median": 69035,
+      "programs": 136,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 4.1,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    "private_nonprofit": {
+      "debt_median": 26146,
+      "earnings_median": 73226,
+      "programs": 34,
+      "four_year_cost_48_75k_median": 90000,
+      "months_to_repay_median": 4.4,
+      "years_of_pay_48_75k_median": 1.3
+    },
+    "for_profit": {
+      "debt_median": 20500,
+      "earnings_median": 44748,
+      "programs": 10,
+      "four_year_cost_48_75k_median": 128000,
+      "months_to_repay_median": 4.5,
+      "years_of_pay_48_75k_median": 2.8
+    }
+  },
+  "earnings_median": 69906,
+  "programs": 358,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.75,
+        "reporting": 174
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.89,
+        "reporting": 7
+      },
+      "programs": 10,
+      "top_states": {
+        "AZ": 1,
+        "CA": 1,
+        "TX": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.1,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 3,
+        "MA": 2,
+        "WA": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 20500,
+  "debt_p75": 26769,
+  "earnings_p25": 64366,
+  "earnings_p75": 74154,
+  "four_year_cost": {
+    "sticker": 114000,
+    "gap_48_75k": 37000,
+    "programs_48_75k": 172,
+    "years_of_pay_48_75k": 0.9,
+    "income_0_30k": 43000,
+    "income_48_75k": 59000,
+    "income_110k_plus": 100000
+  },
+  "months_to_repay": {
+    "median": 4.2,
+    "programs": 149,
+    "of_major": 4.2,
+    "p25": 3.5,
+    "p75": 4.6
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": 26972,
+    "earnings_median": 71373,
+    "programs": 1,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": 4.5,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 31,
+    "programs": 0
+  },
+  "programs_with_debt": 160,
+  "programs_with_earnings": 180,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.35
+}

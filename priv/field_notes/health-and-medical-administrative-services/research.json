@@ -1,0 +1,66 @@
+{
+  "facts_hash": "beb98c86459d",
+  "field": "Health and Medical Administrative Services",
+  "hash": "5120a2289f55",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS says most managers start in administrative or clinical jobs. Every state requires nursing home administrators to be licensed, and some employers prefer a master's, which top jobs may require.",
+      "finding": "mixed",
+      "source": "https://www.bls.gov/ooh/management/medical-and-health-services-managers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "The Twin Cities program is a partly online applied degree that takes students only after 30 transferable college credits. Walden's program is fully online and built for adult students, so neither takes new high school graduates directly.",
+      "finding": "not_comparable",
+      "source": "https://ccaps.umn.edu/healthcare-management-bachelors-degree"
+    },
+    "school_matters": {
+      "evidence": "Pay barely changes with selectivity. BLS says health services managers usually need prior administrative or clinical experience in a facility, so new graduates at any school start in support roles before moving into management.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/management/medical-and-health-services-managers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "I could not find a ranking of the largest bachelor's programs by graduates or their admission rules, so I can't say whether they mostly serve new graduates or working adults finishing a degree.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "online_adult",
+      "evidence": "This is a hospital system's own school, and its healthcare management bachelor's is an online program. Its length and tuition depend on transfer credit, which points to students who already work in health care.",
+      "source": "https://www.bshp.edu/academics/programs/bachelors/healthcare-management/checklist",
+      "unitid": 223083
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "The school's health care management bachelor's is an online degree completion program for adults, taught in seven or eight week courses that working students can fit around a job.",
+      "source": "https://stfrancis.edu/?p=810",
+      "unitid": 148584
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "The program prepares students for nursing home administrator licensure and includes a paid administrative residency of about a year, so graduates step straight into licensed long-term care administration jobs.",
+      "source": "https://uwec.edu/academics/programs/undergraduate/health-care-administration",
+      "unitid": 240268
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This is a traditional on-campus program certified by the national health administration program association, and I found nothing specific that explains its lower earnings.",
+      "source": null,
+      "unitid": 199999
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are lower across occupations than on the mainland, and that alone explains this campus's lower earnings.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 241739
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "The school offers this bachelor's fully online, accepts up to most of the degree as transfer credit, and pitches it to working professionals, so its graduates are mostly adults finishing a degree.",
+      "source": "https://online.brenau.edu/?p=4619",
+      "unitid": 139199
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

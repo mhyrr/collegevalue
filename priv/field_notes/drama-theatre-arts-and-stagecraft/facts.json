@@ -1,0 +1,253 @@
+{
+  "name": "Drama/Theatre Arts and Stagecraft",
+  "largest": {
+    "debt_median": 25500,
+    "earnings_median": 23874,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 102000,
+    "months_to_repay_median": 12.8,
+    "years_of_pay_48_75k_median": 4.3,
+    "pooled": 0,
+    "share_of_graduates_percent": 20
+  },
+  "hash": "90ea6c40d06f",
+  "rank": 219,
+  "debt_median": 25000,
+  "flagged": [
+    {
+      "state": "IN",
+      "college": "University of Notre Dame",
+      "unitid": 152080,
+      "earnings": 41882,
+      "debt": 19000,
+      "admission_rate": 0.1238,
+      "months_to_repay": 5.4,
+      "four_year_cost_48_75k": 59364,
+      "cohort": 44,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "University of California-Berkeley",
+      "unitid": 110635,
+      "earnings": 31067,
+      "debt": 15112,
+      "admission_rate": 0.1166,
+      "months_to_repay": 5.8,
+      "four_year_cost_48_75k": 45696,
+      "cohort": 23,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CT",
+      "college": "University of Connecticut",
+      "unitid": 129020,
+      "earnings": 31019,
+      "debt": 25414,
+      "admission_rate": 0.5395,
+      "months_to_repay": 9.8,
+      "four_year_cost_48_75k": 74820,
+      "cohort": 27,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "Five Towns College",
+      "unitid": 191205,
+      "earnings": 13422,
+      "debt": null,
+      "admission_rate": 0.7203,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 93572,
+      "cohort": 16,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "AL",
+      "college": "Alabama State University",
+      "unitid": 100724,
+      "earnings": 11817,
+      "debt": 31000,
+      "admission_rate": 0.9564,
+      "months_to_repay": 31.5,
+      "four_year_cost_48_75k": 60620,
+      "cohort": 23,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "NJ",
+      "college": "Drew University",
+      "unitid": 184348,
+      "earnings": 10438,
+      "debt": 27000,
+      "admission_rate": 0.6944,
+      "months_to_repay": 31.0,
+      "four_year_cost_48_75k": 79704,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Theatre",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 17000,
+      "earnings_median": 25076,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 44000,
+      "months_to_repay_median": 8.5,
+      "years_of_pay_48_75k_median": 1.8
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19000,
+      "earnings_median": 24105,
+      "programs": 13,
+      "four_year_cost_48_75k_median": 55000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23453,
+      "earnings_median": 22796,
+      "programs": 44,
+      "four_year_cost_48_75k_median": 70000,
+      "months_to_repay_median": 11.8,
+      "years_of_pay_48_75k_median": 2.5
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25250,
+      "earnings_median": 21667,
+      "programs": 180,
+      "four_year_cost_48_75k_median": 67000,
+      "months_to_repay_median": 13.6,
+      "years_of_pay_48_75k_median": 3.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23477,
+      "earnings_median": 22092,
+      "programs": 173,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 12.6,
+      "years_of_pay_48_75k_median": 2.5
+    },
+    "private_nonprofit": {
+      "debt_median": 26397,
+      "earnings_median": 21673,
+      "programs": 74,
+      "four_year_cost_48_75k_median": 97000,
+      "months_to_repay_median": 14.4,
+      "years_of_pay_48_75k_median": 4.8
+    },
+    "for_profit": {
+      "debt_median": 26500,
+      "earnings_median": 18335,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 127000,
+      "months_to_repay_median": 17.3,
+      "years_of_pay_48_75k_median": 7.0
+    }
+  },
+  "earnings_median": 21936,
+  "programs": 904,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 240
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.71,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "FL": 2,
+        "NJ": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CT": 5,
+        "IN": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21500,
+  "debt_p75": 27000,
+  "earnings_p25": 19466,
+  "earnings_p75": 24556,
+  "four_year_cost": {
+    "sticker": 114000,
+    "gap_48_75k": 40000,
+    "programs_48_75k": 251,
+    "years_of_pay_48_75k": 2.9,
+    "income_0_30k": 48000,
+    "income_48_75k": 66000,
+    "income_110k_plus": 98000
+  },
+  "months_to_repay": {
+    "median": 13.2,
+    "programs": 210,
+    "of_major": 13.7,
+    "p25": 11.1,
+    "p75": 15.1
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": null,
+    "programs": 0,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "NJ": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 57,
+    "programs": 29
+  },
+  "programs_with_debt": 249,
+  "programs_with_earnings": 252,
+  "ranked_of": 222,
+  "debt_to_earnings": 1.14
+}

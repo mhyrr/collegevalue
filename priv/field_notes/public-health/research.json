@@ -1,0 +1,66 @@
+{
+  "facts_hash": "f128f881098a",
+  "field": "Public Health",
+  "hash": "e8dd7b140527",
+  "major": {
+    "leads_to": {
+      "evidence": "In a national study of public health bachelor's graduates, more than three quarters were employed soon after graduating, and only about one in eight went straight on to more school.",
+      "finding": "direct_jobs",
+      "source": "https://ajph.aphapublications.org/doi/10.2105/AJPH.2019.305004"
+    },
+    "nearby_pair": {
+      "evidence": "Southwest University at El Paso lists no public health bachelor's for new students. Its health bachelor's degrees are mostly online or completion programs, while UTEP's B.S. in Public Health takes freshmen on campus.",
+      "finding": "not_comparable",
+      "source": "https://southwestuniversity.edu/colleges/"
+    },
+    "school_matters": {
+      "evidence": "Most public health bachelor's graduates start in entry jobs at private companies and in health care, and about a tenth work in government. No top-tier employer pays a premium for graduates of selective schools.",
+      "finding": "little",
+      "source": "https://cworph.umn.edu/sites/cworph.umn.edu/files/2025-02/employment-choices-of-recent-public-health-graduates.pdf"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest public health bachelor's programs are at large public flagships such as the University of Maryland, College Park. They enroll traditional first-time undergraduates, not adults finishing a degree.",
+      "finding": "new_graduates",
+      "source": "https://www.collegetransitions.com/blog/top-undergraduate-public-health-programs/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Utah State's public health B.S. includes an ABET-accredited industrial hygiene emphasis. That track trains workplace-hazard specialists who mostly go to work in private industry, which pays more than typical public health jobs.",
+      "source": "https://www.usu.edu/degrees-majors/public-health_bs",
+      "unitid": 230728
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Oakland's public health department also runs an ABET-accredited Environmental Health and Safety B.S. in occupational safety and industrial hygiene. It is offered online to working adults and probably shares this program code.",
+      "source": "https://www.oakland.edu/online/online-programs/ehs",
+      "unitid": 171571
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Illinois State's figure probably includes its accredited Environmental Health and Sustainability B.S., which has an occupational health track and leads to environmental health practitioner licensure. Those jobs pay more than general public health work.",
+      "source": "https://illinoisstate.edu/academics/environmental-health",
+      "unitid": 145813
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "With about twenty graduates, this cohort is too small to trust. Xavier is also a major pre-medical school, so many of its graduates may be heading to further study rather than full-time work.",
+      "source": null,
+      "unitid": 160904
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing specific explains the low figure. The program is a standard liberal-arts major that prepares students for graduate study, and its cohort is barely above the small-cohort line.",
+      "source": null,
+      "unitid": 138600
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "The school offers a standard public health education B.S. for freshmen and a B.A.S. for transfers with technical associate degrees. Nothing found explains the low earnings beyond the local labor market.",
+      "source": null,
+      "unitid": 176035
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

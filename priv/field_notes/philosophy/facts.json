@@ -1,0 +1,245 @@
+{
+  "name": "Philosophy",
+  "largest": {
+    "debt_median": 18250,
+    "earnings_median": 30960,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 56000,
+    "months_to_repay_median": 6.9,
+    "years_of_pay_48_75k_median": 1.8,
+    "pooled": 3,
+    "share_of_graduates_percent": 30
+  },
+  "hash": "e2757be64f0b",
+  "rank": 149,
+  "debt_median": 22752,
+  "flagged": [
+    {
+      "state": "PA",
+      "college": "University of Pennsylvania",
+      "unitid": 215062,
+      "earnings": 61331,
+      "debt": 18500,
+      "admission_rate": 0.0587,
+      "months_to_repay": 3.6,
+      "four_year_cost_48_75k": 70340,
+      "cohort": 90,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Boston College",
+      "unitid": 164924,
+      "earnings": 51737,
+      "debt": 18000,
+      "admission_rate": 0.1565,
+      "months_to_repay": 4.2,
+      "four_year_cost_48_75k": 50216,
+      "cohort": 58,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "Fordham University",
+      "unitid": 191241,
+      "earnings": 41324,
+      "debt": 22999,
+      "admission_rate": 0.5628,
+      "months_to_repay": 6.7,
+      "four_year_cost_48_75k": 152156,
+      "cohort": 33,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PA",
+      "college": "University of Scranton",
+      "unitid": 215929,
+      "earnings": 18830,
+      "debt": 27000,
+      "admission_rate": 0.8435,
+      "months_to_repay": 17.2,
+      "four_year_cost_48_75k": 99996,
+      "cohort": 24,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "VA",
+      "college": "Virginia Commonwealth University",
+      "unitid": 234030,
+      "earnings": 16953,
+      "debt": 21500,
+      "admission_rate": 0.9306,
+      "months_to_repay": 15.2,
+      "four_year_cost_48_75k": 65820,
+      "cohort": 24,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "NC",
+      "college": "Appalachian State University",
+      "unitid": 197869,
+      "earnings": 15111,
+      "debt": 17500,
+      "admission_rate": 0.8864,
+      "months_to_repay": 13.9,
+      "four_year_cost_48_75k": 63064,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Philosophy",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 21352,
+      "earnings_median": 31978,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 25000,
+      "months_to_repay_median": 7.8,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 16828,
+      "earnings_median": 33513,
+      "programs": 9,
+      "four_year_cost_48_75k_median": 50000,
+      "months_to_repay_median": 6.6,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 18676,
+      "earnings_median": 33225,
+      "programs": 14,
+      "four_year_cost_48_75k_median": 47000,
+      "months_to_repay_median": 7.1,
+      "years_of_pay_48_75k_median": 1.7
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 23380,
+      "earnings_median": 26453,
+      "programs": 43,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 9.7,
+      "years_of_pay_48_75k_median": 2.2
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 19022,
+      "earnings_median": 26453,
+      "programs": 53,
+      "four_year_cost_48_75k_median": 51000,
+      "months_to_repay_median": 8.5,
+      "years_of_pay_48_75k_median": 1.9
+    },
+    "private_nonprofit": {
+      "debt_median": 21717,
+      "earnings_median": 33265,
+      "programs": 19,
+      "four_year_cost_48_75k_median": 76000,
+      "months_to_repay_median": 7.4,
+      "years_of_pay_48_75k_median": 2.5
+    }
+  },
+  "earnings_median": 28602,
+  "programs": 832,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.7,
+        "reporting": 71
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.9,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "MI": 1,
+        "VA": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.56,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AZ": 2,
+        "MA": 2,
+        "NY": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 18500,
+  "debt_p75": 25164,
+  "earnings_p25": 25160,
+  "earnings_p75": 33378,
+  "four_year_cost": {
+    "sticker": 119000,
+    "gap_48_75k": 32000,
+    "programs_48_75k": 71,
+    "years_of_pay_48_75k": 1.9,
+    "income_0_30k": 38000,
+    "income_48_75k": 55000,
+    "income_110k_plus": 109000
+  },
+  "months_to_repay": {
+    "median": 8.3,
+    "programs": 57,
+    "of_major": 8.4,
+    "p25": 6.7,
+    "p75": 10.5
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": 26250,
+    "earnings_median": 36802,
+    "programs": 1,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": 8.6,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 1,
+      "top_states": {
+        "PA": 1
+      }
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 6,
+    "programs": 0
+  },
+  "programs_with_debt": 106,
+  "programs_with_earnings": 72,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.8
+}

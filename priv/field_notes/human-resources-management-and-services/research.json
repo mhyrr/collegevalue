@@ -1,0 +1,66 @@
+{
+  "facts_hash": "b49e327a5d06",
+  "field": "Human Resources Management and Services",
+  "hash": "2b8ff85fe4d7",
+  "major": {
+    "leads_to": {
+      "evidence": "Graduates usually go straight into HR specialist jobs that take a bachelor's degree. At Cornell's ILR School, about a quarter go on to law or graduate school, and many more go into finance and consulting.",
+      "finding": "direct_jobs",
+      "source": "https://www.ilr.cornell.edu/programs/undergraduate-admissions/career-outcomes"
+    },
+    "nearby_pair": {
+      "evidence": "The Columbus private program belongs to an open-admission university built for employed adults; over nine in ten of its undergraduates bring transfer credit. The public program is a campus program for new freshmen.",
+      "finding": "not_comparable",
+      "source": "https://www.collegetransitions.com/blog/online-college-review-franklin-university-online/"
+    },
+    "school_matters": {
+      "evidence": "Only two programs sit in the under-a-tenth band. At Cornell's ILR School, more graduates go into financial services, HR consulting and management consulting at firms like McKinsey, Bain and JPMorgan than into corporate HR jobs.",
+      "finding": "two_markets",
+      "source": "https://www.ilr.cornell.edu/programs/undergraduate-admissions/career-outcomes"
+    },
+    "who_is_counted": {
+      "evidence": "The largest programs mix big campus programs that admit new students, such as Cornell's ILR, with open-admission, transfer-friendly online programs like Franklin's, whose students are mostly employed adults bringing transfer credit.",
+      "finding": "mixed",
+      "source": "https://www.collegetransitions.com/blog/online-college-review-franklin-university-online/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "online_adult",
+      "evidence": "Concordia Chicago's HR bachelor's is a fully online accelerated program for adults. Students take eight-week courses and can transfer in up to 90 credits, so many graduates were already working.",
+      "source": "https://catalog.cuchicago.edu/undergraduate/college-business/accelerated-degree-programs-adp/human-resource-management/",
+      "unitid": 144351
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Northwestern's Learning and Organizational Change concentration is a broad organizational studies major at a highly selective school, and it prepares students for leadership roles in companies and nonprofits rather than HR administration.",
+      "source": "https://www.sesp.northwestern.edu/ugrad/learning-and-organizational-change",
+      "unitid": 147767
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Cornell's ILR School sends more graduates into financial services and HR or management consulting at firms like McKinsey, Bain and JPMorgan than into corporate HR, and many others go on to law school.",
+      "source": "https://www.ilr.cornell.edu/programs/undergraduate-admissions/career-outcomes",
+      "unitid": 190415
+    },
+    {
+      "cause": "data_error",
+      "evidence": "The Ponce and Mayaguez campuses report identical earnings, debt and cohort figures, which suggests the results are pooled across the university's campuses instead of reported for each one.",
+      "source": null,
+      "unitid": 241410
+    },
+    {
+      "cause": "data_error",
+      "evidence": "The Mayaguez and Ponce campuses report identical earnings, debt and cohort figures, which suggests the results are pooled across the university's campuses instead of reported for each one.",
+      "source": null,
+      "unitid": 243586
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Wages in Puerto Rico are lower than on the mainland in every occupation, HR jobs included, so the island's labor market explains this program's low earnings.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 243221
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

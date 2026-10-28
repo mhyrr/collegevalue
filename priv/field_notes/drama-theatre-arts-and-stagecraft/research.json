@@ -1,0 +1,66 @@
+{
+  "facts_hash": "90ea6c40d06f",
+  "field": "Drama/Theatre Arts and Stagecraft",
+  "hash": "21e988f5c679",
+  "major": {
+    "leads_to": {
+      "evidence": "No license or further degree is required. Graduates go straight into part-time, project-based stage and production work, and BLS projects little or no growth in acting jobs through 2034.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/entertainment-and-sports/actors.htm"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair is listed for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Pay barely changes with selectivity because entry theatre work is paid by the hour or the gig, at any school. BLS says few actors work full time, schedules are irregular, and no school credential is needed to get hired.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/entertainment-and-sports/actors.htm"
+    },
+    "who_is_counted": {
+      "evidence": "None of the largest programs are online or pooled, and theatre programs admit first-year students by audition or portfolio, as UConn does for its acting and design BFAs. So the figures describe new graduates, not working adults.",
+      "finding": "new_graduates",
+      "source": "https://drama.uconn.edu/programs/apply"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Notre Dame's Film, Television and Theatre major includes screen work, and the department says its alumni work at entertainment companies, studios and TV networks.",
+      "source": "https://ftt.nd.edu/careers/",
+      "unitid": 152080
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective public university whose graduates enter the high-paying Bay Area job market, a pattern shared by every major.",
+      "source": "https://www.bls.gov/ooh/entertainment-and-sports/actors.htm",
+      "unitid": 110635
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "UConn admits about half of applicants yet ranks near the top. Connecticut holds half of the major's top ten programs, which points to the state's labor market rather than the school.",
+      "source": "https://drama.uconn.edu/programs/apply",
+      "unitid": 129020
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates to give a reliable figure.",
+      "source": null,
+      "unitid": 191205
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This is a standard campus BA with performance, technical and generalist tracks for first-year students, and nothing on the program's pages explains its low earnings.",
+      "source": null,
+      "unitid": 100724
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This is a residential liberal arts BA with standard concentrations, and nothing on the program's pages explains why its earnings fall below half the major's median.",
+      "source": null,
+      "unitid": 184348
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

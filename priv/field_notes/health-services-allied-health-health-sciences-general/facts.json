@@ -1,0 +1,260 @@
+{
+  "name": "Health Services/Allied Health/Health Sciences, General",
+  "largest": {
+    "debt_median": 22123,
+    "earnings_median": 32288,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 49000,
+    "months_to_repay_median": 8.8,
+    "years_of_pay_48_75k_median": 1.8,
+    "pooled": 1,
+    "share_of_graduates_percent": 37
+  },
+  "hash": "143727e22e3c",
+  "rank": 175,
+  "debt_median": 26834,
+  "flagged": [
+    {
+      "state": "NY",
+      "college": "Touro University",
+      "unitid": 196592,
+      "earnings": 119817,
+      "debt": 23875,
+      "admission_rate": 0.6301,
+      "months_to_repay": 2.4,
+      "four_year_cost_48_75k": 110564,
+      "cohort": 102,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "WA",
+      "college": "Seattle Central College",
+      "unitid": 236513,
+      "earnings": 71172,
+      "debt": 18625,
+      "admission_rate": -1.0,
+      "months_to_repay": 3.1,
+      "four_year_cost_48_75k": 36280,
+      "cohort": 66,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "WI",
+      "college": "Carroll University",
+      "unitid": 238458,
+      "earnings": 65660,
+      "debt": null,
+      "admission_rate": 0.5841,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 90880,
+      "cohort": 16,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "GA",
+      "college": "University of West Georgia",
+      "unitid": 141334,
+      "earnings": 20108,
+      "debt": 29708,
+      "admission_rate": 0.4937,
+      "months_to_repay": 17.7,
+      "four_year_cost_48_75k": 64060,
+      "cohort": 36,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "FL",
+      "college": "University of Florida",
+      "unitid": 134130,
+      "earnings": 16785,
+      "debt": 15686,
+      "admission_rate": 0.2403,
+      "months_to_repay": 11.2,
+      "four_year_cost_48_75k": 32756,
+      "cohort": 61,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Springfield College",
+      "unitid": 167899,
+      "earnings": 7704,
+      "debt": 27000,
+      "admission_rate": 0.7023,
+      "months_to_repay": 42.1,
+      "four_year_cost_48_75k": 96904,
+      "cohort": 42,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Health Sciences",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": null,
+      "earnings_median": null,
+      "programs": 0,
+      "four_year_cost_48_75k_median": null,
+      "months_to_repay_median": null,
+      "years_of_pay_48_75k_median": null
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 26000,
+      "earnings_median": 24005,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 55000,
+      "months_to_repay_median": 11.2,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 22500,
+      "earnings_median": 32072,
+      "programs": 16,
+      "four_year_cost_48_75k_median": 60000,
+      "months_to_repay_median": 9.4,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26618,
+      "earnings_median": 31171,
+      "programs": 100,
+      "four_year_cost_48_75k_median": 65000,
+      "months_to_repay_median": 9.7,
+      "years_of_pay_48_75k_median": 2.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 25000,
+      "earnings_median": 31695,
+      "programs": 84,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 9.3,
+      "years_of_pay_48_75k_median": 1.7
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 31189,
+      "programs": 42,
+      "four_year_cost_48_75k_median": 91000,
+      "months_to_repay_median": 10.2,
+      "years_of_pay_48_75k_median": 2.7
+    },
+    "for_profit": {
+      "debt_median": 57500,
+      "earnings_median": 31369,
+      "programs": 10,
+      "four_year_cost_48_75k_median": 106000,
+      "months_to_repay_median": 22.0,
+      "years_of_pay_48_75k_median": 3.4
+    }
+  },
+  "earnings_median": 31369,
+  "programs": 460,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.79,
+        "reporting": 119
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.6,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "DC": 1,
+        "FL": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.76,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "DE": 1,
+        "FL": 1,
+        "KY": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 23250,
+  "debt_p75": 27000,
+  "earnings_p25": 28727,
+  "earnings_p75": 36513,
+  "four_year_cost": {
+    "sticker": 110000,
+    "gap_48_75k": 39000,
+    "programs_48_75k": 127,
+    "years_of_pay_48_75k": 2.0,
+    "income_0_30k": 51000,
+    "income_48_75k": 65000,
+    "income_110k_plus": 94000
+  },
+  "months_to_repay": {
+    "median": 9.7,
+    "programs": 127,
+    "of_major": 10.2,
+    "p25": 8.1,
+    "p75": 11.4
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": 49834,
+    "earnings_median": 31369,
+    "programs": 3,
+    "four_year_cost_48_75k_median": 113000,
+    "months_to_repay_median": 12.6,
+    "years_of_pay_48_75k_median": 3.6
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "MA": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 3,
+      "top_states": {
+        "NY": 1,
+        "WA": 1,
+        "WI": 1
+      }
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 63,
+    "programs": 6
+  },
+  "programs_with_debt": 193,
+  "programs_with_earnings": 136,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.86
+}

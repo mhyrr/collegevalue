@@ -1,0 +1,242 @@
+{
+  "name": "Civil Engineering",
+  "largest": {
+    "debt_median": 21523,
+    "earnings_median": 62723,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 51000,
+    "months_to_repay_median": 4.1,
+    "years_of_pay_48_75k_median": 0.8,
+    "pooled": 0,
+    "share_of_graduates_percent": 14
+  },
+  "hash": "b0f5fed956ee",
+  "rank": 24,
+  "debt_median": 24502,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "University of Southern California",
+      "unitid": 123961,
+      "earnings": 75576,
+      "debt": 8125,
+      "admission_rate": 0.1002,
+      "months_to_repay": 1.3,
+      "four_year_cost_48_75k": 75972,
+      "cohort": 25,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "California Polytechnic State University-San Luis Obispo",
+      "unitid": 110422,
+      "earnings": 72381,
+      "debt": 20424,
+      "admission_rate": 0.2975,
+      "months_to_repay": 3.4,
+      "four_year_cost_48_75k": 45488,
+      "cohort": 132,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "San Jose State University",
+      "unitid": 122755,
+      "earnings": 70515,
+      "debt": null,
+      "admission_rate": 0.8023,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 51792,
+      "cohort": 55,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NM",
+      "college": "New Mexico Institute of Mining and Technology",
+      "unitid": 187967,
+      "earnings": 48135,
+      "debt": null,
+      "admission_rate": 0.5396,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 34704,
+      "cohort": 16,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "VA",
+      "college": "Virginia Military Institute",
+      "unitid": 234085,
+      "earnings": 47030,
+      "debt": 26000,
+      "admission_rate": 0.8173,
+      "months_to_repay": 6.6,
+      "four_year_cost_48_75k": 42204,
+      "cohort": 67,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Mayaguez",
+      "unitid": 243197,
+      "earnings": 46376,
+      "debt": 9053,
+      "admission_rate": 0.5217,
+      "months_to_repay": 2.3,
+      "four_year_cost_48_75k": 62108,
+      "cohort": 67,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Civil Engineering",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 20675,
+      "earnings_median": 67621,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 3.9,
+      "years_of_pay_48_75k_median": 0.6
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 17575,
+      "earnings_median": 66878,
+      "programs": 8,
+      "four_year_cost_48_75k_median": 50000,
+      "months_to_repay_median": 3.3,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23375,
+      "earnings_median": 63105,
+      "programs": 44,
+      "four_year_cost_48_75k_median": 60000,
+      "months_to_repay_median": 4.6,
+      "years_of_pay_48_75k_median": 1.0
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24750,
+      "earnings_median": 60805,
+      "programs": 150,
+      "four_year_cost_48_75k_median": 63000,
+      "months_to_repay_median": 5.0,
+      "years_of_pay_48_75k_median": 1.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23825,
+      "earnings_median": 60872,
+      "programs": 173,
+      "four_year_cost_48_75k_median": 57000,
+      "months_to_repay_median": 4.7,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    "private_nonprofit": {
+      "debt_median": 26990,
+      "earnings_median": 63617,
+      "programs": 41,
+      "four_year_cost_48_75k_median": 97000,
+      "months_to_repay_median": 4.8,
+      "years_of_pay_48_75k_median": 1.6
+    }
+  },
+  "earnings_median": 61375,
+  "programs": 303,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.77,
+        "reporting": 207
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.75,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "NM": 2,
+        "TX": 2,
+        "VT": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.23,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 4,
+        "CO": 1,
+        "NY": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21421,
+  "debt_p75": 27000,
+  "earnings_p25": 58416,
+  "earnings_p75": 63669,
+  "four_year_cost": {
+    "sticker": 109000,
+    "gap_48_75k": 37000,
+    "programs_48_75k": 213,
+    "years_of_pay_48_75k": 1.0,
+    "income_0_30k": 43000,
+    "income_48_75k": 61000,
+    "income_110k_plus": 94000
+  },
+  "months_to_repay": {
+    "median": 4.8,
+    "programs": 205,
+    "of_major": 4.8,
+    "p25": 4.2,
+    "p75": 5.3
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": null,
+    "programs": 0,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 69,
+    "programs": 0
+  },
+  "programs_with_debt": 216,
+  "programs_with_earnings": 214,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.4
+}

@@ -1,0 +1,66 @@
+{
+  "facts_hash": "4b33cddbf0a1",
+  "field": "Electrical, Electronics and Communications Engineering",
+  "hash": "c689907c45ed",
+  "major": {
+    "leads_to": {
+      "evidence": "A bachelor's degree is the entry requirement for electrical and electronics engineers. The PE license is optional at entry and comes later in a career, so most graduates go straight to engineering jobs.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/electrical-and-electronics-engineers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both admit students straight from high school. The Anaheim for-profit asks only for a diploma or GED, an entrance exam and an interview, and runs its on-campus degree programs in the evening for working students; Cal State Fullerton is a standard public campus.",
+      "finding": "comparable",
+      "source": "https://www.scitech.edu/admissions/entrance-requirements"
+    },
+    "school_matters": {
+      "evidence": "Employers hire entry electrical engineers on a bachelor's from an accredited program, with no license needed to start, so schools that admit most applicants pay close to the most selective ones. No source names a separate top-tier job market for this major.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/electrical-and-electronics-engineers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest programs are large campus engineering departments that admit first-year students, such as Purdue ECE with over 2,500 undergraduates and Berkeley, which awards the most EE degrees. They are not degree-completion programs for working adults.",
+      "finding": "new_graduates",
+      "source": "https://engineering.purdue.edu/ECE/AboutUs"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective school with the nation's largest EE program, set in the Bay Area. Its engineers are hired heavily by big tech and chip companies such as Google, Apple and Nvidia.",
+      "source": "https://www.collegetransitions.com/blog/top-universities-for-tech-jobs/",
+      "unitid": 110635
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective school. Its career center tracks ECE graduates going to top technology employers, and many others go on to graduate school.",
+      "source": "https://www.cmu.edu/career/outcomes/post-grad-dashboard.html",
+      "unitid": 211440
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective school. Its exit survey shows graduates who take industry jobs earning top starting salaries, mostly in tech and engineering.",
+      "source": "https://capd.mit.edu/resources/mit-graduate-student-survey/",
+      "unitid": 166683
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates in the cohort to give a reliable earnings figure.",
+      "source": null,
+      "unitid": 160621
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "A Puerto Rico campus, where engineering pay runs well below mainland levels.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 243601
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "A Puerto Rico campus, where engineering pay runs well below mainland levels.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 242705
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

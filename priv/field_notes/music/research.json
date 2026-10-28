@@ -1,0 +1,66 @@
+{
+  "facts_hash": "5cba0d00c552",
+  "field": "Music",
+  "hash": "67bb01804410",
+  "major": {
+    "leads_to": {
+      "evidence": "Graduates split two ways. Teacher-certification tracks lead straight to school music jobs. Conservatory performers mostly go on to a master's: one Eastman dean said 80 to 85 percent of seniors enroll in one, and steady orchestra jobs are rare.",
+      "finding": "mixed",
+      "source": "https://rbj.net/2003/08/22/making-a-living-as-a-musician-can-be-a-long-and-winding-road"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair is listed for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Selectivity barely moves Music pay. The highest-paying programs are all in Texas, where many Bachelor of Music degrees include state EC-12 teacher certification, so graduates start on public school district pay scales.",
+      "finding": "little",
+      "source": "https://www.uh.edu/kgmca/music/degrees-academics/undergraduate/"
+    },
+    "who_is_counted": {
+      "evidence": "The largest programs are campus-based Bachelor of Music degrees that admit first-year students by audition. None are online-only or pooled, so the graduates are mostly young musicians, not working adults finishing a degree.",
+      "finding": "new_graduates",
+      "source": "https://www.uh.edu/kgmca/music/degrees-academics/undergraduate/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Bachelor of Music students here can add teacher certification and earn an EC-12 Texas music certificate, so many graduates become public school music teachers paid on district salary schedules.",
+      "source": "https://www.uh.edu/kgmca/music/degrees-academics/undergraduate/",
+      "unitid": 225511
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "The school's music education track leads to professional certification to teach music in Texas public elementary and secondary schools, so graduates start as school music teachers on district pay scales.",
+      "source": "https://www.utep.edu/liberalarts/music/academic-programs/undergraduate-programs/bm-musiceducation.html",
+      "unitid": 228796
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "The school publishes a B.M. in Music with Teacher Certification, so many graduates hold a music degree with a Texas teaching certificate and work as school band and choir teachers.",
+      "source": "https://www.tamuk.edu/Artsci/departments/musi/faculty-staff/SOMDegreePlans/BMwithTCertInstrumental2020.pdf",
+      "unitid": 228705
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing specific explains the low figure. The degree comes from an audition-based conservatory, and its performance graduates may be in graduate school or freelancing a year out, but I found no data confirming that.",
+      "source": null,
+      "unitid": 201195
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This figure likely reflects Eastman conservatory graduates, many of whom were reported years ago to go straight into master's programs. I found no current data, so the cause is not confirmed.",
+      "source": null,
+      "unitid": 195030
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This is a performance conservatory whose graduates often freelance or continue to a Master of Music, but I found no outcome data showing that this explains the low first-year figure.",
+      "source": null,
+      "unitid": 167057
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

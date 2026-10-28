@@ -1,0 +1,274 @@
+{
+  "name": "Human Resources Management and Services",
+  "largest": {
+    "debt_median": 28317,
+    "earnings_median": 47066,
+    "programs": 10,
+    "online_only": 1,
+    "four_year_cost_48_75k_median": 60000,
+    "months_to_repay_median": 7.0,
+    "years_of_pay_48_75k_median": 1.2,
+    "pooled": 2,
+    "share_of_graduates_percent": 30
+  },
+  "hash": "b49e327a5d06",
+  "rank": 95,
+  "debt_median": 27000,
+  "flagged": [
+    {
+      "state": "IL",
+      "college": "Concordia University-Chicago",
+      "unitid": 144351,
+      "earnings": 74135,
+      "debt": 34419,
+      "admission_rate": 0.9336,
+      "months_to_repay": 5.6,
+      "four_year_cost_48_75k": 69272,
+      "cohort": 25,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "IL",
+      "college": "Northwestern University",
+      "unitid": 147767,
+      "earnings": 69350,
+      "debt": 38832,
+      "admission_rate": 0.0715,
+      "months_to_repay": 6.7,
+      "four_year_cost_48_75k": 25940,
+      "cohort": 25,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "Cornell University",
+      "unitid": 190415,
+      "earnings": 65696,
+      "debt": 15000,
+      "admission_rate": 0.0816,
+      "months_to_repay": 2.7,
+      "four_year_cost_48_75k": 32516,
+      "cohort": 269,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Ponce",
+      "unitid": 241410,
+      "earnings": 22284,
+      "debt": 15000,
+      "admission_rate": 0.9033,
+      "months_to_repay": 8.1,
+      "four_year_cost_48_75k": 54432,
+      "cohort": 19,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Pontifical Catholic University of Puerto Rico-Mayaguez",
+      "unitid": 243586,
+      "earnings": 22284,
+      "debt": 15000,
+      "admission_rate": 0.973,
+      "months_to_repay": 8.1,
+      "four_year_cost_48_75k": 46568,
+      "cohort": 19,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "University of Puerto Rico-Rio Piedras",
+      "unitid": 243221,
+      "earnings": 21942,
+      "debt": 5500,
+      "admission_rate": 0.532,
+      "months_to_repay": 3.0,
+      "four_year_cost_48_75k": 32096,
+      "cohort": 31,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Human Resources",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 26916,
+      "earnings_median": 67523,
+      "programs": 2,
+      "four_year_cost_48_75k_median": 29000,
+      "months_to_repay_median": 4.7,
+      "years_of_pay_48_75k_median": 0.5
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 15000,
+      "earnings_median": 46998,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 45000,
+      "months_to_repay_median": 4.5,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 22425,
+      "earnings_median": 43109,
+      "programs": 18,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 6.2,
+      "years_of_pay_48_75k_median": 1.9
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26000,
+      "earnings_median": 42708,
+      "programs": 117,
+      "four_year_cost_48_75k_median": 70000,
+      "months_to_repay_median": 7.2,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24375,
+      "earnings_median": 42501,
+      "programs": 82,
+      "four_year_cost_48_75k_median": 58000,
+      "months_to_repay_median": 6.7,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    "private_nonprofit": {
+      "debt_median": 27312,
+      "earnings_median": 44497,
+      "programs": 74,
+      "four_year_cost_48_75k_median": 87000,
+      "months_to_repay_median": 7.8,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    "for_profit": {
+      "debt_median": 39675,
+      "earnings_median": 46532,
+      "programs": 23,
+      "four_year_cost_48_75k_median": 80000,
+      "months_to_repay_median": 10.5,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  },
+  "earnings_median": 43848,
+  "programs": 456,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.79,
+        "reporting": 140
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.82,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "GA": 1,
+        "MS": 1,
+        "PR": 4
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.66,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "CO": 1,
+        "IL": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 22989,
+  "debt_p75": 33288,
+  "earnings_p25": 40278,
+  "earnings_p75": 46885,
+  "four_year_cost": {
+    "sticker": 117000,
+    "gap_48_75k": 39000,
+    "programs_48_75k": 160,
+    "years_of_pay_48_75k": 1.7,
+    "income_0_30k": 58000,
+    "income_48_75k": 72000,
+    "income_110k_plus": 95000
+  },
+  "months_to_repay": {
+    "median": 7.5,
+    "programs": 150,
+    "of_major": 7.3,
+    "p25": 6.2,
+    "p75": 9.3
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "OH",
+        "college": "Ohio State University-Main Campus",
+        "earnings": 45593,
+        "city": "Columbus",
+        "debt": 19500,
+        "months_to_repay": 5.1,
+        "four_year_cost_48_75k": 50732
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "OH",
+        "college": "Franklin University",
+        "earnings": 44697,
+        "city": "Columbus",
+        "debt": 39418,
+        "months_to_repay": 10.6,
+        "four_year_cost_48_75k": 88816
+      }
+    ],
+    "miles": 3
+  },
+  "online_only": {
+    "debt_median": 33343,
+    "earnings_median": 50654,
+    "programs": 4,
+    "four_year_cost_48_75k_median": 64000,
+    "months_to_repay_median": 7.9,
+    "years_of_pay_48_75k_median": 1.2
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 28,
+    "programs": 0
+  },
+  "programs_with_debt": 186,
+  "programs_with_earnings": 179,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.62
+}

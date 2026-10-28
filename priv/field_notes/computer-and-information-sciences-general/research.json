@@ -1,0 +1,72 @@
+{
+  "facts_hash": "c16bb8cbe188",
+  "field": "Computer and Information Sciences, General",
+  "hash": "437eeb69660b",
+  "major": {
+    "leads_to": {
+      "evidence": "A bachelor's degree is the usual entry-level education for software developers. No license or graduate degree is required, so most graduates go straight into tech jobs.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both programs are open to a student starting from scratch. Barry admits freshmen. Miami Dade's bachelor's in computer science requires an associate degree, which a new student can earn at Miami Dade first.",
+      "finding": "comparable",
+      "source": "https://tts.fiu.edu/guides/web/MDC/Computer-Science-Bachelor-of-Science"
+    },
+    "school_matters": {
+      "evidence": "At highly selective schools, CS majors go mainly to big tech and finance. Wellesley's CS department names Google, Microsoft, Amazon, Facebook and JPMorgan Chase among the employers that hired its 2021–2025 graduates.",
+      "finding": "two_markets",
+      "source": "https://careereducation.wellesley.edu/FDS-computer-science"
+    },
+    "who_is_counted": {
+      "evidence": "Some of the largest programs are online-only or pooled. WGU, for example, runs an online CS degree with transfer routes that bring in community-college IT graduates. Most of the other large programs admit freshmen straight from high school.",
+      "finding": "mixed",
+      "source": "https://www.wgu.edu/admissions/it-requirements.html"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "Yale is highly selective. Google, Microsoft and the top consulting and finance firms are among the leading employers of its graduates.",
+      "source": "https://ocs.yale.edu/outcomes/",
+      "unitid": 130794
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Rice is highly selective, and Forbes lists it among the 'New Ivies,' schools whose graduates are in demand with employers.",
+      "source": "https://news.rice.edu/news/2024/rice-recognized-among-new-ivies-forbes",
+      "unitid": 227757
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "UCLA is highly selective and is located in the Los Angeles tech market. Its admissions office publishes a list of the top companies that hire UCLA graduates.",
+      "source": "https://admission.ucla.edu/explore/student-outcomes",
+      "unitid": 110662
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Wellesley is a selective college. Its CS graduates go to employers such as Google, Microsoft, Amazon, Facebook and JPMorgan Chase.",
+      "source": "https://careereducation.wellesley.edu/FDS-computer-science",
+      "unitid": 168218
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This is a former Everest campus that was rebranded as Altierus and later shut down. Its state is missing in the data, and I found no program details that explain its earnings.",
+      "source": null,
+      "unitid": 137801
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort has only about twenty graduates, too few to give a reliable figure.",
+      "source": null,
+      "unitid": 199281
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "This program is in Puerto Rico, where pay is lower than on the mainland in every occupation.",
+      "source": "https://www.bls.gov/oes/current/oes_pr.htm",
+      "unitid": 243601
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

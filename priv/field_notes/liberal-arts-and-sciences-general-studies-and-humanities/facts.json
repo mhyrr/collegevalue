@@ -1,0 +1,298 @@
+{
+  "name": "Liberal Arts and Sciences, General Studies and Humanities",
+  "largest": {
+    "debt_median": 25000,
+    "earnings_median": 36336,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 59000,
+    "months_to_repay_median": 8.3,
+    "years_of_pay_48_75k_median": 1.6,
+    "pooled": 1,
+    "share_of_graduates_percent": 15
+  },
+  "hash": "bec137ae8b35",
+  "rank": 171,
+  "debt_median": 27000,
+  "flagged": [
+    {
+      "state": "MA",
+      "college": "Massachusetts Institute of Technology",
+      "unitid": 166683,
+      "earnings": 85273,
+      "debt": 11935,
+      "admission_rate": 0.0474,
+      "months_to_repay": 1.7,
+      "four_year_cost_48_75k": 18484,
+      "cohort": 213,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "DC",
+      "college": "Georgetown University",
+      "unitid": 131496,
+      "earnings": 74919,
+      "debt": 25000,
+      "admission_rate": 0.1308,
+      "months_to_repay": 4.0,
+      "four_year_cost_48_75k": 53856,
+      "cohort": 28,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "VT",
+      "college": "Champlain College",
+      "unitid": 230852,
+      "earnings": 70375,
+      "debt": 23949,
+      "admission_rate": 0.6672,
+      "months_to_repay": 4.1,
+      "four_year_cost_48_75k": 132100,
+      "cohort": 40,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "WV",
+      "college": "American Public University System",
+      "unitid": 449339,
+      "earnings": 64720,
+      "debt": 6265,
+      "admission_rate": -1.0,
+      "months_to_repay": 1.2,
+      "four_year_cost_48_75k": 29204,
+      "cohort": 25,
+      "reasons": [
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "Simpson University",
+      "unitid": 123457,
+      "earnings": 17753,
+      "debt": 19000,
+      "admission_rate": 0.9903,
+      "months_to_repay": 12.8,
+      "four_year_cost_48_75k": 101756,
+      "cohort": 20,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "NM",
+      "college": "New Mexico Highlands University",
+      "unitid": 187897,
+      "earnings": 17340,
+      "debt": 28606,
+      "admission_rate": -1.0,
+      "months_to_repay": 19.8,
+      "four_year_cost_48_75k": 62384,
+      "cohort": 20,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "CT",
+      "college": "Mitchell College",
+      "unitid": 129774,
+      "earnings": 13615,
+      "debt": null,
+      "admission_rate": 0.7336,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 104340,
+      "cohort": 17,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Liberal Arts",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 16861,
+      "earnings_median": 43477,
+      "programs": 4,
+      "four_year_cost_48_75k_median": 22000,
+      "months_to_repay_median": 4.5,
+      "years_of_pay_48_75k_median": 0.4
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19764,
+      "earnings_median": 33130,
+      "programs": 12,
+      "four_year_cost_48_75k_median": 55000,
+      "months_to_repay_median": 6.8,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 25997,
+      "earnings_median": 32017,
+      "programs": 56,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26875,
+      "earnings_median": 31673,
+      "programs": 318,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 1.9
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 26662,
+      "earnings_median": 31656,
+      "programs": 298,
+      "four_year_cost_48_75k_median": 53000,
+      "months_to_repay_median": 9.9,
+      "years_of_pay_48_75k_median": 1.7
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 33862,
+      "programs": 150,
+      "four_year_cost_48_75k_median": 86000,
+      "months_to_repay_median": 9.8,
+      "years_of_pay_48_75k_median": 2.4
+    },
+    "for_profit": {
+      "debt_median": 18883,
+      "earnings_median": 54125,
+      "programs": 2,
+      "four_year_cost_48_75k_median": 67000,
+      "months_to_repay_median": 4.9,
+      "years_of_pay_48_75k_median": 1.4
+    }
+  },
+  "earnings_median": 32029,
+  "programs": 1281,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 390
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.73,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 5,
+        "CT": 1,
+        "FL": 1
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.5,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "DC": 1,
+        "IL": 1,
+        "MA": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 23834,
+  "debt_p75": 30075,
+  "earnings_p25": 27742,
+  "earnings_p75": 36480,
+  "four_year_cost": {
+    "sticker": 104000,
+    "gap_48_75k": 34000,
+    "programs_48_75k": 427,
+    "years_of_pay_48_75k": 1.9,
+    "income_0_30k": 45000,
+    "income_48_75k": 60000,
+    "income_110k_plus": 87000
+  },
+  "months_to_repay": {
+    "median": 9.9,
+    "programs": 396,
+    "of_major": 10.1,
+    "p25": 8.0,
+    "p75": 11.7
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "NY",
+        "college": "CUNY City College",
+        "earnings": 40538,
+        "city": "New York",
+        "debt": 12985,
+        "months_to_repay": 3.8,
+        "four_year_cost_48_75k": 28752
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "NY",
+        "college": "St. Joseph's University-New York",
+        "earnings": 39812,
+        "city": "Brooklyn",
+        "debt": 26625,
+        "months_to_repay": 8.0,
+        "four_year_cost_48_75k": 67564
+      }
+    ],
+    "miles": 9
+  },
+  "online_only": {
+    "debt_median": 18438,
+    "earnings_median": 43353,
+    "programs": 4,
+    "four_year_cost_48_75k_median": 29000,
+    "months_to_repay_median": 5.2,
+    "years_of_pay_48_75k_median": 0.5
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "CT": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 4,
+      "top_states": {
+        "DC": 1,
+        "MA": 1,
+        "VT": 1
+      }
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 176,
+    "programs": 4
+  },
+  "programs_with_debt": 471,
+  "programs_with_earnings": 450,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.84
+}

@@ -1,0 +1,66 @@
+{
+  "facts_hash": "e2757be64f0b",
+  "field": "Philosophy",
+  "hash": "777c4e1421f5",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS reports that 59 percent of philosophy and religion degree holders hold an advanced degree, against 38 percent across all fields, and that lawyers are among their most common occupations. First-year pay therefore understates where many end up.",
+      "finding": "graduate_school",
+      "source": "https://www.bls.gov/ooh/field-of-degree/philosophy-and-religion/philosophy-and-religion-field-of-degree.htm"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair is listed for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Selectivity moves Philosophy pay only modestly. The open-admission schools trail, but the schools admitting under a tenth earn no more than mid-selective ones. The top earner is Penn, whose philosophy count may include its PPE major.",
+      "finding": "some",
+      "source": "https://dailynous.com/2021/07/09/schools-us-most-philosophy-majors/"
+    },
+    "who_is_counted": {
+      "evidence": "The schools awarding the most philosophy bachelor's degrees are traditional residential universities such as Penn and UCLA, which enroll students straight from high school. They are not degree-completion programs for working adults.",
+      "finding": "new_graduates",
+      "source": "https://dailynous.com/2021/07/09/schools-us-most-philosophy-majors/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Penn's unusually large philosophy count may include its Philosophy, Politics and Economics major. Penn's PPE program lists finance and consulting as its graduates' most popular sectors.",
+      "source": "https://dailynous.com/2021/07/09/schools-us-most-philosophy-majors/",
+      "unitid": 215062
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Boston College is highly selective, and its graduates most often go into financial services and consulting, at employers such as Bain and McKinsey.",
+      "source": "https://bc.edu/bc-web/offices/student-affairs/sites/careers/about/outcomes.html",
+      "unitid": 164924
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "Fordham admits more than half its applicants. Its graduates mostly start work in the New York City area, where pay runs well above the national level.",
+      "source": "https://www.bls.gov/oes/current/oes_35620.htm",
+      "unitid": 191241
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found in the program's format or admissions explains its low first-year earnings; it is a standard undergraduate major at a Jesuit university.",
+      "source": null,
+      "unitid": 215929
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found in the program's format or admissions explains its low first-year earnings; it is a standard undergraduate major at a large public university.",
+      "source": null,
+      "unitid": 234030
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is too small for its earnings figure to be reliable.",
+      "source": null,
+      "unitid": 197869
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

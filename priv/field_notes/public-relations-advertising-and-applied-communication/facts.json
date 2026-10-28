@@ -1,0 +1,253 @@
+{
+  "name": "Public Relations, Advertising, and Applied Communication",
+  "largest": {
+    "debt_median": 22832,
+    "earnings_median": 38939,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 82000,
+    "months_to_repay_median": 7.1,
+    "years_of_pay_48_75k_median": 2.1,
+    "pooled": 1,
+    "share_of_graduates_percent": 26
+  },
+  "hash": "5ec9c3c5ea19",
+  "rank": 112,
+  "debt_median": 24659,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "San Jose State University",
+      "unitid": 122755,
+      "earnings": 49739,
+      "debt": null,
+      "admission_rate": 0.8023,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 51792,
+      "cohort": 58,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "DC",
+      "college": "George Washington University",
+      "unitid": 131469,
+      "earnings": 47727,
+      "debt": 23250,
+      "admission_rate": 0.4354,
+      "months_to_repay": 5.8,
+      "four_year_cost_48_75k": 87452,
+      "cohort": 42,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "Syracuse University",
+      "unitid": 196413,
+      "earnings": 47611,
+      "debt": 26000,
+      "admission_rate": 0.4169,
+      "months_to_repay": 6.6,
+      "four_year_cost_48_75k": 78532,
+      "cohort": 221,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "FL",
+      "college": "Florida Agricultural and Mechanical University",
+      "unitid": 133650,
+      "earnings": 24504,
+      "debt": 26625,
+      "admission_rate": 0.2112,
+      "months_to_repay": 13.0,
+      "four_year_cost_48_75k": 69956,
+      "cohort": 49,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "The University of Texas at El Paso",
+      "unitid": 228796,
+      "earnings": 24484,
+      "debt": 22000,
+      "admission_rate": 0.999,
+      "months_to_repay": 10.8,
+      "four_year_cost_48_75k": 45156,
+      "cohort": 89,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad del Sagrado Corazon",
+      "unitid": 243443,
+      "earnings": 17817,
+      "debt": 12375,
+      "admission_rate": 0.5341,
+      "months_to_repay": 8.3,
+      "four_year_cost_48_75k": 63136,
+      "cohort": 47,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Public Relations and Advertising",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": null,
+      "earnings_median": null,
+      "programs": 0,
+      "four_year_cost_48_75k_median": null,
+      "months_to_repay_median": null,
+      "years_of_pay_48_75k_median": null
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 20251,
+      "earnings_median": 39684,
+      "programs": 6,
+      "four_year_cost_48_75k_median": 73000,
+      "months_to_repay_median": 5.4,
+      "years_of_pay_48_75k_median": 1.8
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23250,
+      "earnings_median": 39238,
+      "programs": 27,
+      "four_year_cost_48_75k_median": 83000,
+      "months_to_repay_median": 6.8,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24988,
+      "earnings_median": 36112,
+      "programs": 136,
+      "four_year_cost_48_75k_median": 74000,
+      "months_to_repay_median": 8.1,
+      "years_of_pay_48_75k_median": 2.1
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23800,
+      "earnings_median": 36111,
+      "programs": 85,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 7.9,
+      "years_of_pay_48_75k_median": 1.7
+    },
+    "private_nonprofit": {
+      "debt_median": 25840,
+      "earnings_median": 38283,
+      "programs": 90,
+      "four_year_cost_48_75k_median": 94000,
+      "months_to_repay_median": 7.8,
+      "years_of_pay_48_75k_median": 2.6
+    },
+    "for_profit": {
+      "debt_median": 32103,
+      "earnings_median": 31029,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 127000,
+      "months_to_repay_median": 12.4,
+      "years_of_pay_48_75k_median": 4.1
+    }
+  },
+  "earnings_median": 36826,
+  "programs": 475,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.79,
+        "reporting": 169
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.68,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AR": 1,
+        "FL": 1,
+        "MO": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.47,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 4,
+        "DC": 2,
+        "MA": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 22534,
+  "debt_p75": 26000,
+  "earnings_p25": 33388,
+  "earnings_p75": 39695,
+  "four_year_cost": {
+    "sticker": 136000,
+    "gap_48_75k": 48000,
+    "programs_48_75k": 174,
+    "years_of_pay_48_75k": 2.1,
+    "income_0_30k": 60000,
+    "income_48_75k": 75000,
+    "income_110k_plus": 104000
+  },
+  "months_to_repay": {
+    "median": 7.9,
+    "programs": 148,
+    "of_major": 8.1,
+    "p25": 7.0,
+    "p75": 8.9
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": 20970,
+    "earnings_median": 39737,
+    "programs": 2,
+    "four_year_cost_48_75k_median": 52000,
+    "months_to_repay_median": 6.3,
+    "years_of_pay_48_75k_median": 1.3
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "PR": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 81,
+    "programs": 7
+  },
+  "programs_with_debt": 174,
+  "programs_with_earnings": 176,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.67
+}

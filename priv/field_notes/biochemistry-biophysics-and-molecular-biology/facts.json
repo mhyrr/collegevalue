@@ -1,0 +1,269 @@
+{
+  "name": "Biochemistry, Biophysics and Molecular Biology",
+  "largest": {
+    "debt_median": 17625,
+    "earnings_median": 30735,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 43000,
+    "months_to_repay_median": 7.3,
+    "years_of_pay_48_75k_median": 1.4,
+    "pooled": 2,
+    "share_of_graduates_percent": 33
+  },
+  "hash": "4dbd649e3711",
+  "rank": 134,
+  "debt_median": 23014,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "Northeastern University Oakland",
+      "unitid": 118888,
+      "earnings": 48487,
+      "debt": 23250,
+      "admission_rate": 0.1654,
+      "months_to_repay": 5.8,
+      "four_year_cost_48_75k": null,
+      "cohort": 43,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Northeastern University",
+      "unitid": 167358,
+      "earnings": 48487,
+      "debt": 23250,
+      "admission_rate": 0.0565,
+      "months_to_repay": 5.8,
+      "four_year_cost_48_75k": 41928,
+      "cohort": 43,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "California State University-San Marcos",
+      "unitid": 366711,
+      "earnings": 46580,
+      "debt": 16666,
+      "admission_rate": 0.957,
+      "months_to_repay": 4.3,
+      "four_year_cost_48_75k": 39920,
+      "cohort": 26,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "CUNY City College",
+      "unitid": 190567,
+      "earnings": 17754,
+      "debt": null,
+      "admission_rate": 0.5807,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 28752,
+      "cohort": 25,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "OH",
+      "college": "Case Western Reserve University",
+      "unitid": 201645,
+      "earnings": 17226,
+      "debt": 23000,
+      "admission_rate": 0.2868,
+      "months_to_repay": 16.0,
+      "four_year_cost_48_75k": 76424,
+      "cohort": 33,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "TN",
+      "college": "Vanderbilt University",
+      "unitid": 221999,
+      "earnings": 14373,
+      "debt": 14250,
+      "admission_rate": 0.0628,
+      "months_to_repay": 11.9,
+      "four_year_cost_48_75k": 24844,
+      "cohort": 22,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Biochemistry",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 17833,
+      "earnings_median": 31324,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 7.0,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18375,
+      "earnings_median": 32543,
+      "programs": 12,
+      "four_year_cost_48_75k_median": 55000,
+      "months_to_repay_median": 7.0,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 22938,
+      "earnings_median": 30375,
+      "programs": 30,
+      "four_year_cost_48_75k_median": 69000,
+      "months_to_repay_median": 8.0,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 22250,
+      "earnings_median": 30627,
+      "programs": 78,
+      "four_year_cost_48_75k_median": 61000,
+      "months_to_repay_median": 8.1,
+      "years_of_pay_48_75k_median": 2.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 20974,
+      "earnings_median": 30601,
+      "programs": 98,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 7.9,
+      "years_of_pay_48_75k_median": 1.9
+    },
+    "private_nonprofit": {
+      "debt_median": 23250,
+      "earnings_median": 30905,
+      "programs": 28,
+      "four_year_cost_48_75k_median": 76000,
+      "months_to_repay_median": 8.5,
+      "years_of_pay_48_75k_median": 2.5
+    }
+  },
+  "earnings_median": 30686,
+  "programs": 702,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.71,
+        "reporting": 125
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.64,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "HI": 1,
+        "TX": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.62,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 3,
+        "DE": 1,
+        "MA": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 19000,
+  "debt_p75": 26000,
+  "earnings_p25": 27151,
+  "earnings_p75": 35847,
+  "four_year_cost": {
+    "sticker": 113000,
+    "gap_48_75k": 38000,
+    "programs_48_75k": 123,
+    "years_of_pay_48_75k": 2.0,
+    "income_0_30k": 41000,
+    "income_48_75k": 59000,
+    "income_110k_plus": 102000
+  },
+  "months_to_repay": {
+    "median": 8.0,
+    "programs": 113,
+    "of_major": 8.5,
+    "p25": 7.1,
+    "p75": 10.0
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "private_nonprofit",
+        "state": "CA",
+        "college": "University of Southern California",
+        "earnings": 24569,
+        "city": "Los Angeles",
+        "debt": 3750,
+        "months_to_repay": 1.8,
+        "four_year_cost_48_75k": 75972
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "CA",
+        "college": "Occidental College",
+        "earnings": 22118,
+        "city": "Los Angeles",
+        "debt": 25978,
+        "months_to_repay": 14.1,
+        "four_year_cost_48_75k": 70308
+      }
+    ],
+    "miles": 8
+  },
+  "online_only": {
+    "debt_median": 20250,
+    "earnings_median": 31415,
+    "programs": 1,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": 7.7,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "TN": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 24,
+    "programs": 2
+  },
+  "programs_with_debt": 172,
+  "programs_with_earnings": 126,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.75
+}

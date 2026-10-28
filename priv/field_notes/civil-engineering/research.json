@@ -1,0 +1,66 @@
+{
+  "facts_hash": "b0f5fed956ee",
+  "field": "Civil Engineering",
+  "hash": "8cf36bbbc27a",
+  "major": {
+    "leads_to": {
+      "evidence": "Most graduates take the FE exam near graduation, then work about four years under a licensed engineer before taking the PE exam. Only licensed PEs can sign plans and take responsible charge of projects.",
+      "finding": "licensure",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/civil-engineers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "There is no nearby pair for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Civil engineers move up by licensing, not by school name. An ABET-accredited degree and the FE exam make a graduate an Engineer-in-Training, and the PE license that lets them approve plans takes about four more years of supervised work.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/civil-engineers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The biggest civil engineering programs sit in large public engineering colleges, such as NC State's, which calls itself one of the largest in the country. They admit first-year students into four-year ABET degrees, not working adults finishing a degree.",
+      "finding": "new_graduates",
+      "source": "https://ccee.ncsu.edu/about/facts/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "USC is a highly selective private university in Los Angeles, and its engineering graduates are recruited by top employers in a high-paying state.",
+      "source": "https://admission.usc.edu/",
+      "unitid": 123961
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "Cal Poly says most of its graduates take jobs in California, among the best-paying states for civil engineers.",
+      "source": "https://ucm.calpoly.edu/news/nine-10-cal-poly-graduates-are-employed-or-pursuing-graduate-degrees",
+      "unitid": 110422
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "San Jose State admits most applicants, and its graduates mostly work in the Silicon Valley area, one of the highest-paying labor markets for civil engineers.",
+      "source": "https://www.bls.gov/oes/current/oes172051.htm",
+      "unitid": 122755
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The program has too few graduates in the earnings cohort to give a reliable figure.",
+      "source": null,
+      "unitid": 187967
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "VMI commissions more officers than any school outside the federal service academies, so many of its civil engineering graduates start as military officers, not as civilian engineers.",
+      "source": "https://www.vmi.edu/vmi-commissions-new-officers-remembers-the-fallen/",
+      "unitid": 234085
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Graduates mostly work in Puerto Rico, where engineering wages are well below those in the states.",
+      "source": "https://www.bls.gov/oes/current/oes172051.htm",
+      "unitid": 243197
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

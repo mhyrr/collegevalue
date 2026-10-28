@@ -1,0 +1,298 @@
+{
+  "name": "Computer and Information Sciences, General",
+  "largest": {
+    "debt_median": 22584,
+    "earnings_median": 64876,
+    "programs": 10,
+    "online_only": 2,
+    "four_year_cost_48_75k_median": 54000,
+    "months_to_repay_median": 3.9,
+    "years_of_pay_48_75k_median": 0.9,
+    "pooled": 3,
+    "share_of_graduates_percent": 19
+  },
+  "hash": "c16bb8cbe188",
+  "rank": 43,
+  "debt_median": 25000,
+  "flagged": [
+    {
+      "state": "CT",
+      "college": "Yale University",
+      "unitid": 130794,
+      "earnings": 133998,
+      "debt": 12750,
+      "admission_rate": 0.045,
+      "months_to_repay": 1.1,
+      "four_year_cost_48_75k": 83600,
+      "cohort": 24,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "Rice University",
+      "unitid": 227757,
+      "earnings": 122770,
+      "debt": 12381,
+      "admission_rate": 0.0788,
+      "months_to_repay": 1.2,
+      "four_year_cost_48_75k": 5392,
+      "cohort": 50,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "University of California-Los Angeles",
+      "unitid": 110662,
+      "earnings": 117100,
+      "debt": 15248,
+      "admission_rate": 0.0873,
+      "months_to_repay": 1.6,
+      "four_year_cost_48_75k": 44260,
+      "cohort": 117,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Wellesley College",
+      "unitid": 168218,
+      "earnings": 110380,
+      "debt": 13350,
+      "admission_rate": 0.1391,
+      "months_to_repay": 1.5,
+      "four_year_cost_48_75k": 62044,
+      "cohort": 36,
+      "reasons": [
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "unknown state",
+      "college": "Altierus Career College-Tampa",
+      "unitid": 137801,
+      "earnings": 29775,
+      "debt": null,
+      "admission_rate": null,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": null,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "NC",
+      "college": "University of North Carolina at Pembroke",
+      "unitid": 199281,
+      "earnings": 29156,
+      "debt": 27000,
+      "admission_rate": 0.9236,
+      "months_to_repay": 11.1,
+      "four_year_cost_48_75k": 43620,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Gurabo Campus",
+      "unitid": 243601,
+      "earnings": 25756,
+      "debt": 17145,
+      "admission_rate": -1.0,
+      "months_to_repay": 8.0,
+      "four_year_cost_48_75k": 38312,
+      "cohort": 76,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Computer and Information Sciences",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15124,
+      "earnings_median": 102195,
+      "programs": 9,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 1.7,
+      "years_of_pay_48_75k_median": 0.4
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19500,
+      "earnings_median": 80593,
+      "programs": 11,
+      "four_year_cost_48_75k_median": 61000,
+      "months_to_repay_median": 2.8,
+      "years_of_pay_48_75k_median": 0.7
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 22650,
+      "earnings_median": 63805,
+      "programs": 45,
+      "four_year_cost_48_75k_median": 66000,
+      "months_to_repay_median": 4.4,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24622,
+      "earnings_median": 54298,
+      "programs": 272,
+      "four_year_cost_48_75k_median": 64000,
+      "months_to_repay_median": 5.3,
+      "years_of_pay_48_75k_median": 1.2
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24011,
+      "earnings_median": 54625,
+      "programs": 283,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 5.2,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    "private_nonprofit": {
+      "debt_median": 25000,
+      "earnings_median": 55426,
+      "programs": 94,
+      "four_year_cost_48_75k_median": 84000,
+      "months_to_repay_median": 5.2,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    "for_profit": {
+      "debt_median": 50737,
+      "earnings_median": 55788,
+      "programs": 42,
+      "four_year_cost_48_75k_median": 76000,
+      "months_to_repay_median": 10.2,
+      "years_of_pay_48_75k_median": 1.4
+    }
+  },
+  "earnings_median": 54867,
+  "programs": 957,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 337
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.86,
+        "reporting": 7
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "GA": 2,
+        "PR": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.08,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 2,
+        "MA": 2,
+        "PA": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21500,
+  "debt_p75": 27000,
+  "earnings_p25": 47277,
+  "earnings_p75": 63918,
+  "four_year_cost": {
+    "sticker": 104000,
+    "gap_48_75k": 37000,
+    "programs_48_75k": 377,
+    "years_of_pay_48_75k": 1.2,
+    "income_0_30k": 47000,
+    "income_48_75k": 63000,
+    "income_110k_plus": 91000
+  },
+  "months_to_repay": {
+    "median": 5.3,
+    "programs": 371,
+    "of_major": 5.4,
+    "p25": 4.2,
+    "p75": 6.8
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "FL",
+        "college": "Miami Dade College",
+        "earnings": 39976,
+        "city": "Miami",
+        "debt": 11195,
+        "months_to_repay": 3.4,
+        "four_year_cost_48_75k": 35320
+      },
+      {
+        "control": "private_nonprofit",
+        "state": "FL",
+        "college": "Barry University",
+        "earnings": 43667,
+        "city": "Miami",
+        "debt": 26420,
+        "months_to_repay": 7.3,
+        "four_year_cost_48_75k": 93544
+      }
+    ],
+    "miles": 7
+  },
+  "online_only": {
+    "debt_median": 28578,
+    "earnings_median": 60152,
+    "programs": 11,
+    "four_year_cost_48_75k_median": 60000,
+    "months_to_repay_median": 6.4,
+    "years_of_pay_48_75k_median": 1.0
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "PR": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 4,
+      "top_states": {
+        "CA": 1,
+        "CT": 1,
+        "MA": 1
+      }
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 136,
+    "programs": 0
+  },
+  "programs_with_debt": 424,
+  "programs_with_earnings": 419,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.46
+}

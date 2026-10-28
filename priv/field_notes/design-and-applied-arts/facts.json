@@ -1,0 +1,286 @@
+{
+  "name": "Design and Applied Arts",
+  "largest": {
+    "debt_median": 26500,
+    "earnings_median": 29826,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 110000,
+    "months_to_repay_median": 10.4,
+    "years_of_pay_48_75k_median": 3.8,
+    "pooled": 1,
+    "share_of_graduates_percent": 21
+  },
+  "hash": "daa25ff2a536",
+  "rank": 160,
+  "debt_median": 27000,
+  "flagged": [
+    {
+      "state": "PA",
+      "college": "Carnegie Mellon University",
+      "unitid": 211440,
+      "earnings": 85041,
+      "debt": 24500,
+      "admission_rate": 0.114,
+      "months_to_repay": 3.5,
+      "four_year_cost_48_75k": 70136,
+      "cohort": 38,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "MI",
+      "college": "Lawrence Technological University",
+      "unitid": 170675,
+      "earnings": 73712,
+      "debt": null,
+      "admission_rate": 0.8025,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 125500,
+      "cohort": 24,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "IN",
+      "college": "University of Notre Dame",
+      "unitid": 152080,
+      "earnings": 54550,
+      "debt": 20250,
+      "admission_rate": 0.1238,
+      "months_to_repay": 4.5,
+      "four_year_cost_48_75k": 59364,
+      "cohort": 22,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Montserrat College of Art",
+      "unitid": 166911,
+      "earnings": 16029,
+      "debt": 27000,
+      "admission_rate": -1.0,
+      "months_to_repay": 20.2,
+      "four_year_cost_48_75k": 152984,
+      "cohort": 56,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Atlantic University",
+      "unitid": 241216,
+      "earnings": 15915,
+      "debt": null,
+      "admission_rate": -1.0,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 36156,
+      "cohort": 29,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "OH",
+      "college": "Shawnee State University",
+      "unitid": 205443,
+      "earnings": 14445,
+      "debt": 29000,
+      "admission_rate": -1.0,
+      "months_to_repay": 24.1,
+      "four_year_cost_48_75k": 62492,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Design and Applied Arts",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 24125,
+      "earnings_median": 42298,
+      "programs": 2,
+      "four_year_cost_48_75k_median": 43000,
+      "months_to_repay_median": 6.8,
+      "years_of_pay_48_75k_median": 1.0
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 21250,
+      "earnings_median": 43267,
+      "programs": 9,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 5.5,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 25050,
+      "earnings_median": 39366,
+      "programs": 39,
+      "four_year_cost_48_75k_median": 79000,
+      "months_to_repay_median": 7.3,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26880,
+      "earnings_median": 33682,
+      "programs": 193,
+      "four_year_cost_48_75k_median": 71000,
+      "months_to_repay_median": 9.1,
+      "years_of_pay_48_75k_median": 2.2
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 25969,
+      "earnings_median": 34707,
+      "programs": 146,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 8.3,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 32762,
+      "programs": 117,
+      "four_year_cost_48_75k_median": 100000,
+      "months_to_repay_median": 9.9,
+      "years_of_pay_48_75k_median": 3.0
+    },
+    "for_profit": {
+      "debt_median": 38082,
+      "earnings_median": 26796,
+      "programs": 27,
+      "four_year_cost_48_75k_median": 127000,
+      "months_to_repay_median": 16.6,
+      "years_of_pay_48_75k_median": 4.2
+    }
+  },
+  "earnings_median": 33440,
+  "programs": 712,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.78,
+        "reporting": 243
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 2
+      },
+      "programs": 10,
+      "top_states": {
+        "GA": 2,
+        "PR": 2,
+        "unknown state": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.5,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "GA": 1,
+        "IN": 1,
+        "MA": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 24519,
+  "debt_p75": 27000,
+  "earnings_p25": 28665,
+  "earnings_p75": 38320,
+  "four_year_cost": {
+    "sticker": 128000,
+    "gap_48_75k": 46000,
+    "programs_48_75k": 267,
+    "years_of_pay_48_75k": 2.2,
+    "income_0_30k": 53000,
+    "income_48_75k": 72000,
+    "income_110k_plus": 106000
+  },
+  "months_to_repay": {
+    "median": 9.3,
+    "programs": 244,
+    "of_major": 9.7,
+    "p25": 7.5,
+    "p75": 11.3
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "CA",
+        "college": "San Diego State University",
+        "earnings": 34442,
+        "city": "San Diego",
+        "debt": 13716,
+        "months_to_repay": 4.8,
+        "four_year_cost_48_75k": 56820
+      },
+      {
+        "control": "for_profit",
+        "state": "CA",
+        "college": "Design Institute of San Diego",
+        "earnings": 35661,
+        "city": "San Diego",
+        "debt": 45687,
+        "months_to_repay": 15.4,
+        "four_year_cost_48_75k": null
+      }
+    ],
+    "miles": 9
+  },
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": 19700,
+    "programs": 1,
+    "four_year_cost_48_75k_median": 62000,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": 3.2
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 3,
+      "top_states": {
+        "MA": 1,
+        "OH": 1,
+        "PR": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 2,
+      "top_states": {
+        "MI": 1,
+        "PA": 1
+      }
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 89,
+    "programs": 20
+  },
+  "programs_with_debt": 290,
+  "programs_with_earnings": 290,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.82
+}

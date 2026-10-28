@@ -1,0 +1,255 @@
+{
+  "name": "Music",
+  "largest": {
+    "debt_median": 26621,
+    "earnings_median": 23255,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 84000,
+    "months_to_repay_median": 13.9,
+    "years_of_pay_48_75k_median": 3.6,
+    "pooled": 0,
+    "share_of_graduates_percent": 24
+  },
+  "hash": "5cba0d00c552",
+  "rank": 213,
+  "debt_median": 26000,
+  "flagged": [
+    {
+      "state": "TX",
+      "college": "University of Houston",
+      "unitid": 225511,
+      "earnings": 49557,
+      "debt": 26000,
+      "admission_rate": 0.6953,
+      "months_to_repay": 6.3,
+      "four_year_cost_48_75k": 50452,
+      "cohort": 59,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "The University of Texas at El Paso",
+      "unitid": 228796,
+      "earnings": 48653,
+      "debt": 14612,
+      "admission_rate": 0.999,
+      "months_to_repay": 3.6,
+      "four_year_cost_48_75k": 45156,
+      "cohort": 30,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "TX",
+      "college": "Texas A&M University-Kingsville",
+      "unitid": 228705,
+      "earnings": 48541,
+      "debt": 31000,
+      "admission_rate": 0.9229,
+      "months_to_repay": 7.7,
+      "four_year_cost_48_75k": 45640,
+      "cohort": 20,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "OH",
+      "college": "Baldwin Wallace University",
+      "unitid": 201195,
+      "earnings": 12264,
+      "debt": 27000,
+      "admission_rate": 0.7685,
+      "months_to_repay": 26.4,
+      "four_year_cost_48_75k": 94140,
+      "cohort": 23,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "University of Rochester",
+      "unitid": 195030,
+      "earnings": 12050,
+      "debt": 26769,
+      "admission_rate": 0.3585,
+      "months_to_repay": 26.7,
+      "four_year_cost_48_75k": 84708,
+      "cohort": 49,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "The New England Conservatory of Music",
+      "unitid": 167057,
+      "earnings": 10847,
+      "debt": 26991,
+      "admission_rate": 0.4275,
+      "months_to_repay": 29.9,
+      "four_year_cost_48_75k": 134100,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Music",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 23185,
+      "earnings_median": 25179,
+      "programs": 6,
+      "four_year_cost_48_75k_median": 34000,
+      "months_to_repay_median": 11.8,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 19199,
+      "earnings_median": 22083,
+      "programs": 6,
+      "four_year_cost_48_75k_median": 45000,
+      "months_to_repay_median": 10.4,
+      "years_of_pay_48_75k_median": 1.8
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 26100,
+      "earnings_median": 22333,
+      "programs": 30,
+      "four_year_cost_48_75k_median": 75000,
+      "months_to_repay_median": 14.1,
+      "years_of_pay_48_75k_median": 2.5
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 26411,
+      "earnings_median": 25295,
+      "programs": 163,
+      "four_year_cost_48_75k_median": 66000,
+      "months_to_repay_median": 11.8,
+      "years_of_pay_48_75k_median": 2.6
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 26000,
+      "earnings_median": 26349,
+      "programs": 151,
+      "four_year_cost_48_75k_median": 60000,
+      "months_to_repay_median": 10.8,
+      "years_of_pay_48_75k_median": 2.2
+    },
+    "private_nonprofit": {
+      "debt_median": 26734,
+      "earnings_median": 21599,
+      "programs": 63,
+      "four_year_cost_48_75k_median": 95000,
+      "months_to_repay_median": 14.2,
+      "years_of_pay_48_75k_median": 4.2
+    },
+    "for_profit": {
+      "debt_median": 30949,
+      "earnings_median": 29314,
+      "programs": 4,
+      "four_year_cost_48_75k_median": 119000,
+      "months_to_repay_median": 14.9,
+      "years_of_pay_48_75k_median": 4.5
+    }
+  },
+  "earnings_median": 24986,
+  "programs": 1114,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.81,
+        "reporting": 205
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.65,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "FL": 1,
+        "ID": 1,
+        "IN": 1
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.89,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "TX": 10
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 22914,
+  "debt_p75": 27000,
+  "earnings_p25": 20155,
+  "earnings_p75": 30894,
+  "four_year_cost": {
+    "sticker": 112000,
+    "gap_48_75k": 40000,
+    "programs_48_75k": 212,
+    "years_of_pay_48_75k": 2.5,
+    "income_0_30k": 49000,
+    "income_48_75k": 66000,
+    "income_110k_plus": 98000
+  },
+  "months_to_repay": {
+    "median": 11.8,
+    "programs": 194,
+    "of_major": 12.7,
+    "p25": 9.5,
+    "p75": 14.9
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": null,
+    "programs": 0,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 3,
+      "top_states": {
+        "MA": 1,
+        "NY": 1,
+        "OH": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 53,
+    "programs": 17
+  },
+  "programs_with_debt": 270,
+  "programs_with_earnings": 218,
+  "ranked_of": 222,
+  "debt_to_earnings": 1.04
+}

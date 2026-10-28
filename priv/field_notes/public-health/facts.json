@@ -1,0 +1,277 @@
+{
+  "name": "Public Health",
+  "largest": {
+    "debt_median": 25354,
+    "earnings_median": 33312,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 50000,
+    "months_to_repay_median": 8.5,
+    "years_of_pay_48_75k_median": 1.6,
+    "pooled": 1,
+    "share_of_graduates_percent": 23
+  },
+  "hash": "f128f881098a",
+  "rank": 157,
+  "debt_median": 26000,
+  "flagged": [
+    {
+      "state": "UT",
+      "college": "Utah State University",
+      "unitid": 230728,
+      "earnings": 67218,
+      "debt": null,
+      "admission_rate": 0.9362,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 46396,
+      "cohort": 28,
+      "reasons": [
+        "top_3",
+        "above_2x_median"
+      ]
+    },
+    {
+      "state": "MI",
+      "college": "Oakland University",
+      "unitid": 171571,
+      "earnings": 61508,
+      "debt": 30750,
+      "admission_rate": 0.7024,
+      "months_to_repay": 6.0,
+      "four_year_cost_48_75k": 48916,
+      "cohort": 24,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "IL",
+      "college": "Illinois State University",
+      "unitid": 145813,
+      "earnings": 51383,
+      "debt": 22250,
+      "admission_rate": 0.8901,
+      "months_to_repay": 5.2,
+      "four_year_cost_48_75k": 65696,
+      "cohort": 59,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "LA",
+      "college": "Xavier University of Louisiana",
+      "unitid": 160904,
+      "earnings": 23046,
+      "debt": 27000,
+      "admission_rate": 0.7448,
+      "months_to_repay": 14.1,
+      "four_year_cost_48_75k": 76032,
+      "cohort": 20,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "GA",
+      "college": "Agnes Scott College",
+      "unitid": 138600,
+      "earnings": 21239,
+      "debt": null,
+      "admission_rate": 0.6731,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 89628,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "MS",
+      "college": "Mississippi University for Women",
+      "unitid": 176035,
+      "earnings": 20729,
+      "debt": 28000,
+      "admission_rate": 1.0,
+      "months_to_repay": 16.2,
+      "four_year_cost_48_75k": 47856,
+      "cohort": 41,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Public Health",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 12750,
+      "earnings_median": 37675,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 31000,
+      "months_to_repay_median": 5.2,
+      "years_of_pay_48_75k_median": 0.7
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 15280,
+      "earnings_median": 30432,
+      "programs": 6,
+      "four_year_cost_48_75k_median": 45000,
+      "months_to_repay_median": 6.0,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 21500,
+      "earnings_median": 32099,
+      "programs": 21,
+      "four_year_cost_48_75k_median": 51000,
+      "months_to_repay_median": 7.7,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25500,
+      "earnings_median": 32226,
+      "programs": 118,
+      "four_year_cost_48_75k_median": 64000,
+      "months_to_repay_median": 9.2,
+      "years_of_pay_48_75k_median": 2.0
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24000,
+      "earnings_median": 32468,
+      "programs": 120,
+      "four_year_cost_48_75k_median": 53000,
+      "months_to_repay_median": 8.3,
+      "years_of_pay_48_75k_median": 1.6
+    },
+    "private_nonprofit": {
+      "debt_median": 27000,
+      "earnings_median": 34495,
+      "programs": 49,
+      "four_year_cost_48_75k_median": 80000,
+      "months_to_repay_median": 11.1,
+      "years_of_pay_48_75k_median": 2.8
+    },
+    "for_profit": {
+      "debt_median": 52479,
+      "earnings_median": 30273,
+      "programs": 21,
+      "four_year_cost_48_75k_median": 82000,
+      "months_to_repay_median": 19.7,
+      "years_of_pay_48_75k_median": 2.6
+    }
+  },
+  "earnings_median": 32085,
+  "programs": 494,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 148
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.76,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "GA": 1,
+        "LA": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.89,
+        "reporting": 9
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "CO": 1,
+        "IL": 1
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21594,
+  "debt_p75": 27473,
+  "earnings_p25": 29498,
+  "earnings_p75": 36260,
+  "four_year_cost": {
+    "sticker": 104000,
+    "gap_48_75k": 36000,
+    "programs_48_75k": 177,
+    "years_of_pay_48_75k": 1.9,
+    "income_0_30k": 48000,
+    "income_48_75k": 62000,
+    "income_110k_plus": 89000
+  },
+  "months_to_repay": {
+    "median": 9.2,
+    "programs": 177,
+    "of_major": 9.7,
+    "p25": 7.8,
+    "p75": 11.7
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "TX",
+        "college": "The University of Texas at El Paso",
+        "earnings": 26367,
+        "city": "El Paso",
+        "debt": 24250,
+        "months_to_repay": 11.0,
+        "four_year_cost_48_75k": 45156
+      },
+      {
+        "control": "for_profit",
+        "state": "TX",
+        "college": "Southwest University at El Paso",
+        "earnings": 25356,
+        "city": "El Paso",
+        "debt": 57101,
+        "months_to_repay": 27.0,
+        "four_year_cost_48_75k": 87636
+      }
+    ],
+    "miles": 6
+  },
+  "online_only": {
+    "debt_median": 37396,
+    "earnings_median": 36589,
+    "programs": 6,
+    "four_year_cost_48_75k_median": 43000,
+    "months_to_repay_median": 10.2,
+    "years_of_pay_48_75k_median": 1.2
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 1,
+      "top_states": {
+        "UT": 1
+      }
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 84,
+    "programs": 5
+  },
+  "programs_with_debt": 240,
+  "programs_with_earnings": 190,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.81
+}

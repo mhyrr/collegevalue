@@ -1,0 +1,66 @@
+{
+  "facts_hash": "1299011a6157",
+  "field": "Mathematics",
+  "hash": "231d17b6c9b6",
+  "major": {
+    "leads_to": {
+      "evidence": "Half of math majors hold an advanced degree, against 38 percent of all majors. Their most common jobs range from software developer and data scientist to secondary and elementary teacher, so first-year pay understates many of them.",
+      "finding": "mixed",
+      "source": "https://www.bls.gov/ooh/field-of-degree/mathematics/mathematics-field-of-degree.htm"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair was identified for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Quant trading firms such as Jane Street and Optiver compete for a very small pool of elite math graduates and recruit them through internships a year or more ahead. Graduates of ordinary schools don't enter that market.",
+      "finding": "two_markets",
+      "source": "https://view.asiae.co.kr/en/article/2026073110064332311"
+    },
+    "who_is_counted": {
+      "evidence": "The major's largest programs are at large public universities that admit freshmen and transfers into full-time, on-campus study. None of them is online-only or built for working adults.",
+      "finding": "new_graduates",
+      "source": "https://admission.universityofcalifornia.edu/admission-requirements/freshman-requirements/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "A school that admits under a twentieth of applicants, whose math graduates are the elite pool that quant trading firms and tech employers recruit.",
+      "source": "https://view.asiae.co.kr/en/article/2026073110064332311",
+      "unitid": 166683
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "A school that admits under a twentieth of applicants, whose math graduates are recruited by quant trading firms and finance employers.",
+      "source": "https://view.asiae.co.kr/en/article/2026073110064332311",
+      "unitid": 144050
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective school whose math graduates go to the top finance and tech employers that recruit at elite campuses.",
+      "source": "https://view.asiae.co.kr/en/article/2026073110064332311",
+      "unitid": 190415
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "No clear cause found. The school offers a math degree track for future secondary teachers, but nothing confirms that teacher-credential study explains its graduates' low first-year pay.",
+      "source": null,
+      "unitid": 110671
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "No clear cause found. The school offers a mathematics education option that leads to a teaching credential, but nothing confirms that credential study explains its graduates' low first-year pay.",
+      "source": null,
+      "unitid": 110583
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates are counted to give a reliable earnings figure.",
+      "source": null,
+      "unitid": 110556
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

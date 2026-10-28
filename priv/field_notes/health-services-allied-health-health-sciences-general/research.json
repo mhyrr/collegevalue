@@ -1,0 +1,66 @@
+{
+  "facts_hash": "143727e22e3c",
+  "field": "Health Services/Allied Health/Health Sciences, General",
+  "hash": "c9b96c5b0c73",
+  "major": {
+    "leads_to": {
+      "evidence": "Colleges present the health science bachelor's as preparation for graduate health programs such as medicine, physician assistant, physical therapy and occupational therapy, so first-year pay understates where many graduates end up.",
+      "finding": "graduate_school",
+      "source": "https://catalog.ufl.edu/UGRD/colleges-schools/UGPBH/HES_BHS/HES_BHS02/"
+    },
+    "nearby_pair": {
+      "evidence": "There is no nearby pair for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Selectivity barely moves pay, and the most selective band earns the least. No license sets pay for this degree, and at schools like UF it is a pre-professional track for medicine, PA, PT and OT, so many graduates are still in school a year later.",
+      "finding": "little",
+      "source": "https://catalog.ufl.edu/UGRD/colleges-schools/UGPBH/HES_BHS/HES_BHS02/"
+    },
+    "who_is_counted": {
+      "evidence": "I couldn't find which schools run the largest bachelor's programs in this field, so I couldn't check whether they mostly enroll new students or working adults.",
+      "finding": "unclear",
+      "source": null
+    }
+  },
+  "programs": [
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Touro's School of Health Sciences in New York runs combined BS/MS physician assistant tracks that admit students after about 90 credits, so these graduates are likely working PAs, not typical health science graduates.",
+      "source": "https://las.touro.edu/academics/pre-pa/",
+      "unitid": 196592
+    },
+    {
+      "cause": "experienced_students",
+      "evidence": "Seattle Central's applied bachelor's in allied health requires an allied health background, such as an allied health associate degree, a state credential or work experience, so its students are already working in health care.",
+      "source": "https://healthcare.seattlecentral.edu/node/476",
+      "unitid": 236513
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is too small to give a reliable earnings figure.",
+      "source": null,
+      "unitid": 238458
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found nothing specific to this program that explains its low earnings.",
+      "source": null,
+      "unitid": 141334
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "UF's health science major mainly prepares students for medicine, PA, PT and OT, and one option has students start doctoral OT courses as undergraduates, so many graduates are still in professional school a year later.",
+      "source": "https://catalog.ufl.edu/UGRD/colleges-schools/UGPBH/HES_BHS/HES_BHS02/",
+      "unitid": 134130
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Springfield's health science pre-PA students get the bachelor's in their fourth year while already in the physician assistant master's program, so many graduates are still full-time PA students a year later.",
+      "source": "https://www.springfieldcollege.edu/programs/physician-assistant-studies-masters-degree",
+      "unitid": 167899
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

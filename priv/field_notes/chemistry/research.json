@@ -1,0 +1,66 @@
+{
+  "facts_hash": "b41565487d35",
+  "field": "Chemistry",
+  "hash": "705b24414b40",
+  "major": {
+    "leads_to": {
+      "evidence": "An ACS survey of new chemistry graduates found about a third went straight on to graduate or professional school, including Ph.D., medical and pharmacy programs. Slightly more than a third held full-time jobs, so first-year pay leaves out many graduates.",
+      "finding": "mixed",
+      "source": "https://inchemistry.acs.org/content/dam/acsorg/careers/salaries/new-graduates-cen-2013.pdf"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair was identified for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Chemistry has no license, and the typical first job at any school is lab or quality-control work. An ACS survey found new bachelor's chemists' starting pay closely bunched, and the four admission bands sit within a narrow range of each other.",
+      "finding": "little",
+      "source": "https://inchemistry.acs.org/content/dam/acsorg/careers/salaries/new-graduates-cen-2013.pdf"
+    },
+    "who_is_counted": {
+      "evidence": "None of the major's programs is online-only or pooled. Chemistry degrees require years of in-person lab courses taken full time, so the largest programs enroll traditional students rather than working adults.",
+      "finding": "new_graduates",
+      "source": "https://northeastern-preview.courseleaf.com/undergraduate/science/chemistry-chemical-biology/chemistry-bs/chemistry-bs.pdf"
+    }
+  },
+  "programs": [
+    {
+      "cause": "data_error",
+      "evidence": "The Oakland campus reports the same earnings, debt and cohort as Northeastern's Boston campus, so its figures are Boston's chemistry graduates pooled under another campus.",
+      "source": null,
+      "unitid": 118888
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Northeastern's chemistry degree includes two or three paid co-op work terms in industry before graduation, so its graduates start their careers with job experience.",
+      "source": "https://northeastern-preview.courseleaf.com/undergraduate/science/chemistry-chemical-biology/chemistry-bs/chemistry-bs.pdf",
+      "unitid": 167358
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small. Baton Rouge also has one of Louisiana's largest groups of chemical plant and refinery jobs, including ExxonMobil's chemist roles, which may help explain the high pay.",
+      "source": null,
+      "unitid": 159391
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found on the program's admission, format or graduate outcomes explains the low first-year earnings.",
+      "source": null,
+      "unitid": 190549
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small. Creighton's chemistry program also has a strong pre-professional track, and its graduates often go on to medical, pharmacy and graduate school, so few work full time in the first year.",
+      "source": null,
+      "unitid": 181002
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort is small. Many of the department's alumni go on to graduate and medical school, so first-year earnings likely reflect students rather than full-time chemists.",
+      "source": null,
+      "unitid": 179867
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

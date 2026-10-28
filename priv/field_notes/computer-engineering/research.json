@@ -1,0 +1,66 @@
+{
+  "facts_hash": "829d9aefa66c",
+  "field": "Computer Engineering",
+  "hash": "667552d75198",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS says computer hardware engineers typically need a bachelor's degree in computer engineering or a related field to start work, and no license or graduate degree is required to enter the field.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/computer-hardware-engineers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair was identified for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "Computer hardware engineering is a small occupation, about 77,000 jobs nationwide, that typically needs only a bachelor's. Many graduates take software jobs instead, and the highest-paying are concentrated in tech hubs like California, Massachusetts and Washington.",
+      "finding": "some",
+      "source": "https://www.bls.gov/ooh/architecture-and-engineering/computer-hardware-engineers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The programs that award the most computer engineering degrees are traditional universities such as Northeastern, which enroll first-year students straight from high school, not degree-completion programs for working adults.",
+      "finding": "new_graduates",
+      "source": "https://datausa.io/profile/cip/computer-engineering"
+    }
+  },
+  "programs": [
+    {
+      "cause": "data_error",
+      "evidence": "The Seattle figures are identical to the Bothell campus's, so the earnings and debt are pooled across University of Washington campuses and do not describe Seattle alone.",
+      "source": null,
+      "unitid": 236948
+    },
+    {
+      "cause": "data_error",
+      "evidence": "The Bothell figures are identical to the Seattle campus's, so this open-admission campus is reported with pooled University of Washington outcomes, not its own.",
+      "source": null,
+      "unitid": 377555
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Princeton admits a tiny share of applicants, and its electrical and computer engineering graduates go to top technology and engineering employers.",
+      "source": "https://careercompass.princeton.edu/career-fields/engineering/electrical-and-computer-engineering",
+      "unitid": 186131
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "DeVry's degree is a Bachelor's in Engineering Technology with a computers focus, offered online and hybrid for working adults. Its outcomes are pooled across DeVry campuses.",
+      "source": "https://www.devry.edu/online-programs/bachelors-degrees/engineering-technology.html",
+      "unitid": 482635
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "DeVry's degree is a Bachelor's in Engineering Technology with a computers focus, offered online and hybrid for working adults. Its outcomes are pooled with other DeVry campuses.",
+      "source": "https://www.devry.edu/online-programs/bachelors-degrees/engineering-technology.html",
+      "unitid": 482653
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates are counted to give a reliable earnings figure.",
+      "source": null,
+      "unitid": 228149
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

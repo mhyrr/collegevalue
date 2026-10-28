@@ -1,0 +1,66 @@
+{
+  "facts_hash": "e39a15fbe6c3",
+  "field": "Journalism",
+  "hash": "1999153f1ad7",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS says reporters and journalists usually start with a bachelor's in journalism or communications, and that internships at college papers or stations help. It projects employment in the field to decline 4 percent from 2024 to 2034.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/media-and-communication/reporters-correspondents-and-broadcast-news-analysts.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both took students straight from high school: San Diego State is a public campus program, and Ashford offered its journalism and mass communication BA online with open admission. Ashford has since become UAGC, and it is unclear whether this program still enrolls.",
+      "finding": "comparable",
+      "source": "https://zovio.mediaroom.com/index.php?item=116"
+    },
+    "school_matters": {
+      "evidence": "The top tier has a mechanism of its own: Medill places more than 150 students a year in full-time newsroom residencies at outlets that include national papers. Those placements are few, and overall journalism jobs are shrinking.",
+      "finding": "some",
+      "source": "https://www.medill.northwestern.edu/journalism/undergraduate-journalism/exclusive-opportunities/journalism-residency.html"
+    },
+    "who_is_counted": {
+      "evidence": "Big journalism schools such as Missouri's admit students who meet the university's freshman standards straight into the major as undergraduates. They are traditional campus programs, not degree-completion programs for working adults.",
+      "finding": "new_graduates",
+      "source": "https://journalism.missouri.edu/programs/online/admission"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "USC Annenberg is a highly selective journalism school in Los Angeles, a major media center, and its graduates compete for jobs at large media employers.",
+      "source": "https://annenberg.usc.edu/academics/undergraduate-journalism",
+      "unitid": 123961
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Medill is highly selective, and its Journalism Residency puts undergraduates in full-time jobs at news organizations before they graduate, which feeds them into newsroom hiring.",
+      "source": "https://www.medill.northwestern.edu/journalism/undergraduate-journalism/exclusive-opportunities/journalism-residency.html",
+      "unitid": 147767
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "GW's journalism program is in Washington, D.C., a high-cost national news market where students intern at outlets during school and graduates often take local jobs.",
+      "source": "https://smpa.gwu.edu/summer-news-internship-bloomberg-bna",
+      "unitid": 131469
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Louisiana Tech offers journalism as a concentration within its communication degree, and the cohort is near the size where figures become unreliable.",
+      "source": null,
+      "unitid": 159647
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Kentucky State runs a standard mass communication and journalism BA, and nothing found in its program description explains the low figure.",
+      "source": null,
+      "unitid": 157058
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "Sagrado Corazón's communication school is in San Juan, Puerto Rico, where pay is lower across occupations.",
+      "source": "https://en.wikipedia.org/wiki/Universidad_del_Sagrado_Coraz%C3%B3n",
+      "unitid": 243443
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

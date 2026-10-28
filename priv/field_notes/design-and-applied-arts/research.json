@@ -1,0 +1,66 @@
+{
+  "facts_hash": "daa25ff2a536",
+  "field": "Design and Applied Arts",
+  "hash": "53576419543b",
+  "major": {
+    "leads_to": {
+      "evidence": "Design graduates go straight into work with a bachelor's degree and a portfolio, with no license or further degree required. BLS projects graphic designer jobs, the most common path, to decline slightly over the next decade.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/arts-and-design/graphic-designers.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both San Diego programs take students straight from high school. The for-profit design institute's BFA requires only a high school diploma and admits on a rolling basis, and the state university admits freshmen to its art and design degrees.",
+      "finding": "comparable",
+      "source": "https://www.disd.edu/wp-content/uploads/2023/06/DI_BFABrochure_F_digital.pdf"
+    },
+    "school_matters": {
+      "evidence": "The gap between bands is moderate. Programs at selective schools lean toward industrial, product and interaction design, an occupation BLS says pays more than graphic design but has only about 2,500 openings a year nationwide.",
+      "finding": "some",
+      "source": "https://www.bls.gov/ooh/arts-and-design/industrial-designers.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The big programs appear to be campus art and design schools that admit first-year students straight from high school. SCAD, for example, does not require a portfolio for undergraduate admission, so the large cohorts are mostly new graduates.",
+      "finding": "new_graduates",
+      "source": "https://www.bestcolleges.com/schools/savannah-college-of-art-and-design/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective school whose industrial and interaction design graduates are reported to go to big tech employers such as Microsoft, Amazon, Google and Apple.",
+      "source": "https://www.collegetransitions.com/blog/best-colleges-for-industrial-design-product-design/",
+      "unitid": 211440
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Its design bachelor's degrees include transportation design built with Detroit automakers, where students learn vehicle design, so graduates go into automotive design rather than typical graphic design work.",
+      "source": "https://www.ltu.edu/architecture-and-design/design/undergrad-transportation-design",
+      "unitid": 170675
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "A highly selective university whose design BFA includes an award-winning industrial design concentration that leads to product and UX design jobs.",
+      "source": "https://al.nd.edu/assets/526667/design_outcomes_onesheet.pdf",
+      "unitid": 152080
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This small art college offers a studio art BFA with graphic design and illustration concentrations, and nothing found explains its low earnings beyond what is typical for art school graduates.",
+      "source": null,
+      "unitid": 166911
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "This is a small arts and design college in Guaynabo, Puerto Rico, where design jobs pay far less than on the mainland.",
+      "source": "https://en.wikipedia.org/wiki/Atlantic_University_(Puerto_Rico)",
+      "unitid": 241216
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The cohort has fewer than 20 graduates, too few for a reliable figure. The school's design programs center on game arts.",
+      "source": null,
+      "unitid": 205443
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

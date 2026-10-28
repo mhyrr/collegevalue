@@ -1,0 +1,277 @@
+{
+  "name": "Electrical, Electronics and Communications Engineering",
+  "largest": {
+    "debt_median": 21456,
+    "earnings_median": 70289,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 51000,
+    "months_to_repay_median": 3.6,
+    "years_of_pay_48_75k_median": 0.7,
+    "pooled": 1,
+    "share_of_graduates_percent": 15
+  },
+  "hash": "4b33cddbf0a1",
+  "rank": 12,
+  "debt_median": 25000,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "University of California-Berkeley",
+      "unitid": 110635,
+      "earnings": 126367,
+      "debt": 14437,
+      "admission_rate": 0.1166,
+      "months_to_repay": 1.4,
+      "four_year_cost_48_75k": 45696,
+      "cohort": 182,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "PA",
+      "college": "Carnegie Mellon University",
+      "unitid": 211440,
+      "earnings": 116935,
+      "debt": 22250,
+      "admission_rate": 0.114,
+      "months_to_repay": 2.3,
+      "four_year_cost_48_75k": 70136,
+      "cohort": 62,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Massachusetts Institute of Technology",
+      "unitid": 166683,
+      "earnings": 104229,
+      "debt": 11935,
+      "admission_rate": 0.0474,
+      "months_to_repay": 1.4,
+      "four_year_cost_48_75k": 18484,
+      "cohort": 90,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "LA",
+      "college": "Southern University and A & M College",
+      "unitid": 160621,
+      "earnings": 44920,
+      "debt": null,
+      "admission_rate": 0.4987,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 86456,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Gurabo Campus",
+      "unitid": 243601,
+      "earnings": 37622,
+      "debt": 16500,
+      "admission_rate": -1.0,
+      "months_to_repay": 5.3,
+      "four_year_cost_48_75k": 38312,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Inter American University of Puerto Rico-Bayamon",
+      "unitid": 242705,
+      "earnings": 28300,
+      "debt": 19587,
+      "admission_rate": 0.3642,
+      "months_to_repay": 8.3,
+      "four_year_cost_48_75k": 43128,
+      "cohort": 32,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Electrical Engineering",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 17877,
+      "earnings_median": 78867,
+      "programs": 5,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 2.7,
+      "years_of_pay_48_75k_median": 0.5
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 20500,
+      "earnings_median": 74873,
+      "programs": 10,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 3.0,
+      "years_of_pay_48_75k_median": 0.6
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 23162,
+      "earnings_median": 70372,
+      "programs": 51,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 3.8,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 25500,
+      "earnings_median": 69420,
+      "programs": 177,
+      "four_year_cost_48_75k_median": 62000,
+      "months_to_repay_median": 4.4,
+      "years_of_pay_48_75k_median": 0.9
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 24978,
+      "earnings_median": 69655,
+      "programs": 201,
+      "four_year_cost_48_75k_median": 56000,
+      "months_to_repay_median": 4.2,
+      "years_of_pay_48_75k_median": 0.8
+    },
+    "private_nonprofit": {
+      "debt_median": 26000,
+      "earnings_median": 70690,
+      "programs": 51,
+      "four_year_cost_48_75k_median": 97000,
+      "months_to_repay_median": 4.5,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    "for_profit": {
+      "debt_median": 35989,
+      "earnings_median": 63708,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 120000,
+      "months_to_repay_median": 6.8,
+      "years_of_pay_48_75k_median": 1.9
+    }
+  },
+  "earnings_median": 69700,
+  "programs": 403,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.77,
+        "reporting": 243
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.72,
+        "reporting": 8
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "NY": 2,
+        "PR": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.12,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 4,
+        "MA": 1,
+        "TX": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 21199,
+  "debt_p75": 27000,
+  "earnings_p25": 66390,
+  "earnings_p75": 72417,
+  "four_year_cost": {
+    "sticker": 108000,
+    "gap_48_75k": 35000,
+    "programs_48_75k": 251,
+    "years_of_pay_48_75k": 0.9,
+    "income_0_30k": 43000,
+    "income_48_75k": 59000,
+    "income_110k_plus": 93000
+  },
+  "months_to_repay": {
+    "median": 4.3,
+    "programs": 232,
+    "of_major": 4.3,
+    "p25": 3.6,
+    "p75": 4.7
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "CA",
+        "college": "California State University-Fullerton",
+        "earnings": 67367,
+        "city": "Fullerton",
+        "debt": 15054,
+        "months_to_repay": 2.7,
+        "four_year_cost_48_75k": 21752
+      },
+      {
+        "control": "for_profit",
+        "state": "CA",
+        "college": "Southern California Institute of Technology",
+        "earnings": 63708,
+        "city": "Anaheim",
+        "debt": 35989,
+        "months_to_repay": 6.8,
+        "four_year_cost_48_75k": 120296
+      }
+    ],
+    "miles": 5
+  },
+  "online_only": {
+    "debt_median": 25500,
+    "earnings_median": 70595,
+    "programs": 1,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": 4.3,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 1,
+      "top_states": {
+        "PR": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 54,
+    "programs": 0
+  },
+  "programs_with_debt": 243,
+  "programs_with_earnings": 253,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.36
+}

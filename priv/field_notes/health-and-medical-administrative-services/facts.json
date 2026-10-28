@@ -1,0 +1,274 @@
+{
+  "name": "Health and Medical Administrative Services",
+  "largest": {
+    "debt_median": 39007,
+    "earnings_median": 38721,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 61000,
+    "months_to_repay_median": 12.3,
+    "years_of_pay_48_75k_median": 1.7,
+    "pooled": 1,
+    "share_of_graduates_percent": 33
+  },
+  "hash": "beb98c86459d",
+  "rank": 159,
+  "debt_median": 31000,
+  "flagged": [
+    {
+      "state": "TX",
+      "college": "Baptist Health System School of Health Professions",
+      "unitid": 223083,
+      "earnings": 71916,
+      "debt": 31731,
+      "admission_rate": 0.0,
+      "months_to_repay": 5.3,
+      "four_year_cost_48_75k": null,
+      "cohort": 44,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "IL",
+      "college": "University of St Francis",
+      "unitid": 148584,
+      "earnings": 62462,
+      "debt": 28135,
+      "admission_rate": 0.6393,
+      "months_to_repay": 5.4,
+      "four_year_cost_48_75k": 61056,
+      "cohort": 43,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "WI",
+      "college": "University of Wisconsin-Eau Claire",
+      "unitid": 240268,
+      "earnings": 60259,
+      "debt": 24995,
+      "admission_rate": 0.7608,
+      "months_to_repay": 5.0,
+      "four_year_cost_48_75k": 55212,
+      "cohort": 63,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NC",
+      "college": "Winston-Salem State University",
+      "unitid": 199999,
+      "earnings": 25333,
+      "debt": 30500,
+      "admission_rate": 0.6855,
+      "months_to_repay": 14.4,
+      "four_year_cost_48_75k": 62672,
+      "cohort": 85,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "PR",
+      "college": "Universidad Ana G. Mendez-Cupey Campus",
+      "unitid": 241739,
+      "earnings": 24632,
+      "debt": 32572,
+      "admission_rate": -1.0,
+      "months_to_repay": 15.9,
+      "four_year_cost_48_75k": 30368,
+      "cohort": 27,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "GA",
+      "college": "Brenau University",
+      "unitid": 139199,
+      "earnings": 24093,
+      "debt": 29648,
+      "admission_rate": 0.8696,
+      "months_to_repay": 14.8,
+      "four_year_cost_48_75k": 86204,
+      "cohort": 29,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Health Administration",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 28607,
+      "earnings_median": 41623,
+      "programs": 1,
+      "four_year_cost_48_75k_median": 42000,
+      "months_to_repay_median": 8.2,
+      "years_of_pay_48_75k_median": 1.0
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 23125,
+      "earnings_median": 40016,
+      "programs": 3,
+      "four_year_cost_48_75k_median": 54000,
+      "months_to_repay_median": 7.4,
+      "years_of_pay_48_75k_median": 1.1
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 27000,
+      "earnings_median": 38520,
+      "programs": 29,
+      "four_year_cost_48_75k_median": 85000,
+      "months_to_repay_median": 8.6,
+      "years_of_pay_48_75k_median": 2.0
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 29099,
+      "earnings_median": 38542,
+      "programs": 140,
+      "four_year_cost_48_75k_median": 68000,
+      "months_to_repay_median": 9.4,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 26438,
+      "earnings_median": 37900,
+      "programs": 108,
+      "four_year_cost_48_75k_median": 53000,
+      "months_to_repay_median": 8.2,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    "private_nonprofit": {
+      "debt_median": 34591,
+      "earnings_median": 40276,
+      "programs": 96,
+      "four_year_cost_48_75k_median": 86000,
+      "months_to_repay_median": 9.9,
+      "years_of_pay_48_75k_median": 2.1
+    },
+    "for_profit": {
+      "debt_median": 51958,
+      "earnings_median": 36653,
+      "programs": 70,
+      "four_year_cost_48_75k_median": 86000,
+      "months_to_repay_median": 16.4,
+      "years_of_pay_48_75k_median": 2.3
+    }
+  },
+  "earnings_median": 38047,
+  "programs": 632,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.82,
+        "reporting": 173
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.93,
+        "reporting": 4
+      },
+      "programs": 10,
+      "top_states": {
+        "GA": 3,
+        "NC": 2,
+        "PR": 3
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.76,
+        "reporting": 5
+      },
+      "programs": 10,
+      "top_states": {
+        "AZ": 1,
+        "KS": 3,
+        "WI": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 26426,
+  "debt_p75": 44994,
+  "earnings_p25": 34920,
+  "earnings_p75": 42299,
+  "four_year_cost": {
+    "sticker": 110000,
+    "gap_48_75k": 35000,
+    "programs_48_75k": 219,
+    "years_of_pay_48_75k": 1.7,
+    "income_0_30k": 59000,
+    "income_48_75k": 69000,
+    "income_110k_plus": 91000
+  },
+  "months_to_repay": {
+    "median": 9.9,
+    "programs": 245,
+    "of_major": 9.8,
+    "p25": 7.7,
+    "p75": 14.8
+  },
+  "nearby_pair": {
+    "programs": [
+      {
+        "control": "public",
+        "state": "MN",
+        "college": "University of Minnesota-Twin Cities",
+        "earnings": 52474,
+        "city": "Minneapolis",
+        "debt": 20271,
+        "months_to_repay": 4.6,
+        "four_year_cost_48_75k": 43444
+      },
+      {
+        "control": "for_profit",
+        "state": "MN",
+        "college": "Walden University",
+        "earnings": 52093,
+        "city": "Minneapolis",
+        "debt": 51904,
+        "months_to_repay": 12.0,
+        "four_year_cost_48_75k": null
+      }
+    ],
+    "miles": 2
+  },
+  "online_only": {
+    "debt_median": 47006,
+    "earnings_median": 46794,
+    "programs": 10,
+    "four_year_cost_48_75k_median": 64000,
+    "months_to_repay_median": 11.3,
+    "years_of_pay_48_75k_median": 1.6
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 85,
+    "programs": 0
+  },
+  "programs_with_debt": 287,
+  "programs_with_earnings": 274,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.81
+}

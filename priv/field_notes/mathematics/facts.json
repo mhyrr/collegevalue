@@ -1,0 +1,242 @@
+{
+  "name": "Mathematics",
+  "largest": {
+    "debt_median": 21842,
+    "earnings_median": 48162,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 58000,
+    "months_to_repay_median": 5.7,
+    "years_of_pay_48_75k_median": 1.5,
+    "pooled": 1,
+    "share_of_graduates_percent": 13
+  },
+  "hash": "1299011a6157",
+  "rank": 57,
+  "debt_median": 21500,
+  "flagged": [
+    {
+      "state": "MA",
+      "college": "Massachusetts Institute of Technology",
+      "unitid": 166683,
+      "earnings": 82796,
+      "debt": 10003,
+      "admission_rate": 0.0474,
+      "months_to_repay": 1.4,
+      "four_year_cost_48_75k": 18484,
+      "cohort": 36,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "IL",
+      "college": "University of Chicago",
+      "unitid": 144050,
+      "earnings": 81753,
+      "debt": 12000,
+      "admission_rate": 0.0479,
+      "months_to_repay": 1.8,
+      "four_year_cost_48_75k": 3080,
+      "cohort": 71,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "Cornell University",
+      "unitid": 190415,
+      "earnings": 77827,
+      "debt": 14146,
+      "admission_rate": 0.0816,
+      "months_to_repay": 2.2,
+      "four_year_cost_48_75k": 32516,
+      "cohort": 23,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "University of California-Riverside",
+      "unitid": 110671,
+      "earnings": 23826,
+      "debt": 18500,
+      "admission_rate": 0.633,
+      "months_to_repay": 9.3,
+      "four_year_cost_48_75k": 49796,
+      "cohort": 104,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "California State University-Long Beach",
+      "unitid": 110583,
+      "earnings": 23769,
+      "debt": 18000,
+      "admission_rate": 0.4712,
+      "months_to_repay": 9.1,
+      "four_year_cost_48_75k": 36252,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3"
+      ]
+    },
+    {
+      "state": "CA",
+      "college": "California State University-Fresno",
+      "unitid": 110556,
+      "earnings": 23239,
+      "debt": null,
+      "admission_rate": 0.9638,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 28880,
+      "cohort": 16,
+      "reasons": [
+        "bottom_3"
+      ]
+    }
+  ],
+  "short_name": "Mathematics",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 13113,
+      "earnings_median": 69896,
+      "programs": 14,
+      "four_year_cost_48_75k_median": 25000,
+      "months_to_repay_median": 2.2,
+      "years_of_pay_48_75k_median": 0.4
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18850,
+      "earnings_median": 54404,
+      "programs": 17,
+      "four_year_cost_48_75k_median": 48000,
+      "months_to_repay_median": 3.8,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 20847,
+      "earnings_median": 46658,
+      "programs": 46,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 5.4,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 22388,
+      "earnings_median": 41540,
+      "programs": 197,
+      "four_year_cost_48_75k_median": 64000,
+      "months_to_repay_median": 6.6,
+      "years_of_pay_48_75k_median": 1.5
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 21500,
+      "earnings_median": 42189,
+      "programs": 215,
+      "four_year_cost_48_75k_median": 59000,
+      "months_to_repay_median": 6.3,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    "private_nonprofit": {
+      "debt_median": 21000,
+      "earnings_median": 51698,
+      "programs": 65,
+      "four_year_cost_48_75k_median": 79000,
+      "months_to_repay_median": 4.4,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  },
+  "earnings_median": 43147,
+  "programs": 1259,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.76,
+        "reporting": 274
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.91,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AZ": 1,
+        "CA": 5,
+        "GA": 1
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.06,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "CA": 1,
+        "MA": 2,
+        "NY": 2
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 18500,
+  "debt_p75": 24644,
+  "earnings_p25": 38930,
+  "earnings_p75": 48730,
+  "four_year_cost": {
+    "sticker": 111000,
+    "gap_48_75k": 38000,
+    "programs_48_75k": 273,
+    "years_of_pay_48_75k": 1.4,
+    "income_0_30k": 44000,
+    "income_48_75k": 62000,
+    "income_110k_plus": 99000
+  },
+  "months_to_repay": {
+    "median": 6.0,
+    "programs": 222,
+    "of_major": 6.0,
+    "p25": 4.8,
+    "p75": 7.0
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": null,
+    "programs": 0,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 0,
+      "top_states": {}
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 29,
+    "programs": 0
+  },
+  "programs_with_debt": 270,
+  "programs_with_earnings": 280,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.5
+}

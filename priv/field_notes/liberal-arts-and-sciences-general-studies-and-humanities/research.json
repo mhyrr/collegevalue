@@ -1,0 +1,72 @@
+{
+  "facts_hash": "bec137ae8b35",
+  "field": "Liberal Arts and Sciences, General Studies and Humanities",
+  "hash": "ef3020a356d8",
+  "major": {
+    "leads_to": {
+      "evidence": "In California, Liberal Studies is the most common route to an elementary teaching credential, which takes a separate credential program after the degree. Elsewhere the major is mostly a degree-completion path straight into jobs.",
+      "finding": "mixed",
+      "source": "https://www.csustan.edu/liberal-studies/liberal-studies-major"
+    },
+    "nearby_pair": {
+      "evidence": "City College's interdisciplinary BA appears to run through its Center for Worker Education. It serves adults whose schooling was interrupted, with evening and Saturday classes and up to 90 transfer credits, so it is likely not a freshman program.",
+      "finding": "not_comparable",
+      "source": "https://ccny.cuny.edu/cwe/fact-sheet"
+    },
+    "school_matters": {
+      "evidence": "Pay is nearly flat from schools that admit 10 to 25 percent of applicants down to open ones. Only the four most selective programs earn more, and that includes MIT's Humanities and Science degree, which keeps MIT's full science core.",
+      "finding": "little",
+      "source": "https://catalog.mit.edu/interdisciplinary/undergraduate-programs/degrees/humanities-science"
+    },
+    "who_is_counted": {
+      "evidence": "Many big general studies degrees are built for adults returning to finish with prior credits, like ASU's transfer-friendly general studies BA, while state universities also enroll first-time freshmen in the major.",
+      "finding": "mixed",
+      "source": "https://degrees.asu.edu/bachelors/major/ASU00/LSGNSBGS/general-studies"
+    }
+  },
+  "programs": [
+    {
+      "cause": "selective_school",
+      "evidence": "MIT's interdisciplinary Humanities and Science degree requires the institute's full science and math core, and its graduates enter the same top employers as MIT's engineers.",
+      "source": "https://catalog.mit.edu/interdisciplinary/undergraduate-programs/degrees/humanities-science",
+      "unitid": 166683
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "Georgetown's Bachelor of Arts in Liberal Studies is a fully online program in its School of Continuing Studies. Admitted students typically bring prior college work or professional or military experience.",
+      "source": "https://scs.georgetown.edu/admissions/how-to-apply/bachelors-degree/",
+      "unitid": 131496
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Champlain runs a large online division for adult degree completers, but I could not confirm which Champlain program reports under this major, so the cause is unclear.",
+      "source": null,
+      "unitid": 230852
+    },
+    {
+      "cause": "online_adult",
+      "evidence": "American Public University System is an online university whose students are mostly working adults, many of them military or veterans, who are already employed when they finish.",
+      "source": "https://militaryplus.apus.edu/about/fast-facts/",
+      "unitid": 449339
+    },
+    {
+      "cause": "credential_mismatch",
+      "evidence": "Simpson's Liberal Studies is a teacher education track feeding California's elementary credential, so many graduates are likely still in credential training a year after finishing.",
+      "source": "https://simpsonu.edu/academics/degree-completion",
+      "unitid": 123457
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "Nothing found in the program's format or admissions explains its low earnings beyond a cohort near the small-cohort threshold.",
+      "source": null,
+      "unitid": 187897
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "Too few graduates are counted to give a reliable earnings figure.",
+      "source": null,
+      "unitid": 129774
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

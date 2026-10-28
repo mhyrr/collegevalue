@@ -1,0 +1,66 @@
+{
+  "facts_hash": "4dbd649e3711",
+  "field": "Biochemistry, Biophysics and Molecular Biology",
+  "hash": "a17a77239367",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS lists a doctoral or professional degree as the typical entry education for biochemists. Biological sciences majors make up most U.S. medical school applicants, so first-year pay understates many graduates who are still in school.",
+      "finding": "graduate_school",
+      "source": "https://www.bls.gov/ooh/life-physical-and-social-science/biochemists-and-biophysicists.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both are traditional four-year residential biochemistry bachelor's programs that admit first-year students. USC runs its BS jointly between biology and chemistry, and Occidental runs an interdisciplinary major built on research.",
+      "finding": "comparable",
+      "source": "https://www.oxy.edu/academics/areas-study/biochemistry"
+    },
+    "school_matters": {
+      "evidence": "Pay barely changes with selectivity. Research biochemist jobs require a Ph.D., and a bachelor's qualifies a graduate for only some entry-level lab roles, so first jobs pay about the same from any school.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/life-physical-and-social-science/biochemists-and-biophysicists.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The largest programs have no online-only offerings and admit students as freshmen at research universities, so their graduates are mostly new graduates, not working adults finishing a degree. I did not check each program's admission page.",
+      "finding": "new_graduates",
+      "source": "https://admission.universityofcalifornia.edu/"
+    }
+  },
+  "programs": [
+    {
+      "cause": "data_error",
+      "evidence": "The Oakland campus reports the same figures as Northeastern's Boston campus, so its numbers appear to be pooled with Boston's rather than measured on its own.",
+      "source": null,
+      "unitid": 118888
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Northeastern's highly selective biochemistry BS builds paid co-op terms into the degree, and students have worked at pharmaceutical companies in Cambridge before graduating.",
+      "source": "https://catalog.northeastern.edu/undergraduate/science/biochemistry/biochemistry-bs/",
+      "unitid": 167358
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "CSUSM sits in San Diego County, which it calls a worldwide biotech hub with over a thousand companies. Its alumni work at local employers such as Illumina and Thermo Fisher.",
+      "source": "https://csusm.edu/biology/prospective_students/index.html",
+      "unitid": 366711
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found nothing specific to this program that explains its low figure. Graduates who go on to medical or doctoral study may lower it, but I could not confirm that.",
+      "source": null,
+      "unitid": 190567
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found no program feature that explains the low figure. Graduates going straight to medical or doctoral study may account for it, but I could not confirm that.",
+      "source": null,
+      "unitid": 201645
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found no program feature that explains the low figure. Many graduates may be in medical or graduate school or low-paid research jobs, but I could not confirm that for this cohort.",
+      "source": null,
+      "unitid": 221999
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

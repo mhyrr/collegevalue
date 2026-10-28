@@ -1,0 +1,66 @@
+{
+  "facts_hash": "172f1204f008",
+  "field": "Film/Video and Photographic Arts",
+  "hash": "faa80f382543",
+  "major": {
+    "leads_to": {
+      "evidence": "Graduates go straight into production work as editors, camera operators and photographers. These jobs need no license or graduate degree, and a large share of workers are self-employed freelancers.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/media-and-communication/film-and-video-editors-and-camera-operators.htm"
+    },
+    "nearby_pair": {
+      "evidence": "Both programs take first-year students. Berkeley students can declare Film & Media after one intro film course and 30 units, and Academy of Art in San Francisco has open undergraduate admission. Berkeley's major leans toward film study, while Academy of Art teaches production.",
+      "finding": "comparable",
+      "source": "https://filmmedia.berkeley.edu/faq/film-media-faqs"
+    },
+    "school_matters": {
+      "evidence": "This is mostly project-based work with no license and no fixed pay scale. Many editors and camera operators are self-employed and move from job to job, so a school's name lifts first-year pay only modestly.",
+      "finding": "some",
+      "source": "https://www.bls.gov/ooh/media-and-communication/film-and-video-editors-and-camera-operators.htm"
+    },
+    "who_is_counted": {
+      "evidence": "Big film schools such as Academy of Art (open admission to anyone with a high school diploma or GED) and Full Sail (an interview and a high school transcript) admit students right out of high school. Neither requires work experience.",
+      "finding": "new_graduates",
+      "source": "https://nces.ed.gov/collegenavigator/?id=108232"
+    }
+  },
+  "programs": [
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I found nothing in this program's admissions or format that explains why its graduates earn more than the typical program's.",
+      "source": null,
+      "unitid": 165015
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The figure rests on fewer than twenty graduates, too few to trust.",
+      "source": null,
+      "unitid": 213385
+    },
+    {
+      "cause": "small_cohort",
+      "evidence": "The figure rests on fewer than twenty graduates, too few to trust.",
+      "source": null,
+      "unitid": 182670
+    },
+    {
+      "cause": "data_error",
+      "evidence": "The Atlanta campus and the AIU system report identical earnings and cohort sizes, so the two campuses' figures appear to be pooled.",
+      "source": null,
+      "unitid": 438586
+    },
+    {
+      "cause": "data_error",
+      "evidence": "The AIU system and its Atlanta campus report identical earnings and cohort sizes, so the two campuses' figures appear to be pooled.",
+      "source": null,
+      "unitid": 445027
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "This for-profit conservatory's BFA admits high school graduates with a portfolio, like other film schools, and I found nothing in its admissions or format that explains its low earnings.",
+      "source": null,
+      "unitid": 461148
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

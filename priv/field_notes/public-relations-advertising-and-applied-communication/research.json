@@ -1,0 +1,66 @@
+{
+  "facts_hash": "5ec9c3c5ea19",
+  "field": "Public Relations, Advertising, and Applied Communication",
+  "hash": "e14e97ae9ae6",
+  "major": {
+    "leads_to": {
+      "evidence": "BLS says public relations specialists typically need only a bachelor's in public relations, journalism, communications or a related field, with no license. Graduates mostly go straight into agency or corporate communications jobs.",
+      "finding": "direct_jobs",
+      "source": "https://www.bls.gov/ooh/media-and-communication/public-relations-specialists.htm"
+    },
+    "nearby_pair": {
+      "evidence": "No nearby pair was identified for this major.",
+      "finding": "none",
+      "source": null
+    },
+    "school_matters": {
+      "evidence": "PR jobs need no license or graduate degree. BLS says a bachelor's is the usual entry credential, with no experience required, so graduates of open schools compete for the same agency and in-house jobs as graduates of selective ones.",
+      "finding": "little",
+      "source": "https://www.bls.gov/ooh/media-and-communication/public-relations-specialists.htm"
+    },
+    "who_is_counted": {
+      "evidence": "The largest programs are campus programs that admit first-year students, such as Syracuse's Newhouse school, which enrolls freshmen directly into strategic communication majors. None of the largest programs is online-only.",
+      "finding": "new_graduates",
+      "source": "https://go.syracuse.edu/newhouse/newhouse-strategic-communications"
+    }
+  },
+  "programs": [
+    {
+      "cause": "high_cost_region",
+      "evidence": "San Jose State's program sits in Silicon Valley, requires an internship, and lists Bay Area tech firms such as Apple, Meta and NVIDIA among its alumni's top employers.",
+      "source": "https://sjsu.edu/online/programs/public-relations.php",
+      "unitid": 122755
+    },
+    {
+      "cause": "high_cost_region",
+      "evidence": "GW's program is in its School of Media and Public Affairs in downtown Washington, which is built around political and public affairs communication and has a high-paying local market for those jobs.",
+      "source": "https://smpa.gwu.edu/prospective-students",
+      "unitid": 131469
+    },
+    {
+      "cause": "selective_school",
+      "evidence": "Syracuse's Newhouse School is a nationally known communications school. Its accreditation report shows most new graduates working full-time in the field within six months.",
+      "source": "https://lookup.acejmc.org/overview/?unit=18",
+      "unitid": 196413
+    },
+    {
+      "cause": "no_clear_cause",
+      "evidence": "I could not find a program feature, format or local labor market that explains why this program's earnings are lower.",
+      "source": null,
+      "unitid": 133650
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "BLS reports that wages in the El Paso metro area are well below the national average in most occupational groups.",
+      "source": "https://www.bls.gov/regions/southwest/news-release/occupationalemploymentandwages_elpaso.htm",
+      "unitid": 228796
+    },
+    {
+      "cause": "low_cost_region",
+      "evidence": "The program is in Puerto Rico, where BLS occupational wage data show pay well below mainland levels across occupations.",
+      "source": "https://www.bls.gov/oes/2023/may/oes_pr.htm",
+      "unitid": 243443
+    }
+  ],
+  "prompt_hash": "f5fda7c9e875"
+}

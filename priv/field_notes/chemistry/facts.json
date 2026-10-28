@@ -1,0 +1,249 @@
+{
+  "name": "Chemistry",
+  "largest": {
+    "debt_median": 15953,
+    "earnings_median": 38807,
+    "programs": 10,
+    "online_only": 0,
+    "four_year_cost_48_75k_median": 45000,
+    "months_to_repay_median": 5.2,
+    "years_of_pay_48_75k_median": 1.1,
+    "pooled": 0,
+    "share_of_graduates_percent": 17
+  },
+  "hash": "b41565487d35",
+  "rank": 104,
+  "debt_median": 24000,
+  "flagged": [
+    {
+      "state": "CA",
+      "college": "Northeastern University Oakland",
+      "unitid": 118888,
+      "earnings": 54138,
+      "debt": 24500,
+      "admission_rate": 0.1654,
+      "months_to_repay": 5.4,
+      "four_year_cost_48_75k": null,
+      "cohort": 33,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "MA",
+      "college": "Northeastern University",
+      "unitid": 167358,
+      "earnings": 54138,
+      "debt": 24500,
+      "admission_rate": 0.0565,
+      "months_to_repay": 5.4,
+      "four_year_cost_48_75k": 41928,
+      "cohort": 33,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "LA",
+      "college": "Louisiana State University and Agricultural & Mechanical College",
+      "unitid": 159391,
+      "earnings": 53433,
+      "debt": 14910,
+      "admission_rate": 0.74,
+      "months_to_repay": 3.3,
+      "four_year_cost_48_75k": 85044,
+      "cohort": 18,
+      "reasons": [
+        "top_3"
+      ]
+    },
+    {
+      "state": "NY",
+      "college": "CUNY Brooklyn College",
+      "unitid": 190549,
+      "earnings": 16916,
+      "debt": null,
+      "admission_rate": 0.5366,
+      "months_to_repay": null,
+      "four_year_cost_48_75k": 26904,
+      "cohort": 21,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "NE",
+      "college": "Creighton University",
+      "unitid": 181002,
+      "earnings": 16304,
+      "debt": 26733,
+      "admission_rate": 0.7231,
+      "months_to_repay": 19.7,
+      "four_year_cost_48_75k": 102636,
+      "cohort": 18,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    },
+    {
+      "state": "MO",
+      "college": "Washington University in St Louis",
+      "unitid": 179867,
+      "earnings": 14152,
+      "debt": 17360,
+      "admission_rate": 0.1196,
+      "months_to_repay": 14.7,
+      "four_year_cost_48_75k": 7452,
+      "cohort": 17,
+      "reasons": [
+        "bottom_3",
+        "below_half_median"
+      ]
+    }
+  ],
+  "short_name": "Chemistry",
+  "by_admission": [
+    {
+      "band": "under_10_percent",
+      "debt_median": 15121,
+      "earnings_median": 36403,
+      "programs": 7,
+      "four_year_cost_48_75k_median": 37000,
+      "months_to_repay_median": 4.9,
+      "years_of_pay_48_75k_median": 0.9
+    },
+    {
+      "band": "10_to_25_percent",
+      "debt_median": 18393,
+      "earnings_median": 36386,
+      "programs": 14,
+      "four_year_cost_48_75k_median": 47000,
+      "months_to_repay_median": 7.4,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    {
+      "band": "25_to_60_percent",
+      "debt_median": 20154,
+      "earnings_median": 37769,
+      "programs": 36,
+      "four_year_cost_48_75k_median": 51000,
+      "months_to_repay_median": 6.6,
+      "years_of_pay_48_75k_median": 1.4
+    },
+    {
+      "band": "over_60_percent",
+      "debt_median": 24250,
+      "earnings_median": 36740,
+      "programs": 158,
+      "four_year_cost_48_75k_median": 63000,
+      "months_to_repay_median": 7.7,
+      "years_of_pay_48_75k_median": 1.7
+    }
+  ],
+  "by_control": {
+    "public": {
+      "debt_median": 23375,
+      "earnings_median": 37397,
+      "programs": 181,
+      "four_year_cost_48_75k_median": 58000,
+      "months_to_repay_median": 7.5,
+      "years_of_pay_48_75k_median": 1.5
+    },
+    "private_nonprofit": {
+      "debt_median": 25236,
+      "earnings_median": 35806,
+      "programs": 40,
+      "four_year_cost_48_75k_median": 74000,
+      "months_to_repay_median": 8.8,
+      "years_of_pay_48_75k_median": 2.3
+    }
+  },
+  "earnings_median": 37122,
+  "programs": 1190,
+  "ends": {
+    "all": {
+      "admission_rate": {
+        "median": 0.8,
+        "reporting": 215
+      }
+    },
+    "bottom": {
+      "admission_rate": {
+        "median": 0.63,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "FL": 1,
+        "NY": 2
+      }
+    },
+    "top": {
+      "admission_rate": {
+        "median": 0.77,
+        "reporting": 10
+      },
+      "programs": 10,
+      "top_states": {
+        "AL": 1,
+        "CA": 1,
+        "CT": 5
+      }
+    }
+  },
+  "all_majors_earnings_median": 37050,
+  "debt_p25": 20154,
+  "debt_p75": 26158,
+  "earnings_p25": 32284,
+  "earnings_p75": 40286,
+  "four_year_cost": {
+    "sticker": 109000,
+    "gap_48_75k": 36000,
+    "programs_48_75k": 218,
+    "years_of_pay_48_75k": 1.6,
+    "income_0_30k": 43000,
+    "income_48_75k": 60000,
+    "income_110k_plus": 94000
+  },
+  "months_to_repay": {
+    "median": 7.6,
+    "programs": 184,
+    "of_major": 7.6,
+    "p25": 6.4,
+    "p75": 8.6
+  },
+  "nearby_pair": null,
+  "online_only": {
+    "debt_median": null,
+    "earnings_median": null,
+    "programs": 0,
+    "four_year_cost_48_75k_median": null,
+    "months_to_repay_median": null,
+    "years_of_pay_48_75k_median": null
+  },
+  "outliers": {
+    "below_half_median": {
+      "count": 3,
+      "top_states": {
+        "MO": 1,
+        "NE": 1,
+        "NY": 1
+      }
+    },
+    "above_2x_median": {
+      "count": 0,
+      "top_states": {}
+    }
+  },
+  "parent_plus_over_24_months": {
+    "of": 31,
+    "programs": 0
+  },
+  "programs_with_debt": 253,
+  "programs_with_earnings": 221,
+  "ranked_of": 222,
+  "debt_to_earnings": 0.65
+}
