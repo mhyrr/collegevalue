@@ -108,17 +108,21 @@ No sentence that only restates the computed answer above the note.
 
 ## Naming schools
 
-Describe programs by kind and place: "public universities", "schools that
-admit under a tenth of applicants", "two programs in the Denver area". Name
-a school only when something specific to it explains its figure, and a
-student should know it:
+Name the schools in an example. A pair of programs that pay alike but cost
+differently reads as proof when the student can see which two schools they
+are: "Barry University and Miami Dade College, 7 miles apart in Miami, pay
+about the same". Use each school's full name exactly as the facts give it
+(`college`) on first mention, since the page links that name to the school's
+own page; a short form ("Miami Dade") is fine after that.
+
+Also name a school when something specific to it explains its figure:
 
 - it admits only working professionals (SIUC's fire service track);
 - its graduates do a different job (Cal Maritime's licensed marine engineers);
 - its figure looks wrong, or is pooled with another campus's.
 
-Never name a school as the example of a top school, a small cohort or a
-low-paying region, and never cite one school's outcomes as the major's.
+Describe groups by kind: "public universities", "schools that admit under a
+tenth of applicants". Never cite one school's outcomes as the major's.
 
 ## Numbers and verdicts
 

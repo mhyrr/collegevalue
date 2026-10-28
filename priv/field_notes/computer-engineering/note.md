@@ -1,11 +1,11 @@
 ---
-field: Computer Engineering
-status: draft
-facts_hash: 829d9aefa66c
-research_hash: 667552d75198
-prompt_hash: 61d33ad7f406
-model: opus
 drafted: 2026-10-28
+facts_hash: 829d9aefa66c
+field: Computer Engineering
+model: opus
+prompt_hash: 61d33ad7f406
+research_hash: 667552d75198
+status: approved
 ---
 
 Student debt barely moves with the school in Computer Engineering: at public, private and for-profit programs alike, the typical loan takes 4.1 to 4.5 months of first-year pay to repay. The real difference is the family's bill. Four years at a for-profit costs a middle-income family about $128,000, or 2.8 years of first-year pay, and its graduates earn the least of any kind of school.

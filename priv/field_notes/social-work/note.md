@@ -10,4 +10,4 @@ status: approved
 
 In Social Work, a more selective school does not buy higher pay. Graduates of schools that admit a quarter or fewer of applicants owe about 16.9 months of first-year pay, against 9.8 months at the schools that admit most applicants. Most new graduates take nonclinical jobs in agencies and government, where the employer sets the pay regardless of the school (BLS).
 
-So cost matters more than name. Private nonprofits cost a middle-income family about $78,000 over four years, public universities about $57,000, and their graduates earn about the same. Two programs 11 miles apart in the San Juan area pay about the same, yet one leaves graduates owing 17.2 months of pay and the other 7.8.
+So cost matters more than name. Private nonprofits cost a middle-income family about $78,000 over four years, public universities about $57,000, and their graduates earn about the same. Two campuses of one university 11 miles apart pay about the same, yet Universidad Ana G. Mendez-Cupey Campus leaves graduates owing 17.2 months of pay and Universidad Ana G. Mendez-Gurabo Campus 7.8.

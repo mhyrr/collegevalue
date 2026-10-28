@@ -1,11 +1,11 @@
 ---
-field: Health Services/Allied Health/Health Sciences, General
-status: draft
-facts_hash: 143727e22e3c
-research_hash: c9b96c5b0c73
-prompt_hash: 61d33ad7f406
-model: opus
 drafted: 2026-10-28
+facts_hash: 143727e22e3c
+field: Health Services/Allied Health/Health Sciences, General
+model: opus
+prompt_hash: 61d33ad7f406
+research_hash: c9b96c5b0c73
+status: approved
 ---
 
 Health Sciences graduates of schools that admit fewer applicants earn less a year out than graduates of open schools. Colleges such as the University of Florida run the major as a track into medicine, physician assistant, physical therapy and occupational therapy programs, according to UF's catalog, so many of their graduates are still in professional school when the Scorecard measures pay. First-year earnings here show who has started work, not where the degree leads.

@@ -8,6 +8,6 @@ research_hash: 565f314367aa
 status: approved
 ---
 
-Two Political Science programs 4 miles apart in New York pay their graduates about the same in the first year. One leaves them owing about $9,500 and the other about $26,000. For a family earning $48,000 to $75,000, four years costs about $26,000 at the public one and about $117,000 at the private one.
+CUNY Hunter College and Pace University, 4 miles apart in New York, pay their Political Science graduates about the same in the first year. Hunter leaves them owing about $9,500 and Pace about $26,000. For a family earning $48,000 to $75,000, four years costs about $26,000 at Hunter and about $117,000 at Pace.
 
 At the ordinary schools that admit most applicants, the typical loan takes 8.6 months of first-year pay. Public universities cost a middle-income family about $58,000 over four years, against about $84,000 at private nonprofits. Political Science is the most common major among law school applicants, according to applicant data compiled by Stony Brook University, so a student planning on law school has more reason to keep this degree's cost low.

@@ -1,11 +1,11 @@
 ---
-field: Health and Medical Administrative Services
-status: draft
-facts_hash: beb98c86459d
-research_hash: 5120a2289f55
-prompt_hash: 61d33ad7f406
-model: opus
 drafted: 2026-10-28
+facts_hash: beb98c86459d
+field: Health and Medical Administrative Services
+model: opus
+prompt_hash: 61d33ad7f406
+research_hash: 5120a2289f55
+status: approved
 ---
 
 Health Administration graduates earn about the same wherever they study, yet for-profit programs leave them owing about $52,000, twice what public graduates owe. At a for-profit, that debt takes 16.4 months of first-year pay to repay, against 8.2 at a public university, and the for-profit pay is slightly lower. The Bureau of Labor Statistics says health services managers usually need prior administrative or clinical experience, so new graduates from any school start in support jobs before they manage anyone.
