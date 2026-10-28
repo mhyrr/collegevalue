@@ -134,3 +134,81 @@ clusters:
         page: /fields/kinesiology-and-exercise-science
         role: primary
         status: published
+      # Next round (2026-10-28): the most common bachelor's majors by graduates
+      # that had no note yet, plus philosophy as a stepping-stone major.
+      - query: is a liberal arts degree worth it
+        page: /fields/liberal-arts
+        role: primary
+        status: planned
+      - query: is a computer information systems degree worth it
+        page: /fields/computer-and-information-sciences
+        role: primary
+        status: planned
+      - query: is a math degree worth it
+        page: /fields/mathematics
+        role: primary
+        status: planned
+      - query: is a graphic design degree worth it
+        page: /fields/design-and-applied-arts
+        role: primary
+        status: planned
+      - query: is a public health degree worth it
+        page: /fields/public-health
+        role: primary
+        status: planned
+      - query: is a healthcare administration degree worth it
+        page: /fields/health-administration
+        role: primary
+        status: planned
+      - query: is an electrical engineering degree worth it
+        page: /fields/electrical-engineering
+        role: primary
+        status: planned
+      - query: is a health science degree worth it
+        page: /fields/health-sciences
+        role: primary
+        status: planned
+      - query: is a public relations degree worth it
+        page: /fields/public-relations-and-advertising
+        role: primary
+        status: planned
+      - query: is a music degree worth it
+        page: /fields/music
+        role: primary
+        status: planned
+      - query: is a chemistry degree worth it
+        page: /fields/chemistry
+        role: primary
+        status: planned
+      - query: is a civil engineering degree worth it
+        page: /fields/civil-engineering
+        role: primary
+        status: planned
+      - query: is a theatre degree worth it
+        page: /fields/theatre
+        role: primary
+        status: planned
+      - query: is a journalism degree worth it
+        page: /fields/journalism
+        role: primary
+        status: planned
+      - query: is a biochemistry degree worth it
+        page: /fields/biochemistry
+        role: primary
+        status: planned
+      - query: is a film degree worth it
+        page: /fields/film-and-photography
+        role: primary
+        status: planned
+      - query: is a computer engineering degree worth it
+        page: /fields/computer-engineering
+        role: primary
+        status: planned
+      - query: is a human resources degree worth it
+        page: /fields/human-resources
+        role: primary
+        status: planned
+      - query: is a philosophy degree worth it
+        page: /fields/philosophy
+        role: primary
+        status: planned
