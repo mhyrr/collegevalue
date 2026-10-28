@@ -200,4 +200,24 @@ defmodule Collegevalue.FieldNotesTest do
     File.write!(map, "page: /fields/no-such-field\n")
     assert_raise Ecto.NoResultsError, fn -> FieldNotes.keyword_map_fields(map) end
   end
+
+  describe "link_colleges/2" do
+    test "links each school named, the longer name first" do
+      colleges = [{"Miami Dade College", 1}, {"Barry University", 2}, {"Miami", 3}, {"Barry University", 2}]
+      [paragraph] = FieldNotes.link_colleges(["Miami Dade College costs less than Barry University's program."], colleges)
+
+      assert paragraph == [{"Miami Dade College", 1}, " costs less than ", {"Barry University", 2}, "'s program."]
+    end
+
+    test "links only a school's first mention" do
+      assert FieldNotes.link_colleges(["Pace University costs more.", "Pace University pays the same."], [{"Pace University", 1}]) ==
+               [[{"Pace University", 1}, " costs more."], ["Pace University", " pays the same."]]
+    end
+
+    test "leaves a name two schools share as text" do
+      colleges = [{"Bellevue University", 1}, {"Bellevue University", 2}]
+
+      assert FieldNotes.link_colleges(["Bellevue University pays well."], colleges) == [["Bellevue University pays well."]]
+    end
+  end
 end

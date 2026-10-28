@@ -122,6 +122,100 @@ defmodule Collegevalue.FieldNotes do
   end
 
   @doc """
+  What the noted majors show about selectivity, from their facts: per major,
+  first-year pay at schools that admit under a tenth and at those admitting
+  25 to 60 percent, each against the schools that admit most applicants, and
+  what each costs a family earning $48,000 to $75,000. `nil` with no majors.
+  """
+  def selectivity do
+    majors = Enum.map(approved_fields(), &read_json(&1, "facts.json"))
+    top = band_pairs(majors, "under_10_percent")
+    middle = band_pairs(majors, "25_to_60_percent")
+    costs = Enum.filter(top, &(&1.cost && &1.open_cost))
+
+    if top != [] and middle != [] do
+      ranked = Enum.sort_by(top, & &1.ratio, :desc)
+
+      %{
+        majors: length(majors),
+        top_majors: length(top),
+        top_premium: median(Enum.map(top, & &1.ratio)) - 1,
+        middle_premium: median(Enum.map(middle, & &1.ratio)) - 1,
+        middle_majors: length(middle),
+        middle_within_10: Enum.count(middle, &(abs(&1.ratio - 1) < 0.10)),
+        largest: ranked |> Enum.take(3) |> Enum.map(& &1.name),
+        smallest: ranked |> Enum.take(-3) |> Enum.reverse() |> Enum.map(& &1.name),
+        cost_majors: length(costs),
+        top_cheaper: Enum.count(costs, &(&1.cost < &1.open_cost)),
+        top_cost: median(Enum.map(costs, & &1.cost)),
+        open_cost: median(Enum.map(costs, & &1.open_cost))
+      }
+    end
+  end
+
+  # The majors with both `band` and the open schools, as the pay ratio and costs.
+  defp band_pairs(majors, band) do
+    Enum.flat_map(majors, fn facts ->
+      bands = Map.new(facts["by_admission"] || [], &{&1["band"], &1})
+
+      case {bands[band], bands["over_60_percent"]} do
+        {%{"earnings_median" => pay} = b, %{"earnings_median" => open} = o} when is_number(pay) and is_number(open) and pay > 0 and open > 0 ->
+          [%{name: facts["short_name"], ratio: pay / open,
+             cost: b["four_year_cost_48_75k_median"], open_cost: o["four_year_cost_48_75k_median"]}]
+
+        _ ->
+          []
+      end
+    end)
+  end
+
+  defp median(values) do
+    sorted = Enum.sort(values)
+    n = length(sorted)
+    if rem(n, 2) == 1, do: Enum.at(sorted, div(n, 2)), else: (Enum.at(sorted, div(n, 2) - 1) + Enum.at(sorted, div(n, 2))) / 2
+  end
+
+  @doc """
+  Splits each paragraph into text and the schools it names, so the page can
+  link them: a paragraph becomes a list of strings and `{name, unitid}`.
+  `colleges` is `[{name, unitid}]`. Only a school's first mention links. A
+  name two schools share links neither, and a longer name wins over one
+  inside it ("Miami Dade College" over "Miami").
+  """
+  def link_colleges(paragraphs, colleges) do
+    ids =
+      colleges
+      |> Enum.uniq()
+      |> Enum.group_by(&elem(&1, 0), &elem(&1, 1))
+      |> Enum.flat_map(fn {name, [id]} -> [{name, id}]; _ -> [] end)
+      |> Map.new()
+
+    {linked, _seen} =
+      Enum.map_reduce(paragraphs, MapSet.new(), fn text, seen ->
+        text
+        |> link_paragraph(ids)
+        |> Enum.map_reduce(seen, fn
+          {name, _id} = part, seen -> if name in seen, do: {name, seen}, else: {part, MapSet.put(seen, name)}
+          text, seen -> {text, seen}
+        end)
+      end)
+
+    linked
+  end
+
+  defp link_paragraph(text, ids) do
+    case ids |> Map.keys() |> Enum.filter(&String.contains?(text, &1)) |> Enum.sort_by(&(-String.length(&1))) do
+      [] ->
+        [text]
+
+      names ->
+        ~r/(?<!\w)(#{Enum.map_join(names, "|", &Regex.escape/1)})(?!\w)/u
+        |> Regex.split(text, include_captures: true, trim: true)
+        |> Enum.map(fn part -> if id = ids[part], do: {part, id}, else: part end)
+    end
+  end
+
+  @doc """
   The names of the majors whose note is approved, by short name. The home page
   links these, since they are the field pages with the most to read.
   """

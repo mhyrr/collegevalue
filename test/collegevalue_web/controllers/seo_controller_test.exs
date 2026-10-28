@@ -85,6 +85,25 @@ defmodule CollegevalueWeb.SeoControllerTest do
       write.("note.md", Collegevalue.FieldNotes.render_note([status: "approved"], "A note."))
       assert build_conn() |> get("/") |> html_response(200) =~ link
     end
+
+    test "says what the noted majors show about selective schools", %{conn: conn} do
+      root = Path.join(System.tmp_dir!(), "field_notes_#{System.unique_integer([:positive])}")
+      Application.put_env(:collegevalue, :field_notes_root, root)
+      on_exit(fn -> Application.delete_env(:collegevalue, :field_notes_root); File.rm_rf!(root) end)
+
+      band = fn name, pay, cost -> %{band: name, earnings_median: pay, four_year_cost_48_75k_median: cost} end
+      facts = %{name: "Computer Science", short_name: "Computer Science",
+                by_admission: [band.("under_10_percent", 130_000, 30_000), band.("25_to_60_percent", 70_000, 70_000),
+                               band.("over_60_percent", 65_000, 60_000)]}
+      Collegevalue.FieldNotes.write!("Computer Science", "facts.json", Jason.encode!(facts))
+      Collegevalue.FieldNotes.write!("Computer Science", "note.md", Collegevalue.FieldNotes.render_note([status: "approved"], "A note."))
+
+      html = conn |> get("/") |> html_response(200)
+      assert html =~ "What 1 Majors Show"
+      assert html =~ "earn a median 100% more in their first year"
+      assert html =~ "pay 8% more, and in 1 of 1 majors"
+      assert html =~ "typically pays $30,000 over four years, against $60,000"
+    end
   end
 
   describe "the college page head" do
@@ -153,7 +172,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       Application.put_env(:collegevalue, :field_notes_root, root)
       on_exit(fn -> Application.delete_env(:collegevalue, :field_notes_root); File.rm_rf!(root) end)
 
-      body = "The school matters as much as the major here."
+      body = "The school matters as much as the major here, as at Yale University."
       write = &Collegevalue.FieldNotes.write!("Computer Science", "note.md",
                  Collegevalue.FieldNotes.render_note([status: &1], body))
 
@@ -161,7 +180,9 @@ defmodule CollegevalueWeb.SeoControllerTest do
       refute conn |> get("/fields/computer-science") |> html_response(200) =~ body
 
       write.("approved")
-      assert build_conn() |> get("/fields/computer-science") |> html_response(200) =~ body
+      html = build_conn() |> get("/fields/computer-science") |> html_response(200)
+      assert html =~ "The school matters as much as the major here, as at "
+      assert html =~ ~s(href="/colleges/130794/Yale%20University">Yale University</a>.)
     end
 
     test "has no answer when no program reports earnings", %{conn: conn} do

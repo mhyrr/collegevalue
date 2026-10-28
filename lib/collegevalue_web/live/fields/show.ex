@@ -67,7 +67,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by)}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by)}
   end
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
@@ -93,7 +93,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by)}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by)}
   end
 
 
@@ -106,7 +106,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
       |> sort_majors("earnings")
       |> handle_direction("desc", "earnings")
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc")}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc")}
   end
 
 
@@ -201,8 +201,10 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   # Sorting patches the URL and reruns handle_params; the facts only depend on
   # the field, so they are computed once per field.
-  defp assign_facts(%{assigns: %{facts: %{name: name}}} = socket, %{name: name}), do: socket
-  defp assign_facts(socket, field) do
-    assign(socket, facts: Facts.for_field(field.name), note: FieldNotes.approved_paragraphs(field.name))
+  defp assign_facts(%{assigns: %{facts: %{name: name}}} = socket, %{name: name}, _majors), do: socket
+  defp assign_facts(socket, field, majors) do
+    colleges = Enum.map(majors, &{&1.college_name, &1.unit_id})
+    note = field.name |> FieldNotes.approved_paragraphs() |> FieldNotes.link_colleges(colleges)
+    assign(socket, facts: Facts.for_field(field.name), note: note)
   end
 end

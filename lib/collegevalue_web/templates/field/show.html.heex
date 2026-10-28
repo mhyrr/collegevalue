@@ -9,7 +9,7 @@
     <h2 class="text-lg text-darkgreen"><%= field_question(@field.name) %></h2>
     <p><%= Enum.join(field_answer(@facts), " ") %></p>
     <%= for paragraph <- @note do %>
-      <p><%= paragraph %></p>
+      <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: Routes.college_path(@socket, :show, unitid, name), class: "no-underline text-green" %><% text -> %><%= text %><% end %><% end %></p>
     <% end %>
     <p class="text-sm text-gray-600">
       These are earnings one year after graduating, for students who received federal aid.

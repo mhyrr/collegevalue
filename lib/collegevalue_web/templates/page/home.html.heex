@@ -41,6 +41,27 @@
         </a>
       </div>
 
+      <%= if @selectivity do %>
+        <h2 class="text-darkgreen text-2xl font-display pt-8 pb-2">What <%= @selectivity.majors %> Majors Show</h2>
+        <div class="selectivity">
+          <p class="pb-4">
+            Across the majors we've written up, the school matters in one place: the top.
+            Graduates of schools that admit under a tenth of applicants earn a median <%= percent_more(@selectivity.top_premium) %> more in their first year than graduates of schools that admit most applicants.
+            Below that tier, the school barely matters. Schools that admit a quarter to 60 percent pay <%= percent_more(@selectivity.middle_premium) %> more, and in <%= @selectivity.middle_within_10 %> of <%= @selectivity.middle_majors %> majors they pay within 10 percent of the open schools.
+          </p>
+          <p class="pb-4">
+            The most selective schools usually cost less, too. Their aid means a family earning $48,000 to $75,000 typically pays <%= cash(@selectivity.top_cost) %> over four years, against <%= cash(@selectivity.open_cost) %> at schools that admit most applicants.
+            They cost less in <%= @selectivity.top_cheaper %> of <%= @selectivity.cost_majors %> majors.
+            Part of the pay gap is the students, who might earn more anywhere.
+          </p>
+          <p class="pb-4">
+            <b>So if you can get into one of the most selective schools, it is usually the better deal on pay and on price.
+            If not, where you go matters far less than what it costs: pick the school that leaves you owing the least.</b>
+            The pay gap is largest in <%= and_join(@selectivity.largest) %>, and smallest in <%= and_join(@selectivity.smallest) %>.
+          </p>
+        </div>
+      <% end %>
+
       <%= if @noted_fields != [] do %>
         <h2 class="text-darkgreen text-2xl font-display pt-8 pb-2">Is Your Major Worth It?</h2>
         <p class="pb-4">What graduates of each major earn and owe, how long the debt takes to repay, and what the numbers leave out.</p>
