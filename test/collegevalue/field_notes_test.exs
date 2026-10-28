@@ -90,7 +90,7 @@ defmodule Collegevalue.FieldNotesTest do
 
     test "allows rounded dollar figures, the site's labels and sourced research numbers", %{facts: facts} do
       # The facts hold 74,000; 74,500 and 74,000 are roundings, 48,000 to 75,000 a bracket label.
-      ok = "Families earning $48,000 to $75,000 pay most. Graduates earn about $74,000.\n\nSchools that admit under 25 percent cost less over 4 years."
+      ok = "Families earning $48,000 to $75,000 pay most. Graduates earn about $74,000.\n\nSchools that admit under 25 percent cost less over 4 years, and parent loans pass 24 months of pay."
       assert FieldNotes.check_note(ok, facts) == :ok
 
       research = %{"major" => %{"leads_to" => %{"finding" => "licensure", "evidence" => "Most states require 150 credit hours.", "source" => "https://nasba.org"},

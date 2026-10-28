@@ -358,9 +358,9 @@ defmodule Collegevalue.FieldNotes do
   end
 
   # The family-income brackets ($0-30,000, $48,000-75,000, $110,000 or more),
-  # the admission-band edges (10, 25 and 60 percent) and the four years the
-  # cost figures assume.
-  @site_labels MapSet.new(~w(0 30000 48000 75000 110000 10 25 60 4))
+  # the admission-band edges (10, 25 and 60 percent), the four years the
+  # cost figures assume and the 24 months in `parent_plus_over_24_months`.
+  @site_labels MapSet.new(~w(0 30000 48000 75000 110000 10 25 60 4 24))
 
   defp allowed_numbers(facts) do
     facts
