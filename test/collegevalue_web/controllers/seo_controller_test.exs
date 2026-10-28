@@ -55,6 +55,38 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "GET /sitemap-fields.xml" do
+    test "lists the listing and field pages, not the colleges", %{conn: conn} do
+      conn = get(conn, "/sitemap-fields.xml")
+      xml = response(conn, 200)
+
+      assert response_content_type(conn, :xml)
+      assert xml =~ "/fields/rank</loc>"
+      assert xml =~ "/fields/computer-science</loc>"
+
+      refute xml =~ "Yale"
+      refute xml =~ "air-force"
+    end
+  end
+
+  describe "the home page" do
+    test "links the majors with an approved note, never a draft", %{conn: conn} do
+      root = Path.join(System.tmp_dir!(), "field_notes_#{System.unique_integer([:positive])}")
+      Application.put_env(:collegevalue, :field_notes_root, root)
+      on_exit(fn -> Application.delete_env(:collegevalue, :field_notes_root); File.rm_rf!(root) end)
+
+      link = ~s(href="/fields/computer-science">Computer Science</a>)
+      write = &Collegevalue.FieldNotes.write!("Computer Science", &1, &2)
+      write.("facts.json", Jason.encode!(%{name: "Computer Science"}))
+
+      write.("note.md", Collegevalue.FieldNotes.render_note([status: "draft"], "A note."))
+      refute conn |> get("/") |> html_response(200) =~ link
+
+      write.("note.md", Collegevalue.FieldNotes.render_note([status: "approved"], "A note."))
+      assert build_conn() |> get("/") |> html_response(200) =~ link
+    end
+  end
+
   describe "the college page head" do
     test "a college with data is indexable and titled with its place", %{conn: conn} do
       html = conn |> get("/colleges/130794/Yale%20University") |> html_response(200)

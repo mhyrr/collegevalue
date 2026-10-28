@@ -5,3 +5,4 @@
 # Disallow: /
 
 Sitemap: https://collegevalue.co/sitemap.xml
+Sitemap: https://collegevalue.co/sitemap-fields.xml

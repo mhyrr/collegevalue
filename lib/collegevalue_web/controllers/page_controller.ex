@@ -9,6 +9,7 @@ defmodule CollegevalueWeb.PageController do
       run_mode: run_mode,
       phoenix_ver: Application.spec(:phoenix, :vsn),
       elixir_ver: System.version(),
+      noted_fields: Collegevalue.FieldNotes.approved_fields(),
       page_title: "College Cost vs. Benefit by School and Major",
       meta_description:
         "Is college worth it? Compare the cost of every U.S. college and major against what graduates earn and owe, from the Department of Education's College Scorecard."

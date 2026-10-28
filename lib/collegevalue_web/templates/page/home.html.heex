@@ -41,6 +41,16 @@
         </a>
       </div>
 
+      <%= if @noted_fields != [] do %>
+        <h2 class="text-darkgreen text-2xl font-display pt-8 pb-2">Is Your Major Worth It?</h2>
+        <p class="pb-4">What graduates of each major earn and owe, how long the debt takes to repay, and what the numbers leave out.</p>
+        <ul class="major-links grid grid-cols-4 md:grid-cols-2 gap-x-6 gap-y-2 pb-6">
+          <%= for name <- @noted_fields do %>
+            <li><a class="no-underline text-green" href={field_page_path(name)}><%= field_short_name(name) %></a></li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <h2 class="text-darkgreen text-2xl font-display pt-8 pb-2">The Choice</h2>
         <p>
           Should you go to college? What should you study? How much will it cost?

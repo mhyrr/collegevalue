@@ -15,11 +15,6 @@ defmodule CollegevalueWeb.SitemapController do
   `Fields.has_outcomes?/1`) and are left out.
   """
   def index(conn, _params) do
-    origin = LayoutView.origin(conn)
-
-    field_paths =
-      Enum.map(Fields.list_indexable_field_names(), &CollegevalueWeb.Views.Helpers.field_page_path/1)
-
     page_paths =
       Enum.map(2..Colleges.college_page_count()//1, &Routes.college_path(conn, :index, page: &1))
 
@@ -28,12 +23,28 @@ defmodule CollegevalueWeb.SitemapController do
         Routes.college_path(conn, :show, unitid, name)
       end)
 
+    send_urlset(conn, @static_paths ++ page_paths ++ field_paths() ++ college_paths)
+  end
+
+  @doc """
+  The listing pages and the field pages alone: the pages the keyword map
+  targets, without the thousands of college pages. Search Console reports
+  each sitemap's indexing on its own, so this one shows how the pages that
+  matter are doing.
+  """
+  def fields(conn, _params), do: send_urlset(conn, @static_paths ++ field_paths())
+
+  defp field_paths do
+    Enum.map(Fields.list_indexable_field_names(), &CollegevalueWeb.Views.Helpers.field_page_path/1)
+  end
+
+  defp send_urlset(conn, paths) do
+    origin = LayoutView.origin(conn)
+
     body = [
       ~s(<?xml version="1.0" encoding="UTF-8"?>\n),
       ~s(<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n),
-      Enum.map(@static_paths ++ page_paths ++ field_paths ++ college_paths, fn path ->
-        ["  <url><loc>", escape(origin <> path), "</loc></url>\n"]
-      end),
+      Enum.map(paths, fn path -> ["  <url><loc>", escape(origin <> path), "</loc></url>\n"] end),
       "</urlset>\n"
     ]
 

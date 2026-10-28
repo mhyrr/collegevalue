@@ -121,6 +121,29 @@ defmodule Collegevalue.FieldNotes do
     end
   end
 
+  @doc """
+  The names of the majors whose note is approved, by short name. The home page
+  links these, since they are the field pages with the most to read.
+  """
+  def approved_fields do
+    case File.ls(root()) do
+      {:ok, slugs} -> slugs |> Enum.flat_map(&approved_name/1) |> Enum.sort_by(&Collegevalue.Fields.short_name/1)
+      {:error, :enoent} -> []
+    end
+  end
+
+  defp approved_name(slug) do
+    dir = Path.join(root(), slug)
+
+    with {:ok, text} <- File.read(Path.join(dir, "note.md")),
+         %{meta: %{"status" => "approved"}} <- parse_note(text),
+         {:ok, facts} <- File.read(Path.join(dir, "facts.json")) do
+      [Jason.decode!(facts)["name"]]
+    else
+      _ -> []
+    end
+  end
+
   def parse_note(text) do
     case String.split(text, ~r/^---\s*$/m, parts: 3) do
       ["", front, body] ->
