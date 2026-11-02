@@ -305,4 +305,77 @@ defmodule CollegevalueWeb.DataComponents do
   defp format_percent(nil), do: "N/A"
   defp format_percent(rate) when rate < 0, do: "N/A"
   defp format_percent(rate), do: "#{Float.round(rate * 100, 1)}%"
+
+  # A headline figure with a label above and a note below, as on the field and
+  # college pages.
+  attr :label, :string, required: true
+  attr :note, :string, default: nil
+  slot :inner_block, required: true
+  def stat_card(assigns) do
+    ~H"""
+    <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
+      <dt class="text-xs uppercase tracking-wider text-gray-500"><%= @label %></dt>
+      <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= render_slot(@inner_block) %></dd>
+      <%= if @note do %><dd class="text-sm text-gray-500"><%= @note %></dd><% end %>
+    </div>
+    """
+  end
+
+  # Switches a program table between bachelor's programs and every credential.
+  attr :show_all, :boolean, required: true
+  attr :bachelors_count, :integer, required: true
+  attr :all_count, :integer, required: true
+  def credential_toggle(assigns) do
+    ~H"""
+    <div class="credential-toggle inline-flex shrink-0 rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label="Credentials">
+      <button type="button" phx-click="credentials" phx-value-show="bachelors" aria-pressed={to_string(!@show_all)} class={toggle_class(!@show_all)}>
+        Bachelor's <span class="font-normal text-gray-400 tabular-nums"><%= delimited(@bachelors_count) %></span>
+      </button>
+      <button type="button" phx-click="credentials" phx-value-show="all" aria-pressed={to_string(@show_all)} class={toggle_class(@show_all)}>
+        All credentials <span class="font-normal text-gray-400 tabular-nums"><%= delimited(@all_count) %></span>
+      </button>
+    </div>
+    """
+  end
+
+  defp toggle_class(true), do: "px-4 py-1.5 text-sm rounded-md bg-white shadow text-darkgreen font-bold"
+  defp toggle_class(false), do: "px-4 py-1.5 text-sm rounded-md text-gray-600 hover:text-darkgreen"
+
+  # The line under a program table that counts the programs it leaves out.
+  # `one` and `many` finish the sentence after the count.
+  attr :count, :integer, required: true
+  attr :one, :string, required: true
+  attr :many, :string, required: true
+  def no_data_note(assigns) do
+    ~H"""
+    <%= if @count > 0 do %>
+      <p class="no-data-count pt-4 text-sm text-gray-500"><%= delimited(@count) %> more <%= if @count == 1, do: @one, else: @many %></p>
+    <% end %>
+    """
+  end
+
+  # One labeled bar, its length a share of `max`.
+  attr :label, :any, required: true
+  attr :value, :any, required: true
+  attr :max, :any, required: true
+  attr :note, :string, default: nil
+  slot :inner_block
+  def bar_row(assigns) do
+    width = if is_number(assigns.value) and is_number(assigns.max) and assigns.max > 0, do: min(100, round(assigns.value / assigns.max * 100)), else: 0
+    assigns = assign(assigns, :width, width)
+
+    ~H"""
+    <div class="bar-row grid grid-cols-[9rem_1fr_6rem] md:grid-cols-[7rem_1fr_5rem] items-center gap-3 py-1.5">
+      <span class="text-sm text-gray-700 truncate"><%= if @inner_block != [], do: render_slot(@inner_block), else: @label %></span>
+      <div class="bg-gray-100 rounded-full h-3">
+        <div class="bg-green h-3 rounded-full" style={"width: #{@width}%"}></div>
+      </div>
+      <span class="text-sm text-right tabular-nums text-gray-900">
+        <%= Helpers.cash(@value) %><%= if @note do %><span class="block text-xs text-gray-500"><%= @note %></span><% end %>
+      </span>
+    </div>
+    """
+  end
+
+  defp delimited(n), do: Number.Delimit.number_to_delimited(n, precision: 0)
 end

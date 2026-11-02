@@ -1,209 +1,129 @@
-<h1 class="text-2xl text-darkgreen"><%= @college.name %></h1>
-<p class="mt-4 max-w-3xl text-base leading-6 text-gray-900"><%= college_summary(@college) %></p>
+<% net_prices = Collegevalue.Colleges.net_price_by_income(@college) %>
+<% earnings_by_income = Collegevalue.Colleges.earnings_by_family_income(@college) %>
+<% over_time = earnings_over_time(@college) %>
+<% best_paid = best_paid_majors(@majors, 6) %>
+<% website = website(@college.url) %>
 
-<div class="mt-10">
-      <ul class="list-none xl:grid xl:grid-cols-2 xl:col-gap-4 xl:row-gap-2 md:block bg-white-900">
-        <li>
-          <div class="flex md:block md:px-0 py-2 px-4  rounded overflow-hidden ">
-            <div class="flex-shrink-0">
+<div>
+  <header class="pb-6">
+    <h1 class="text-darkgreen text-4xl md:text-3xl font-display"><%= @college.name %></h1>
+    <p class="pt-1 text-sm text-gray-500">
+      <%= if is_binary(@college.control) do %><%= control(@college.control) %> · <% end %><%= address(@college) %>
+      <%= if website do %> · <a href={elem(website, 0)} class="no-underline text-green hover:underline" rel="nofollow"><%= elem(website, 1) %></a><% end %>
+    </p>
+  </header>
 
-              <div class="flex items-center justify-center h-12 w-12 rounded-md">
-
-              </div>
-            </div>
-            <div class="ml-4 md:ml-0">
-                <h4 class="text-lg leading-6 font-medium text-darkgreen">Details</h4>
-                <ul class="list-none mt-2 text-base md:-px-2 leading-6 text-gray-900">
-                    <li><strong class="text-green">Name:</strong> <a href={"https://#{@college.url}"} class="no-underline text-green"><%= @college.name %></a></li>
-                    <li><strong class="text-green">Location:</strong> <%= address(@college) %></li>
-                    <li><strong class="text-green">Control:</strong> <%= control(@college.control) %></li>
-                    <li><strong class="text-green">Accreditation:</strong> <%= accreditation(defaults(@college.accreditation)) %></li>
-
-                </ul>
-            </div>
-          </div>
-        </li>
-        <li class="mt-10 md:mt-0">
-          <div class="flex md:block md:px-0 py-2 px-4 rounded  ">
-            <div class="flex-shrink-0">
-              <div class="flex items-center justify-center h-12 w-12 rounded-md ">
-
-              </div>
-            </div>
-            <div class="ml-4 md:ml-0">
-                <h4 class="text-lg leading-6 font-medium text-darkgreen">Attendance</h4>
-                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
-                    <li><strong class="text-green">Admissions Rate</strong> <%= percent(@college.admissions_rate) %></li>
-                    <li><strong class="text-green">Average SAT Scores</strong> <%= defaults(@college.sat_avg) %></li>
-                    <li class="hover-text">
-                      <strong class="text-green">Four Year Completion Rate</strong> <%= percent(@college.fouryear_100_completion) %>
-                      <span class="tooltip-text-left" >Completion rates for full-time, first-time students within 4 years</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Six Year Completion Rate</strong> <%= percent(@college.fouryear_150_completion) %>
-                      <span class="tooltip-text-left"  >Completion rates for full-time, first-time students within 6 years</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Eight Year Completion Rate</strong> <%= percent(@college.fouryear_200_completion) %>
-                      <span class="tooltip-text"  >Completion rates for full-time, first-time students within 8 years.  This is what is normally reported for college completion rates.</span>
-                    </li>
-                </ul>
-                <div class="mt-4">
-                  <.completion_badge rate={@college.fouryear_200_completion} />
-                </div>
-                <div class="mt-4 max-w-md">
-                  <.completion_bar rate={@college.fouryear_100_completion} label="4 Year" />
-                  <.completion_bar rate={@college.fouryear_150_completion} label="6 Year" />
-                  <.completion_bar rate={@college.fouryear_200_completion} label="8 Year" />
-                </div>
-            </div>
-          </div>
-        </li>
-        <li class="mt-10 md:mt-0">
-          <div class="flex md:block md:px-0 py-2 px-4 rounded  ">
-            <div class="flex-shrink-0">
-              <div class="flex items-center justify-center h-12 w-12 rounded-md ">
-
-              </div>
-            </div>
-            <div class="ml-4 md:ml-0 ">
-                <h4 class="text-lg leading-6 font-medium  text-darkgreen">Costs</h4>
-                <ul class="list-none mt-2 text-base leading-6 text-gray-900 ">
-                    <li class="hover-text">
-                      <strong class="text-green">Yearly Costs:</strong> <%= cash(@college.yearly_cost )%>
-                      <span class="tooltip-text"  >The average annual cost of attendance includes tuition and fees, books and supplies, and living expenses for all full-time, first-time, degree-certificate-seeking undergraduates</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Out of State Tuition:</strong> <%= cash(defaults(@college.tuition_out)) %>
-                      <span class="tooltip-text"  >Tuition and required fees for out-of-state students</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">In State Tuition:</strong> <%= cash(defaults(@college.tuition_in)) %>
-                      <span class="tooltip-text"  >Tuition and required fees for in-state students</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median Debt Total:</strong> <%= cash(defaults(@college.debt_median)) %>
-                      <span class="tooltip-text"  >Median loan debt accumulated at the institution (the sum of all undergraduate federal loans over students’ college education at the institution for which the median debt is reported)</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median Debt for Graduates:</strong> <%= cash(@college.graduated_debt_median) %>
-                      <span class="tooltip-text"  >Median loan debt accumulated for only graduates</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median Debt for Withdrawals:</strong> <%= cash(@college.withdrawn_debt_median) %>
-                      <span class="tooltip-text"  >Median loan debt accumulated for only graduates</span>
-                    </li>
-
-
-                    <li class="hover-text">
-                      <strong class="text-green">Net Price Quintile 1</strong> <%= cash(defaults(@college.netprice_1)) %>
-                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $0-$30,000</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Net Price Quintile 2</strong> <%= cash(defaults(@college.netprice_2)) %>
-                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $30,001-$48,000</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Net Price Quintile 3</strong> <%= cash(defaults(@college.netprice_3)) %>
-                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $48,001-$75,000</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Net Price Quintile 4</strong> <%= cash(defaults(@college.netprice_4)) %>
-                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of  $75,001-$110,000</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Net Price Quintile 5</strong> <%= cash(defaults(@college.netprice_5)) %>
-                      <span class="tooltip-text"  >Average net price derived from the full cost of attendance (including tuition and fees, books and supplies, and living expenses) minus federal, state, and institutional grant/scholarship aid, for full-time, first-time undergraduate Title IV-receiving students for students reporting a family income of $110,000+</span>
-                    </li>
-
-                </ul>
-            </div>
-          </div>
-        </li>
-        <li class="mt-10 md:mt-0">
-          <div class="flex md:block md:px-0 py-2 px-4 rounded ">
-            <div class="flex-shrink-0">
-              <div class="flex items-center justify-center h-12 w-12 rounded-md ">
-
-              </div>
-            </div>
-            <div class="ml-4 md:ml-0">
-
-                <h4 class="text-lg leading-6 font-medium  text-darkgreen">Earnings</h4>
-                <ul class="list-none mt-2 text-base leading-6 text-gray-900">
-                    <li class="hover-text">
-                      <strong class="text-green">Median 6 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after6)) %>
-                      <span class="tooltip-text-left">Median earnings measured 6 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median 7 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after7)) %>
-                      <span class="tooltip-text-left">Median earnings measured 7 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median 8 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after8)) %>
-                      <span class="tooltip-text-left">Median earnings measured 8 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median 9 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after9)) %>
-                      <span class="tooltip-text-left">Median earnings measured 9 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
-                    </li>
-                    <li class="hover-text">
-                      <strong class="text-green">Median 10 Year Earnings</strong> <%= cash(defaults(@college.earnings_median_after10)) %>
-                      <span class="tooltip-text-left">Median earnings measured 10 years after enrollment.  Aggregate of all federally aided undergraduate students who enroll in an institution each year and who are employed but not enrolled. Earnings are defined as the sum of wages and deferred compensation from all non-duplicate W-2 forms received for each individual (from both full- and part-time employment), plus positive self-employment earnings from Schedule SE.</span>
-                    </li>
-                </ul>
-
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <%= if Enum.filter(@majors, fn m -> m.credential_level == 3 end) |> length == 0 do %>
-
+  <dl class="college-stats grid grid-cols-4 lg:grid-cols-2 gap-4 pb-10">
+    <%= if not no_data?(@college.netprice_3) do %>
+      <.stat_card label="Price after aid" note="a year, for a family earning $48–75k"><%= cash(@college.netprice_3) %></.stat_card>
     <% else %>
-        <section class="mt-10 pb-16">
-        <% diff_data = Poison.encode!(college_chart_data(@majors)) %>
-        <%= raw Chartkick.column_chart diff_data, prefix: "$", width: "100%", title: "What's Worth It?", colors: ["#114b5f", "#1a93df", "#88d498"], library: %{
-            scales: %{
-                xAxes: [%{
-                ticks: %{
-                    display: false
-                },
-                gridLines: %{
-                    display: false
-                }
-                }]
-            }
-            }
-        %>
-        </section>
+      <%= if not no_data?(@college.yearly_cost) do %>
+        <.stat_card label="Cost per year" note="before grants and scholarships"><%= cash(@college.yearly_cost) %></.stat_card>
+      <% end %>
+    <% end %>
+    <%= if not no_data?(@college.debt_median) do %>
+      <.stat_card label="Student debt" note="median, for those who borrowed"><%= cash(@college.debt_median) %></.stat_card>
+    <% end %>
+    <%= if not no_data?(@college.earnings_median_after10) do %>
+      <.stat_card label="Earnings" note="median, 10 years after starting"><%= cash(@college.earnings_median_after10) %></.stat_card>
+    <% end %>
+    <%= if not no_data?(@college.fouryear_150_completion) do %>
+      <.stat_card label="Graduate" note="within six years"><%= percent(@college.fouryear_150_completion) %></.stat_card>
+    <% end %>
+  </dl>
+
+  <div class="grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8">
+    <section class="college-summary col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800">
+      <p><%= college_summary(@college) %></p>
+    </section>
+    <aside>
+      <dl class="rounded-lg bg-gray-50 border border-gray-200 p-5 text-sm leading-6 space-y-2">
+        <%= if not no_data?(@college.admissions_rate) do %>
+          <div class="flex justify-between gap-4"><dt class="text-gray-500">Admit rate</dt><dd class="tabular-nums"><%= percent(@college.admissions_rate) %></dd></div>
+        <% end %>
+        <%= if not no_data?(@college.sat_avg) do %>
+          <div class="flex justify-between gap-4"><dt class="text-gray-500">Average SAT</dt><dd class="tabular-nums"><%= sat(@college.sat_avg) %></dd></div>
+        <% end %>
+        <div class="flex justify-between gap-4"><dt class="text-gray-500">Sticker price</dt><dd class="tabular-nums"><%= cash(@college.yearly_cost) %> a year</dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-gray-500">Accreditor</dt><dd class="text-right"><%= accreditation(defaults(@college.accreditation)) %></dd></div>
+        <p class="pt-2"><a href="#programs" class="no-underline text-green hover:underline">See every program by major ↓</a></p>
+      </dl>
+    </aside>
+  </div>
+
+  <div class="grid grid-cols-2 lg:grid-cols-1 items-start gap-8 pt-12">
+    <%= if net_prices != [] do %>
+      <section class="rounded-lg border border-gray-200 p-6">
+        <h2 class="text-darkgreen text-xl font-display">What Families Pay</h2>
+        <p class="pt-1 pb-4 text-sm text-gray-500">A year after grants, by family income, for aided first-time students.</p>
+        <% max_price = Enum.max([@college.yearly_cost || 0 | Enum.map(net_prices, &elem(&1, 1))]) %>
+        <%= for {label, price} <- net_prices do %>
+          <.bar_row label={label} value={price} max={max_price} />
+        <% end %>
+        <p class="pt-4 text-sm text-gray-500">
+          Sticker price <%= cash(@college.yearly_cost) %> a year<%= cond do %>
+            <% no_data?(@college.tuition_in) -> %>.
+            <% @college.tuition_in == @college.tuition_out or no_data?(@college.tuition_out) -> %>, with tuition and fees of <%= cash(@college.tuition_in) %>.
+            <% true -> %>, with tuition and fees of <%= cash(@college.tuition_in) %> in state and <%= cash(@college.tuition_out) %> out of state.
+          <% end %>
+        </p>
+      </section>
     <% end %>
 
-<% net_prices = Collegevalue.Colleges.net_price_by_income(@college) %>
-<%= if length(net_prices) > 0 do %>
-  <section class="mt-10 pb-8">
-    <h3 class="text-lg font-medium text-darkgreen mb-4">What This College Costs By Family Income</h3>
-    <p class="text-sm text-gray-600 mb-4">Net price after grants and scholarships, by family income band.</p>
-    <% cost_data = Poison.encode!(income_cost_chart_data(net_prices)) %>
-    <%= raw Chartkick.column_chart(cost_data, prefix: "$", width: "100%", colors: ["#114b5f"], library: %{
-      scales: %{
-        yAxes: [%{ticks: %{beginAtZero: true}}]
-      }
-    }) %>
-  </section>
-<% end %>
+    <section class="rounded-lg border border-gray-200 p-6">
+      <h2 class="text-darkgreen text-xl font-display">Debt and Finishing</h2>
+      <p class="pt-1 pb-4 text-sm text-gray-500">Median federal student-loan debt, and the share of full-time first-time students who finish.</p>
+      <dl class="space-y-2 text-sm pb-6">
+        <div class="flex justify-between gap-4"><dt class="text-gray-700">All borrowers</dt><dd class="tabular-nums"><%= cash(defaults(@college.debt_median)) %></dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-gray-700">Those who graduated</dt><dd class="tabular-nums"><%= cash(@college.graduated_debt_median) %></dd></div>
+        <div class="flex justify-between gap-4"><dt class="text-gray-700">Those who left without a degree</dt><dd class="tabular-nums"><%= cash(@college.withdrawn_debt_median) %></dd></div>
+      </dl>
+      <%= if Enum.any?([@college.fouryear_100_completion, @college.fouryear_150_completion, @college.fouryear_200_completion], &(not no_data?(&1))) do %>
+        <div class="flex items-center justify-between pb-2">
+          <span class="text-sm text-gray-700">Finished within</span>
+          <.completion_badge rate={@college.fouryear_200_completion} />
+        </div>
+        <.completion_bar rate={@college.fouryear_100_completion} label="4 years" />
+        <.completion_bar rate={@college.fouryear_150_completion} label="6 years" />
+        <.completion_bar rate={@college.fouryear_200_completion} label="8 years" />
+      <% end %>
+    </section>
 
-<% earnings_by_income = Collegevalue.Colleges.earnings_by_family_income(@college) %>
-<%= if length(earnings_by_income) > 0 do %>
-  <section class="mt-10 pb-16">
-    <h3 class="text-lg font-medium text-darkgreen mb-4">What Graduates Earn By Family Background</h3>
-    <p class="text-sm text-gray-600 mb-4">Median earnings by family income tercile, showing income mobility over time.</p>
-    <% earn_data = Poison.encode!(income_earnings_chart_data(earnings_by_income)) %>
-    <%= raw Chartkick.column_chart(earn_data, prefix: "$", width: "100%", colors: ["#1a93df", "#88d498", "#114b5f"], library: %{
-      scales: %{
-        yAxes: [%{ticks: %{beginAtZero: true}}]
-      }
-    }) %>
-  </section>
-<% end %>
+    <%= if over_time != [] do %>
+      <section class="rounded-lg border border-gray-200 p-6">
+        <h2 class="text-darkgreen text-xl font-display">Earnings Over Time</h2>
+        <p class="pt-1 pb-4 text-sm text-gray-500">Median earnings of federally aided students, counted from the year they started.</p>
+        <% max_earned = over_time |> Enum.map(&elem(&1, 1)) |> Enum.max() %>
+        <%= for {label, amount} <- over_time do %>
+          <.bar_row label={label} value={amount} max={max_earned} />
+        <% end %>
+      </section>
+    <% end %>
+
+    <%= if best_paid != [] do %>
+      <section class="rounded-lg border border-gray-200 p-6">
+        <h2 class="text-darkgreen text-xl font-display">Best-Paid Majors</h2>
+        <p class="pt-1 pb-4 text-sm text-gray-500">Median earnings one year after a bachelor's here, with the median debt beneath.</p>
+        <% max_major = best_paid |> hd() |> Map.get(:earnings) %>
+        <%= for major <- best_paid do %>
+          <.bar_row label={field_short_name(major.name)} value={major.earnings} max={max_major} note={if no_data?(major.debt_median), do: nil, else: "#{cash(major.debt_median)} debt"}>
+            <a href={field_page_path(major.name)} class="no-underline text-green hover:underline" title={field_short_name(major.name)}><%= field_short_name(major.name) %></a>
+          </.bar_row>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+
+  <%= if earnings_by_income != [] do %>
+    <section class="pt-12">
+      <h2 class="text-darkgreen text-2xl font-display">What Graduates Earn by Family Background</h2>
+      <p class="pt-1 pb-4 text-sm text-gray-500">Median earnings by family income tercile, 6, 8 and 10 years after starting.</p>
+      <% earn_data = Poison.encode!(income_earnings_chart_data(earnings_by_income)) %>
+      <%= raw Chartkick.column_chart(earn_data, prefix: "$", width: "100%", colors: ["#1a93df", "#88d498", "#114b5f"], library: %{
+        scales: %{
+          yAxes: [%{ticks: %{beginAtZero: true}}]
+        }
+      }) %>
+    </section>
+  <% end %>
+</div>

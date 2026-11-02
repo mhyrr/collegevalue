@@ -8,30 +8,14 @@
 
   <%= if @facts do %>
     <dl class="field-stats grid grid-cols-4 lg:grid-cols-2 gap-4 pb-10">
-      <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
-        <dt class="text-xs uppercase tracking-wider text-gray-500">First-year pay</dt>
-        <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= cash(@facts.earnings_median) %></dd>
-        <dd class="text-sm text-gray-500">median; all majors <%= cash(@facts.all_majors_earnings_median) %></dd>
-      </div>
+      <.stat_card label="First-year pay" note={"median; all majors #{cash(@facts.all_majors_earnings_median)}"}><%= cash(@facts.earnings_median) %></.stat_card>
       <%= if @facts.debt_median do %>
-        <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
-          <dt class="text-xs uppercase tracking-wider text-gray-500">Student debt</dt>
-          <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= cash(@facts.debt_median) %></dd>
-          <dd class="text-sm text-gray-500">median, for those who borrowed</dd>
-        </div>
+        <.stat_card label="Student debt" note="median, for those who borrowed"><%= cash(@facts.debt_median) %></.stat_card>
       <% end %>
       <%= if @facts.rank do %>
-        <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
-          <dt class="text-xs uppercase tracking-wider text-gray-500">Debt for the pay</dt>
-          <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= ordinal(@facts.rank) %> <span class="text-base text-gray-500">of <%= @facts.ranked_of %></span></dd>
-          <dd class="text-sm text-gray-500">debt is <%= @facts.debt_to_earnings %>x first-year pay</dd>
-        </div>
+        <.stat_card label="Debt for the pay" note={"debt is #{@facts.debt_to_earnings}x first-year pay"}><%= ordinal(@facts.rank) %> <span class="text-base text-gray-500">of <%= @facts.ranked_of %></span></.stat_card>
       <% end %>
-      <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
-        <dt class="text-xs uppercase tracking-wider text-gray-500">Colleges</dt>
-        <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= Number.Delimit.number_to_delimited(@field.count, precision: 0) %></dd>
-        <dd class="text-sm text-gray-500">offer this major</dd>
-      </div>
+      <.stat_card label="Colleges" note="offer this major"><%= Number.Delimit.number_to_delimited(@field.count, precision: 0) %></.stat_card>
     </dl>
 
     <div class="grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8">
@@ -70,16 +54,7 @@
           <% end %>
         </p>
       </div>
-      <div class="credential-toggle inline-flex shrink-0 rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label="Credentials">
-        <button type="button" phx-click="credentials" phx-value-show="bachelors" aria-pressed={to_string(!@show_all)}
-                class={["px-4 py-1.5 text-sm rounded-md", if(@show_all, do: "text-gray-600 hover:text-darkgreen", else: "bg-white shadow text-darkgreen font-bold")]}>
-          Bachelor's <span class="font-normal text-gray-400 tabular-nums"><%= Number.Delimit.number_to_delimited(@bachelors_count, precision: 0) %></span>
-        </button>
-        <button type="button" phx-click="credentials" phx-value-show="all" aria-pressed={to_string(@show_all)}
-                class={["px-4 py-1.5 text-sm rounded-md", if(@show_all, do: "bg-white shadow text-darkgreen font-bold", else: "text-gray-600 hover:text-darkgreen")]}>
-          All credentials <span class="font-normal text-gray-400 tabular-nums"><%= Number.Delimit.number_to_delimited(@all_count, precision: 0) %></span>
-        </button>
-      </div>
+      <.credential_toggle show_all={@show_all} bachelors_count={@bachelors_count} all_count={@all_count} />
     </div>
 
     <div class="rounded-lg border border-gray-200 md:border-0">
@@ -110,10 +85,6 @@
         </tbody>
       </table>
     </div>
-    <%= if @no_data_count > 0 do %>
-      <p class="no-data-count pt-4 text-sm text-gray-500">
-        <%= @no_data_count %> more <%= if @no_data_count == 1, do: "school offers", else: "schools offer" %> this major but <%= if @no_data_count == 1, do: "reports", else: "report" %> no debt or earnings for it.
-      </p>
-    <% end %>
+    <.no_data_note count={@no_data_count} one="school offers this major but reports no debt or earnings for it." many="schools offer this major but report no debt or earnings for it." />
   </section>
 </div>

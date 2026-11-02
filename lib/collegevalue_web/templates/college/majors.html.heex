@@ -1,37 +1,51 @@
+<section id="programs" class="college-programs pt-12">
+  <div class="flex md:flex-col items-end md:items-start justify-between gap-4 pb-4">
+    <div>
+      <h2 class="text-darkgreen text-2xl font-display">Programs by Major</h2>
+      <p class="pt-1 text-sm text-gray-500">
+        <%= if @show_all do %>
+          Every credential: certificates, associate's, bachelor's and graduate degrees.
+        <% else %>
+          Bachelor's degrees only. Click a column to sort.
+        <% end %>
+      </p>
+    </div>
+    <%= if @bachelors_count > 0 and @all_count > @bachelors_count do %>
+      <.credential_toggle show_all={@show_all} bachelors_count={@bachelors_count} all_count={@all_count} />
+    <% end %>
+  </div>
 
-<div class="w-full">
-    <button class="bg-transparent hover:bg-black-500 text-green font-semibold hover:text-green py-2 px-4 border border-green rounded" phx-click="toggle_credentials"><%= @cred_label %></button>
-</div>
-
-<%= if length(@majors) == 0 do %>
-    <div><h2>No data</h2></div>
-
-<% else %>
-
-    <table class="md:block xl:table pt-8">
-    <thead class="md:absolute md:-top-9999 md:-left-9999">
-        <tr>
-        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen" phx-click="sort" phx-value-sort="name">Name</a></th>
-        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="credential_level">Credential</a></th>
-        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_mean">Debt Mean</a></th>
-        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="debt_median">Debt Median</a></th>
-        <th class="px-4 py-3 border-b border-green bg-gray-50 text-left xl:text-sm  leading-4 font-medium text-darkgreen uppercase md:tracking-wider tracking-tight"><a href="#" class="text-darkgreen"  phx-click="sort" phx-value-sort="earnings">Earnings</a></th>
-        </tr>
-    </thead>
-    <tbody class="md:block">
-        <%= for major <- @majors do %>
-        <%= if @toggle_cred || major.credential_level == 3 do %>
-            <tr class="md:block odd:bg-gray-50">
-                <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><.link navigate={field_page_path(major.name)} class="no-underline text-green"><%= field_short_name(major.name) %></.link> </td>
-                <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= degree(major.credential_level) %></td>
-                <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_mean) %></td>
-                <td class="px-4 py-3 debtmed-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.debt_median) %></td>
-                <td class="px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(major.earnings) %></td>
-
+  <%= if @rows == [] do %>
+    <p class="text-gray-600">No program here reports debt or earnings.</p>
+  <% else %>
+    <div class="rounded-lg border border-gray-200 md:border-0">
+      <table class="w-full md:block lg:table">
+        <thead class="md:absolute md:-top-9999 md:-left-9999">
+          <tr>
+            <.sort_header label="Major" sort_key="name" current_sort={@sort_by} order={@order} tooltip="The field of study, as College Scorecard names it" />
+            <%= if @show_all do %>
+              <.sort_header label="Credential" sort_key="credential_level" current_sort={@sort_by} order={@order} tooltip="Degree type: Certificate, Associate's, Bachelor's, Master's, etc." />
+            <% end %>
+            <.sort_header label="Debt Mean" sort_key="debt_mean" current_sort={@sort_by} order={@order} tooltip="Average federal student-loan debt of graduates who borrowed. A few large loans can pull it up." />
+            <.sort_header label="Debt Median" sort_key="debt_median" current_sort={@sort_by} order={@order} tooltip="Median federal student-loan debt of graduates who borrowed. Half owe more, half owe less." />
+            <.sort_header label="Earnings" sort_key="earnings" current_sort={@sort_by} order={@order} tooltip="Median earnings 1 year after graduation for this major at this college" />
+          </tr>
+        </thead>
+        <tbody class="md:block">
+          <%= for major <- @rows do %>
+            <tr class="md:block odd:bg-gray-50 hover:bg-lightgreen/10">
+              <td class="px-4 py-3 major-field md:border-none md:relative md:block xl:text-sm border-b"><.link navigate={field_page_path(major.name)} class="no-underline text-green hover:underline"><%= field_short_name(major.name) %></.link></td>
+              <%= if @show_all do %>
+                <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm border-b"><%= degree(major.credential_level) %></td>
+              <% end %>
+              <td class={["px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm border-b tabular-nums", no_data?(major.debt_mean) && "text-gray-400"]}><%= cash(major.debt_mean) %></td>
+              <td class={["px-4 py-3 debtmed-field md:border-none md:relative md:block xl:text-sm border-b tabular-nums", no_data?(major.debt_median) && "text-gray-400"]}><%= cash(major.debt_median) %></td>
+              <td class={["px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm border-b tabular-nums", no_data?(major.earnings) && "text-gray-400"]}><%= cash(major.earnings) %></td>
             </tr>
-        <% end %>
-        <% end %>
-    </tbody>
-    </table>
-
-<% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+  <.no_data_note count={@no_data_count} one="program here reports no debt or earnings." many="programs here report no debt or earnings." />
+</section>

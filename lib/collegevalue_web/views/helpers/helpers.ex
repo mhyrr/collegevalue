@@ -312,11 +312,6 @@ defmodule CollegevalueWeb.Views.Helpers do
     end
   end
 
-  def income_cost_chart_data(net_price_bands) do
-    net_price_bands
-    |> Enum.map(fn {label, value} -> [label, value] end)
-  end
-
   def income_earnings_chart_data(earnings_series) do
     earnings_series
     |> Enum.map(fn {name, data} ->
@@ -324,33 +319,12 @@ defmodule CollegevalueWeb.Views.Helpers do
     end)
   end
 
-  def college_chart_data(majors) do
-
-    majors = majors
-      |> Enum.filter(fn major -> major.credential_level == 3 end)
-      |> Enum.sort(&(&1.earnings >= &2.earnings) )
-    chart_data = []
-
-    diffs =
-      majors
-      |> Enum.map(fn major -> [major.name, (if no_data?(major.earnings) || no_data?(major.debt_median), do: 0, else: major.earnings - major.debt_median)] end)
-      |> Enum.reverse
-    chart_data = chart_data ++ [ %{name: "Difference", data: diffs}]
-
-    debt = majors
-    |> Enum.map(fn major -> [major.name, (if no_data?(major.debt_median), do: 0, else: -major.debt_median)] end)
-    |> Enum.reverse
-    chart_data = chart_data ++ [ %{name: "Debt", data: debt}]
-
-    earnings = majors
-    |> Enum.map(fn major -> [major.name, major.earnings] end)
-    |> Enum.reverse
-    chart_data = chart_data ++ [ %{name: "Earnings", data: earnings}]
-
-
-
-    chart_data
-
+  @doc "A college's best-paid bachelor's majors, for the bars on its page."
+  def best_paid_majors(majors, n \\ 10) do
+    majors
+    |> Enum.filter(&(&1.credential_level == 3 and not no_data?(&1.earnings)))
+    |> Enum.sort_by(& &1.earnings, :desc)
+    |> Enum.take(n)
   end
 
   def field_chart_data(ranks) do
@@ -368,6 +342,29 @@ defmodule CollegevalueWeb.Views.Helpers do
     chart_data = chart_data ++ [ %{name: "Earnings", data: earnings}]
 
     chart_data
+  end
+
+  @doc """
+  A college's website as {href, label}, or nil. Scorecard stores some with a
+  scheme and some without.
+  """
+  def website(url) when is_binary(url) and url not in ["", "NULL"] do
+    label = url |> String.replace(~r{^https?://}, "") |> String.trim_trailing("/")
+    {if(url =~ ~r{^https?://}, do: url, else: "https://" <> url), label}
+  end
+
+  def website(_url), do: nil
+
+  @doc "A college's median earnings 6 to 10 years after starting, as {label, amount}."
+  def earnings_over_time(college) do
+    [
+      {"6 years", college.earnings_median_after6},
+      {"7 years", college.earnings_median_after7},
+      {"8 years", college.earnings_median_after8},
+      {"9 years", college.earnings_median_after9},
+      {"10 years", college.earnings_median_after10}
+    ]
+    |> Enum.reject(fn {_label, amount} -> no_data?(amount) end)
   end
 
 

@@ -549,11 +549,11 @@ defmodule Collegevalue.Colleges do
 
   def net_price_by_income(college) do
     bands = [
-      {"$0-30k", college.netprice_1},
-      {"$30k-48k", college.netprice_2},
-      {"$48k-75k", college.netprice_3},
-      {"$75k-110k", college.netprice_4},
-      {"$110k+", college.netprice_5}
+      {"Under $30k", college.netprice_1},
+      {"$30k–48k", college.netprice_2},
+      {"$48k–75k", college.netprice_3},
+      {"$75k–110k", college.netprice_4},
+      {"Over $110k", college.netprice_5}
     ]
     Enum.reject(bands, fn {_label, val} -> is_nil(val) or val <= 0 end)
   end

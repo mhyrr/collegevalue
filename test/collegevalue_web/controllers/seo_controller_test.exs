@@ -122,6 +122,30 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "the college page table" do
+    setup %{with_data: yale} do
+      program = fn name, debt, earnings ->
+        Repo.insert!(%Discipline{name: name, credential_level: 3, stgp_debt_mean: debt, stgp_debt_median: debt,
+                                 earnings_1yr: earnings, college_id: yale.id})
+      end
+
+      program.("Economics", 15_000, 70_000)
+      program.("History", 16_000, -2)
+      program.("Classics", -2, -1)
+      :ok
+    end
+
+    test "lists the best-paid majors first and counts the ones with no data", %{conn: conn} do
+      html = conn |> get("/colleges/130794/Yale%20University") |> html_response(200)
+      table = html |> String.split(~s(id="programs")) |> List.last()
+      names = [">Economics<", ">Computer Science<", ">History<"]
+
+      assert Enum.sort_by(names, &(:binary.match(table, &1) |> elem(0))) == names
+      refute table =~ ">Classics<"
+      assert table =~ "1 more program here reports no debt or earnings."
+    end
+  end
+
   describe "canonical URLs" do
     test "drop sort and filter params", %{conn: conn} do
       html = conn |> get("/colleges/rank?rank=top_college_yearly_earnings&count=100") |> html_response(200)

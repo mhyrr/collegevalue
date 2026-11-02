@@ -149,4 +149,16 @@ defmodule CollegevalueWeb.SeoHelpersTest do
       assert Enum.map([1, 2, 3, 4, 11, 12, 13, 21, 112], &ordinal/1) == ~w(1st 2nd 3rd 4th 11th 12th 13th 21st 112th)
     end
   end
+
+  describe "website/1" do
+    test "keeps a scheme Scorecard stored and adds one it left off" do
+      assert website("https://www.georgetown.edu/") == {"https://www.georgetown.edu/", "www.georgetown.edu"}
+      assert website("www.yale.edu") == {"https://www.yale.edu", "www.yale.edu"}
+    end
+
+    test "is nil for a missing site" do
+      assert website(nil) == nil
+      assert website("NULL") == nil
+    end
+  end
 end
