@@ -244,9 +244,6 @@ defmodule Collegevalue.Colleges do
 
     direction = if sort == :top, do: :desc, else: :asc
 
-    IO.inspect(cost_field)
-    IO.inspect(payoff_field)
-
     base = from c in College,
       select: %Rank{
         credential_level: "Unknown",
@@ -265,7 +262,9 @@ defmodule Collegevalue.Colleges do
         tuition_in: c.tuition_in,
         fouryear_100_completion: c.fouryear_100_completion,
         fouryear_150_completion: c.fouryear_150_completion,
-        fouryear_200_completion: c.fouryear_200_completion
+        fouryear_200_completion: c.fouryear_200_completion,
+        city: c.city,
+        state: c.state
       },
       order_by: [{^direction, fragment("diff")}],
       limit: ^limit
@@ -275,11 +274,7 @@ defmodule Collegevalue.Colleges do
       |> filter_results(cost_field)
       |> filter_results(payoff_field)
 
-    IO.inspect(Ecto.Adapters.SQL.to_sql(:all, Repo, query))
-
-    foo = Repo.all(query)
-    IO.inspect(foo)
-    foo
+    Repo.all(query)
 
   end
 

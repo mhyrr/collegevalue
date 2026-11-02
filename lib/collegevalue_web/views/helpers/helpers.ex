@@ -4,33 +4,64 @@ defmodule CollegevalueWeb.Views.Helpers do
   alias Collegevalue.Control
   alias Collegevalue.Colleges.College
 
-  @field_rank_views [
-    {"Fastest to Repay the Debt", "fastest_repay"},
-    {"Slowest to Repay the Debt", "slowest_repay"},
-    {"Best Value for the Cost", "best_value"},
-    {"Worst Value for the Cost", "worst_value"},
-    {"Top College/Majors by Earnings Only", "top_earnings"},
-    {"Bottom College/Majors by Earnings Only", "bottom_earnings"}
+
+
+
+  # /colleges/rank: each ranking is a measure, ranked best or worst first. The
+  # `rank` param is "<top|bottom>_college_<measure>", as before.
+  @college_measures [
+    {"debt_to_earnings", "All borrowers' debt", "Median debt", "Earnings minus debt",
+     "the median federal debt of everyone who borrowed, including students who left without a degree"},
+    {"graddebt_to_earnings", "Graduates' debt", "Graduates' debt", "Earnings minus debt",
+     "the median federal debt of students who graduated"},
+    {"yearly_earnings", "Yearly cost", "Yearly cost", "Earnings minus a year's cost",
+     "one year's full cost of attendance, before grants and scholarships"}
   ]
 
+  @doc "The measure and direction of a /colleges/rank `rank` param, defaulting to best by debt."
+  def college_ranking(param) do
+    case Regex.run(~r/^(top|bottom)_college_(.+)$/, to_string(param)) do
+      [_, dir, measure] when measure in ["debt_to_earnings", "graddebt_to_earnings", "yearly_earnings"] -> {measure, dir}
+      _ -> {"debt_to_earnings", "top"}
+    end
+  end
 
-  @college_rank_views [
-    {"Top Colleges By Yearly Cost to Earnings", "top_college_yearly_earnings"},
-    {"Bottom Colleges By Yearly Cost to Earnings", "bottom_college_yearly_earnings"},
+  def college_measures, do: @college_measures
 
-    {"Top Colleges By Graduated Debt to 10 Year Earnings", "top_college_graddebt_to_earnings"},
-    {"Bottom Colleges By Graduated Debt to 10 Year Earnings", "bottom_college_graddebt_to_earnings"},
-    {"Top Colleges By Debt to 10 Year Earnings", "top_college_debt_to_earnings"},
-    {"Bottom Colleges By Debt to 10 Year Earnings", "bottom_college_debt_to_earnings"},
+  def college_measure(measure), do: List.keyfind(@college_measures, measure, 0)
+
+  @doc "One sentence on what the current /colleges/rank list measures."
+  def college_rank_summary({measure, dir}) do
+    {_, _, _, _, cost} = college_measure(measure)
+    order = if dir == "top", do: "Best first", else: "Worst first"
+    "#{order}: each college's median earnings ten years after students start, minus #{cost}."
+  end
+
+  # /fields/rank: three measures, each ranked best or worst first.
+  @field_measures [
+    {"repay", "Months to repay", "fastest_repay", "slowest_repay"},
+    {"value", "Years of pay", "best_value", "worst_value"},
+    {"pay", "First-year pay", "top_earnings", "bottom_earnings"}
   ]
 
-  def college_rank_views() do
-    @college_rank_views
+  def field_measures, do: @field_measures
+
+  @doc "The measure and direction (\"top\" or \"bottom\") of a /fields/rank ranking."
+  def field_ranking(ranking) do
+    Enum.find_value(@field_measures, {"repay", "top"}, fn
+      {measure, _, ^ranking, _} -> {measure, "top"}
+      {measure, _, _, ^ranking} -> {measure, "bottom"}
+      _ -> nil
+    end)
   end
 
-  def field_rank_views() do
-    @field_rank_views
+  @doc "The /fields/rank ranking for a measure and direction."
+  def field_ranking_key(measure, dir) do
+    {_, _, best, worst} = List.keyfind(@field_measures, measure, 0)
+    if dir == "top", do: best, else: worst
   end
+
+
 
   def address(%College{city: city, state: state, zip: zip}) when city == "city" or state == "state" or zip == "zip" do
     "Not Listed"
@@ -327,22 +358,6 @@ defmodule CollegevalueWeb.Views.Helpers do
     |> Enum.take(n)
   end
 
-  def field_chart_data(ranks) do
-
-    chart_data = []
-
-    debt = ranks
-    |> Enum.map(fn rank -> [chart_name(rank), -(rank.cost || 0)] end)
-    |> Enum.reverse
-    chart_data = chart_data ++ [ %{name: "Debt", data: debt}]
-
-    earnings = ranks
-    |> Enum.map(fn rank -> [chart_name(rank), rank.payoff || 0] end)
-    |> Enum.reverse
-    chart_data = chart_data ++ [ %{name: "Earnings", data: earnings}]
-
-    chart_data
-  end
 
   @doc """
   A college's website as {href, label}, or nil. Scorecard stores some with a
@@ -368,9 +383,6 @@ defmodule CollegevalueWeb.Views.Helpers do
   end
 
 
-  defp chart_name(rank) do
-    rank.college_name <> " " <> rank.field_name
-  end
 
   @doc """
   "City, ST" for a US college with a listed city, else nil.
@@ -381,6 +393,10 @@ defmodule CollegevalueWeb.Views.Helpers do
   end
 
   def place(_college), do: nil
+
+  @doc "A ranked college's city and state, like `place/1`."
+  def rank_place(%{city: city, state: state}), do: place(%College{city: city, state: state})
+  def rank_place(_rank), do: nil
 
   @doc """
   The page title for a college: its name, and its place when known, so

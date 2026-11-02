@@ -64,6 +64,7 @@ defmodule CollegevalueWeb.DataComponents do
   attr :net_price, :any, default: nil
   attr :sticker, :any, default: nil
   attr :debt, :any, default: nil
+  attr :gap_as_tip, :boolean, default: false
   def cost_cell(assigns) do
     assigns =
       assign(assigns,
@@ -80,8 +81,10 @@ defmodule CollegevalueWeb.DataComponents do
       <% else %>
         <span class="text-gray-400 italic">No data</span>
       <% end %>
-      <span class="block text-xs text-gray-500">Sticker: <%= if @sticker_total, do: Helpers.cash_compact(@sticker_total), else: "No data" %></span>
-      <%= if @gap do %>
+      <span class="block text-xs text-gray-500">Sticker: <%= if @sticker_total, do: Helpers.cash_compact(@sticker_total), else: "No data" %>
+        <%= if @gap && @gap_as_tip do %><.info_tip tip={"#{Helpers.gap_text(@gap)}. #{@gap_tip}"} /><% end %>
+      </span>
+      <%= if @gap && !@gap_as_tip do %>
         <span class="gap-after-loans block w-28 md:w-auto whitespace-normal text-xs text-gray-700" title={@gap_tip}><%= Helpers.gap_text(@gap) %></span>
       <% end %>
     </td>
@@ -320,6 +323,48 @@ defmodule CollegevalueWeb.DataComponents do
     </div>
     """
   end
+
+  # A row of links styled as a two-way or three-way switch, for choices that
+  # change the URL, so each view is its own crawlable page.
+  attr :label, :string, required: true
+  attr :items, :list, required: true, doc: "{text, href, active?}"
+  def link_switch(assigns) do
+    ~H"""
+    <div class="inline-flex flex-wrap rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label={@label}>
+      <%= for {text, href, active} <- @items do %>
+        <a href={href} aria-current={active && "true"} class={["no-underline", toggle_class(active)]}><%= text %></a>
+      <% end %>
+    </div>
+    """
+  end
+
+  # A small "?" that shows `tip` on hover.
+  attr :tip, :string, required: true
+  def info_tip(assigns) do
+    ~H"""
+    <span class="group relative inline-block align-middle" tabindex="0">
+      <span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-gray-200 text-gray-500 text-[10px] font-bold cursor-help">?</span>
+      <span class="hidden group-hover:block group-focus:block absolute z-10 bottom-full left-1/2 -translate-x-1/2 mb-2 w-56 px-3 py-2 text-xs font-normal normal-case tracking-normal whitespace-normal text-white bg-gray-800 rounded-lg shadow-lg"><%= @tip %></span>
+    </span>
+    """
+  end
+
+  # A completion rate with a dot colored like `completion_badge`.
+  attr :rate, :float, default: nil
+  def completion_rate(assigns) do
+    assigns = assign(assigns, dot: completion_dot(completion_category(assigns.rate)), display: format_percent(assigns.rate))
+
+    ~H"""
+    <span class="inline-flex items-center gap-1.5 tabular-nums">
+      <span class={["inline-block w-2 h-2 rounded-full", @dot]}></span><%= @display %>
+    </span>
+    """
+  end
+
+  defp completion_dot(:high), do: "bg-emerald-500"
+  defp completion_dot(:average), do: "bg-amber-400"
+  defp completion_dot(:low), do: "bg-red-500"
+  defp completion_dot(:no_data), do: "bg-gray-300"
 
   # Switches a program table between bachelor's programs and every credential.
   attr :show_all, :boolean, required: true

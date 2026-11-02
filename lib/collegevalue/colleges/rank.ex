@@ -23,6 +23,8 @@ defmodule Collegevalue.Colleges.Rank do
     field :fouryear_100_completion, :float
     field :fouryear_150_completion, :float
     field :fouryear_200_completion, :float
+    field :city, :string, virtual: true
+    field :state, :string, virtual: true
 
     timestamps()
   end

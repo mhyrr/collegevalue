@@ -203,9 +203,29 @@ defmodule CollegevalueWeb.SeoControllerTest do
     test "the rank page says how it ranks and where the data comes from", %{conn: conn} do
       html = conn |> get("/colleges/rank") |> html_response(200)
 
-      assert html =~ "How we rank colleges"
-      assert html =~ "graduation rate"
+      assert html =~ "How We Rank Colleges"
+      assert html =~ "graduate within eight years"
       assert html =~ "Where the numbers come from"
+    end
+
+    test "the rank page switches measure and order by link, keeping the count", %{conn: conn} do
+      html = conn |> get("/colleges/rank?rank=bottom_college_graddebt_to_earnings&count=250") |> html_response(200)
+
+      assert html =~ ~s(aria-current="true" class="no-underline px-4 py-1.5 text-sm rounded-md bg-white shadow text-darkgreen font-bold">Graduates&#39; debt</a>)
+      assert html =~ "Worst first: each college&#39;s median earnings ten years after students start, minus the median federal debt of students who graduated."
+      assert html =~ ~s(href="/colleges/rank?count=250&amp;rank=top_college_graddebt_to_earnings")
+
+      html = build_conn() |> get("/colleges/rank") |> html_response(200)
+      assert html =~ "New Haven, CT"
+    end
+
+    test "the majors rank page switches measure by link and has no chart", %{conn: conn} do
+      html = conn |> get("/fields/rank?rank=best_value") |> html_response(200)
+
+      assert html =~ ~s(href="/fields/rank?rank=worst_value")
+      assert html =~ ~s(href="/fields/rank?rank=top_earnings")
+      assert html =~ "Best value: fewest years of pay to cover the cost"
+      refute html =~ "What&#39;s Worth It?"
     end
 
     test "the calculator says how it computes degree ROI", %{conn: conn} do

@@ -1,71 +1,117 @@
-<h1 class="text-darkgreen">Best Value Colleges: Earnings vs. Debt</h1>
+<% {measure, dir} = @ranking %>
+<% {_, _, cost_label, diff_label, _} = college_measure(measure) %>
+<% link_to = fn m, d -> Routes.college_path(@conn, :rank, Map.merge(%{rank: "#{d}_college_#{m}"}, if(@count == 100, do: %{}, else: %{count: @count}))) end %>
 
-<p class="text-gray-700 pb-4 max-w-3xl">
-  A college is a good investment when its graduates earn well and owe little.
-  This list ranks every college in the College Scorecard by what students pay or borrow
-  against what they earn 10 years later. Pick a ranking below to sort by yearly cost,
-  student debt or graduates' debt, from the best value to the worst.
-</p>
+<div class="rank-page py-8 px-4 md:px-0 md:py-4">
+  <header class="pb-6">
+    <h1 class="text-darkgreen text-4xl md:text-3xl font-display">Best Value Colleges: Earnings vs. Debt</h1>
+    <p class="pt-3 max-w-3xl text-lg leading-relaxed text-gray-800">
+      A college is a good investment when its graduates earn well and owe little.
+      This list ranks colleges in the College Scorecard by what their students earn ten years after starting, against what they borrow or pay.
+    </p>
+  </header>
 
-<section>
-  <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get], fn f -> %>
-    <%= select f, :rank, college_rank_views(), onchange: "this.form.submit()", class: "form-input pl-3 pr-0 sm:text-sm sm:leading-5 flex-grow" %>
-    <%= select f, :count, [100, 250, 500, 1000], onchange: "this.form.submit()", class: "form-input pl-3 pr-8 sm:text-sm sm:leading-5 flex-grow" %>
+  <div class="rank-controls flex flex-wrap items-end gap-x-8 gap-y-4 rounded-lg border border-gray-200 bg-white p-4">
+    <div>
+      <p class="pb-1 text-xs uppercase tracking-wider text-gray-500">Measure earnings against</p>
+      <.link_switch label="Measure" items={for {m, label, _, _, _} <- college_measures(), do: {label, link_to.(m, dir), m == measure}} />
+    </div>
+    <div>
+      <p class="pb-1 text-xs uppercase tracking-wider text-gray-500">Order</p>
+      <.link_switch label="Order" items={[{"Best first", link_to.(measure, "top"), dir == "top"}, {"Worst first", link_to.(measure, "bottom"), dir == "bottom"}]} />
+    </div>
+    <%= form_for @conn, Routes.college_path(@conn, :rank), [method: :get, class: "ml-auto md:ml-0"], fn f -> %>
+      <%= hidden_input f, :rank, value: "#{dir}_college_#{measure}" %>
+      <label for="count_select" class="block pb-1 text-xs uppercase tracking-wider text-gray-500">Show</label>
+      <%= select f, :count, @rank_counts, id: "count_select", value: @count, onchange: "this.form.submit()", class: "form-input rounded-md border-gray-200 py-1.5 pl-3 pr-8 text-sm" %>
+    <% end %>
+  </div>
+
+  <p class="rank-summary pt-4 pb-4 text-sm text-gray-600"><%= college_rank_summary(@ranking) %> <a href="#how-we-rank" class="no-underline text-green hover:underline">How we rank</a></p>
+
+  <%= if @ranks == [] do %>
+    <p class="text-gray-600">No college reports both figures for this ranking.</p>
+  <% else %>
+    <div class="rounded-lg border border-gray-200 md:hidden">
+      <table class="rank-table w-full">
+        <thead>
+          <tr>
+            <.header label="#" />
+            <.header label="College" tooltip_key="name" />
+            <.header label="Admit Rate" tooltip_key="admissions" />
+            <.header label={cost_label} tooltip={"The cost this ranking subtracts: #{elem(college_measure(measure), 4)}."} />
+            <.header label="10-Year Earnings" tooltip="Median earnings ten years after students start, for students who received federal aid." />
+            <.header label={diff_label} tooltip="Ten-year earnings minus the cost. The list is ranked by this column." />
+            <.header label="Finish" tooltip_key="completion" />
+          </tr>
+        </thead>
+        <tbody>
+          <%= for {rank, i} <- Enum.with_index(@ranks, 1) do %>
+            <tr class="odd:bg-gray-50 hover:bg-lightgreen/10">
+              <td class="px-4 py-3 border-b text-sm text-gray-400 tabular-nums"><%= i %></td>
+              <td class="px-4 py-3 border-b text-sm">
+                <%= link rank.college_name, to: college_page_path(rank.unit_id, rank.college_name), class: "no-underline text-green hover:underline" %>
+                <%= if place = rank_place(rank) do %><span class="block text-xs text-gray-500"><%= place %></span><% end %>
+              </td>
+              <td class="px-4 py-3 border-b text-sm tabular-nums">
+                <span class={no_data?(rank.admissions) && "text-gray-400"}><%= percent(rank.admissions) %></span>
+                <%= if not no_data?(rank.sat_avg) do %><span class="block text-xs text-gray-500">SAT <%= sat(rank.sat_avg) %></span><% end %>
+              </td>
+              <td class="px-4 py-3 border-b text-sm tabular-nums"><%= cash(rank.cost) %></td>
+              <td class="px-4 py-3 border-b text-sm tabular-nums"><%= cash(rank.payoff) %></td>
+              <td class={["px-4 py-3 border-b tabular-nums font-bold", if(rank.diff > 0, do: "text-emerald-600", else: "text-red-500")]}><%= cash(rank.diff) %></td>
+              <td class="px-4 py-3 border-b text-sm"><.completion_rate rate={rank.fouryear_200_completion} /></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <ol class="rank-cards hidden md:block space-y-3">
+      <%= for {rank, i} <- Enum.with_index(@ranks, 1) do %>
+        <li class="rounded-lg border border-gray-200 p-4">
+          <div class="flex items-baseline gap-3">
+            <span class="text-sm text-gray-400 tabular-nums"><%= i %></span>
+            <div class="flex-1">
+              <%= link rank.college_name, to: college_page_path(rank.unit_id, rank.college_name), class: "no-underline text-green font-bold" %>
+              <%= if place = rank_place(rank) do %><span class="block text-xs text-gray-500"><%= place %></span><% end %>
+            </div>
+          </div>
+          <p class={["pt-2 text-2xl font-display tabular-nums", if(rank.diff > 0, do: "text-emerald-600", else: "text-red-500")]}><%= cash(rank.diff) %> <span class="text-sm text-gray-500 font-body"><%= String.downcase(diff_label) %></span></p>
+          <dl class="grid grid-cols-2 gap-x-4 gap-y-1 pt-2 text-sm">
+            <dt class="text-gray-500">10-year earnings</dt><dd class="tabular-nums text-right"><%= cash(rank.payoff) %></dd>
+            <dt class="text-gray-500"><%= cost_label %></dt><dd class="tabular-nums text-right"><%= cash(rank.cost) %></dd>
+            <dt class="text-gray-500">Admit rate</dt><dd class="tabular-nums text-right"><%= percent(rank.admissions) %></dd>
+            <dt class="text-gray-500">Finish</dt><dd class="text-right"><.completion_rate rate={rank.fouryear_200_completion} /></dd>
+          </dl>
+        </li>
+      <% end %>
+    </ol>
   <% end %>
 
-
-</section>
-
-<table class="md:block xl:table pt-8">
-  <thead class="md:absolute md:-top-9999 md:-left-9999">
-    <tr>
-      <.header label="College Name" tooltip_key="name" />
-      <.header label="Admissions Rate" tooltip_key="admissions" />
-      <.header label="Avg SAT" tooltip_key="sat" />
-      <.header label={humanize_header(List.first(@ranks).cost_field)} tooltip="The cost metric for this ranking view — may be debt, tuition, or yearly cost depending on the ranking selected" />
-      <.header label={humanize_header(List.first(@ranks).payoff_field)} tooltip="The earnings metric for this ranking view — may be 1-year, 2-year, or 10-year earnings depending on the ranking selected" />
-      <.header label="Difference" tooltip_key="difference" />
-      <.header label="Completion" tooltip_key="completion" />
-    </tr>
-  </thead>
-  <tbody class="md:block">
-
-  <%= for rank <- @ranks do %>
-    <tr class="md:block odd:bg-gray-50">
-      <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: college_page_path(rank.unit_id, rank.college_name), class: "no-underline text-green" %> </td>
-      <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
-      <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(rank.sat_avg)%></td>
-      <td class="px-4 py-3 cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>
-      <td class="px-4 py-3 payoff-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.payoff) %></td>
-      <.diff_cell value={rank.diff} />
-      <td class="px-4 py-3 md:border-none md:relative md:block xl:text-sm whitespace-nowrap border-b">
-        <.completion_badge rate={rank.fouryear_200_completion} />
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<section class="pt-12 text-gray-700 space-y-4 max-w-3xl">
-  <h2 class="text-xl text-darkgreen">How we rank colleges</h2>
-  <p>
-    Each ranking subtracts a cost from an earnings figure. The difference column is that gap:
-    the larger it is, the better the return on the money spent or borrowed.
-  </p>
-  <ul class="list-disc list-inside space-y-2">
-    <li><strong>Yearly cost to earnings.</strong> Median earnings 10 years after enrolling, minus one year's full cost of attendance. This is the price before financial aid. Grants and scholarships lower it for most families, so the <a href="/calculator" class="text-green">ROI calculator</a> uses net price for your income instead.</li>
-    <li><strong>Debt to 10-year earnings.</strong> The same earnings, minus the median student debt of everyone who borrowed, including students who left without a degree.</li>
-    <li><strong>Graduated debt to 10-year earnings.</strong> The same, counting only the debt of students who finished.</li>
-  </ul>
-  <p>
-    Earnings alone can flatter a college whose students rarely finish, so the completion column
-    shows the graduation rate: the share of students who complete within twice the normal time.
-    Read a high return next to a low graduation rate with care.
-  </p>
-  <h2 class="text-xl text-darkgreen pt-4">Where the numbers come from</h2>
-  <p>
-    All data comes from the U.S. Department of Education's College Scorecard. Earnings and debt
-    are medians for students who received federal financial aid. To compare the same major across
-    schools, see <a href="/fields/rank" class="text-green">majors ranked by earnings vs. debt</a>.
-  </p>
-</section>
+  <section id="how-we-rank" class="pt-12 grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8 text-gray-700">
+    <div class="col-span-2 lg:col-span-1 space-y-4 leading-relaxed">
+      <h2 class="text-darkgreen text-2xl font-display">How We Rank Colleges</h2>
+      <p>
+        Each ranking subtracts a cost from what students earn ten years after they start.
+        The bigger the gap, the more a college's students earn for what they spent or borrowed.
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>All borrowers' debt.</strong> The median federal student debt of everyone who borrowed, including students who left without a degree. This is the default, because leaving with debt and no degree is part of a college's record.</li>
+        <li><strong>Graduates' debt.</strong> The same, counting only the debt of students who finished.</li>
+        <li><strong>Yearly cost.</strong> One year's full cost of attendance. This is the price before financial aid. Grants and scholarships lower it for most families, so the <a href="/calculator" class="text-green">ROI calculator</a> uses the net price for your income instead.</li>
+      </ul>
+      <p>
+        Earnings alone can flatter a college whose students rarely finish, so the Finish column shows the share of
+        first-time full-time students who graduate within eight years. Read a big gap next to a low finish rate with care.
+      </p>
+    </div>
+    <aside>
+      <div class="rounded-lg bg-gray-50 border border-gray-200 p-5 text-sm leading-6 text-gray-600 space-y-3">
+        <p class="font-bold text-darkgreen">Where the numbers come from</p>
+        <p>All data comes from the U.S. Department of Education's College Scorecard. Earnings and debt are medians for students who received federal financial aid.</p>
+        <p>To compare the same major across schools, see <a href="/fields/rank" class="no-underline text-green hover:underline">majors ranked by earnings vs. debt</a>.</p>
+      </div>
+    </aside>
+  </section>
+</div>

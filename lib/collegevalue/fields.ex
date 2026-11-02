@@ -329,6 +329,8 @@ defmodule Collegevalue.Fields do
         college_name: c.name,
         unit_id: c.unitid,
         college_id: c.id,
+        city: c.city,
+        state: c.state,
         tuition_out: c.tuition_out,
         tuition_in: c.tuition_in,
         admissions: c.admissions_rate,

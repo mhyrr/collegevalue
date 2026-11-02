@@ -25,6 +25,8 @@ defmodule Collegevalue.Fields.Rank do
     field :net_price, :integer
     field :sticker, :integer
     field :value_years, :float
+    field :city, :string, virtual: true
+    field :state, :string, virtual: true
 
     timestamps()
   end

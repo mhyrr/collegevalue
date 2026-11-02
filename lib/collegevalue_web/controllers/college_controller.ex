@@ -5,7 +5,7 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields
 
-  import CollegevalueWeb.Views.Helpers, only: [college_title: 1, college_page_path: 2]
+  import CollegevalueWeb.Views.Helpers, only: [college_title: 1, college_page_path: 2, college_ranking: 1]
 
   @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
   @rank_description "Best value colleges ranked by yearly cost, student debt and graduation rate against median earnings 10 years after enrolling."
@@ -77,28 +77,30 @@ defmodule CollegevalueWeb.CollegeController do
     render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges", zipmsg: "")
   end
 
-  def rank(conn, %{"rank" => ranking, "count" => count}) do
+  @college_rank_costs %{
+    "debt_to_earnings" => :debt_median,
+    "graddebt_to_earnings" => :graduated_debt_median,
+    "yearly_earnings" => :yearly_cost
+  }
+  @college_rank_counts [100, 250, 500, 1000]
 
-    ranks = case ranking do
-      "top_college_debt_to_earnings" ->
-        Colleges.get_colleges_by_costs(:debt_median, :earnings_median_after10, :top, count)
-      "bottom_college_debt_to_earnings" ->
-        Colleges.get_colleges_by_costs(:debt_median, :earnings_median_after10, :bottom, count)
-      "top_college_graddebt_to_earnings" ->
-        Colleges.get_colleges_by_costs(:graduated_debt_median, :earnings_median_after10, :top, count)
-      "bottom_college_graddebt_to_earnings" ->
-        Colleges.get_colleges_by_costs(:graduated_debt_median, :earnings_median_after10, :bottom, count)
-      "top_college_yearly_earnings" ->
-        Colleges.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :top, count)
-      "bottom_college_yearly_earnings" ->
-        Colleges.get_colleges_by_costs(:yearly_cost, :earnings_median_after10, :bottom, count)
+  def rank(conn, params) do
+    {measure, dir} = ranking = college_ranking(params["rank"])
+    count = case Integer.parse(to_string(params["count"])) do
+      {count, ""} when count in @college_rank_counts -> count
+      _ -> 100
     end
 
-    render(conn, "rank.html", ranks: ranks, page_title: "Best Value Colleges: Earnings vs. Debt", meta_description: @rank_description)
-  end
+    ranks = Colleges.get_colleges_by_costs(@college_rank_costs[measure], :earnings_median_after10, if(dir == "top", do: :top, else: :bottom), count)
 
-  def rank(conn, _params) do
-    render(conn, "rank.html", ranks: Colleges.get_colleges_by_costs, page_title: "Best Value Colleges: Earnings vs. Debt", meta_description: @rank_description)
+    render(conn, "rank.html",
+      ranks: ranks,
+      ranking: ranking,
+      count: count,
+      rank_counts: @college_rank_counts,
+      page_title: "Best Value Colleges: Earnings vs. Debt",
+      meta_description: @rank_description
+    )
   end
 
   def show(conn, %{"name" => name, "unitid" => unitid}) do
