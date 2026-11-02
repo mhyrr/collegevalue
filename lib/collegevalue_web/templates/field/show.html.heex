@@ -18,26 +18,39 @@
       <.stat_card label="Colleges" note="offer this major"><%= Number.Delimit.number_to_delimited(@field.count, precision: 0) %></.stat_card>
     </dl>
 
-    <div class="grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8">
-      <section class="field-answer col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800">
+    <% about = [
+      "Earnings are from one year after graduating, for students who received federal aid.",
+      "Debt is the median federal student-loan debt of graduates who borrowed. It leaves out loans parents took.",
+      "Majors that lead to graduate school, or to careers that start slowly, look worse here than they will ten years on."
+    ] %>
+    <%= if @note != [] do %>
+      <div class="grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8">
+        <section class="field-answer col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800">
+          <h2 class="text-darkgreen text-2xl font-display pb-4"><%= field_question(@field.name) %></h2>
+          <div class="space-y-5">
+            <p><%= Enum.join(field_answer(@facts), " ") %></p>
+            <%= for paragraph <- @note do %>
+              <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: college_page_path(unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
+            <% end %>
+          </div>
+        </section>
+        <aside>
+          <div class="sticky top-6 rounded-lg bg-gray-50 border border-gray-200 p-5 text-sm leading-6 text-gray-600 space-y-3">
+            <p class="font-bold text-darkgreen">About these numbers</p>
+            <%= for line <- about do %><p><%= line %></p><% end %>
+            <p><a href="#programs" class="no-underline text-green hover:underline">See every program by college ↓</a></p>
+          </div>
+        </aside>
+      </div>
+    <% else %>
+      <section class="field-answer max-w-3xl text-lg leading-relaxed text-gray-800">
         <h2 class="text-darkgreen text-2xl font-display pb-4"><%= field_question(@field.name) %></h2>
-        <div class="space-y-5">
-          <p><%= Enum.join(field_answer(@facts), " ") %></p>
-          <%= for paragraph <- @note do %>
-            <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: college_page_path(unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
-          <% end %>
-        </div>
+        <p><%= Enum.join(field_answer(@facts), " ") %></p>
+        <p class="mt-6 border-l-4 border-plain pl-4 text-sm leading-6 text-gray-600">
+          <span class="font-bold text-darkgreen">About these numbers.</span> <%= Enum.join(about, " ") %>
+        </p>
       </section>
-      <aside class="pt-14 lg:pt-0">
-        <div class="sticky top-6 rounded-lg bg-gray-50 border border-gray-200 p-5 text-sm leading-6 text-gray-600 space-y-3">
-          <p class="font-bold text-darkgreen">About these numbers</p>
-          <p>Earnings are from one year after graduating, for students who received federal aid.</p>
-          <p>Debt is the median federal student-loan debt of graduates who borrowed. It leaves out loans parents took.</p>
-          <p>Majors that lead to graduate school, or to careers that start slowly, look worse here than they will ten years on.</p>
-          <p><a href="#programs" class="no-underline text-green hover:underline">See every program by college ↓</a></p>
-        </div>
-      </aside>
-    </div>
+    <% end %>
   <% else %>
     <p class="max-w-prose text-lg leading-relaxed text-gray-800"><%= field_summary(@field) %></p>
   <% end %>
