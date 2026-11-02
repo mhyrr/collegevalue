@@ -540,7 +540,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert dataset["url"] == "http://localhost:4002/data"
       assert dataset["creator"]["name"] == "CollegeValue"
       assert dataset["isBasedOn"]["name"] == "College Scorecard"
-      assert dataset["isBasedOn"]["datePublished"] == Collegevalue.Scorecard.release_month()
+      assert dataset["isBasedOn"]["datePublished"] == Collegevalue.Scorecard.release_date()
       assert String.length(dataset["description"]) >= 50
     end
 

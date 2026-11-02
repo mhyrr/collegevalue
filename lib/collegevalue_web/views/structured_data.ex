@@ -78,7 +78,7 @@ defmodule CollegevalueWeb.StructuredData do
           "@type" => "Dataset",
           "name" => "College Scorecard",
           "url" => Scorecard.url(),
-          "datePublished" => Scorecard.release_month(),
+          "datePublished" => Scorecard.release_date(),
           "creator" => %{"@type" => "GovernmentOrganization", "name" => Scorecard.publisher()}
         }
       }
