@@ -422,5 +422,22 @@ defmodule CollegevalueWeb.DataComponents do
     """
   end
 
+  # The source line at the foot of a data page: which Scorecard release the
+  # numbers come from, and how to cite the page. Answer engines quote a page
+  # that says where its figures come from and when.
+  attr :url, :string, required: true, doc: "the page's canonical URL"
+  attr :title, :string, required: true, doc: "the page title, without the brand"
+  attr :class, :string, default: "pt-10"
+  def data_source(assigns) do
+    assigns = assign(assigns, release: Collegevalue.Scorecard.release(), loaded: Collegevalue.Scorecard.loaded())
+
+    ~H"""
+    <footer class={["data-source space-y-1 text-sm text-gray-500", @class]}>
+      <p>Data: <%= Collegevalue.Scorecard.publisher() %>, <a href={Collegevalue.Scorecard.url()} class="no-underline text-green hover:underline">College Scorecard</a>, <%= @release %> release. Updated <%= @loaded %>.</p>
+      <p>Cite as: CollegeValue, “<%= @title %>,” <span class="break-all"><%= @url %></span></p>
+    </footer>
+    """
+  end
+
   defp delimited(n), do: Number.Delimit.number_to_delimited(n, precision: 0)
 end

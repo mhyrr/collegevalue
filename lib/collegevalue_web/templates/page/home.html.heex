@@ -59,6 +59,7 @@
             If not, where you go matters far less than what it costs: pick the school that leaves you owing the least.</b>
             The pay gap is largest in <%= and_join(@selectivity.largest) %>, and smallest in <%= and_join(@selectivity.smallest) %>.
           </p>
+          <.data_source url={CollegevalueWeb.LayoutView.canonical_url(@conn)} title={@page_title} class="pt-0 pb-4" />
         </div>
       <% end %>
 

@@ -39,6 +39,13 @@ defmodule CollegevalueWeb.LayoutView do
   def origin(conn), do: Application.get_env(:collegevalue, :canonical_url) || Routes.url(conn)
 
   @doc """
+  A path's URL on the site's public origin, for pages with no conn at hand
+  (a LiveView's own template). Matches `canonical_url/1` for a page whose
+  path is already canonical.
+  """
+  def page_url(path), do: (Application.get_env(:collegevalue, :canonical_url) || CollegevalueWeb.Endpoint.url()) <> path
+
+  @doc """
   The page's meta description: an explicit `:meta_description` assign, one
   derived from the college or field the page shows, or the site default.
   """

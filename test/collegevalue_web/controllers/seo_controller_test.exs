@@ -103,6 +103,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert html =~ "earn a median 100% more in their first year"
       assert html =~ "pay 8% more, and in 1 of 1 majors"
       assert html =~ "typically pays $30,000 over four years, against $60,000"
+      assert html =~ "College Scorecard</a>, #{Collegevalue.Scorecard.release()} release."
     end
   end
 
@@ -447,6 +448,32 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert html =~ ~r{<h1[^>]*>Air Force ROTC</h1>}
       assert html =~ "College Scorecard field: Air Force ROTC, Air Science and Operations"
       assert html =~ ">Is Air Force ROTC Worth It?"
+    end
+  end
+
+  # Answer engines quote a page that says where its numbers come from and when.
+  describe "the source line" do
+    test "names the Scorecard release and the page to cite on every data page", %{conn: conn} do
+      release = Collegevalue.Scorecard.release()
+
+      for {path, cite} <- [
+            {"/fields/computer-science", "http://localhost:4002/fields/computer-science"},
+            {"/colleges/130794/yale-university", "http://localhost:4002/colleges/130794/yale-university"},
+            {"/colleges/rank?rank=bottom_college_debt", "http://localhost:4002/colleges/rank"},
+            {"/fields/rank?rank=best_value", "http://localhost:4002/fields/rank"}
+          ] do
+        html = build_conn() |> get(path) |> html_response(200)
+
+        assert html =~ "College Scorecard</a>, #{release} release. Updated #{Collegevalue.Scorecard.loaded()}.", path
+        assert html =~ ~s(<span class="break-all">#{cite}</span>), path
+      end
+
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
+      assert html =~ "Cite as: CollegeValue, “Yale University (New Haven, CT),”"
+    end
+
+    test "the data page states the same release", %{conn: conn} do
+      assert conn |> get("/data") |> html_response(200) =~ "<strong>#{Collegevalue.Scorecard.release()}</strong>"
     end
   end
 end

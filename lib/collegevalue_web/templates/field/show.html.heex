@@ -100,4 +100,6 @@
     </div>
     <.no_data_note count={@no_data_count} one="school offers this major but reports no debt or earnings for it." many="schools offer this major but report no debt or earnings for it." />
   </section>
+
+  <.data_source url={CollegevalueWeb.LayoutView.page_url(field_page_path(@field.name))} title={@page_title} />
 </div>
