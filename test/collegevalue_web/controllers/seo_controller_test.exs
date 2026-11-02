@@ -204,6 +204,33 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "which pages are open to the search index" do
+    test "a college with outcomes but no bachelor's program reporting earnings is noindex and left out of the sitemap", %{conn: conn} do
+      college = Repo.insert!(%College{name: "Beauty Academy", unitid: 555_001, city: "Mesa", state: "AZ", zip: "85201",
+                                      yearly_cost: 20_000, debt_median: 8_000})
+      Repo.insert!(%Discipline{name: "Cosmetology", credential_level: 1, stgp_debt_median: 9_000, earnings_1yr: 21_000, college_id: college.id})
+
+      assert conn |> get("/colleges/555001/beauty-academy") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
+      refute build_conn() |> get("/sitemap.xml") |> response(200) =~ "beauty-academy"
+    end
+  end
+
+  describe "the payoff summary on a college page" do
+    test "leads with months to repay, years of pay and the fastest and slowest majors", %{conn: conn, with_data: yale} do
+      for {name, debt, pay} <- [{"Economics", 12_000, 72_000}, {"History", 18_000, 36_000}, {"Physics", 15_000, 60_000}] do
+        Repo.insert!(%Discipline{name: name, credential_level: 3, stgp_debt_median: debt, earnings_1yr: pay, college_id: yale.id})
+      end
+
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
+
+      # Months: 2.0 (Economics), 3.0 (Physics), 6.0 (History), 6.2 (Computer Science); median 4.5.
+      assert html =~ "At Yale University, the typical bachelor&#39;s program takes 4.5 months of first-year pay to equal its graduates&#39; median student debt"
+      assert html =~ "Fastest and Slowest to Repay"
+      payoff = html |> String.split("payoff-majors") |> Enum.at(1)
+      assert :binary.match(payoff, ">Economics<") < :binary.match(payoff, ">Computer Science<")
+    end
+  end
+
   describe "page metadata" do
     test "a field page's description answers its question with the data", %{conn: conn} do
       html = conn |> get("/fields/computer-science") |> html_response(200)

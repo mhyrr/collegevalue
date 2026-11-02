@@ -135,15 +135,25 @@ defmodule Collegevalue.Fields do
   """
   def has_outcomes?(%Field{debt_avg: debt, earn_avg: earn}), do: positive?(debt) or positive?(earn)
 
-  @doc """
-  The name of every field that `has_outcomes?/1`, ordered by name.
-  """
+  # A field page is open to the search index when this many colleges' bachelor's
+  # programs in it report first-year earnings: enough for a median and a
+  # spread worth reading. Fewer, and it stays up but out of the index.
+  @min_indexed_programs Application.compile_env(:collegevalue, :min_indexed_field_programs, 10)
+
+  defp indexable_field_names do
+    from d in Discipline,
+      where: d.credential_level == 3 and d.earnings_1yr > 0,
+      group_by: d.name,
+      having: count(d.id) >= ^@min_indexed_programs,
+      select: d.name
+  end
+
+  @doc "Whether the field's page is open to the search index; see `@min_indexed_programs`."
+  def indexable?(%Field{name: name}), do: Repo.exists?(where(indexable_field_names(), [d], d.name == ^name))
+
+  @doc "The name of every field that is `indexable?/1`, ordered by name."
   def list_indexable_field_names do
-    Field
-    |> where([f], f.debt_avg > 0 or f.earn_avg > 0)
-    |> order_by(asc: :name)
-    |> select([f], f.name)
-    |> Repo.all()
+    indexable_field_names() |> order_by([d], asc: d.name) |> Repo.all()
   end
 
   defp positive?(%Decimal{} = value), do: Decimal.gt?(value, 0)
@@ -225,6 +235,90 @@ defmodule Collegevalue.Fields do
     ])
     |> limit(^limit)
     |> Repo.all()
+  end
+
+  # A college gets a payoff summary when this many of its bachelor's programs
+  # report both debt and first-year earnings: enough for a median to mean
+  # something. The same floor picks the colleges it is compared with.
+  @min_payoff_programs 3
+
+  @doc """
+  How a college's bachelor's programs pay off, for the top of its page. Its
+  programs are measured as the majors ranking measures them (see
+  `bachelors_ranks/1`), and the summary is their medians:
+
+    * `:months`: months of first-year pay to equal the program's median debt.
+    * `:years`: years of first-year pay to equal four years of net price for
+      the family-income bracket; nil when the school reports no net price.
+    * `:faster_than`: the percent of other colleges with a payoff summary
+      whose median `:months` is higher.
+    * `:fastest` and `:slowest`: up to three programs each, by months, never
+      the same program twice.
+
+  nil when fewer than `@min_payoff_programs` programs report both figures.
+  """
+  def college_payoff(college_id, income \\ @default_income_bracket) do
+    programs = bachelors_ranks(income) |> where([c, _d], c.id == ^college_id) |> Repo.all()
+    by_months = programs |> Enum.filter(&is_number(&1.months)) |> Enum.sort_by(&{&1.months, &1.field_name})
+    n = length(by_months)
+
+    if n >= @min_payoff_programs do
+      months = median(Enum.map(by_months, & &1.months))
+      shown = min(3, div(n, 2))
+
+      %{
+        programs: n,
+        months: months,
+        years: programs |> Enum.map(& &1.value_years) |> Enum.filter(&is_number/1) |> median(),
+        faster_than: faster_than(months),
+        fastest: Enum.take(by_months, shown),
+        slowest: by_months |> Enum.take(-shown) |> Enum.reverse()
+      }
+    end
+  end
+
+  defp faster_than(months) do
+    medians = college_month_medians()
+    others = length(medians) - 1
+
+    if others > 0, do: round(100 * Enum.count(medians, &(&1 > months)) / others)
+  end
+
+  # Every college's median months to repay, for `faster_than/1`. The data only
+  # changes with a reload, so outside tests it is computed once per boot.
+  defp college_month_medians do
+    if Application.get_env(:collegevalue, :cache_college_payoff, true) do
+      case :persistent_term.get({__MODULE__, :college_month_medians}, nil) do
+        nil ->
+          medians = query_college_month_medians()
+          :persistent_term.put({__MODULE__, :college_month_medians}, medians)
+          medians
+
+        medians ->
+          medians
+      end
+    else
+      query_college_month_medians()
+    end
+  end
+
+  defp query_college_month_medians do
+    from(d in Discipline,
+      where: d.credential_level == 3 and d.earnings_1yr > 0 and d.stgp_debt_median > 0,
+      group_by: d.college_id,
+      having: count(d.id) >= ^@min_payoff_programs,
+      select: fragment("percentile_cont(0.5) within group (order by ?::float * 12 / ?)", d.stgp_debt_median, d.earnings_1yr)
+    )
+    |> Repo.all()
+  end
+
+  defp median([]), do: nil
+
+  defp median(values) do
+    sorted = Enum.sort(values)
+    n = length(sorted)
+    mid = div(n, 2)
+    if rem(n, 2) == 1, do: Enum.at(sorted, mid), else: (Enum.at(sorted, mid - 1) + Enum.at(sorted, mid)) / 2
   end
 
   @doc """

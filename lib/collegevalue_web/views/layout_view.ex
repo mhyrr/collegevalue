@@ -4,7 +4,7 @@ defmodule CollegevalueWeb.LayoutView do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields.Field
 
-  import CollegevalueWeb.Views.Helpers, only: [place: 1, field_short_name: 1, field_question: 1, cash: 1, no_data?: 1]
+  import CollegevalueWeb.Views.Helpers, only: [place: 1, field_short_name: 1, field_question: 1, cash: 1, no_data?: 1, months: 1]
 
   @default_description "Is college worth it? Compare what every U.S. college and major costs with what its graduates earn and owe, from the Department of Education's College Scorecard."
 
@@ -51,6 +51,21 @@ defmodule CollegevalueWeb.LayoutView do
   """
   def meta_description(%{meta_description: description}) when is_binary(description),
     do: description
+
+  def meta_description(%{college: %College{} = college, payoff: %{months: months} = payoff}) do
+    location = if place = place(college), do: " (#{place})", else: ""
+
+    compared =
+      cond do
+        is_nil(payoff.faster_than) -> ""
+        payoff.faster_than >= 50 -> ", faster than #{payoff.faster_than}% of colleges"
+        true -> ", slower than #{100 - payoff.faster_than}% of colleges"
+      end
+
+    price = if no_data?(college.netprice_3), do: "", else: " #{cash(college.netprice_3)} a year after aid for a $48–75k family."
+
+    "Is #{college.name}#{location} worth it? Its typical bachelor's program takes #{months(months)} of first-year pay to repay#{compared}.#{price}"
+  end
 
   def meta_description(%{college: %College{} = college}) do
     location = if place = place(college), do: " (#{place})", else: ""

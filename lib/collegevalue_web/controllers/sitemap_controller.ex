@@ -10,9 +10,9 @@ defmodule CollegevalueWeb.SitemapController do
 
   @doc """
   Every page meant for the search index: the listing pages, the A to Z list's
-  later pages, then each field and college with data behind it. Pages without
-  data render noindex (see `Colleges.has_outcomes?/1` and
-  `Fields.has_outcomes?/1`) and are left out.
+  later pages, then each field and college with enough data behind it. Pages with
+  too little data render noindex (see `Colleges.indexable?/1` and
+  `Fields.indexable?/1`) and are left out.
   """
   def index(conn, _params) do
     page_paths =

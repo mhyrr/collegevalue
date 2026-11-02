@@ -13,27 +13,46 @@
     </p>
   </header>
 
-  <dl class="college-stats grid grid-cols-4 lg:grid-cols-2 gap-4 pb-10">
-    <%= if not no_data?(@college.netprice_3) do %>
-      <.stat_card label="Price after aid" note="a year, for a family earning $48–75k"><%= cash(@college.netprice_3) %></.stat_card>
-    <% else %>
-      <%= if not no_data?(@college.yearly_cost) do %>
-        <.stat_card label="Cost per year" note="before grants and scholarships"><%= cash(@college.yearly_cost) %></.stat_card>
+  <%= if @payoff do %>
+    <dl class="college-stats grid grid-cols-4 lg:grid-cols-2 gap-4 pb-10">
+      <.stat_card label="Months to repay" note="typical bachelor's program"><%= months(@payoff.months) %></.stat_card>
+      <%= if @payoff.years do %>
+        <.stat_card label="Years of pay" note="four years, for a $48–75k family"><%= years(@payoff.years) %></.stat_card>
       <% end %>
-    <% end %>
-    <%= if not no_data?(@college.debt_median) do %>
-      <.stat_card label="Student debt" note="median, for those who borrowed"><%= cash(@college.debt_median) %></.stat_card>
-    <% end %>
-    <%= if not no_data?(@college.earnings_median_after10) do %>
-      <.stat_card label="Earnings" note="median, 10 years after starting"><%= cash(@college.earnings_median_after10) %></.stat_card>
-    <% end %>
-    <%= if not no_data?(@college.fouryear_150_completion) do %>
-      <.stat_card label="Graduate" note="within six years"><%= percent(@college.fouryear_150_completion) %></.stat_card>
-    <% end %>
-  </dl>
+      <%= if @payoff.faster_than do %>
+        <.stat_card label="Against other colleges" note={if @payoff.faster_than >= 50, do: "of colleges are slower to repay", else: "of colleges are faster to repay"}><%= if @payoff.faster_than >= 50, do: @payoff.faster_than, else: 100 - @payoff.faster_than %>%</.stat_card>
+      <% end %>
+      <%= if not no_data?(@college.netprice_3) do %>
+        <.stat_card label="Price after aid" note="a year, for a family earning $48–75k"><%= cash(@college.netprice_3) %></.stat_card>
+      <% end %>
+    </dl>
+  <% else %>
+    <dl class="college-stats grid grid-cols-4 lg:grid-cols-2 gap-4 pb-10">
+      <%= if not no_data?(@college.netprice_3) do %>
+        <.stat_card label="Price after aid" note="a year, for a family earning $48–75k"><%= cash(@college.netprice_3) %></.stat_card>
+      <% else %>
+        <%= if not no_data?(@college.yearly_cost) do %>
+          <.stat_card label="Cost per year" note="before grants and scholarships"><%= cash(@college.yearly_cost) %></.stat_card>
+        <% end %>
+      <% end %>
+      <%= if not no_data?(@college.debt_median) do %>
+        <.stat_card label="Student debt" note="median, for those who borrowed"><%= cash(@college.debt_median) %></.stat_card>
+      <% end %>
+      <%= if not no_data?(@college.earnings_median_after10) do %>
+        <.stat_card label="Earnings" note="median, 10 years after starting"><%= cash(@college.earnings_median_after10) %></.stat_card>
+      <% end %>
+      <%= if not no_data?(@college.fouryear_150_completion) do %>
+        <.stat_card label="Graduate" note="within six years"><%= percent(@college.fouryear_150_completion) %></.stat_card>
+      <% end %>
+    </dl>
+  <% end %>
 
   <div class="grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8">
-    <section class="college-summary col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800">
+    <section class="college-summary col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800 space-y-5">
+      <%= if @payoff do %>
+        <h2 class="text-darkgreen text-2xl font-display">Is <%= @college.name %> Worth It?</h2>
+        <p class="college-payoff"><%= Enum.join(college_payoff_sentences(@college.name, @payoff), " ") %></p>
+      <% end %>
       <p><%= college_summary(@college) %></p>
     </section>
     <aside>
@@ -100,7 +119,26 @@
       </section>
     <% end %>
 
-    <%= if best_paid != [] do %>
+    <%= if @payoff do %>
+      <section class="payoff-majors rounded-lg border border-gray-200 p-6">
+        <h2 class="text-darkgreen text-xl font-display">Fastest and Slowest to Repay</h2>
+        <p class="pt-1 pb-4 text-sm text-gray-500">Months of first-year pay to equal the median student debt, for <%= @payoff.programs %> bachelor's programs here that report both.</p>
+        <%= for {label, list} <- [{"Fastest", @payoff.fastest}, {"Slowest", @payoff.slowest}] do %>
+          <p class="pt-2 pb-1 text-xs uppercase tracking-wider text-gray-500"><%= label %></p>
+          <dl class="space-y-1.5 text-sm">
+            <%= for program <- list do %>
+              <div class="flex justify-between gap-4">
+                <dt><a href={field_page_path(program.field_name)} class="no-underline text-green hover:underline"><%= field_short_name(program.field_name) %></a></dt>
+                <dd class="tabular-nums whitespace-nowrap"><%= months(program.months) %><span class="text-gray-500"> · <%= cash(program.payoff) %> pay</span></dd>
+              </div>
+            <% end %>
+          </dl>
+        <% end %>
+        <p class="pt-4 text-xs text-gray-500">Majors that lead to graduate school, like biology, look slow here because many graduates are still in school a year out.</p>
+      </section>
+    <% end %>
+
+    <%= if best_paid != [] and is_nil(@payoff) do %>
       <section class="rounded-lg border border-gray-200 p-6">
         <h2 class="text-darkgreen text-xl font-display">Best-Paid Majors</h2>
         <p class="pt-1 pb-4 text-sm text-gray-500">Median earnings one year after a bachelor's here, with the median debt beneath.</p>

@@ -110,8 +110,9 @@ defmodule CollegevalueWeb.CollegeController do
         render(conn, "show.html",
           college: college,
           majors: Colleges.get_majors_by_college(college.name),
+          payoff: Collegevalue.Fields.college_payoff(college.id),
           page_title: college_title(college),
-          noindex: not Colleges.has_outcomes?(college)
+          noindex: not Colleges.indexable?(college)
         )
 
       {:redirect, college} ->

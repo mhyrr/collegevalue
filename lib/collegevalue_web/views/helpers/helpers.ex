@@ -353,6 +353,27 @@ defmodule CollegevalueWeb.Views.Helpers do
     end)
   end
 
+  @doc """
+  The answer at the top of a college page, from `Fields.college_payoff/2`:
+  how long its typical bachelor's program takes to repay, against other
+  colleges, and what four years cost in years of pay.
+  """
+  def college_payoff_sentences(name, payoff) do
+    compared =
+      cond do
+        is_nil(payoff.faster_than) -> ""
+        payoff.faster_than >= 50 -> ", faster than #{payoff.faster_than}% of colleges"
+        true -> ", slower than #{100 - payoff.faster_than}% of colleges"
+      end
+
+    [
+      "At #{name}, the typical bachelor's program takes #{months(payoff.months)} of first-year pay to equal its graduates' median student debt#{compared}.",
+      payoff.years &&
+        "Four years there cost a family earning $48,000 to $75,000 about #{years(payoff.years)} of a graduate's first-year pay."
+    ]
+    |> Enum.filter(&is_binary/1)
+  end
+
   @doc "A college's best-paid bachelor's majors, for the bars on its page."
   def best_paid_majors(majors, n \\ 10) do
     majors

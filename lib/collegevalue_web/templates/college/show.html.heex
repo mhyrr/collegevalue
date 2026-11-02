@@ -1,5 +1,5 @@
 <div class="college-page py-8 px-4 md:px-0 md:py-4">
-  <%= render("details.html", college: @college, majors: @majors) %>
+  <%= render("details.html", college: @college, majors: @majors, payoff: @payoff) %>
   <%= live_render @conn, CollegevalueWeb.CollegesLive.Show, session: %{"college" => @college.name} %>
   <.data_source url={CollegevalueWeb.LayoutView.canonical_url(@conn)} title={@page_title} />
 </div>

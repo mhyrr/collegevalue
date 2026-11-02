@@ -66,7 +66,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by) |> assign_rows()}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.indexable?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by) |> assign_rows()}
   end
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
@@ -92,7 +92,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by) |> assign_rows()}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.indexable?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by) |> assign_rows()}
   end
 
 
@@ -104,7 +104,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     majors = Colleges.get_majors_by_field(field.name)
       |> ProgramTable.sort("earnings", "desc", :college_name)
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc") |> assign_rows()}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.indexable?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc") |> assign_rows()}
   end
 
 

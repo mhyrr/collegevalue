@@ -20,6 +20,14 @@ config :collegevalue, CollegevalueWeb.Endpoint,
   secret_key_base: "6UdLw1zT5bBWEeY3O1eOGJzrmKPiCDoAUX/yO2xE9Y8HxvgJzZ+FI4Clqj9S2UoE",
   server: false
 
+# Fixtures change between tests, so the peer medians behind college payoff
+# summaries are computed fresh each time.
+config :collegevalue, :cache_college_payoff, false
+
+# One reporting program makes a fixture college or field indexable, so tests
+# need no filler programs. The rule itself is tested with no programs at all.
+config :collegevalue, min_indexed_college_programs: 1, min_indexed_field_programs: 1
+
 # In test we don't send emails.
 config :collegevalue, Collegevalue.Mailer, adapter: Swoosh.Adapters.Test
 

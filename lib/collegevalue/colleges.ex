@@ -209,13 +209,29 @@ defmodule Collegevalue.Colleges do
     Enum.any?([college.yearly_cost, college.debt_median, college.earnings_median_after10], &positive?/1)
   end
 
-  @doc """
-  `{unitid, name}` for every college that `has_outcomes?/1`, ordered by name.
-  """
+  # A college page is open to the search index when this many of its
+  # bachelor's programs report first-year earnings. Below it the page is a
+  # reprint of a few Scorecard figures; it stays up for visitors but out of the
+  # index and the sitemap, so Google judges the template on pages with
+  # something to say. Widen it once Google indexes these.
+  @min_indexed_programs Application.compile_env(:collegevalue, :min_indexed_college_programs, 5)
+
+  defp indexable_colleges do
+    from c in College,
+      join: d in Discipline,
+      on: d.college_id == c.id,
+      where: d.credential_level == 3 and d.earnings_1yr > 0,
+      group_by: c.id,
+      having: count(d.id) >= ^@min_indexed_programs
+  end
+
+  @doc "Whether the college's page is open to the search index; see `@min_indexed_programs`."
+  def indexable?(%College{id: id}), do: Repo.exists?(where(indexable_colleges(), [c], c.id == ^id))
+
+  @doc "`{unitid, name}` for every college that is `indexable?/1`, ordered by name."
   def list_indexable_colleges do
-    College
-    |> where([c], c.yearly_cost > 0 or c.debt_median > 0 or c.earnings_median_after10 > 0)
-    |> order_by(asc: :name)
+    indexable_colleges()
+    |> order_by([c], asc: c.name)
     |> select([c], {c.unitid, c.name})
     |> Repo.all()
   end
