@@ -192,6 +192,22 @@ defmodule Collegevalue.Fields do
   end
 
   @doc """
+  Bachelor's programs ranked by Parent PLUS debt, heaviest first: the median
+  debt of parents who borrowed, over one month of the graduate's median
+  first-year pay. Only programs that report a parent median are ranked, and
+  the figure is never added to the student's debt. There is no lightest-first
+  ranking: programs where few parents borrow report no median at all, so the
+  lightest of those that report is not the lightest there is.
+  """
+  def get_bachelors_parent_loans(limit \\ 100, income \\ @default_income_bracket) do
+    bachelors_ranks(income)
+    |> where([_c, d], d.pp_debt_median > 0)
+    |> order_by([_c, d], [{:desc, fragment("?::float * 12 / ?", d.pp_debt_median, d.earnings_1yr)}, {:asc, d.id}])
+    |> limit(^limit)
+    |> Repo.all()
+  end
+
+  @doc """
   Bachelor's programs ranked by value: years of first-year pay it takes to
   equal four years of the school's net price for the family-income bracket.
   `"best"` puts the fewest years first, `"worst"` the most. Only programs
@@ -338,6 +354,7 @@ defmodule Collegevalue.Fields do
         url: c.url,
         has_major_debt: d.stgp_debt_median > 0,
         parent_debt: fragment("NULLIF(GREATEST(?, 0), 0)", d.pp_debt_median),
+        parent_count: fragment("NULLIF(GREATEST(?, 0), 0)", d.pp_debt_count),
         net_price: fragment("NULLIF(GREATEST(?, 0), 0)", field(c, ^column)),
         sticker: fragment("NULLIF(GREATEST(?, 0), 0)", c.yearly_cost),
         value_years:

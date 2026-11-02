@@ -41,7 +41,9 @@ defmodule CollegevalueWeb.Views.Helpers do
   @field_measures [
     {"repay", "Months to repay", "fastest_repay", "slowest_repay"},
     {"value", "Years of pay", "best_value", "worst_value"},
-    {"pay", "First-year pay", "top_earnings", "bottom_earnings"}
+    {"pay", "First-year pay", "top_earnings", "bottom_earnings"},
+    # Worst first only; see `Fields.get_bachelors_parent_loans/2`.
+    {"parent", "Parent loans", nil, "parent_loans"}
   ]
 
   def field_measures, do: @field_measures
@@ -58,7 +60,7 @@ defmodule CollegevalueWeb.Views.Helpers do
   @doc "The /fields/rank ranking for a measure and direction."
   def field_ranking_key(measure, dir) do
     {_, _, best, worst} = List.keyfind(@field_measures, measure, 0)
-    if dir == "top", do: best, else: worst
+    if dir == "top" and best, do: best, else: worst
   end
 
 
@@ -195,12 +197,13 @@ defmodule CollegevalueWeb.Views.Helpers do
   def field_rank_heading("slowest_repay"), do: "Slowest to repay: most months of first-year pay to clear the debt"
   def field_rank_heading("best_value"), do: "Best value: fewest years of pay to cover the cost"
   def field_rank_heading("worst_value"), do: "Worst value: most years of pay to cover the cost"
+  def field_rank_heading("parent_loans"), do: "Heaviest parent loans: most months of the graduate's first-year pay owed by parents who borrowed"
   def field_rank_heading("top_earnings"), do: "Highest first-year pay"
   def field_rank_heading("bottom_earnings"), do: "Lowest first-year pay"
   def field_rank_heading(_ranking), do: "Fastest to repay: fewest months of first-year pay to clear the debt"
 
   @doc "Whether a /fields/rank view needs the note about majors that lead to graduate school."
-  def grad_school_note?(ranking), do: ranking in ["slowest_repay", "worst_value"]
+  def grad_school_note?(ranking), do: ranking in ["slowest_repay", "worst_value", "parent_loans"]
 
   @doc """
   Years of pay for display, one decimal ("1.8 years"), or two under 0.1 so

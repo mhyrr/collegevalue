@@ -85,6 +85,8 @@ defmodule CollegevalueWeb.FieldController do
         {"best_value", Fields.get_bachelors_value("best", count, income)}
       "worst_value" ->
         {"worst_value", Fields.get_bachelors_value("worst", count, income)}
+      "parent_loans" ->
+        {"parent_loans", Fields.get_bachelors_parent_loans(count, income)}
       "top_earnings" ->
         {"top_earnings", Fields.get_bachelors_earnings("top", count, opts)}
       "bottom_earnings" ->

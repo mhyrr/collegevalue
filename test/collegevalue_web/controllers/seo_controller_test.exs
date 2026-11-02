@@ -181,6 +181,28 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "the parent loans ranking" do
+    setup %{with_data: yale} do
+      Repo.insert!(%Discipline{name: "Music", credential_level: 3, stgp_debt_median: 20_000, earnings_1yr: 24_000,
+                               pp_debt_median: 60_000, pp_debt_count: 31, college_id: yale.id})
+      Repo.insert!(%Discipline{name: "Economics", credential_level: 3, stgp_debt_median: 15_000, earnings_1yr: 70_000,
+                               pp_debt_median: 30_000, pp_debt_count: 40, college_id: yale.id})
+      :ok
+    end
+
+    test "lists the heaviest parent loans first, in months of pay, with no lightest-first view", %{conn: conn} do
+      html = conn |> get("/fields/rank?rank=parent_loans") |> html_response(200)
+      table = html |> String.split("rank-table") |> Enum.at(1)
+
+      assert :binary.match(table, ">Music<") < :binary.match(table, ">Economics<")
+      assert table =~ "30 months"
+      assert table =~ "31 parents borrowed"
+      assert html =~ "never added to the student's debt"
+      assert html =~ ">Heaviest first</a>"
+      refute html =~ ">Best first</a>"
+    end
+  end
+
   describe "page metadata" do
     test "a field page's description answers its question with the data", %{conn: conn} do
       html = conn |> get("/fields/computer-science") |> html_response(200)

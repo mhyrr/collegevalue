@@ -1,5 +1,6 @@
 <% {measure, dir} = field_ranking(@ranking) %>
 <% earnings_view? = measure == "pay" %>
+<% parent_view? = measure == "parent" %>
 <% link_to = fn m, d ->
   params = %{rank: field_ranking_key(m, d)}
   params = if @count == 100, do: params, else: Map.put(params, :count, @count)
@@ -23,7 +24,11 @@ end %>
     </div>
     <div>
       <p class="pb-1 text-xs uppercase tracking-wider text-gray-500">Order</p>
-      <.link_switch label="Order" items={[{"Best first", link_to.(measure, "top"), dir == "top"}, {"Worst first", link_to.(measure, "bottom"), dir == "bottom"}]} />
+      <%= if parent_view? do %>
+        <.link_switch label="Order" items={[{"Heaviest first", link_to.(measure, "bottom"), true}]} />
+      <% else %>
+        <.link_switch label="Order" items={[{"Best first", link_to.(measure, "top"), dir == "top"}, {"Worst first", link_to.(measure, "bottom"), dir == "bottom"}]} />
+      <% end %>
     </div>
     <%= form_for @conn, Routes.field_path(@conn, :rank), [method: :get, class: "flex flex-wrap items-end gap-x-6 gap-y-3 ml-auto md:ml-0"], fn f -> %>
       <%= hidden_input f, :rank, value: @ranking %>
@@ -49,6 +54,13 @@ end %>
       <span class="font-bold text-darkgreen"><%= field_rank_heading(@ranking) %></span>, for bachelor's degrees.
       Costs are for families earning <%= income_bracket_label(@income) %> a year. <a href="#how-we-figure" class="no-underline text-green hover:underline">How we figure these</a>
     </p>
+    <%= if parent_view? do %>
+      <p class="parent-loans-note text-gray-900 bg-gray-50 border-l-4 border-plain px-3 py-2">
+        This is the median Parent PLUS debt among parents who borrowed, in months of the graduate's first-year pay.
+        It doesn't show how many families borrowed, and it is never added to the student's debt.
+        Only about a third of programs report it; where few parents borrow, Scorecard reports nothing, so there is no lightest-first list.
+      </p>
+    <% end %>
     <%= if grad_school_note?(@ranking) do %>
       <p class="grad-school-note text-gray-900 bg-amber-50 border-l-4 border-amber-400 px-3 py-2">
         Majors that lead to graduate school, like communication disorders or pre-physical therapy, show low first-year pay because many graduates are still in school.
@@ -68,6 +80,9 @@ end %>
             <.header label="Admit Rate" tooltip_key="admissions" />
             <.header label="4-Year Cost" tooltip_key="cost4" />
             <.header label="Debt" tooltip="The median federal student-loan debt of graduates of this major who borrowed. Parent PLUS loans are not included." />
+            <%= if parent_view? do %>
+              <.header label="Parent Loans" tooltip="The median Parent PLUS debt of parents who borrowed for this program, and how many months of the graduate's first-year pay it equals. The list is ranked by the months." />
+            <% end %>
             <.header label="First-Year Pay" tooltip="Median earnings 1 year after graduation for this major at this college" />
             <.header label="Months to Repay" tooltip_key="months" />
             <.header label="Years of Pay" tooltip_key="value_years" />
@@ -90,8 +105,14 @@ end %>
               </td>
               <.cost_cell net_price={rank.net_price} sticker={rank.sticker} debt={rank.cost} gap_as_tip />
               <td class={["px-4 py-3 border-b text-sm tabular-nums", no_data?(rank.cost) && "text-gray-400"]}><%= cash(rank.cost) %></td>
+              <%= if parent_view? do %>
+                <td class="parent-loans-field px-4 py-3 border-b tabular-nums">
+                  <span class="font-bold text-lg text-red-500 whitespace-nowrap"><%= months(Collegevalue.Fields.months_to_repay(rank.parent_debt, rank.payoff)) %></span>
+                  <span class="block text-xs text-gray-600"><%= cash(rank.parent_debt) %><%= if rank.parent_count do %><span class="block"><%= rank.parent_count %> parents borrowed</span><% end %></span>
+                </td>
+              <% end %>
               <td class={["px-4 py-3 border-b text-sm tabular-nums", earnings_view? && "font-bold text-base"]}><%= cash(rank.payoff) %></td>
-              <.months_cell value={rank.months} parent_debt={rank.parent_debt} earnings={rank.payoff} />
+              <.months_cell value={rank.months} parent_debt={if parent_view?, do: nil, else: rank.parent_debt} earnings={rank.payoff} />
               <.years_cell value={rank.value_years} bold={measure == "value"} />
             </tr>
           <% end %>
@@ -114,12 +135,16 @@ end %>
             <%= case measure do %>
               <% "repay" -> %><%= months(rank.months) %> <span class="text-sm text-gray-500 font-body">to repay</span>
               <% "value" -> %><%= years(rank.value_years) %> <span class="text-sm text-gray-500 font-body">of pay for the cost</span>
+              <% "parent" -> %><span class="text-red-500"><%= months(Collegevalue.Fields.months_to_repay(rank.parent_debt, rank.payoff)) %></span> <span class="text-sm text-gray-500 font-body">of pay in parent loans</span>
               <% _ -> %><%= cash(rank.payoff) %> <span class="text-sm text-gray-500 font-body">first-year pay</span>
             <% end %>
           </p>
           <dl class="grid grid-cols-2 gap-x-4 gap-y-1 pt-2 text-sm">
             <dt class="text-gray-500">First-year pay</dt><dd class="tabular-nums text-right"><%= cash(rank.payoff) %></dd>
             <dt class="text-gray-500">Debt</dt><dd class="tabular-nums text-right"><%= cash(rank.cost) %></dd>
+            <%= if parent_view? do %>
+              <dt class="text-gray-500">Parent loans</dt><dd class="tabular-nums text-right"><%= cash(rank.parent_debt) %></dd>
+            <% end %>
             <dt class="text-gray-500">4-year cost</dt><dd class="tabular-nums text-right"><%= cash(Collegevalue.Fields.four_year_cost(rank.net_price)) %></dd>
             <dt class="text-gray-500">Months to repay</dt><dd class="tabular-nums text-right"><%= months(rank.months) %></dd>
             <dt class="text-gray-500">Years of pay</dt><dd class="tabular-nums text-right"><%= years(rank.value_years) %></dd>
@@ -139,8 +164,8 @@ end %>
         It counts only graduates who borrowed, and leaves out loans their parents took. Programs that don't report their debt aren't ranked.
       </p>
       <p>
-        <strong>Parent loans.</strong> When parents who took Parent PLUS loans owed more than <%= parent_plus_warning_months() %> months of their child's first-year pay, a note shows that figure on its own.
-        We never add it to the student's debt.
+        <strong>Parent loans.</strong> Parents can borrow too, through federal Parent PLUS loans. When parents who borrowed owed more than <%= parent_plus_warning_months() %> months of their child's first-year pay, a note shows that figure on its own,
+        and the Parent loans ranking lists the programs where it is heaviest. It is a median among parents who borrowed, so it doesn't say how many families did. We never add it to the student's debt.
       </p>
       <p>
         <strong>Four-year cost</strong> is a year's cost after grants, times four. It includes housing, food and books.
