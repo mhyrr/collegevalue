@@ -10,6 +10,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   @cred_all_label "Show All Degrees"
   @cred_bach_only "Bachelor's Only"
+  @amounts ~w(debt_mean debt_median earnings)
 
   def render(assigns) do
     Phoenix.View.render(CollegevalueWeb.FieldView, "show.html", assigns)
@@ -67,7 +68,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by)}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(show_all: show_all) |> assign(sort_by: sort_by) |> assign_rows()}
   end
 
   @spec handle_params(map, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
@@ -93,7 +94,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
         Colleges.get_majors_by_field(field.name)
     end
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by)}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(order: sort_order) |> assign(sort_by: sort_by) |> assign_rows()}
   end
 
 
@@ -106,7 +107,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
       |> sort_majors("earnings")
       |> handle_direction("desc", "earnings")
 
-    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc")}
+    {:noreply, socket |> assign(field: field, page_title: field_title(field), noindex: not Fields.has_outcomes?(field)) |> assign_facts(field, majors) |> assign(majors: majors) |> assign(sort_by: "earnings") |> assign(order: "desc") |> assign_rows()}
   end
 
 
@@ -137,67 +138,29 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   end
 
-  def trailing_data(fields, sort_by) do
-
-    {no_data, data} = fields
-    |> Enum.split_with( fn x ->
-      Map.get(x, String.to_existing_atom(sort_by)) == -1
-    end)
-
-    Enum.concat(data, no_data)
-
+  # Scorecard marks a missing number -1 and a privacy-suppressed one -2, so
+  # anything not positive sorts after the real numbers in either direction.
+  def trailing_data(majors, sort_by) when sort_by in @amounts do
+    {data, no_data} = Enum.split_with(majors, &data?(Map.get(&1, String.to_existing_atom(sort_by))))
+    data ++ no_data
   end
 
+  def trailing_data(majors, _sort_by), do: majors
 
-  def sort_majors(majors, "name") do
-    majors
-    |> Enum.sort_by(fn major  -> major.college_name end)
+  def sort_majors(majors, "name"), do: Enum.sort_by(majors, & &1.college_name)
+  def sort_majors(majors, "credential_level"), do: Enum.sort_by(majors, & &1.credential_level)
+  def sort_majors(majors, sort_by), do: Enum.sort_by(majors, &(Map.get(&1, String.to_existing_atom(sort_by)) || -3))
+
+  # The table hides programs with no debt or earnings at all and counts them instead.
+  defp assign_rows(%{assigns: assigns} = socket) do
+    shown = Enum.filter(assigns.majors, &(show_all?(assigns.show_all) or &1.credential_level == 3))
+    {rows, empty} = Enum.split_with(shown, fn major -> Enum.any?([major.debt_mean, major.debt_median, major.earnings], &data?/1) end)
+    assign(socket, rows: rows, no_data_count: length(empty))
   end
 
+  defp show_all?(show_all), do: show_all in [true, "true"]
 
-  def sort_majors(majors, "credential_level") do
-    majors
-    |> Enum.sort_by(fn major ->IO.inspect(major); major.credential_level end)
-  end
-
-  def sort_majors(majors, "debt_mean") do
-    majors
-    |> Enum.map( fn x ->
-      case Map.get(x, :debt_avg) do
-        nil ->
-          Map.put(x, :debt_avg, 0)
-        _ ->
-          x
-      end
-    end)
-    |> Enum.sort_by(fn major  -> major.debt_mean end, &Decimal.cmp(&1, &2) != :lt)
-  end
-
-  def sort_majors(majors, "debt_median") do
-    majors
-    |> Enum.map( fn x ->
-      case Map.get(x, :debt_min) do
-        nil ->
-          Map.put(x, :debt_min, 0)
-        _ ->
-          x
-      end
-    end)
-    |> Enum.sort_by(fn major  -> major.debt_median end, &Decimal.cmp(&1, &2) != :lt)
-  end
-
-  def sort_majors(majors, "earnings") do
-    majors
-    |> Enum.map( fn x ->
-      case Map.get(x, :earn_min) do
-        nil ->
-          Map.put(x, :earn_min, 0)
-        _ ->
-          x
-      end
-    end)
-    |> Enum.sort_by(fn major  -> major.earnings end, &Decimal.cmp(&1, &2) != :lt)
-  end
+  defp data?(value), do: is_integer(value) and value > 0
 
   # Sorting patches the URL and reruns handle_params; the facts only depend on
   # the field, so they are computed once per field.

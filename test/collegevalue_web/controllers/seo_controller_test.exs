@@ -203,6 +203,45 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "the field page table" do
+    setup %{with_data: yale} do
+      college = fn name, unitid -> Repo.insert!(%College{name: name, unitid: unitid, city: "Town", state: "OH", zip: "44101"}) end
+      program = fn college, debt, earnings ->
+        Repo.insert!(%Discipline{name: "Psychology", credential_level: 3, stgp_debt_mean: debt, stgp_debt_median: debt,
+                                 earnings_1yr: earnings, college_id: college.id})
+      end
+
+      program.(yale, 11_000, 52_000)
+      program.(college.("Lower Pay College", 1), 20_000, 31_000)
+      program.(college.("Suppressed College", 2), 18_000, -2)
+      program.(college.("Empty College", 3), -2, -1)
+      :ok
+    end
+
+    defp table_order(html, names), do: Enum.sort_by(names, &(:binary.match(html, &1) |> elem(0)))
+
+    test "lists the best-paid programs first and the ones without earnings last", %{conn: conn} do
+      html = conn |> get("/fields/psychology") |> html_response(200)
+      names = ["Yale University", "Lower Pay College", "Suppressed College"]
+
+      assert table_order(html, names) == names
+    end
+
+    test "keeps programs without earnings last when the sort is reversed", %{conn: conn} do
+      html = conn |> get("/fields/psychology?sort_by=earnings&order=desc") |> html_response(200)
+      names = ["Lower Pay College", "Yale University", "Suppressed College"]
+
+      assert table_order(html, names) == names
+    end
+
+    test "counts the programs with no data instead of listing them", %{conn: conn} do
+      html = conn |> get("/fields/psychology") |> html_response(200)
+
+      refute html =~ "Empty College"
+      assert html =~ "1 more school offers this major but reports no debt or earnings for it."
+    end
+  end
+
   describe "old field URLs" do
     test "move to the slug for good, keeping the query", %{conn: conn} do
       conn = get(conn, "/fields/Computer%20Science?sort_by=name&order=asc")

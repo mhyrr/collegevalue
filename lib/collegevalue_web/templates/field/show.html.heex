@@ -55,8 +55,7 @@
     </tr>
   </thead>
   <tbody class="md:block">
-    <%= for major <- @majors do %>
-      <%= if @show_all || major.credential_level == 3 do %>
+    <%= for major <- @rows do %>
         <tr class="md:block odd:bg-gray-50">
         <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college_name, to: Routes.college_path(@socket, :show, major.unit_id, major.college_name), class: "no-underline text-green" %> </td>
         <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= degree(major.credential_level) %></td>
@@ -65,10 +64,14 @@
         <td class="px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(major.earnings) %></td>
 
         </tr>
-      <% end %>
     <% end %>
   </tbody>
 </table>
+<%= if @no_data_count > 0 do %>
+  <p class="no-data-count pt-4 text-sm text-gray-600">
+    <%= @no_data_count %> more <%= if @no_data_count == 1, do: "school offers", else: "schools offer" %> this major but <%= if @no_data_count == 1, do: "reports", else: "report" %> no debt or earnings for it.
+  </p>
+<% end %>
 
 
 
