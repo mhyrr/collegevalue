@@ -29,7 +29,7 @@ defmodule CollegevalueWeb.SearchLive.Search do
   end
 
   def mount(_, _session, socket) do
-    {:ok, assign(socket, query: nil, result: nil, loading: false, matches: [])}
+    {:ok, assign(socket, query: nil, result: nil, loading: false, matches: [], noindex: true)}
   end
 
   def handle_event("suggest", %{"q" => query}, socket) when byte_size(query) <= 100 do

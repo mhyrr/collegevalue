@@ -4,9 +4,9 @@ defmodule CollegevalueWeb.LayoutView do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields.Field
 
-  import CollegevalueWeb.Views.Helpers, only: [place: 1, field_short_name: 1]
+  import CollegevalueWeb.Views.Helpers, only: [place: 1, field_short_name: 1, field_question: 1, cash: 1, no_data?: 1]
 
-  @default_description "Higher Ed 1 Dollar At A Time!  Should you go to college? What do you study? How much will it cost?."
+  @default_description "Is college worth it? Compare what every U.S. college and major costs with what its graduates earn and owe, from the Department of Education's College Scorecard."
 
   # Query params that select different content. The rest (sort, order,
   # show_all, rank, count) rearrange a page or come from a form, so their
@@ -48,8 +48,25 @@ defmodule CollegevalueWeb.LayoutView do
   def meta_description(%{college: %College{} = college}) do
     location = if place = place(college), do: " (#{place})", else: ""
 
-    "#{college.name}#{location}: yearly cost, tuition, median debt, completion rates " <>
-      "and median earnings 6 to 10 years out, with debt and earnings by major, from College Scorecard data."
+    figures =
+      [
+        !no_data?(college.netprice_3) && "#{cash(college.netprice_3)} a year after aid for a $48–75k family",
+        !no_data?(college.debt_median) && "#{cash(college.debt_median)} median debt",
+        !no_data?(college.earnings_median_after10) && "#{cash(college.earnings_median_after10)} earned ten years out"
+      ]
+      |> Enum.filter(&is_binary/1)
+
+    case figures do
+      [] -> college_description(college.name <> location)
+      figures -> "#{college.name}#{location}: #{Enum.join(figures, ", ")}. Debt and pay by major."
+    end
+  end
+
+  def meta_description(%{field: %Field{name: name}, facts: %{earnings_median: earnings} = facts}) when is_number(earnings) do
+    debt = if facts.debt_median, do: " and owe #{cash(facts.debt_median)}", else: ""
+
+    "#{field_question(name)} Graduates earn a median #{cash(earnings)} their first year#{debt}. " <>
+      "Compare #{facts.programs_with_earnings} bachelor's programs by debt and earnings, college by college."
   end
 
   def meta_description(%{field: %Field{name: name}}) do
@@ -58,5 +75,13 @@ defmodule CollegevalueWeb.LayoutView do
   end
 
   def meta_description(_assigns), do: @default_description
+
+  @doc "The page title as it appears in search results and link previews."
+  def full_title(assigns), do: (assigns[:page_title] || "College Cost vs. Benefit") <> " · CollegeValue"
+
+  defp college_description(name_and_place) do
+    "#{name_and_place}: yearly cost, tuition, median debt, completion rates " <>
+      "and median earnings 6 to 10 years out, with debt and earnings by major, from College Scorecard data."
+  end
 
 end

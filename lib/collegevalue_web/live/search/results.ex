@@ -33,7 +33,8 @@ defmodule CollegevalueWeb.SearchLive.Results do
     #       fields = Fields.match_fields(query)
     #       {:ok, assign(socket, colleges: colleges, fields: fields, message: "")}
     #   end
-      {:ok, socket}
+      # Search results are for visitors, not the search index.
+      {:ok, assign(socket, noindex: true, page_title: "Search Results")}
   end
 
   def handle_params(%{"query" => query}, _url, socket) do

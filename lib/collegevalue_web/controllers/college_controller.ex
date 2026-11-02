@@ -8,7 +8,8 @@ defmodule CollegevalueWeb.CollegeController do
   import CollegevalueWeb.Views.Helpers, only: [college_title: 1, college_page_path: 2, college_ranking: 1]
 
   @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
-  @rank_description "Best value colleges ranked by yearly cost, student debt and graduation rate against median earnings 10 years after enrolling."
+  @you_description "Find colleges near you whose graduates earn the most for what they borrow. Enter a zip code, a distance and an SAT score."
+  @rank_description "The best and worst value colleges, ranked by what students earn ten years after starting minus what they borrow or pay, with admit and graduation rates for each."
 
   def index(conn, params) do
     page = params["page"] || 1
@@ -53,18 +54,18 @@ defmodule CollegevalueWeb.CollegeController do
   def you(conn, %{"zip" => zip, "distance" => distance, "sat" => sat}) do
 
     if Collegevalue.Location.get_location(zip) == "couldn't get lat/long from zip" do
-      render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges", zipmsg: "Enter a valid Zip!!")
+      render(conn, "you.html", colleges: [], stretch: [], page_title: "Colleges For You: Best Value Near You", meta_description: @you_description, zipmsg: "Enter a valid Zip!!")
     end
 
     case sat do
       nil ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You", zipmsg: "")
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You", meta_description: @you_description, zipmsg: "")
       "" ->
-        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You", zipmsg: "")
+        render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance)), stretch: [], page_title: "Matches For You", meta_description: @you_description, zipmsg: "")
       _ ->
         score = String.to_integer(sat)
         render(conn, "you.html", colleges: Colleges.find_good_colleges(zip, String.to_integer(distance), score - 150, score + 70),
-          stretch: Colleges.find_good_colleges(zip, String.to_integer(distance), score + 70, score + 200), page_title: "Matches For You", zipmsg: "")
+          stretch: Colleges.find_good_colleges(zip, String.to_integer(distance), score + 70, score + 200), page_title: "Matches For You", meta_description: @you_description, zipmsg: "")
     end
 
 
@@ -74,7 +75,7 @@ defmodule CollegevalueWeb.CollegeController do
 
   def you(conn, _params) do
     IO.inspect("base")
-    render(conn, "you.html", colleges: [], stretch: [], page_title: "Ranked Colleges", zipmsg: "")
+    render(conn, "you.html", colleges: [], stretch: [], page_title: "Colleges For You: Best Value Near You", meta_description: @you_description, zipmsg: "")
   end
 
   @college_rank_costs %{
@@ -98,7 +99,7 @@ defmodule CollegevalueWeb.CollegeController do
       ranking: ranking,
       count: count,
       rank_counts: @college_rank_counts,
-      page_title: "Best Value Colleges: Earnings vs. Debt",
+      page_title: "Best Value Colleges Ranked by ROI: Earnings vs. Debt",
       meta_description: @rank_description
     )
   end

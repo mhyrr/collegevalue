@@ -5,6 +5,7 @@ defmodule CollegevalueWeb.FieldController do
 
   @income_cookie "cv_income"
 
+  @you_description "Compare one major across the schools near you: student debt, first-year pay and the four-year cost for your family's income."
   @rank_description "Bachelor's programs ranked college by college on how many months of first-year pay it takes to clear the student-loan debt, on years of pay to cover four years of net price, or on earnings alone."
 
 
@@ -51,9 +52,9 @@ defmodule CollegevalueWeb.FieldController do
 
   defp render_you(conn, majors, stretch, zipmsg, picked) do
     discs = Fields.list_fields() |> Enum.filter(&(&1.count > 50)) |> Enum.map(& &1.name)
-    title = if majors == [] and stretch == [], do: "Ranked Majors", else: "Matches For You"
+    title = if majors == [] and stretch == [], do: "Majors For You: Compare a Major Across Nearby Schools", else: "Matches For You"
 
-    render(conn, "you.html", discs: discs, majors: majors, stretch: stretch, page_title: title, zipmsg: zipmsg,
+    render(conn, "you.html", discs: discs, majors: majors, stretch: stretch, page_title: title, meta_description: @you_description, zipmsg: zipmsg,
       all_majors: picked == [], income: income(conn, nil))
   end
 
@@ -93,7 +94,7 @@ defmodule CollegevalueWeb.FieldController do
     end
 
     render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, income: income,
-      count: count, rank_counts: @rank_counts, page_title: "College Majors Ranked by Earnings vs. Debt",
+      count: count, rank_counts: @rank_counts, page_title: "College ROI by Major: Majors Ranked by Earnings vs. Debt",
       meta_description: @rank_description)
   end
 

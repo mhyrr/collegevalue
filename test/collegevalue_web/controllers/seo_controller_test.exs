@@ -181,6 +181,37 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "page metadata" do
+    test "a field page's description answers its question with the data", %{conn: conn} do
+      html = conn |> get("/fields/computer-science") |> html_response(200)
+
+      assert html =~ ~s(<meta name="description" content="Is a Computer Science degree worth it? Graduates earn a median $65,959 their first year and owe $33,795.)
+    end
+
+    test "a college page's description leads with its figures", %{conn: conn} do
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
+
+      assert html =~ ~s[content="Yale University (New Haven, CT): $11,648 median debt, $100,533 earned ten years out. Debt and pay by major."]
+    end
+
+    test "pages carry link-preview tags that match the title and canonical URL", %{conn: conn} do
+      html = conn |> get("/fields/computer-science?sort_by=name&order=asc") |> html_response(200)
+
+      assert html =~ ~s(<meta property="og:title" content="Is Computer Science Worth It? Debt vs. Earnings by College · CollegeValue">)
+      assert html =~ ~s(<meta property="og:url" content="http://localhost:4002/fields/computer-science">)
+    end
+
+    test "sort links are nofollow, so crawlers skip the reordered copies", %{conn: conn} do
+      html = conn |> get("/fields/computer-science") |> html_response(200)
+
+      assert html =~ ~s(href="/fields/computer-science?sort_by=name&amp;order=desc" data-phx-link="patch" data-phx-link-state="push" rel="nofollow")
+    end
+
+    test "search results stay out of the index", %{conn: conn} do
+      assert conn |> get("/results/yale") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
+    end
+  end
+
   describe "canonical URLs" do
     test "drop sort and filter params", %{conn: conn} do
       html = conn |> get("/colleges/rank?rank=top_college_yearly_earnings&count=100") |> html_response(200)

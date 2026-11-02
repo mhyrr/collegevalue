@@ -246,7 +246,7 @@ defmodule CollegevalueWeb.DataComponents do
     ~H"""
     <th class={@th_class}>
       <div class="flex items-center gap-1">
-        <.link patch={@patch_url} class={"text-darkgreen uppercase #{if @active, do: "font-bold underline", else: ""}"}>
+        <.link patch={@patch_url} rel="nofollow" class={"text-darkgreen uppercase #{if @active, do: "font-bold underline", else: ""}"}>
           <%= @label %><%= if @arrow do %> <span class="text-[10px]"><%= @arrow %></span><% end %>
         </.link>
         <%= if @tip do %>
