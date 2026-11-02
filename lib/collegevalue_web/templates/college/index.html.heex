@@ -42,7 +42,7 @@
   <tbody class="md:block">
 <%= for college <- @colleges.results do %>
     <tr class="md:block odd:bg-gray-50">
-      <td class="px-4 py-3 college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link college.name, to: Routes.college_path(@conn, :show, college.unitid, college.name), class: "no-underline text-green"%></td>
+      <td class="px-4 py-3 college-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= link college.name, to: college_page_path(college.unitid, college.name), class: "no-underline text-green"%></td>
       <td class="px-4 py-3 city-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.city) %></td>
       <td class="px-4 py-3 state-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.state) %></td>
       <td class="px-4 py-3 opeid-field md:border-none md:relative md:block  whitespace-wrap border-b "><%= defaults(college.opeid) %></td>

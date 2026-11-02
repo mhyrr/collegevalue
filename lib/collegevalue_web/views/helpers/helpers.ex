@@ -406,6 +406,11 @@ defmodule CollegevalueWeb.Views.Helpers do
   The path of a field's page, by its slug: `/fields/psychology`. Every link
   to a field page goes through here, so none points at an old name URL.
   """
+  @doc "The path of a college's page: its unitid, then a slug of its name."
+  def college_page_path(unitid, name) do
+    CollegevalueWeb.Router.Helpers.college_path(CollegevalueWeb.Endpoint, :show, unitid, Collegevalue.Colleges.slug(name))
+  end
+
   def field_page_path(name, params \\ %{}) do
     CollegevalueWeb.Router.Helpers.live_path(
       CollegevalueWeb.Endpoint,

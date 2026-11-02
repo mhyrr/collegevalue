@@ -49,7 +49,7 @@ defmodule CollegevalueWeb.SearchLive.Search do
 
     case Colleges.get_college_by_name(query) do
       college when is_map(college) ->
-        {:noreply, socket |> redirect(to: Routes.college_path(socket, :show, college.unitid, query )) }
+        {:noreply, socket |> redirect(to: CollegevalueWeb.Views.Helpers.college_page_path(college.unitid, college.name)) }
       nil ->
 
         fields = Fields.match_fields_by_name(query)

@@ -47,7 +47,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert response_content_type(conn, :xml)
       assert xml =~ ~s(<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">)
       assert xml =~ "/colleges/rank</loc>"
-      assert xml =~ "/colleges/130794/Yale%20University</loc>"
+      assert xml =~ "/colleges/130794/yale-university</loc>"
       assert xml =~ "/fields/computer-science</loc>"
 
       refute xml =~ "Aarhus"
@@ -108,15 +108,15 @@ defmodule CollegevalueWeb.SeoControllerTest do
 
   describe "the college page head" do
     test "a college with data is indexable and titled with its place", %{conn: conn} do
-      html = conn |> get("/colleges/130794/Yale%20University") |> html_response(200)
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
 
       assert html =~ "<title data-suffix=\" · CollegeValue\">Yale University (New Haven, CT) · CollegeValue</title>"
-      assert html =~ ~s(<link rel="canonical" href="http://localhost:4002/colleges/130794/Yale%20University">)
+      assert html =~ ~s(<link rel="canonical" href="http://localhost:4002/colleges/130794/yale-university">)
       refute html =~ "noindex"
     end
 
     test "a college with no data is noindex", %{conn: conn} do
-      html = conn |> get("/colleges/-1/Aarhus%20University") |> html_response(200)
+      html = conn |> get("/colleges/-1/aarhus-university") |> html_response(200)
 
       assert html =~ ~s(<meta name="robots" content="noindex">)
     end
@@ -136,13 +136,48 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
 
     test "lists the best-paid majors first and counts the ones with no data", %{conn: conn} do
-      html = conn |> get("/colleges/130794/Yale%20University") |> html_response(200)
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
       table = html |> String.split(~s(id="programs")) |> List.last()
       names = [">Economics<", ">Computer Science<", ">History<"]
 
       assert Enum.sort_by(names, &(:binary.match(table, &1) |> elem(0))) == names
       refute table =~ ">Classics<"
       assert table =~ "1 more program here reports no debt or earnings."
+    end
+  end
+
+  describe "college URLs" do
+    test "an old URL with the name moves permanently to the slug", %{conn: conn} do
+      conn = get(conn, "/colleges/130794/Yale%20University")
+
+      assert conn.status == 301
+      assert get_resp_header(conn, "location") == ["/colleges/130794/yale-university"]
+    end
+
+    test "a stale slug moves to the college's own when its unitid is unique", %{conn: conn} do
+      conn = get(conn, "/colleges/130794/yale")
+
+      assert get_resp_header(conn, "location") == ["/colleges/130794/yale-university"]
+    end
+
+    test "colleges that share a unitid are told apart by slug", %{conn: conn} do
+      Repo.insert!(%College{name: "Aalto University", unitid: -1, city: "Espoo", state: "unknown state", zip: "unknown zip"})
+
+      assert conn |> get("/colleges/-1/aalto-university") |> html_response(200) =~ "Aalto University</h1>"
+      assert_error_sent 404, fn -> get(build_conn(), "/colleges/-1/nowhere-university") end
+    end
+
+    test "a school listed twice gets one page, the row with outcomes", %{conn: conn, with_data: yale} do
+      Repo.insert!(%College{name: "Yale-University", unitid: 130_794, city: "New Haven", state: "CT", zip: "06520"})
+
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
+      assert html =~ "Yale University</h1>"
+      assert yale.yearly_cost > 0
+    end
+
+    test "is a 404 for a unitid that doesn't exist", %{conn: conn} do
+      assert_error_sent 404, fn -> get(conn, "/colleges/999999/no-such-college") end
+      assert_error_sent 404, fn -> get(build_conn(), "/colleges/abc/no-such-college") end
     end
   end
 
@@ -206,7 +241,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       write.("approved")
       html = build_conn() |> get("/fields/computer-science") |> html_response(200)
       assert html =~ "The school matters as much as the major here, as at "
-      assert html =~ ~s(href="/colleges/130794/Yale%20University">Yale University</a>.)
+      assert html =~ ~s(href="/colleges/130794/yale-university">Yale University</a>.)
     end
 
     test "has no answer when no program reports earnings", %{conn: conn} do

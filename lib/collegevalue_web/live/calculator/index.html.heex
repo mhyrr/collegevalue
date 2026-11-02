@@ -121,7 +121,7 @@
             <div class="flex md:block justify-between items-start px-6 pt-5 pb-4 border-b border-gray-100 bg-gray-50/50">
               <div>
                 <h3 class="text-lg font-semibold">
-                  <%= link projection.college_name, to: Routes.college_path(@socket, :show, projection.unit_id, projection.college_name), class: "text-green no-underline hover:underline" %>
+                  <%= link projection.college_name, to: college_page_path(projection.unit_id, projection.college_name), class: "text-green no-underline hover:underline" %>
                 </h3>
                 <div class="mt-1.5 flex items-center gap-2">
                   <%= if projection.completion_rate do %>

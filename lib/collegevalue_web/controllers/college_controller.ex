@@ -5,7 +5,7 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields
 
-  import CollegevalueWeb.Views.Helpers, only: [college_title: 1]
+  import CollegevalueWeb.Views.Helpers, only: [college_title: 1, college_page_path: 2]
 
   @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
   @rank_description "Best value colleges ranked by yearly cost, student debt and graduation rate against median earnings 10 years after enrolling."
@@ -102,16 +102,23 @@ defmodule CollegevalueWeb.CollegeController do
   end
 
   def show(conn, %{"name" => name, "unitid" => unitid}) do
+    case Colleges.find_college_page(unitid, name) do
+      {:ok, college} ->
+        render(conn, "show.html",
+          college: college,
+          majors: Colleges.get_majors_by_college(college.name),
+          page_title: college_title(college),
+          noindex: not Colleges.has_outcomes?(college)
+        )
 
-    college = Colleges.get_college_by_name_and_unitid!(URI.decode(name), unitid)
-    majors = Colleges.get_majors_by_college(college.name)
+      {:redirect, college} ->
+        conn
+        |> put_status(:moved_permanently)
+        |> redirect(to: college_page_path(college.unitid, college.name))
 
-    render(conn, "show.html",
-      college: college,
-      majors: majors,
-      page_title: college_title(college),
-      noindex: not Colleges.has_outcomes?(college)
-    )
+      :error ->
+        raise Ecto.NoResultsError, queryable: Collegevalue.Colleges.College
+    end
   end
 
 

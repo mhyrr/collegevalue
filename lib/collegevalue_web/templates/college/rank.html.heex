@@ -32,7 +32,7 @@
 
   <%= for rank <- @ranks do %>
     <tr class="md:block odd:bg-gray-50">
-      <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: Routes.college_path(@conn, :show, rank.unit_id, rank.college_name), class: "no-underline text-green" %> </td>
+      <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link rank.college_name, to: college_page_path(rank.unit_id, rank.college_name), class: "no-underline text-green" %> </td>
       <td class="px-4 py-3 admissions-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= percent(rank.admissions) %></td>
       <td class="px-4 py-3 sat-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= sat(rank.sat_avg)%></td>
       <td class="px-4 py-3 cost-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= cash(rank.cost) %></td>

@@ -19,9 +19,10 @@ defmodule CollegevalueWeb.SitemapController do
       Enum.map(2..Colleges.college_page_count()//1, &Routes.college_path(conn, :index, page: &1))
 
     college_paths =
-      Enum.map(Colleges.list_indexable_colleges(), fn {unitid, name} ->
-        Routes.college_path(conn, :show, unitid, name)
-      end)
+      Colleges.list_indexable_colleges()
+      |> Enum.map(fn {unitid, name} -> CollegevalueWeb.Views.Helpers.college_page_path(unitid, name) end)
+      # Scorecard lists a few schools twice; both rows share a page.
+      |> Enum.uniq()
 
     send_urlset(conn, @static_paths ++ page_paths ++ field_paths() ++ college_paths)
   end

@@ -103,12 +103,7 @@ defmodule Collegevalue.Fields do
     Map.get_lazy(@legacy_slugs, name, fn -> name |> String.replace(~r/,\s*General\.?$/, "") |> slugify() end)
   end
 
-  defp slugify(text) do
-    text
-    |> String.downcase()
-    |> String.replace(~r/[^a-z0-9]+/, "-")
-    |> String.trim("-")
-  end
+  defp slugify(text), do: Collegevalue.Slug.slugify(text)
 
   @doc """
   What a `/fields/<segment>` URL points at: `{:ok, name}` for a current slug,

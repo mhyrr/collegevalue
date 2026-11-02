@@ -149,6 +149,51 @@ defmodule Collegevalue.Colleges do
     end
   end
 
+  @doc "The last part of a college's URL. A name with no letters or digits gets \"college\"."
+  def slug(name) do
+    case Collegevalue.Slug.slugify(name) do
+      "" -> "college"
+      slug -> slug
+    end
+  end
+
+  @doc """
+  The college at `/colleges/:unitid/:slug`.
+
+  Returns `{:ok, college}` when `param` is the college's slug, and
+  `{:redirect, college}` for an old URL: one with the college's name, or with
+  any other text when the unitid belongs to one college only. Returns `:error`
+  when nothing matches.
+
+  Unitids repeat. Schools outside the US share -1, and Scorecard lists a few
+  schools twice with different punctuation, so both rows share a slug. The row
+  with outcomes wins, then the older row.
+  """
+  def find_college_page(unitid, param) do
+    with {unitid, ""} <- Integer.parse(to_string(unitid)),
+         [_ | _] = candidates <- College |> where(unitid: ^unitid) |> select([c], {c.id, c.name}) |> Repo.all() do
+      by_slug = for {id, name} <- candidates, slug(name) == param, do: id
+      by_name = for {id, name} <- candidates, name == param, do: id
+
+      cond do
+        by_slug != [] -> {:ok, pick(by_slug)}
+        by_name != [] -> {:redirect, pick(by_name)}
+        match?([_], candidates) -> {:redirect, pick(Enum.map(candidates, &elem(&1, 0)))}
+        true -> :error
+      end
+    else
+      _ -> :error
+    end
+  end
+
+  defp pick(ids) do
+    College
+    |> where([c], c.id in ^ids)
+    |> Repo.all()
+    |> Enum.sort_by(&{not has_outcomes?(&1), &1.id})
+    |> hd()
+  end
+
   def get_college_by_name_and_unitid!(name, id), do: Repo.get_by!(College, name: name, unitid: id)
 
   def get_college_by_name_and_unitid(name, id), do: Repo.get_by(College, name: name, unitid: id)

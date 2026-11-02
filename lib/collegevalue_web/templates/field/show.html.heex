@@ -24,7 +24,7 @@
         <div class="space-y-5">
           <p><%= Enum.join(field_answer(@facts), " ") %></p>
           <%= for paragraph <- @note do %>
-            <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: Routes.college_path(@socket, :show, unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
+            <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: college_page_path(unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
           <% end %>
         </div>
       </section>
@@ -73,7 +73,7 @@
         <tbody class="md:block">
           <%= for major <- @rows do %>
             <tr class="md:block odd:bg-gray-50 hover:bg-lightgreen/10">
-              <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm border-b"><%= link major.college_name, to: Routes.college_path(@socket, :show, major.unit_id, major.college_name), class: "no-underline text-green hover:underline" %></td>
+              <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm border-b"><%= link major.college_name, to: college_page_path(major.unit_id, major.college_name), class: "no-underline text-green hover:underline" %></td>
               <%= if @show_all do %>
                 <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm border-b"><%= degree(major.credential_level) %></td>
               <% end %>
