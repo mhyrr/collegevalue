@@ -25,6 +25,7 @@ defmodule CollegevalueWeb.PageController do
       phoenix_ver: Application.spec(:phoenix, :vsn),
       elixir_ver: System.version(),
       page_title: "About the Data",
+      dataset: true,
       meta_description:
         "Where CollegeValue's numbers come from: the Department of Education's College Scorecard data, what it covers, where it has gaps, and how current it is."
     )

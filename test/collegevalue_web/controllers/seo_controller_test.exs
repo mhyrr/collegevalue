@@ -476,4 +476,83 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert conn |> get("/data") |> html_response(200) =~ "<strong>#{Collegevalue.Scorecard.release()}</strong>"
     end
   end
+
+  describe "structured data" do
+    # The page's one JSON-LD block, decoded.
+    defp json_ld(html) do
+      case Regex.scan(~r{<script type="application/ld\+json">(.*?)</script>}s, html) do
+        [[_, json]] -> Jason.decode!(json)
+        [] -> nil
+      end
+    end
+
+    defp node(graph, type), do: Enum.find(graph["@graph"], &(&1["@type"] == type))
+
+    test "a college page describes the college, with no website it doesn't list", %{conn: conn} do
+      graph = conn |> get("/colleges/130794/yale-university") |> html_response(200) |> json_ld()
+
+      assert node(graph, "CollegeOrUniversity") == %{
+               "@type" => "CollegeOrUniversity",
+               "name" => "Yale University",
+               "url" => "http://localhost:4002/colleges/130794/yale-university",
+               "address" => %{"@type" => "PostalAddress", "addressLocality" => "New Haven",
+                              "addressRegion" => "CT", "addressCountry" => "US"}
+             }
+
+      assert [%{"name" => "Home"}, %{"name" => "Colleges", "item" => "http://localhost:4002/colleges"},
+              %{"name" => "Yale University", "position" => 3}] = node(graph, "BreadcrumbList")["itemListElement"]
+    end
+
+    test "a college page names the college's website as sameAs", %{conn: conn, with_data: yale} do
+      yale |> Ecto.Changeset.change(url: "www.yale.edu/") |> Repo.update!()
+      graph = conn |> get("/colleges/130794/yale-university") |> html_response(200) |> json_ld()
+
+      assert node(graph, "CollegeOrUniversity")["sameAs"] == "https://www.yale.edu/"
+    end
+
+    test "a noindex page carries none", %{conn: conn} do
+      assert conn |> get("/colleges/-1/aarhus-university") |> html_response(200) |> json_ld() == nil
+    end
+
+    test "a field page gives the median first-year pay it shows", %{conn: conn} do
+      graph = conn |> get("/fields/computer-science") |> html_response(200) |> json_ld()
+
+      assert node(graph, "EducationalOccupationalProgram") == %{
+               "@type" => "EducationalOccupationalProgram",
+               "name" => "Computer Science (bachelor's degree)",
+               "url" => "http://localhost:4002/fields/computer-science",
+               "educationalCredentialAwarded" => "Bachelor's degree",
+               "salaryUponCompletion" => %{
+                 "@type" => "MonetaryAmountDistribution",
+                 "name" => "Median earnings one year after graduation, across 1 bachelor's program",
+                 "currency" => "USD",
+                 "duration" => "P1Y",
+                 "median" => 65_959
+               }
+             }
+
+      assert node(graph, "BreadcrumbList")["itemListElement"] |> Enum.map(& &1["name"]) == ["Home", "Fields", "Computer Science"]
+    end
+
+    test "the data page describes the dataset and what it is based on", %{conn: conn} do
+      dataset = conn |> get("/data") |> html_response(200) |> json_ld() |> node("Dataset")
+
+      assert dataset["url"] == "http://localhost:4002/data"
+      assert dataset["creator"]["name"] == "CollegeValue"
+      assert dataset["isBasedOn"]["name"] == "College Scorecard"
+      assert dataset["isBasedOn"]["datePublished"] == Collegevalue.Scorecard.release_month()
+      assert String.length(dataset["description"]) >= 50
+    end
+
+    test "pages without a subject carry none", %{conn: conn} do
+      assert conn |> get("/colleges/rank") |> html_response(200) |> json_ld() == nil
+    end
+
+    test "no value in the data can close the script tag" do
+      json = CollegevalueWeb.StructuredData.encode(%{"name" => "</script><script>alert(1)</script><!--"})
+
+      refute json =~ "<"
+      assert Jason.decode!(json)["name"] == "</script><script>alert(1)</script><!--"
+    end
+  end
 end

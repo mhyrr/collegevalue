@@ -25,6 +25,10 @@
     <meta property="og:description" content={meta_description(assigns)}>
     <meta property="og:url" content={canonical_url(@conn)}>
     <meta name="twitter:card" content="summary">
+    <%!-- schema.org JSON-LD. This is data, not JavaScript: browsers don't run
+         application/ld+json, so CLAUDE.md's no-inline-script rule doesn't
+         apply. StructuredData.encode/1 escapes every "<" so it can't close the tag. --%>
+    <%= if json_ld = json_ld(assigns, @conn) do %><script type="application/ld+json"><%= raw(json_ld) %></script><% end %>
 
     <link phx-track-static rel="stylesheet" href={Routes.static_url(@conn, "/assets/app.css")}/>
     <script phx-track-static type="text/javascript" src={Routes.static_url(@conn, "/assets/app.js")}></script>

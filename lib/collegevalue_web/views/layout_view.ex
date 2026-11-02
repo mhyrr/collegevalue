@@ -83,6 +83,16 @@ defmodule CollegevalueWeb.LayoutView do
 
   def meta_description(_assigns), do: @default_description
 
+  @doc """
+  The page's schema.org JSON-LD, encoded for a `<script type="application/ld+json">`
+  in the head, or nil. See `CollegevalueWeb.StructuredData`.
+  """
+  def json_ld(assigns, conn) do
+    assigns
+    |> CollegevalueWeb.StructuredData.graph(canonical_url(conn), origin(conn))
+    |> CollegevalueWeb.StructuredData.encode()
+  end
+
   @doc "The page title as it appears in search results and link previews."
   def full_title(assigns), do: (assigns[:page_title] || "College Cost vs. Benefit") <> " · CollegeValue"
 
