@@ -8,8 +8,6 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   alias CollegevalueWeb.Router.Helpers, as: Routes
   import CollegevalueWeb.Views.Helpers, only: [field_title: 1, field_page_path: 2]
 
-  @cred_all_label "Show All Degrees"
-  @cred_bach_only "Bachelor's Only"
   @amounts ~w(debt_mean debt_median earnings)
 
   def render(assigns) do
@@ -18,28 +16,28 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(%{"order" => order, "show_all" => show_all}, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: order)}
+    {:ok, assign(socket, show_all: show_all, order: order)}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(%{"order" => order}, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, show_all: false, order: order)}
+    {:ok, assign(socket, show_all: false, order: order)}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(%{"show_all" => show_all}, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: "desc")}
+    {:ok, assign(socket, show_all: show_all, order: "desc")}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(%{"show_all" => show_all, "order" => order, "sort_by" => sort_by}, _, socket) do
     # IO.inspect("here it is..")
-    {:ok, assign(socket, cred_label: @cred_all_label, show_all: show_all, order: order, sort_by: sort_by)}
+    {:ok, assign(socket, show_all: show_all, order: order, sort_by: sort_by)}
   end
 
   @spec mount(any, any, any) :: {:ok, any}
   def mount(_, _, socket) do
-    {:ok, assign(socket, cred_label: @cred_all_label, show_all: false, order: "desc")}
+    {:ok, assign(socket, show_all: false, order: "desc")}
   end
 
 
@@ -111,20 +109,11 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   end
 
 
-  def handle_event("toggle_credentials", _value, socket) do
+  def handle_event("credentials", %{"show" => show}, socket) do
+    show_all = show == "all"
+    params = if show_all, do: %{show_all: true}, else: %{}
 
-    Logger.debug("toggling creds")
-    # Logger.debug(@field.name)
-    # IO.inspect(socket.assigns)
-
-    show_all = !socket.assigns.show_all
-    cred_label = if (show_all == true), do: "Bachelor's Only", else: "Show All Degrees"
-
-    # {:noreply, socket |> assign(show_all: show_all) |> assign(cred_label: cred_label)}
-
-    {:noreply, push_patch(socket |> assign(show_all: show_all) |> assign(cred_label: cred_label),
-      to: field_page_path(socket.assigns.field.name, %{show_all: show_all}))}
-
+    {:noreply, push_patch(assign(socket, show_all: show_all), to: field_page_path(socket.assigns.field.name, params))}
   end
 
   def handle_direction(majors, order, sort_by) do
@@ -153,9 +142,17 @@ defmodule CollegevalueWeb.FieldsLive.Show do
 
   # The table hides programs with no debt or earnings at all and counts them instead.
   defp assign_rows(%{assigns: assigns} = socket) do
-    shown = Enum.filter(assigns.majors, &(show_all?(assigns.show_all) or &1.credential_level == 3))
-    {rows, empty} = Enum.split_with(shown, fn major -> Enum.any?([major.debt_mean, major.debt_median, major.earnings], &data?/1) end)
-    assign(socket, rows: rows, no_data_count: length(empty))
+    show_all = show_all?(assigns.show_all)
+    shown? = &(show_all or &1.credential_level == 3)
+    {with_data, empty} = Enum.split_with(assigns.majors, fn major -> Enum.any?([major.debt_mean, major.debt_median, major.earnings], &data?/1) end)
+
+    assign(socket,
+      show_all: show_all,
+      rows: Enum.filter(with_data, shown?),
+      no_data_count: Enum.count(empty, shown?),
+      bachelors_count: Enum.count(with_data, &(&1.credential_level == 3)),
+      all_count: length(with_data)
+    )
   end
 
   defp show_all?(show_all), do: show_all in [true, "true"]

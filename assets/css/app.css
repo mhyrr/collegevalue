@@ -202,6 +202,10 @@ blockquote {
         content: "Debt Mean: ";
     }
 
+    tbody .debtmed-field:before {
+        content: "Debt Median: ";
+    }
+
 
     tbody .debtmin-field:before {
         content: "Debt Min: ";

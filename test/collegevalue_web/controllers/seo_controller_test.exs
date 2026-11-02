@@ -240,6 +240,18 @@ defmodule CollegevalueWeb.SeoControllerTest do
       refute html =~ "Empty College"
       assert html =~ "1 more school offers this major but reports no debt or earnings for it."
     end
+
+    test "shows bachelor's programs until asked for every credential", %{conn: conn, with_data: yale} do
+      Repo.insert!(%Discipline{name: "Psychology", credential_level: 5, stgp_debt_median: 30_000,
+                               earnings_1yr: 60_000, college_id: yale.id})
+
+      html = conn |> get("/fields/psychology") |> html_response(200)
+      assert html =~ "Bachelor's <span class=\"font-normal text-gray-400 tabular-nums\">3</span>"
+      refute html =~ "Master&#39;s Degree"
+
+      html = build_conn() |> get("/fields/psychology?show_all=true") |> html_response(200)
+      assert html =~ "Master&#39;s Degree"
+    end
   end
 
   describe "old field URLs" do
@@ -300,7 +312,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
     test "head the page, with the Scorecard name beneath", %{conn: conn} do
       html = conn |> get("/fields/air-force-rotc") |> html_response(200)
 
-      assert html =~ ~s(<h1 class="text-xl text-darkgreen">Air Force ROTC</h1>)
+      assert html =~ ~r{<h1[^>]*>Air Force ROTC</h1>}
       assert html =~ "College Scorecard field: Air Force ROTC, Air Science and Operations"
       assert html =~ ">Is Air Force ROTC Worth It?"
     end

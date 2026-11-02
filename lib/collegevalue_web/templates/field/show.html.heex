@@ -1,81 +1,119 @@
-<h1 class="text-xl text-darkgreen"><%= field_short_name(@field.name) %></h1>
-<%= if field_short_name(@field.name) != @field.name do %>
-  <p class="text-sm text-gray-600">College Scorecard field: <%= @field.name %></p>
-<% end %>
-<p class="mt-4 max-w-3xl text-base leading-6 text-gray-900"><%= field_summary(@field) %></p>
-
-<%= if @facts do %>
-  <section class="mt-6 max-w-3xl space-y-3 text-base leading-6 text-gray-900">
-    <h2 class="text-lg text-darkgreen"><%= field_question(@field.name) %></h2>
-    <p><%= Enum.join(field_answer(@facts), " ") %></p>
-    <%= for paragraph <- @note do %>
-      <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: Routes.college_path(@socket, :show, unitid, name), class: "no-underline text-green" %><% text -> %><%= text %><% end %><% end %></p>
+<div class="field-page py-8 px-4 md:px-0 md:py-4">
+  <header class="pb-6">
+    <h1 class="text-darkgreen text-4xl md:text-3xl font-display"><%= field_short_name(@field.name) %></h1>
+    <%= if field_short_name(@field.name) != @field.name do %>
+      <p class="pt-1 text-sm text-gray-500">College Scorecard field: <%= @field.name %></p>
     <% end %>
-    <p class="text-sm text-gray-600">
-      These are earnings one year after graduating, for students who received federal aid.
-      Debt is the median federal student-loan debt of graduates who borrowed; it leaves out loans parents took.
-      Majors that lead to graduate school, or to careers that start slowly, look worse here than they will ten years on.
-    </p>
+  </header>
+
+  <%= if @facts do %>
+    <dl class="field-stats grid grid-cols-4 lg:grid-cols-2 gap-4 pb-10">
+      <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
+        <dt class="text-xs uppercase tracking-wider text-gray-500">First-year pay</dt>
+        <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= cash(@facts.earnings_median) %></dd>
+        <dd class="text-sm text-gray-500">median; all majors <%= cash(@facts.all_majors_earnings_median) %></dd>
+      </div>
+      <%= if @facts.debt_median do %>
+        <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
+          <dt class="text-xs uppercase tracking-wider text-gray-500">Student debt</dt>
+          <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= cash(@facts.debt_median) %></dd>
+          <dd class="text-sm text-gray-500">median, for those who borrowed</dd>
+        </div>
+      <% end %>
+      <%= if @facts.rank do %>
+        <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
+          <dt class="text-xs uppercase tracking-wider text-gray-500">Debt for the pay</dt>
+          <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= ordinal(@facts.rank) %> <span class="text-base text-gray-500">of <%= @facts.ranked_of %></span></dd>
+          <dd class="text-sm text-gray-500">debt is <%= @facts.debt_to_earnings %>x first-year pay</dd>
+        </div>
+      <% end %>
+      <div class="rounded-lg border border-gray-200 border-t-4 border-t-darkgreen p-4">
+        <dt class="text-xs uppercase tracking-wider text-gray-500">Colleges</dt>
+        <dd class="pt-1 text-2xl font-display text-darkgreen tabular-nums"><%= Number.Delimit.number_to_delimited(@field.count, precision: 0) %></dd>
+        <dd class="text-sm text-gray-500">offer this major</dd>
+      </div>
+    </dl>
+
+    <div class="grid grid-cols-3 lg:grid-cols-1 gap-12 lg:gap-8">
+      <section class="field-answer col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800">
+        <h2 class="text-darkgreen text-2xl font-display pb-4"><%= field_question(@field.name) %></h2>
+        <div class="space-y-5">
+          <p><%= Enum.join(field_answer(@facts), " ") %></p>
+          <%= for paragraph <- @note do %>
+            <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: Routes.college_path(@socket, :show, unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
+          <% end %>
+        </div>
+      </section>
+      <aside class="pt-14 lg:pt-0">
+        <div class="sticky top-6 rounded-lg bg-gray-50 border border-gray-200 p-5 text-sm leading-6 text-gray-600 space-y-3">
+          <p class="font-bold text-darkgreen">About these numbers</p>
+          <p>Earnings are from one year after graduating, for students who received federal aid.</p>
+          <p>Debt is the median federal student-loan debt of graduates who borrowed. It leaves out loans parents took.</p>
+          <p>Majors that lead to graduate school, or to careers that start slowly, look worse here than they will ten years on.</p>
+          <p><a href="#programs" class="no-underline text-green hover:underline">See every program by college ↓</a></p>
+        </div>
+      </aside>
+    </div>
+  <% else %>
+    <p class="max-w-prose text-lg leading-relaxed text-gray-800"><%= field_summary(@field) %></p>
+  <% end %>
+
+  <section id="programs" class="field-programs pt-12">
+    <div class="flex md:flex-col items-end md:items-start justify-between gap-4 pb-4">
+      <div>
+        <h2 class="text-darkgreen text-2xl font-display">Programs by College</h2>
+        <p class="pt-1 text-sm text-gray-500">
+          <%= if @show_all do %>
+            Every credential: certificates, associate's, bachelor's and graduate degrees.
+          <% else %>
+            Bachelor's degrees only. Click a column to sort.
+          <% end %>
+        </p>
+      </div>
+      <div class="credential-toggle inline-flex shrink-0 rounded-lg border border-gray-200 bg-gray-50 p-1" role="group" aria-label="Credentials">
+        <button type="button" phx-click="credentials" phx-value-show="bachelors" aria-pressed={to_string(!@show_all)}
+                class={["px-4 py-1.5 text-sm rounded-md", if(@show_all, do: "text-gray-600 hover:text-darkgreen", else: "bg-white shadow text-darkgreen font-bold")]}>
+          Bachelor's <span class="font-normal text-gray-400 tabular-nums"><%= Number.Delimit.number_to_delimited(@bachelors_count, precision: 0) %></span>
+        </button>
+        <button type="button" phx-click="credentials" phx-value-show="all" aria-pressed={to_string(@show_all)}
+                class={["px-4 py-1.5 text-sm rounded-md", if(@show_all, do: "bg-white shadow text-darkgreen font-bold", else: "text-gray-600 hover:text-darkgreen")]}>
+          All credentials <span class="font-normal text-gray-400 tabular-nums"><%= Number.Delimit.number_to_delimited(@all_count, precision: 0) %></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="rounded-lg border border-gray-200 md:border-0">
+      <table class="w-full md:block lg:table">
+        <thead class="md:absolute md:-top-9999 md:-left-9999">
+          <tr>
+            <.sort_header_link label="College" sort_key="name" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "name", order: @order || "desc"})} />
+            <%= if @show_all do %>
+              <.sort_header_link label="Credential" sort_key="credential_level" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "credential_level", order: @order || "desc"})} tooltip="Degree type: Certificate, Associate's, Bachelor's, Master's, etc." />
+            <% end %>
+            <.sort_header_link label="Debt Mean" sort_key="debt_mean" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_mean", order: @order || "desc"})} tooltip="Average federal student-loan debt of graduates who borrowed. A few large loans can pull it up." />
+            <.sort_header_link label="Debt Median" sort_key="debt_median" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_median", order: @order || "desc"})} tooltip="Median federal student-loan debt of graduates who borrowed. Half owe more, half owe less." />
+            <.sort_header_link label="Earnings" sort_key="earnings" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "earnings", order: @order || "desc"})} tooltip="Median earnings 1 year after graduation for this major" />
+          </tr>
+        </thead>
+        <tbody class="md:block">
+          <%= for major <- @rows do %>
+            <tr class="md:block odd:bg-gray-50 hover:bg-lightgreen/10">
+              <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm border-b"><%= link major.college_name, to: Routes.college_path(@socket, :show, major.unit_id, major.college_name), class: "no-underline text-green hover:underline" %></td>
+              <%= if @show_all do %>
+                <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm border-b"><%= degree(major.credential_level) %></td>
+              <% end %>
+              <td class={["px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm border-b tabular-nums", no_data?(major.debt_mean) && "text-gray-400"]}><%= cash(major.debt_mean) %></td>
+              <td class={["px-4 py-3 debtmed-field md:border-none md:relative md:block xl:text-sm border-b tabular-nums", no_data?(major.debt_median) && "text-gray-400"]}><%= cash(major.debt_median) %></td>
+              <td class={["px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm border-b tabular-nums", no_data?(major.earnings) && "text-gray-400"]}><%= cash(major.earnings) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= if @no_data_count > 0 do %>
+      <p class="no-data-count pt-4 text-sm text-gray-500">
+        <%= @no_data_count %> more <%= if @no_data_count == 1, do: "school offers", else: "schools offer" %> this major but <%= if @no_data_count == 1, do: "reports", else: "report" %> no debt or earnings for it.
+      </p>
+    <% end %>
   </section>
-<% end %>
-
-<div class="flex py-2 px-4 rounded overflow-hidden ">
-            <div class="flex-shrink-0">
-
-              <div class="flex items-center justify-center h-12 w-12 rounded-md">
-
-              </div>
-            </div>
-            <div class="ml-4">
-                <h4 class="text-lg leading-6 font-medium text-darkgreen">Details</h4>
-                <ul class="list-none">
-                  <li><strong class="text-green">Number of Offering Colleges:</strong> <%= @field.count %></li>
-                  <li><strong class="text-green">Student-Loan Debt, Average Program:</strong> <%= cash(@field.debt_avg) %></li>
-                  <li><strong class="text-green">Expected Earnings 1 Year After:</strong> <%= cash(@field.earn_avg) %></li>
-
-                </ul>
-
-            </div>
-          </div>
-
-
-<div class="w-full">
-    <button class="bg-transparent hover:bg-black-500 text-green font-semibold hover:text-green py-2 px-4 border border-green rounded" phx-click="toggle_credentials"><%= @cred_label %></button>
 </div>
-
-
-<table  class="md:block lg:table pt-8">
-  <thead class="md:absolute md:-top-9999 md:-left-9999">
-    <tr>
-      <.sort_header_link label="Name" sort_key="name" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "name", order: @order || "desc"})} />
-      <.sort_header_link label="Credential" sort_key="credential_level" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "credential_level", order: @order || "desc"})} tooltip="Degree type: Certificate, Associate's, Bachelor's, Master's, etc." />
-      <.sort_header_link label="Debt Mean" sort_key="debt_mean" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_mean", order: @order || "desc"})} tooltip="Average federal student-loan debt of graduates who borrowed. A few large loans can pull it up." />
-      <.sort_header_link label="Debt Median" sort_key="debt_median" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "debt_median", order: @order || "desc"})} tooltip="Median federal student-loan debt of graduates who borrowed. Half owe more, half owe less." />
-      <.sort_header_link label="Earnings" sort_key="earnings" current_sort={@sort_by} order={@order || "desc"} patch_url={field_page_path(@field.name, %{sort_by: "earnings", order: @order || "desc"})} tooltip="Median earnings 1 year after graduation for this major" />
-    </tr>
-  </thead>
-  <tbody class="md:block">
-    <%= for major <- @rows do %>
-        <tr class="md:block odd:bg-gray-50">
-        <td class="px-4 py-3 college-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b "><%= link major.college_name, to: Routes.college_path(@socket, :show, major.unit_id, major.college_name), class: "no-underline text-green" %> </td>
-        <td class="px-4 py-3 cred-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= degree(major.credential_level) %></td>
-        <td class="px-4 py-3 debt-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(major.debt_mean) %></td>
-        <td class="px-4 py-3 debtmed-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(major.debt_median) %></td>
-        <td class="px-4 py-3 earnings-field md:border-none md:relative md:block xl:text-sm whitespace-wrap border-b"><%= cash(major.earnings) %></td>
-
-        </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= if @no_data_count > 0 do %>
-  <p class="no-data-count pt-4 text-sm text-gray-600">
-    <%= @no_data_count %> more <%= if @no_data_count == 1, do: "school offers", else: "schools offer" %> this major but <%= if @no_data_count == 1, do: "reports", else: "report" %> no debt or earnings for it.
-  </p>
-<% end %>
-
-
-
-<%!-- Now render a fierw for a list of disciplines pulled for this field! --%>
-
-<%!-- <span><%= link "Edit", to: Routes.field_path(@conn, :edit, @field)</span> --%>
-<%!-- <span><%= link "Back", to: Routes.field_path(@conn, :index)</span> --%>
