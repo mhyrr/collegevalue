@@ -39,33 +39,36 @@ defmodule CollegevalueWeb.SeoControllerTest do
     %{with_data: with_data, without_data: without_data}
   end
 
-  describe "GET /sitemap.xml" do
-    test "lists the listing pages and the colleges and fields with data", %{conn: conn} do
+  describe "the sitemaps" do
+    test "sitemap.xml is an index of the pages, fields and colleges sitemaps", %{conn: conn} do
       conn = get(conn, "/sitemap.xml")
       xml = response(conn, 200)
 
       assert response_content_type(conn, :xml)
-      assert xml =~ ~s(<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">)
-      assert xml =~ "/colleges/rank</loc>"
-      assert xml =~ "/colleges/130794/yale-university</loc>"
-      assert xml =~ "/fields/computer-science</loc>"
-
-      refute xml =~ "Aarhus"
-      refute xml =~ "air-force"
+      assert xml =~ ~s(<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">)
+      for name <- ~w(pages fields colleges), do: assert(xml =~ "/sitemap-#{name}.xml</loc>")
     end
-  end
 
-  describe "GET /sitemap-fields.xml" do
-    test "lists the listing and field pages, not the colleges", %{conn: conn} do
-      conn = get(conn, "/sitemap-fields.xml")
-      xml = response(conn, 200)
+    test "each page is in one sitemap only", %{conn: conn} do
+      pages = conn |> get("/sitemap-pages.xml") |> response(200)
+      fields = build_conn() |> get("/sitemap-fields.xml") |> response(200)
+      colleges = build_conn() |> get("/sitemap-colleges.xml") |> response(200)
 
-      assert response_content_type(conn, :xml)
-      assert xml =~ "/fields/rank</loc>"
-      assert xml =~ "/fields/computer-science</loc>"
+      assert pages =~ "/colleges/rank</loc>"
+      assert fields =~ "/fields/computer-science</loc>"
+      assert colleges =~ "/colleges/130794/yale-university</loc>"
 
-      refute xml =~ "Yale"
-      refute xml =~ "air-force"
+      refute pages =~ "/fields/computer-science<" or pages =~ "yale-university"
+      refute fields =~ "/fields/rank<" or fields =~ "yale-university"
+      refute colleges =~ "/colleges/rank<" or colleges =~ "/fields/"
+    end
+
+    test "pages without enough data are in none of them", %{conn: conn} do
+      fields = conn |> get("/sitemap-fields.xml") |> response(200)
+      colleges = build_conn() |> get("/sitemap-colleges.xml") |> response(200)
+
+      refute fields =~ "air-force"
+      refute colleges =~ "aarhus"
     end
   end
 
@@ -211,7 +214,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       Repo.insert!(%Discipline{name: "Cosmetology", credential_level: 1, stgp_debt_median: 9_000, earnings_1yr: 21_000, college_id: college.id})
 
       assert conn |> get("/colleges/555001/beauty-academy") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
-      refute build_conn() |> get("/sitemap.xml") |> response(200) =~ "beauty-academy"
+      refute build_conn() |> get("/sitemap-colleges.xml") |> response(200) =~ "beauty-academy"
     end
   end
 

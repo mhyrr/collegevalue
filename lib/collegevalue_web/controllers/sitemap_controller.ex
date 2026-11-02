@@ -8,32 +8,47 @@ defmodule CollegevalueWeb.SitemapController do
   # visitor's input and have no content of their own to index.
   @static_paths ["/", "/data", "/calculator", "/colleges", "/colleges/rank", "/fields", "/fields/rank"]
 
+  # One sitemap per kind of page, with no page in two of them, so Search
+  # Console reports submitted vs. indexed for each template on its own.
+  @sitemaps ["/sitemap-pages.xml", "/sitemap-fields.xml", "/sitemap-colleges.xml"]
+
   @doc """
-  Every page meant for the search index: the listing pages, the A to Z list's
-  later pages, then each field and college with enough data behind it. Pages with
-  too little data render noindex (see `Colleges.indexable?/1` and
-  `Fields.indexable?/1`) and are left out.
+  The sitemap index: the three sitemaps below. Pages with too little data
+  render noindex (see `Colleges.indexable?/1` and `Fields.indexable?/1`) and
+  are in none of them.
   """
   def index(conn, _params) do
-    page_paths =
-      Enum.map(2..Colleges.college_page_count()//1, &Routes.college_path(conn, :index, page: &1))
+    origin = LayoutView.origin(conn)
 
+    body = [
+      ~s(<?xml version="1.0" encoding="UTF-8"?>\n),
+      ~s(<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n),
+      Enum.map(@sitemaps, fn path -> ["  <sitemap><loc>", escape(origin <> path), "</loc></sitemap>\n"] end),
+      "</sitemapindex>\n"
+    ]
+
+    send_xml(conn, body)
+  end
+
+  @doc "The listing pages, and the A to Z list's later pages."
+  def pages(conn, _params) do
+    page_paths = Enum.map(2..Colleges.college_page_count()//1, &Routes.college_path(conn, :index, page: &1))
+    send_urlset(conn, @static_paths ++ page_paths)
+  end
+
+  @doc "Every field page open to the search index."
+  def fields(conn, _params), do: send_urlset(conn, field_paths())
+
+  @doc "Every college page open to the search index."
+  def colleges(conn, _params) do
     college_paths =
       Colleges.list_indexable_colleges()
       |> Enum.map(fn {unitid, name} -> CollegevalueWeb.Views.Helpers.college_page_path(unitid, name) end)
       # Scorecard lists a few schools twice; both rows share a page.
       |> Enum.uniq()
 
-    send_urlset(conn, @static_paths ++ page_paths ++ field_paths() ++ college_paths)
+    send_urlset(conn, college_paths)
   end
-
-  @doc """
-  The listing pages and the field pages alone: the pages the keyword map
-  targets, without the thousands of college pages. Search Console reports
-  each sitemap's indexing on its own, so this one shows how the pages that
-  matter are doing.
-  """
-  def fields(conn, _params), do: send_urlset(conn, @static_paths ++ field_paths())
 
   defp field_paths do
     Enum.map(Fields.list_indexable_field_names(), &CollegevalueWeb.Views.Helpers.field_page_path/1)
@@ -49,6 +64,10 @@ defmodule CollegevalueWeb.SitemapController do
       "</urlset>\n"
     ]
 
+    send_xml(conn, body)
+  end
+
+  defp send_xml(conn, body) do
     conn
     |> put_resp_content_type("application/xml")
     |> send_resp(200, body)

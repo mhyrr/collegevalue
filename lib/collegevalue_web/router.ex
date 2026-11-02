@@ -44,7 +44,9 @@ defmodule CollegevalueWeb.Router do
 
   scope "/", CollegevalueWeb do
     get "/sitemap.xml", SitemapController, :index
+    get "/sitemap-pages.xml", SitemapController, :pages
     get "/sitemap-fields.xml", SitemapController, :fields
+    get "/sitemap-colleges.xml", SitemapController, :colleges
   end
 
   # Other scopes may use custom stacks.
