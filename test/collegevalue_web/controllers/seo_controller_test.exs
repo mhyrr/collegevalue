@@ -232,6 +232,16 @@ defmodule CollegevalueWeb.SeoControllerTest do
       payoff = html |> String.split("payoff-majors") |> Enum.at(1)
       assert :binary.match(payoff, ">Economics<") < :binary.match(payoff, ">Computer Science<")
     end
+
+    test "asks whether the college is worth it in the title, once it has a payoff", %{conn: conn, with_data: yale} do
+      for {name, debt, pay} <- [{"Economics", 12_000, 72_000}, {"History", 18_000, 36_000}, {"Physics", 15_000, 60_000}] do
+        Repo.insert!(%Discipline{name: name, credential_level: 3, stgp_debt_median: debt, earnings_1yr: pay, college_id: yale.id})
+      end
+
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
+
+      assert html =~ ">Is Yale University (New Haven, CT) Worth It? Debt and Pay by Major · CollegeValue</title>"
+    end
   end
 
   describe "page metadata" do
@@ -328,6 +338,14 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert html =~ "Is a Computer Science degree worth it?"
       assert html =~ "the median pays its graduates $65,959 a year after graduation."
       assert html =~ "one year after graduating, for students who received federal aid"
+    end
+
+    test "leads with a short answer computed from payback months", %{conn: conn} do
+      html = conn |> get("/fields/computer-science") |> html_response(200)
+
+      assert html =~ "field-verdict"
+      assert html =~ "Short answer"
+      assert html =~ "of first-year pay at the median"
     end
 
     test "shows the note once it is approved, never as a draft", %{conn: conn} do

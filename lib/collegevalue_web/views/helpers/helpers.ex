@@ -434,6 +434,13 @@ defmodule CollegevalueWeb.Views.Helpers do
   end
 
   @doc """
+  A college page's title. A college with a payoff answers "is it worth it?"
+  on the page, so its title asks the question searchers type.
+  """
+  def college_page_title(college, nil), do: college_title(college)
+  def college_page_title(college, _payoff), do: "Is #{college_title(college)} Worth It? Debt and Pay by Major"
+
+  @doc """
   The field page's title, phrased as the question people search for, with
   the field's short name: nobody searches "Psychology, General".
   """

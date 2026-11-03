@@ -5,7 +5,7 @@ defmodule CollegevalueWeb.CollegeController do
   alias Collegevalue.Colleges.College
   alias Collegevalue.Fields
 
-  import CollegevalueWeb.Views.Helpers, only: [college_title: 1, college_page_path: 2, college_ranking: 1]
+  import CollegevalueWeb.Views.Helpers, only: [college_page_title: 2, college_page_path: 2, college_ranking: 1]
 
   @index_description "Every college in the College Scorecard data, with its location, control and accreditation. Open one for its costs, debt, completion rates and earnings."
   @you_description "Find colleges near you whose graduates earn the most for what they borrow. Enter a zip code, a distance and an SAT score."
@@ -107,11 +107,13 @@ defmodule CollegevalueWeb.CollegeController do
   def show(conn, %{"name" => name, "unitid" => unitid}) do
     case Colleges.find_college_page(unitid, name) do
       {:ok, college} ->
+        payoff = Collegevalue.Fields.college_payoff(college.id)
+
         render(conn, "show.html",
           college: college,
           majors: Colleges.get_majors_by_college(college.name),
-          payoff: Collegevalue.Fields.college_payoff(college.id),
-          page_title: college_title(college),
+          payoff: payoff,
+          page_title: college_page_title(college, payoff),
           noindex: not Colleges.indexable?(college)
         )
 
