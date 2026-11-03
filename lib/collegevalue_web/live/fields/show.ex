@@ -5,7 +5,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   alias Collegevalue.{Fields, Colleges}
   alias Collegevalue.FieldNotes
   alias Collegevalue.FieldNotes.Facts
-  alias CollegevalueWeb.ProgramTable
+  alias CollegevalueWeb.{FieldAnswer, ProgramTable}
   alias CollegevalueWeb.Router.Helpers, as: Routes
   import CollegevalueWeb.Views.Helpers, only: [field_title: 1, field_page_path: 2]
 
@@ -129,6 +129,26 @@ defmodule CollegevalueWeb.FieldsLive.Show do
   defp assign_facts(socket, field, majors) do
     colleges = Enum.map(majors, &{&1.college_name, &1.unit_id})
     note = field.name |> FieldNotes.approved_paragraphs() |> FieldNotes.link_colleges(colleges)
-    assign(socket, facts: Facts.for_field(field.name), note: note)
+    facts = Facts.for_field(field.name)
+    assign(socket, facts: facts, note: note, answer: answer(facts, majors))
+  end
+
+  defp answer(nil, _majors), do: nil
+
+  defp answer(facts, majors) do
+    control = FieldAnswer.control_rows(facts)
+    admission = FieldAnswer.admission_rows(facts)
+
+    %{
+      verdict: FieldAnswer.verdict(facts),
+      control: control,
+      control_sentence: FieldAnswer.control_sentence(control),
+      admission: admission,
+      admission_sentence: FieldAnswer.admission_sentence(admission),
+      cost: FieldAnswer.cost_rows(facts),
+      cost_sentence: FieldAnswer.cost_sentence(facts),
+      parent_sentence: FieldAnswer.parent_sentence(facts),
+      pair: FieldAnswer.pair(facts, majors)
+    }
   end
 end

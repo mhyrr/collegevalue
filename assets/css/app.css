@@ -171,6 +171,11 @@ blockquote {
         padding-left: 50% !important;
     }
 
+    /* A small table that stays a table on phones. */
+    .compact-table tr { border-bottom: none; padding-bottom: 0; }
+    .compact-table tbody td { padding-left: 0.5rem !important; }
+    .compact-table tbody td:first-child { padding-left: 0 !important; }
+
     tbody td:before { 
 		/* Now like a table header */
 		position: absolute;

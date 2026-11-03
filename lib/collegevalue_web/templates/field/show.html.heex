@@ -28,6 +28,7 @@
         <section class="field-answer col-span-2 lg:col-span-1 text-lg leading-relaxed text-gray-800">
           <h2 class="text-darkgreen text-2xl font-display pb-4"><%= field_question(@field.name) %></h2>
           <div class="space-y-5">
+            <.field_verdict verdict={@answer && @answer.verdict} />
             <p><%= Enum.join(field_answer(@facts), " ") %></p>
             <%= for paragraph <- @note do %>
               <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: college_page_path(unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
@@ -45,11 +46,16 @@
     <% else %>
       <section class="field-answer max-w-3xl text-lg leading-relaxed text-gray-800">
         <h2 class="text-darkgreen text-2xl font-display pb-4"><%= field_question(@field.name) %></h2>
-        <p><%= Enum.join(field_answer(@facts), " ") %></p>
+        <.field_verdict verdict={@answer && @answer.verdict} />
+            <p><%= Enum.join(field_answer(@facts), " ") %></p>
         <p class="mt-6 border-l-4 border-plain pl-4 text-sm leading-6 text-gray-600">
           <span class="font-bold text-darkgreen">About these numbers.</span> <%= Enum.join(about, " ") %>
         </p>
       </section>
+    <% end %>
+
+    <%= if @answer do %>
+      <.field_evidence answer={@answer} short_name={field_short_name(@field.name)} />
     <% end %>
   <% else %>
     <p class="max-w-prose text-lg leading-relaxed text-gray-800"><%= field_summary(@field) %></p>
