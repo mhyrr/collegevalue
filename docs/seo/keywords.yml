@@ -212,3 +212,367 @@ clusters:
         page: /fields/philosophy
         role: primary
         status: published
+
+  # Research candidates, added 2026-11-02 for the step-2 demand pull: is there
+  # search demand for college-level and state-level pages? No page yet; promote a
+  # query to planned with a page only if the demand is there.
+  # The 40 largest indexable colleges by enrollment, plus ten well-known privates.
+  college-worth-it:
+    intent: commercial
+    queries:
+      - query: is snhu worth it
+        role: primary
+        status: candidate
+      - query: is wgu worth it
+        role: primary
+        status: candidate
+      - query: is university of phoenix worth it
+        role: primary
+        status: candidate
+      - query: is grand canyon university worth it
+        role: primary
+        status: candidate
+      - query: is arizona state university worth it
+        role: primary
+        status: candidate
+      - query: is texas a&m worth it
+        role: primary
+        status: candidate
+      - query: is ucf worth it
+        role: primary
+        status: candidate
+      - query: is liberty university worth it
+        role: primary
+        status: candidate
+      - query: is umgc worth it
+        role: primary
+        status: candidate
+      - query: is ohio state worth it
+        role: primary
+        status: candidate
+      - query: is ut austin worth it
+        role: primary
+        status: candidate
+      - query: is byu idaho worth it
+        role: primary
+        status: candidate
+      - query: is university of arizona worth it
+        role: primary
+        status: candidate
+      - query: is michigan state worth it
+        role: primary
+        status: candidate
+      - query: is purdue worth it
+        role: primary
+        status: candidate
+      - query: is kennesaw state worth it
+        role: primary
+        status: candidate
+      - query: is fiu worth it
+        role: primary
+        status: candidate
+      - query: is university of houston worth it
+        role: primary
+        status: candidate
+      - query: is cal state fullerton worth it
+        role: primary
+        status: candidate
+      - query: is indiana university worth it
+        role: primary
+        status: candidate
+      - query: is rutgers worth it
+        role: primary
+        status: candidate
+      - query: is usf worth it
+        role: primary
+        status: candidate
+      - query: is uw madison worth it
+        role: primary
+        status: candidate
+      - query: is uiuc worth it
+        role: primary
+        status: candidate
+      - query: is university of florida worth it
+        role: primary
+        status: candidate
+      - query: is ucsd worth it
+        role: primary
+        status: candidate
+      - query: is university of michigan worth it
+        role: primary
+        status: candidate
+      - query: is uc berkeley worth it
+        role: primary
+        status: candidate
+      - query: is ucla worth it
+        role: primary
+        status: candidate
+      - query: is texas tech worth it
+        role: primary
+        status: candidate
+      - query: is university of alabama worth it
+        role: primary
+        status: candidate
+      - query: is byu worth it
+        role: primary
+        status: candidate
+      - query: is florida state worth it
+        role: primary
+        status: candidate
+      - query: is uc davis worth it
+        role: primary
+        status: candidate
+      - query: is university of washington worth it
+        role: primary
+        status: candidate
+      - query: is cu boulder worth it
+        role: primary
+        status: candidate
+      - query: is purdue global worth it
+        role: primary
+        status: candidate
+      - query: is uga worth it
+        role: primary
+        status: candidate
+      - query: is virginia tech worth it
+        role: primary
+        status: candidate
+      - query: is university of maryland worth it
+        role: primary
+        status: candidate
+      - query: is nyu worth it
+        role: primary
+        status: candidate
+      - query: is penn state worth it
+        role: primary
+        status: candidate
+      - query: is harvard worth it
+        role: primary
+        status: candidate
+      - query: is stanford worth it
+        role: primary
+        status: candidate
+      - query: is georgetown worth it
+        role: primary
+        status: candidate
+      - query: is villanova worth it
+        role: primary
+        status: candidate
+      - query: is northeastern worth it
+        role: primary
+        status: candidate
+      - query: is usc worth it
+        role: primary
+        status: candidate
+      - query: is boston university worth it
+        role: primary
+        status: candidate
+      - query: is duke worth it
+        role: primary
+        status: candidate
+      - query: is notre dame worth it
+        role: primary
+        status: candidate
+  # Program-level data only CollegeValue computes, per college.
+  best-majors-at:
+    intent: informational
+    queries:
+      - query: best majors at arizona state university
+        role: primary
+        status: candidate
+      - query: best majors at ohio state
+        role: primary
+        status: candidate
+      - query: best majors at ut austin
+        role: primary
+        status: candidate
+      - query: best majors at michigan state
+        role: primary
+        status: candidate
+      - query: best majors at purdue
+        role: primary
+        status: candidate
+      - query: best majors at penn state
+        role: primary
+        status: candidate
+      - query: best majors at university of florida
+        role: primary
+        status: candidate
+      - query: best majors at ucla
+        role: primary
+        status: candidate
+      - query: best majors at rutgers
+        role: primary
+        status: candidate
+      - query: best majors at nyu
+        role: primary
+        status: candidate
+      - query: best majors at georgetown
+        role: primary
+        status: candidate
+      - query: best majors at villanova
+        role: primary
+        status: candidate
+      - query: best majors at usc
+        role: primary
+        status: candidate
+      - query: best majors at uiuc
+        role: primary
+        status: candidate
+      - query: best majors at virginia tech
+        role: primary
+        status: candidate
+  # Candidate hub pages: one per state, linking down to its colleges.
+  best-value-by-state:
+    intent: commercial
+    queries:
+      - query: best value colleges in alabama
+        role: primary
+        status: candidate
+      - query: best value colleges in alaska
+        role: primary
+        status: candidate
+      - query: best value colleges in arizona
+        role: primary
+        status: candidate
+      - query: best value colleges in arkansas
+        role: primary
+        status: candidate
+      - query: best value colleges in california
+        role: primary
+        status: candidate
+      - query: best value colleges in colorado
+        role: primary
+        status: candidate
+      - query: best value colleges in connecticut
+        role: primary
+        status: candidate
+      - query: best value colleges in delaware
+        role: primary
+        status: candidate
+      - query: best value colleges in florida
+        role: primary
+        status: candidate
+      - query: best value colleges in georgia
+        role: primary
+        status: candidate
+      - query: best value colleges in hawaii
+        role: primary
+        status: candidate
+      - query: best value colleges in idaho
+        role: primary
+        status: candidate
+      - query: best value colleges in illinois
+        role: primary
+        status: candidate
+      - query: best value colleges in indiana
+        role: primary
+        status: candidate
+      - query: best value colleges in iowa
+        role: primary
+        status: candidate
+      - query: best value colleges in kansas
+        role: primary
+        status: candidate
+      - query: best value colleges in kentucky
+        role: primary
+        status: candidate
+      - query: best value colleges in louisiana
+        role: primary
+        status: candidate
+      - query: best value colleges in maine
+        role: primary
+        status: candidate
+      - query: best value colleges in maryland
+        role: primary
+        status: candidate
+      - query: best value colleges in massachusetts
+        role: primary
+        status: candidate
+      - query: best value colleges in michigan
+        role: primary
+        status: candidate
+      - query: best value colleges in minnesota
+        role: primary
+        status: candidate
+      - query: best value colleges in mississippi
+        role: primary
+        status: candidate
+      - query: best value colleges in missouri
+        role: primary
+        status: candidate
+      - query: best value colleges in montana
+        role: primary
+        status: candidate
+      - query: best value colleges in nebraska
+        role: primary
+        status: candidate
+      - query: best value colleges in nevada
+        role: primary
+        status: candidate
+      - query: best value colleges in new hampshire
+        role: primary
+        status: candidate
+      - query: best value colleges in new jersey
+        role: primary
+        status: candidate
+      - query: best value colleges in new mexico
+        role: primary
+        status: candidate
+      - query: best value colleges in new york
+        role: primary
+        status: candidate
+      - query: best value colleges in north carolina
+        role: primary
+        status: candidate
+      - query: best value colleges in north dakota
+        role: primary
+        status: candidate
+      - query: best value colleges in ohio
+        role: primary
+        status: candidate
+      - query: best value colleges in oklahoma
+        role: primary
+        status: candidate
+      - query: best value colleges in oregon
+        role: primary
+        status: candidate
+      - query: best value colleges in pennsylvania
+        role: primary
+        status: candidate
+      - query: best value colleges in rhode island
+        role: primary
+        status: candidate
+      - query: best value colleges in south carolina
+        role: primary
+        status: candidate
+      - query: best value colleges in south dakota
+        role: primary
+        status: candidate
+      - query: best value colleges in tennessee
+        role: primary
+        status: candidate
+      - query: best value colleges in texas
+        role: primary
+        status: candidate
+      - query: best value colleges in utah
+        role: primary
+        status: candidate
+      - query: best value colleges in vermont
+        role: primary
+        status: candidate
+      - query: best value colleges in virginia
+        role: primary
+        status: candidate
+      - query: best value colleges in washington
+        role: primary
+        status: candidate
+      - query: best value colleges in west virginia
+        role: primary
+        status: candidate
+      - query: best value colleges in wisconsin
+        role: primary
+        status: candidate
+      - query: best value colleges in wyoming
+        role: primary
+        status: candidate
