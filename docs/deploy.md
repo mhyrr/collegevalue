@@ -87,7 +87,9 @@ fly deploy -a collegevalue
    - After the deploy is live: `mix indexnow --dry-run`, then `mix indexnow`.
      It submits every URL in the sitemaps whose lastmod is today (`--since
      YYYY-MM-DD` for another day) to IndexNow, which reaches Bing and so
-     ChatGPT search and Copilot. HTTP 200 or 202 means accepted.
+     ChatGPT search and Copilot. HTTP 200 or 202 means accepted. A 403
+     means IndexNow hasn't validated the key file yet; it happened on the
+     first submit (2026-11-04) and a retry minutes later got 200.
    - Google has no API for this. Resubmit `sitemap.xml` in Search Console, and
      request indexing by hand for the few pages that matter most
      (`seodash submit sitemaps` will replace the resubmit: seodash TK-037).

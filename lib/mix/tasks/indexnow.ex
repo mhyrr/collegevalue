@@ -41,7 +41,15 @@ defmodule Mix.Tasks.Indexnow do
 
       true ->
         case IndexNow.submit(origin, urls) do
-          {:ok, statuses} -> Mix.shell().info("Submitted #{length(urls)} URLs to IndexNow: HTTP #{Enum.join(statuses, ", ")}")
+          {:ok, statuses} ->
+            if Enum.all?(statuses, &(&1 in [200, 202])) do
+              Mix.shell().info("Submitted #{length(urls)} URLs to IndexNow: HTTP #{Enum.join(statuses, ", ")}")
+            else
+              # 403: key not valid (IndexNow hasn't read /<key>.txt yet, or it
+              # doesn't match); 422: a URL off the key's host; 429: too often.
+              Mix.raise("IndexNow refused the submission: HTTP #{Enum.join(statuses, ", ")}")
+            end
+
           {:error, reason} -> Mix.raise("IndexNow submit failed: #{inspect(reason)}")
         end
     end
