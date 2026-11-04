@@ -70,6 +70,24 @@ defmodule CollegevalueWeb.SeoControllerTest do
       refute fields =~ "air-force"
       refute colleges =~ "aarhus"
     end
+
+    test "every sitemap and every URL in it carries its sitemap's lastmod", %{conn: conn} do
+      index = conn |> get("/sitemap.xml") |> response(200)
+
+      for {path, lastmod} <- CollegevalueWeb.SitemapController.sitemaps() do
+        date = Date.to_iso8601(lastmod)
+        assert index =~ "#{path}</loc><lastmod>#{date}</lastmod>"
+
+        urlset = build_conn() |> get(path) |> response(200)
+        assert length(String.split(urlset, "<url>")) - 1 == length(String.split(urlset, "</loc><lastmod>#{date}</lastmod>")) - 1
+      end
+    end
+
+    test "the IndexNow key file serves the key", %{conn: conn} do
+      key = Application.fetch_env!(:collegevalue, :indexnow_key)
+
+      assert conn |> get("/#{key}.txt") |> response(200) == key
+    end
   end
 
   describe "the home page" do

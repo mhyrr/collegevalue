@@ -81,6 +81,16 @@ fly deploy -a collegevalue
 3. Smoke: `https://collegevalue.co/`, a college page, a field page,
    `/sitemap.xml`, `/robots.txt`.
 4. `fly logs -a collegevalue` for crashes.
+5. If the deploy changed pages in substance, tell the search engines:
+   - Bump that sitemap's lastmod in `CollegevalueWeb.SitemapController`
+     (`@sitemaps`) in the same commit. Leave it for styling-only changes.
+   - After the deploy is live: `mix indexnow --dry-run`, then `mix indexnow`.
+     It submits every URL in the sitemaps whose lastmod is today (`--since
+     YYYY-MM-DD` for another day) to IndexNow, which reaches Bing and so
+     ChatGPT search and Copilot. HTTP 200 or 202 means accepted.
+   - Google has no API for this. Resubmit `sitemap.xml` in Search Console, and
+     request indexing by hand for the few pages that matter most
+     (`seodash submit sitemaps` will replace the resubmit: seodash TK-037).
 
 ### Roll back
 

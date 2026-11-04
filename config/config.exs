@@ -10,6 +10,11 @@ import Config
 config :collegevalue,
   ecto_repos: [Collegevalue.Repo]
 
+# IndexNow (Bing, Yandex and others; not Google). The key is public by
+# design: the site serves it at /<key>.txt to prove it owns the URLs it
+# submits. `mix indexnow` submits changed pages after a deploy.
+config :collegevalue, :indexnow_key, "4308c8334fb8d15f2af18026533f812c"
+
 # Configures the endpoint
 config :collegevalue, CollegevalueWeb.Endpoint,
   adapter: Bandit.PhoenixAdapter,

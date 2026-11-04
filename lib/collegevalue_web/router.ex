@@ -47,6 +47,7 @@ defmodule CollegevalueWeb.Router do
     get "/sitemap-pages.xml", SitemapController, :pages
     get "/sitemap-fields.xml", SitemapController, :fields
     get "/sitemap-colleges.xml", SitemapController, :colleges
+    get "/#{Application.compile_env!(:collegevalue, :indexnow_key)}.txt", SitemapController, :indexnow_key
   end
 
   # Other scopes may use custom stacks.
