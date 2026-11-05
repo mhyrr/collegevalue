@@ -74,6 +74,17 @@ defmodule CollegevalueWeb.StructuredData do
             "and compared college by college and major by major.",
         "url" => url,
         "creator" => %{"@type" => "Organization", "name" => "CollegeValue", "url" => origin <> "/"},
+        "license" => CollegevalueWeb.OpenData.license().url,
+        "isAccessibleForFree" => true,
+        "distribution" =>
+          for name <- CollegevalueWeb.OpenData.datasets(), {format, type} <- [{"csv", "text/csv"}, {"json", "application/json"}] do
+            %{
+              "@type" => "DataDownload",
+              "name" => CollegevalueWeb.OpenData.title(name),
+              "encodingFormat" => type,
+              "contentUrl" => origin <> "/data/#{name}.#{format}"
+            }
+          end,
         "isBasedOn" => %{
           "@type" => "Dataset",
           "name" => "College Scorecard",

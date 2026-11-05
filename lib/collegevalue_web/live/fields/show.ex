@@ -130,7 +130,7 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     colleges = Enum.map(majors, &{&1.college_name, &1.unit_id})
     note = field.name |> FieldNotes.approved_paragraphs() |> FieldNotes.link_colleges(colleges)
     facts = Facts.for_field(field.name)
-    assign(socket, facts: facts, note: note, answer: answer(facts, majors))
+    assign(socket, facts: facts, note: note, answer: answer(facts, majors), json_path: "/api/v1/majors/#{Fields.slug(field.name)}")
   end
 
   defp answer(nil, _majors), do: nil

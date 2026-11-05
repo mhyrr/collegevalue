@@ -114,6 +114,7 @@ defmodule CollegevalueWeb.CollegeController do
           majors: Colleges.get_majors_by_college(college.name),
           payoff: payoff,
           page_title: college_page_title(college, payoff),
+          json_path: "/api/v1/colleges/#{college.unitid}",
           noindex: not Colleges.indexable?(college)
         )
 

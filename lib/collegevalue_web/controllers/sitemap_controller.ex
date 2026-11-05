@@ -16,7 +16,7 @@ defmodule CollegevalueWeb.SitemapController do
   # that happens, and never for a styling change, or Google learns to ignore
   # it. `mix indexnow` submits the sitemaps changed since a date.
   @sitemaps [
-    {"/sitemap-pages.xml", ~D[2026-11-02]},
+    {"/sitemap-pages.xml", ~D[2026-11-05]},
     {"/sitemap-fields.xml", ~D[2026-11-03]},
     {"/sitemap-colleges.xml", ~D[2026-11-03]}
   ]

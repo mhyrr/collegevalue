@@ -435,6 +435,7 @@ defmodule CollegevalueWeb.DataComponents do
     <footer class={["data-source space-y-1 text-sm text-gray-500", @class]}>
       <p>Data: <%= Collegevalue.Scorecard.publisher() %>, <a href={Collegevalue.Scorecard.url()} class="no-underline text-green hover:underline">College Scorecard</a>, <%= @release %> release. Updated <%= @loaded %>.</p>
       <p>Cite as: CollegeValue, “<%= @title %>,” <span class="break-all"><%= @url %></span></p>
+      <p>Free to reuse with credit (CC BY 4.0). <a href="/data#download" class="no-underline text-green hover:underline">Download the data</a></p>
     </footer>
     """
   end

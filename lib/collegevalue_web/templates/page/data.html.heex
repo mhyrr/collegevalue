@@ -15,6 +15,30 @@
         </p>
         <br/>
 
+      <section id="download" class="open-data my-6 rounded-lg border border-gray-200 p-6">
+        <h2 class="text-darkgreen text-2xl font-display">Download the Data</h2>
+        <p class="pt-2">
+          Everything CollegeValue computes is free to reuse under
+          <a class="text-green" href={CollegevalueWeb.OpenData.license().url}><%= CollegevalueWeb.OpenData.license().name %></a>.
+          Please cite <strong>CollegeValue (collegevalue.co), from College Scorecard data</strong>, with a link.
+        </p>
+        <ul class="pt-4 space-y-3">
+          <%= for name <- CollegevalueWeb.OpenData.datasets() do %>
+            <li>
+              <span class="font-bold"><%= CollegevalueWeb.OpenData.title(name) %></span>
+              <a class="ml-2 text-green" href={"/data/#{name}.csv"}>CSV</a>
+              <a class="ml-2 text-green" href={"/data/#{name}.json"}>JSON</a>
+              <span class="block text-sm text-gray-500"><%= CollegevalueWeb.OpenData.columns(name) |> Keyword.keys() |> Enum.join(", ") %></span>
+            </li>
+          <% end %>
+        </ul>
+        <p class="pt-4 text-sm text-gray-600">
+          Each major and college also has a JSON version: <code>/api/v1/majors/&lt;slug&gt;</code> and
+          <code>/api/v1/colleges/&lt;unitid&gt;</code>. Every column is described in the JSON files and in
+          <a class="text-green" href="/llms.txt">llms.txt</a>, the guide for AI assistants.
+        </p>
+      </section>
+
       <h4 class="text-darkgreen text-xl font-display py-4">Data Vintage</h4>
         <p>
           The College Scorecard data is updated several times per year.  The data currently used on CollegeValue

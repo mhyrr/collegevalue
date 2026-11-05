@@ -18,6 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content={meta_description(assigns)}>
     <link rel="canonical" href={canonical_url(@conn)}>
+    <%= if path = assigns[:json_path] do %><link rel="alternate" type="application/json" href={page_url(path)}><% end %>
     <%= if assigns[:noindex] do %><meta name="robots" content="noindex"><% end %>
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="CollegeValue">

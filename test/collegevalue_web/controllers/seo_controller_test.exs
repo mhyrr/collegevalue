@@ -608,6 +608,8 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert dataset["isBasedOn"]["name"] == "College Scorecard"
       assert dataset["isBasedOn"]["datePublished"] == Collegevalue.Scorecard.release_date()
       assert String.length(dataset["description"]) >= 50
+      assert dataset["license"] == "https://creativecommons.org/licenses/by/4.0/"
+      assert "http://localhost:4002/data/programs.csv" in Enum.map(dataset["distribution"], & &1["contentUrl"])
     end
 
     test "pages without a subject carry none", %{conn: conn} do
