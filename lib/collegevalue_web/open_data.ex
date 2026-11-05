@@ -91,26 +91,87 @@ defmodule CollegevalueWeb.OpenData do
   @doc "`[{column, description}]` for a dataset, in file order."
   def columns(name), do: Map.fetch!(@columns, name)
 
-  @doc "Every row of a dataset, as maps with the dataset's columns."
-  def rows(name) when name in @datasets do
+  @doc """
+  A dataset as a file: `{content_type, gzipped_body}`. Rows stream from the
+  database and are gzipped as they are encoded, so building the 29,000-row
+  programs file never holds more than the finished gzip (about 1 MB) and
+  one batch of rows. Holding every row and the 12 MB of JSON text at once ran
+  a 512 MB machine out of memory (2026-11-05). Built once per boot.
+  """
+  def file(name, format) when name in @datasets and format in ["csv", "json"] do
+    key = {__MODULE__, :file, name, format}
+
     if Application.get_env(:collegevalue, :cache_open_data, true) do
-      case :persistent_term.get({__MODULE__, name}, nil) do
-        nil -> tap(build(name), &:persistent_term.put({__MODULE__, name}, &1))
-        rows -> rows
+      case :persistent_term.get(key, nil) do
+        nil -> tap(build_file(name, format), &:persistent_term.put(key, &1))
+        file -> file
       end
     else
-      build(name)
+      build_file(name, format)
     end
   end
 
-  @doc "A dataset as CSV text, with a header row."
-  def csv(name) do
-    keys = name |> columns() |> Keyword.keys()
-    name |> rows() |> CSV.encode(headers: keys) |> Enum.join()
+  defp build_file(name, format) do
+    z = :zlib.open()
+    # Window bits 31: a gzip wrapper, which browsers and curl accept as is.
+    :ok = :zlib.deflateInit(z, :default, :deflated, 31, 8, :default)
+
+    try do
+      chunks = with_rows(name, fn rows -> rows |> encode(name, format) |> Enum.map(&:zlib.deflate(z, &1)) end)
+      {content_type(format), IO.iodata_to_binary([chunks, :zlib.deflate(z, [], :finish)])}
+    after
+      :zlib.close(z)
+    end
   end
 
-  @doc "A dataset as a JSON-ready map: what it is, its columns and its rows."
-  def json(name, origin), do: Map.put(envelope(origin, title(name), columns(name)), :rows, rows(name))
+  defp content_type("csv"), do: "text/csv"
+  defp content_type("json"), do: "application/json"
+
+  defp encode(rows, name, "csv"), do: CSV.encode(rows, headers: name |> columns() |> Keyword.keys())
+
+  # The envelope, then the rows one at a time: `{..., "rows": [row, row]}`.
+  defp encode(rows, name, "json") do
+    head = envelope(LayoutView.page_url(""), title(name), columns(name)) |> Jason.encode!() |> String.trim_trailing("}")
+
+    Stream.concat([
+      [head, ~s(,"rows":[)],
+      rows |> Stream.map(&Jason.encode_to_iodata!/1) |> Stream.intersperse(","),
+      ["]}"]
+    ])
+  end
+
+  # Calls `fun` with the dataset's rows as a stream. The big queries stream
+  # inside a transaction, 500 rows at a time.
+  defp with_rows("majors", fun) do
+    ranking = Facts.ranking()
+    Fields.list_indexable_field_names() |> Stream.map(&major_row(&1, ranking)) |> Stream.reject(&is_nil/1) |> fun.()
+  end
+
+  defp with_rows("colleges", fun) do
+    indexable = MapSet.new(Colleges.list_indexable_colleges())
+
+    # Scorecard lists a few schools twice; the row with outcomes wins, as on
+    # the page (`Colleges.find_college_page/2`).
+    query = from(c in College, where: c.unitid > 0, order_by: [asc: c.name, desc_nulls_last: c.earnings_median_after10])
+
+    stream(query, fn colleges ->
+      colleges
+      |> Stream.filter(&MapSet.member?(indexable, {&1.unitid, &1.name}))
+      |> Stream.uniq_by(& &1.unitid)
+      |> Stream.map(&college_row/1)
+      |> fun.()
+    end)
+  end
+
+  defp with_rows("programs", fun) do
+    query = programs_query() |> order_by([d, c], asc: c.name, asc: d.name)
+    stream(query, &(&1 |> Stream.map(fn p -> program_row(p) end) |> fun.()))
+  end
+
+  defp stream(query, fun) do
+    {:ok, result} = Repo.transaction(fn -> query |> Repo.stream(max_rows: 500) |> fun.() end, timeout: :infinity)
+    result
+  end
 
   @doc "One major's page as JSON: its row and its programs. nil for no such major."
   def major_json(slug, origin) do
@@ -147,27 +208,6 @@ defmodule CollegevalueWeb.OpenData do
       cite_as: "CollegeValue (#{origin}), from College Scorecard data",
       columns: Map.new(columns)
     }
-  end
-
-  defp build("majors") do
-    ranking = Facts.ranking()
-    Fields.list_indexable_field_names() |> Enum.map(&major_row(&1, ranking)) |> Enum.reject(&is_nil/1)
-  end
-
-  defp build("colleges") do
-    indexable = MapSet.new(Colleges.list_indexable_colleges())
-
-    # Scorecard lists a few schools twice; the row with outcomes wins, as on
-    # the page (`Colleges.find_college_page/2`).
-    from(c in College, where: c.unitid > 0, order_by: [asc: c.name, desc_nulls_last: c.earnings_median_after10])
-    |> Repo.all()
-    |> Enum.filter(&MapSet.member?(indexable, {&1.unitid, &1.name}))
-    |> Enum.uniq_by(& &1.unitid)
-    |> Enum.map(&college_row/1)
-  end
-
-  defp build("programs") do
-    programs_query() |> order_by([d, c], asc: c.name, asc: d.name) |> Repo.all() |> Enum.map(&program_row/1)
   end
 
   defp major_row(name, ranking) do

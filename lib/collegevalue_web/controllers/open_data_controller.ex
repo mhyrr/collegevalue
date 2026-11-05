@@ -18,15 +18,11 @@ defmodule CollegevalueWeb.OpenDataController do
   def download(conn, %{"file" => file}) do
     with [name, format] when format in ["csv", "json"] <- String.split(file, ".", parts: 2),
          true <- OpenData.dataset?(name) do
-      {type, body} =
-        case format do
-          "csv" -> {"text/csv", OpenData.csv(name)}
-          "json" -> {"application/json", Jason.encode!(OpenData.json(name, LayoutView.origin(conn)))}
-        end
+      {type, gzipped} = OpenData.file(name, format)
 
       conn
       |> put_resp_header("content-disposition", ~s(inline; filename="collegevalue-#{name}.#{format}"))
-      |> send_machine(type, body)
+      |> send_machine(type, {:gzipped, gzipped})
     else
       _ -> conn |> put_status(:not_found) |> text("Not found. See #{LayoutView.origin(conn)}/llms.txt for the files.")
     end
@@ -64,10 +60,13 @@ defmodule CollegevalueWeb.OpenDataController do
 
     conn = if opts[:index], do: conn, else: put_resp_header(conn, "x-robots-tag", "noindex")
 
-    if gzip?(conn) do
-      conn |> put_resp_header("content-encoding", "gzip") |> send_resp(conn.status || 200, :zlib.gzip(body))
-    else
-      send_resp(conn, conn.status || 200, body)
+    # The bulk files are stored gzipped; only a client that refuses gzip
+    # gets one unpacked.
+    case {body, gzip?(conn)} do
+      {{:gzipped, gzipped}, true} -> conn |> put_resp_header("content-encoding", "gzip") |> send_resp(conn.status || 200, gzipped)
+      {{:gzipped, gzipped}, false} -> send_resp(conn, conn.status || 200, :zlib.gunzip(gzipped))
+      {body, true} -> conn |> put_resp_header("content-encoding", "gzip") |> send_resp(conn.status || 200, :zlib.gzip(body))
+      {body, false} -> send_resp(conn, conn.status || 200, body)
     end
   end
 
