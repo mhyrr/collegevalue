@@ -48,12 +48,16 @@ defmodule CollegevalueWeb.Router do
     get "/sitemap-fields.xml", SitemapController, :fields
     get "/sitemap-colleges.xml", SitemapController, :colleges
     get "/#{Application.compile_env!(:collegevalue, :indexnow_key)}.txt", SitemapController, :indexnow_key
+    get "/llms.txt", OpenDataController, :llms
+    get "/data/:file", OpenDataController, :download
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", CollegevalueWeb do
-  #   pipe_through :api
-  # end
+  scope "/api/v1", CollegevalueWeb do
+    pipe_through :api
+
+    get "/majors/:slug", OpenDataController, :major
+    get "/colleges/:unitid", OpenDataController, :college
+  end
 
   # Enables LiveDashboard only for development
   #

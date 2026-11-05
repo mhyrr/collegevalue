@@ -23,6 +23,7 @@ config :collegevalue, CollegevalueWeb.Endpoint,
 # Fixtures change between tests, so the peer medians behind college payoff
 # summaries are computed fresh each time.
 config :collegevalue, :cache_college_payoff, false
+config :collegevalue, :cache_open_data, false
 
 # One reporting program makes a fixture college or field indexable, so tests
 # need no filler programs. The rule itself is tested with no programs at all.
