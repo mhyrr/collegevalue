@@ -234,6 +234,18 @@ defmodule CollegevalueWeb.SeoControllerTest do
       assert conn |> get("/colleges/555001/beauty-academy") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
       refute build_conn() |> get("/sitemap-colleges.xml") |> response(200) =~ "beauty-academy"
     end
+
+    test "a closed school with no Department of Education ID is noindex and left out of the sitemap, however much data it has", %{conn: conn} do
+      college = Repo.insert!(%College{name: "Mount Ida College", unitid: -1, city: "Newton", state: "MA", zip: "02459",
+                                      yearly_cost: 50_000, debt_median: 27_000})
+
+      for name <- ["Business", "Biology", "Nursing"] do
+        Repo.insert!(%Discipline{name: name, credential_level: 3, stgp_debt_median: 27_000, earnings_1yr: 40_000, college_id: college.id})
+      end
+
+      assert conn |> get("/colleges/-1/mount-ida-college") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
+      refute build_conn() |> get("/sitemap-colleges.xml") |> response(200) =~ "/colleges/-1/"
+    end
   end
 
   describe "the payoff summary on a college page" do

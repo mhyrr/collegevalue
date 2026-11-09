@@ -220,7 +220,9 @@ defmodule Collegevalue.Colleges do
     from c in College,
       join: d in Discipline,
       on: d.college_id == c.id,
-      where: d.credential_level == 3 and d.earnings_1yr > 0,
+      # Closed schools with no Department of Education ID all share unitid
+      # -1, so their pages have no stable address of their own.
+      where: c.unitid > 0 and d.credential_level == 3 and d.earnings_1yr > 0,
       group_by: c.id,
       having: count(d.id) >= ^@min_indexed_programs
   end
