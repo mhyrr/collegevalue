@@ -104,6 +104,14 @@
         </tbody>
       </table>
     </div>
+    <%= if @hidden_count > 0 do %>
+      <div class="table-more flex md:flex-col items-center md:items-start gap-4 pt-4 text-sm text-gray-600">
+        <button type="button" phx-click="all_programs" class="rounded-lg border border-gray-200 bg-white px-4 py-2 font-bold text-darkgreen hover:bg-gray-50">
+          Show all <%= Number.Delimit.number_to_delimited(@hidden_count + length(@rows), precision: 0) %> programs
+        </button>
+        <span>Or <a href={"/data/programs.csv"} class="no-underline text-green hover:underline">download every program</a> (CSV).</span>
+      </div>
+    <% end %>
     <.no_data_note count={@no_data_count} one="school offers this major but reports no debt or earnings for it." many="schools offer this major but report no debt or earnings for it." />
   </section>
 

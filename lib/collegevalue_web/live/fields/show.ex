@@ -115,10 +115,23 @@ defmodule CollegevalueWeb.FieldsLive.Show do
     {:noreply, push_patch(assign(socket, show_all: show_all), to: field_page_path(socket.assigns.field.name, params))}
   end
 
+  def handle_event("all_programs", _params, socket) do
+    {:noreply, socket |> assign(expanded: true) |> assign_rows()}
+  end
+
+  # The first rows of the table a page shows before "Show all". A field page
+  # once listed every program, up to 1,000 rows and 900 KB of HTML; the full
+  # list is one click away and in the open data.
+  @table_limit 50
+
   # The table hides programs with no debt or earnings at all and counts them instead.
   defp assign_rows(%{assigns: assigns} = socket) do
     show_all = show_all?(assigns.show_all)
-    assign(socket, Map.put(ProgramTable.rows(assigns.majors, show_all), :show_all, show_all))
+    expanded = Map.get(assigns, :expanded, false)
+    table = ProgramTable.rows(assigns.majors, show_all)
+    shown = if expanded, do: table.rows, else: Enum.take(table.rows, @table_limit)
+
+    assign(socket, table |> Map.merge(%{rows: shown, hidden_count: length(table.rows) - length(shown), show_all: show_all, expanded: expanded}))
   end
 
   defp show_all?(show_all), do: show_all in [true, "true"]

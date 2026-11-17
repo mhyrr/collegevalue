@@ -463,6 +463,28 @@ defmodule CollegevalueWeb.SeoControllerTest do
       html = build_conn() |> get("/fields/psychology?show_all=true") |> html_response(200)
       assert html =~ "Master&#39;s Degree"
     end
+
+    test "lists the first 50 programs, and every one after Show all", %{conn: conn} do
+      for i <- 1..60 do
+        college = Repo.insert!(%College{name: "Test College #{i}", unitid: 900_000 + i, city: "Town", state: "OH", zip: "44101"})
+        Repo.insert!(%Discipline{name: "Psychology", credential_level: 3, stgp_debt_median: 20_000,
+                                 earnings_1yr: 30_000 + i, college_id: college.id})
+      end
+
+      html = conn |> get("/fields/psychology") |> html_response(200)
+      rows = fn html -> length(String.split(html, ~s(class="px-4 py-3 college-field))) - 1 end
+
+      assert rows.(html) == 50
+      assert html =~ "Show all 63 programs"
+      assert html =~ ~s(href="/data/programs.csv")
+
+      majors = Collegevalue.Colleges.get_majors_by_field("Psychology")
+      socket = %Phoenix.LiveView.Socket{assigns: %{__changed__: %{}, majors: majors, show_all: false, expanded: false}}
+      {:noreply, socket} = CollegevalueWeb.FieldsLive.Show.handle_event("all_programs", %{}, socket)
+
+      assert length(socket.assigns.rows) == 63
+      assert socket.assigns.hidden_count == 0
+    end
   end
 
   describe "old field URLs" do
