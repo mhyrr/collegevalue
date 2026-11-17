@@ -11,20 +11,26 @@ defmodule CollegevalueWeb.SitemapController do
   # One sitemap per kind of page, with no page in two of them, so Search
   # Console reports submitted vs. indexed for each template on its own.
   #
+  # College pages have no sitemap (since 2026-11-17). Google crawled the site
+  # about twice a day and fetched none of the 1,292 college URLs, so the
+  # sitemaps now name only the ~280 strongest pages: the listings and the
+  # majors. College pages stay indexable, reached through the field pages,
+  # the A to Z list and each other's "Colleges Near" links. Bring the
+  # colleges sitemap back once the field pages are indexed.
+  #
   # Each sitemap's lastmod is the day its pages last changed in substance: a
   # template's content, or the data behind it. Bump the date by hand when
   # that happens, and never for a styling change, or Google learns to ignore
   # it. `mix indexnow` submits the sitemaps changed since a date.
   @sitemaps [
     {"/sitemap-pages.xml", ~D[2026-11-05]},
-    {"/sitemap-fields.xml", ~D[2026-11-03]},
-    {"/sitemap-colleges.xml", ~D[2026-11-03]}
+    {"/sitemap-fields.xml", ~D[2026-11-17]}
   ]
 
   def sitemaps, do: @sitemaps
 
   @doc """
-  The sitemap index: the three sitemaps below. Pages with too little data
+  The sitemap index: the two sitemaps below. Pages with too little data
   render noindex (see `Colleges.indexable?/1` and `Fields.indexable?/1`) and
   are in none of them.
   """
@@ -51,17 +57,6 @@ defmodule CollegevalueWeb.SitemapController do
 
   @doc "Every field page open to the search index."
   def fields(conn, _params), do: send_urlset(conn, "/sitemap-fields.xml", field_paths())
-
-  @doc "Every college page open to the search index."
-  def colleges(conn, _params) do
-    college_paths =
-      Colleges.list_indexable_colleges()
-      |> Enum.map(fn {unitid, name} -> CollegevalueWeb.Views.Helpers.college_page_path(unitid, name) end)
-      # Scorecard lists a few schools twice; both rows share a page.
-      |> Enum.uniq()
-
-    send_urlset(conn, "/sitemap-colleges.xml", college_paths)
-  end
 
   defp field_paths do
     Enum.map(Fields.list_indexable_field_names(), &CollegevalueWeb.Views.Helpers.field_page_path/1)

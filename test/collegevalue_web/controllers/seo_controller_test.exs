@@ -40,35 +40,36 @@ defmodule CollegevalueWeb.SeoControllerTest do
   end
 
   describe "the sitemaps" do
-    test "sitemap.xml is an index of the pages, fields and colleges sitemaps", %{conn: conn} do
+    test "sitemap.xml is an index of the pages and fields sitemaps only", %{conn: conn} do
       conn = get(conn, "/sitemap.xml")
       xml = response(conn, 200)
 
       assert response_content_type(conn, :xml)
       assert xml =~ ~s(<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">)
-      for name <- ~w(pages fields colleges), do: assert(xml =~ "/sitemap-#{name}.xml</loc>")
+      for name <- ~w(pages fields), do: assert(xml =~ "/sitemap-#{name}.xml</loc>")
+      refute xml =~ "sitemap-colleges"
     end
 
     test "each page is in one sitemap only", %{conn: conn} do
       pages = conn |> get("/sitemap-pages.xml") |> response(200)
       fields = build_conn() |> get("/sitemap-fields.xml") |> response(200)
-      colleges = build_conn() |> get("/sitemap-colleges.xml") |> response(200)
 
       assert pages =~ "/colleges/rank</loc>"
       assert fields =~ "/fields/computer-science</loc>"
-      assert colleges =~ "/colleges/130794/yale-university</loc>"
 
       refute pages =~ "/fields/computer-science<" or pages =~ "yale-university"
       refute fields =~ "/fields/rank<" or fields =~ "yale-university"
-      refute colleges =~ "/colleges/rank<" or colleges =~ "/fields/"
+    end
+
+    test "no sitemap lists college pages, which stay indexable", %{conn: conn} do
+      assert get(conn, "/sitemap-colleges.xml").status == 404
+      refute build_conn() |> get("/colleges/130794/yale-university") |> html_response(200) =~ "noindex"
     end
 
     test "pages without enough data are in none of them", %{conn: conn} do
       fields = conn |> get("/sitemap-fields.xml") |> response(200)
-      colleges = build_conn() |> get("/sitemap-colleges.xml") |> response(200)
 
       refute fields =~ "air-force"
-      refute colleges =~ "aarhus"
     end
 
     test "every sitemap and every URL in it carries its sitemap's lastmod", %{conn: conn} do
@@ -226,16 +227,15 @@ defmodule CollegevalueWeb.SeoControllerTest do
   end
 
   describe "which pages are open to the search index" do
-    test "a college with outcomes but no bachelor's program reporting earnings is noindex and left out of the sitemap", %{conn: conn} do
+    test "a college with outcomes but no bachelor's program reporting earnings is noindex", %{conn: conn} do
       college = Repo.insert!(%College{name: "Beauty Academy", unitid: 555_001, city: "Mesa", state: "AZ", zip: "85201",
                                       yearly_cost: 20_000, debt_median: 8_000})
       Repo.insert!(%Discipline{name: "Cosmetology", credential_level: 1, stgp_debt_median: 9_000, earnings_1yr: 21_000, college_id: college.id})
 
       assert conn |> get("/colleges/555001/beauty-academy") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
-      refute build_conn() |> get("/sitemap-colleges.xml") |> response(200) =~ "beauty-academy"
     end
 
-    test "a closed school with no Department of Education ID is noindex and left out of the sitemap, however much data it has", %{conn: conn} do
+    test "a closed school with no Department of Education ID is noindex, however much data it has", %{conn: conn} do
       college = Repo.insert!(%College{name: "Mount Ida College", unitid: -1, city: "Newton", state: "MA", zip: "02459",
                                       yearly_cost: 50_000, debt_median: 27_000})
 
@@ -244,7 +244,7 @@ defmodule CollegevalueWeb.SeoControllerTest do
       end
 
       assert conn |> get("/colleges/-1/mount-ida-college") |> html_response(200) =~ ~s(<meta name="robots" content="noindex">)
-      refute build_conn() |> get("/sitemap-colleges.xml") |> response(200) =~ "/colleges/-1/"
+      refute Enum.any?(Collegevalue.Colleges.list_indexable_colleges(), fn {unitid, _name} -> unitid == -1 end)
     end
   end
 
