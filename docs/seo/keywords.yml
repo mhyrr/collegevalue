@@ -43,9 +43,32 @@ clusters:
         page: /colleges/rank
         role: secondary
         status: published
-      - query: college majors ranked by earnings vs debt
+      # Google volumes 2026-11-17; FREOPP ranks 5 and 6 with keyword
+      # difficulty 12 and 21 (seodash ranked --domain freopp.org).
+      - query: colleges roi
+        page: /colleges/rank
+        role: secondary
+        status: published
+      - query: colleges return on investment
+        page: /colleges/rank
+        role: secondary
+        status: published
+      # degrees with the best roi: 720 a month, difficulty 12, FREOPP at 4.
+      - query: degrees with the best roi
         page: /fields/rank
         role: primary
+        status: published
+      - query: degree return on investment
+        page: /fields/rank
+        role: secondary
+        status: published
+      - query: roi degrees
+        page: /fields/rank
+        role: secondary
+        status: published
+      - query: college majors ranked by earnings vs debt
+        page: /fields/rank
+        role: secondary
         status: published
       - query: college roi by major
         page: /fields/rank
