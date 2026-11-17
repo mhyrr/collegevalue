@@ -109,5 +109,6 @@ defmodule CollegevalueWeb.OpenDataControllerTest do
     assert text =~ "http://localhost:4002/data/programs.csv"
     assert text =~ "- `parent_plus_debt_median`:"
     assert text =~ "CC BY 4.0"
+    assert text =~ "under $36,000 gets \"No\""
   end
 end

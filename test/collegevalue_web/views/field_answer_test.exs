@@ -41,6 +41,37 @@ defmodule CollegevalueWeb.FieldAnswerTest do
       assert narrow =~ "The college matters less than the major"
     end
 
+    test "says no to a major paying under $36,000, whatever its debt" do
+      verdict = FieldAnswer.verdict(Map.merge(facts(10.0), %{name: "Social Work", earnings_median: 31_737}))
+
+      assert %{tone: :poor, headline: "No, not on first-year pay."} = verdict
+      assert hd(verdict.sentences) == "Graduates earn a median $31,737 in their first year, under the $36,000 a bachelor's degree should lead to."
+    end
+
+    test "reads barely for pay within 5% under the line" do
+      verdict = FieldAnswer.verdict(Map.merge(facts(8.8), %{name: "Teacher Education", earnings_median: 35_537}))
+
+      assert %{tone: :mixed, headline: "Barely, on first-year pay."} = verdict
+      assert hd(verdict.sentences) =~ "just under the $36,000"
+    end
+
+    test "names graduate school for majors that lead there" do
+      verdict = FieldAnswer.verdict(Map.merge(facts(10.6), %{name: "Psychology, General", earnings_median: 28_486}))
+
+      assert verdict.headline == "No, unless you go on to graduate school."
+      assert List.last(verdict.sentences) =~ "graduate, medical or law school"
+    end
+
+    test "leaves a major over the line to the debt test" do
+      assert FieldAnswer.verdict(Map.merge(facts(5.2), %{name: "Nursing", earnings_median: 62_698})).headline == "Usually, yes."
+      assert FieldAnswer.verdict(Map.merge(facts(13.7), %{name: "X", earnings_median: 40_000})).headline == "Often not, on first-year pay alone."
+    end
+
+    test "keeps the debt test's no when it is the worse, and the pay no when debt is also poor" do
+      assert FieldAnswer.verdict(Map.merge(facts(13.7), %{name: "Theatre", earnings_median: 35_000})).headline == "Often not, on first-year pay alone."
+      assert FieldAnswer.verdict(Map.merge(facts(14.4), %{name: "Dance", earnings_median: 21_579})).headline == "No, not on first-year pay."
+    end
+
     test "has no verdict without the measure" do
       assert FieldAnswer.verdict(%{months_to_repay: %{of_major: nil}}) == nil
       assert FieldAnswer.verdict(%{}) == nil

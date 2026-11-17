@@ -235,7 +235,9 @@ defmodule CollegevalueWeb.OpenData do
     if stats.with_earnings > 0 do
       months = if stats.paired_d50, do: Float.round(stats.paired_d50 * 12 / stats.e50, 1)
       index = Enum.find_index(ranking.ranked, fn {n, _} -> n == name end)
-      verdict = months && FieldAnswer.verdict(%{months_to_repay: %{of_major: months, programs: 0, p25: nil, p75: nil}})
+      verdict =
+        months &&
+          FieldAnswer.verdict(%{name: name, earnings_median: round(stats.e50), months_to_repay: %{of_major: months, programs: 0, p25: nil, p75: nil}})
 
       %{
         major: name,

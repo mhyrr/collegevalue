@@ -12,6 +12,14 @@ defmodule CollegevalueWeb.FieldAnswer do
   nearly every major passes that rule: the typical major takes 8 months and
   only about one in ten takes over 11.5 (2025 Scorecard release). The bands
   sit on that spread, and the verdict also says where the major ranks.
+
+  Because debt barely varies, the debt test alone almost never says no. So a
+  second test looks at pay itself: a major whose median first-year pay is
+  under `@pay_line` ($36,000, Greg's call on 2026-11-09, applied to the pay
+  as Scorecard reports it, with no inflation adjustment) is a no, whatever
+  its debt. Pay within 5% under the line reads "barely". The worse of the two
+  tests decides the verdict. Majors in `@graduate_school` usually lead to
+  graduate or professional school, so their no says so.
   """
 
   import CollegevalueWeb.Views.Helpers, only: [cash: 1, months: 1]
@@ -25,6 +33,32 @@ defmodule CollegevalueWeb.FieldAnswer do
     {:infinity, :poor, "Often not, on first-year pay alone."}
   ]
   @rule_months 12
+
+  # The first-year pay a bachelor's degree should reach (TK-006), and the
+  # share under it that still reads "barely" rather than no.
+  @pay_line 36_000
+  @barely 0.95
+
+  # Majors whose graduates mostly go on to graduate, medical or law school,
+  # where first-year pay shows the stop on the way. Scorecard names.
+  @graduate_school MapSet.new([
+    "Biochemistry, Biophysics and Molecular Biology",
+    "Biology, General",
+    "Cell/Cellular Biology and Anatomical Sciences",
+    "Clinical, Counseling and Applied Psychology",
+    "Health Services/Allied Health/Health Sciences, General",
+    "Microbiological Sciences and Immunology",
+    "Neurobiology and Neurosciences",
+    "Philosophy",
+    "Physiology, Pathology and Related Sciences",
+    "Psychology, General",
+    "Research and Experimental Psychology",
+    "Zoology/Animal Biology"
+  ])
+
+  @tone_rank %{good: 0, mixed: 1, poor: 2}
+
+  def pay_line, do: @pay_line
   # A group needs this many programs before the page quotes its figures.
   @min_group 3
 
@@ -41,7 +75,13 @@ defmodule CollegevalueWeb.FieldAnswer do
   report both debt and earnings to judge.
   """
   def verdict(%{months_to_repay: %{of_major: m} = spread} = facts) when is_number(m) and m > 0 do
-    {_, tone, headline} = Enum.find(@verdicts, fn {max, _, _} -> max == :infinity or m <= max end)
+    {_, debt_tone, debt_headline} = Enum.find(@verdicts, fn {max, _, _} -> max == :infinity or m <= max end)
+    pay = pay_test(facts)
+
+    {tone, headline} =
+      if pay && @tone_rank[pay.tone] >= @tone_rank[debt_tone],
+        do: {pay.tone, pay.headline},
+        else: {debt_tone, debt_headline}
 
     rule =
       cond do
@@ -66,11 +106,35 @@ defmodule CollegevalueWeb.FieldAnswer do
     %{
       tone: tone,
       headline: headline,
-      sentences: Enum.filter(["Graduates who borrowed owe about #{months(m)} of first-year pay at the median, #{rule}", rank_sentence(facts), spread_sentence], & &1)
+      sentences: Enum.filter([pay && pay.sentence, "Graduates who borrowed owe about #{months(m)} of first-year pay at the median, #{rule}", rank_sentence(facts), spread_sentence, pay && pay.graduate_sentence], & &1)
     }
   end
 
   def verdict(_facts), do: nil
+
+  # The pay test: nil when first-year pay clears the line.
+  defp pay_test(%{earnings_median: pay} = facts) when is_number(pay) and pay > 0 and pay < @pay_line do
+    graduate? = MapSet.member?(@graduate_school, Map.get(facts, :name))
+
+    {tone, headline, how} =
+      cond do
+        pay >= @pay_line * @barely -> {:mixed, "Barely, on first-year pay.", "just under"}
+        graduate? -> {:poor, "No, unless you go on to graduate school.", "under"}
+        true -> {:poor, "No, not on first-year pay.", "under"}
+      end
+
+    %{
+      tone: tone,
+      headline: headline,
+      sentence: "Graduates earn a median #{cash(pay)} in their first year, #{how} the #{cash(@pay_line)} a bachelor's degree should lead to.",
+      graduate_sentence:
+        if(graduate?,
+          do: "Many graduates go on to graduate, medical or law school, which this first-year pay doesn't show; that school adds its own cost and debt."
+        )
+    }
+  end
+
+  defp pay_test(_facts), do: nil
 
   # Rank 1 carries the least debt for the pay.
   defp rank_sentence(%{rank: rank, ranked_of: of}) when is_integer(rank) and of > 1 do

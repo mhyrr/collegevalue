@@ -30,6 +30,9 @@
           <div class="space-y-5">
             <.field_verdict verdict={@answer && @answer.verdict} />
             <p><%= Enum.join(field_answer(@facts), " ") %></p>
+            <%= if @answer && @answer.verdict && @answer.verdict.tone == :poor do %>
+              <p class="font-bold text-darkgreen">If you choose it anyway, the college you pick decides how much it costs you:</p>
+            <% end %>
             <%= for paragraph <- @note do %>
               <p><%= for part <- paragraph do %><%= case part do %><% {name, unitid} -> %><%= link name, to: college_page_path(unitid, name), class: "no-underline text-green hover:underline" %><% text -> %><%= text %><% end %><% end %></p>
             <% end %>
