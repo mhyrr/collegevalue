@@ -487,6 +487,15 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "the fields index" do
+    test "links noindex majors with nofollow and indexable ones plainly", %{conn: conn} do
+      html = conn |> get("/fields") |> html_response(200)
+
+      assert html =~ ~r{href="/fields/computer-science"(?![^>]*nofollow)}
+      assert html =~ ~r{href="/fields/air-force[^"]*"[^>]*rel="nofollow"}
+    end
+  end
+
   describe "nearby colleges" do
     test "a college page links the nearest indexable colleges, nearest first, and none far away or noindex", %{conn: conn, with_data: yale} do
       yale |> Ecto.Changeset.change(latitude: 41.3, longitude: -72.9) |> Repo.update!()

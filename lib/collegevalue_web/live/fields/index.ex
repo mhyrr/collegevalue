@@ -12,13 +12,18 @@ defmodule CollegevalueWeb.FieldsLive.Index do
 
   def mount(%{"order" => order}, _session, socket) do
     fields = Fields.list_fields()
-    {:ok, assign(socket, fields: fields, order: order, page_title: "Fields of Study", meta_description: @description)}
+    {:ok, assign(socket, fields: fields, indexable: indexable(), order: order, page_title: "Fields of Study", meta_description: @description)}
   end
 
   def mount(_, _, socket) do
     fields = Fields.list_fields()
-    {:ok, assign(socket, fields: fields, order: "desc", page_title: "Fields of Study", meta_description: @description)}
+    {:ok, assign(socket, fields: fields, indexable: indexable(), order: "desc", page_title: "Fields of Study", meta_description: @description)}
   end
+
+  # Links to noindex field pages carry rel="nofollow", so crawlers spend
+  # their visits on the 190 majors open to the index; visitors still get
+  # every link.
+  defp indexable, do: MapSet.new(Fields.list_indexable_field_names())
 
   @spec handle_params(any, any, any) :: {:noreply, any}
   def handle_params(%{"sort_by" => sort_by}, _uri, socket) do
