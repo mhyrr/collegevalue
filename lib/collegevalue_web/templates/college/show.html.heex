@@ -10,7 +10,7 @@
           <li>
             <a href={college_page_path(other.unitid, other.name)} class="block rounded-lg border border-gray-200 px-4 py-3 no-underline hover:bg-gray-50">
               <span class="block text-green font-bold"><%= other.name %></span>
-              <span class="block text-sm text-gray-500"><%= other.city %>, <%= other.state %> · <%= round(other.miles) %> mi</span>
+              <span class="block text-sm text-gray-500"><%= other.city %>, <%= other.state %> · <%= if other.miles < 1, do: "under 1 mi", else: "#{round(other.miles)} mi" %></span>
             </a>
           </li>
         <% end %>
