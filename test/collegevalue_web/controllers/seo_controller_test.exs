@@ -487,6 +487,14 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "the majors ranking" do
+    test "is titled for the query it targets", %{conn: conn} do
+      html = conn |> get("/fields/rank") |> html_response(200)
+
+      assert html =~ "Degrees with the Best ROI: Every Major Ranked by Debt vs. Pay · CollegeValue</title>"
+    end
+  end
+
   describe "the fields index" do
     test "links noindex majors with nofollow and indexable ones plainly", %{conn: conn} do
       html = conn |> get("/fields") |> html_response(200)

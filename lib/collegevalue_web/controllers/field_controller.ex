@@ -96,7 +96,7 @@ defmodule CollegevalueWeb.FieldController do
     end
 
     render(conn, "rank.html", ranks: ranks, ranking: ranking, require_debt: require_debt, income: income,
-      count: count, rank_counts: @rank_counts, page_title: "College ROI by Major: Majors Ranked by Earnings vs. Debt",
+      count: count, rank_counts: @rank_counts, page_title: "Degrees with the Best ROI: Every Major Ranked by Debt vs. Pay",
       meta_description: @rank_description)
   end
 
