@@ -230,6 +230,39 @@ defmodule Collegevalue.Colleges do
   @doc "Whether the college's page is open to the search index; see `@min_indexed_programs`."
   def indexable?(%College{id: id}), do: Repo.exists?(where(indexable_colleges(), [c], c.id == ^id))
 
+  @doc """
+  Up to `limit` indexable colleges nearest to `college`, nearest first, within
+  `max_miles`: `[%{unitid, name, city, state, miles}]`. Empty when the
+  college has no location. Distance is the flat-earth approximation, close
+  enough at these ranges.
+  """
+  def nearby_colleges(college, limit \\ 6, max_miles \\ 150)
+
+  def nearby_colleges(%College{latitude: lat, longitude: lon} = college, limit, max_miles)
+      when is_number(lat) and is_number(lon) do
+    lon_scale = :math.cos(lat * :math.pi() / 180)
+    indexable = indexable_colleges() |> select([c], c.id)
+
+    from(c in College,
+      where: c.id in subquery(indexable) and c.unitid != ^college.unitid and not is_nil(c.latitude),
+      select: %{
+        unitid: c.unitid,
+        name: c.name,
+        city: c.city,
+        state: c.state,
+        miles: fragment("69.0 * sqrt(power(? - ?, 2) + power((? - ?) * ?, 2))", c.latitude, ^lat, c.longitude, ^lon, ^lon_scale)
+      }
+    )
+    |> subquery()
+    |> where([n], n.miles <= ^max_miles)
+    |> order_by([n], asc: n.miles, asc: n.name)
+    |> limit(^limit)
+    |> Repo.all()
+    |> Enum.uniq_by(& &1.unitid)
+  end
+
+  def nearby_colleges(_college, _limit, _max_miles), do: []
+
   @doc "`{unitid, name}` for every college that is `indexable?/1`, ordered by name."
   def list_indexable_colleges do
     indexable_colleges()

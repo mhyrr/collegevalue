@@ -1,5 +1,21 @@
 <div class="college-page py-8 px-4 md:px-0 md:py-4">
   <%= render("details.html", college: @college, majors: @majors, payoff: @payoff) %>
   <%= live_render @conn, CollegevalueWeb.CollegesLive.Show, session: %{"college" => @college.name} %>
+  <%= if @nearby != [] do %>
+    <section class="nearby-colleges pt-12">
+      <h2 class="text-darkgreen text-2xl font-display">Colleges Near <%= @college.name %></h2>
+      <p class="pt-1 pb-4 text-sm text-gray-500">Compare debt and pay at the closest colleges with enough data, nearest first.</p>
+      <ul class="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-3">
+        <%= for other <- @nearby do %>
+          <li>
+            <a href={college_page_path(other.unitid, other.name)} class="block rounded-lg border border-gray-200 px-4 py-3 no-underline hover:bg-gray-50">
+              <span class="block text-green font-bold"><%= other.name %></span>
+              <span class="block text-sm text-gray-500"><%= other.city %>, <%= other.state %> · <%= round(other.miles) %> mi</span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
   <.data_source url={CollegevalueWeb.LayoutView.canonical_url(@conn)} title={@page_title} />
 </div>

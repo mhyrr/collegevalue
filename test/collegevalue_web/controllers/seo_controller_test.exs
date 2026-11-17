@@ -487,6 +487,30 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "nearby colleges" do
+    test "a college page links the nearest indexable colleges, nearest first, and none far away or noindex", %{conn: conn, with_data: yale} do
+      yale |> Ecto.Changeset.change(latitude: 41.3, longitude: -72.9) |> Repo.update!()
+
+      college = fn name, unitid, lat, lon, earnings ->
+        c = Repo.insert!(%College{name: name, unitid: unitid, city: "Town", state: "CT", zip: "06459", latitude: lat, longitude: lon})
+        Repo.insert!(%Discipline{name: "History", credential_level: 3, stgp_debt_median: 20_000, earnings_1yr: earnings, college_id: c.id})
+      end
+
+      college.("Wesleyan University", 130_697, 41.55, -72.66, 40_000)
+      college.("Quinnipiac University", 130_226, 41.42, -72.89, 45_000)
+      college.("No Earnings College", 130_001, 41.31, -72.91, -1)
+      college.("Stanford University", 243_744, 37.43, -122.17, 60_000)
+
+      html = conn |> get("/colleges/130794/yale-university") |> html_response(200)
+      section = html |> String.split("nearby-colleges") |> Enum.at(1)
+
+      assert section =~ "Colleges Near Yale University"
+      assert :binary.match(section, "Quinnipiac") < :binary.match(section, "Wesleyan")
+      refute section =~ "No Earnings College"
+      refute section =~ "Stanford"
+    end
+  end
+
   describe "related majors" do
     test "a field page links the majors in its CIP family, fastest payback first, and never noindex ones", %{conn: conn, with_data: yale} do
       program = fn name, cip, debt, earnings, college ->
