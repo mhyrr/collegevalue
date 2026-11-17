@@ -2,7 +2,9 @@ defmodule CollegevalueWeb.FieldComponents do
   @moduledoc "The field page's computed answer: the verdict and its evidence."
   use Phoenix.Component
   import CollegevalueWeb.DataComponents, only: [bar_row: 1]
-  import CollegevalueWeb.Views.Helpers, only: [cash: 1, months: 1, college_page_path: 2]
+  import CollegevalueWeb.Views.Helpers, only: [cash: 1, months: 1, college_page_path: 2, field_page_path: 1]
+
+  alias Collegevalue.Fields
 
   # The short answer at the head of "Is a <major> degree worth it?", from
   # `CollegevalueWeb.FieldAnswer.verdict/1`. Nothing when there is no verdict.
@@ -130,6 +132,31 @@ defmodule CollegevalueWeb.FieldComponents do
         <% end %>
       </tbody>
     </table>
+    """
+  end
+  # Links to related majors, fastest payback first, from
+  # `Collegevalue.Fields.related_fields/2`. Nothing when there are none.
+  attr :related, :list, default: []
+  attr :short_name, :string, required: true
+
+  def related_fields(%{related: []} = assigns), do: ~H""
+
+  def related_fields(assigns) do
+    ~H"""
+    <section class="related-fields pt-12">
+      <h2 class="text-darkgreen text-2xl font-display">Majors Related to <%= @short_name %></h2>
+      <p class="pt-1 pb-4 text-sm text-gray-500">Fastest payback first: months of first-year pay to equal the median student debt.</p>
+      <ul class="grid grid-cols-3 lg:grid-cols-2 md:grid-cols-1 gap-3">
+        <%= for field <- @related do %>
+          <li>
+            <a href={field_page_path(field.name)} class="flex items-baseline justify-between gap-3 rounded-lg border border-gray-200 px-4 py-3 no-underline hover:bg-gray-50">
+              <span class="text-green font-bold"><%= Fields.short_name(field.name) %></span>
+              <span class="shrink-0 text-sm tabular-nums text-gray-500"><%= months(field.months) %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </section>
     """
   end
 end

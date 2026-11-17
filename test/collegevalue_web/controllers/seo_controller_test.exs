@@ -487,6 +487,30 @@ defmodule CollegevalueWeb.SeoControllerTest do
     end
   end
 
+  describe "related majors" do
+    test "a field page links the majors in its CIP family, fastest payback first, and never noindex ones", %{conn: conn, with_data: yale} do
+      program = fn name, cip, debt, earnings, college ->
+        Repo.insert!(%Discipline{name: name, cipcode: cip, credential_level: 3, stgp_debt_median: debt,
+                                 earnings_1yr: earnings, college_id: college.id})
+      end
+
+      program.("Psychology, General", 4201, 25_000, 30_000, yale)
+      program.("Experimental Psychology", 4227, 20_000, 40_000, yale)
+      program.("Research and Experimental Psychology, Other", 4227, 30_000, 30_000, yale)
+      # Credential 1 only: no bachelor's program, so not indexable.
+      Repo.insert!(%Discipline{name: "Psychology Aide", cipcode: 4299, credential_level: 1, stgp_debt_median: 9_000,
+                               earnings_1yr: 20_000, college_id: yale.id})
+
+      html = conn |> get("/fields/psychology") |> html_response(200)
+      section = html |> String.split("related-fields") |> Enum.at(1)
+
+      assert section =~ "Majors Related to Psychology"
+      assert :binary.match(section, "Experimental Psychology") < :binary.match(section, "Research and Experimental")
+      refute section =~ "Psychology Aide"
+      refute section =~ ~s(href="/fields/psychology")
+    end
+  end
+
   describe "old field URLs" do
     test "move to the slug for good, keeping the query", %{conn: conn} do
       conn = get(conn, "/fields/Computer%20Science?sort_by=name&order=asc")

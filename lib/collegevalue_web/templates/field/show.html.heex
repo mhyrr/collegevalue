@@ -61,6 +61,8 @@
     <p class="max-w-prose text-lg leading-relaxed text-gray-800"><%= field_summary(@field) %></p>
   <% end %>
 
+  <.related_fields related={assigns[:related] || []} short_name={field_short_name(@field.name)} />
+
   <section id="programs" class="field-programs pt-12">
     <div class="flex md:flex-col items-end md:items-start justify-between gap-4 pb-4">
       <div>

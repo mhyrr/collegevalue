@@ -156,6 +156,69 @@ defmodule Collegevalue.Fields do
     indexable_field_names() |> order_by([d], asc: d.name) |> Repo.all()
   end
 
+  @doc """
+  Up to `limit` indexable majors related to `name`, fastest payback first:
+  `[%{name: name, months: months}]`, where `months` is the months of
+  first-year pay the median debt equals (nil when the major isn't ranked).
+
+  Related means the same two-digit CIP family (the Department of Education's
+  program codes: 42 is psychology, 51 health). When the family has too few
+  indexable majors, the majors nearest on payback fill the list.
+  """
+  def related_fields(name, limit \\ 6) do
+    families = cip_families()
+    ranked = Collegevalue.FieldNotes.Facts.ranking().ranked
+    months = Map.new(ranked, fn {major, ratio} -> {major, Float.round(ratio * 12, 1)} end)
+    family = Map.get(families, name)
+
+    same_family =
+      for {major, f} <- families, f == family, major != name, do: major
+
+    nearest =
+      case Enum.find_index(ranked, &(elem(&1, 0) == name)) do
+        nil -> []
+        index ->
+          ranked
+          |> Enum.with_index()
+          |> Enum.map(fn {{major, _ratio}, i} -> {major, abs(i - index)} end)
+          |> Enum.filter(fn {major, _distance} -> major != name and Map.has_key?(families, major) end)
+          |> Enum.sort_by(&elem(&1, 1))
+          |> Enum.map(&elem(&1, 0))
+      end
+
+    (Enum.sort_by(same_family, &{Map.get(months, &1) || 999, &1}) ++ nearest)
+    |> Enum.uniq()
+    |> Enum.take(limit)
+    |> Enum.sort_by(&{Map.get(months, &1) || 999, &1})
+    |> Enum.map(&%{name: &1, months: Map.get(months, &1)})
+  end
+
+  # Indexable major => its two-digit CIP family, from the most common code
+  # among its bachelor's programs. Cached like the ranking: the data changes
+  # only with a Scorecard import.
+  defp cip_families do
+    if Application.get_env(:collegevalue, :cache_field_ranking, true) do
+      case :persistent_term.get({__MODULE__, :cip_families}, nil) do
+        nil -> tap(compute_cip_families(), &:persistent_term.put({__MODULE__, :cip_families}, &1))
+        families -> families
+      end
+    else
+      compute_cip_families()
+    end
+  end
+
+  defp compute_cip_families do
+    indexable = MapSet.new(list_indexable_field_names())
+
+    Discipline
+    |> where([d], d.credential_level == 3 and d.cipcode > 0)
+    |> group_by([d], d.name)
+    |> select([d], {d.name, fragment("mode() within group (order by ?)", d.cipcode)})
+    |> Repo.all()
+    |> Enum.filter(fn {name, _cip} -> MapSet.member?(indexable, name) end)
+    |> Map.new(fn {name, cip} -> {name, div(cip, 100)} end)
+  end
+
   defp positive?(%Decimal{} = value), do: Decimal.gt?(value, 0)
   defp positive?(value) when is_number(value), do: value > 0
   defp positive?(_value), do: false
