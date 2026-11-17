@@ -15,6 +15,10 @@ config :collegevalue, CollegevalueWeb.Endpoint, cache_static_manifest: "priv/sta
 # fly.dev name; the site is served at collegevalue.co.
 config :collegevalue, canonical_url: "https://collegevalue.co"
 
+# Hosts that serve the same app and move permanently to canonical_url
+# (CollegevalueWeb.Plugs.CanonicalHost).
+config :collegevalue, mirror_hosts: ["www.collegevalue.co", "collegevalue.fly.dev"]
+
 # Do not print debug messages in production
 config :logger, level: :info
 
